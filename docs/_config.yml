@@ -1,0 +1,5 @@
+name: DockServer.io
+description: DockServer, simple easy and works, no fancy UI needed
+theme: jekyll-theme-slate
+markdown: kramdown
+permalink: /404.html

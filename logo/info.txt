@@ -1,0 +1,18 @@
+
+Hope you enjoy your new logo, here are the people that
+made your beautiful logo happen :)
+font name: Ubuntu-B
+font link: https://fonts.google.com/specimen/Ubuntu
+font author: Dalton Maag
+font author site: http://www.daltonmaag.com/
+
+
+icon designer: Creative Stall
+icon designer link: /creativestall
+        
+
+fontColor: {"hex":"#FFFFFF"}
+bgColor: {"hex":"#000000"}
+iconColor: {"hex":"#FFFFFF"}
+
+      

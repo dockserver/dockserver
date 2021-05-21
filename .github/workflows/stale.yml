@@ -1,0 +1,24 @@
+name: Mark stale issues and pull requests
+
+on:
+  schedule:
+    - cron: '30 1 * * *'
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Close Stale Issues
+        uses: actions/stale@v3.0.14
+        with:
+          repo-token: ${{ secrets.CR_PAT }}
+          stale-issue-message: 'This issue has not had any activity in 30 days. Marking it stale. It will be closed in 14 days.'
+          stale-pr-message: 'This PR has not had any activity in 30 days. Marking it stale. It will be closed in 14 days.'
+          close-issue-message: 'This issue has not had any activity in 44 days. Closing it.'
+          close-pr-message: 'This PR has not had any activity in 44 days. Closing it.'
+          days-before-stale: 30
+          days-before-close: 14
+          stale-issue-label: 'stale-issue'
+          stale-pr-label: 'stale-pr'
+          remove-stale-when-updated: true

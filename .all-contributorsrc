@@ -1,0 +1,106 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "mrfret",
+      "name": "mrfret",
+      "avatar_url": "https://avatars.githubusercontent.com/u/72273384?v=4",
+      "profile": "https://github.com/mrfret",
+      "contributions": [
+        "infra",
+        "test",
+        "code",
+        "content"
+      ]
+    },
+    {
+      "login": "doob187",
+      "name": "doob187",
+      "avatar_url": "https://avatars.githubusercontent.com/u/60312740?v=4",
+      "profile": "https://github.com/doob187",
+      "contributions": [
+        "infra",
+        "test",
+        "code",
+        "content"
+      ]
+    },
+    {
+      "login": "aelfa",
+      "name": "Aelfa",
+      "avatar_url": "https://avatars.githubusercontent.com/u/60222501?v=4",
+      "profile": "https://github.com/aelfa",
+      "contributions": [
+        "test",
+        "bug",
+        "infra",
+        "code",
+        "content"
+      ]
+    },
+    {
+      "login": "DrAg0n141",
+      "name": "DrAg0n141",
+      "avatar_url": "https://avatars.githubusercontent.com/u/44865095?v=4",
+      "profile": "https://github.com/DrAg0n141",
+      "contributions": [
+        "infra",
+        "test",
+        "code",
+        "content"
+      ]
+    },
+    {
+      "login": "Nossersvinet",
+      "name": "Nossersvinet",
+      "avatar_url": "https://avatars.githubusercontent.com/u/83166809?v=4",
+      "profile": "https://github.com/Nossersvinet",
+      "contributions": [
+        "infra",
+        "test",
+        "code",
+        "content"
+      ]
+    },
+    {
+      "login": "townsmcp",
+      "name": "townsmcp",
+      "avatar_url": "https://avatars.githubusercontent.com/u/14061617?v=4",
+      "profile": "https://github.com/townsmcp",
+      "contributions": [
+        "bug",
+        "test"
+      ]
+    },
+    {
+      "login": "Hawkinzzz",
+      "name": "hawkinzzz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/24587652?v=4",
+      "profile": "https://github.com/Hawkinzzz",
+      "contributions": [
+        "bug",
+        "test"
+      ]
+    },
+    {
+      "login": "clandorsdx",
+      "name": "clandorsdx",
+      "avatar_url": "https://avatars.githubusercontent.com/u/48338663?v=4",
+      "profile": "https://github.com/clandorsdx",
+      "contributions": [
+        "bug"
+      ]
+    }
+  ],
+  "badgeTemplate": "<a href=\"#contributors-\"><img alt=\"All Contributors\" src=\"https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg\"/></a>",
+  "contributorsPerLine": 4,
+  "projectName": "dockserver",
+  "projectOwner": "dockserver",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
