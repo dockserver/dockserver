@@ -1,0 +1,74 @@
+---
+version: '3'
+services:
+  tdarr:
+    container_name: 'tdarr'
+    hostname: 'tdarr'
+    image: 'haveagitgat/tdarr:latest'
+    restart: 'unless-stopped'
+    networks:
+      - 'proxy'
+    ports:
+      - '127.0.0.1:8265:8265' # webUI port
+      - '127.0.0.1:8266:8266' # server port
+      - '127.0.0.1:8267:8267' # node port.
+                              # It should be mapped on this container because                            # the node container use the network from the main container
+    environment:
+      - 'TZ=${TZ}'
+      - 'PUID=${ID}'
+      - 'PGID=${ID}'
+      - 'UMASK_SET=002'
+      - 'serverIP=127.0.0.1'
+      - 'serverPort=8266'
+      - 'webUIPort=8265'
+    volumes:
+      - '/opt/appdata/tdarr/server:/app/server'
+      - '/opt/appdata/tdarr/configs:/app/configs'
+      - '/opt/appdata/tdarr/logs:/app/logs'
+      - '/opt/appdata/tdarr/encoders:/app/encoders'
+      - 'unionfs:/mnt'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.tdarr-rtr.entrypoints=https'
+      - 'traefik.http.routers.tdarr-rtr.rule=Host(`tdarr.${DOMAIN}`)'
+      - 'traefik.http.routers.tdarr-rtr.tls=true'
+      - 'traefik.http.routers.tdarr-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.tdarr-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.tdarr-rtr.service=tdarr-svc'
+      - 'traefik.http.services.tdarr-svc.loadbalancer.server.port=8265'
+
+  tdarr-node:
+    container_name: 'tdarr-node'
+    image: 'haveagitgat/tdarr_node:latest'
+    restart: 'unless-stopped'
+    depends_on:
+      - 'tdarr'
+    networks:
+      - 'proxy'
+    environment:
+      - 'TZ=${TZ}'
+      - 'PUID=${ID}'
+      - 'PGID=${ID}'
+      - 'UMASK_SET=002'
+      - 'nodeID=MainNode'
+      - 'nodeIP=127.0.0.1'
+      - 'nodePort=8267'
+      - 'serverIP=127.0.0.1'
+      - 'serverPort=8266'
+    volumes:
+      - '/opt/appdata/tdarr/configs:/app/configs'
+      - '/opt/appdata/tdarr/logs:/app/logs'
+      - 'unionfs:/mnt'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
+
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

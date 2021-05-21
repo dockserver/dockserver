@@ -1,0 +1,47 @@
+---
+version: '3'
+
+services:
+  calibre-web:
+    hostname: 'calibre-web'
+    container_name: 'calibre-web'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=022'
+      - 'DOCKER_MODS=linuxserver/calibre-web:calibre'
+    image: 'ghcr.io/linuxserver/calibre-web'
+    restart: 'unless-stopped'
+    ports:
+      - '127.0.0.1:8083:8083'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/opt/appdata/calibre-web/config:/config:rw'
+      - '/opt/appdata/calibre-web/books/books:rw
+      - 'unionfs:/mnt'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.calibre-web-rtr.entrypoints=https'
+      - 'traefik.http.routers.calibre-web-rtr.rule=Host(`calibre-web.${DOMAIN}`)'
+      - 'traefik.http.routers.calibre-web-rtr.tls=true'
+      - 'traefik.http.routers.calibre-web-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.calibre-web-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.calibre-web-rtr.service=calibre-web-svc'
+      - 'traefik.http.services.calibre-web-svc.loadbalancer.server.port=8083'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
+
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

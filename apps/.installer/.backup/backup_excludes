@@ -1,0 +1,35 @@
+./database/Library/Application Support/Plex Media Server/Cache/PhotoTranscoder
+./database/Library/Application Support/Plex Media Server/Cache/Transcode
+./database/Library/Application Support/Plex Media Server/Cache
+./database/Library/Application Support/Plex Media Server/Logs
+./database/Library/Application Support/Plex Media Server/Crash Reports
+./database/Library/Application Support/Plex Media Server/Metadata/*.bif
+./database/Library/Application Support/Plex Media Server/Media/*.bif
+./database/Library/Logs/Plex Media Server/
+./database/Library/Application Support/Plex Media Server/Plug-ins
+./database/Library/Logs/
+./database/Library/Crash Reports/
+./database/Library/Codecs/
+./transcoding-temp
+./nzbget.log
+./logs
+./log
+./logs
+./Log
+./Logs
+./backup
+./backups
+./Backup
+./Backups
+./transcodes
+./Transcodes
+*.bif
+*.log
+*.logs
+*.tar
+*.zip
+*.pid
+*.mounted
+./plexguide/
+*.db-wal
+*.db-shm

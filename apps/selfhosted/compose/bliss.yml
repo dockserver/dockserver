@@ -1,0 +1,46 @@
+---
+version: '3'
+services:
+  bliss:
+    hostname: 'bliss'
+    container_name: 'bliss'
+    environment:
+      - 'PGID=0'
+      - 'PUID=0'
+      - 'TZ=${TZ}'
+      - 'UMASK=022'
+    image: 'romancin/bliss:latest'
+    restart: 'unless-stopped'
+    ports:
+      - '127.0.0.1:3220:3220'
+      - '127.0.0.1:3221:3221'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/opt/appdata/bliss:/config:rw'
+      - '/opt/appdata/bliss/music:/music:rw'
+      - 'unionfs:/mnt'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.bliss-rtr.entrypoints=https'
+      - 'traefik.http.routers.bliss-rtr.rule=Host(`bliss.${DOMAIN}`)'
+      - 'traefik.http.routers.bliss-rtr.tls=true'
+      - 'traefik.http.routers.bliss-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.bliss-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.bliss-rtr.service=bliss-svc'
+      - 'traefik.http.services.bliss-svc.loadbalancer.server.port=3220'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
+
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

@@ -1,0 +1,41 @@
+---
+version: '3'
+services:
+  moviematch:
+    hostname: 'moviematch'
+    container_name: 'moviematch'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=022'
+      - 'LOG_LEVEL=DEBUG'
+      - 'PLEX_TOKEN=YOURPLEXTOKENHERE'
+      - 'PLEX_URL=https://plex.${DOMAIN}:443'
+    image: 'lukechannings/moviematch'
+    restart: 'unless-stopped'
+    ports:
+      - '127.0.0.1:8001:8000'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/opt/appdata/moviematch:/storage'
+      - '/etc/localtime:/etc/localtime:ro'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.moviematch-rtr.entrypoints=https'
+      - 'traefik.http.routers.moviematch-rtr.rule=Host(`moviematch.${DOMAIN}`)'
+      - 'traefik.http.routers.moviematch-rtr.tls=true'
+      - 'traefik.http.routers.moviematch-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.moviematch-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.moviematch-rtr.service=moviematch-svc'
+      - 'traefik.http.services.moviematch-svc.loadbalancer.server.port=8000'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true

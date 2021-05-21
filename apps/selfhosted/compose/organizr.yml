@@ -1,0 +1,39 @@
+---
+version: '3'
+services:
+  organizr:
+    hostname: 'organizr'
+    container_name: 'organizr'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=022'
+      - 'branch=v2-master'
+      - 'fpm=false'
+    image: 'organizr/organizr'
+    restart: 'unless-stopped'
+    ports:
+      - '127.0.0.1:8050:5000'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/opt/appdata/organizr:/config:rw'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.organizr-rtr.entrypoints=https'
+      - 'traefik.http.routers.organizr-rtr.rule=Host(`organizr.${DOMAIN}`)'
+      - 'traefik.http.routers.organizr-rtr.tls=true'
+      - 'traefik.http.routers.organizr-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.organizr-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.organizr-rtr.service=organizr-svc'
+      - 'traefik.http.services.organizr-svc.loadbalancer.server.port=80'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true

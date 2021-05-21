@@ -1,0 +1,51 @@
+---
+version: '3'
+
+services:
+  rclone-gui:
+    hostname: 'rclone-gui'
+    container_name: 'rclone-gui'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=022'
+      - 'USER_ID=100'
+      - 'GROUP_ID=99'
+      - 'RCUSER=rclone'
+      - 'RCPASS=rclone'
+    image: 'd2dyno/rclone-gui:latest'
+    restart: 'unless-stopped'
+    ports:
+      - '5572:5572'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/opt/appdata/mount:/config:rw'
+      - 'unionfs:/mnt'
+      - 'unionfs:/media:ro'
+      - '/etc/localtime:/etc/localtime:ro'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.rclone-gui-rtr.entrypoints=https'
+      - 'traefik.http.routers.rclone-gui-rtr.rule=Host(`rclone-gui.${DOMAIN}`)'
+      - 'traefik.http.routers.rclone-gui-rtr.tls=true'
+      - 'traefik.http.routers.rclone-gui-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.rclone-gui-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.rclone-gui-rtr.service=rclone-gui-svc'
+      - 'traefik.http.services.rclone-gui-svc.loadbalancer.server.port=5572'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
+
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

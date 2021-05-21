@@ -1,0 +1,46 @@
+---
+version: '3'
+services:
+  filezilla:
+    hostname: 'filezilla'
+    container_name: 'filezilla'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=022'
+      - 'DISPLAY_WIDTH=1920'
+      - 'DISPLAY_HEIGHT=1080'
+    image: 'jlesage/filezilla'
+    restart: 'unless-stopped'
+    ports:
+      - '127.0.0.1:5800:5803'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/opt/appdata/filezilla:/config:rw'
+      - 'unionfs:/mnt'
+      - '/etc/localtime:/etc/localtime:ro'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.filezilla-rtr.entrypoints=https'
+      - 'traefik.http.routers.filezilla-rtr.rule=Host(`filezilla.${DOMAIN}`)'
+      - 'traefik.http.routers.filezilla-rtr.tls=true'
+      - 'traefik.http.routers.filezilla-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.filezilla-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.filezilla-rtr.service=filezilla-svc'
+      - 'traefik.http.services.filezilla-svc.loadbalancer.server.port=5083'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

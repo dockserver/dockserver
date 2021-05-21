@@ -1,0 +1,18 @@
+#!/bin/bash
+#
+# Title:      LXC Bypass the mount :shared 
+# OS Branch:  ubuntu,debian,rasbian
+# Author(s):  mrdoob
+# Coauthor:   DrAgOn141
+# GNU:        General Public License v3.0
+################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - cron:
+        name: LXC Bypass the mount :shared
+        special_time: 'reboot'
+        job: '/bin/bash /home/.lxcstart.sh 1>/dev/null 2>&1'
+        state: present
+      ignore_errors: yes

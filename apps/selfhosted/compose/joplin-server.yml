@@ -1,0 +1,64 @@
+---
+version: '3'
+
+services:
+  db_joplin:
+    hostname: 'db_joplin'
+    container_name: 'db_joplin'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'POSTGRES_PASSWORD=joplinpw'
+      - 'POSTGRES_USER=joplin'
+      - 'POSTGRES_DB=joplin_db'
+      - 'TIMEZONE=${TZ}'
+    image: 'postgres:13-alpine'
+    networks:
+      - default
+    restart: 'unless-stopped'
+    volumes:
+      - '/opt/appdata/joplin-server/postgresql:/var/lib/postgresql/data'
+
+  joplin-server:
+    hostname: 'joplin-server'
+    container_name: 'joplin-server'
+    depends_on:
+      - db_joplin
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=022'
+      - 'APP_BASE_URL=https://joplin-server.${DOMAIN}'
+      - 'DB_CLIENT=pg'
+      - 'POSTGRES_PASSWORD=joplinpw'
+      - 'POSTGRES_DATABASE=joplin_db'
+      - 'POSTGRES_USER=joplin'
+      - 'POSTGRES_PORT=5432'
+      - 'POSTGRES_HOST=db_joplin'
+    image: 'joplin/server'
+    restart: 'unless-stopped'
+    ports:
+      - '127.0.0.1:22300:22300'
+    networks:
+      - proxy
+      - default
+    security_opt:
+      - 'no-new-privileges:true'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.joplin-server-rtr.entrypoints=https'
+      - 'traefik.http.routers.joplin-server-rtr.rule=Host(`joplin-server.${DOMAIN}`)'
+      - 'traefik.http.routers.joplin-server-rtr.tls=true'
+      - 'traefik.http.routers.joplin-server-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.joplin-server-rtr.middlewares=chain-no-auth@file'
+      - 'traefik.http.routers.joplin-server-rtr.service=joplin-server-svc'
+      - 'traefik.http.services.joplin-server-svc.loadbalancer.server.port=22300'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
+  default:

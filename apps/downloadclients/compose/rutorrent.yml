@@ -1,0 +1,47 @@
+---
+version: '3'
+
+services:
+  rutorrent:
+    hostname: 'rutorrent'
+    container_name: 'rutorrent'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=022'
+    image: 'ghcr.io/linuxserver/rutorrent:v3.10-ls120'
+    networks:
+      - proxy
+    restart: 'unless-stopped'
+    security_opt:
+      - 'no-new-privileges:true'
+    ports:
+      - '51413:51413'
+      - '127.0.0.1:5000:5000'
+      - '127.0.0.1:8999:80'
+    volumes:
+      - '/opt/appdata/rutorrent:/config:rw'
+      - 'unionfs:/mnt'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=false'
+      - 'traefik.http.routers.rutorrent-rtr.entrypoints=https'
+      - 'traefik.http.routers.rutorrent-rtr.rule=Host(`rutorrent.${DOMAIN}`)'
+      - 'traefik.http.routers.rutorrent-rtr.tls=true'
+      - 'traefik.http.routers.rutorrent-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.rutorrent-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.rutorrent-rtr.service=rutorrent-svc'
+      - 'traefik.http.services.rutorrent-svc.loadbalancer.server.port=80'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
+
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

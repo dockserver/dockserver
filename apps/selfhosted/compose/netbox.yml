@@ -1,0 +1,83 @@
+---
+version: '3'
+
+services:
+  db_netbox:
+    hostname: 'db_netbox'
+    container_name: 'db_netbox'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'POSTGRES_PASSWORD=netboxpw'
+      - 'POSTGRES_USER=netbox'
+      - 'POSTGRES_DB=netbox_db'
+      - 'TIMEZONE=${TZ}'
+    image: 'postgres:13-alpine'
+    networks:
+      - default
+    restart: 'unless-stopped'
+    volumes:
+      - '/opt/appdata/netbox/postgresql:/var/lib/postgresql/data'
+      
+  redis_netbox:
+    hostname: 'redis_netbox'
+    container_name: 'redis_netbox'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'ALLOW_EMPTY_PASSWORD=yes'
+      - 'TIMEZONE=${TZ}'
+    image: 'bitnami/redis'
+    networks:
+      - default
+    restart: 'unless-stopped'
+
+  netbox:
+    hostname: 'netbox'
+    container_name: 'netbox'
+    depends_on:
+      - db_netbox
+      - redis_netbox
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=022'
+      - 'ALLOWED_HOST=netbox.${DOMAIN}'
+      - 'SUPERUSER_EMAIL=admin@admin.io'
+      - 'SUPERUSER_PASSWORD=superpw'
+      - 'DB_HOST=db_netbox'
+      - 'DB_NAME=netbox_db'
+      - 'DB_PORT=5432'
+      - 'DB_USER=netbox'
+      - 'REDIS_HOST=redis_netbox'
+      - 'REDIS_PORT=6379'
+      - 'DB_PASSWORD=netboxpw'
+    image: 'ghcr.io/linuxserver/netbox'
+    restart: 'unless-stopped'
+    volumes:
+      - '/opt/appdata/netbox/config:/config'
+    ports:
+      - '127.0.0.1:8925:8000'
+    networks:
+      - proxy
+      - default
+    security_opt:
+      - 'no-new-privileges:true'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.netbox-rtr.entrypoints=https'
+      - 'traefik.http.routers.netbox-rtr.rule=Host(`netbox.${DOMAIN}`)'
+      - 'traefik.http.routers.netbox-rtr.tls=true'
+      - 'traefik.http.routers.netbox-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.netbox-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.netbox-rtr.service=netbox-svc'
+      - 'traefik.http.services.netbox-svc.loadbalancer.server.port=8000'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
+  default:

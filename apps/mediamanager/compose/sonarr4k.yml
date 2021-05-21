@@ -1,0 +1,45 @@
+---
+version: '3'
+
+services:
+  sonarr4k:
+    hostname: 'sonarr4k'
+    container_name: 'sonarr4k'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=022'
+    image: 'ghcr.io/linuxserver/sonarr:develop'
+    restart: 'unless-stopped'
+    ports:
+      - '127.0.0.1:8984:8989'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/opt/appdata/sonarr4k:/config:rw'
+      - 'unionfs:/mnt'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.sonarr4k-rtr.entrypoints=https'
+      - 'traefik.http.routers.sonarr4k-rtr.rule=Host(`sonarr4k.${DOMAIN}`)'
+      - 'traefik.http.routers.sonarr4k-rtr.tls=true'
+      - 'traefik.http.routers.sonarr4k-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.sonarr4k-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.sonarr4k-rtr.service=sonarr4k-svc'
+      - 'traefik.http.services.sonarr4k-svc.loadbalancer.server.port=8989'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
+
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

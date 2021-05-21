@@ -1,0 +1,54 @@
+---
+version: '3'
+
+services:
+  jdownloader2:
+    hostname: 'jdownloader2'
+    container_name: 'jdownloader2'
+    environment:
+      - 'USER_ID=${ID}'
+      - 'GROUP_ID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=022'
+      - 'APP_NICENESS=1'
+      - 'CLEAN_TMP_DIR=1'
+      - 'DISPLAY_WIDTH=1920'
+      - 'DISPLAY_HEIGHT=1024'
+      - 'SECURE_CONNECTION=1'
+    image: 'jlesage/jdownloader-2'
+    restart: 'unless-stopped'
+    cap_add:
+      - 'SYS_NICE'
+    ports:
+      - '127.0.0.1:5800:5800'
+      - '3219:3129'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/opt/appdata/jdownloader2:/config:rw'
+      - 'unionfs:/mnt'
+      - '/mnt/downloads/jdownloader2/:/output:rw'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.jdownloader2-rtr.entrypoints=https'
+      - 'traefik.http.routers.jdownloader2-rtr.rule=Host(`jdownloader2.${DOMAIN}`)'
+      - 'traefik.http.routers.jdownloader2-rtr.tls=true'
+      - 'traefik.http.routers.jdownloader2-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.jdownloader2-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.jdownloader2-rtr.service=jdownloader2-svc'
+      - 'traefik.http.services.jdownloader2-svc.loadbalancer.server.port=5800'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
+
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

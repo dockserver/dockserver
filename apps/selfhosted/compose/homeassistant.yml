@@ -1,0 +1,38 @@
+---
+version: '3'
+
+services:
+  homeassistant:
+    hostname: 'homeassistant'
+    container_name: 'homeassistant'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=022'
+    image: 'homeassistant/home-assistant'
+    restart: 'unless-stopped'
+    ports:
+      - '127.0.0.1:8657:8123'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/opt/appdata/homeassistant:/app/data:rw'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.homeassistant-rtr.entrypoints=https'
+      - 'traefik.http.routers.homeassistant-rtr.rule=Host(`homeassistant.${DOMAIN}`)'
+      - 'traefik.http.routers.homeassistant-rtr.tls=true'
+      - 'traefik.http.routers.homeassistant-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.homeassistant-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.homeassistant-rtr.service=homeassistant-svc'
+      - 'traefik.http.services.homeassistant-svc.loadbalancer.server.port=8123'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true

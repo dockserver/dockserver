@@ -1,0 +1,11 @@
+composer.phar
+/vendor/
+/docs
+/logo
+backup.sh
+wgetfile.sh
+README.md
+README.md
+.github
+.all-contributorsrc
+CODE_OF_CONDUCT.md

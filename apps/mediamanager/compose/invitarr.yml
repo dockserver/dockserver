@@ -1,0 +1,46 @@
+---
+version: '3'
+services:
+  invitarr:
+    hostname: 'invitarr'
+    container_name: 'invitarr'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=022'
+      - 'Discord_bot_token=null'
+      - 'roleid=null'
+      - 'PLEXUSER=null'
+      - 'PLEXPASS=null'
+      - 'PLEX_SERVER_NAME=null'
+      - 'Plex_LIBS=null'
+      - 'channelid=null'
+      - 'Webhookurl=null'
+    image: 'piratify/invitarr:latest'
+    restart: 'unless-stopped'
+    ports:
+      - '127.0.0.1:5001:5001'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/opt/appdata/invitarr:/app/app/config'
+      - '/etc/localtime:/etc/localtime:ro'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.invitarr-rtr.entrypoints=https'
+      - 'traefik.http.routers.invitarr-rtr.rule=Host(`invitarr.${DOMAIN}`)'
+      - 'traefik.http.routers.invitarr-rtr.tls=true'
+      - 'traefik.http.routers.invitarr-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.invitarr-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.invitarr-rtr.service=invitarr-svc'
+      - 'traefik.http.services.invitarr-svc.loadbalancer.server.port=5001'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true

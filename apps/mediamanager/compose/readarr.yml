@@ -1,0 +1,45 @@
+---
+version: '3'
+
+services:
+  readarr:
+    hostname: 'readarr'
+    container_name: 'readarr'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=022'
+    image: 'ghcr.io/hotio/readarr:nightly'
+    restart: 'unless-stopped'
+    ports:
+      - '127.0.0.1:8787:8787'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/opt/appdata/readarr:/config:rw'
+      - 'unionfs:/mnt'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.readarr-rtr.entrypoints=https'
+      - 'traefik.http.routers.readarr-rtr.rule=Host(`readarr.${DOMAIN}`)'
+      - 'traefik.http.routers.readarr-rtr.tls=true'
+      - 'traefik.http.routers.readarr-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.readarr-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.readarr-rtr.service=readarr-svc'
+      - 'traefik.http.services.readarr-svc.loadbalancer.server.port=8787'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
+
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

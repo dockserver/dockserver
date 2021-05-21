@@ -1,0 +1,45 @@
+---
+version: '3'
+services:
+  lazylibrarian:
+    hostname: 'lazylibrarian'
+    container_name: 'lazylibrarian'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=022'
+      - '<ADDITIONALENVIROMENT>'
+    image: 'ghcr.io/linuxserver/lazylibrarian'
+    restart: 'unless-stopped'
+    ports:
+      - '127.0.0.1:5299:5299'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/opt/appdata/lazylibrarian:/config:rw'
+      - 'unionfs:/mnt'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.lazylibrarian-rtr.entrypoints=https'
+      - 'traefik.http.routers.lazylibrarian-rtr.rule=Host(`lazylibrarian.${DOMAIN}`)'
+      - 'traefik.http.routers.lazylibrarian-rtr.tls=true'
+      - 'traefik.http.routers.lazylibrarian-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.lazylibrarian-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.lazylibrarian-rtr.service=lazylibrarian-svc'
+      - 'traefik.http.services.lazylibrarian-svc.loadbalancer.server.port=5299'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
+
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

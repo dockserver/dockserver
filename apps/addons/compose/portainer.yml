@@ -1,0 +1,32 @@
+---
+version: '3'
+services:
+  portainer:
+    container_name: 'portainer'
+    image: 'portainer/portainer-ce:latest'
+    restart: 'unless-stopped'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock:ro'
+      - '/opt/appdata/portainer:/data'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+    labels:
+      - 'dockupdater.enable=true'
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'traefik.http.routers.frontend.rule=Host(`portainer.${DOMAIN}`)'
+      - 'traefik.http.routers.frontend.entrypoints=https'
+      - 'traefik.http.services.frontend.loadbalancer.server.port=9000'
+      - 'traefik.http.routers.frontend.service=frontend'
+      - 'traefik.http.routers.frontend.tls.certresolver=dns-cloudflare'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true

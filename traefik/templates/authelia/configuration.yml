@@ -1,0 +1,81 @@
+###############################################################
+#                   Authelia configuration                    #
+###############################################################
+
+host: 0.0.0.0
+port: 9091
+theme: dark
+log_level: debug
+log_format: text
+log_file_path: /config/authelia.log
+jwt_secret: JWTTOKENID
+default_redirection_url: https://authelia.example.com
+
+totp:
+  issuer: authelia.com
+
+server:
+  read_buffer_size: 4096
+  write_buffer_size: 4096
+
+authentication_backend:
+  disable_reset_password: true
+  file:
+    path: /config/users_database.yml
+    password:
+      algorithm: argon2id
+      iterations: 4
+      salt_length: 32
+      parallelism: 8
+      memory: 1024
+
+# Rules applied to everyone
+access_control:
+  default_policy: deny
+  rules:
+    ## bypass rule for login
+    - domain: authelia.example.com
+      policy: bypass
+    ## bypass rule for apps
+    ## bypass rules for api / trigges / rss / xmltv
+    - domain: "*.example.com"
+      policy: bypass
+      resources:
+        - "^/api.*$"
+        - "^/identity.*$"
+        - "^/triggers/*$"
+        - "^/rss/*$"
+        - "^/xmltv/*$"
+    ## one factor login 
+    - domain: "*.example.com"
+      policy: one_factor
+    ## deny rule
+    - domain: "example.com"
+      policy: deny
+    - domain: SERVERIP_ID
+      policy: deny
+
+session:
+  name: authelia_session
+  secret: unsecure_session_secret
+  expiration: 1h
+  inactivity: 10m
+  remember_me_duration: 1M  
+  domain: example.com
+
+regulation:
+  max_retries: 3
+  find_time: 120
+  ban_time: 300
+
+storage:
+  local:
+    path: /config/db.sqlite3
+
+notifier:
+  filesystem:
+    filename: /config/notification.txt
+
+###############################################################
+#                   Authelia configuration                    #
+###############################################################

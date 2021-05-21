@@ -1,0 +1,37 @@
+---
+version: '3'
+
+services:
+  requestrr:
+    hostname: 'requestrr'
+    container_name: 'requestrr'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+    image: 'ghcr.io/linuxserver/requestrr:latest'
+    restart: 'unless-stopped'
+    ports:
+      - '127.0.0.1:4545:4545'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/opt/appdata/requestrr:/root/config:rw'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.requestrr-rtr.entrypoints=https'
+      - 'traefik.http.routers.requestrr-rtr.rule=Host(`requestrr.${DOMAIN}`)'
+      - 'traefik.http.routers.requestrr-rtr.tls=true'
+      - 'traefik.http.routers.requestrr-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.requestrr-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.requestrr-rtr.service=requestrr-svc'
+      - 'traefik.http.services.requestrr-svc.loadbalancer.server.port=4545'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true

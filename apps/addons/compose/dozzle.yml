@@ -1,0 +1,37 @@
+---
+version: '3'
+services:
+  dozzle:
+    hostname: 'dozzle'
+    container_name: 'dozzle'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=022'
+    image: 'amir20/dozzle:latest'
+    restart: 'unless-stopped'
+    ports:
+      - '127.0.0.1:9999:8080'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock:ro'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.dozzle-rtr.entrypoints=https'
+      - 'traefik.http.routers.dozzle-rtr.rule=Host(`dozzle.${DOMAIN}`)'
+      - 'traefik.http.routers.dozzle-rtr.tls=true'
+      - 'traefik.http.routers.dozzle-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.dozzle-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.dozzle-rtr.service=dozzle-svc'
+      - 'traefik.http.services.dozzle-svc.loadbalancer.server.port=8080'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true

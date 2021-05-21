@@ -1,0 +1,276 @@
+# Copyright (c) 2016-2021 Martin Donath <martin.donath@squidfunk.com>
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to
+# deal in the Software without restriction, including without limitation the
+# rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+# sell copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+# IN THE SOFTWARE.
+
+# Project information
+site_name: DockServer Wiki
+#site_url: https://squidfunk.github.io/mkdocs-material/
+site_author: DockServer
+site_description: >-
+  Use your self hosted docker as wiki
+
+# Repository
+repo_name: DockServer Wiki
+repo_url: https://github.com/dockserver/
+edit_uri: ""
+
+# Copyright
+copyright: Copyright &copy; 2021 DockServer.io
+
+# Configuration
+theme:
+  name: null
+  custom_dir: material
+
+  # Static files
+  static_templates:
+    - 404.html
+
+  # Don't include MkDocs' JavaScript
+  include_search_page: false
+  search_index_only: true
+
+  # Default values, taken from mkdocs_theme.yml
+  language: en
+  features:
+    # - navigation.instant
+    - navigation.sections
+    - navigation.tabs
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: img/favicon.png
+  icon:
+    logo: logo
+
+# Plugins
+plugins:
+  - search
+  - redirects:
+      redirect_maps:
+        #changelog/insiders.md: insiders/changelog.md
+        #extensions/admonition.md: reference/admonitions.md
+        #extensions/codehilite.md: reference/code-blocks.md
+        #extensions/footnotes.md: reference/footnotes.md
+        #extensions/metadata.md: reference/meta-tags.md
+        #extensions/permalinks.md: setup/setting-up-navigation.md #permalink
+        #extensions/pymdown.md: reference/admonitions.md
+        #plugins/revision-date.md: setup/adding-a-git-repository.md #revision-date
+        #plugins/search.md: setup/setting-up-site-search.md
+        #releases/4.md: upgrading.md #upgrading-from-4x-to-5x
+        #releases/5.md: upgrading.md #upgrading-from-3x-to-4x
+        #releases/changelog.md: changelog.md
+        #setup/adding-social-links.md: setup/setting-up-the-footer.md
+        #sponsorship.md: insiders/index.md
+  - minify:
+      minify_html: true
+
+# Customization
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/dockserver/
+    - icon: fontawesome/brands/docker
+      link: https://github.com/orgs/dockserver/packages/
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/A7h7bKBCVa
+    - icon: fontawesome/brands/firefox
+      link: https://docs.dockserver.io/
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# Page tree
+nav:
+  - Home: index.md
+  - Getting started:
+    - Installation: install/install.md
+    - Authelia: install/authelia.md
+    - Cloudflare: install/cloudflare.md
+    - cf-companion: install/cf-companion.md
+    - Traefik: install/traefik.md
+    - LXC-Container: lxc/lxc.md
+  - Commands:
+    - Commands: commands/commands.md
+    - Backup: commands/backup.md
+    - Restore: commands/restore.md
+  - Remotes:
+    - GDrive: drive/gdrive.md
+    - GCrypt: drive/gcrypt.md
+    - TDrive: drive/tdrive.md
+    - TCrypt: drive/tcrypt.md
+    - Rclone Union: drive/union.md
+    - Service Accounts: drive/saccounts.md
+  - Applikation:
+    - Applikation: apps/apps.md
+    - Addons:
+      - Autoscan: apps/addons/autoscan.md
+      - Cloud: apps/addons/cloud.md
+      - CloudCMD: apps/addons/cloudcmd.md
+      - Flaresolverr: apps/addons/flaresolverr.md
+      - Heimdall: apps/addons/heimdall.md
+      - Librespeed: apps/addons/librespeed.md
+      - NetData: apps/addons/netdata.md
+      - Remmina: apps/addons/remmina.md
+      - Speedtest: apps/addons/speedtest.md
+      - vnstat: apps/addons/vnstat.md
+      - Dozzle: apps/addons/dozzle.md
+      - Portainer: apps/addons/portainer.md
+    - Backup:
+      - Rsync-Backup: apps/backup/backup.md
+      - Duplicati: apps/backup/duplicati.md
+      - Rsnapshot: apps/backup/rsnapshot.md
+    - Coding:
+      - Cloud9: apps/coding/cloud9.md
+      - Code-Server: apps/coding/code-server.md
+    - Downloadclients:
+      - Davos: apps/downloadclients/davos.md
+      - Deluge: apps/downloadclients/deluge.md
+      - FileZilla: apps/downloadclients/filezilla.md
+      - Jacket: apps/downloadclients/jackett.md
+      - JDOwnloader2: apps/downloadclients/jdownloader2.md
+      - NZBGet: apps/downloadclients/nzbget.md
+      - NZBHydra: apps/downloadclients/nzbhydra.md
+      - QBittorrent: apps/downloadclients/qbittorrent.md
+      - RuTorrent: apps/downloadclients/rutorrent.md
+      - SabNZBD: apps/downloadclients/sabnzbd.md
+      - Youtubedl-Material: apps/downloadclients/youtubedl-material.md
+    - Encoder:
+      - Tdarr: apps/encoder/tdarr.md
+    - MediaManager:
+      - Bazarr: apps/mediamanager/bazarr.md
+      - Calibre-WEB: apps/mediamanager/calibre-web.md
+      - Embystats: apps/mediamanager/embystats.md
+      - GAPS: apps/mediamanager/gaps.md
+      - Invitarr: apps/mediamanager/invitarr.md
+      - Lazylibrarian: apps/mediamanager/lazylibrarian.md
+      - Lidarr: apps/mediamanager/lidarr.md
+      - Radarr: apps/mediamanager/radarr.md
+      - Readarr: apps/mediamanager/readarr.md
+      - Sonarr: apps/mediamanager/sonarr.md
+      - Tautulli: apps/mediamanager/tautulli.md
+      - Tracktarr: apps/mediamanager/traktarr.md
+      - Unpackerr: apps/mediamanager/unpackerr.md
+      - Xteve: apps/mediamanager/xteve.md
+    - MediaServer:
+      - Emby: apps/mediaserver/emby.md
+      - Plex: apps/mediaserver/plex.md
+      - Jellyfin: apps/mediaserver/jellyfin.md
+      - MStream: apps/mediaserver/mstream.md
+    - Request:
+      - Conreq: apps/request/conreq.md
+      - Mellow: apps/request/mellow.md
+      - Overseerr: apps/request/overseerr.md
+      - Petio: apps/request/petio.md
+      - Requestrr: apps/request/requestrr.md
+    - Selfhosted:
+      - Bitwarden: apps/selfhosted/bitwarden.md
+      - Bliss: apps/selfhosted/bliss.md
+      - Changedetection: apps/selfhosted/changedetection.md
+      - Cloudbeaver: apps/selfhosted/cloudbeaver.md
+      - Conmixed: apps/selfhosted/comixed.md
+      - Crewlink: apps/selfhosted/crewlink.md
+      - FreshRSS: apps/selfhosted/freshrss.md
+      - Gotify: apps/selfhosted/gotify.md
+      - Homeassistant: apps/selfhosted/homeassistant.md
+      - IObroker: apps/selfhosted/iobroker.md
+      - Joplin-server: apps/selfhosted/joplin-server.md
+      - Moviematch: apps/selfhosted/moviematch.md
+      - Netbox: apps/selfhosted/netbox.md
+      - Nowshowing: apps/selfhosted/nowshowing.md
+      - Organizzr: apps/selfhosted/organizr.md
+      - PiHole: apps/selfhosted/pihole.md
+      - Recipes: apps/selfhosted/recipes.md
+      - Snapdrop: apps/selfhosted/snapdrop.md
+      - Teamspeak: apps/selfhosted/teamspeak.md
+      - unifi-controller: apps/selfhosted/unifi-controller.md
+      - whoogle: apps/selfhosted/whoogle.md
+      - Wireguard: apps/selfhosted/wireguard.md
+    - Share:
+      - Filerun: apps/share/filerun.md
+      - Nextcloud: apps/share/nextcloud.md
+      - Projectsend: apps/share/projectsend.md
+    - System:
+      - Mount: apps/system/mount.md
+      - Uploader: apps/system/uploader.md
+      - dockupdater: apps/system/dockupdater.md
+      - endlessh: apps/system/endlessh.md
+      - Rclone-GUI: apps/system/rclone-gui.md
+      - Statping: apps/system/statping.md
+      - DockServerWiki: apps/system/wiki.md
+  - Scripts:
+    - Scripts: scripts/scripts.md
+  - Sponsorship:
+    - Sponsorship: sponsorship/index.md
+    #- Getting started:
+    #  - Installation: insiders/getting-started.md
+    #  - Changelog: insiders/changelog.md
+
+# Google Analytics
+google_analytics:
+  - !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
+  - auto
+#EOF

@@ -1,0 +1,44 @@
+---
+version: '3'
+
+services:
+  conreq:
+    hostname: 'conreq'
+    container_name: 'conreq'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=022'
+    image: 'ghcr.io/roxedus/conreq:latest'
+    restart: 'unless-stopped'
+    ports:
+      - '127.0.0.1:8071:8071'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/opt/appdata/conreq:/config:rw'
+      - 'unionfs:/mnt'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.conreq-rtr.entrypoints=https'
+      - 'traefik.http.routers.conreq-rtr.rule=Host(`conreq.${DOMAIN}`)'
+      - 'traefik.http.routers.conreq-rtr.tls=true'
+      - 'traefik.http.routers.conreq-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.conreq-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.conreq-rtr.service=conreq-svc'
+      - 'traefik.http.services.conreq-svc.loadbalancer.server.port=8071'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

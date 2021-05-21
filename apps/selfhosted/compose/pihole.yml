@@ -1,0 +1,51 @@
+---
+version: '3'
+
+services:  
+  pihole:
+    image: pihole/pihole
+    hostname: pihole
+    container_name: pihole
+    ports:
+      - 446:443
+      - 8008:80
+      - ${SERVERIP}:53:53
+      - ${SERVERIP}:53:53/udp
+      - ${SERVERIP}:67:67/udp
+    cap_add:
+      - NET_ADMIN
+    networks:
+      - proxy
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1
+      - 8.8.8.8
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'DNS1=1.1.1.1'
+      - 'DNS2=8.8.8.8'
+      - 'ServerIP=${SERVERIP}'
+      - 'TZ=${TZ}'
+      - 'WEBPASSWORD=WEBPASSWORD'
+    restart: unless-stopped
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/appdata/pihole/dnsmasq.d:/etc/dnsmasq.d
+      - /opt/appdata/pihole/pihole:/etc/pihole
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.pihole-rtr.entrypoints=https'
+      - 'traefik.http.routers.pihole-rtr.rule=Host(`pihole.${DOMAIN}`)'
+      - 'traefik.http.routers.pihole-rtr.tls=true'
+      - 'traefik.http.routers.pihole-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.pihole-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.pihole-rtr.service=pihole-svc'
+      - 'traefik.http.services.pihole-svc.loadbalancer.server.port=80'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true

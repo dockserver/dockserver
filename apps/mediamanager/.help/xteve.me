@@ -1,0 +1,29 @@
+xteve is a M3U Proxy for Plex DVR and Emby Live TV
+use ( http://xteve:34400 ) for in-app communication
+
+Install Notes:
+UI will be accessible on xteve.domain.com/web
+       Accessing xteve.domain.com 
+will throw an XML error in the current version.
+
+Settings to edit in xteve: 
+-Playlist (add yours)
+-EPG source (unless you use the one in Plex)
+-Settings:
+Buffer : None (connect directly)
+Buffer Size : 8mb
+<<Configured for .ts output from provider(s)>>
+
+When setting it up in plex: 
+-Add xteve:34400 as tuner
+-If you want to use the EPG from XTEVE (XEPG)
+the link you set in Plex must be
+
+http://xteve:34400/xmltv/xteve.xml
+
+When channels are loaded in plex use this command
+sudo docker restart plex
+
+Protip:
+Manage,modulate and shorten your
+        m3u link on www.m3u4u.com -

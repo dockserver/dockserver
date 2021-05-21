@@ -1,0 +1,35 @@
+---
+version: '3'
+services:
+  wiki:
+    container_name: 'wiki'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+    image: 'ghcr.io/squidfunk/mkdocs-material:latest'
+    restart: 'unless-stopped'
+    ports:
+      - '127.0.0.1:7412:8000'
+    networks:
+      - proxy
+    security_opt:
+      - 'apparmor:unconfined'
+    volumes:
+      - '/etc/localtime:/etc/localtime:ro'
+      - '/opt/dockserver/wiki:/docs:rw'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.wiki-rtr.entrypoints=https'
+      - 'traefik.http.routers.wiki-rtr.rule=Host(`wiki.${DOMAIN}`)'
+      - 'traefik.http.routers.wiki-rtr.tls=true'
+      - 'traefik.http.routers.wiki-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.wiki-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.wiki-rtr.service=wiki-svc'
+      - 'traefik.http.services.wiki-svc.loadbalancer.server.port=8000'
+networks:
+  proxy:
+    driver: bridge
+    external: true

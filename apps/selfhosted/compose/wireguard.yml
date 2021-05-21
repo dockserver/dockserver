@@ -1,0 +1,44 @@
+---
+version: '3'
+
+services:
+  wireguard:
+    hostname: 'wireguard'
+    container_name: 'wireguard'
+    cap_add:
+      - 'NET_ADMIN'
+      - 'SYS_MODULE'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=022'
+      - 'SERVERURL=wireguard.${DOMAIN}'
+      - 'SERVERPORT=51820'
+      - 'PEERS=1'
+      - 'PEERDNS=auto'
+      - 'INTERNAL_SUBNET=10.13.13.0'
+      - 'ALLOWEDIPS=0.0.0.0/0'
+    image: 'ghcr.io/linuxserver/wireguard'
+    restart: 'unless-stopped'
+    ports:
+      - target: 51820
+        published: 51820
+        protocol: udp
+        mode: host
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/opt/appdata/wireguard:/config:rw'
+      - '/lib/modules:/lib/modules'
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+    labels:
+      - 'dockupdater.enable=true'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true

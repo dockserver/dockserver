@@ -1,0 +1,33 @@
+###############################################################
+#                   Treaifk configuration                     #
+###############################################################
+[http.middlewares]
+  [http.middlewares.middlewares-rate-limit]
+    [http.middlewares.middlewares-rate-limit.rateLimit]
+      average = 100
+      burst = 50
+
+  [http.middlewares.middlewares-secure-headers]
+    [http.middlewares.middlewares-secure-headers.headers]
+      accessControlAllowMethods= ["GET", "OPTIONS", "PUT", "POST"]
+      accessControlMaxAge = 100
+      hostsProxyHeaders = ["X-Forwarded-Host"]
+      sslRedirect = true
+      stsSeconds = 63072000
+      stsIncludeSubdomains = true
+      stsPreload = true
+      forceSTSHeader = true
+      customFrameOptionsValue = "allow-from https:example.com" #CSP takes care of this but may be needed for organizr.
+      contentTypeNosniff = true
+      browserXssFilter = true
+      referrerPolicy = "same-origin"
+      featurePolicy = "camera 'none'; geolocation 'none'; microphone 'none'; payment 'none'; usb 'none'; vr 'none';"
+      [http.middlewares.middlewares-secure-headers.headers.customResponseHeaders]
+        X-Robots-Tag = "none,noarchive,nosnippet,notranslate,noimageindex,"
+        server = ""
+
+  [http.middlewares.middlewares-authelia]
+    [http.middlewares.middlewares-authelia.forwardAuth]
+      address = "http://authelia:9091/api/verify?rd=https://authelia.example.com"
+      trustForwardHeader = true
+      authResponseHeaders = ["Remote-User", "Remote-Groups"]

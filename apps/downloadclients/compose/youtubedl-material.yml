@@ -1,0 +1,49 @@
+---
+version: '3'
+services:
+  youtubedl-material:
+    hostname: 'youtubedl-material'
+    container_name: 'youtubedl-material'
+    environment:
+      - 'WRITE_YTDL_CONFIG=true'
+      - 'ALLOW_CONFIG_MUTATIONS=true'
+      - 'YTDL_UMASK=022'
+      - 'UID=${ID}'
+      - 'GID=${ID}'
+    image: 'tzahi12345/youtubedl-material:latest'
+    restart: 'unless-stopped'
+    ports:
+      - '127.0.0.1:8998:17442'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/opt/appdata/youtubedl-material/appdata:/app/appdata'
+      - '/opt/appdata/youtubedl-material/audio:/app/audio'
+      - '/opt/appdata/youtubedl-material/video:/app/video'
+      - '/opt/appdata/youtubedl-material/subscriptions:/app/subscriptions'
+      - '/mnt/downloads/youtubedl:/app/users'
+      - 'unionfs:/mnt'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.youtubedl-material-rtr.entrypoints=https'
+      - 'traefik.http.routers.youtubedl-material-rtr.rule=Host(`youtubedl-material.${DOMAIN}`)'
+      - 'traefik.http.routers.youtubedl-material-rtr.tls=true'
+      - 'traefik.http.routers.youtubedl-material-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.youtubedl-material-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.youtubedl-material-rtr.service=youtubedl-material-svc'
+      - 'traefik.http.services.youtubedl-material-svc.loadbalancer.server.port=17442'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
+
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

@@ -1,0 +1,34 @@
+---
+version: '3'
+services:
+  traktarrhdr:
+    hostname: 'traktarrhdr'
+    container_name: 'traktarrhdr'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'DELAY=2.5'
+      - 'SORT=rating'
+      - 'NOSEARCH=yes'
+      - 'NOTIFICATIONS=yes'
+      - 'BLACKLIST=yes'
+      - 'RUNNOW=yes'
+      - 'SKIPUPDATE=no'
+      - 'APP_BRANCH=master'
+    image: 'ghcr.io/dockserver/docker-traktarr:latest'
+    restart: 'unless-stopped'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/opt/appdata/traktarrhdr:/config:rw'
+networks:
+  proxy:
+    driver: bridge
+    external: true

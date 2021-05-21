@@ -1,0 +1,31 @@
+---
+version: '3'
+services:
+  duplicati:
+    hostname: 'duplicati'
+    container_name: 'duplicati'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=022'
+    image: 'ghcr.io/linuxserver/duplicati'
+    restart: 'unless-stopped'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/opt/appdata/duplicati:/config:rw'
+      - './:/source:rw'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
+
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

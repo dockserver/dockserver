@@ -1,0 +1,49 @@
+---
+version: '3'
+services:
+  nextcloud:
+    hostname: 'nextcloud'
+    container_name: 'nextcloud'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=022'
+    image: 'ghcr.io/linuxserver/nextcloud'
+    restart: 'unless-stopped'
+    ports:
+      - '4551:443'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/opt/appdata/nextcloud/data:/data'
+      - '/opt/appdata/nextcloud/cloud:/config:rw'
+      - '/etc/localtime:/etc/localtime:ro'
+      - 'unionfs:/mnt'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.nextcloud-rtr.entrypoints=https'
+      - 'traefik.http.routers.nextcloud-rtr.rule=Host(`nextcloud.${DOMAIN}`)'
+      - 'traefik.http.routers.nextcloud-rtr.tls=true'
+      - 'traefik.http.routers.nextcloud-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.nextcloud-rtr.middlewares=nextcloud-dav,chain-authelia@file'
+      - 'traefik.http.routers.nextcloud-rtr.service=nextcloud-svc'
+      - 'traefik.http.middlewares.nextcloud-dav.replacepathregex.regex=^/.well-known/ca(l|rd)dav'
+      - 'traefik.http.middlewares.nextcloud-dav.replacepathregex.replacement=/remote.php/dav/'
+      - 'traefik.http.services.nextcloud-svc.loadbalancer.server.port=443'
+      - 'traefik.http.services.nextcloud-svc.loadbalancer.server.scheme=https'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
+
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

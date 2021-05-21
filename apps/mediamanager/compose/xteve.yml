@@ -1,0 +1,40 @@
+---
+version: '3'
+services:
+  xteve:
+    hostname: 'xteve'
+    container_name: 'xteve'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=022'
+    image: 'alturismo/xteve'
+    restart: 'unless-stopped'
+    ports:
+      - '34400:34400'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/opt/appdata/xteve/:/root/.xteve:rw'
+      - '/opt/appdata/xteve/_config:/config:rw'
+      - '/opt/appdata/xteve/temp/:/tmp/xteve:rw'
+      - '/etc/localtime:/etc/localtime:ro'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.xteve-rtr.entrypoints=https'
+      - 'traefik.http.routers.xteve-rtr.rule=Host(`xteve.${DOMAIN}`)'
+      - 'traefik.http.routers.xteve-rtr.tls=true'
+      - 'traefik.http.routers.xteve-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.xteve-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.xteve-rtr.service=xteve-svc'
+      - 'traefik.http.services.xteve-svc.loadbalancer.server.port=34400'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true

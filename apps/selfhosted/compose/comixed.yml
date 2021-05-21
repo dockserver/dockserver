@@ -1,0 +1,45 @@
+---
+version: '3'
+
+services:
+  comixed:
+    hostname: 'comixed'
+    container_name: 'comixed'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=022'
+    image: 'comixed/comixed:latest'
+    restart: 'unless-stopped'
+    ports:
+      - '127.0.0.1:7834:7834'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/opt/appdata/comixed:/config:rw'
+      - 'unionfs:/mnt'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.comixed-rtr.entrypoints=https'
+      - 'traefik.http.routers.comixed-rtr.rule=Host(`comixed.${DOMAIN}`)'
+      - 'traefik.http.routers.comixed-rtr.tls=true'
+      - 'traefik.http.routers.comixed-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.comixed-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.comixed-rtr.service=comixed-svc'
+      - 'traefik.http.services.comixed-svc.loadbalancer.server.port=7834'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
+
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

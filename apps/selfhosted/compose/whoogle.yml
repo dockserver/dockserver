@@ -1,0 +1,37 @@
+---
+version: '3'
+services:
+  whoogle:
+    hostname: 'whoogle'
+    container_name: 'whoogle'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=022'
+    image: 'benbusby/whoogle-search'
+    restart: 'unless-stopped'
+    ports:
+      - '127.0.0.1:5002:5000'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/opt/appdata/whoogle:/config:rw'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.whoogle-rtr.entrypoints=https'
+      - 'traefik.http.routers.whoogle-rtr.rule=Host(`whoogle.${DOMAIN}`)'
+      - 'traefik.http.routers.whoogle-rtr.tls=true'
+      - 'traefik.http.routers.whoogle-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.whoogle-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.whoogle-rtr.service=whoogle-svc'
+      - 'traefik.http.services.whoogle-svc.loadbalancer.server.port=5000'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true

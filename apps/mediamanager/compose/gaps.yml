@@ -1,0 +1,44 @@
+---
+version: '3'
+services:
+  gaps:
+    hostname: 'gaps'
+    container_name: 'gaps'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=022'
+      - 'LOG_LEVEL=info'
+    image: 'housewrecker/gaps:latest'
+    restart: 'unless-stopped'
+    ports:
+      - '127.0.0.1:8484:8484'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/opt/appdata/gaps:/usr/data:rw'
+      - '/etc/localtime:/etc/localtime:ro'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.gaps-rtr.entrypoints=https'
+      - 'traefik.http.routers.gaps-rtr.rule=Host(`gaps.${DOMAIN}`)'
+      - 'traefik.http.routers.gaps-rtr.tls=true'
+      - 'traefik.http.routers.gaps-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.gaps-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.gaps-rtr.service=gaps-svc'
+      - 'traefik.http.services.gaps-svc.loadbalancer.server.port=8484'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt
