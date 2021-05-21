@@ -32,7 +32,7 @@
 
 1. `SSL = FULL` **( not FULL/STRICT )**
 2. `Always on = YES`
-3. `HTTP to TTPS = YES`
+3. `HTTP to HTTPS = YES`
 4. `RocketLoader and Broli / Onion Routing = NO`
 5. `TLS min = 1.2`
 6. `TLS = v1.3`
