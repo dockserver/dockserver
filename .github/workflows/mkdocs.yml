@@ -5,24 +5,25 @@ on:
       - master
 jobs:
   removeold:
-    runs-on: ubuntu-latest
     name: remove old index.md
+    runs-on: ubuntu-latest
     steps:
-    - uses: JesseTG/rm@v1.0.2
-      with:
-        path: wiki/docs/index.md
+      - uses: actions/checkout@v2.3.4
+      - uses: JesseTG/rm@v1.0.2
+        with:
+          path: wiki/docs/index.md
 
-  build:
+  copynew:
     name: Copy new index.md
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: copy file
-      uses: canastro/copy-file-action@master
-      with:
-        source: "README.md"
-        target: "wiki/docs/index.md"
-        flags: "-rv"
+      - uses: actions/checkout@v2.3.4
+      - name: copy file
+        uses: canastro/copy-file-action@master
+        with:
+          source: "README.md"
+          target: "wiki/docs/index.md"
+          flags: "-rv"
 
   deploy:
     name: Deploy Wiki on Github Pages
