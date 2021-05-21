@@ -4,8 +4,16 @@ on:
     branches:
       - master
 jobs:
+  removeold:
+    runs-on: ubuntu-latest
+    name: remove old index.md
+    steps:
+    - uses: JesseTG/rm@v1.0.2
+      with:
+        path: wiki/docs/index.md
+
   build:
-    name: Build
+    name: Copy new index.md
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -14,6 +22,7 @@ jobs:
       with:
         source: "README.md"
         target: "wiki/docs/index.md"
+        flags: "-rv"
 
   deploy:
     name: Deploy Wiki on Github Pages
