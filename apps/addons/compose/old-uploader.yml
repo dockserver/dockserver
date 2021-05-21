@@ -9,7 +9,7 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-    image: 'ghcr.io/dockserver/docker-uploader:dockserver'
+    image: 'ghcr.io/dockserver/docker-uploader:latest'
     restart: 'unless-stopped'
     ports:
       - '127.0.0.1:7777:8080'
@@ -19,7 +19,7 @@ services:
       - 'apparmor:unconfined'
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
-      - '/opt/appdata/system:/system:rw'
+      - '/opt/appdata/uploader:/config:rw'
       - 'unionfs:/mnt'
     labels:
       - 'traefik.enable=true'
