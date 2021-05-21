@@ -150,7 +150,7 @@ EOF
      done
      ORGFILE="/etc/fail2ban/jail.conf"
      LOCALMOD="/etc/fail2ban/jail.local"
-  if [[ ! -f $LOCALMOD ]];then $(command -v rsync) -aq --info=progress2 -hv $ORGFILE $LOCALMOD;fi
+  if [[ ! -f $LOCALMOD ]];then $(command -v rsync) -aqhv $ORGFILE $LOCALMOD;fi
      MOD=$(cat $LOCALMOD | grep -qE '\[authelia\]' && echo true || echo false)
   if [[ $MOD == "false" ]];then
      echo "\
