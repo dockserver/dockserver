@@ -32,10 +32,10 @@
 
 1. `SSL = FULL` **( not FULL/STRICT )**
 2. `Always on = YES`
-3. `HTTP to HTTPS = YES`
+3. `http to https = YES`
 4. `RocketLoader and Broli / Onion Routing = NO`
-5. `TLS min = 1.2`
-6. `TLS = 1.3`
+5. `Tls min = 1.2`
+6. `TLS = v1.3`
 
 ## Easy Mode install
 
@@ -46,8 +46,8 @@ sudo wget -qO- https://git.io/J3GDc | sudo bash
 ```
 
 <details>
-<summary>Long commmand if the short one doesn't work.</summary>
-<br />
+  <summary>Long commmand if the short one doesn't work.</summary>
+  <br />
 
   ```sh
   sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/wgetfile.sh | sudo bash
@@ -70,6 +70,25 @@ Dev Code @dockserver
 Co-Dev -APPS- @CONTRIBUTORS-LIST
 ```
 
+----
+
+
+<!--START_SECTION:activity-->
+1. 🎉 Merged PR [#33](https://github.com/dockserver/dockserver/pull/33) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+2. 🗣 Commented on [#33](https://github.com/dockserver/dockserver/issues/33) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+3. 🎉 Merged PR [#34](https://github.com/dockserver/dockserver/pull/34) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+4. 💪 Opened PR [#34](https://github.com/dockserver/dockserver/pull/34) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+5. 💪 Opened PR [#33](https://github.com/dockserver/dockserver/pull/33) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+6. 🎉 Merged PR [#32](https://github.com/dockserver/dockserver/pull/32) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+7. 🗣 Commented on [#30](https://github.com/dockserver/dockserver/issues/30) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+8. 💪 Opened PR [#32](https://github.com/dockserver/dockserver/pull/32) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+9. 🗣 Commented on [#30](https://github.com/dockserver/dockserver/issues/30) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+10. ❗️ Closed issue [#25](https://github.com/dockserver/dockserver/issues/25) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+<!--END_SECTION:activity-->
+
+
+----
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
@@ -88,6 +107,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/Nossersvinet"><img src="https://avatars.githubusercontent.com/u/83166809?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nossersvinet</b></sub></a><br /><a href="#infra-Nossersvinet" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/dockserver/dockserver/commits?author=Nossersvinet" title="Tests">⚠️</a> <a href="https://github.com/dockserver/dockserver/commits?author=Nossersvinet" title="Code">💻</a> <a href="#content-Nossersvinet" title="Content">🖋</a></td>
     <td align="center"><a href="https://github.com/townsmcp"><img src="https://avatars.githubusercontent.com/u/14061617?v=4?s=100" width="100px;" alt=""/><br /><sub><b>townsmcp</b></sub></a><br /><a href="https://github.com/dockserver/dockserver/issues?q=author%3Atownsmcp" title="Bug reports">🐛</a> <a href="https://github.com/dockserver/dockserver/commits?author=townsmcp" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://github.com/Hawkinzzz"><img src="https://avatars.githubusercontent.com/u/24587652?v=4?s=100" width="100px;" alt=""/><br /><sub><b>hawkinzzz</b></sub></a><br /><a href="https://github.com/dockserver/dockserver/issues?q=author%3AHawkinzzz" title="Bug reports">🐛</a> <a href="https://github.com/dockserver/dockserver/commits?author=Hawkinzzz" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/clandorsdx"><img src="https://avatars.githubusercontent.com/u/48338663?v=4?s=100" width="100px;" alt=""/><br /><sub><b>clandorsdx</b></sub></a><br /><a href="https://github.com/dockserver/dockserver/issues?q=author%3Aclandorsdx" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
