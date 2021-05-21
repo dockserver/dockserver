@@ -4,25 +4,19 @@ on:
     branches:
       - master
 jobs:
-  removeold:
-    runs-on: ubuntu-latest
-    name: remove old index.md
-    steps:
-    - uses: JesseTG/rm@v1.0.2
-      with:
-        path: wiki/docs/index.md
-
-  build:
-    name: Copy new index.md
+  copy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: copy file
-      uses: canastro/copy-file-action@master
+    - name: Copycat
+      uses: andstor/copycat-action@v3
       with:
-        source: "README.md"
-        target: "wiki/docs/index.md"
-        flags: "-rv"
+        personal_token: ${{ secrets.CR_PAT }}
+        src_path: README.md
+        dst_path: /wiki/docs/index.md
+        dst_owner: dockserver
+        dst_branch: master
+        src_branch: master
+        username: nutsbot
 
   deploy:
     name: Deploy Wiki on Github Pages
