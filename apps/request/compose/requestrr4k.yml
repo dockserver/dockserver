@@ -9,7 +9,7 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-    image: 'ghcr.io/linuxserver/requestrr:latest'
+    image: 'darkalfx/requestrr:latest'
     restart: 'unless-stopped'
     ports:
       - '127.0.0.1:4546:4545'
