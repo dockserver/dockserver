@@ -291,7 +291,7 @@ ${members}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   read -erp "Confirm Info | PRESS [ENTER] " input </dev/tty
-  if [[ "$input" = "confirm" ]];then sleep 2 && clear && checkfields && interface;fi
+  if [[ "$input" = "confirm" ]];then sleep 2 && clear && restupper && checkfields && interface;fi
 else
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -300,6 +300,10 @@ tee <<-EOF
 EOF
 sleep 10 && clear && interface
 fi
+}
+restupper() {
+uplaoder=$($(command -v docker) ps -aq --format={{.Names}} | grep -x 'uploader')
+if [[ ${uploader} == "uploader" ]];then $(command -v docker) restart uploader 1>/dev/null 2>&1;fi
 }
 interface() {
 source $basefolder/system/servicekeys/.env
