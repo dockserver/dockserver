@@ -108,8 +108,10 @@ EOF
    read -erp "Enter the Project Name: " PROJECT </dev/tty
 if [[ $PROJECT != "" ]];then
    #for create project
-   command=$($(command -v docker) run --rm --volumes-from gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk:alpine)
-   $command gcloud config set project $PROJECT && $command gcloud projects create $PROJECT --name=$PROJECT && $command gcloud services enable drive.googleapis.com
+   #command=$($(command -v docker) run --rm --volumes-from gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk:alpine)
+   $(command -v docker) run --rm --volumes-from gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk:alpine gcloud config set project $PROJECT
+   $(command -v docker) run --rm --volumes-from gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk:alpine gcloud projects create $PROJECT --name=$PROJECT
+   $(command -v docker) run --rm --volumes-from gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk:alpine gcloud services enable drive.googleapis.com
 else
   echo "You need to set a Project"
   project
