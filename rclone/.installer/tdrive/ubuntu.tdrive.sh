@@ -258,7 +258,7 @@ tee <<-EOF
     [ 1 ] Account Details        [ ${ACCOUNT} ]
     [ 2 ] Create Google Project  [ ${PROJECT} }
     [ 3 ] Name of Shared Drive   [ ${NAME} ]
-    [ 4 ] Cliemt ID              [ ${CLIENT_ID_FROM_GOOGLE} ]
+    [ 4 ] Client ID              [ ${CLIENT_ID_FROM_GOOGLE} ]
     [ 5 ] Client Secret          [ ${CLIENT_SECRET_FROM_GOOGLE} ]
     [ 6 ] Team Drive ID          [ ${TDRIVE_ID} ]
 
