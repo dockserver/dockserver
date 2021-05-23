@@ -126,8 +126,8 @@ fi
 if [[ $PROJECTNAME != "" ]];then
    setorg=$($(command -v docker) run --rm --volumes-from gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk:alpine gcloud organizations list --format="value(ID)")
    export ORGANIZATIONID=$setorg
-   $(command -v docker) run --rm --volumes-from gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk:alpine gcloud config set project $PROJECT
-   $(command -v docker) run --rm --volumes-from gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk:alpine gcloud projects create $PROJECT --name=$PROJECT --organization=$ORGANIZATIONID
+   $(command -v docker) run --rm --volumes-from gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk:alpine gcloud projects create $PROJECTNAME --name=$PROJECTNAME --organization=$ORGANIZATIONID
+   $(command -v docker) run --rm --volumes-from gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk:alpine gcloud config set project $PROJECTNAME
    $(command -v docker) run --rm --volumes-from gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk:alpine gcloud services enable drive.googleapis.com
    if [[ $(uname) == "Darwin" ]];then
       sed -i '' "s/PROJECT=NOT-SET/PROJECT=$PROJECTNAME/g" $basefolder/system/rclone/.env
