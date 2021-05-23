@@ -74,9 +74,9 @@ Co-Dev -APPS- @CONTRIBUTORS-LIST
 
 
 <!--START_SECTION:activity-->
-1. ❗️ Opened issue [#1](https://github.com/dockserver/dockserver/issues/1) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-2. 🎉 Merged PR [#37](https://github.com/dockserver/dockserver/pull/37) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-3. 💪 Opened PR [#37](https://github.com/dockserver/dockserver/pull/37) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+1. 🎉 Merged PR [#2](https://github.com/dockserver/dockserver/pull/2) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+2. 💪 Opened PR [#2](https://github.com/dockserver/dockserver/pull/2) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+3. ❗️ Opened issue [#1](https://github.com/dockserver/dockserver/issues/1) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 4. 🎉 Merged PR [#36](https://github.com/dockserver/dockserver/pull/36) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 5. 💪 Opened PR [#36](https://github.com/dockserver/dockserver/pull/36) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 6. 💪 Opened PR [#35](https://github.com/dockserver/dockserver/pull/35) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
