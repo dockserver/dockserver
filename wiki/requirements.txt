@@ -25,5 +25,5 @@ markdown>=3.2
 pymdown-extensions>=7.0
 mkdocs-material-extensions>=1.0
 mkdocs-minify-plugin
-pmkdocs-redirects
+mkdocs-redirects
 mkdocs-material
