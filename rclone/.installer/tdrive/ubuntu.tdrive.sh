@@ -113,7 +113,7 @@ tee <<-EOF
     🚀   You forgot to set your Account 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-   sleep 5 && project
+   sleep 5 && clear && interface
 fi
    if [[ $(echo $PROJECTNAME | wc -m) -le "6" || $(echo $PROJECTNAME | wc -m) -ge "16" ]];then 
 tee <<-EOF
