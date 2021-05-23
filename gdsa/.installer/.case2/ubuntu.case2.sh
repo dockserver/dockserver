@@ -309,6 +309,7 @@ appfolder="/opt/dockserver/apps"
 basefolder="/opt/appdata"
 uploader=$($(command -v docker) ps -aq --format={{.Names}} | grep -x 'uploader')
 if [[ ${uploader} == ${typed} ]];then
+   $(command -v docker) image prune -af 1>/dev/null 2>&1
    if [[ ! -d $basefolder/system/uploader/ ]];then $(command -v mkdir) -p $basefolder/system/${typed};fi
    if [[ ! -d $basefolder/system/uploader/.keys ]];then $(command -v mkdir) -p $basefolder/system/${typed}/.keys;fi
       $(command -v echo) "0" > $basefolder/system/${typed}/.keys/usedupload
@@ -331,6 +332,9 @@ EOF
      else
        composer=$(command -v docker-compose)
        for i in ${composer};do
+          $i down ${typed} 1>/dev/null 2>&1
+          $i rm ${typed} 1>/dev/null 2>&1
+          $i pull ${typed} 1>/dev/null 2>&1
           $i up -d --force-recreate 1>/dev/null 2>&1
        done
      fi
