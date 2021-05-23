@@ -97,24 +97,35 @@ fi
 clear && interface
 }
 project() {
-clear && interface
+basefolder="/opt/appdata"
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀   Please Create a New Project
+    🚀   Please Create a New Project for this TDrive 
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       Please rype a name o the new Project
+         minimum is 6 chars | maximum is 16 chars
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-
-   read -erp "Enter the Project Name: " PROJECT </dev/tty
-if [[ $PROJECT != "" ]];then
-   #for create project
-   #command=$($(command -v docker) run --rm --volumes-from gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk:alpine)
+   read -erp "Enter your Projectname: " PROJECTNAME </dev/tty
+   if [[ $(echo $PROJECTNAME | wc -m) -le "6" || $(echo $PROJECTNAME | wc -m) -ge "16" ]];then 
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    🚀   Sorry the minimum of chars are 6 and maximum is 16
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+   sleep 5 && project
+fi
+if [[ $PROJECTNAME != "" ]];then
    $(command -v docker) run --rm --volumes-from gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk:alpine gcloud config set project $PROJECT
    $(command -v docker) run --rm --volumes-from gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk:alpine gcloud projects create $PROJECT --name=$PROJECT
    $(command -v docker) run --rm --volumes-from gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk:alpine gcloud services enable drive.googleapis.com
+   if [[ $(uname) == "Darwin" ]];then
+      sed -i '' "s/PROJECT=NOT-SET/PROJECT=$PROJECTNAME/g" $basefolder/rclone/.env
+   else
+      sed -i "s/PROJECT=NOT-SET/PROJECT=$PROJECTNAME/g" $basefolder/rclone/.env
+   fi
 else
-  echo "You need to set a Project"
+  echo "Project Name cannot be empty"
   project
 fi
 clear && interface
@@ -123,10 +134,14 @@ name() {
 basefolder="/opt/appdata"
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀   Team Drive Name
+    🚀   Name your REMOTE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         Sample: tdrive-movies | movie-drice | tdrive8 or
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         Don't use tdrive ( standalone )
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-   read -erp "Enter your Team Drive Name: " TDNAME </dev/tty
+   read -erp "Enter your Team Drive ID: " TDNAME </dev/tty
 if [[ $TDNAME != "" ]];then
    if [[ $(uname) == "Darwin" ]];then
       sed -i '' "s/NAME=NOT-SET/NAME=$TDNAME/g" $basefolder/system/rclone/.env
