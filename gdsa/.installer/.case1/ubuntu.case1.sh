@@ -265,7 +265,7 @@ typed=uploader
 compose="compose/docker-compose.yml"
 appfolder="/opt/dockserver/apps"
 basefolder="/opt/appdata"
-uploader=$($(command -v docker) ps -aq --format={{.Names}} | grep -x '${typed}')
+uploader=$($(command -v docker) ps -aq --format={{.Names}} | grep -x 'uploader')
 if [[ ${uploader} == ${typed} ]];then
    if [[ ! -d $basefolder/system/uploader/ ]];then $(command -v mkdir) -p $basefolder/system/${typed};fi
    if [[ ! -d $basefolder/system/uploader/.keys ]];then $(command -v mkdir) -p $basefolder/system/${typed}/.keys;fi
