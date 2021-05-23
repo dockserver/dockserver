@@ -29,12 +29,6 @@ jobs:
       - uses: actions/setup-python@v2.2.2
         with:
           python-version: 3.x
-      - name: Install dependencies
-        run: |
-          python3 -m pip install --upgrade pip
-          python3 -m pip install mkdocs
-          python3 -m pip install mkdocs-material
-          python3 -m pip install mkdocs-minify-plugin
-          python3 -m pip install pip install mkdocs-redirects
-      - run: pip install -r wiki/requirements.txt
+      - run: python3 -m pip install --upgrade pip
+      - run: python3 -m pip install -r wiki/requirements.txt
       - run: mkdocs gh-deploy --force --config-file wiki/mkdocs.yml --remote-branch wiki
