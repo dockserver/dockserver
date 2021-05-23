@@ -32,7 +32,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   $(command -v docker) system prune -af 1>/dev/null 2>&1
-  pulls="ghcr.io/dockserver/docker-rclone:latest"
+  pulls="ghcr.io/dockserver/docker-rclone:latest gcr.io/google.com/cloudsdktool/cloud-sdk:alpine"
   for pull in ${pulls};do
      $(command -v docker) pull $pull --quiet
   done
