@@ -184,7 +184,7 @@ tee <<-EOF
 
     Click on the Shared Drive !
 
-    In the Link its shows behind /u/1/folders/ 
+    In the Link its shows behind /folders/<ID HERE>
     The Shared Drive ID !!
 
     Please dont use the name of the Shared Drive   
