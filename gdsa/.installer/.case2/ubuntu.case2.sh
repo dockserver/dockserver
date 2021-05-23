@@ -302,8 +302,40 @@ sleep 10 && clear && interface
 fi
 }
 restupper() {
-uplaoder=$($(command -v docker) ps -aq --format={{.Names}} | grep -x 'uploader')
-if [[ ${uploader} == "uploader" ]];then $(command -v docker) restart uploader 1>/dev/null 2>&1;fi
+section=system
+typed=uploader
+compose="compose/docker-compose.yml"
+appfolder="/opt/dockserver/apps"
+basefolder="/opt/appdata"
+uploader=$($(command -v docker) ps -aq --format={{.Names}} | grep -x 'uploader')
+if [[ ${uploader} == "uploader" ]];then
+   if [[ ! -d $basefolder/system/system/uploader/ ]];then $(command -v mkdir) -p $basefolder/system/system/uploader/;fi
+   if [[ ! -d $basefolder/system/system/uploader/.vars/ ]];then $(command -v mkdir) -p $basefolder/system/system/uploader/.vars;fi
+      $(command -v echo) "0" > $basefolder/system/system/uploader/.vars/usedupload
+      $(command -v echo) "0" > $basefolder/system/uploader/.vars/lasteservicekey
+      $(command -v rsync) $appfolder/${section}/compose/${typed}.yml $basefolder/$compose -aqhv
+   if [[ -f $basefolder/$compose ]];then
+       $(command -v cd) $basefolder/compose/
+       $(command -v docker-compose) config 1>/dev/null 2>&1
+       errorcode=$?
+       if [[ $errorcode -ne 0 ]];then
+  tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    ❌ ERROR
+    Compose check of ${typed} has failed
+    Return code is ${errorcode}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+  read -erp "Confirm Info | PRESS [ENTER]" typed </dev/tty
+  clear && interface
+     else
+       composer=$(command -v docker-compose)
+       for i in ${composer};do
+          $i up -d --force-recreate 1>/dev/null 2>&1
+       done
+     fi
+  fi
+fi
 }
 interface() {
 source $basefolder/system/servicekeys/.env
