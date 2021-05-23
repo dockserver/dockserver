@@ -107,6 +107,14 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
    read -erp "Enter your Projectname: " PROJECTNAME </dev/tty
+   if [[ ${ACCOUNT} == "NOT-SET" ]];then
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    🚀   You forgot to set your Account 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+   sleep 5 && project
+fi
    if [[ $(echo $PROJECTNAME | wc -m) -le "6" || $(echo $PROJECTNAME | wc -m) -ge "16" ]];then 
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -120,9 +128,9 @@ if [[ $PROJECTNAME != "" ]];then
    $(command -v docker) run --rm --volumes-from gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk:alpine gcloud projects create $PROJECT --name=$PROJECT
    $(command -v docker) run --rm --volumes-from gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk:alpine gcloud services enable drive.googleapis.com
    if [[ $(uname) == "Darwin" ]];then
-      sed -i '' "s/PROJECT=NOT-SET/PROJECT=$PROJECTNAME/g" $basefolder/rclone/.env
+      sed -i '' "s/PROJECT=NOT-SET/PROJECT=$PROJECTNAME/g" $basefolder/system/rclone/.env
    else
-      sed -i "s/PROJECT=NOT-SET/PROJECT=$PROJECTNAME/g" $basefolder/rclone/.env
+      sed -i "s/PROJECT=NOT-SET/PROJECT=$PROJECTNAME/g" $basefolder/system/rclone/.env
    fi
 else
   echo "Project Name cannot be empty"
