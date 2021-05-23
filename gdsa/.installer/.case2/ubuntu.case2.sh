@@ -311,7 +311,7 @@ uploader=$($(command -v docker) ps -aq --format={{.Names}} | grep -x 'uploader')
 if [[ ${uploader} == "uploader" ]];then
    if [[ ! -d $basefolder/system/uploader/ ]];then $(command -v mkdir) -p $basefolder/system/uploader/;fi
    if [[ ! -d $basefolder/system/uploader/.keys ]];then $(command -v mkdir) -p $basefolder/system/uploader/.keys;fi
-      $(command -v echo) "0" > $basefolder/system/system/uploader/.keys/usedupload
+      $(command -v echo) "0" > $basefolder/system/uploader/.keys/usedupload
       $(command -v echo) "0" > $basefolder/system/uploader/.keys/lasteservicekey
       $(command -v rsync) $appfolder/${section}/compose/${typed}.yml $basefolder/$compose -aqhv
    if [[ -f $basefolder/$compose ]];then
