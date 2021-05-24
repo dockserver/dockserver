@@ -10,6 +10,8 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=022'
+      - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:sonarr'
+      - 'TP_ADDON=sonarr-4k-logo'
     image: 'ghcr.io/linuxserver/sonarr:develop'
     restart: 'unless-stopped'
     ports:
