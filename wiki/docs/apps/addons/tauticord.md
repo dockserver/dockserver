@@ -1,5 +1,3 @@
-TAUTICORD
-
 <br />
 ![Image of DockServer](/img/logo.png)
 
