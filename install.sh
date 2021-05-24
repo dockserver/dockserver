@@ -12,7 +12,5 @@ case $(. /etc/os-release && echo "$ID") in
     rasbian)    type="ubuntu" ;;
     *)          type='' ;;
 esac
-if [ -f ./.installer/$type.sh ]; then
-    bash ./.installer/$type.sh
-fi
+if [ -f ./.installer/$type.sh ];then bash ./.installer/$type.sh;fi
 #EOF
