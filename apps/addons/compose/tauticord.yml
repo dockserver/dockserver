@@ -9,7 +9,7 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=022'
-    image: 'streamnet/tauticord:latest'
+    image: 'cyb3rgh05t/tauticord:latest'
     restart: 'unless-stopped'
     ports:
       - '127.0.0.1:7770:80'
