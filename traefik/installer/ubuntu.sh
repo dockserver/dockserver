@@ -50,7 +50,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
    read -erp "Are you sure ?: " uaction </dev/tty
-  case $uaction in
+   case $uaction in
     y|Y) clear && notrunning ;;
     n|N) clear && exit;;
     Z|z|exit|EXIT|Exit|close) exit ;;
