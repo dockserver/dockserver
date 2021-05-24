@@ -487,7 +487,7 @@ EOF
   if [[ ${typed} == "petio" ]];then $(command -v mkdir) -p $basefolder/${typed}/{db,config,logs} && $(command -v chown) -R 1000:1000 $basefolder/${typed}/{db,config,logs} 1>/dev/null 2>&1;fi
   if [[ ${typed} == "tdarr" ]];then $(command -v mkdir) -p $basefolder/${typed}/{server,configs,logs,encoders} && $(command -v chown) -R 1000:1000 $basefolder/${typed}/{server,configs,logs} 1>/dev/null 2>&1;fi
   if [[ -f $basefolder/$compose ]];then
-     $(command -v cd) $basefolder/
+     $(command -v cd) $basefolder/compose/
      $(command -v docker-compose) config 1>/dev/null 2>&1
      errorcode=$?
      if [[ $errorcode -ne 0 ]];then
@@ -522,7 +522,7 @@ EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 else
-  source $basefolder/.env
+  source $basefolder/compose/.env
   tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ${typed} has successfully deployed = > https://${typed}.${DOMAIN}
