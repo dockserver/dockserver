@@ -34,9 +34,9 @@ Administrator (the bot owner) can react to Tauticord's messages to terminate a s
 Users can also indicate what libraries they would like monitored. Tauticord will create/update a voice channel for each library name with item counts every hour.
 
 # Requirements
-- A Plex Media Server
-- Tautulli
-- A Discord server
+* A Plex Media Server
+* Tautulli
+* A Discord server
 
 ---
 
@@ -45,7 +45,9 @@ Users can also indicate what libraries they would like monitored. Tauticord will
 ## Setup a Discord Bot
 
 HOW TO MAKE A DISCORD BOT: https://www.digitaltrends.com/gaming/how-to-make-a-discord-bot/
+
 Permissions required:
+
 - Manage Channels
 - View Channels
 - Send Messages
@@ -57,15 +59,19 @@ Permissions required:
 ## Setup Tauticord
 
 * Install Tauticord from Docksever Addons Menu.
+
 * Stop the container.
 
 ```sudo docker stop tauticord```
+
 * Head over to the appdata folder.
 
 ```cd /opt/appdata/tauticord/```
+
 * Create a config file.
 
 ```sudo nano config.yaml```
+
 * Copy / Paste the following config into the created file from previous step.
 
 
@@ -75,7 +81,7 @@ logLevel: WARN
 
 Tautulli:
   Connection:
-    URL: "http://tatulli:8181" # change this if tautulli not installed from Dockserver.
+    URL: "http://tatulli:8181" # change this if tautulli is not installed from Dockserver.
     APIKey: ""
   Customization:
     TerminateMessage: "Your stream has been terminated. Please contact the admin in the Discord."
@@ -109,6 +115,9 @@ Extras:
   # See README.md for details
   Analytics: true
 ```
+
+
+* Edit the config file to your needs.
 
 
 * Start the container.
