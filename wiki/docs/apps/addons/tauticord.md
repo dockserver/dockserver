@@ -1,3 +1,5 @@
+TAUTICORD
+
 <br />
 ![Image of DockServer](/img/logo.png)
 
@@ -38,7 +40,9 @@ Users can also indicate what libraries they would like monitored. Tauticord will
 - Tautulli
 - A Discord server
 
-# Installation and setup
+---
+
+# Installation and Setup
 
 ## Setup a Discord Bot
 
@@ -65,9 +69,9 @@ Permissions required:
 
 ```sudo nano config.yaml```
 * Copy / Paste the following config into the created file from previous step.
-  
-```sh
 
+
+```sh
 appName: Tauticord
 logLevel: WARN
 
@@ -106,8 +110,9 @@ Discord:
 Extras:
   # See README.md for details
   Analytics: true
-  
-  ```
+```
+
+
 * Start the container.
 
 ```sudo docker start tauticord```
@@ -119,6 +124,7 @@ Et voilà, your Bot should now be online in your Disord Server.
 ## Wiki Maintainer
 [@cyb3rgh05t](https://github.com/cyb3rgh05t)
 
+---
 
 ## Support
 
