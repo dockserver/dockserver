@@ -1,0 +1,44 @@
+---
+version: '3'
+services:
+  deluge:
+    hostname: 'deluge'
+    container_name: 'deluge'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=022'
+      - 'DELUGE_LOGLEVEL=error'
+    image: 'ghcr.io/linuxserver/deluge:latest'
+    networks:
+      - proxy
+    restart: 'unless-stopped'
+    security_opt:
+      - 'no-new-privileges:true'
+    ports:
+      - '7889:7889'
+      - '127.0.0.1:8112:8112'
+    volumes:
+      - '/opt/appdata/deluge/config:/config:rw'
+      - 'unionfs:/mnt'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.deluge-rtr.entrypoints=https'
+      - 'traefik.http.routers.deluge-rtr.rule=Host(`deluge.${DOMAIN}`)'
+      - 'traefik.http.routers.deluge-rtr.tls=true'
+      - 'traefik.http.routers.deluge-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.deluge-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.deluge-rtr.service=deluge-svc'
+      - 'traefik.http.services.deluge-svc.loadbalancer.server.port=8112'
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt
