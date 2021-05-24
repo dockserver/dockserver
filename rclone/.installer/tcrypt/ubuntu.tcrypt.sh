@@ -42,6 +42,7 @@ done
 checkfields() {
 basefolder="/opt/appdata"
 if [[ ! -d "$basefolder/system/rclone/" ]];then $(command -v mkdir) -p $basefolder/system/rclone/;fi
+if [[ -f "$basefolder/system/rclone/.token" ]];then $(command -v rm) -rf $basefolder/system/rclone/.token;fi
 if [[ ! -f "$basefolder/system/rclone/.env" ]];then 
 echo -n "\
 #!/usr/bin/with-contenv bash
@@ -224,7 +225,7 @@ EOF
   read -erp '↘️  Token | PRESS [ENTER]: ' token </dev/tty
   if [[ $token != "" ]];then
      if [[ -f "/tmp/rclone.info" ]];then $(command -v rm) -rf /tmp/rclone.info;fi
-        curl --request POST --data "code=$token&client_id=$CLIENT_ID_FROM_GOOGLE&client_secret=$CLIENT_SECRET_FROM_GOOGLE&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" https://accounts.google.com/o/oauth2/token >> $basefolder/system/rclone/.env
+        curl --request POST --data "code=$token&client_id=$CLIENT_ID_FROM_GOOGLE&client_secret=$CLIENT_SECRET_FROM_GOOGLE&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" https://accounts.google.com/o/oauth2/token >> $basefolder/system/rclone/.token
 else
   echo "Token cannot be empty"
   atoken
