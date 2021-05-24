@@ -24,7 +24,7 @@ site_description: >-
 
 # Repository
 repo_name: DockServer Wiki
-repo_url: https://github.com/dockserver/
+repo_url: https://github.com/dockserver/dockserver 
 edit_uri: ""
 
 # Copyright
@@ -95,7 +95,7 @@ plugins:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/dockserver/
+      link: https://github.com/dockserver/dockserver
     - icon: fontawesome/brands/docker
       link: https://github.com/orgs/dockserver/packages/
     - icon: fontawesome/brands/discord
