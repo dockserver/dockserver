@@ -57,16 +57,16 @@ Permissions required:
 * Install Tauticord from Docksever Addons Menu.
 * Stop the container.
 
-```docker stop tauticord```
+```sudo docker stop tauticord```
 * Head over to the appdata folder.
 
 ```cd /opt/appdata/tauticord/```
 * Create a config file.
 
-```nano config.yaml```
+```sudo nano config.yaml```
 * Copy / Paste the following config into the created file from previous step.
   
-```
+```sh
 
 appName: Tauticord
 logLevel: WARN
@@ -110,9 +110,15 @@ Extras:
   ```
 * Start the container.
 
-```docker start tauticord```
+```sudo docker start tauticord```
 
 Et voilà, your Bot should now be online in your Disord Server.
+
+---
+
+## Wiki Maintainer
+[@cyb3rgh05t](https://github.com/cyb3rgh05t)
+
 
 ## Support
 
