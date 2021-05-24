@@ -39,7 +39,7 @@ tee <<-EOF
     [ 4 ] Restore  Apps
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    [ EXIT or Z ] - Exit || [ help or HELP ] - Help
+    [ EXIT or Z ] - Exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   read -erp "↘️  Type Number and Press [ENTER]: " headsection </dev/tty
@@ -48,7 +48,6 @@ EOF
     2) clear && removeapp ;;
     3) clear && backupstorage ;;
     4) clear && restorestorage ;;
-    help|HELP|Help) clear && sectionhelplayout ;;
     Z|z|exit|EXIT|Exit|close) exit ;;
     *) appstartup ;;
   esac
@@ -63,13 +62,12 @@ tee <<-EOF
 $buildshow
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    [ EXIT or Z ] - Exit || [ help or HELP ] - Help
+    [ EXIT or Z ] - Exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   read -erp "↘️  Type Section Name and Press [ENTER]: " section </dev/tty
   if [[ $section == "exit" || $section == "Exit" || $section == "EXIT" || $section  == "z" || $section == "Z" ]];then clear && headinterface;fi
   if [[ $section == "" ]];then clear && interface;fi
-  if [[ $section == "help" || $section == "HELP" ]];then clear && sectionhelplayout;fi
      checksection=$(ls -1p /opt/dockserver/apps/ | grep '/$' | $(command -v sed) 's/\/$//' | grep -x $section)
   if [[ $checksection == "" ]];then clear && interface;fi
   if [[ $checksection == $section ]];then clear && install;fi
@@ -77,7 +75,7 @@ EOF
 install() {
 restorebackup=null
 section=${section}
-buildshow=$(ls -1p /opt/dockserver/apps/${section}/compose/ | sed -e 's/.yml//g' )
+buildshow=$(ls -1p /opt/dockserver/apps/${section}/ | sed -e 's/.yml//g' )
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀  Applications to install under ${section} category
@@ -86,90 +84,15 @@ tee <<-EOF
 $buildshow
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    [ EXIT or Z ] - Exit || [ help or HELP ] - Help
+    [ EXIT or Z ] - Exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   read -erp "↪️ Type App-Name to install and Press [ENTER]: " typed </dev/tty
   if [[ $typed == "exit" || $typed == "Exit" || $typed == "EXIT" || $typed  == "z" || $typed == "Z" ]];then clear && interface;fi
   if [[ $typed == "" ]];then clear && install;fi
-  if [[ $typed == "help" || $typed == "HELP" ]];then clear && helplayout;fi
-     buildapp=$(ls -1p /opt/dockserver/apps/${section}/compose/ | $(command -v sed) -e 's/.yml//g' | grep -x $typed)
+     buildapp=$(ls -1p /opt/dockserver/apps/${section}/ | $(command -v sed) -e 's/.yml//g' | grep -x $typed)
   if [[ $buildapp == "" ]];then clear && install;fi
   if [[ $buildapp == $typed ]];then clear && runinstall;fi
-}
-sectionhelplayout() {
-helpshowsection=$(ls -1p /opt/dockserver/apps/.help/ | sed -e 's/.me//g' )
-tee <<-EOF
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀  Help
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-$helpshowsection
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    [ EXIT or Z ] - Exit
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-  read -erp "↪️ Type App-Name to show short informations and Press [ENTER]: " typed </dev/tty
-  if [[ $typed == "exit" || $typed == "Exit" || $typed == "EXIT" || $typed  == "z" || $typed == "Z" ]];then clear && headinterface;fi
-  if [[ $typed == "" ]];then clear && helplayout;fi
-     helpappsection=$(ls -1p /opt/dockserver/apps/.help/ | $(command -v sed) -e 's/.me//g' | grep -x $typed)
-  if [[ $helpappsection == "" ]];then clear && sectionhelplayout;fi
-  if [[ $helpappsection == $typed ]];then clear && showhelpsection;fi
-}
-showhelpsection() {
-showhelptypedsection=$(cat /opt/dockserver/apps/.help/${typed}.me )
-tee <<-EOF
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀  Help for ${typed}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-$showhelptypedsection
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    [ EXIT or Z ] - Exit
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-  read -erp "Confirm Info | PRESS [ENTER] "  typed </dev/tty
-  clear && sectionhelplayout
-}
-helplayout() {
-section=${section}
-helpshow=$(ls -1p /opt/dockserver/apps/${section}/.help/ | sed -e 's/.me//g' )
-tee <<-EOF
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀  Help for ${section}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-$helpshow
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    [ EXIT or Z ] - Exit
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-  read -erp "↪️ Type App-Name to get help and Press [ENTER]: " typed </dev/tty
-  if [[ $typed == "exit" || $typed == "Exit" || $typed == "EXIT" || $typed  == "z" || $typed == "Z" ]];then clear && interface;fi
-  if [[ $typed == "" ]];then clear && helplayout;fi
-     helpapp=$(ls -1p /opt/dockserver/apps/${section}/.help/ | $(command -v sed) -e 's/.me//g' | grep -x $typed)
-  if [[ $helpapp == "" ]];then clear && helplayout;fi
-  if [[ $helpapp == $typed ]];then clear && showhelp;fi
-}
-showhelp() {
-section=${section}
-showhelptyped=$(cat /opt/dockserver/apps/${section}/.help/${typed}.me )
-tee <<-EOF
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀  Help for ${typed}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-$showhelptyped
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    [ EXIT or Z ] - Exit
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-  read -erp "Confirm Info | PRESS [ENTER] " typed </dev/tty
-  clear && helplayout
 }
 ### backup docker ###
 backupstorage() {
@@ -250,7 +173,7 @@ backupall() {
 OPTIONSTAR="--warning=no-file-changed \
   --ignore-failed-read \
   --absolute-names \
-  --exclude-from=/opt/dockserver/apps/.installer/.backup/backup_excludes \
+  --exclude-from=/opt/dockserver/apps/.backup/backup_excludes \
   --warning=no-file-removed \
   --use-compress-program=pigz"
 STORAGE=${storage}
@@ -279,6 +202,11 @@ EOF
    done
    if [[ ${section} == "mediaserver" || ${section} == "mediamanager" ]];then
       $(command -v docker) stop ${typed} 1>/dev/null 2>&1 && echo "We stopped now $typed"
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    🚀  Please Wait it cant take some minutes
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
       $(command -v tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${STORAGE}/${ARCHIVETAR} ./
       $(command -v docker) start ${typed} 1>/dev/null 2>&1  && echo "We started now $typed"
    else
@@ -292,7 +220,7 @@ runbackup() {
 OPTIONSTAR="--warning=no-file-changed \
   --ignore-failed-read \
   --absolute-names \
-  --exclude-from=/opt/dockserver/apps/.installer/.backup/backup_excludes \
+  --exclude-from=/opt/dockserver/apps/.backup/backup_excludes \
   --warning=no-file-removed \
   --use-compress-program=pigz"
 typed=${typed}
@@ -321,6 +249,11 @@ EOF
    done
    if [[ ${section} == "mediaserver" || ${section} == "mediamanager" ]];then
       $(command -v docker) stop ${typed} 1>/dev/null 2>&1 && echo "We stopped now $typed"
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    🚀  Please Wait it cant take some minutes
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
       $(command -v tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${STORAGE}/${ARCHIVETAR} ./
       $(command -v docker) start ${typed} 1>/dev/null 2>&1  && echo "We started now $typed"
    else
@@ -465,17 +398,17 @@ runinstall() {
     Please Wait, We are installing ${typed} for you
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-  if [[ ! -d $basefolder/compose/ ]];then $(command -v mkdir) -p $basefolder/compose/;fi
+  if [[ ! -d $basefolder/ ]];then $(command -v mkdir) -p $basefolder/;fi
   if [[ ! -x $(command -v rsync) ]];then $(command -v apt) install rsync -yqq >/dev/null 2>&1;fi
   if [[ -f $basefolder/$compose ]];then $(command -v rm) -rf $basefolder/$compose;fi
   if [[ -f $basefolder/$composeoverwrite ]];then $(command -v rm) -rf $basefolder/$composeoverwrite;fi
-  if [[ ! -f $basefolder/$compose ]];then $(command -v rsync) $appfolder/${section}/compose/${typed}.yml $basefolder/$compose -aqhv;fi
+  if [[ ! -f $basefolder/$compose ]];then $(command -v rsync) $appfolder/${section}/${typed}.yml $basefolder/$compose -aqhv;fi
   if [[ ! -x $(command -v lshw) ]];then $(command -v apt) install lshw -yqq >/dev/null 2>&1;fi
   if [[ ${section} == "mediaserver" || ${section} == "encoder" ]];then
      gpu="Intel NVIDIA"
      for i in ${gpu};do
         TDV=$(lspci | grep -i --color 'vga\|3d\|2d' | grep -E $i 1>/dev/null 2>&1 && echo true || echo false)
-        if [[ $TDV == "true" ]];then $(command -v rsync) $appfolder/${section}/compose/.gpu/$i.yml $basefolder/$composeoverwrite -aqhv;fi
+        if [[ $TDV == "true" ]];then $(command -v rsync) $appfolder/${section}/.gpu/$i.yml $basefolder/$composeoverwrite -aqhv;fi
      done
      if [[ -f $basefolder/$composeoverwrite ]];then
         if [[ $(uname) == "Darwin" ]];then
@@ -485,7 +418,7 @@ EOF
         fi
      fi
   fi
-  if [[ -f $appfolder/${section}/compose/.overwrite/${typed}.overwrite.yml ]];then $(command -v rsync) $appfolder/${section}/compose/.overwrite/${typed}.overwrite.yml $basefolder/$composeoverwrite -aqhv;fi
+  if [[ -f $appfolder/${section}/.overwrite/${typed}.overwrite.yml ]];then $(command -v rsync) $appfolder/${section}/.overwrite/${typed}.overwrite.yml $basefolder/$composeoverwrite -aqhv;fi
   if [[ ! -d $basefolder/${typed} ]];then
      folder=$basefolder/${typed}
      for i in ${folder}; do
@@ -549,12 +482,12 @@ EOF
      done
   fi
   if [[ ${typed} == "bitwarden" ]];then
-     if [[ -f $appfolder/.subactions/compose/${typed}.sh ]];then $(command -v bash) $appfolder/.subactions/compose/${typed}.sh;fi
+     if [[ -f $appfolder/.subactions/${typed}.sh ]];then $(command -v bash) $appfolder/.subactions/${typed}.sh;fi
   fi
   if [[ ${typed} == "petio" ]];then $(command -v mkdir) -p $basefolder/${typed}/{db,config,logs} && $(command -v chown) -R 1000:1000 $basefolder/${typed}/{db,config,logs} 1>/dev/null 2>&1;fi
   if [[ ${typed} == "tdarr" ]];then $(command -v mkdir) -p $basefolder/${typed}/{server,configs,logs,encoders} && $(command -v chown) -R 1000:1000 $basefolder/${typed}/{server,configs,logs} 1>/dev/null 2>&1;fi
   if [[ -f $basefolder/$compose ]];then
-     $(command -v cd) $basefolder/compose/
+     $(command -v cd) $basefolder/
      $(command -v docker-compose) config 1>/dev/null 2>&1
      errorcode=$?
      if [[ $errorcode -ne 0 ]];then
@@ -589,7 +522,7 @@ EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 else
-  source $basefolder/compose/.env
+  source $basefolder/.env
   tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ${typed} has successfully deployed = > https://${typed}.${DOMAIN}
@@ -643,8 +576,8 @@ autoscancheck() {
 $(docker ps -aq --format={{.Names}} | grep -E 'arr|ple|emb|jelly' 1>/dev/null 2>&1)
 code=$?
 if [[ $code -eq 0 ]];then
-   $(command -v rsync) $appfolder/.subactions/compose/${typed}.config.yml $basefolder/${typed}/config.yml -aqhv
-   $(command -v bash) $appfolder/.subactions/compose/${typed}.sh
+   $(command -v rsync) $appfolder/.subactions/${typed}.config.yml $basefolder/${typed}/config.yml -aqhv
+   $(command -v bash) $appfolder/.subactions/${typed}.sh
 fi
 }
 lubox() {
@@ -691,21 +624,20 @@ typed=${typed}
 section=${section}
 basefolder="/opt/appdata"
 appfolder="/opt/dockserver/apps"
-source $basefolder/compose/.env
+source $basefolder/.env
 authcheck=$($(command -v docker) ps -aq --format '{{.Names}}' | grep -x 'authelia' 1>/dev/null 2>&1 && echo true || echo false)
 conf=$basefolder/authelia/configuration.yml
 confnew=$basefolder/authelia/.new-configuration.yml.new
 confbackup=$basefolder/authelia/.backup-configuration.yml.backup
 authadd=$(cat $conf | grep -E ${typed})
   if [[ ! -x $(command -v ansible) || ! -x $(command -v ansible-playbook) ]];then $(command -v apt) ansible --reinstall -yqq;fi
-  if [[ -f $appfolder/.subactions/compose/${typed}.yml ]];then $(command -v ansible-playbook) $appfolder/.subactions/compose/${typed}.yml;fi
+  if [[ -f $appfolder/.subactions/${typed}.yml ]];then $(command -v ansible-playbook) $appfolder/.subactions/${typed}.yml;fi
      $(grep "model name" /proc/cpuinfo | cut -d ' ' -f3- | head -n1 |grep -qE 'i7|i9' 1>/dev/null 2>&1)
      setcode=$?
      if [[ $setcode -eq 0 ]];then
-        if [[ -f $appfolder/.subactions/compose/${typed}.sh ]];then $(command -v bash) $appfolder/.subactions/compose/${typed}.sh;fi
+        if [[ -f $appfolder/.subactions/${typed}.sh ]];then $(command -v bash) $appfolder/.subactions/${typed}.sh;fi
      fi
   if [[ $authadd == "" ]];then
-     ## section exclude authelia
      if [[ ${section} == "mediaserver" || ${section} == "request" ]];then
      { head -n 38 $conf;
      echo "\
@@ -716,7 +648,6 @@ authadd=$(cat $conf | grep -E ${typed})
         if [[ $authcheck == "true" ]];then $(command -v docker) restart authelia 1>/dev/null 2>&1;fi
         if [[ -f $conf ]];then $(command -v rm) -rf $confnew;fi
      fi
-     ## app exclude authelia 
      if [[ ${typed} == "xteve" || ${typed} == "heimdall" || ${typed} == "librespeed" || ${typed} == "tautulli" || ${typed} == "nextcloud" ]];then
      { head -n 38 $conf;
      echo "\
@@ -754,7 +685,7 @@ deleteapp() {
   typed=${typed}
   basefolder="/opt/appdata"
   storage="/mnt/downloads"
-  source $basefolder/compose/.env
+  source $basefolder/.env
   conf=$basefolder/authelia/configuration.yml
   checktyped=$($(command -v docker) ps -aq --format={{.Names}} | grep -x $typed)
   auth=$(cat -An $conf | grep -x ${typed}.${DOMAIN} | awk '{print $1}')
@@ -794,7 +725,7 @@ EOF
      fi
      if [[ $auth == ${typed} ]];then
         if [[ ! -x $(command -v bc) ]];then $(command -v apt) install bc -yqq 1>/dev/null 2>&1;fi
-           source $basefolder/compose/.env
+           source $basefolder/.env
            authrmapp=$(cat -An $conf | grep -x ${typed}.${DOMAIN})
            authrmapp2=$(echo "$(${authrmapp} + 1)" | bc)
         if [[ $authrmapp != "" ]];then sed -i '${authrmapp};${authrmapp2}d' $conf;fi
@@ -813,23 +744,10 @@ EOF
   fi
 }
 updatecompose() {
-## existing 
-if [[ -x $(command -v docker-compose) ]];then 
-   COMPOSE_VERSION=$($(command -v curl) --silent -fsSL https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)
-   INSTALLED_COMPOSE=$( (docker-compose --version 2> /dev/null || echo "0") | sed -E 's/(\S+ )(version )?([0-9][a-zA-Z0-9_.-]*)(, build .*)?/\3/')
-   if [[ ${INSTALLED_COMPOSE} != ${COMPOSE_VERSION} ]];then
-      sh -c "curl --silent -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose"
-      sh -c "curl --silent -L https://raw.githubusercontent.com/docker/compose/${COMPOSE_VERSION}/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose"
-      if [[ ! -L "/usr/bin/docker-compose" ]];then $(command -v rm) -f /usr/bin/docker-compose && ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose;fi
-      $(command -v chmod) a=rx,u+w /usr/local/bin/docker-compose >/dev/null 2>&1 
-      $(command -v chmod) a=rx,u+w /usr/bin/docker-compose >/dev/null 2>&1
-   fi
-fi
-## not exist
 if [[ ! -x $(command -v docker-compose) ]];then 
-   COMPOSE_VERSION=$($(command -v curl) --silent -fsSL https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)
-   sh -c "curl --silent -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose"
-   sh -c "curl --silent -L https://raw.githubusercontent.com/docker/compose/${COMPOSE_VERSION}/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose"
+   COMPOSE_VERSION=$($(command -v curl) --silent -fsSL https://api.github.com/repos/docker/releases/latest | grep 'tag_name' | cut -d\" -f4)
+   sh -c "curl --silent -L https://github.com/docker/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose"
+   sh -c "curl --silent -L https://raw.githubusercontent.com/docker/${COMPOSE_VERSION}/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose"
    if [[ ! -L "/usr/bin/docker-compose" ]];then $(command -v rm) -f /usr/bin/docker-compose && ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose;fi
    $(command -v chmod) a=rx,u+w /usr/local/bin/docker-compose >/dev/null 2>&1 
    $(command -v chmod) a=rx,u+w /usr/bin/docker-compose >/dev/null 2>&1

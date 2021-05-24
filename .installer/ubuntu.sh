@@ -23,26 +23,22 @@ tee <<-EOF
 EOF
 exit 0
 fi
-while true; do
+while true;do
   $(command -v apt) update -yqq && $(command -v apt) upgrade -yqq
-  clear && headinterface
+  if [ ! -x $(command -v docker) ] && [ ! -x $(command -v docker-compose) ];then clear && install;else clear && headinterface;fi
 done
 }
 selection() {
 LOCATION=${LOCATION}
 cd /opt/dockserver/${LOCATION} && $(command -v bash) install.sh
 }
-headinterface() {
+install() {
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀 DockServer Head Installer [ EASY MODE ]
+    🚀 DockServer Pre Installer
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     
     [ 1 ] DockServer - Preinstallation
-    [ 2 ] DockServer - Traefik + Authelia
-    [ 3 ] DockServer - Applications
-    [ 4 ] DockServer - Google Service Key Builder
-    [ 5 ] DockServer - Rclone Builder [ ALPHA ]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     [ EXIT or Z ] - Exit
@@ -52,14 +48,35 @@ EOF
   read -erp "↘️  Type Number and Press [ENTER]: " headsection </dev/tty
   case $headsection in
     1) clear && LOCATION=preinstall && selection ;;
-    2) clear && LOCATION=traefik && selection ;;
-    3) clear && LOCATION=apps && selection ;;
-    4) clear && LOCATION=gdsa && selection ;;
-    5) clear && LOCATION=rclone && selection ;;
-    #help|HELP|Help) clear && sectionhelplayout ;;
     Z|z|exit|EXIT|Exit|close) exit ;;
     *) clear && appstartup ;;
   esac
 }
-##########
+headinterface() {
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    🚀 DockServer
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    
+    [ 1 ] DockServer - Traefik + Authelia
+    [ 2 ] DockServer - Applications
+    [ 3 ] DockServer - Google Service Key Builder
+    [ 4 ] DockServer - Rclone Builder [ ALPHA ]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    [ EXIT or Z ] - Exit
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+  read -erp "↘️  Type Number and Press [ENTER]: " headsection </dev/tty
+  case $headsection in
+    1) clear && LOCATION=traefik && selection ;;
+    2) clear && LOCATION=apps && selection ;;
+    3) clear && LOCATION=gdsa && selection ;;
+    4) clear && LOCATION=rclone && selection ;;
+    Z|z|exit|EXIT|Exit|close) exit ;;
+    *) clear && appstartup ;;
+  esac
+}
 appstartup
+#EOF

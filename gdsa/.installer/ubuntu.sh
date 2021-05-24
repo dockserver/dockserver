@@ -81,13 +81,12 @@ tee <<-EOF
     [ R ] Remove ServiceKey.env File
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    [ EXIT or Z ] - Exit || [ help or HELP ] - Help
+    [ EXIT or Z ] - Exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   read -erp "↘️  Type R|r and Press [ENTER]: " headsectionforce </dev/tty
   case $headsectionforce in
     R|r|remove|y|Y) clear && remove ;;
-    help|HELP|Help) clear && LOCATION=help && selection ;;
     Z|z|exit|EXIT|Exit|close) clear && interface ;;
     *) appstartup ;;
   esac
@@ -143,10 +142,10 @@ tee <<-EOF
 
     [ 1 ] Google ServiceKey Builder   || UNENCRYPTED
     [ 2 ] Google ServiceKey Builder   || ENCRYPTED
-    [ 3 ] Remove ServiceKey.env       || Force Reset
+    [ 3 ] Remove ServiceKey           || Force Reset
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    [ EXIT or Z ] - Exit || [ help or HELP ] - Help
+    [ EXIT or Z ] - Exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   read -erp "↘️  Type Number and Press [ENTER]: " headsection </dev/tty
@@ -154,7 +153,6 @@ EOF
     1) clear && LOCATION=case1 && selection ;;
     2) clear && LOCATION=case2 && selection;;
     3) clear && forcereset ;;
-    help|HELP|Help) clear && LOCATION=help && selection ;;
     Z|z|exit|EXIT|Exit|close) exit ;;
     *) appstartup ;;
   esac

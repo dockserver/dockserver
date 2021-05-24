@@ -30,6 +30,34 @@ EOF
 exit 0
 fi
 while true; do
+  installed=$($(command -v docker) ps -aq --format '{{.Names}}' | grep -x 'traefik')
+  if [[ $installed == 'traefik' ]];then useraction;else notrunning;fi
+  break
+done
+interface
+}
+########## FUNCTIONS START
+useraction() {
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        We found a running Treafik Docker
+
+  [ Y ] Force Reset              ( clean Deploy )
+  [ N ] No, its a mistake        ( Back to Head Menu )
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [ EXIT or Z ] - Exit
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+   read -erp "Are you sure ?: " uaction </dev/tty
+   case $uaction in
+    y|Y) clear && notrunning ;;
+    n|N) clear && exit;;
+    Z|z|exit|EXIT|Exit|close) exit ;;
+    *) useraction ;;
+  esac
+}
+notrunning() {
   basefolder="/opt/appdata"
   source="/opt/dockserver/traefik/templates/"
   if [[ ! -x $(command -v rsync) ]];then $(command -v apt) install --reinstall rsync -yqq 1>/dev/null 2>&1;fi
@@ -41,11 +69,7 @@ while true; do
       $(command -v touch) $i/traefik/acme/acme.json $i/traefik/traefik.log $i/authelia/authelia.log
       $(command -v chmod) 600 $i/traefik/traefik.log $i/authelia/authelia.log $i/traefik/acme/acme.json
   done 
-  break
-done
-interface
 }
-########## FUNCTIONS START
 domain() {
 basefolder="/opt/appdata"
 tee <<-EOF
