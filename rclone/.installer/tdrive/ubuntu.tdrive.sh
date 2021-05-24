@@ -234,7 +234,18 @@ teamdriveid() {
 basefolder="/opt/appdata"
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
     🚀   Team Drive ID
+
+    https://drive.google.com/drive/u/1/shared-drives
+
+    Click on the Shared Drive !
+
+    In the Link its shows behind /folders/<ID HERE>
+
+    The Shared Drive ID !!
+ 
+    Please dont use the name of the Shared Drive   
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
    read -erp "Enter your Team Drive ID: " TDID </dev/tty
