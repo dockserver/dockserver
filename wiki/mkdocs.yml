@@ -175,6 +175,7 @@ nav:
       - Librespeed: apps/addons/librespeed.md
       - NetData: apps/addons/netdata.md
       - Remmina: apps/addons/remmina.md
+      - Tauticord : apps/addons/tauticord.md
       - Speedtest: apps/addons/speedtest.md
       - vnstat: apps/addons/vnstat.md
       - Dozzle: apps/addons/dozzle.md
