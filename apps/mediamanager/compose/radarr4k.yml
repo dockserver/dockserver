@@ -10,6 +10,8 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=022'
+      - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:radarr'
+      - 'TP_ADDON=radarr-4k-logo'
     image: 'ghcr.io/linuxserver/radarr:nightly'
     restart: 'unless-stopped'
     ports:
