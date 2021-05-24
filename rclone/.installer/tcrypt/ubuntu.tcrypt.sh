@@ -318,6 +318,8 @@ sleep 10 && clear && interface
 fi
 }
 interface() {
+basefolder="/opt/appdata"
+source $basefolder/system/rclone/.env
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Shared Drive  || UNENCRYPTED
