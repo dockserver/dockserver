@@ -19,8 +19,6 @@ services:
     image: 'ghcr.io/dockserver/docker-traktarr:latest'
     restart: 'unless-stopped'
     labels:
-      - 'traefik.enable=true'
-      - 'traefik.docker.network=proxy'
       - 'dockupdater.enable=true'
     networks:
       - proxy
