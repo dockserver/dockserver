@@ -23,7 +23,7 @@ services:
       - 'no-new-privileges:true'
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
-      - '/opt/appdata/system:/system:rw'
+      - '/opt/appdata/mount:/config:rw'
       - '/mnt:/mnt:shared'
       - '/var/run/docker.sock:/var/run/docker.sock'
     labels:
