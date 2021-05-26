@@ -182,7 +182,7 @@ else
 fi
 }
 showsettings() {
-source /opt/appdata/.env
+source /opt/appdata/compose/.env
 arr=$($(command -v docker) ps -aq --format={{.Names}} | grep -E 'arr' 1>/dev/null 2>&1 && echo true || echo false)
 if [[ $arr == "true" ]];then
 tee <<-EOF
@@ -278,7 +278,7 @@ read -erp "Confirm Info | PRESS [ENTER]" typed </dev/tty
 fi
 }
 showending() {
-source /opt/appdata/.env
+source /opt/appdata/compose/.env
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      🚀   autoscan Details
