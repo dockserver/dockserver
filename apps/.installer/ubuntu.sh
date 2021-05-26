@@ -210,7 +210,7 @@ EOF
       $(command -v tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${STORAGE}/${ARCHIVETAR} ./
       $(command -v docker) start ${typed} 1>/dev/null 2>&1  && echo "We started now $typed"
    else
-	  $(command -v tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${STORAGE}/${ARCHIVETAR} ./
+       $(command -v tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${STORAGE}/${ARCHIVETAR} ./
    fi
       $(command -v chown) -hR 1000:1000 ${DESTINATION}/${STORAGE}/${ARCHIVETAR}
 done
@@ -257,7 +257,7 @@ EOF
       $(command -v tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${STORAGE}/${ARCHIVETAR} ./
       $(command -v docker) start ${typed} 1>/dev/null 2>&1  && echo "We started now $typed"
    else
-	  $(command -v tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${STORAGE}/${ARCHIVETAR} ./
+      $(command -v tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${STORAGE}/${ARCHIVETAR} ./
    fi
       $(command -v chown) -hR 1000:1000 ${DESTINATION}/${STORAGE}/${ARCHIVETAR}
    clear && backupdocker
@@ -624,7 +624,7 @@ typed=${typed}
 section=${section}
 basefolder="/opt/appdata"
 appfolder="/opt/dockserver/apps"
-source $basefolder/.env
+source $basefolder/compose/.env
 authcheck=$($(command -v docker) ps -aq --format '{{.Names}}' | grep -x 'authelia' 1>/dev/null 2>&1 && echo true || echo false)
 conf=$basefolder/authelia/configuration.yml
 confnew=$basefolder/authelia/.new-configuration.yml.new
@@ -685,7 +685,7 @@ deleteapp() {
   typed=${typed}
   basefolder="/opt/appdata"
   storage="/mnt/downloads"
-  source $basefolder/.env
+  source $basefolder/compose/.env
   conf=$basefolder/authelia/configuration.yml
   checktyped=$($(command -v docker) ps -aq --format={{.Names}} | grep -x $typed)
   auth=$(cat -An $conf | grep -x ${typed}.${DOMAIN} | awk '{print $1}')
@@ -725,7 +725,7 @@ EOF
      fi
      if [[ $auth == ${typed} ]];then
         if [[ ! -x $(command -v bc) ]];then $(command -v apt) install bc -yqq 1>/dev/null 2>&1;fi
-           source $basefolder/.env
+           source $basefolder/compose/.env
            authrmapp=$(cat -An $conf | grep -x ${typed}.${DOMAIN})
            authrmapp2=$(echo "$(${authrmapp} + 1)" | bc)
         if [[ $authrmapp != "" ]];then sed -i '${authrmapp};${authrmapp2}d' $conf;fi
