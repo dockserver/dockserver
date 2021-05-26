@@ -2,7 +2,7 @@
 # shellcheck shell=bash
 # Copyright (c) 2020, MrDoob
 # All rights reserved.
-source /opt/appdata/.env
+source /opt/appdata/compose/.env
 basefolder="/opt/appdata"
 f2banfilter="/etc/fail2ban/filter.d"
 f2banjail="/etc/fail2ban/jail.d"
