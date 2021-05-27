@@ -25,33 +25,13 @@ exit 0
 fi
 while true;do
   $(command -v apt) update -yqq && $(command -v apt) upgrade -yqq
-  if [[ ! -x $(command -v docker) ]] && [[ ! -x $(command -v docker-compose) ]];then clear && install;fi
+  if [[ ! -x $(command -v docker) ]] && [[ ! -x $(command -v docker-compose) ]];then clear && LOCATION=preinstall && selection;fi
   if [[ -x $(command -v docker) ]] && [[ -x $(command -v docker-compose) ]];then clear && headinterface;fi
 done
 }
 selection() {
 LOCATION=${LOCATION}
 cd /opt/dockserver/${LOCATION} && $(command -v bash) install.sh
-}
-install() {
-tee <<-EOF
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀 DockServer Pre Installer
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    
-    [ 1 ] DockServer - Preinstallation
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    [ EXIT or Z ] - Exit
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-
-  read -erp "↘️  Type Number and Press [ENTER]: " headsection </dev/tty
-  case $headsection in
-    1) clear && LOCATION=preinstall && selection ;;
-    Z|z|exit|EXIT|Exit|close) exit ;;
-    *) clear && appstartup ;;
-  esac
 }
 headinterface() {
 tee <<-EOF
