@@ -398,7 +398,7 @@ runinstall() {
     Please Wait, We are installing ${typed} for you
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-  if [[ ! -d $basefolder/ ]];then $(command -v mkdir) -p $basefolder/;fi
+  if [[ ! -d $basefolder/compose/ ]];then $(command -v mkdir) -p $basefolder/compose/;fi
   if [[ ! -x $(command -v rsync) ]];then $(command -v apt) install rsync -yqq >/dev/null 2>&1;fi
   if [[ -f $basefolder/$compose ]];then $(command -v rm) -rf $basefolder/$compose;fi
   if [[ -f $basefolder/$composeoverwrite ]];then $(command -v rm) -rf $basefolder/$composeoverwrite;fi
