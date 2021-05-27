@@ -30,23 +30,18 @@ EOF
 exit 0
 fi
 while true; do
-  #installed=$($(command -v docker) ps -aq --format '{{.Names}}' | wc -l )
-  #if [[ $installed == "0" ]];then
-  #   notrunning 
-  #else
-     useraction
-  #fi
+  installed=$($(command -v docker) ps -aq --format '{{.Names}}' | grep -x 'traefik' )
+  if [[ $installed == "" ]];then notrunning;else useraction;fi
   break
 done
-#interface
 }
 ########## FUNCTIONS START
 useraction() {
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  [ Y ] Force Reset | New Install         ( clean Deploy )
-  [ N ] No, its a mistake                 ( Back to Head Menu )
+  [ Y ] Force Reset         ( clean Deploy )
+  [ N ] No, its a mistake   ( Back to Head Menu )
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   [ EXIT or Z ] - Exit
@@ -71,7 +66,8 @@ notrunning() {
       $(command -v find) $i/{authelia,traefik,compose} -exec $(command -v chown) -hR 1000:1000 {} \;
       $(command -v touch) $i/traefik/acme/acme.json $i/traefik/traefik.log $i/authelia/authelia.log
       $(command -v chmod) 600 $i/traefik/traefik.log $i/authelia/authelia.log $i/traefik/acme/acme.json
-  done 
+  done
+interface
 }
 domain() {
 basefolder="/opt/appdata"
