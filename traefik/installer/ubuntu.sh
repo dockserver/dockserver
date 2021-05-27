@@ -30,20 +30,23 @@ EOF
 exit 0
 fi
 while true; do
-  installed=$($(command -v docker) ps -aq --format '{{.Names}}' | grep -x 'traefik')
-  if [[ $installed == 'traefik' ]];then useraction;else notrunning;fi
+  #installed=$($(command -v docker) ps -aq --format '{{.Names}}' | wc -l )
+  #if [[ $installed == "0" ]];then
+  #   notrunning 
+  #else
+     useraction
+  #fi
   break
 done
-interface
+#interface
 }
 ########## FUNCTIONS START
 useraction() {
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        We found a running Treafik Docker
 
-  [ Y ] Force Reset              ( clean Deploy )
-  [ N ] No, its a mistake        ( Back to Head Menu )
+  [ Y ] Force Reset | New Install         ( clean Deploy )
+  [ N ] No, its a mistake                 ( Back to Head Menu )
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   [ EXIT or Z ] - Exit
