@@ -25,7 +25,8 @@ exit 0
 fi
 while true;do
   $(command -v apt) update -yqq && $(command -v apt) upgrade -yqq
-  if [ ! -x $(command -v docker) ] && [ ! -x $(command -v docker-compose) ];then clear && install;else clear && headinterface;fi
+  if [[ ! -x $(command -v docker) ]] && [[ ! -x $(command -v docker-compose) ]];then clear && install;fi
+  if [[ -x $(command -v docker) ]] && [[ -x $(command -v docker-compose) ]];then clear && headinterface;fi
 done
 }
 selection() {
