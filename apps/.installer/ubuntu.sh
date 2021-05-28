@@ -193,12 +193,11 @@ EOF
    for fc in ${forcepush};do
        $(command -v apt) install $fc --reinstall -yqq 1>/dev/null 2>&1 && sleep 1
    done
-   appfolder=/opt/dockserver/apps
-   HEADSECTION=${HEADSECTION:-/}
+   appfolder=/opt/dockserver/apps/
    IGNORE="! -path '**.subactions/**'"
    mapfile -t files < <(eval find ${appfolder} -type f -name $typed.yml ${IGNORE})
    for i in "${files[@]}"; do
-       section=$(dirname "${i}" | sed "s#${appfolder}${HEADSECTION}##g" | sed 's/[[:alnum:]]*$//' | $(command -v sed) 's/\/$//')
+       section=$(dirname "${i}" | sed "s#${appfolder}##g" | sed 's/\/$//')
    done
    if [[ ${section} == "mediaserver" || ${section} == "mediamanager" ]];then
       $(command -v docker) stop ${typed} 1>/dev/null 2>&1 && echo "We stopped now $typed"
@@ -240,12 +239,11 @@ EOF
    for fc in ${forcepush};do
        $(command -v apt) install $fc --reinstall -yqq 1>/dev/null 2>&1 && sleep 1
    done
-   appfolder=/opt/dockserver/apps
-   HEADSECTION=${HEADSECTION:-/}
+   appfolder=/opt/dockserver/apps/
    IGNORE="! -path '**.subactions/**'"
    mapfile -t files < <(eval find ${appfolder} -type f -name $typed.yml ${IGNORE})
    for i in "${files[@]}"; do
-      section=$(dirname "${i}" | sed "s#${appfolder}${HEADSECTION}##g" | sed 's/[[:alnum:]]*$//' | $(command -v sed) 's/\/$//')
+       section=$(dirname "${i}" | sed "s#${appfolder}##g" | sed 's/\/$//')
    done
    if [[ ${section} == "mediaserver" || ${section} == "mediamanager" ]];then
       $(command -v docker) stop ${typed} 1>/dev/null 2>&1 && echo "We stopped now $typed"
@@ -368,12 +366,11 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
    $(command -v unpigz) -dcqp 8 ${DESTINATION}/${STORAGE}/${ARCHIVETAR} | $(command -v pv) -pterb | $(command -v tar) pxf - -C ${FOLDER}/${ARCHIVE} --strip-components=1
-   appfolder=/opt/dockserver/apps
-   HEADSECTION=${HEADSECTION:-/}
+   appfolder=/opt/dockserver/apps/
    IGNORE="! -path '**.subactions/**'"
    mapfile -t files < <(eval find ${appfolder} -type f -name $typed.yml ${IGNORE})
    for i in "${files[@]}"; do
-       section=$(dirname "${i}" | sed "s#${appfolder}${HEADSECTION}##g" | sed 's/[[:alnum:]]*$//' | $(command -v sed) 's/\/$//')
+       section=$(dirname "${i}" | sed "s#${appfolder}##g" | sed 's/\/$//')
    done
    section=${section}
    typed=${typed}
