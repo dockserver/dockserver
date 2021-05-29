@@ -14,7 +14,7 @@ services:
       - 'SERVER_ID=SERVER_ID'
       - 'RSYNC_COMPRESS_LEVEL=2'
       - 'SET_CONTAINER_TIMEZONE=true'
-    image: 'ghcr.io/doob187/docker-backup:latest'
+    image: 'ghcr.io/dockserver/docker-rsync-backup:latest'
     restart: 'unless-stopped'
     labels:
       - 'traefik.enable=true'
