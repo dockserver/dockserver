@@ -23,7 +23,7 @@ services:
     networks:
       - proxy
     volumes:
-      - '/opt/appdata/rsync-backup:/config:rw'
+      - '/opt/appdata/backup:/config:rw'
       - '/opt/appdata/:/home'
       - '/opt/backup:/backup'
       - '/etc/locatime:/etc/localtime:ro'
