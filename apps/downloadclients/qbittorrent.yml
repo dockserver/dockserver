@@ -20,7 +20,7 @@ services:
       - '7889:7889'
       - '127.0.0.1:8083:8080'
     volumes:
-      - '/opt/appdata/qbittorrent:/config:rw'
+      - '/opt/appdata/qbittorrentvpn:/config:rw'
       - 'unionfs:/mnt'
     labels:
       - 'traefik.enable=true'
