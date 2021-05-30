@@ -1,19 +1,19 @@
 #!/bin/ansible-playbook
 #
-# Title:      Qbittorrent Subtask
+# Title:      qBittorrentvpn Subtask
 # Author(s):  DrAg0n141
 # GNU:        General Public License v3.0
 ################################################################################
   - hosts: localhost
     tasks:
-      - name: Create Qbittorrent Folder
+      - name: Create qBittorrentvpn Folder
         file:
           dest: "/opt/appdata/qbittorrentvpn"
           state: directory
           owner: 1000
           group: 1000
 
-      - name: Create Qbittorrent ENV File
+      - name: Create qBittorrentvpn ENV File
         copy:
           dest: "/opt/appdata/qbittorrentvpn/qbittorrentvpn.env"
           owner: 1000
