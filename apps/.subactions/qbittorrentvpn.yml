@@ -1,0 +1,39 @@
+#!/bin/ansible-playbook
+#
+# Title:      Qbittorrent Subtask
+# Author(s):  DrAg0n141
+# GNU:        General Public License v3.0
+################################################################################
+  - hosts: localhost
+    tasks:
+      - name: Create Qbittorrent Folder
+        file:
+          dest: "/opt/appdata/qbittorrent"
+          state: directory
+          owner: 1000
+          group: 1000
+
+      - name: Create Qbittorrent ENV File
+        copy:
+          dest: "/opt/appdata/qbittorrent/qbittorrent.env"
+          owner: 1000
+          group: 1000
+          content: |
+            'PGID=${ID}'
+            'PUID=${ID}'
+            'TZ=${TZ}'
+            'UMASK=022'
+            'WEBUI_PORT=8080'
+            'DEBUG=false'
+            'VPN_ENABLED=<yes|no>'
+            'VPN_USER=<vpn username>'
+            'VPN_PASS=<vpn password>'
+            'VPN_PROV=<pia|airvpn|custom>'
+            'VPN_CLIENT=<openvpn|wireguard>'
+            'VPN_OPTIONS=<additional openvpn cli options>'
+            'STRICT_PORT_FORWARD=<yes|no>'
+            'ENABLE_PRIVOXY=<yes|no>'
+            'LAN_NETWORK=<lan ipv4 network>/<cidr notation>'
+            'NAME_SERVERS=209.222.18.222,84.200.69.80,37.235.1.174,1.1.1.1,209.222.18.218,37.235.1.177,84.200.70.40,1.0.0.1'
+            'VPN_INPUT_PORTS=<input port>'
+            'VPN_OUTPUT_PORTS=<output port>'
