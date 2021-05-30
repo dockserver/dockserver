@@ -2,13 +2,13 @@
 version: '3'
 
 services:
-  qbittorrent:
+  qbittorrentvpn:
     cap_add:
       - 'NET_ADMIN'
-    hostname: 'qbittorrent'
-    container_name: 'qbittorrent'
+    hostname: 'qbittorrentvpnvpn'
+    container_name: 'qbittorrentvpn'
     env_file:
-      - /opt/appdata/qbittorrent/qbittorrent.env
+      - /opt/appdata/qbittorrentvpn/qbittorrentvpn.env
     image: 'binhex/arch-qbittorrentvpn:latest'
     restart: 'unless-stopped'
     ports:
@@ -21,22 +21,29 @@ services:
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/qbittorrent/data:/data:rw'
-      - '/opt/appdata/qbittorrent/config:/config:rw'
+      - '/opt/appdata/qbittorrentvpn/data:/data:rw'
+      - '/opt/appdata/qbittorrentvpn/config:/config:rw'
+      - 'unionfs:/mnt'
       - '/etc/localtime:/etc/localtime:ro'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'
       - 'dockupdater.enable=true'
-      - 'traefik.http.routers.qbittorrent-rtr.entrypoints=https'
-      - 'traefik.http.routers.qbittorrent-rtr.rule=Host(`qbittorrent.${DOMAIN}`)'
-      - 'traefik.http.routers.qbittorrent-rtr.tls=true'
-      - 'traefik.http.routers.qbittorrent-rtr.tls.certresolver=dns-cloudflare'
-      - 'traefik.http.routers.qbittorrent-rtr.middlewares=chain-authelia@file'
-      - 'traefik.http.routers.qbittorrent-rtr.service=qbittorrent-svc'
-      - 'traefik.http.services.qbittorrent-svc.loadbalancer.server.port=8080'
+      - 'traefik.http.routers.qbittorrentvpn-rtr.entrypoints=https'
+      - 'traefik.http.routers.qbittorrentvpn-rtr.rule=Host(`qbittorrentvpn.${DOMAIN}`)'
+      - 'traefik.http.routers.qbittorrentvpn-rtr.tls=true'
+      - 'traefik.http.routers.qbittorrentvpn-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.qbittorrentvpn-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.qbittorrentvpn-rtr.service=qbittorrentvpn-svc'
+      - 'traefik.http.services.qbittorrentvpn-svc.loadbalancer.server.port=8080'
 
 networks:
   proxy:
     driver: bridge
     external: true
+    
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt
