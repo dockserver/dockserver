@@ -1,0 +1,42 @@
+---
+version: '3'
+
+services:
+  qbittorrent:
+    cap_add:
+      - 'NET_ADMIN'
+    hostname: 'qbittorrent'
+    container_name: 'qbittorrent'
+    env_file:
+      - /opt/appdata/qbittorrent/qbittorrent.env
+    image: 'binhex/arch-qbittorrentvpn:latest'
+    restart: 'unless-stopped'
+    ports:
+      - '6881:6881'
+      - '6881:6881/udp'
+      - '127.0.0.1:6498:8080'
+      - '127.0.0.1:6499:8081'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/opt/appdata/qbittorrent/data:/data:rw'
+      - '/opt/appdata/qbittorrent/config:/config:rw'
+      - '/etc/localtime:/etc/localtime:ro'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.qbittorrent-rtr.entrypoints=https'
+      - 'traefik.http.routers.qbittorrent-rtr.rule=Host(`qbittorrent.${DOMAIN}`)'
+      - 'traefik.http.routers.qbittorrent-rtr.tls=true'
+      - 'traefik.http.routers.qbittorrent-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.qbittorrent-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.qbittorrent-rtr.service=qbittorrent-svc'
+      - 'traefik.http.services.qbittorrent-svc.loadbalancer.server.port=8080'
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
