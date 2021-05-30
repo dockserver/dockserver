@@ -8,14 +8,14 @@
     tasks:
       - name: Create Qbittorrent Folder
         file:
-          dest: "/opt/appdata/qbittorrent"
+          dest: "/opt/appdata/qbittorrentvpn"
           state: directory
           owner: 1000
           group: 1000
 
       - name: Create Qbittorrent ENV File
         copy:
-          dest: "/opt/appdata/qbittorrent/qbittorrent.env"
+          dest: "/opt/appdata/qbittorrentvpn/qbittorrentvpn.env"
           owner: 1000
           group: 1000
           content: |
