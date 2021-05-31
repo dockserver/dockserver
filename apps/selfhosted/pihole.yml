@@ -30,8 +30,8 @@ services:
     restart: unless-stopped
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /opt/appdata/pihole/dnsmasq.d:/etc/dnsmasq.d
-      - /opt/appdata/pihole/pihole:/etc/pihole
+      - ${APPFOLDER}/pihole/dnsmasq.d:/etc/dnsmasq.d
+      - ${APPFOLDER}/pihole/pihole:/etc/pihole
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'

@@ -8,21 +8,21 @@ services:
     hostname: 'qbittorrentvpnvpn'
     container_name: 'qbittorrentvpn'
     env_file:
-      - /opt/appdata/qbittorrentvpn/qbittorrentvpn.env
+      - ${APPFOLDER}/qbittorrentvpn/qbittorrentvpn.env
     image: 'binhex/arch-qbittorrentvpn:latest'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
       - '6881:6881'
       - '6881:6881/udp'
-      - '127.0.0.1:6498:8080'
-      - '127.0.0.1:6499:8118'
+      - '${PORTBLOCK}:6498:8080'
+      - '${PORTBLOCK}:6499:8118'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/qbittorrentvpn/data:/data:rw'
-      - '/opt/appdata/qbittorrentvpn/config:/config:rw'
+      - '${APPFOLDER}/qbittorrentvpn/data:/data:rw'
+      - '${APPFOLDER}/qbittorrentvpn/config:/config:rw'
       - 'unionfs:/mnt'
       - '/etc/localtime:/etc/localtime:ro'
     labels:

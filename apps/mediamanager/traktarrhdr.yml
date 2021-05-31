@@ -17,7 +17,7 @@ services:
       - 'SKIPUPDATE=no'
       - 'APP_BRANCH=master'
     image: 'ghcr.io/dockserver/docker-traktarr:latest'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     labels:
       - 'dockupdater.enable=true'
     networks:
@@ -25,7 +25,7 @@ services:
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/traktarrhdr:/config:rw'
+      - '${APPFOLDER}/traktarrhdr:/config:rw'
 networks:
   proxy:
     driver: bridge

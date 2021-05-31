@@ -8,17 +8,17 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
     image: 'gotify/server'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:8649:80'
+      - '${PORTBLOCK}:8649:80'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/gotify:/app/data:rw'
+      - '${APPFOLDER}/gotify:/app/data:rw'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'

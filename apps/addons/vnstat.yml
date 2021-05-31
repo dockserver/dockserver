@@ -11,9 +11,9 @@ services:
     image: 'ghcr.io/dockserver/docker-vnstat:latest'
     networks:
       - proxy
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:8090:80'
+      - '${PORTBLOCK}:8090:80'
     volumes:
       - '/usr/bin/vnstat:/usr/bin/vnstat'
       - '/var/lib/vnstat:/var/lib/vnstat'

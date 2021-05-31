@@ -4,14 +4,14 @@ services:
   portainer:
     container_name: 'portainer'
     image: 'portainer/portainer-ce:latest'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
       - '/var/run/docker.sock:/var/run/docker.sock:ro'
-      - '/opt/appdata/portainer:/data'
+      - '${APPFOLDER}/portainer:/data'
     environment:
       - 'PGID=${ID}'
       - 'PUID=${ID}'

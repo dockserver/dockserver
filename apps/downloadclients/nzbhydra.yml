@@ -8,17 +8,17 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
     image: 'ghcr.io/linuxserver/nzbhydra2'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:5076:5076'
+      - '${PORTBLOCK}:5076:5076'
     networks:
       - 'proxy'
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/nzbhydra:/config:rw'
+      - '${APPFOLDER}/nzbhydra:/config:rw'
       - 'unionfs:/mnt'
     labels:
       - 'traefik.enable=true'

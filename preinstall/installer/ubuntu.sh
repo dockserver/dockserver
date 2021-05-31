@@ -167,7 +167,6 @@ maxretry = 2
 bantime = 90d
 findtime = 7d
 chain = DOCKER-USER">> /etc/fail2ban/jail.local
-  ##traefik access.log banner
   sed -i "s#/var/log/traefik/access.log#/opt/appdata/traefik/traefik.log#g" /etc/fail2ban/jail.local
   sed -i "s#rotate 4#rotate 1#g" /etc/logrotate.conf
   sed -i "s#weekly#daily#g" /etc/logrotate.conf

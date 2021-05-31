@@ -9,15 +9,15 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
     image: 'darkalfx/requestrr:latest'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:4546:4545'
+      - '${PORTBLOCK}:4546:4545'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/requestrr4k:/root/config:rw'
+      - '${APPFOLDER}/requestrr4k:/root/config:rw'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'

@@ -8,19 +8,19 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
       - 'MAX_UPLOAD=<5000>'
     image: 'ghcr.io/linuxserver/projectsend'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:5555:80'
+      - '${PORTBLOCK}:5555:80'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/projectsend:/config:rw'
-      - '/opt/appdata/projectsend:/data:rw'
+      - '${APPFOLDER}/projectsend:/config:rw'
+      - '${APPFOLDER}/projectsend:/data:rw'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'

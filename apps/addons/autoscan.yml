@@ -10,16 +10,16 @@ services:
       - 'TZ=${TZ}'
       - 'AUTOSCAN_VERBOSITY=0'
     image: 'cloudb0x/autoscan:master'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:3030:3030'
+      - '${PORTBLOCK}:3030:3030'
     networks:
       - proxy
     volumes:
-      - '/opt/appdata/autoscan:/config:rw'
-      - '/opt/appdata/plex:/data/plex:ro'
-      - '/opt/appdata/emby:/data/emby:ro'
-      - '/opt/appdata/jellyfin:/data/jellyfin:ro'
+      - '${APPFOLDER}/autoscan:/config:rw'
+      - '${APPFOLDER}/plex:/data/plex:ro'
+      - '${APPFOLDER}/emby:/data/emby:ro'
+      - '${APPFOLDER}/jellyfin:/data/jellyfin:ro'
       - 'unionfs:/mnt'
       - '/etc/locatime:/etc/localtime:ro'
     labels:

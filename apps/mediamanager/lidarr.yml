@@ -8,17 +8,17 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
     image: 'ghcr.io/linuxserver/lidarr:nightly'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:8686:8686'
+      - '${PORTBLOCK}:8686:8686'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/lidarr:/config:rw'
+      - '${APPFOLDER}/lidarr:/config:rw'
       - 'unionfs:/mnt'
     labels:
       - 'traefik.enable=true'

@@ -5,19 +5,19 @@ services:
     hostname: 'librespeed'
     image: 'ghcr.io/linuxserver/librespeed'
     container_name: 'librespeed'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     environment:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
       - 'CUSTOM_RESULTS=true'
     volumes:
       - librespeed:/config
     networks:
       - proxy
     ports:
-      - '127.0.0.1:8900:80'
+      - '${PORTBLOCK}:8900:80'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'

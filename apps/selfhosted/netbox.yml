@@ -14,10 +14,9 @@ services:
     image: 'postgres:13-alpine'
     networks:
       - default
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     volumes:
-      - '/opt/appdata/netbox/postgresql:/var/lib/postgresql/data'
-      
+      - '${APPFOLDER}/netbox/postgresql:/var/lib/postgresql/data'
   redis_netbox:
     hostname: 'redis_netbox'
     container_name: 'redis_netbox'
@@ -29,7 +28,7 @@ services:
     image: 'bitnami/redis'
     networks:
       - default
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
   netbox:
     hostname: 'netbox'
     container_name: 'netbox'
@@ -40,7 +39,7 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
       - 'ALLOWED_HOST=netbox.${DOMAIN}'
       - 'SUPERUSER_EMAIL=admin@admin.io'
       - 'SUPERUSER_PASSWORD=superpw'
@@ -52,11 +51,11 @@ services:
       - 'REDIS_PORT=6379'
       - 'DB_PASSWORD=netboxpw'
     image: 'ghcr.io/linuxserver/netbox'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     volumes:
-      - '/opt/appdata/netbox/config:/config'
+      - '${APPFOLDER}/netbox/config:/config'
     ports:
-      - '127.0.0.1:8925:8000'
+      - '${PORTBLOCK}:8925:8000'
     networks:
       - proxy
       - default

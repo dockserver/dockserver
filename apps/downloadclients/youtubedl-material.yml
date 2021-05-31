@@ -7,22 +7,22 @@ services:
     environment:
       - 'WRITE_YTDL_CONFIG=true'
       - 'ALLOW_CONFIG_MUTATIONS=true'
-      - 'YTDL_UMASK=022'
+      - 'YTDL_UMASK=${UMASK}'
       - 'UID=${ID}'
       - 'GID=${ID}'
     image: 'tzahi12345/youtubedl-material:latest'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:8998:17442'
+      - '${PORTBLOCK}:8998:17442'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/youtubedl-material/appdata:/app/appdata'
-      - '/opt/appdata/youtubedl-material/audio:/app/audio'
-      - '/opt/appdata/youtubedl-material/video:/app/video'
-      - '/opt/appdata/youtubedl-material/subscriptions:/app/subscriptions'
+      - '${APPFOLDER}/youtubedl-material/appdata:/app/appdata'
+      - '${APPFOLDER}/youtubedl-material/audio:/app/audio'
+      - '${APPFOLDER}/youtubedl-material/video:/app/video'
+      - '${APPFOLDER}/youtubedl-material/subscriptions:/app/subscriptions'
       - '/mnt/downloads/youtubedl:/app/users'
       - 'unionfs:/mnt'
     labels:

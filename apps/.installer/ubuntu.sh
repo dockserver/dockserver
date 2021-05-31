@@ -385,6 +385,7 @@ runinstall() {
   section=${section}
   typed=${typed}
   updatecompose
+  migrateenv
   compose="compose/docker-compose.yml"
   composeoverwrite="compose/docker-compose.override.yml"
   storage="/mnt/downloads"
@@ -750,6 +751,31 @@ if [[ ! -x $(command -v docker-compose) ]];then
    $(command -v chmod) a=rx,u+w /usr/bin/docker-compose >/dev/null 2>&1
 fi
 }
+
+migrateenv() {
+basefolder="/opt/appdata"
+env=$(cat /opt/appdata/compose/.env | wc -l)
+source $basefolder/compose/.env
+if [[ $env -le "16" ]];then
+echo -e "##Environment for Docker-Compose
+
+##TRAEFIK
+CLOUDFLARE_EMAIL=CF-EMAIL
+CLOUDFLARE_API_KEY=CF-API-KEY
+DOMAIN1_ZONE_ID=CF-ZONE_ID
+DOMAIN=${DOMAIN}
+
+##APPPART
+TZ=${TZ}
+ID=${ID:-1000}
+SERVERIP=${SERVERIP}
+APPFOLDER=/opt/appdata
+RESTARTAPP=${RESTARTAPP:-unless-stopped}
+UMASK=${UMASK:-022}
+PORTBLOCK=${PORTBLOCK:-127.0.0.1}" >$basefolder/compose/.env
+fi
+}
+
 ##########
 lubox
 appstartup

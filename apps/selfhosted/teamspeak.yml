@@ -8,10 +8,10 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
       - 'TS3SERVER_LICENSE=accept'
     image: 'teamspeak'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
       - '9987:9987/udp'
       - '10011:10011'
@@ -21,7 +21,7 @@ services:
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/teamspeak:/var/ts3server/:rw'
+      - '${APPFOLDER}/teamspeak:/var/ts3server/:rw'
     labels:
       - 'dockupdater.enable=true'
 networks:

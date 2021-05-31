@@ -8,11 +8,11 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
       - 'DOCKER_MODS=linuxserver/mods:jellyfin-opencl-intel'
       - 'JELLYFIN_PublishedServerUrl=${SERVERIP_ID}'
     image: 'ghcr.io/linuxserver/jellyfin:latest'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     networks:
       - proxy
     security_opt:
@@ -28,9 +28,10 @@ services:
         mode: host
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
-      - 'tmpfs:/transcode:rw'
-      - '/opt/appdata/jellyfin:/config:rw'
+      - '${APPFOLDER}/jellyfin:/config:rw'
       - 'unionfs:/mnt:ro'
+    tmpfs:
+      - '/transcode:rw'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'

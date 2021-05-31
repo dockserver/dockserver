@@ -9,17 +9,17 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
     image: 'comixed/comixed:latest'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:7834:7834'
+      - '${PORTBLOCK}:7834:7834'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/comixed:/config:rw'
+      - '${APPFOLDER}/comixed:/config:rw'
       - 'unionfs:/mnt'
     labels:
       - 'traefik.enable=true'

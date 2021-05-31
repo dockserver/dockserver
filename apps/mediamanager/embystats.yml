@@ -8,17 +8,17 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
     image: 'ghcr.io/linuxserver/embystat:latest'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:6555:6555'
+      - '${PORTBLOCK}:6555:6555'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/embystat:/config:rw'
+      - '${APPFOLDER}/embystat:/config:rw'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'

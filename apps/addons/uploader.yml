@@ -10,16 +10,16 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
     image: 'ghcr.io/dockserver/docker-uploader:latest'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:7777:8080'
+      - '${PORTBLOCK}:7777:8080'
     networks:
       - proxy
     security_opt:
       - 'apparmor:unconfined'
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
-      - '/opt/appdata/uploader:/config:rw'
+      - '${APPFOLDER}/uploader:/config:rw'
       - 'unionfs:/mnt'
     labels:
       - 'traefik.enable=true'

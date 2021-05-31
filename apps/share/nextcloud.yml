@@ -8,9 +8,9 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
     image: 'ghcr.io/linuxserver/nextcloud'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
       - '4551:443'
     networks:
@@ -18,8 +18,8 @@ services:
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/nextcloud/data:/data'
-      - '/opt/appdata/nextcloud/cloud:/config:rw'
+      - '${APPFOLDER}/nextcloud/data:/data'
+      - '${APPFOLDER}/nextcloud/cloud:/config:rw'
       - '/etc/localtime:/etc/localtime:ro'
       - 'unionfs:/mnt'
     labels:

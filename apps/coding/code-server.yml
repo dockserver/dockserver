@@ -8,21 +8,21 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
       - 'PASSWORD=password'
       - 'HASHED_PASSWORD=#fillthisself'
       - 'SUDO_PASSWORD=sudopassword'
       - 'SUDO_PASSWORD_HASH=#fillthisself' 
     image: 'ghcr.io/linuxserver/code-server'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:8443:8443'
+      - '${PORTBLOCK}:8443:8443'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/code-server:/config:rw'
+      - '${APPFOLDER}/code-server:/config:rw'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'

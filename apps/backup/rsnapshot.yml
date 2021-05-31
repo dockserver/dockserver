@@ -9,11 +9,11 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
     image: 'ghcr.io/linuxserver/rsnapshot'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     networks:
       - proxy
     volumes:
-      - '/opt/appdata/rsnapshot:/config:rw'
+      - '${APPFOLDER}/rsnapshot:/config:rw'
       - 'unionfs/snapshots:/data'      
       - '/etc/locatime:/etc/localtime:ro'
     labels:

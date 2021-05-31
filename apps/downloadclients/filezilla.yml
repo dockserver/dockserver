@@ -8,19 +8,19 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
       - 'DISPLAY_WIDTH=1920'
       - 'DISPLAY_HEIGHT=1080'
     image: 'jlesage/filezilla'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:5800:5803'
+      - '${PORTBLOCK}:5800:5803'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/filezilla:/config:rw'
+      - '${APPFOLDER}/filezilla:/config:rw'
       - 'unionfs:/mnt'
       - '/etc/localtime:/etc/localtime:ro'
     labels:

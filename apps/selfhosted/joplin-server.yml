@@ -14,9 +14,9 @@ services:
     image: 'postgres:13-alpine'
     networks:
       - default
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     volumes:
-      - '/opt/appdata/joplin-server/postgresql:/var/lib/postgresql/data'
+      - '${APPFOLDER}/joplin-server/postgresql:/var/lib/postgresql/data'
   joplin-server:
     hostname: 'joplin-server'
     container_name: 'joplin-server'
@@ -26,7 +26,7 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
       - 'APP_BASE_URL=https://joplin-server.${DOMAIN}'
       - 'DB_CLIENT=pg'
       - 'POSTGRES_PASSWORD=joplinpw'
@@ -35,9 +35,9 @@ services:
       - 'POSTGRES_PORT=5432'
       - 'POSTGRES_HOST=db_joplin'
     image: 'joplin/server'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:22300:22300'
+      - '${PORTBLOCK}:22300:22300'
     networks:
       - proxy
       - default

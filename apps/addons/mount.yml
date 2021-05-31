@@ -13,7 +13,7 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
     image: 'ghcr.io/dockserver/docker-mount:latest'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
       - '7755:8080'
     networks:
@@ -23,7 +23,7 @@ services:
       - 'no-new-privileges:true'
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
-      - '/opt/appdata/mount:/config:rw'
+      - '${APPFOLDER}/mount:/config:rw'
       - '/mnt:/mnt:shared'
       - '/var/run/docker.sock:/var/run/docker.sock'
     labels:

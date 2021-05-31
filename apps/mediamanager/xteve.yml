@@ -8,9 +8,9 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
     image: 'alturismo/xteve'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
       - '34400:34400'
     networks:
@@ -18,9 +18,9 @@ services:
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/xteve/:/root/.xteve:rw'
-      - '/opt/appdata/xteve/_config:/config:rw'
-      - '/opt/appdata/xteve/temp/:/tmp/xteve:rw'
+      - '${APPFOLDER}/xteve/:/root/.xteve:rw'
+      - '${APPFOLDER}/xteve/_config:/config:rw'
+      - '${APPFOLDER}/xteve/temp/:/tmp/xteve:rw'
       - '/etc/localtime:/etc/localtime:ro'
     labels:
       - 'traefik.enable=true'
