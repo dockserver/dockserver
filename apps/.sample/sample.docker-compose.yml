@@ -8,18 +8,18 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
       #- '<ADDITIONALENVIROMENT>'
     image: '<DOCKERHUBorGHRCIO/><REPO>/<IMAGE>:<VERSION>'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '<OUTSIDEPORTBLOCK><RANDOMPORTFROMHOST>:<PORTOFAPP>' # sample line : 127.0.0.1:4555:80
+      - '${PORTBLOCK}:<RANDOMPORTFROMHOST>:<PORTOFAPP>' # sample line : 127.0.0.1:4555:80
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/<CONTAINERNAME>:/config:rw'
+      - '${APPFOLDER}/<CONTAINERNAME>:/config:rw'
       - 'unionfs:/mnt'
     labels:
       - 'traefik.enable=true'
