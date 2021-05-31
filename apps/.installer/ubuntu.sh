@@ -21,7 +21,7 @@ tee <<-EOF
 EOF
 exit 0
 fi
-while true; do
+while true;do
   if [[ ! -x $(command -v docker) ]];then exit;fi
   if [[ ! -x $(command -v docker-compose) ]];then exit;fi
   headinterface
@@ -196,7 +196,7 @@ EOF
    appfolder=/opt/dockserver/apps/
    IGNORE="! -path '**.subactions/**'"
    mapfile -t files < <(eval find ${appfolder} -type f -name $typed.yml ${IGNORE})
-   for i in "${files[@]}"; do
+   for i in "${files[@]}";do
        section=$(dirname "${i}" | sed "s#${appfolder}##g" | sed 's/\/$//')
    done
    if [[ ${section} == "mediaserver" || ${section} == "mediamanager" ]];then
@@ -209,9 +209,9 @@ EOF
       $(command -v tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${STORAGE}/${ARCHIVETAR} ./
       $(command -v docker) start ${typed} 1>/dev/null 2>&1  && echo "We started now $typed"
    else
-       $(command -v tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${STORAGE}/${ARCHIVETAR} ./
+      $(command -v tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${STORAGE}/${ARCHIVETAR} ./
    fi
-      $(command -v chown) -hR 1000:1000 ${DESTINATION}/${STORAGE}/${ARCHIVETAR}
+   $(command -v chown) -hR 1000:1000 ${DESTINATION}/${STORAGE}/${ARCHIVETAR}
 done
 clear && backupdocker
 }
@@ -242,7 +242,7 @@ EOF
    appfolder=/opt/dockserver/apps/
    IGNORE="! -path '**.subactions/**'"
    mapfile -t files < <(eval find ${appfolder} -type f -name $typed.yml ${IGNORE})
-   for i in "${files[@]}"; do
+   for i in "${files[@]}";do
        section=$(dirname "${i}" | sed "s#${appfolder}##g" | sed 's/\/$//')
    done
    if [[ ${section} == "mediaserver" || ${section} == "mediamanager" ]];then
@@ -314,17 +314,17 @@ forcepush="tar pigz pv"
 for fc in ${forcepush};do
      $(command -v apt) install $fc --reinstall -yqq 1>/dev/null 2>&1 && sleep 1
 done
-for i in ${apps};do
+for app in ${apps};do
    basefolder="/opt/appdata"
-   if [[ ! -d $basefolder/$i ]];then
-   ARCHIVE=$i
+   if [[ ! -d $basefolder/$app ]];then
+   ARCHIVE=$app
    ARCHIVETAR=${ARCHIVE}.tar.gz
       echo "Create folder for $i is running"  
-      folder=$basefolder/$i
-      for ii in ${folder}; do
-          $(command -v mkdir) -p $ii
-          $(command -v find) $ii -exec $(command -v chmod) a=rx,u+w {} \;
-          $(command -v find) $ii -exec $(command -v chown) -hR 1000:1000 {} \;
+      folder=$basefolder/$app
+      for appset in ${folder};do
+          $(command -v mkdir) -p $appset
+          $(command -v find) $appset -exec $(command -v chmod) a=rx,u+w {} \;
+          $(command -v find) $appset -exec $(command -v chown) -hR 1000:1000 {} \;
       done
    fi
 tee <<-EOF
@@ -352,7 +352,7 @@ for fc in ${forcepush};do
 done
 if [[ ! -d $basefolder/${typed} ]];then
    folder=$basefolder/${typed}
-   for i in ${folder}; do
+   for i in ${folder};do
        $(command -v mkdir) -p $i
        $(command -v find) $i -exec $(command -v chmod) a=rx,u+w {} \;
        $(command -v find) $i -exec $(command -v chown) -hR 1000:1000 {} \;
@@ -369,7 +369,7 @@ EOF
    appfolder=/opt/dockserver/apps/
    IGNORE="! -path '**.subactions/**'"
    mapfile -t files < <(eval find ${appfolder} -type f -name $typed.yml ${IGNORE})
-   for i in "${files[@]}"; do
+   for i in "${files[@]}";do
        section=$(dirname "${i}" | sed "s#${appfolder}##g" | sed 's/\/$//')
    done
    section=${section}
@@ -419,17 +419,17 @@ EOF
   if [[ -f $appfolder/${section}/.overwrite/${typed}.overwrite.yml ]];then $(command -v rsync) $appfolder/${section}/.overwrite/${typed}.overwrite.yml $basefolder/$composeoverwrite -aqhv;fi
   if [[ ! -d $basefolder/${typed} ]];then
      folder=$basefolder/${typed}
-     for i in ${folder}; do
-         $(command -v mkdir) -p $i
-         $(command -v find) $i -exec $(command -v chmod) a=rx,u+w {} \;
-         $(command -v find) $i -exec $(command -v chown) -hR 1000:1000 {} \;
+     for fol in ${folder};do
+         $(command -v mkdir) -p $fol
+         $(command -v find) $fol -exec $(command -v chmod) a=rx,u+w {} \;
+         $(command -v find) $fol -exec $(command -v chown) -hR 1000:1000 {} \;
      done
   fi
   container=$($(command -v docker) ps -aq --format '{{.Names}}' | grep -x ${typed})
   if [[ $container == ${typed} ]];then
      docker="stop rm"
-     for i in ${docker}; do
-         $(command -v docker) $i ${typed} 1>/dev/null 2>&1
+     for con in ${docker};do
+         $(command -v docker) $con ${typed} 1>/dev/null 2>&1
      done
      $(command -v docker) image prune -af 1>/dev/null 2>&1
   else
@@ -440,18 +440,18 @@ EOF
   if [[ ${section} == "mediaserver" && ${typed} == "plex" ]];then plexclaim;fi
   if [[ ${section} == "downloadclients" && ${typed} == "jdownloader2" ]];then
      folder=$storage/${typed}
-     for i in ${folder}; do
-         $(command -v mkdir) -p $i
-         $(command -v find) $i -exec $(command -v chmod) a=rx,u+w {} \;
-         $(command -v find) $i -exec $(command -v chown) -hR 1000:1000 {} \;
+     for jdl in ${folder};do
+         $(command -v mkdir) -p $jdl
+         $(command -v find) $jdl -exec $(command -v chmod) a=rx,u+w {} \;
+         $(command -v find) $jdl -exec $(command -v chown) -hR 1000:1000 {} \;
      done
   fi
   if [[ ${section} == "mediamanager" && ${typed} == "readarr" ]];then
      folder=$storage/books
-     for i in ${folder}; do
-         $(command -v mkdir) -p $i
-         $(command -v find) $i -exec $(command -v chmod) a=rx,u+w {} \;
-         $(command -v find) $i -exec $(command -v chown) -hR 1000:1000 {} \;
+     for rea in ${folder};do
+         $(command -v mkdir) -p $rea
+         $(command -v find) $rea -exec $(command -v chmod) a=rx,u+w {} \;
+         $(command -v find) $rea -exec $(command -v chown) -hR 1000:1000 {} \;
      done
   fi
   if [[ ${section} == "system" && ${typed} == "mount" ]];then
@@ -461,29 +461,29 @@ EOF
      if [[ ${checkmnt} == "false" && ${mount} == "mount" ]];then $(command -v docker) stop mount 1>/dev/null 2>&1 && $(command -v fusermount) -uzq /mnt/unionfs 1>/dev/null 2>&1;fi
      if [[ ${checkmnt} == "false" && ${mount} == "" ]];then $(command -v fusermount) -uzq /mnt/unionfs 1>/dev/null 2>&1;fi
 	 dockers=$($(command -v docker) ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -E 'ple|arr|emby|jelly')
-         for i in ${dockers};do
-             $(command -v docker) stop $i >> /dev/null
-         done
+     for doc in ${dockers};do
+         $(command -v docker) stop $doc >> /dev/null
+     done
   fi
   if [[ ${section} == "downloadclients" && ${typed} == "youtubedl-material" ]];then
      folder="appdata audio video subscriptions"
-     for i in ${folder}; do
-         $(command -v mkdir) -p $basefolder/${typed}/$i
-         $(command -v find) $basefolder/${typed}/$i -exec $(command -v chmod) a=rx,u+w {} \;
-         $(command -v find) $basefolder/${typed}/$i -exec $(command -v chown) -hR 1000:1000 {} \;
+     for ytf in ${folder};do
+         $(command -v mkdir) -p $basefolder/${typed}/$ytf
+         $(command -v find) $basefolder/${typed}/$ytf -exec $(command -v chmod) a=rx,u+w {} \;
+         $(command -v find) $basefolder/${typed}/$ytf -exec $(command -v chown) -hR 1000:1000 {} \;
      done
      folder=$storage/youtubedl
-     for i in ${folder}; do
-         $(command -v mkdir) -p $i
-         $(command -v find) $i -exec $(command -v chmod) a=rx,u+w {} \;
-         $(command -v find) $i -exec $(command -v chown) -hR 1000:1000 {} \;
+     for ytdl in ${folder};do
+         $(command -v mkdir) -p $ytdl
+         $(command -v find) $ytdl -exec $(command -v chmod) a=rx,u+w {} \;
+         $(command -v find) $ytdl -exec $(command -v chown) -hR 1000:1000 {} \;
      done
   fi
   if [[ ${typed} == "bitwarden" ]];then
      if [[ -f $appfolder/.subactions/${typed}.sh ]];then $(command -v bash) $appfolder/.subactions/${typed}.sh;fi
   fi
-  if [[ ${typed} == "petio" ]];then $(command -v mkdir) -p $basefolder/${typed}/{db,config,logs} && $(command -v chown) -R 1000:1000 $basefolder/${typed}/{db,config,logs} 1>/dev/null 2>&1;fi
-  if [[ ${typed} == "tdarr" ]];then $(command -v mkdir) -p $basefolder/${typed}/{server,configs,logs,encoders} && $(command -v chown) -R 1000:1000 $basefolder/${typed}/{server,configs,logs} 1>/dev/null 2>&1;fi
+  if [[ ${typed} == "petio" ]];then $(command -v mkdir) -p $basefolder/${typed}/{db,config,logs} && $(command -v chown) -hR 1000:1000 $basefolder/${typed}/{db,config,logs} 1>/dev/null 2>&1;fi
+  if [[ ${typed} == "tdarr" ]];then $(command -v mkdir) -p $basefolder/${typed}/{server,configs,logs,encoders} && $(command -v chown) -hR 1000:1000 $basefolder/${typed}/{server,configs,logs} 1>/dev/null 2>&1;fi
   if [[ -f $basefolder/$compose ]];then
      $(command -v cd) $basefolder/compose/
      $(command -v docker-compose) config 1>/dev/null 2>&1
@@ -515,16 +515,16 @@ EOF
   if [[ $errorcode -eq 0 ]];then
   if [[ ${typed} == "mount" || ${typed} == "dockupdater" || ${typed} == "endlessh" ]];then
   tee <<-EOF
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    ${typed} has successfully deployed and is now working    
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    ${typed} has successfully deployed and is now working     
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 else
   source $basefolder/compose/.env
   tee <<-EOF
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ${typed} has successfully deployed = > https://${typed}.${DOMAIN}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 10
   clear
@@ -694,7 +694,7 @@ deleteapp() {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
      app=${typed}
-     for i in ${app}; do
+     for i in ${app};do
          $(command -v docker) stop $i 1>/dev/null 2>&1
          $(command -v docker) rm $i 1>/dev/null 2>&1
          $(command -v docker) image prune -af 1>/dev/null 2>&1
@@ -706,7 +706,7 @@ EOF
    App ${typed} folder removal started
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-        for i in ${folder}; do
+        for i in ${folder};do
             $(command -v rm) -rf $i 1>/dev/null 2>&1
         done
      fi
@@ -717,7 +717,7 @@ EOF
    Storage ${typed} folder removal started
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-        for i in ${folder}; do
+        for i in ${folder};do
             $(command -v rm) -rf $i 1>/dev/null 2>&1
         done
      fi
@@ -775,7 +775,6 @@ UMASK=${UMASK:-022}
 PORTBLOCK=${PORTBLOCK:-127.0.0.1}" >$basefolder/compose/.env
 fi
 }
-
 ##########
 lubox
 appstartup
