@@ -8,12 +8,12 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
       - LOG_LEVEL=${LOG_LEVEL:-info}
       - LOG_HTML=${LOG_HTML:-false}
       - CAPTCHA_SOLVER=${CAPTCHA_SOLVER:-none}
     image: 'flaresolverr/flaresolverr:latest'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
       - '8191:8191'
     networks:
@@ -21,7 +21,7 @@ services:
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/flaresolverr/:/home/flaresolverr:rw'
+      - '${APPFOLDER}/flaresolverr/:/home/flaresolverr:rw'
       - '/etc/localtime:/etc/localtime:ro'
     labels:
       - 'traefik.enable=true'

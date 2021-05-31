@@ -8,17 +8,17 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
     image: 'ghcr.io/hotio/readarr:nightly'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:8787:8787'
+      - '${PORTBLOCK}:8787:8787'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/readarr:/config:rw'
+      - '${APPFOLDER}/readarr:/config:rw'
       - 'unionfs:/mnt'
     labels:
       - 'traefik.enable=true'

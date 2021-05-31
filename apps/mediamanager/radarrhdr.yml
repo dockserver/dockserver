@@ -8,17 +8,17 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
     image: 'ghcr.io/linuxserver/radarr:nightly'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:7875:7878'
+      - '${PORTBLOCK}:7875:7878'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/radarrhdr:/config:rw'
+      - '${APPFOLDER}/radarrhdr:/config:rw'
       - 'unionfs:/mnt'
     labels:
       - 'traefik.enable=true'

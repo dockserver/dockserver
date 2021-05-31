@@ -9,12 +9,12 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
       - 'ADDRESS=crewlink.${DOMAIN}'
     image: 'ottomated/crewlink-server'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:2394:9736'
+      - '${PORTBLOCK}:2394:9736'
     networks:
       - proxy
     security_opt:

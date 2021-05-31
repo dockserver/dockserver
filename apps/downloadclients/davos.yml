@@ -8,21 +8,21 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
       - 'PASSWORD=password'
       - 'HASHED_PASSWORD=#fillthisself'
       - 'SUDO_PASSWORD=sudopassword'
       - 'SUDO_PASSWORD_HASH=#fillthisself' 
     image: 'ghcr.io/linuxserver/davos'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:8088:8080'
+      - '${PORTBLOCK}:8088:8080'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/davos:/config:rw'
+      - '${APPFOLDER}/davos:/config:rw'
       - 'unionfs:/mnt'
     labels:
       - 'traefik.enable=true'

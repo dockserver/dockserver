@@ -5,7 +5,7 @@ services:
     hostname: 'emby'
     container_name: 'emby'
     image: 'ghcr.io/linuxserver/emby:latest'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     networks:
       - proxy
     security_opt:
@@ -14,7 +14,7 @@ services:
       - 'PUID=${ID}'
       - 'PGID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
     ports:
       - target: 8096
         published: 8096
@@ -25,7 +25,7 @@ services:
         protocol: tcp
         mode: host
     volumes:
-      - '/opt/appdata/emby:/config'
+      - '${APPFOLDER}/emby:/config'
       - 'unionfs:/mnt:ro'
     labels:
       - 'traefik.enable=true'

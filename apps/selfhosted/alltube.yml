@@ -9,17 +9,17 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
     image: 'rudloff/alltube:latest'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:3489:80'
+      - '${PORTBLOCK}:3489:80'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/alltube:/var/www/html/config:rw'
+      - '${APPFOLDER}/alltube:/var/www/html/config:rw'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'

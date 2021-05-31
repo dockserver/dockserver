@@ -8,18 +8,17 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
-      - '<ADDITIONALENVIROMENT>'
+      - 'UMASK=${UMASK}'
     image: 'ghcr.io/linuxserver/lazylibrarian'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:5299:5299'
+      - '${PORTBLOCK}:5299:5299'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/lazylibrarian:/config:rw'
+      - '${APPFOLDER}/lazylibrarian:/config:rw'
       - 'unionfs:/mnt'
     labels:
       - 'traefik.enable=true'

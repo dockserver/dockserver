@@ -4,12 +4,12 @@ services:
   netdata:
     container_name: 'netdata'
     hostname: 'netdata'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     image: 'netdata/netdata'
     networks:
       - proxy
     ports:
-      - '127.0.0.1:19999:19999'
+      - '${PORTBLOCK}:19999:19999'
     cap_add:
       - 'SYS_PTRACE'
     security_opt:

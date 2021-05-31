@@ -8,19 +8,19 @@ services:
       - 'PGID=0'
       - 'PUID=0'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
     image: 'romancin/bliss:latest'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:3220:3220'
-      - '127.0.0.1:3221:3221'
+      - '${PORTBLOCK}:3220:3220'
+      - '${PORTBLOCK}:3221:3221'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/bliss:/config:rw'
-      - '/opt/appdata/bliss/music:/music:rw'
+      - '${APPFOLDER}/bliss:/config:rw'
+      - '${APPFOLDER}/bliss/music:/music:rw'
       - 'unionfs:/mnt'
     labels:
       - 'traefik.enable=true'

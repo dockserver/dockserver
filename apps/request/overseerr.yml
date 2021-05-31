@@ -10,15 +10,15 @@ services:
       - 'TZ=${TZ}'
       - 'LOG_LEVEL=info'
     image: 'ghcr.io/sct/overseerr:develop'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:5055:5055'
+      - '${PORTBLOCK}:5055:5055'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/overseerr:/app/config:rw'
+      - '${APPFOLDER}/overseerr:/app/config:rw'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'

@@ -8,25 +8,25 @@ services:
       - 'USER_ID=${ID}'
       - 'GROUP_ID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
       - 'APP_NICENESS=1'
       - 'CLEAN_TMP_DIR=1'
       - 'DISPLAY_WIDTH=1920'
       - 'DISPLAY_HEIGHT=1024'
       - 'SECURE_CONNECTION=1'
     image: 'jlesage/jdownloader-2'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     cap_add:
       - 'SYS_NICE'
     ports:
-      - '127.0.0.1:5800:5800'
+      - '${PORTBLOCK}:5800:5800'
       - '3219:3129'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/jdownloader2:/config:rw'
+      - '${APPFOLDER}/jdownloader2:/config:rw'
       - 'unionfs:/mnt'
       - '/mnt/downloads/jdownloader2/:/output:rw'
     labels:

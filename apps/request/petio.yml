@@ -10,7 +10,7 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
     image: 'ghcr.io/petio-team/petio:latest'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     depends_on:
       - 'mongo'
     ports:
@@ -20,8 +20,8 @@ services:
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/petio/config:/app/api/config'
-      - '/opt/appdata/petio/logs:/app/logs'
+      - '${APPFOLDER}/petio/config:/app/api/config'
+      - '${APPFOLDER}/petio/logs:/app/logs'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'
@@ -41,7 +41,7 @@ services:
       - proxy
     user: '${ID}:${ID}'
     volumes:
-      - '/opt/appdata/petio/db:/data/db'
+      - '${APPFOLDER}/petio/db:/data/db'
 networks:
   proxy:
     driver: bridge

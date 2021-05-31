@@ -8,9 +8,9 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
     image: 'ghcr.io/linuxserver/mstream:latest'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
       - '3000:3000'
     networks:
@@ -18,7 +18,7 @@ services:
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/mstream:/config:rw'
+      - '${APPFOLDER}/mstream:/config:rw'
       - 'unionfs:/mnt:ro'
     labels:
       - 'traefik.enable=true'

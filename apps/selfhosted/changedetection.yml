@@ -8,17 +8,17 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
     image: 'dgtlmoon/changedetection.io'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:4537:5000'
+      - '${PORTBLOCK}:4537:5000'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/changedetection:/datastore:rw'
+      - '${APPFOLDER}/changedetection:/datastore:rw'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'

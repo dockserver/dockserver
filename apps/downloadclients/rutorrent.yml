@@ -8,19 +8,19 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
     image: 'ghcr.io/linuxserver/rutorrent:v3.10-ls120'
     networks:
       - proxy
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     security_opt:
       - 'no-new-privileges:true'
     ports:
       - '51413:51413'
-      - '127.0.0.1:5000:5000'
-      - '127.0.0.1:8999:80'
+      - '${PORTBLOCK}:5000:5000'
+      - '${PORTBLOCK}:8999:80'
     volumes:
-      - '/opt/appdata/rutorrent:/config:rw'
+      - '${APPFOLDER}/rutorrent:/config:rw'
       - 'unionfs:/mnt'
     labels:
       - 'traefik.enable=true'

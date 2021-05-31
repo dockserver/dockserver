@@ -8,17 +8,17 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
     image: 'homeassistant/home-assistant'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:8657:8123'
+      - '${PORTBLOCK}:8657:8123'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/homeassistant:/app/data:rw'
+      - '${APPFOLDER}/homeassistant:/app/data:rw'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'

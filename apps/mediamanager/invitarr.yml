@@ -8,7 +8,7 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
       - 'Discord_bot_token=null'
       - 'roleid=null'
       - 'PLEXUSER=null'
@@ -18,15 +18,15 @@ services:
       - 'channelid=null'
       - 'Webhookurl=null'
     image: 'piratify/invitarr:latest'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:5001:5001'
+      - '${PORTBLOCK}:5001:5001'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/invitarr:/app/app/config'
+      - '${APPFOLDER}/invitarr:/app/app/config'
       - '/etc/localtime:/etc/localtime:ro'
     labels:
       - 'traefik.enable=true'

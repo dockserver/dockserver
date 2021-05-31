@@ -8,18 +8,18 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
       - 'OOKLA_EULA_GDPR=true'
     image: 'henrywhitaker3/speedtest-tracker'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:8765:80'
+      - '${PORTBLOCK}:8765:80'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/speedtest:/config'
+      - '${APPFOLDER}/speedtest:/config'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'
