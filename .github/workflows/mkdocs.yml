@@ -32,5 +32,5 @@ jobs:
         with:
           python-version: 3.x
       - run: python3 -m pip install --upgrade pip
-      - run: python3 -m pip install -r wiki/requirements.txt
+      - run: python3 -m pip install -r wiki/docs/requirements.txt
       - run: mkdocs gh-deploy --force --config-file wiki/mkdocs.yml --remote-branch wiki

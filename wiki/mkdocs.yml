@@ -14,36 +14,24 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
-
 # Project information
 site_name: DockServer Wiki
-#site_url: https://squidfunk.github.io/mkdocs-material/
 site_author: DockServer
 site_description: >-
   Use your self hosted docker as wiki
-
-# Repository
 repo_name: DockServer Wiki
 repo_url: https://github.com/dockserver/dockserver 
 edit_uri: ""
-
 # Copyright
 copyright: Copyright &copy; 2021 DockServer.io
-
 # Configuration
 theme:
   name: null
   custom_dir: material
-
-  # Static files
   static_templates:
     - 404.html
-
-  # Don't include MkDocs' JavaScript
   include_search_page: false
   search_index_only: true
-
-  # Default values, taken from mkdocs_theme.yml
   language: en
   features:
     # - navigation.instant
@@ -68,8 +56,6 @@ theme:
   favicon: img/favicon.png
   icon:
     logo: logo
-
-# Plugins
 plugins:
   - search
   - redirects:
@@ -90,19 +76,23 @@ plugins:
         #sponsorship.md: insiders/index.md
   - minify:
       minify_html: true
-
+  - git-revision-date-localized:
+      fallback_to_build_date: true
 # Customization
 extra:
   social:
-    - icon: fontawesome/brands/github
+    - icon:
+      repo: fontawesome/brands/github
       link: https://github.com/dockserver/dockserver
-    - icon: fontawesome/brands/docker
+    - icon:
+      repo: fontawesome/brands/docker
       link: https://github.com/orgs/dockserver/packages/
-    - icon: fontawesome/brands/discord
+    - icon:
+      repo: fontawesome/brands/discord
       link: https://discord.gg/A7h7bKBCVa
-    - icon: fontawesome/brands/firefox
+    - icon:
+      repo: fontawesome/brands/firefox
       link: https://docs.dockserver.io/
-
 # Extensions
 markdown_extensions:
   - admonition
@@ -129,8 +119,8 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.magiclink:
       repo_url_shorthand: true
-      user: squidfunk
-      repo: mkdocs-material
+      user: dockserver
+      repo: dockserver
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.superfences:
@@ -142,7 +132,6 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
-
 # Page tree
 nav:
   - Home: index.md
@@ -269,9 +258,4 @@ nav:
     #- Getting started:
     #  - Installation: insiders/getting-started.md
     #  - Changelog: insiders/changelog.md
-
-# Google Analytics
-google_analytics:
-  - !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
-  - auto
 #EOF
