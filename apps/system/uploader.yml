@@ -5,6 +5,7 @@ services:
     cap_add:
       - 'SYS_ADMIN'
     container_name: 'uploader'
+    hostname: 'uploader'
     environment:
       - 'PGID=${ID}'
       - 'PUID=${ID}'

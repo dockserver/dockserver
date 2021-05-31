@@ -3,6 +3,7 @@ version: '3'
 services:
   wiki:
     container_name: 'wiki'
+    hostname: 'wiki'
     environment:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
