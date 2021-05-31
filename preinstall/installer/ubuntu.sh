@@ -42,25 +42,21 @@ EOF
   for i in ${package_list}; do
       echo "running now $i" && $(command -v apt) $i -yqq 1>/dev/null 2>&1
   done
-  if [[ ! -d "/mnt/downloads" && ! -d "/mnt/unionfs" ]];then
-     folder="/mnt"
-     for i in ${folder}; do
-        $(command -v mkdir) -p $i/{unionfs,downloads,incomplete,torrent,nzb} \
-                               $i/{incomplete,downloads}/{nzb,torrent}/{movies,tv,tv4k,movies4k,movieshdr,tvhdr,remux} \
-                               $i/{torrent,nzb}/watch
-        $(command -v find) $i -exec $(command -v chmod) a=rx,u+w {} \;
-        $(command -v find) $i -exec $(command -v chown) -hR 1000:1000 {} \;
-     done
-  fi
-  if [[ ! -d "/opt/appdata" ]];then
-     appfolder="/opt/appdata"
-     for i in ${appfolder}; do
-        $(command -v mkdir) -p $i
-        $(command -v mkdir) -p $i/compose
-        $(command -v find) $i -exec $(command -v chmod) a=rx,u+w {} \;
-        $(command -v find) $i -exec $(command -v chown) -hR 1000:1000 {} \;
-     done
-  fi
+  folder="/mnt"
+  for i in ${folder}; do
+      $(command -v mkdir) -p $i/{unionfs,downloads,incomplete,torrent,nzb} \
+                            $i/{incomplete,downloads}/{nzb,torrent}/{movies,tv,tv4k,movies4k,movieshdr,tvhdr,remux} \
+                            $i/{torrent,nzb}/watch
+      $(command -v find) $i -exec $(command -v chmod) a=rx,u+w {} \;
+      $(command -v find) $i -exec $(command -v chown) -hR 1000:1000 {} \;
+  done
+  appfolder="/opt/appdata"
+  for i in ${appfolder}; do
+      $(command -v mkdir) -p $i
+      $(command -v mkdir) -p $i/compose
+      $(command -v find) $i -exec $(command -v chmod) a=rx,u+w {} \;
+      $(command -v find) $i -exec $(command -v chown) -hR 1000:1000 {} \;
+  done
   config="/etc/sysctl.d/99-sysctl.conf"
   ipv6=$(cat $config | grep -qE 'ipv6' && echo true || false)
   if [[ -f $config ]];then
