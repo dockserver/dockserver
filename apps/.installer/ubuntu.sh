@@ -754,7 +754,7 @@ fi
 
 migrateenv() {
 basefolder="/opt/appdata"
-env=$(cat /opt/appdata/compose/.env | wc -l)
+env=$(cat $basefolder/compose/.env | wc -l)
 source $basefolder/compose/.env
 if [[ $env -le "16" ]];then
 echo -e "##Environment for Docker-Compose
