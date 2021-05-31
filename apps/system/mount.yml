@@ -5,6 +5,7 @@ services:
     cap_add:
       - 'SYS_ADMIN'
     container_name: 'mount'
+    hostname: 'mount'
     privileged: 'true'
     devices:
       - '/dev/fuse:/dev/fuse'
