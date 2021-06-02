@@ -22,7 +22,7 @@ jobs:
           WITH_V: true
 
   Create_GitHub_release:
-    needs: [copy,deploy,create]
+    needs: create
     runs-on: ubuntu-latest
 
     steps:
