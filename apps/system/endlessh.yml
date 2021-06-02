@@ -7,7 +7,7 @@ services:
     environment:
       - 'PUID=${ID}'
       - 'PGID=${ID}'
-      - 'TZ==${TZ}'
+      - 'TZ=${TZ}'
       - 'MSDELAY=10000'
       - 'MAXLINES=32'
       - 'MAXCLIENTS=4096'
