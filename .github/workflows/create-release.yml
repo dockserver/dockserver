@@ -20,4 +20,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.CR_PAT }}
           WITH_V: true
-
