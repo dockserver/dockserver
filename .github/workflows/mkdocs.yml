@@ -37,16 +37,18 @@ jobs:
 
   Create_GitHub_release:
     needs: [copy,deploy]
-    name: Create GitHub release
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2.3.4
-      - name: Create release for ${{ github.event.client_payload.ReleaseBranchName }}
-        uses: actions/create-release@v1.1.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.CR_PAT }}
-        with:
-          tag_name: ${{ github.event.client_payload.ReleaseBranchName }}
-          release_name: ${{ github.event.client_payload.ReleaseTitle }}
-          body: ${{ github.event.client_payload.ReleaseBody }}
-          prerelease: ${{ github.event.client_payload.Prerelease }}
+    - uses: actions/checkout@v2
+
+    - name: Create release for ${{ github.event.client_payload.ReleaseBranchName }}
+      uses: actions/create-release@v1.1.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.CR_PAT }}
+      with:
+        tag_name: ${{ github.event.client_payload.ReleaseBranchName }}
+        release_name: ${{ github.event.client_payload.ReleaseTitle }}
+        body: ${{ github.event.client_payload.ReleaseBody }}
+        prerelease: ${{ github.event.client_payload.Prerelease }}
+        commitish: ${{ github.event.client_payload.Commitish }}
