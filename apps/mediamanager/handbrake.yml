@@ -12,7 +12,7 @@ services:
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
     image: 'jlesage/handbrake'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
       - '${PORTBLOCK}:5800:5800'
     networks:
