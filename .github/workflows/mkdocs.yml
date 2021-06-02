@@ -35,8 +35,23 @@ jobs:
       - run: python3 -m pip install -r wiki/requirements.txt
       - run: mkdocs gh-deploy --force --config-file wiki/mkdocs.yml --remote-branch wiki
 
+  create:
+    name: Generate tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@master
+        with:
+          fetch-depth: '0'
+
+      - name: Bump version and push tag
+        uses: ChloePlanet/github-tag-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.CR_PAT }}
+          WITH_V: true
+
   Create_GitHub_release:
-    needs: [copy,deploy]
+    needs: [copy,deploy,create]
     runs-on: ubuntu-latest
 
     steps:
