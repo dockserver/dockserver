@@ -15,7 +15,6 @@
  
  For this example the id is **XXXXX845JTK5VXUXXXXXXXX**
 
-
 ## Support
 
 Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
