@@ -14,26 +14,39 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
+
 # Project information
 site_name: DockServer Wiki
+#site_url: https://squidfunk.github.io/mkdocs-material/
 site_author: DockServer
 site_description: >-
   Use your self hosted docker as wiki
+
+# Repository
 repo_name: DockServer Wiki
 repo_url: https://github.com/dockserver/dockserver 
 edit_uri: ""
+
 # Copyright
 copyright: Copyright &copy; 2021 DockServer.io
+
 # Configuration
 theme:
   name: material
   custom_dir: material
+
+  # Static files
   static_templates:
     - 404.html
+
+  # Don't include MkDocs' JavaScript
   include_search_page: false
   search_index_only: true
+
+  # Default values, taken from mkdocs_theme.yml
   language: en
   features:
+    # - navigation.instant
     - navigation.sections
     - navigation.tabs
   palette:
@@ -50,40 +63,34 @@ theme:
         icon: material/toggle-switch
         name: Switch to light mode
   font:
-    text: "Roboto"
-    code: "Fira Code"
+    text: Roboto
+    code: Roboto Mono
   favicon: img/favicon.png
   icon:
-    logo: img/logo.png
+    logo: logo
 
+# Plugins
 plugins:
   - search
-  - git-revision-date-localized:
-      type: timeago
-      locale: en
-      fallback_to_build_date: true
-  - awesome-pages
   - redirects:
       redirect_maps:
         #changelog/insiders.md: insiders/changelog.md
-        #extensions/admonition.md: reference/admonitions.md
+
   - minify:
       minify_html: true
+
 # Customization
 extra:
   social:
-    - icon:
-      repo: fontawesome/brands/github
+    - icon: fontawesome/brands/github
       link: https://github.com/dockserver/dockserver
-    - icon:
-      repo: fontawesome/brands/docker
+    - icon: fontawesome/brands/docker
       link: https://github.com/orgs/dockserver/packages/
-    - icon:
-      repo: fontawesome/brands/discord
+    - icon: fontawesome/brands/discord
       link: https://discord.gg/A7h7bKBCVa
-    - icon:
-      repo: fontawesome/brands/firefox
+    - icon: fontawesome/brands/firefox
       link: https://docs.dockserver.io/
+
 # Extensions
 markdown_extensions:
   - admonition
@@ -110,8 +117,8 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.magiclink:
       repo_url_shorthand: true
-      user: dockserver
-      repo: dockserver
+      user: squidfunk
+      repo: mkdocs-material
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.superfences:
@@ -123,6 +130,7 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
+
 # Page tree
 nav:
   - Home: index.md
@@ -150,16 +158,16 @@ nav:
       - Autoscan: apps/addons/autoscan.md
       - Cloud: apps/addons/cloud.md
       - CloudCMD: apps/addons/cloudcmd.md
-      - Dozzle: apps/addons/dozzle.md
       - Flaresolverr: apps/addons/flaresolverr.md
       - Heimdall: apps/addons/heimdall.md
       - Librespeed: apps/addons/librespeed.md
       - NetData: apps/addons/netdata.md
-      - Portainer: apps/addons/portainer.md
       - Remmina: apps/addons/remmina.md
       - Tauticord : apps/addons/tauticord.md
       - Speedtest: apps/addons/speedtest.md
       - vnstat: apps/addons/vnstat.md
+      - Dozzle: apps/addons/dozzle.md
+      - Portainer: apps/addons/portainer.md
     - Backup:
       - Rsync-Backup: apps/backup/backup.md
       - Duplicati: apps/backup/duplicati.md
@@ -180,7 +188,6 @@ nav:
       - SabNZBD: apps/downloadclients/sabnzbd.md
       - Youtubedl-Material: apps/downloadclients/youtubedl-material.md
     - Encoder:
-      - Handbreak: apps/encoder/handbrake.md
       - Tdarr: apps/encoder/tdarr.md
     - MediaManager:
       - Bazarr: apps/mediamanager/bazarr.md
@@ -190,7 +197,7 @@ nav:
       - Invitarr: apps/mediamanager/invitarr.md
       - Lazylibrarian: apps/mediamanager/lazylibrarian.md
       - Lidarr: apps/mediamanager/lidarr.md
-      - Prowlarr: apps/mediamanager/prowlarr.md
+      - Peowlarr: apps/mediamanager/prowlarr.md
       - Radarr: apps/mediamanager/radarr.md
       - Readarr: apps/mediamanager/readarr.md
       - Sonarr: apps/mediamanager/sonarr.md
@@ -198,7 +205,7 @@ nav:
       - Tracktarr: apps/mediamanager/traktarr.md
       - Unpackerr: apps/mediamanager/unpackerr.md
       - Xteve: apps/mediamanager/xteve.md
-     - MediaServer:
+    - MediaServer:
       - Emby: apps/mediaserver/emby.md
       - Plex: apps/mediaserver/plex.md
       - Jellyfin: apps/mediaserver/jellyfin.md
@@ -210,7 +217,7 @@ nav:
       - Petio: apps/request/petio.md
       - Requestrr: apps/request/requestrr.md
     - Selfhosted:
-      - alltube: apps/selfhosted/alltube.md
+      - Alltube: apps/selfhosted/alltube.md
       - Bitwarden: apps/selfhosted/bitwarden.md
       - Bliss: apps/selfhosted/bliss.md
       - Changedetection: apps/selfhosted/changedetection.md
@@ -232,7 +239,7 @@ nav:
       - Teamspeak: apps/selfhosted/teamspeak.md
       - unifi-controller: apps/selfhosted/unifi-controller.md
       - whoogle: apps/selfhosted/whoogle.md
-      - Wireguard: apps/selfhosted/wireguard.md      - alltube: apps/selfhosted/alltube.md
+      - Wireguard: apps/selfhosted/wireguard.md
     - Share:
       - Filerun: apps/share/filerun.md
       - Nextcloud: apps/share/nextcloud.md
@@ -252,4 +259,9 @@ nav:
     #- Getting started:
     #  - Installation: insiders/getting-started.md
     #  - Changelog: insiders/changelog.md
+
+# Google Analytics
+google_analytics:
+  - !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
+  - auto
 #EOF
