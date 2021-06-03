@@ -1,0 +1,15 @@
+.github/
+.all-contributorsrc
+!/CODEOWNERS
+!/CODE_OF_CONDUCT.md
+!/Dockerfile
+!/LICENSE
+!/README.md
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
