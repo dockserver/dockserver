@@ -14,6 +14,8 @@ FROM ghcr.io/squidfunk/mkdocs-material:latest
 LABEL maintainer=dockserver
 LABEL org.opencontainers.image.source https://github.com/dockserver/docker-wiki/
 
+ENV PACKAGES=/usr/local/lib/python3.9/site-packages
+ENV PYTHONDONTWRITEBYTECODE=1
 # Set build directory
 WORKDIR /tmp
 
@@ -24,8 +26,9 @@ RUN apk add --quiet --no-cache --no-progress git curl \
     && python3 -m pip install --upgrade pip \
     && python3 -m pip install --user -r /tmp/requirements.txt \
     && apk del .build gcc musl-dev \
-    && rm -rf /tmp/* \
-    && rm -rf /var/cache/apk/*
+    && rm -rf /tmp/requirements.txt \
+    && rm -rf /tmp/* && rm -rf /var/cache/apk/* && rm -rf /tmp/* /root/.cache \
+    && find ${PACKAGES} -type f  -path "*/__pycache__/*" -exec rm -f {} \;
 
 ENV PATH=$PATH:/root/.local/bin
 
