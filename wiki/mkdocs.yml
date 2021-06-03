@@ -159,16 +159,16 @@ nav:
       - Autoscan: apps/addons/autoscan.md
       - Cloud: apps/addons/cloud.md
       - CloudCMD: apps/addons/cloudcmd.md
+      - Dozzle: apps/addons/dozzle.md
       - Flaresolverr: apps/addons/flaresolverr.md
       - Heimdall: apps/addons/heimdall.md
       - Librespeed: apps/addons/librespeed.md
       - NetData: apps/addons/netdata.md
+      - Portainer: apps/addons/portainer.md
       - Remmina: apps/addons/remmina.md
       - Tauticord : apps/addons/tauticord.md
       - Speedtest: apps/addons/speedtest.md
       - vnstat: apps/addons/vnstat.md
-      - Dozzle: apps/addons/dozzle.md
-      - Portainer: apps/addons/portainer.md
     - Backup:
       - Rsync-Backup: apps/backup/backup.md
       - Duplicati: apps/backup/duplicati.md
@@ -189,8 +189,8 @@ nav:
       - SabNZBD: apps/downloadclients/sabnzbd.md
       - Youtubedl-Material: apps/downloadclients/youtubedl-material.md
     - Encoder:
-      - Tdarr: apps/encoder/tdarr.md
       - Handbreak: apps/encoder/handbrake.md
+      - Tdarr: apps/encoder/tdarr.md
     - MediaManager:
       - Bazarr: apps/mediamanager/bazarr.md
       - Calibre-WEB: apps/mediamanager/calibre-web.md
@@ -199,6 +199,7 @@ nav:
       - Invitarr: apps/mediamanager/invitarr.md
       - Lazylibrarian: apps/mediamanager/lazylibrarian.md
       - Lidarr: apps/mediamanager/lidarr.md
+      - Prowlarr: apps/mediamanager/prowlarr.md
       - Radarr: apps/mediamanager/radarr.md
       - Readarr: apps/mediamanager/readarr.md
       - Sonarr: apps/mediamanager/sonarr.md
@@ -206,8 +207,7 @@ nav:
       - Tracktarr: apps/mediamanager/traktarr.md
       - Unpackerr: apps/mediamanager/unpackerr.md
       - Xteve: apps/mediamanager/xteve.md
-      - Prowlarr: apps/mediamanager/prowlarr.md
-    - MediaServer:
+     - MediaServer:
       - Emby: apps/mediaserver/emby.md
       - Plex: apps/mediaserver/plex.md
       - Jellyfin: apps/mediaserver/jellyfin.md
@@ -219,6 +219,7 @@ nav:
       - Petio: apps/request/petio.md
       - Requestrr: apps/request/requestrr.md
     - Selfhosted:
+      - alltube: apps/selfhosted/alltube.md
       - Bitwarden: apps/selfhosted/bitwarden.md
       - Bliss: apps/selfhosted/bliss.md
       - Changedetection: apps/selfhosted/changedetection.md
@@ -240,7 +241,7 @@ nav:
       - Teamspeak: apps/selfhosted/teamspeak.md
       - unifi-controller: apps/selfhosted/unifi-controller.md
       - whoogle: apps/selfhosted/whoogle.md
-      - Wireguard: apps/selfhosted/wireguard.md
+      - Wireguard: apps/selfhosted/wireguard.md      - alltube: apps/selfhosted/alltube.md
     - Share:
       - Filerun: apps/share/filerun.md
       - Nextcloud: apps/share/nextcloud.md
