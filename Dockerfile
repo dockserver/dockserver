@@ -10,7 +10,8 @@
 # NO REBRANDING IS ALLOWED          #
 # NO CODE MIRRORING IS ALLOWED      #
 #####################################
-FROM ghcr.io/squidfunk/mkdocs-material:latest
+#FROM ghcr.io/squidfunk/mkdocs-material:latest
+FROM python:3.9.5-alpine3.13
 LABEL maintainer=dockserver
 LABEL org.opencontainers.image.source https://github.com/dockserver/docker-wiki/
 
