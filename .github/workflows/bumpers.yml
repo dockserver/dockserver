@@ -1,5 +1,6 @@
 name: Publish Release
-on: 
+
+on:
   push:
     branches:
       #- master
@@ -15,6 +16,5 @@ jobs:
         uses: actions/checkout@v2
       - name: Release
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
         env:
           GITHUB_TOKEN: ${{ secrets.CR_PAT }}
