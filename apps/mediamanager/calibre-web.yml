@@ -20,7 +20,7 @@ services:
       - 'no-new-privileges:true'
     volumes:
       - '/opt/appdata/calibre-web/config:/config:rw'
-      - '/opt/appdata/calibre-web/books/books:rw
+      - '/opt/appdata/calibre-web/books:/books:rw
       - 'unionfs:/mnt'
     labels:
       - 'traefik.enable=true'
