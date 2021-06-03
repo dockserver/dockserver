@@ -190,6 +190,7 @@ nav:
       - Youtubedl-Material: apps/downloadclients/youtubedl-material.md
     - Encoder:
       - Tdarr: apps/encoder/tdarr.md
+      - Handbreak: apps/encoder/handbrake.md
     - MediaManager:
       - Bazarr: apps/mediamanager/bazarr.md
       - Calibre-WEB: apps/mediamanager/calibre-web.md
@@ -205,6 +206,7 @@ nav:
       - Tracktarr: apps/mediamanager/traktarr.md
       - Unpackerr: apps/mediamanager/unpackerr.md
       - Xteve: apps/mediamanager/xteve.md
+      - Prowlarr: apps/mediamanager/prowlarr.md
     - MediaServer:
       - Emby: apps/mediaserver/emby.md
       - Plex: apps/mediaserver/plex.md
