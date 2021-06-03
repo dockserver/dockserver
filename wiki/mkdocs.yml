@@ -61,13 +61,8 @@ plugins:
   - git-revision-date-localized:
       type: timeago
       locale: en
-      fallback_to_build_date: false
+      fallback_to_build_date: true
   - awesome-pages
-  - macros:
-      j2_block_start_string: "[[%"
-      j2_block_end_string: "%]]"
-      j2_variable_start_string: "[["
-      j2_variable_end_string: "]]"
   - redirects:
       redirect_maps:
         #changelog/insiders.md: insiders/changelog.md
@@ -128,4 +123,133 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
+# Page tree
+nav:
+  - Home: index.md
+  - Getting started:
+    - Installation: install/install.md
+    - Authelia: install/authelia.md
+    - Cloudflare: install/cloudflare.md
+    - cf-companion: install/cf-companion.md
+    - Traefik: install/traefik.md
+    - LXC-Container: lxc/lxc.md
+  - Commands:
+    - Commands: commands/commands.md
+    - Backup: commands/backup.md
+    - Restore: commands/restore.md
+  - Remotes:
+    - GDrive: drive/gdrive.md
+    - GCrypt: drive/gcrypt.md
+    - TDrive: drive/tdrive.md
+    - TCrypt: drive/tcrypt.md
+    - Rclone Union: drive/union.md
+    - Service Accounts: drive/saccounts.md
+  - Applikation:
+    - Applikation: apps/apps.md
+    - Addons:
+      - Autoscan: apps/addons/autoscan.md
+      - Cloud: apps/addons/cloud.md
+      - CloudCMD: apps/addons/cloudcmd.md
+      - Dozzle: apps/addons/dozzle.md
+      - Flaresolverr: apps/addons/flaresolverr.md
+      - Heimdall: apps/addons/heimdall.md
+      - Librespeed: apps/addons/librespeed.md
+      - NetData: apps/addons/netdata.md
+      - Portainer: apps/addons/portainer.md
+      - Remmina: apps/addons/remmina.md
+      - Tauticord : apps/addons/tauticord.md
+      - Speedtest: apps/addons/speedtest.md
+      - vnstat: apps/addons/vnstat.md
+    - Backup:
+      - Rsync-Backup: apps/backup/backup.md
+      - Duplicati: apps/backup/duplicati.md
+      - Rsnapshot: apps/backup/rsnapshot.md
+    - Coding:
+      - Cloud9: apps/coding/cloud9.md
+      - Code-Server: apps/coding/code-server.md
+    - Downloadclients:
+      - Davos: apps/downloadclients/davos.md
+      - Deluge: apps/downloadclients/deluge.md
+      - FileZilla: apps/downloadclients/filezilla.md
+      - Jacket: apps/downloadclients/jackett.md
+      - JDOwnloader2: apps/downloadclients/jdownloader2.md
+      - NZBGet: apps/downloadclients/nzbget.md
+      - NZBHydra: apps/downloadclients/nzbhydra.md
+      - QBittorrent: apps/downloadclients/qbittorrent.md
+      - RuTorrent: apps/downloadclients/rutorrent.md
+      - SabNZBD: apps/downloadclients/sabnzbd.md
+      - Youtubedl-Material: apps/downloadclients/youtubedl-material.md
+    - Encoder:
+      - Handbreak: apps/encoder/handbrake.md
+      - Tdarr: apps/encoder/tdarr.md
+    - MediaManager:
+      - Bazarr: apps/mediamanager/bazarr.md
+      - Calibre-WEB: apps/mediamanager/calibre-web.md
+      - Embystats: apps/mediamanager/embystats.md
+      - GAPS: apps/mediamanager/gaps.md
+      - Invitarr: apps/mediamanager/invitarr.md
+      - Lazylibrarian: apps/mediamanager/lazylibrarian.md
+      - Lidarr: apps/mediamanager/lidarr.md
+      - Prowlarr: apps/mediamanager/prowlarr.md
+      - Radarr: apps/mediamanager/radarr.md
+      - Readarr: apps/mediamanager/readarr.md
+      - Sonarr: apps/mediamanager/sonarr.md
+      - Tautulli: apps/mediamanager/tautulli.md
+      - Tracktarr: apps/mediamanager/traktarr.md
+      - Unpackerr: apps/mediamanager/unpackerr.md
+      - Xteve: apps/mediamanager/xteve.md
+     - MediaServer:
+      - Emby: apps/mediaserver/emby.md
+      - Plex: apps/mediaserver/plex.md
+      - Jellyfin: apps/mediaserver/jellyfin.md
+      - MStream: apps/mediaserver/mstream.md
+    - Request:
+      - Conreq: apps/request/conreq.md
+      - Mellow: apps/request/mellow.md
+      - Overseerr: apps/request/overseerr.md
+      - Petio: apps/request/petio.md
+      - Requestrr: apps/request/requestrr.md
+    - Selfhosted:
+      - alltube: apps/selfhosted/alltube.md
+      - Bitwarden: apps/selfhosted/bitwarden.md
+      - Bliss: apps/selfhosted/bliss.md
+      - Changedetection: apps/selfhosted/changedetection.md
+      - Cloudbeaver: apps/selfhosted/cloudbeaver.md
+      - Conmixed: apps/selfhosted/comixed.md
+      - Crewlink: apps/selfhosted/crewlink.md
+      - FreshRSS: apps/selfhosted/freshrss.md
+      - Gotify: apps/selfhosted/gotify.md
+      - Homeassistant: apps/selfhosted/homeassistant.md
+      - IObroker: apps/selfhosted/iobroker.md
+      - Joplin-server: apps/selfhosted/joplin-server.md
+      - Moviematch: apps/selfhosted/moviematch.md
+      - Netbox: apps/selfhosted/netbox.md
+      - Nowshowing: apps/selfhosted/nowshowing.md
+      - Organizzr: apps/selfhosted/organizr.md
+      - PiHole: apps/selfhosted/pihole.md
+      - Recipes: apps/selfhosted/recipes.md
+      - Snapdrop: apps/selfhosted/snapdrop.md
+      - Teamspeak: apps/selfhosted/teamspeak.md
+      - unifi-controller: apps/selfhosted/unifi-controller.md
+      - whoogle: apps/selfhosted/whoogle.md
+      - Wireguard: apps/selfhosted/wireguard.md      - alltube: apps/selfhosted/alltube.md
+    - Share:
+      - Filerun: apps/share/filerun.md
+      - Nextcloud: apps/share/nextcloud.md
+      - Projectsend: apps/share/projectsend.md
+    - System:
+      - Mount: apps/system/mount.md
+      - Uploader: apps/system/uploader.md
+      - dockupdater: apps/system/dockupdater.md
+      - endlessh: apps/system/endlessh.md
+      - Rclone-GUI: apps/system/rclone-gui.md
+      - Statping: apps/system/statping.md
+      - DockServerWiki: apps/system/wiki.md
+  - Scripts:
+    - Scripts: scripts/scripts.md
+  - Sponsorship:
+    - Sponsorship: sponsorship/index.md
+    #- Getting started:
+    #  - Installation: insiders/getting-started.md
+    #  - Changelog: insiders/changelog.md
 #EOF
