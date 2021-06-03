@@ -11,33 +11,33 @@
 # NO CODE MIRRORING IS ALLOWED      #
 #####################################
 
+
 FROM ghcr.io/squidfunk/mkdocs-material:latest
 LABEL maintainer=dockserver
 LABEL org.opencontainers.image.source https://github.com/dockserver/docker-wiki/
 
-ENV PACKAGES=/usr/local/lib/python3.9/site-packages
-ENV PYTHONDONTWRITEBYTECODE=1
-
+# Set build directory
 WORKDIR /tmp
 
-RUN \
-  echo "**** install build packages ****" && \
-  apk --quiet --no-cache --no-progress update && \
-  apk --quiet --no-cache --no-progress upgrade && \
-  apk --quiet --no-cache --no-progress add git openssh gcc musl-dev && \
-  rm -rf /var/cache/apk/*
+#COPY requirements.txt requirements.txt
+COPY wiki/docs/ /docs
+COPY wiki/mkdocs.yml /docs/mkdocs.yml
 
-VOLUME [ "/docs" ]
+# Perform build and cleanup artifacts
+RUN apk add --no-cache \
+    git curl \
+    && apk add --no-cache --virtual .build gcc musl-dev \
+    && pip install --user -r /docs/requirements.txt \
+    && apk del .build gcc musl-dev \
+    && rm -rf /tmp/*
 
-COPY wiki/ /
+ENV PATH=$PATH:/root/.local/bin
 
-RUN \
-  python3 -m pip install --upgrade pip && \
-  python3 -m pip install -r /docs/requirements.txt && \
-  rm -rf /tmp/* /root/.cache && \
-  find ${PACKAGES} -type f -path "*/__pycache__/*" -exec rm -f {} \;
+WORKDIR /docs
 
+# Expose MkDocs development server port
 EXPOSE 8000
 
+# Start development server by default
 ENTRYPOINT ["mkdocs"]
 CMD ["serve", "--dev-addr=0.0.0.0:8000"]
