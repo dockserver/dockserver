@@ -20,8 +20,8 @@ LABEL org.opencontainers.image.source https://github.com/dockserver/docker-wiki/
 WORKDIR /tmp
 
 #COPY requirements.txt requirements.txt
-ADD wiki/docs/ /docs
-ADD wiki/mkdocs.yml /docs/mkdocs.yml
+COPY wiki/ /
+COPY wiki/mkdocs.yml /docs/mkdocs.yml
 
 # Perform build and cleanup artifacts
 RUN apk add --no-cache \
@@ -33,7 +33,7 @@ RUN apk add --no-cache \
 
 ENV PATH=$PATH:/root/.local/bin
 
-RUN cd /docs && mkdocs build --force --config-file mkdocs.yml
+RUN cd /docs && mkdocs build --force
 
 WORKDIR /docs
 
