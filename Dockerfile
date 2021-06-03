@@ -11,35 +11,26 @@
 # NO CODE MIRRORING IS ALLOWED      #
 #####################################
 
-
-FROM ghcr.io/squidfunk/mkdocs-material:latest
+FROM python:3.8-alpine
+#FROM ghcr.io/squidfunk/mkdocs-material:latest
 LABEL maintainer=dockserver
 LABEL org.opencontainers.image.source https://github.com/dockserver/docker-wiki/
 
 # Set build directory
 WORKDIR /tmp
 
-#COPY requirements.txt requirements.txt
-COPY wiki/ /
-COPY wiki/mkdocs.yml /docs/mkdocs.yml
+COPY wiki/requirements.txt requirements.txt
 
-# Perform build and cleanup artifacts
-RUN apk add --no-cache \
-    git curl \
-    && apk add --no-cache --virtual .build gcc musl-dev \
-    && pip install --user -r /docs/requirements.txt \
-    && apk del .build gcc musl-dev \
-    && rm -rf /tmp/*
+RUN apk --quiet --no-cache --no-progress git && \
+    apk add --no-cache --virtual .build git gcc musl-dev && \
+    python3 -m pip install --user --upgrade pip && \
+    python3 -m pip install --user -r requirements.txt && \
+    apk del .build git gcc musl-dev && \
+    rm -rf /tmp/* && \
+    rm -rf /var/cache/apk/*
 
 ENV PATH=$PATH:/root/.local/bin
-
-RUN cd /docs && mkdocs build
-
 WORKDIR /docs
-
-# Expose MkDocs development server port
 EXPOSE 8000
-
-# Start development server by default
 ENTRYPOINT ["mkdocs"]
 CMD ["serve", "--dev-addr=0.0.0.0:8000"]
