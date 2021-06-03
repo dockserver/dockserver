@@ -21,7 +21,6 @@ COPY wiki/requirements.txt /tmp/requirements.txt
 
 RUN apk --quiet --no-cache --no-progress git curl \
     && apk add --no-cache --virtual .build gcc musl-dev \
-    && python3 -m pip install --upgrade pip \
     && python3 -m pip install --user -r /tmp/requirements.txt \
     && apk del .build gcc musl-dev \
     && rm -rf /tmp/* \
