@@ -2,9 +2,6 @@ name: Publish Release
 
 on:
   push:
-    branches:
-      #- master
-      - dev
     tags:
       - 'v*.*.*'
 
