@@ -33,7 +33,7 @@ RUN apk add --no-cache \
 
 ENV PATH=$PATH:/root/.local/bin
 
-RUN cd /docs && mkdocs build --force
+RUN cd /docs && mkdocs build
 
 WORKDIR /docs
 
