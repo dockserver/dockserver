@@ -11,11 +11,10 @@
 # NO CODE MIRRORING IS ALLOWED      #
 #####################################
 
-FROM python:3.9.2-alpine3.13
+FROM ghcr.io/squidfunk/mkdocs-material:latest
 LABEL maintainer=dockserver
 LABEL org.opencontainers.image.source https://github.com/dockserver/docker-wiki/
 
-ARG WITH_PLUGINS=true
 ENV PACKAGES=/usr/local/lib/python3.9/site-packages
 ENV PYTHONDONTWRITEBYTECODE=1
 
@@ -29,6 +28,7 @@ RUN \
   rm -rf /var/cache/apk/*
 
 VOLUME [ "/docs" ]
+
 COPY wiki/ /
 
 RUN \
