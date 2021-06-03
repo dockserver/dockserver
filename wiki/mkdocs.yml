@@ -26,7 +26,7 @@ edit_uri: ""
 copyright: Copyright &copy; 2021 DockServer.io
 # Configuration
 theme:
-  name: null
+  name: material
   custom_dir: material
   static_templates:
     - 404.html
@@ -34,7 +34,6 @@ theme:
   search_index_only: true
   language: en
   features:
-    # - navigation.instant
     - navigation.sections
     - navigation.tabs
   palette:
@@ -51,33 +50,30 @@ theme:
         icon: material/toggle-switch
         name: Switch to light mode
   font:
-    text: Roboto
-    code: Roboto Mono
+    text: "Roboto"
+    code: "Fira Code"
   favicon: img/favicon.png
   icon:
-    logo: logo
+    logo: img/logo.png
+
 plugins:
   - search
+  - git-revision-date-localized:
+      type: timeago
+      locale: en
+      fallback_to_build_date: false
+  - awesome-pages
+  - macros:
+      j2_block_start_string: "[[%"
+      j2_block_end_string: "%]]"
+      j2_variable_start_string: "[["
+      j2_variable_end_string: "]]"
   - redirects:
       redirect_maps:
         #changelog/insiders.md: insiders/changelog.md
         #extensions/admonition.md: reference/admonitions.md
-        #extensions/codehilite.md: reference/code-blocks.md
-        #extensions/footnotes.md: reference/footnotes.md
-        #extensions/metadata.md: reference/meta-tags.md
-        #extensions/permalinks.md: setup/setting-up-navigation.md #permalink
-        #extensions/pymdown.md: reference/admonitions.md
-        #plugins/revision-date.md: setup/adding-a-git-repository.md #revision-date
-        #plugins/search.md: setup/setting-up-site-search.md
-        #releases/4.md: upgrading.md #upgrading-from-4x-to-5x
-        #releases/5.md: upgrading.md #upgrading-from-3x-to-4x
-        #releases/changelog.md: changelog.md
-        #setup/adding-social-links.md: setup/setting-up-the-footer.md
-        #sponsorship.md: insiders/index.md
   - minify:
       minify_html: true
-  - git-revision-date-localized:
-      fallback_to_build_date: true
 # Customization
 extra:
   social:
