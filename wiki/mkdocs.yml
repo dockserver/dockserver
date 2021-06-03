@@ -20,14 +20,12 @@ site_name: DockServer Wiki
 #site_url: https://squidfunk.github.io/mkdocs-material/
 site_author: DockServer
 site_description: >-
-  Use your self hosted docker as wiki
+  Use your self hosted Docker as Wiki
 
 # Repository
 repo_name: DockServer Wiki
 repo_url: https://github.com/dockserver/dockserver 
 edit_uri: ""
-
-# Copyright
 copyright: Copyright &copy; 2021 DockServer.io
 
 # Configuration
@@ -38,12 +36,8 @@ theme:
   # Static files
   static_templates:
     - 404.html
-
-  # Don't include MkDocs' JavaScript
   include_search_page: false
   search_index_only: true
-
-  # Default values, taken from mkdocs_theme.yml
   language: en
   features:
     # - navigation.instant
@@ -67,7 +61,7 @@ theme:
     code: Roboto Mono
   favicon: img/favicon.png
   icon:
-    logo: logo
+    logo: img/favicon.png
 
 # Plugins
 plugins:
@@ -75,7 +69,6 @@ plugins:
   - redirects:
       redirect_maps:
         #changelog/insiders.md: insiders/changelog.md
-
   - minify:
       minify_html: true
 
@@ -91,7 +84,6 @@ extra:
     - icon: fontawesome/brands/firefox
       link: https://docs.dockserver.io/
 
-# Extensions
 markdown_extensions:
   - admonition
   - abbr
@@ -256,9 +248,6 @@ nav:
     - Scripts: scripts/scripts.md
   - Sponsorship:
     - Sponsorship: sponsorship/index.md
-    #- Getting started:
-    #  - Installation: insiders/getting-started.md
-    #  - Changelog: insiders/changelog.md
 
 # Google Analytics
 google_analytics:
