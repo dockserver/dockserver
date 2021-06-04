@@ -34,18 +34,19 @@
 
 ## Pre-Install
 
+PREINSTALLATION 
 1. Login to your Cloudflare Account & goto DNS click on Add record.
-2. Add 1 **A-Record** pointed to your server's ip.
-3. Copy your [CloudFlare-Global-Key](https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys) and [CloudFlare-Zone-ID](https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys).
+1. Add 1 **A-Record** pointed to your server's ip.
+1. Copy your [CloudFlare-Global-Key](https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys) and [CloudFlare-Zone-ID](https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys).
 
 ### Set the following on Cloudflare
 
 1. `SSL = FULL` **( not FULL/STRICT )**
-2. `Always on = YES`
-3. `HTTP to HTTPS = YES`
-4. `RocketLoader and Broli / Onion Routing = NO`
-5. `TLS min = 1.2`
-6. `TLS = v1.3`
+1. `Always on = YES`
+1. `HTTP to HTTPS = YES`
+1. `RocketLoader and Broli / Onion Routing = NO`
+1. `TLS min = 1.2`
+1. `TLS = v1.3`
 
 ## Easy Mode install
 
