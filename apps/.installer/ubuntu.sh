@@ -479,6 +479,14 @@ EOF
          $(command -v find) $ytdl -exec $(command -v chown) -hR 1000:1000 {} \;
      done
   fi
+  if [[ ${typed} == "handbrake" ]];then
+     folder=$storage/${typed}
+     for hbrake in ${folder};do
+         $(command -v mkdir) -p $hbrake/{watch,storage,output}
+         $(command -v find) $hbrake -exec $(command -v chmod) a=rx,u+w {} \;
+         $(command -v find) $hbrake -exec $(command -v chown) -hR 1000:1000 {} \;
+     done
+  fi
   if [[ ${typed} == "bitwarden" ]];then
      if [[ -f $appfolder/.subactions/${typed}.sh ]];then $(command -v bash) $appfolder/.subactions/${typed}.sh;fi
   fi
