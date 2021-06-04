@@ -125,6 +125,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://streamnet.club"><img src="https://avatars.githubusercontent.com/u/5200101?v=4?s=100" width="100px;" alt=""/><br /><sub><b>cyb3rgh05t</b></sub></a><br /><a href="https://github.com/dockserver/dockserver/commits?author=cyb3rgh05t" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/SilverSix311"><img src="https://avatars.githubusercontent.com/u/8906465?v=4?s=100" width="100px;" alt=""/><br /><sub><b>SilverSix311</b></sub></a><br /><a href="https://github.com/dockserver/dockserver/commits?author=SilverSix311" title="Tests">⚠️</a> <a href="https://github.com/dockserver/dockserver/commits?author=SilverSix311" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/dan3805"><img src="https://avatars.githubusercontent.com/u/35934387?v=4?s=100" width="100px;" alt=""/><br /><sub><b>dan3805</b></sub></a><br /><a href="https://github.com/dockserver/dockserver/commits?author=dan3805" title="Tests">⚠️</a> <a href="https://github.com/dockserver/dockserver/commits?author=dan3805" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/ramsaytc"><img src="https://avatars.githubusercontent.com/u/16809662?v=4?s=100" width="100px;" alt=""/><br /><sub><b>ramsaytc</b></sub></a><br /><a href="https://github.com/dockserver/dockserver/commits?author=ramsaytc" title="Documentation">📖</a></td>
   </tr>
 </table>
 
