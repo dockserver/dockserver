@@ -31,7 +31,7 @@ copyright: Copyright &copy; 2021 DockServer.io
 # Configuration
 theme:
   name: material
-  custom_dir: material
+  custom_dir: overrides
 
   # Static files
   static_templates:
@@ -59,9 +59,8 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
-  favicon: logo
-  icon:
-    logo: logo
+  favicon: img/favicon.png
+  logo: img/logo.png
 
 # Plugins
 plugins:
