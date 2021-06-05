@@ -22,10 +22,9 @@ jobs:
         id: prep
         run: |
           REPO=$CI_REPOSITORY_NAME
-          DOCKER_IMAGE=${{ github.repository_owner }}/${REPO}
+          DOCKER_IMAGE=dockserver/dockserver
           if [ "$CI_REF_NAME" == "master" ];then VERSION=latest;fi
           if [ "$CI_REF_NAME" == "dev" ];then VERSION=nightly;fi
-          if [ "$CI_REF_NAME" == "dockserver" ];then VERSION=dockserver;fi
           TAGS="${DOCKER_IMAGE}:${VERSION}"
           echo ::set-output name=tags::${TAGS}
           echo ::set-output name=title::${GITHUB_REPOSITORY}
