@@ -17,6 +17,7 @@ jobs:
       - name: Print environment variables
         run: |
           echo "CI_REPOSITORY_NAME=$CI_REPOSITORY_NAME"
+          echo "CI_REF_NAME=$CI_REF_NAME"
       - name: Prepare GHRC.io
         id: prep
         run: |
