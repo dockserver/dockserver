@@ -10,27 +10,27 @@
     <a href="https://github.com/dockserver/dockserver/releases/latest">
         <img src="https://img.shields.io/github/v/release/dockserver/dockserver?include_prereleases&label=Latest%20Release&logo=github" alt="Latest Official Release on GitHub">
     </a>
-    <a href="https://github.com/dockserver/dockserver/blob/main/LICENSE">
+    <a href="https://github.com/dockserver/dockserver/blob/master/LICENSE">
         <img src="https://img.shields.io/github/license/dockserver/dockserver?label=License&logo=gnu" alt="GNU General Public License">
     </a>
 </p>
 
 *Docker + Traefik with Authelia and Cloudflare Protection*
 
-## Minimum Specs
+----
+
+## Minimum Specs and Requirements 
 
 * Ubuntu 18/20 or Debian 9/10
 * 2 Cores
 * 4GB Ram
 * 20GB Disk Space
 
-## Requirements
-
 * A VPS/VM or Dedicated Server
-
 * Domain
-
 * [Cloudflare](https://dash.cloudflare.com/sign-up) account free tier
+
+---
 
 ## Pre-Install
 
@@ -38,7 +38,9 @@
 1. Add 1 **A-Record** pointed to your server's ip.
 1. Copy your [CloudFlare-Global-Key](https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys) and [CloudFlare-Zone-ID](https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys).
 
-### Set the following on Cloudflare
+----
+
+## Set the following on Cloudflare
 
 1. `SSL = FULL` **( not FULL/STRICT )**
 1. `Always on = YES`
@@ -47,7 +49,9 @@
 1. `TLS min = 1.2`
 1. `TLS = v1.3`
 
-## Easy Mode install
+----
+
+### Easy Mode install
 
 Run the following command:
 
