@@ -84,7 +84,7 @@ Follow the Instructions
 
 ### Requirements
 * Authelia deployed via DockServer menu
-* Authenticator app (Google Authenticator, 1Password, Authy, etc...)
+* Authenticator app ([Google Authenticator], [1Password], [Authy], [AndOTP], etc ...)
 
 ----
 
