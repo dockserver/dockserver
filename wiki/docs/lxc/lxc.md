@@ -68,11 +68,19 @@ https://forums.plex.tv/t/pms-installation-guide-when-using-a-proxmox-5-1-lxc-con
 1. In *Datacenter*, *Storage* add your NFS external drives.
 1. Open a shell from the node.
 1. Replace 120 with the container number:
-   1. ```nano /etc/pve/lxc/120.conf```
+   ```sh
+   nano /etc/pve/lxc/120.conf
+   ```
 1. Add the following line('s) as appropriate to the drives you wish to gain access to:
-   1. ```mp0: /mnt/pve/Media,mp=/mnt/Media```
-   1. ```mp1: /mnt/pve/Pictures,mp=/mnt/Pictures```
-   1. ```mp2: /mnt/pve/Music,mp=/mnt/Music```
+    ```sh
+    mp0: /mnt/pve/Media,mp=/mnt/Media
+    ```
+    ```sh
+    mp1: /mnt/pve/Pictures,mp=/mnt/Pictures
+    ```
+    ```sh
+    mp2: /mnt/pve/Music,mp=/mnt/Music
+    ```
 
 You can now start the container
 
@@ -82,12 +90,18 @@ You can now start the container
 
 Once the container is up and running and you have logged in:
 
-1. Stop Apparmour service
-   1. ```systemctl stop apparmor```
-1. Disable Apparmor from starting on system boot
-   1. ```systemctl disable apparmor```
-1. Remove Apparmor package and dependencies
-   1. ```apt remove --assume-yes --purge apparmor```
+1. Stop Apparmour service:
+   ```sh 
+   systemctl stop apparmor
+    ```
+1. Disable Apparmor from starting on system boot:
+   ```sh
+   systemctl disable apparmor
+   ```
+1. Remove Apparmor package and dependencies:
+   ```sh
+   apt remove --assume-yes --purge apparmor
+   ```
 
 Now your LXC is ready to continue the install of DockServer
 
