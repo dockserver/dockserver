@@ -93,7 +93,7 @@ Once the container is up and running and you have logged in:
 1. Stop Apparmour service:
    ```sh 
    systemctl stop apparmor
-    ```
+   ```
 1. Disable Apparmor from starting on system boot:
    ```sh
    systemctl disable apparmor
