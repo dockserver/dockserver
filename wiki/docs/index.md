@@ -10,44 +10,48 @@
     <a href="https://github.com/dockserver/dockserver/releases/latest">
         <img src="https://img.shields.io/github/v/release/dockserver/dockserver?include_prereleases&label=Latest%20Release&logo=github" alt="Latest Official Release on GitHub">
     </a>
-    <a href="https://github.com/dockserver/dockserver/blob/main/LICENSE">
+    <a href="https://github.com/dockserver/dockserver/blob/master/LICENSE">
         <img src="https://img.shields.io/github/license/dockserver/dockserver?label=License&logo=gnu" alt="GNU General Public License">
     </a>
 </p>
 
 *Docker + Traefik with Authelia and Cloudflare Protection*
 
-## Minimum Specs
+----
+
+## Minimum Specs and Requirements 
 
 * Ubuntu 18/20 or Debian 9/10
 * 2 Cores
 * 4GB Ram
 * 20GB Disk Space
 
-## Requirements
-
 * A VPS/VM or Dedicated Server
-
 * Domain
-
 * [Cloudflare](https://dash.cloudflare.com/sign-up) account free tier
+
+---
 
 ## Pre-Install
 
 1. Login to your Cloudflare Account & goto DNS click on Add record.
-2. Add 1 **A-Record** pointed to your server's ip.
-3. Copy your [CloudFlare-Global-Key](https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys) and [CloudFlare-Zone-ID](https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys).
+1. Add 1 **A-Record** pointed to your server's ip.
+1. Copy your [CloudFlare-Global-Key](https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys) and [CloudFlare-Zone-ID](https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys).
 
-### Set the following on Cloudflare
+----
+
+## Set the following on Cloudflare
 
 1. `SSL = FULL` **( not FULL/STRICT )**
-2. `Always on = YES`
-3. `HTTP to HTTPS = YES`
-4. `RocketLoader and Broli / Onion Routing = NO`
-5. `TLS min = 1.2`
-6. `TLS = v1.3`
+1. `Always on = YES`
+1. `HTTP to HTTPS = YES`
+1. `RocketLoader and Broli / Onion Routing = NO`
+1. `TLS min = 1.2`
+1. `TLS = v1.3`
 
-## Easy Mode install
+----
+
+### Easy Mode install
 
 Run the following command:
 
@@ -65,27 +69,12 @@ sudo wget -qO- https://git.io/J3GDc | sudo bash
 
 </details>
 
-## Support
-
-Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
-
-* Join our <a href="https://discord.gg/FYSvu83caM">
-        <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
-    </a> for Support
-
-## Code and Permissions
-
-```sh
-Copyright 2021 @dockserver
-Code owner @dockserver
-Dev Code @dockserver
-Co-Dev -APPS- @CONTRIBUTORS-LIST
-```
-
 ----
 
+## Latest Changes 🎉
 
 <!--START_SECTION:activity-->
+<!-- markdownlint-disable -->
 1. 🎉 Merged PR [#23](https://github.com/dockserver/dockserver/pull/23) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 2. 💪 Opened PR [#23](https://github.com/dockserver/dockserver/pull/23) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 3. 🎉 Merged PR [#22](https://github.com/dockserver/dockserver/pull/22) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
@@ -96,8 +85,8 @@ Co-Dev -APPS- @CONTRIBUTORS-LIST
 8. 💪 Opened PR [#21](https://github.com/dockserver/dockserver/pull/21) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 9. 🗣 Commented on [#15](https://github.com/dockserver/dockserver/issues/15) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 10. 🗣 Commented on [#15](https://github.com/dockserver/dockserver/issues/15) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+<!-- markdownlint-restore -->
 <!--END_SECTION:activity-->
-
 
 ----
 
@@ -133,3 +122,24 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+
+----
+
+## Support
+
+Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
+
+* Join our <a href="https://discord.gg/FYSvu83caM">
+        <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
+    </a> for Support
+
+----
+
+## Code and Permissions
+
+```sh
+Copyright 2021 @dockserver
+Code owner @dockserver
+Dev Code @dockserver
+Co-Dev -APPS- @CONTRIBUTORS-LIST
+```
