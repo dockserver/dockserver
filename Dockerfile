@@ -12,7 +12,7 @@
 #####################################
 FROM ghcr.io/squidfunk/mkdocs-material:latest
 LABEL maintainer=dockserver
-LABEL org.opencontainers.image.source https://github.com/dockserver/docker-wiki/
+LABEL org.opencontainers.image.source https://github.com/dockserver/dockserver/
 
 ENV PACKAGES=/usr/local/lib/python3.9/site-packages
 ENV PYTHONDONTWRITEBYTECODE=1
