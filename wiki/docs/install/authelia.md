@@ -19,7 +19,7 @@
 # Authelia
 <p align="center">
    <a href="https://www.authelia.com/">
-      <img src="https://github.com/authelia/authelia/blob/master/docs/images/authelia-title.png" alt="Authelia">
+      <img src="https://raw.githubusercontent.com/authelia/authelia/master/docs/images/authelia-title.png" alt="Authelia">
    </a>
 </p>
 
