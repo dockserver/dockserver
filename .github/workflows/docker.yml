@@ -3,7 +3,7 @@ on:
   push:
     branches-ignore:
       - 'dependabot/**'
-      - 'wiki'
+      - 'master'
   schedule:
     - cron: '0 5 * * 0'
 
@@ -67,3 +67,4 @@ jobs:
             org.opencontainers.image.created=${{ steps.prep.outputs.created }}
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
+
