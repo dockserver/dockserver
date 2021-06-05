@@ -31,59 +31,65 @@ This guide will take you through how to prepare Proxmox to install DockServer on
 ##### **Guide**
 1. Download Ubuntu template. Recommended version is Ubunto 20.04 Standard.
 1. Create a new LXC container:
-	1. 'General' tab:
+	1. **General** tab:
 		1. Give the container a name in the 'Hostname' field.
 		1. Remove the tick from 'Unprivileged container'.
 		1. Set the password and confirm the password you wish to use for CLI access.
-	1. 'Template' tab: 
+	1. **Template** tab: 
 		1. Choose the Ubuntu template.
-	1. 'Root Disk' tab:
+	1. **Root Disk** tab:
 		1. Set the disk size high enough to handle all DockServer apps. Allow room for expansion. I personally have this set to 500Gb.
-	1. 'CPU' tab:
+	1. **CPU** tab:
 		1. Add the number of cores that you want assigned to the LXC. Remember, you will probably have Plex installed in Docker, along with multiple other apps all demanding processing power. I personally have this set to 6 cores.
-	1. 'Memory' tab:
+	1. **Memory** tab:
 		1. Set the memory and swap size accordingly. Bear in mind the previous comment regarding number of CPU cores. I personally have this set to 8192MiB for both Memory and Swap.
-	1. 'Network' tab:
+	1. **Network** tab:
 		1. Uncheck 'Firewall'.
 		1. 'IPv4' and 'IPv6' - I set these both of these to DHCP and then reserve the MAC address in my routers DHCP server.
-	1. 'DNS' tab:
+	1. **DNS** tab:
 		1. Leave this tab alone.
-	1. 'Confirm' tab - check your settings and select 'Finish'.
+	1. **Confirm** tab - check your settings and select 'Finish'.
 ##### **IMPORTANT NOTE - DO NOT START THE CONTAINER YET!**
 
 Before starting the container, you need to set the following on the Options, Features tab:
+
 1. Nesting
 1. CIFS
 1. NFS
 1. Fuse
 
 ##### **GPU Passthrough**
+
 Run the steps on the following guide to pass through the GPU (my own system is an Intel GPU so I followed each step exactly without any changes and everything worked):
 https://forums.plex.tv/t/pms-installation-guide-when-using-a-proxmox-5-1-lxc-container/219728
 
 ##### **Mounting external NFS Drives**
-1. In 'Datacenter', 'Storage' add your NFS external drives.
+
+1. In *Datacenter*, *Storage* add your NFS external drives.
 1. Open a shell from the node.
 1. Replace 120 with the container number:
-`nano /etc/pve/lxc/120.conf`
+   1. ```nano /etc/pve/lxc/120.conf```
 1. Add the following line('s) as appropriate to the drives you wish to gain access to:
-`mp0: /mnt/pve/Media,mp=/mnt/Media`
-`mp1: /mnt/pve/Pictures,mp=/mnt/Pictures`
-`mp2: /mnt/pve/Music,mp=/mnt/Music`
+   1. ```mp0: /mnt/pve/Media,mp=/mnt/Media```
+   1. ```mp1: /mnt/pve/Pictures,mp=/mnt/Pictures```
+   1. ```mp2: /mnt/pve/Music,mp=/mnt/Music```
 
 You can now start the container
 
+---
+
 ##### **How to Disable and Delete Apparmour:**
+
 Once the container is up and running and you have logged in:
+
 1. Stop Apparmour service
-`systemctl stop apparmor`
+   1. ```systemctl stop apparmor```
 1. Disable Apparmor from starting on system boot
-`systemctl disable apparmor`
+   1. ```systemctl disable apparmor```
 1. Remove Apparmor package and dependencies
-`apt remove --assume-yes --purge apparmor`
+   1. ```apt remove --assume-yes --purge apparmor```
 
 Now your LXC is ready to continue the install of DockServer
-
 
 ----
 
