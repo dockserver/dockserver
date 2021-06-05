@@ -131,13 +131,17 @@ Restart the container:
 sudo docker restart authelia
 ```
 
-Now visit https://authelia.YOURDOMAIN.com and login with the username/password.  You'll be presented with a screen saying you need to register your device for TOTP.  Click **"Not registered yet?"** and a message will appear on screen saying **"An email has been sent to your address to complete the process"**.  As we didn't set up SMTP, no email has been sent.  However, the link you need to continue the setup can be found here:
+Now visit https://authelia.YOURDOMAIN.com and login with the username/password.
+You'll be presented with a screen saying you need to register your device for TOTP.
+Click **"Not registered yet?"** and a message will appear on screen saying **"An email has been sent to your address to complete the process"**.
+As we didn't set up SMTP, no email has been sent. However, the link you need to continue the setup can be found here:
 
 ```sh
 cat /opt/appdata/authelia/notification.txt
 ```
 
-Copy and paste the URL found in this file into your browser, and then scan the QR code with your favourite OTP app (Google Authenticator, 1Password, Authy, AndOTP, etc).  Follow the setup instructions in your app, and enter the 6-digit OTP in Authelia.
+Copy and paste the URL found in this file into your browser, and then scan the QR code with your favourite OTP app ([Google Authenticator], [1Password], [Authy], [AndOTP], etc).
+Follow the setup instructions in your app, and enter the 6-digit OTP in Authelia.
 
 Congrats, you've got 2FA setup with Authelia!
 
@@ -167,6 +171,9 @@ in [LICENSE](https://github.com/authelia/authelia/blob/master/LICENSE).
 [Yubikey]: https://www.yubico.com/products/yubikey-hardware/yubikey4/
 [auth_request]: https://nginx.org/en/docs/http/ngx_http_auth_request_module.html
 [Google Authenticator]: https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en
+[1Password]: https://1password.com/
+[Authy]: https://authy.com/
+[AndOTP]: https://play.google.com/store/apps/details?id=org.shadowice.flocke.andotp
 [config.template.yml]: https://raw.githubusercontent.com/authelia/authelia/master/config.template.yml
 [nginx]: https://www.nginx.com/
 [Traefik]: https://traefik.io/
