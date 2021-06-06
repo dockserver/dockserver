@@ -759,7 +759,6 @@ if [[ ! -x $(command -v docker-compose) ]];then
    $(command -v chmod) a=rx,u+w /usr/bin/docker-compose >/dev/null 2>&1
 fi
 }
-
 ## migrator for the env
 migrateenv() {
 basefolder="/opt/appdata"
@@ -767,7 +766,6 @@ envmigrate="/opt/dockserver/apps/.subactions/envmigrate.sh"
 envorg=$(cat /opt/dockserver/traefik/templates/compose/.env | wc -l)
 env=$(cat $basefolder/compose/.env | wc -l)
 if [[ $envorg -gt $env ]];then $(command -v bash) $envmigrate;fi
-}
 }
 ##########
 lubox

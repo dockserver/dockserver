@@ -4,9 +4,7 @@
 # All rights reserved.
 migrateenv() {
 basefolder="/opt/appdata"
-env=$(cat $basefolder/compose/.env | wc -l)
 source $basefolder/compose/.env
-if [[ $env -le "42" ]];then
 echo -e "##Environment for Docker-Compose
 ##TRAEFIK
 CLOUDFLARE_EMAIL=CF-EMAIL
@@ -102,6 +100,5 @@ channelid=${channelid:-nul}
 Webhookurl=${Webhookurl:-null}
 #EOF
 " >$basefolder/compose/.env
-fi
 }
 migrateenv
