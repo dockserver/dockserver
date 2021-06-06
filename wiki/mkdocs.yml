@@ -150,15 +150,16 @@ nav:
       - Cloud: apps/addons/cloud.md
       - CloudCMD: apps/addons/cloudcmd.md
       - Flaresolverr: apps/addons/flaresolverr.md
+      - diun: apps/addons/diun.md
+      - Dozzle: apps/addons/dozzle.md
       - Heimdall: apps/addons/heimdall.md
       - Librespeed: apps/addons/librespeed.md
       - NetData: apps/addons/netdata.md
+      - Portainer: apps/addons/portainer.md
       - Remmina: apps/addons/remmina.md
       - Tauticord : apps/addons/tauticord.md
       - Speedtest: apps/addons/speedtest.md
       - vnstat: apps/addons/vnstat.md
-      - Dozzle: apps/addons/dozzle.md
-      - Portainer: apps/addons/portainer.md
     - Backup:
       - Rsync-Backup: apps/backup/backup.md
       - Duplicati: apps/backup/duplicati.md
@@ -188,7 +189,7 @@ nav:
       - Invitarr: apps/mediamanager/invitarr.md
       - Lazylibrarian: apps/mediamanager/lazylibrarian.md
       - Lidarr: apps/mediamanager/lidarr.md
-      - Peowlarr: apps/mediamanager/prowlarr.md
+      - Prowlarr: apps/mediamanager/prowlarr.md
       - Radarr: apps/mediamanager/radarr.md
       - Readarr: apps/mediamanager/readarr.md
       - Sonarr: apps/mediamanager/sonarr.md
