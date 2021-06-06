@@ -760,13 +760,14 @@ if [[ ! -x $(command -v docker-compose) ]];then
 fi
 }
 
+## migrator for the env
 migrateenv() {
 basefolder="/opt/appdata"
+envmigrate="/opt/dockserver/apps/.subactions/envmigrate.sh"
+envorg=$(cat /opt/dockserver/traefik/templates/compose/.env | wc -l)
 env=$(cat $basefolder/compose/.env | wc -l)
-source $basefolder/compose/.env
-if [[ $env -le "42" ]];then
-   $(command -v bash) ./.subactions/envmigrate.sh
-fi
+if [[ $envorg -gt $env ]];then $(command -v bash) $envmigrate;fi
+}
 }
 ##########
 lubox
