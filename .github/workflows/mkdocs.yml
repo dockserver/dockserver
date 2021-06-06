@@ -22,8 +22,24 @@ jobs:
         src_branch: master
         username: nutsbot
 
+  copytodev:
+    name: Copy new Read.me to dev branch
+    runs-on: ubuntu-latest
+    steps:
+    - name: Copycat
+      uses: andstor/copycat-action@v3
+      with:
+        personal_token: ${{ secrets.CR_PAT }}
+        src_path: README.md
+        dst_path: README.md
+        dst_owner: dockserver
+        dst_repo_name: dockserver
+        dst_branch: dev
+        src_branch: master
+        username: nutsbot
+
   deploy:
-    needs: copy
+    needs: [copy,copytodev]
     name: Deploy Wiki on Github Pages
     runs-on: ubuntu-latest
     steps:
