@@ -49,17 +49,18 @@ tee <<-EOF
 EOF
    read -erp "Are you sure ?: " uaction </dev/tty
    case $uaction in
-    y|Y) clear && notrunning ;;
+    y|Y) clear && overwrite ;;
     n|N) clear && exit;;
     Z|z|exit|EXIT|Exit|close) exit ;;
     *) useraction ;;
   esac
 }
-notrunning() {
+overwrite() {
   basefolder="/opt/appdata"
   source="/opt/dockserver/traefik/templates/"
+  envmigrate="/opt/dockserver/apps/.subactions/envmigrate.sh
   if [[ ! -x $(command -v rsync) ]];then $(command -v apt) install --reinstall rsync -yqq 1>/dev/null 2>&1;fi
-  $(command -v rsync) ${source} ${basefolder} -aqhv --exclude={'local','installer'}
+  $(command -v rsync) ${source} ${basefolder} -aqhv --exclude={'local','installer'} && $(command -v bash) $envmigrate
   basefolder="/opt/appdata"
   for i in ${basefolder};do
       $(command -v mkdir) -p $i/{authelia,traefik} $i/traefik/{rules,acme}
