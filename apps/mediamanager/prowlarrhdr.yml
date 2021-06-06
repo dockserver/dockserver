@@ -11,7 +11,6 @@ services:
       - 'UMASK=${UMASK}'
       - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:prowlarr'
       - 'TP_THEME=${PROWLARRHDRTHEME}'
-      - 'TP_HOTIO=${TP_HOTIO}'
     image: '${PROWLARRHDRIMAGE}'
     restart: '${RESTARTAPP}'
     ports:
