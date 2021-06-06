@@ -793,11 +793,11 @@ BAZARRIMAGE=${BAZARRIMAGE:-ghcr.io/linuxserver/bazarr}
 BAZARRTHEME=${BAZARRTHEME:-organizr-dark}
 BAZARR4KIMAGE=${BAZARR4KIMAGE:-ghcr.io/linuxserver/bazarr}
 BAZARR4KTHEME=${BAZARR4KTHEME:-organizr-dark}
-RADARRIMAGE=${RADARRIMAGE:-ghcr.io/linuxserver/radarr:nightly]
+RADARRIMAGE=${RADARRIMAGE:-ghcr.io/linuxserver/radarr:nightly}
 RADARRTHEME=${RADARRTHEME:-organizr-dark}
-RADARR4KIMAGE=${RADARR4KIMAGE:-ghcr.io/linuxserver/radarr:nightly]
+RADARR4KIMAGE=${RADARR4KIMAGE:-ghcr.io/linuxserver/radarr:nightly}
 RADARR4KTHEME=${RADARR4KTHEME:-organizr-dark}
-RADARRHDRIMAGE=${RADARRHDRIMAGE:-ghcr.io/linuxserver/radarr:nightly]
+RADARRHDRIMAGE=${RADARRHDRIMAGE:-ghcr.io/linuxserver/radarr:nightl}
 RADARRHDRTHEME=${RADARR4KTHEME:-organizr-dark}
 READARRIMAGE=${BAZARRIMAGE:-ghcr.io/hotio/readarr:nightly}
 READARRTHEME=${READARRTHEME:-organizr-dark}
@@ -811,6 +811,7 @@ LIDARRIMAGE=${LIDARRIMAGE:-ghcr.io/linuxserver/lidarr:nightly}
 LIDARRTHEME=${LIDARRTHEME:-organizr-dark}
 " >$basefolder/compose/.env
 fi
+}
 }
 ##########
 lubox
