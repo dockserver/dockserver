@@ -9,7 +9,10 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-    image: 'ghcr.io/hotio/prowlarr:nightly'
+      - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:prowlarr'
+      - 'TP_THEME=${PROWLARRTHEME}'
+      - 'TP_HOTIO=${TP_HOTIO}'
+    image: '${PROWLARRIMAGE}'
     restart: '${RESTARTAPP}'
     ports:
       - '${PORTBLOCK}:9696:9696'

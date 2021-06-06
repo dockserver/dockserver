@@ -9,7 +9,9 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-    image: 'ghcr.io/linuxserver/sabnzbd'
+      - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:sabnzbd'
+      - 'TP_THEME=${SABNZBDTHEME}'
+    image: '${SABNZBDIMAGE}'
     restart: '${RESTARTAPP}'
     ports:
       - '${PORTBLOCK}:8010:8080'

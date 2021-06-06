@@ -9,7 +9,9 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-    image: 'ghcr.io/linuxserver/lazylibrarian'
+      - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:lazylibrarian'
+      - 'TP_THEME=${LAZYLIBRARIANTHEME}'
+    image: '${LAZYLIBRARIANIMAGE}'
     restart: '${RESTARTAPP}'
     ports:
       - '${PORTBLOCK}:5299:5299'

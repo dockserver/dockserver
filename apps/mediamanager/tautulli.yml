@@ -9,7 +9,9 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-    image: 'ghcr.io/linuxserver/tautulli'
+      - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:tautulli'
+      - 'TP_THEME=${TAUTULLITHEME}'
+    image: '${TAUTULLIIMAGE}'
     restart: '${RESTARTAPP}'
     ports:
       - '${PORTBLOCK}:8180:8181'

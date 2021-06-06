@@ -11,7 +11,7 @@ services:
       - 'UMASK=${UMASK}'
       - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:readarr'
       - 'TP_THEME=${READARRTHEME}'
-      - 'TP_HOTIO=true'
+      - 'TP_HOTIO=${TP_HOTIO}'
     image: '${READARRIMAGE}'
     restart: '${RESTARTAPP}'
     ports:

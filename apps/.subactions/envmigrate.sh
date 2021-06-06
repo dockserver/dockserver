@@ -1,4 +1,13 @@
-##Environment for Docker-Compose
+#!/usr/bin/with-contenv bash
+# shellcheck shell=bash
+# Copyright (c) 2020, MrDoob
+# All rights reserved.
+migrateenv() {
+basefolder="/opt/appdata"
+env=$(cat $basefolder/compose/.env | wc -l)
+source $basefolder/compose/.env
+if [[ $env -le "42" ]];then
+echo -e "##Environment for Docker-Compose
 ##TRAEFIK
 CLOUDFLARE_EMAIL=CF-EMAIL
 CLOUDFLARE_API_KEY=CF-API-KEY
@@ -92,3 +101,7 @@ Plex_LIBS=${Plex_LIBS:-null}
 channelid=${channelid:-nul}
 Webhookurl=${Webhookurl:-null}
 #EOF
+" >$basefolder/compose/.env
+fi
+}
+migrateenv

@@ -36,12 +36,11 @@ services:
       - 'traefik.http.routers.qbittorrentvpn-rtr.middlewares=chain-authelia@file'
       - 'traefik.http.routers.qbittorrentvpn-rtr.service=qbittorrentvpn-svc'
       - 'traefik.http.services.qbittorrentvpn-svc.loadbalancer.server.port=8080'
-
 networks:
   proxy:
     driver: bridge
     external: true
-    
+  
 volumes:
   unionfs:
     driver: local-persist

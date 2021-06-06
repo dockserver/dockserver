@@ -9,7 +9,9 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-    image: 'ghcr.io/linuxserver/nzbget:testing'
+      - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:nzbget'
+      - 'TP_THEME=${NZBGETTHEME}'
+    image: '${NZBGETIMAGE}'
     restart: '${RESTARTAPP}'
     ports:
       - '${PORTBLOCK}:6789:6789'

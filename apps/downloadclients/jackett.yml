@@ -9,7 +9,9 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-    image: 'ghcr.io/hotio/jackett:latest'
+      - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:jackett'
+      - 'TP_THEME=${JACKETTTHEME}'
+    image: '${JACKETTIMAGE}'
     restart: '${RESTARTAPP}'
     ports:
       - '${PORTBLOCK}:9117:9117'
