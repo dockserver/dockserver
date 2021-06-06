@@ -14,20 +14,26 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
+
 # Project information
 site_name: DockServer Wiki
+#site_url: https://squidfunk.github.io/mkdocs-material/
 site_author: DockServer
 site_description: >-
-  Use your self hosted docker as wiki
+  Use your self hosted Docker as Wiki
+
+# Repository
 repo_name: DockServer Wiki
 repo_url: https://github.com/dockserver/dockserver 
 edit_uri: ""
-# Copyright
 copyright: Copyright &copy; 2021 DockServer.io
+
 # Configuration
 theme:
-  name: null
-  custom_dir: material
+  name: material
+  custom_dir: overrides
+
+  # Static files
   static_templates:
     - 404.html
   include_search_page: false
@@ -54,46 +60,29 @@ theme:
     text: Roboto
     code: Roboto Mono
   favicon: img/favicon.png
-  icon:
-    logo: logo
+  logo: img/favicon.png
+
+# Plugins
 plugins:
   - search
   - redirects:
       redirect_maps:
         #changelog/insiders.md: insiders/changelog.md
-        #extensions/admonition.md: reference/admonitions.md
-        #extensions/codehilite.md: reference/code-blocks.md
-        #extensions/footnotes.md: reference/footnotes.md
-        #extensions/metadata.md: reference/meta-tags.md
-        #extensions/permalinks.md: setup/setting-up-navigation.md #permalink
-        #extensions/pymdown.md: reference/admonitions.md
-        #plugins/revision-date.md: setup/adding-a-git-repository.md #revision-date
-        #plugins/search.md: setup/setting-up-site-search.md
-        #releases/4.md: upgrading.md #upgrading-from-4x-to-5x
-        #releases/5.md: upgrading.md #upgrading-from-3x-to-4x
-        #releases/changelog.md: changelog.md
-        #setup/adding-social-links.md: setup/setting-up-the-footer.md
-        #sponsorship.md: insiders/index.md
   - minify:
       minify_html: true
-  - git-revision-date-localized:
-      fallback_to_build_date: true
+
 # Customization
 extra:
   social:
-    - icon:
-      repo: fontawesome/brands/github
+    - icon: fontawesome/brands/github
       link: https://github.com/dockserver/dockserver
-    - icon:
-      repo: fontawesome/brands/docker
+    - icon: fontawesome/brands/docker
       link: https://github.com/orgs/dockserver/packages/
-    - icon:
-      repo: fontawesome/brands/discord
+    - icon: fontawesome/brands/discord
       link: https://discord.gg/A7h7bKBCVa
-    - icon:
-      repo: fontawesome/brands/firefox
+    - icon: fontawesome/brands/firefox
       link: https://docs.dockserver.io/
-# Extensions
+
 markdown_extensions:
   - admonition
   - abbr
@@ -119,8 +108,8 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.magiclink:
       repo_url_shorthand: true
-      user: dockserver
-      repo: dockserver
+      user: squidfunk
+      repo: mkdocs-material
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.superfences:
@@ -132,6 +121,7 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
+
 # Page tree
 nav:
   - Home: index.md
@@ -198,6 +188,7 @@ nav:
       - Invitarr: apps/mediamanager/invitarr.md
       - Lazylibrarian: apps/mediamanager/lazylibrarian.md
       - Lidarr: apps/mediamanager/lidarr.md
+      - Peowlarr: apps/mediamanager/prowlarr.md
       - Radarr: apps/mediamanager/radarr.md
       - Readarr: apps/mediamanager/readarr.md
       - Sonarr: apps/mediamanager/sonarr.md
@@ -217,6 +208,7 @@ nav:
       - Petio: apps/request/petio.md
       - Requestrr: apps/request/requestrr.md
     - Selfhosted:
+      - Alltube: apps/selfhosted/alltube.md
       - Bitwarden: apps/selfhosted/bitwarden.md
       - Bliss: apps/selfhosted/bliss.md
       - Changedetection: apps/selfhosted/changedetection.md
@@ -255,7 +247,9 @@ nav:
     - Scripts: scripts/scripts.md
   - Sponsorship:
     - Sponsorship: sponsorship/index.md
-    #- Getting started:
-    #  - Installation: insiders/getting-started.md
-    #  - Changelog: insiders/changelog.md
+
+# Google Analytics
+google_analytics:
+  - !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
+  - auto
 #EOF

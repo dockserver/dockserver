@@ -1,43 +1,57 @@
-<br />
-![Image of DockServer](/img/logo.png)
-
-[![Website: https://dockserver.io](https://img.shields.io/badge/Website-https%3A%2F%2Fdockserver.io-blue.svg?style=for-the-badge&colorB=177DC1&label=website)](https://dockserver.io)
-[![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa)
-[![License: GPL 3](https://img.shields.io/badge/License-GPL%203-blue.svg?style=for-the-badge&colorB=177DC1&label=license)](LICENSE)
+# **DockServer**   
+      
+<p align="left">
+    <a href="https://discord.gg/FYSvu83caM">
+        <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
+    </a>
+        <a href="https://github.com/dockserver/dockserver/releases">
+        <img src="https://img.shields.io/github/downloads/dockserver/dockserver/total?label=Total%20Downloads&logo=github" alt="Total Releases Downloaded from GitHub">
+    </a>
+    <a href="https://github.com/dockserver/dockserver/releases/latest">
+        <img src="https://img.shields.io/github/v/release/dockserver/dockserver?include_prereleases&label=Latest%20Release&logo=github" alt="Latest Official Release on GitHub">
+    </a>
+    <a href="https://github.com/dockserver/dockserver/blob/master/LICENSE">
+        <img src="https://img.shields.io/github/license/dockserver/dockserver?label=License&logo=gnu" alt="GNU General Public License">
+    </a>
+</p>
 
 *Docker + Traefik with Authelia and Cloudflare Protection*
 
-## Minimum Specs
+----
+
+## Minimum Specs and Requirements 
 
 * Ubuntu 18/20 or Debian 9/10
 * 2 Cores
 * 4GB Ram
 * 20GB Disk Space
 
-## Requirements
-
 * A VPS/VM or Dedicated Server
-
 * Domain
-
 * [Cloudflare](https://dash.cloudflare.com/sign-up) account free tier
+
+---
 
 ## Pre-Install
 
 1. Login to your Cloudflare Account & goto DNS click on Add record.
-2. Add 1 **A-Record** pointed to your server's ip.
-3. Copy your [CloudFlare-Global-Key](https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys) and [CloudFlare-Zone-ID](https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys).
+1. Add 1 **A-Record** pointed to your server's ip.
+1. Copy your [CloudFlare-Global-Key](https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys) and [CloudFlare-Zone-ID](https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys).
 
-### Set the following on Cloudflare
+----
+
+## Set the following on Cloudflare
 
 1. `SSL = FULL` **( not FULL/STRICT )**
-2. `Always on = YES`
-3. `HTTP to HTTPS = YES`
-4. `RocketLoader and Broli / Onion Routing = NO`
-5. `TLS min = 1.2`
-6. `TLS = v1.3`
+1. `Always on = YES`
+1. `HTTP to HTTPS = YES`
+1. `RocketLoader and Broli / Onion Routing = NO`
+1. `TLS min = 1.2`
+1. `TLS = v1.3`
 
-## Easy Mode install
+----
+
+### Easy Mode install
 
 Run the following command:
 
@@ -55,37 +69,24 @@ sudo wget -qO- https://git.io/J3GDc | sudo bash
 
 </details>
 
-## Support
-
-Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
-
-* Join our [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa) for Support
-
-## Code and Permissions
-
-```sh
-Copyright 2021 @dockserver
-Code owner @dockserver
-Dev Code @dockserver
-Co-Dev -APPS- @CONTRIBUTORS-LIST
-```
-
 ----
 
+## Latest Changes 🎉
 
 <!--START_SECTION:activity-->
-1. 🎉 Merged PR [#17](https://github.com/dockserver/dockserver/pull/17) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-2. 🗣 Commented on [#2](https://github.com/dockserver/dockserver/issues/2) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-3. 💪 Opened PR [#17](https://github.com/dockserver/dockserver/pull/17) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-4. 🗣 Commented on [#2](https://github.com/dockserver/dockserver/issues/2) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-5. 🎉 Merged PR [#16](https://github.com/dockserver/dockserver/pull/16) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-6. 🗣 Commented on [#15](https://github.com/dockserver/dockserver/issues/15) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-7. 💪 Opened PR [#16](https://github.com/dockserver/dockserver/pull/16) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-8. 🗣 Commented on [#15](https://github.com/dockserver/dockserver/issues/15) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+<!-- markdownlint-disable -->
+1. 🎉 Merged PR [#23](https://github.com/dockserver/dockserver/pull/23) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+2. 💪 Opened PR [#23](https://github.com/dockserver/dockserver/pull/23) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+3. 🎉 Merged PR [#22](https://github.com/dockserver/dockserver/pull/22) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+4. 🎉 Merged PR [#21](https://github.com/dockserver/dockserver/pull/21) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+5. 🗣 Commented on [#21](https://github.com/dockserver/dockserver/issues/21) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+6. 💪 Opened PR [#22](https://github.com/dockserver/dockserver/pull/22) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+7. 🗣 Commented on [#21](https://github.com/dockserver/dockserver/issues/21) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+8. 💪 Opened PR [#21](https://github.com/dockserver/dockserver/pull/21) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 9. 🗣 Commented on [#15](https://github.com/dockserver/dockserver/issues/15) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-10. 🎉 Merged PR [#15](https://github.com/dockserver/dockserver/pull/15) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+10. 🗣 Commented on [#15](https://github.com/dockserver/dockserver/issues/15) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+<!-- markdownlint-restore -->
 <!--END_SECTION:activity-->
-
 
 ----
 
@@ -113,6 +114,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://streamnet.club"><img src="https://avatars.githubusercontent.com/u/5200101?v=4?s=100" width="100px;" alt=""/><br /><sub><b>cyb3rgh05t</b></sub></a><br /><a href="https://github.com/dockserver/dockserver/commits?author=cyb3rgh05t" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/SilverSix311"><img src="https://avatars.githubusercontent.com/u/8906465?v=4?s=100" width="100px;" alt=""/><br /><sub><b>SilverSix311</b></sub></a><br /><a href="https://github.com/dockserver/dockserver/commits?author=SilverSix311" title="Tests">⚠️</a> <a href="https://github.com/dockserver/dockserver/commits?author=SilverSix311" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/dan3805"><img src="https://avatars.githubusercontent.com/u/35934387?v=4?s=100" width="100px;" alt=""/><br /><sub><b>dan3805</b></sub></a><br /><a href="https://github.com/dockserver/dockserver/commits?author=dan3805" title="Tests">⚠️</a> <a href="https://github.com/dockserver/dockserver/commits?author=dan3805" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/ramsaytc"><img src="https://avatars.githubusercontent.com/u/16809662?v=4?s=100" width="100px;" alt=""/><br /><sub><b>ramsaytc</b></sub></a><br /><a href="https://github.com/dockserver/dockserver/commits?author=ramsaytc" title="Documentation">📖</a></td>
   </tr>
 </table>
 
@@ -120,3 +122,24 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+
+----
+
+## Support
+
+Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
+
+* Join our <a href="https://discord.gg/FYSvu83caM">
+        <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
+    </a> for Support
+
+----
+
+## Code and Permissions
+
+```sh
+Copyright 2021 @dockserver
+Code owner @dockserver
+Dev Code @dockserver
+Co-Dev -APPS- @CONTRIBUTORS-LIST
+```

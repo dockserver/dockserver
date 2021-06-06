@@ -1,0 +1,30 @@
+name: Generate new tag
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Generate new tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@master
+        with:
+          fetch-depth: '0'
+
+      - name: Build Changelog
+        id: github_release
+        uses: mikepenz/release-changelog-builder-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.CR_PAT }}
+
+      - name: Bump version and push tag
+        uses: ChloePlanet/github-tag-action@master
+        with:
+          body: ${{steps.github_release.outputs.changelog}}
+        env:
+          GITHUB_TOKEN: ${{ secrets.CR_PAT }}
+          WITH_V: true

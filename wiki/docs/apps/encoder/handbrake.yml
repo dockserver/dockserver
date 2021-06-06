@@ -5,15 +5,9 @@
 [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa)
 [![License: GPL 3](https://img.shields.io/badge/License-GPL%203-blue.svg?style=for-the-badge&colorB=177DC1&label=license)](LICENSE)
 
-## Installation notes
+## $i
 
-* Each drive supports no more than 99 service accounts
-* Each service account will allow 750GB of data upload per 24 hours
-* Do **NOT** confuse team drive name for the actual ID 
- To find your ID - Go to drive.google.com  -> Teamdrive and copy the ID from the url 
- example: https://drive.google.com/drive/folders/XXXXX845JTK5VXUXXXXXXXX
- 
- For this example the id is **XXXXX845JTK5VXUXXXXXXXX**
+* For the synstax to see
 
 ## Support
 

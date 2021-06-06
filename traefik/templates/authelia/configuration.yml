@@ -46,6 +46,7 @@ access_control:
         - "^/triggers/*$"
         - "^/rss/*$"
         - "^/xmltv/*$"
+        - "^/liverel.*$"
     ## one factor login 
     - domain: "*.example.com"
       policy: one_factor
