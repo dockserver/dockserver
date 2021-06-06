@@ -9,7 +9,9 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-    image: 'ghcr.io/linuxserver/sonarr:develop'
+      - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:sonarr'
+      - 'TP_THEME=${SONARRHDRTHEME}'
+    image: '${SONARRHDRIMAGE}'
     restart: '${RESTARTAPP}'
     ports:
       - '${PORTBLOCK}:8985:8989'

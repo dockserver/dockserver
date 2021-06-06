@@ -10,11 +10,11 @@ services:
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
       - 'PLEX_CLAIM=PLEX_CLAIM_ID'
-      - 'VERSION=latest'
+      - 'VERSION=${PLEXVERSION}'
       - 'ADVERTISE_IP=http://${SERVERIP}:32400,http://plex.${DOMAIN}:32400'
       - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:plex'
       - 'TP_THEME=${PLEXTHEME}'
-    image: 'ghcr.io/linuxserver/plex:latest'
+    image: '${PLEXIMAGE}'
     restart: '${RESTARTAPP}'
     networks:
       - proxy

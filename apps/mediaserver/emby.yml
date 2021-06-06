@@ -4,7 +4,7 @@ services:
   emby:
     hostname: 'emby'
     container_name: 'emby'
-    image: 'ghcr.io/linuxserver/emby:latest'
+    image: '${EMBYIMAGE}'
     restart: '${RESTARTAPP}'
     networks:
       - proxy
@@ -15,7 +15,7 @@ services:
       - 'PGID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-      - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:plex'
+      - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:emby'
       - 'TP_THEME=${EMBYTHEME}'
     ports:
       - target: 8096
