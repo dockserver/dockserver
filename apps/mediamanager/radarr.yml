@@ -9,7 +9,9 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-    image: 'ghcr.io/linuxserver/radarr:nightly'
+      - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:radarr'
+      - 'TP_THEME=${RADARRTHEME}'
+    image: '${RADARRIMAGE}'
     restart: '${RESTARTAPP}'
     ports:
       - '${PORTBLOCK}:7878:7878'

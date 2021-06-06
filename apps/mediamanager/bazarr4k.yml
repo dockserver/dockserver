@@ -10,8 +10,9 @@ services:
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
       - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:bazarr'
+      - 'TP_THEME=${BAZARR4KTHEME}'
       - 'TP_ADDON=bazarr-4k-logo'
-    image: 'ghcr.io/linuxserver/bazarr:latest'
+    image: '${BAZARR4KIMAGE}'
     restart: '${RESTARTAPP}'
     ports:
       - '${PORTBLOCK}:6768:6767'

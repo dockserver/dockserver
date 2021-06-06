@@ -9,7 +9,9 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-    image: 'ghcr.io/linuxserver/lidarr:nightly'
+      - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:lidarr'
+      - 'TP_THEME=${LIDARRTHEME}'
+    image: '${LIDARRIMAGE}'
     restart: '${RESTARTAPP}'
     ports:
       - '${PORTBLOCK}:8686:8686'

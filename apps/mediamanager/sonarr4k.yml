@@ -10,8 +10,9 @@ services:
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
       - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:sonarr'
+      - 'TP_THEME=${SONARR4KTHEME}'
       - 'TP_ADDON=sonarr-4k-logo'
-    image: 'ghcr.io/linuxserver/sonarr:develop'
+    image: '${SONARR4KIMAGE}'
     restart: '${RESTARTAPP}'
     ports:
       - '${PORTBLOCK}:8984:8989'

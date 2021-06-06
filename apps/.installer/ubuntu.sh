@@ -764,23 +764,52 @@ migrateenv() {
 basefolder="/opt/appdata"
 env=$(cat $basefolder/compose/.env | wc -l)
 source $basefolder/compose/.env
-if [[ $env -le "16" ]];then
+if [[ $env -le "42" ]];then
 echo -e "##Environment for Docker-Compose
-
 ##TRAEFIK
-CLOUDFLARE_EMAIL=CF-EMAIL
-CLOUDFLARE_API_KEY=CF-API-KEY
-DOMAIN1_ZONE_ID=CF-ZONE_ID
-DOMAIN=${DOMAIN}
+CLOUDFLARE_EMAIL=${CLOUDFLARE_EMAIL:-CF-EMAIL}
+CLOUDFLARE_API_KEY=${CLOUDFLARE_API_KEY:-CF-API-KEY}
+DOMAIN1_ZONE_ID=${DOMAIN1_ZONE_ID:-CF-ZONE_ID}
+DOMAIN=${DOMAIN:-example.com}
 
 ##APPPART
 TZ=${TZ}
 ID=${ID:-1000}
-SERVERIP=${SERVERIP}
+SERVERIP=SERVERIP_ID
 APPFOLDER=/opt/appdata
 RESTARTAPP=${RESTARTAPP:-unless-stopped}
 UMASK=${UMASK:-022}
-PORTBLOCK=${PORTBLOCK:-127.0.0.1}" >$basefolder/compose/.env
+PORTBLOCK=${PORTBLOCK:-127.0.0.1}
+
+##CUSTOMEVARIABLES
+PLEXIMAGE=${PLEXIMAGE:-ghcr.io/linuxserver/plex:latest}
+PLEXTHEME=${PLEXTHEME:-organizr-dark}
+PLEXVERSION=${PLEXVERSION:-latest}
+EMBYIMAGE=${EMBYIMAGE:-ghcr.io/linuxserver/emby:latest}
+EMBYTHEME=${EMBYTHEME:-organizr-dark}
+JELLYFINIMAGE=${JELLYFINIMAGE:-ghcr.io/linuxserver/jellyfin:latest}
+JELLYFINTHEME=${JELLYFINTHEME:-organizr-dark}
+BAZARRIMAGE=${BAZARRIMAGE:-ghcr.io/linuxserver/bazarr}
+BAZARRTHEME=${BAZARRTHEME:-organizr-dark}
+BAZARR4KIMAGE=${BAZARR4KIMAGE:-ghcr.io/linuxserver/bazarr}
+BAZARR4KTHEME=${BAZARR4KTHEME:-organizr-dark}
+RADARRIMAGE=${RADARRIMAGE:-ghcr.io/linuxserver/radarr:nightly]
+RADARRTHEME=${RADARRTHEME:-organizr-dark}
+RADARR4KIMAGE=${RADARR4KIMAGE:-ghcr.io/linuxserver/radarr:nightly]
+RADARR4KTHEME=${RADARR4KTHEME:-organizr-dark}
+RADARRHDRIMAGE=${RADARRHDRIMAGE:-ghcr.io/linuxserver/radarr:nightly]
+RADARRHDRTHEME=${RADARR4KTHEME:-organizr-dark}
+READARRIMAGE=${BAZARRIMAGE:-ghcr.io/hotio/readarr:nightly}
+READARRTHEME=${READARRTHEME:-organizr-dark}
+SONARRIMAGE=${SONARRIMAGE:-ghcr.io/linuxserver/sonarr:develop}
+SONARRTHEME=${SONARRTHEME:-organizr-dark}
+SONARR4KIMAGE=${SONARR4KIMAGE:-ghcr.io/linuxserver/sonarr:develop}
+SONARR4KTHEME=${SONARR4KTHEME:-organizr-dark}
+SONARRHDRIMAGE=${SONARRHDRIMAGE:-ghcr.io/linuxserver/sonarr:develop}
+SONARRHDRTHEME=${SONARR4KTHEME:-organizr-dark}
+LIDARRIMAGE=${LIDARRIMAGE:-ghcr.io/linuxserver/lidarr:nightly}
+LIDARRTHEME=${LIDARRTHEME:-organizr-dark}
+" >$basefolder/compose/.env
 fi
 }
 ##########

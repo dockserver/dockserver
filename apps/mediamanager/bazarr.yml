@@ -9,7 +9,9 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-    image: 'ghcr.io/linuxserver/bazarr'
+      - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:bazarr'
+      - 'TP_THEME=${BAZARRTHEME}'
+    image: '${BAZARRIMAGE}'
     restart: '${RESTARTAPP}'
     ports:
       - '${PORTBLOCK}:6767:6767'

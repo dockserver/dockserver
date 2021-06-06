@@ -9,9 +9,10 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-      - 'DOCKER_MODS=linuxserver/mods:jellyfin-opencl-intel'
+      - 'DOCKER_MODS=linuxserver/mods:jellyfin-opencl-intel,ghcr.io/gilbn/theme.park:jellyfin'
+      - 'TP_THEME=${JELLYFINTHEME}'
       - 'JELLYFIN_PublishedServerUrl=${SERVERIP_ID}'
-    image: 'ghcr.io/linuxserver/jellyfin:latest'
+    image: '${JELLYFINIMAGE}'
     restart: '${RESTARTAPP}'
     networks:
       - proxy
