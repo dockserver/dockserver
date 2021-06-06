@@ -7,16 +7,16 @@ basefolder="/opt/appdata"
 source $basefolder/compose/.env
 echo -e "##Environment for Docker-Compose
 ##TRAEFIK
-CLOUDFLARE_EMAIL=CF-EMAIL
-CLOUDFLARE_API_KEY=CF-API-KEY
-DOMAIN1_ZONE_ID=CF-ZONE_ID
-DOMAIN=example.com
+CLOUDFLARE_EMAIL=${CLOUDFLARE_EMAIL:-CF-EMAIL}
+CLOUDFLARE_API_KEY=${CLOUDFLARE_API_KEY:-CF-API-KEY}
+DOMAIN1_ZONE_ID=${DOMAIN1_ZONE_ID:-CF-ZONE_ID}
+DOMAIN=${DOMAIN:-example.com}
 
 ##APPPART
 TZ=${TZ}
 ID=${ID:-1000}
-SERVERIP=SERVERIP_ID
-APPFOLDER=/opt/appdata
+SERVERIP=${SERVERIP:-SERVERIP_ID}
+APPFOLDER=${APPFOLDER:-/opt/appdata}
 RESTARTAPP=${RESTARTAPP:-unless-stopped}
 UMASK=${UMASK:-022}
 PORTBLOCK=${PORTBLOCK:-127.0.0.1}
@@ -92,7 +92,7 @@ QBITORRENTTHEME=${QBITORRENTTHEME:-organizr-dark}
 ### APP CUSTOMEVARIABLES
 
 ##Invitarr
-Discord_bot_token=$[Discord_bot_token:-null}
+Discord_bot_token=${Discord_bot_token:-null}
 roleid=${roleid:-null}
 PLEXUSER=${PLEXUSER:-null}
 PLEXPASS=${PLEXPASS:-null}
