@@ -812,7 +812,6 @@ LIDARRTHEME=${LIDARRTHEME:-organizr-dark}
 " >$basefolder/compose/.env
 fi
 }
-}
 ##########
 lubox
 appstartup
