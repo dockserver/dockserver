@@ -8,19 +8,21 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
       - 'DELUGE_LOGLEVEL=error'
-    image: 'ghcr.io/linuxserver/deluge:latest'
+      - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:deluge'
+      - 'TP_THEME=${NZBGETTHEME}'
+    image: '${DELUGEIMAGE}'
     networks:
       - proxy
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     security_opt:
       - 'no-new-privileges:true'
     ports:
       - '7889:7889'
-      - '127.0.0.1:8112:8112'
+      - '${PORTBLOCK}:8112:8112'
     volumes:
-      - '/opt/appdata/deluge/config:/config:rw'
+      - '${APPFOLDER}/deluge/config:/config:rw'
       - 'unionfs:/mnt'
     labels:
       - 'traefik.enable=true'

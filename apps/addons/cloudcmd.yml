@@ -8,9 +8,9 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
     image: 'coderaiser/cloudcmd'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
       - '7999:8000'
     networks:
@@ -19,7 +19,7 @@ services:
       - 'no-new-privileges:true'
     volumes:
       - '/:/SERVER'
-      - '/opt/appdata/cloudcmd:/config:rw'
+      - '${APPFOLDER}/cloudcmd:/config:rw'
       - 'unionfs:/mnt'
     labels:
       - 'traefik.enable=true'

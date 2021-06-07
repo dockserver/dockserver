@@ -11,7 +11,7 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
       - 'SERVERURL=wireguard.${DOMAIN}'
       - 'SERVERPORT=51820'
       - 'PEERS=1'
@@ -19,7 +19,7 @@ services:
       - 'INTERNAL_SUBNET=10.13.13.0'
       - 'ALLOWEDIPS=0.0.0.0/0'
     image: 'ghcr.io/linuxserver/wireguard'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
       - target: 51820
         published: 51820
@@ -30,7 +30,7 @@ services:
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/wireguard:/config:rw'
+      - '${APPFOLDER}/wireguard:/config:rw'
       - '/lib/modules:/lib/modules'
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1

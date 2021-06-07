@@ -8,19 +8,20 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
-      - 'DOCKER_MODS=linuxserver/calibre-web:calibre'
-    image: 'ghcr.io/linuxserver/calibre-web'
-    restart: 'unless-stopped'
+      - 'UMASK=${UMASK}'
+      - 'DOCKER_MODS=linuxserver/calibre-web:calibre,ghcr.io/gilbn/theme.park:calibre'
+      - 'TP_THEME=${CALIBRETHEME}'
+    image: '${CALIBREIMAGE}'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:8083:8083'
+      - '${PORTBLOCK}:8083:8083'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/calibre-web/config:/config:rw'
-      - '/opt/appdata/calibre-web/books:/books:rw
+      - '${APPFOLDER}/calibre-web/config:/config:rw'
+      - '${APPFOLDER}/calibre-web/books:/books:rw
       - 'unionfs:/mnt'
     labels:
       - 'traefik.enable=true'

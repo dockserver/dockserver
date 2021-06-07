@@ -72,7 +72,7 @@ services:
       - 'UN_WEBHOOK_0_TEMPLATE_PATH=NULL'
       - 'UN_WEBHOOK_0_CONTENT_TYPE=application/json'
     image: 'ghcr.io/hotio/unpackerr'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     networks:
       - proxy
     security_opt:

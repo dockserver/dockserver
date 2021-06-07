@@ -8,9 +8,9 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
     image: 'ghcr.io/linuxserver/unifi-controller'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
       - '3478:3478/udp'
       - '8080:8080/tcp'
@@ -20,7 +20,7 @@ services:
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/unifi-controller:/config:rw'
+      - '${APPFOLDER}/unifi-controller:/config:rw'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'

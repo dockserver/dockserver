@@ -3,14 +3,15 @@ version: '3'
 services:
   wiki:
     container_name: 'wiki'
+    hostname: 'wiki'
     environment:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-    image: 'ghcr.io/squidfunk/mkdocs-material:latest'
-    restart: 'unless-stopped'
+    image: 'ghcr.io/dockserver/dockserver'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:7412:8000'
+      - '${PORTBLOCK}:7412:8000'
     networks:
       - proxy
     security_opt:

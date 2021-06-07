@@ -8,19 +8,22 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
       - 'WEBUI_PORT=8080'
-    image: 'ghcr.io/linuxserver/qbittorrent'
+      - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:qbittorrent'
+      - 'TP_THEME=${QBITORRENTTHEME}'
+    image: '${QBITORRENTIMAGE}'
+    restart: '${RESTARTAPP}'
     networks:
       - proxy
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     security_opt:
       - 'no-new-privileges:true'
     ports:
       - '7889:7889'
-      - '127.0.0.1:8083:8080'
+      - '${PORTBLOCK}:8083:8080'
     volumes:
-      - '/opt/appdata/qbittorrent:/config:rw'
+      - '${APPFOLDER}/qbittorrent:/config:rw'
       - 'unionfs:/mnt'
     labels:
       - 'traefik.enable=true'

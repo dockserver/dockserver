@@ -15,9 +15,9 @@ services:
     image: 'mariadb:10.5'
     networks:
       - default
-    restart: 'unless-stopped' 
+    restart: '${RESTARTAPP}' 
     volumes:
-      - '/opt/appdata/db_filerun:/var/lib/mysql'
+      - '${APPFOLDER}/db_filerun:/var/lib/mysql'
   filerun:
     hostname: 'filerun'
     container_name: 'filerun'
@@ -27,7 +27,7 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
       - 'FR_DB_PASS=filerunpw'
       - 'FR_DB_NAME=filerun_db'
       - 'FR_DB_USER=filerun'
@@ -36,13 +36,13 @@ services:
       - 'APACHE_RUN_USER_ID=${ID}'
       - 'APACHE_RUN_GROUP_ID=${ID}'
     image: 'afian/filerun'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     volumes:
-      - '/opt/appdata/filerun/html:/var/www/html'
-      - '/opt/appdata/filerun/user-files:/user-files'
+      - '${APPFOLDER}/filerun/html:/var/www/html'
+      - '${APPFOLDER}/filerun/user-files:/user-files'
       - 'unionfs:/mnt'
     ports:
-      - '127.0.0.1:2986:80'
+      - '${PORTBLOCK}:2986:80'
     networks:
       - proxy
       - default

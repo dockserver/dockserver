@@ -15,7 +15,7 @@ services:
       - 'RSYNC_COMPRESS_LEVEL=2'
       - 'SET_CONTAINER_TIMEZONE=true'
     image: 'ghcr.io/dockserver/docker-rsync-backup:latest'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'
@@ -23,8 +23,8 @@ services:
     networks:
       - proxy
     volumes:
-      - '/opt/appdata/backup:/config:rw'
-      - '/opt/appdata/:/home'
+      - '${APPFOLDER}/backup:/config:rw'
+      - '${APPFOLDER}/:/home'
       - '/opt/backup:/backup'
       - '/etc/locatime:/etc/localtime:ro'
 networks:

@@ -8,18 +8,22 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
-    image: 'ghcr.io/hotio/readarr:nightly'
-    restart: 'unless-stopped'
+      - 'UMASK=${UMASK}'
+      - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:readarr'
+      - 'TP_THEME=${READARRTHEME}'
+      - 'TP_HOTIO=${TP_HOTIO}'
+    image: '${READARRIMAGE}'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:8787:8787'
+      - '${PORTBLOCK}:8787:8787'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/readarr:/config:rw'
+      - '${APPFOLDER}/readarr:/config:rw'
       - 'unionfs:/mnt'
+      - '${APPFOLDER}/readarr/host/98-themepark:/etc/cont-init.d/99-themepark'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'

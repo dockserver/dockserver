@@ -8,17 +8,19 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
-    image: 'ghcr.io/linuxserver/nzbget:testing'
-    restart: 'unless-stopped'
+      - 'UMASK=${UMASK}'
+      - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:nzbget'
+      - 'TP_THEME=${NZBGETTHEME}'
+    image: '${NZBGETIMAGE}'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:6789:6789'
+      - '${PORTBLOCK}:6789:6789'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/nzbget:/config:rw'
+      - '${APPFOLDER}/nzbget:/config:rw'
       - 'unionfs:/mnt'
     labels:
       - 'traefik.enable=true'

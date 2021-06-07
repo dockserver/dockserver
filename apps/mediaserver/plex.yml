@@ -8,12 +8,14 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
       - 'PLEX_CLAIM=PLEX_CLAIM_ID'
-      - 'VERSION=latest'
+      - 'VERSION=${PLEXVERSION}'
       - 'ADVERTISE_IP=http://${SERVERIP}:32400,http://plex.${DOMAIN}:32400'
-    image: 'ghcr.io/linuxserver/plex:latest'
-    restart: 'unless-stopped'
+      - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:plex'
+      - 'TP_THEME=${PLEXTHEME}'
+    image: '${PLEXIMAGE}'
+    restart: '${RESTARTAPP}'
     networks:
       - proxy
     security_opt:
@@ -28,7 +30,7 @@ services:
         mode: host
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
-      - '/opt/appdata/plex/database:/config:rw'
+      - '${APPFOLDER}/plex/database:/config:rw'
       - 'unionfs:/mnt:ro'
     tmpfs:
       - '/transcode:rw'

@@ -4,35 +4,53 @@ services:
   rutorrent:
     hostname: 'rutorrent'
     container_name: 'rutorrent'
-    environment:
-      - 'PGID=${ID}'
-      - 'PUID=${ID}'
-      - 'TZ=${TZ}'
-      - 'UMASK=022'
-    image: 'ghcr.io/linuxserver/rutorrent:v3.10-ls120'
+    image: 'ghcr.io/crazy-max/rtorrent-rutorrent'
     networks:
       - proxy
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     security_opt:
       - 'no-new-privileges:true'
+    expose:
+      - "${RT_DHT_PORT}/udp"
+      - "${XMLRPC_PORT}"
+      - "${RUTORRENT_PORT}"
+      - "${WEBDAV_PORT}"
+      - "${RT_INC_PORT}"
     ports:
-      - '51413:51413'
-      - '127.0.0.1:5000:5000'
-      - '127.0.0.1:8999:80'
+      - target: ${RT_DHT_PORT}
+        published: ${RT_DHT_PORT}
+        protocol: udp
+      - target: ${RT_INC_PORT}
+        published: ${RT_INC_PORT}
+        protocol: tcp
     volumes:
-      - '/opt/appdata/rutorrent:/config:rw'
+      - '${APPFOLDER}/rutorrent:/data:rw'
       - 'unionfs:/mnt'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'
-      - 'dockupdater.enable=false'
+      - 'dockupdater.enable=true'
       - 'traefik.http.routers.rutorrent-rtr.entrypoints=https'
       - 'traefik.http.routers.rutorrent-rtr.rule=Host(`rutorrent.${DOMAIN}`)'
       - 'traefik.http.routers.rutorrent-rtr.tls=true'
       - 'traefik.http.routers.rutorrent-rtr.tls.certresolver=dns-cloudflare'
       - 'traefik.http.routers.rutorrent-rtr.middlewares=chain-authelia@file'
       - 'traefik.http.routers.rutorrent-rtr.service=rutorrent-svc'
-      - 'traefik.http.services.rutorrent-svc.loadbalancer.server.port=80'
+      - 'traefik.http.services.rutorrent-svc.loadbalancer.server.port=${RUTORRENT_PORT}'
+      #webdav_rtorrent
+      - 'traefik.http.routers.webdav-rtr.entrypoints=https'
+      - 'traefik.http.routers.webdav-rtr.rule=Host(`webdav.${DOMAIN}`)'
+      - 'traefik.http.routers.webdav-rtr.tls=true'
+      - 'traefik.http.routers.webdav-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.webdav-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.webdav-rtr.service=webdav-svc'
+      - 'traefik.http.services.webdav-svc.loadbalancer.server.port=${WEBDAV_PORT}'
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 32000
+        hard: 40000
+    restart: always
 networks:
   proxy:
     driver: bridge

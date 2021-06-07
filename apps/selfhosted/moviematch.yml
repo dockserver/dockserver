@@ -8,20 +8,20 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
       - 'LOG_LEVEL=DEBUG'
       - 'PLEX_TOKEN=YOURPLEXTOKENHERE'
       - 'PLEX_URL=https://plex.${DOMAIN}:443'
     image: 'lukechannings/moviematch'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:8001:8000'
+      - '${PORTBLOCK}:8001:8000'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/moviematch:/storage'
+      - '${APPFOLDER}/moviematch:/storage'
       - '/etc/localtime:/etc/localtime:ro'
     labels:
       - 'traefik.enable=true'

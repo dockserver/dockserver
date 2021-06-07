@@ -8,25 +8,25 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
-      - 'Discord_bot_token=null'
-      - 'roleid=null'
-      - 'PLEXUSER=null'
-      - 'PLEXPASS=null'
-      - 'PLEX_SERVER_NAME=null'
-      - 'Plex_LIBS=null'
-      - 'channelid=null'
-      - 'Webhookurl=null'
+      - 'UMASK=${UMASK}'
+      - 'Discord_bot_token=${Discord_bot_token}'
+      - 'roleid=${roleid}'
+      - 'PLEXUSER=${PLEXUSER}'
+      - 'PLEXPASS=${PLEXUSER}'
+      - 'PLEX_SERVER_NAME=${PLEX_SERVER_NAME}'
+      - 'Plex_LIBS=${Plex_LIBS}'
+      - 'channelid=${channelid}'
+      - 'Webhookurl=${Webhookurl}'
     image: 'piratify/invitarr:latest'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:5001:5001'
+      - '${PORTBLOCK}:5001:5001'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/invitarr:/app/app/config'
+      - '${APPFOLDER}/invitarr:/app/app/config'
       - '/etc/localtime:/etc/localtime:ro'
     labels:
       - 'traefik.enable=true'

@@ -27,8 +27,8 @@ services:
       - --providers.docker.exposedByDefault=false
       - --entrypoints.https.http.middlewares=chain-authelia@file
       - --entrypoints.https.http.tls.certresolver=dns-cloudflare
-      - --entrypoints.https.http.tls.domains[0].main=example.com
-      - --entrypoints.https.http.tls.domains[0].sans=*.example.com
+      - --entrypoints.https.http.tls.domains[0].main=${DOMAIN}
+      - --entrypoints.https.http.tls.domains[0].sans=*.${DOMAIN}
       - --providers.docker.network=proxy
       - --providers.docker.swarmMode=false
       - --providers.file.directory=/rules
@@ -57,16 +57,16 @@ services:
         protocol: tcp
         mode: host
     volumes:
-      - '/opt/appdata/traefik/rules:/rules'
+      - '${APPFOLDER}/traefik/rules:/rules'
       - '/var/run/docker.sock:/var/run/docker.sock:ro'
-      - '/opt/appdata/traefik/acme/acme.json:/acme.json'
-      - '/opt/appdata/traefik/traefik.log:/traefik.log'
+      - '${APPFOLDER}/traefik/acme/acme.json:/acme.json'
+      - '${APPFOLDER}/traefik/traefik.log:/traefik.log'
     environment:
-      - 'PGID=1000'
-      - 'PUID=1000'
-      - 'TZ=UTC'
-      - 'CLOUDFLARE_EMAIL=example-CF-EMAIL'
-      - 'CLOUDFLARE_API_KEY=example-CF-API-KEY'
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'CLOUDFLARE_EMAIL=${CLOUDFLARE_EMAIL}'
+      - 'CLOUDFLARE_API_KEY=${CLOUDFLARE_API_KEY}'
     labels:
       - 'dockupdater.enable=true'
       - 'traefik.enable=true'
@@ -75,7 +75,7 @@ services:
       - 'traefik.http.routers.http-catchall.middlewares=redirect-to-https'
       - 'traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https'
       - 'traefik.http.routers.traefik-rtr.entrypoints=https'
-      - 'traefik.http.routers.traefik-rtr.rule=HostHeader(`traefik.example.com`)'
+      - 'traefik.http.routers.traefik-rtr.rule=HostHeader(`traefik.${DOMAIN}`)'
       - 'traefik.http.routers.traefik-rtr.service=api@internal'
       - 'traefik.http.routers.traefik-rtr.middlewares=chain-authelia@file'
   cf-companion:
@@ -93,13 +93,13 @@ services:
     volumes:
       - '/var/run/docker.sock:/var/run/docker.sock:ro'
     environment:
-      - 'TIMEZONE=UTC'
+      - 'TIMEZONE=${TZ}'
       - 'TRAEFIK_VERSION=2'
-      - 'CF_EMAIL=example-CF-EMAIL'
-      - 'CF_TOKEN=example-CF-API-KEY'
-      - 'TARGET_DOMAIN=example.com'
-      - 'DOMAIN1=example.com'
-      - 'DOMAIN1_ZONE_ID=example-CF-ZONE_ID'
+      - 'CF_EMAIL=${CLOUDFLARE_EMAIL}'
+      - 'CF_TOKEN=${CLOUDFLARE_API_KEY}'
+      - 'TARGET_DOMAIN=${DOMAIN}'
+      - 'DOMAIN1=${DOMAIN}'
+      - 'DOMAIN1_ZONE_ID=${DOMAIN1_ZONE_ID}'
       - 'DOMAIN1_PROXIED=TRUE'
       - 'DEFAULT_TTL=1'
       - 'REFRESH_ENTRIES=TRUE'
@@ -114,9 +114,9 @@ services:
     networks:
       - proxy
     environment:
-      - 'PGID=1000'
-      - 'PUID=1000'
-      - 'TZ=UTC'
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
     labels:
       - 'traefik.enable=true'
       - 'dockupdater.enable=true'
@@ -141,17 +141,17 @@ services:
     networks:
       - proxy
     volumes:
-      - '/opt/appdata/authelia:/config'
+      - '${APPFOLDER}/authelia:/config'
     environment:
-      - 'PGID=1000'
-      - 'PUID=1000'
-      - 'TZ=UTC'
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
     labels:
       - 'traefik.enable=true'
       - 'dockupdater.enable=true'
       - 'traefik.docker.network=proxy'
       - 'traefik.http.routers.authelia-rtr.entrypoints=https'
-      - 'traefik.http.routers.authelia-rtr.rule=Host(`authelia.example.com`)'
+      - 'traefik.http.routers.authelia-rtr.rule=Host(`authelia.${DOMAIN}`)'
       - 'traefik.http.routers.authelia-rtr.tls=true'
       - 'traefik.http.routers.authelia-rtr.service=authelia-svc'
       - 'traefik.http.services.authelia-svc.loadbalancer.server.port=9091'

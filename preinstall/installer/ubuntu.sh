@@ -42,25 +42,20 @@ EOF
   for i in ${package_list}; do
       echo "running now $i" && $(command -v apt) $i -yqq 1>/dev/null 2>&1
   done
-  if [[ ! -d "/mnt/downloads" && ! -d "/mnt/unionfs" ]];then
-     folder="/mnt"
-     for i in ${folder}; do
-        $(command -v mkdir) -p $i/{unionfs,downloads,incomplete,torrent,nzb} \
-                               $i/{incomplete,downloads}/{nzb,torrent}/{movies,tv,tv4k,movies4k,movieshdr,tvhdr,remux} \
-                               $i/{torrent,nzb}/watch
-        $(command -v find) $i -exec $(command -v chmod) a=rx,u+w {} \;
-        $(command -v find) $i -exec $(command -v chown) -hR 1000:1000 {} \;
-     done
-  fi
-  if [[ ! -d "/opt/appdata" ]];then
-     appfolder="/opt/appdata"
-     for i in ${appfolder}; do
-        $(command -v mkdir) -p $i
-        $(command -v mkdir) -p $i/compose
-        $(command -v find) $i -exec $(command -v chmod) a=rx,u+w {} \;
-        $(command -v find) $i -exec $(command -v chown) -hR 1000:1000 {} \;
-     done
-  fi
+  folder="/mnt"
+  for fo in ${folder}; do
+      $(command -v mkdir) -p $fo/{unionfs,downloads,incomplete,torrent,nzb} \
+                             $fo/{incomplete,downloads}/{nzb,torrent}/{movies,tv,tv4k,movies4k,movieshdr,tvhdr,remux} \
+                             $fo/{torrent,nzb}/watch
+      $(command -v find) $fo -exec $(command -v chmod) a=rx,u+w {} \;
+      $(command -v find) $fo -exec $(command -v chown) -hR 1000:1000 {} \;
+  done
+  appfolder="/opt/appdata"
+  for app in ${appfolder}; do
+      $(command -v mkdir) -p $app/{compose,system}
+      $(command -v find) $app -exec $(command -v chmod) a=rx,u+w {} \;
+      $(command -v find) $app -exec $(command -v chown) -hR 1000:1000 {} \;
+  done
   config="/etc/sysctl.d/99-sysctl.conf"
   ipv6=$(cat $config | grep -qE 'ipv6' && echo true || false)
   if [[ -f $config ]];then
@@ -138,7 +133,7 @@ EOF
         for i in ${package_list};do
             $(command -v apt) install $i --reinstall -yqq 1>/dev/null 2>&1
         done
-        if [[ $lsb_dist == 'ubuntu' ]];then add-apt-repository --yes --remove ppa:ansible/ansible;fi
+     if [[ $lsb_dist == 'ubuntu' ]];then add-apt-repository --yes --remove ppa:ansible/ansible;fi
   fi
      invet="/etc/ansible/inventories"
      conf="/etc/ansible/ansible.cfg"
@@ -172,7 +167,6 @@ maxretry = 2
 bantime = 90d
 findtime = 7d
 chain = DOCKER-USER">> /etc/fail2ban/jail.local
-  ##traefik access.log banner
   sed -i "s#/var/log/traefik/access.log#/opt/appdata/traefik/traefik.log#g" /etc/fail2ban/jail.local
   sed -i "s#rotate 4#rotate 1#g" /etc/logrotate.conf
   sed -i "s#weekly#daily#g" /etc/logrotate.conf

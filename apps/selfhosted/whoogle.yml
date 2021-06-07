@@ -8,17 +8,17 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
     image: 'benbusby/whoogle-search'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:5002:5000'
+      - '${PORTBLOCK}:5002:5000'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/whoogle:/config:rw'
+      - '${APPFOLDER}/whoogle:/config:rw'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'

@@ -8,17 +8,19 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
-    image: 'ghcr.io/linuxserver/bazarr'
-    restart: 'unless-stopped'
+      - 'UMASK=${UMASK}'
+      - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:bazarr'
+      - 'TP_THEME=${BAZARRTHEME}'
+    image: '${BAZARRIMAGE}'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:6767:6767'
+      - '${PORTBLOCK}:6767:6767'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/bazarr:/config:rw'
+      - '${APPFOLDER}/bazarr:/config:rw'
       - 'unionfs:/mnt'
     labels:
       - 'traefik.enable=true'

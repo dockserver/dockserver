@@ -5,6 +5,7 @@ services:
     cap_add:
       - 'SYS_ADMIN'
     container_name: 'mount'
+    hostname: 'mount'
     privileged: 'true'
     devices:
       - '/dev/fuse:/dev/fuse'
@@ -13,7 +14,7 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
     image: 'ghcr.io/dockserver/docker-mount:dockserver'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
       - '7755:8080'
     networks:
@@ -23,7 +24,7 @@ services:
       - 'no-new-privileges:true'
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
-      - '/opt/appdata/system:/system:rw'
+      - '${APPFOLDER}/system:/system:rw'
       - '/mnt:/mnt:shared'
       - '/var/run/docker.sock:/var/run/docker.sock'
     labels:

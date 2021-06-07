@@ -11,13 +11,13 @@ services:
     image: 'vaultwarden/server'
     networks:
       - proxy
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
       - '2489:80'
       - '3012:3012'
     volumes:
-      - '/opt/appdata/bitwarden/data:/data'
-      - '/opt/appdata/bitwarden/database:/database'
+      - '${APPFOLDER}/bitwarden/data:/data'
+      - '${APPFOLDER}/bitwarden/database:/database'
       - '/etc/localtime:/etc/localtime:ro'
     labels:
       - 'traefik.enable=true'

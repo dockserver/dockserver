@@ -8,19 +8,20 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
       - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:radarr'
+      - 'TP_THEME=${RADARR4KTHEME}'
       - 'TP_ADDON=radarr-4k-logo'
-    image: 'ghcr.io/linuxserver/radarr:nightly'
-    restart: 'unless-stopped'
+    image: '${RADARR4KIMAGE}'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:7874:7878'
+      - '${PORTBLOCK}:7874:7878'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/radarr4k:/config:rw'
+      - '${APPFOLDER}/radarr4k:/config:rw'
       - 'unionfs:/mnt'
     labels:
       - 'traefik.enable=true'

@@ -8,17 +8,17 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
     image: 'ghcr.io/linuxserver/snapdrop'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:6459:80'
+      - '${PORTBLOCK}:6459:80'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/snapdrop:/config:rw'
+      - '${APPFOLDER}/snapdrop:/config:rw'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'

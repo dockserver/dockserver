@@ -8,17 +8,17 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
     image: 'ninthwalker/nowshowing:v2'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:6878:6878'
+      - '${PORTBLOCK}:6878:6878'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/nowshowing:/config'
+      - '${APPFOLDER}/nowshowing:/config'
       - '/etc/localtime:/etc/localtime:ro'
     labels:
       - 'traefik.enable=true'

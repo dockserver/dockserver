@@ -8,19 +8,21 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
-    image: 'ghcr.io/linuxserver/tautulli'
-    restart: 'unless-stopped'
+      - 'UMASK=${UMASK}'
+      - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:tautulli'
+      - 'TP_THEME=${TAUTULLITHEME}'
+    image: '${TAUTULLIIMAGE}'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:8180:8181'
+      - '${PORTBLOCK}:8180:8181'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/tautulli:/config:rw'
-      - '/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Logs:/logs'
-      - '/opt/appdata/tautulli/scripts:/scripts'
+      - '${APPFOLDER}/tautulli:/config:rw'
+      - '${APPFOLDER}/plex/database/Library/Application Support/Plex Media Server/Logs:/logs'
+      - '${APPFOLDER}/tautulli/scripts:/scripts'
       - '/etc/localtime:/etc/localtime'
     labels:
       - 'traefik.enable=true'

@@ -49,21 +49,22 @@ tee <<-EOF
 EOF
    read -erp "Are you sure ?: " uaction </dev/tty
    case $uaction in
-    y|Y) clear && notrunning ;;
+    y|Y) clear && overwrite ;;
     n|N) clear && exit;;
     Z|z|exit|EXIT|Exit|close) exit ;;
     *) useraction ;;
   esac
 }
-notrunning() {
+overwrite() {
   basefolder="/opt/appdata"
   source="/opt/dockserver/traefik/templates/"
+  envmigrate="/opt/dockserver/apps/.subactions/envmigrate.sh
   if [[ ! -x $(command -v rsync) ]];then $(command -v apt) install --reinstall rsync -yqq 1>/dev/null 2>&1;fi
-  $(command -v rsync) ${source} ${basefolder} -aqhv --exclude={'local','installer'}
+  $(command -v rsync) ${source} ${basefolder} -aqhv --exclude={'local','installer'} && $(command -v bash) $envmigrate
   basefolder="/opt/appdata"
   for i in ${basefolder};do
-      $(command -v mkdir) -p $i/{authelia,traefik,compose} $i/traefik/{rules,acme}
-      $(command -v find) $i/{authelia,traefik,compose} -exec $(command -v chown) -hR 1000:1000 {} \;
+      $(command -v mkdir) -p $i/{authelia,traefik} $i/traefik/{rules,acme}
+      $(command -v find) $i/{authelia,traefik} -exec $(command -v chown) -hR 1000:1000 {} \;
       $(command -v touch) $i/traefik/acme/acme.json $i/traefik/traefik.log $i/authelia/authelia.log
       $(command -v chmod) 600 $i/traefik/traefik.log $i/authelia/authelia.log $i/traefik/acme/acme.json
   done
@@ -99,11 +100,10 @@ else
    if [[ $DOMAIN != "example.com" ]];then
       if [[ $(uname) == "Darwin" ]];then
          sed -i '' "s/example.com/$DOMAIN/g" $basefolder/authelia/configuration.yml
-         sed -i '' "s/example.com/$DOMAIN/g" $basefolder/compose/docker-compose.yml
          sed -i '' "s/example.com/$DOMAIN/g" $basefolder/traefik/rules/middlewares.toml
+         sed -i '' "s/example.com/$DOMAIN/g" $basefolder/compose/.env
       else
          sed -i "s/example.com/$DOMAIN/g" $basefolder/authelia/configuration.yml
-         sed -i "s/example.com/$DOMAIN/g" $basefolder/compose/docker-compose.yml
          sed -i "s/example.com/$DOMAIN/g" $basefolder/traefik/rules/middlewares.toml
          sed -i "s/example.com/$DOMAIN/g" $basefolder/compose/.env
       fi
@@ -171,11 +171,11 @@ EOF
    read -erp "What is your CloudFlare Email Address : " EMAIL </dev/tty
 if [[ $EMAIL != "" ]];then
    if [[ $(uname) == "Darwin" ]];then
-      sed -i '' "s/example-CF-EMAIL/$EMAIL/g" $basefolder/authelia/{configuration.yml,users_database.yml}
-      sed -i '' "s/example-CF-EMAIL/$EMAIL/g" $basefolder/compose/docker-compose.yml
+      sed -i '' "s/CF-EMAIL/$EMAIL/g" $basefolder/authelia/{configuration.yml,users_database.yml}
+      sed -i '' "s/CF-EMAIL/$EMAIL/g" $basefolder/compose/.env
    else
-      sed -i "s/example-CF-EMAIL/$EMAIL/g" $basefolder/authelia/{configuration.yml,users_database.yml}
-      sed -i "s/example-CF-EMAIL/$EMAIL/g" $basefolder/compose/docker-compose.yml
+      sed -i "s/CF-EMAIL/$EMAIL/g" $basefolder/authelia/{configuration.yml,users_database.yml}
+      sed -i "s/CF-EMAIL/$EMAIL/g" $basefolder/compose/.env
    fi
 else
   echo "CloudFlare Email Address cannot be empty"
@@ -193,11 +193,11 @@ EOF
    read -erp "What is your CloudFlare Global Key: " CFGLOBAL </dev/tty
 if [[ $CFGLOBAL != "" ]];then
    if [[ $(uname) == "Darwin" ]];then
-      sed -i '' "s/example-CF-API-KEY/$CFGLOBAL/g" $basefolder/authelia/configuration.yml
-      sed -i '' "s/example-CF-API-KEY/$CFGLOBAL/g" $basefolder/compose/docker-compose.yml
+      sed -i '' "s/CF-API-KEY/$CFGLOBAL/g" $basefolder/authelia/configuration.yml
+      sed -i '' "s/CF-API-KEY/$CFGLOBAL/g" $basefolder/compose/.env
    else
-      sed -i "s/example-CF-API-KEY/$CFGLOBAL/g" $basefolder/authelia/configuration.yml
-      sed -i "s/example-CF-API-KEY/$CFGLOBAL/g" $basefolder/compose/docker-compose.yml
+      sed -i "s/CF-API-KEY/$CFGLOBAL/g" $basefolder/authelia/configuration.yml
+      sed -i "s/CF-API-KEY/$CFGLOBAL/g" $basefolder/compose/.env
    fi
 else
    echo "CloudFlare Global Key cannot be empty"
@@ -215,9 +215,9 @@ EOF
    read -erp "Whats your CloudFlare Zone ID: " CFZONEID </dev/tty
 if [[ $CFZONEID != "" ]];then
    if [[ $(uname) == "Darwin" ]];then
-      sed -i '' "s/example-CF-ZONE_ID/$CFZONEID/g" $basefolder/compose/docker-compose.yml
+      sed -i '' "s/CF-ZONE_ID/$CFZONEID/g" $basefolder/compose/.env
    else
-      sed -i "s/example-CF-ZONE_ID/$CFZONEID/g" $basefolder/compose/docker-compose.yml
+      sed -i "s/CF-ZONE_ID/$CFZONEID/g" $basefolder/compose/.env
    fi
 else
    echo "CloudFlare Zone ID cannot be empty"
@@ -253,9 +253,6 @@ if [[ $SERVERIP != "" ]];then
       sed -i "s/SERVERIP_ID/$SERVERIP/g" $basefolder/authelia/configuration.yml
       sed -i "s/SERVERIP_ID/$SERVERIP/g" $basefolder/compose/.env
    fi
-else
-   echo "Server IP cannot be empty"
-   serverip
 fi
 }
 ccont() {
@@ -287,6 +284,7 @@ $(command -v docker) image prune -af 1>/dev/null 2>&1
 }
 envcreate() {
 basefolder="/opt/appdata"
+source $basefolder/compose/.env
 env0=$basefolder/compose/.env
 if [[ -f $env0 ]];then
    grep -qE 'ID=1000' $basefolder/compose/.env || \
@@ -295,6 +293,7 @@ fi
 }
 deploynow() {
 basefolder="/opt/appdata"
+source $basefolder/compose/.env
 compose="compose/docker-compose.yml"
 envcreate
 timezone
@@ -353,17 +352,19 @@ fi
 }
 ######################################################
 interface() {
+basefolder="/opt/appdata"
+source $basefolder/compose/.env
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    🚀   Treafik with Authelia over Cloudflare
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-   [1] Domain                         [ $DOMAIN ]
+   [1] Domain                         [ ${DOMAIN} ]
    [2] Authelia Username              [ $DISPLAYNAME ]
    [3] Authelia Password              [ $PASSWORD ]
-   [4] CloudFlare-Email-Address       [ $EMAIL ]
-   [5] CloudFlare-Global-Key          [ $CFGLOBAL ]
-   [6] CloudFlare-Zone-ID             [ $CFZONEID ]
+   [4] CloudFlare-Email-Address       [ ${CLOUDFLARE_EMAIL} ]
+   [5] CloudFlare-Global-Key          [ ${CLOUDFLARE_API_KEY} ]
+   [6] CloudFlare-Zone-ID             [ ${DOMAIN1_ZONE_ID} ]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 

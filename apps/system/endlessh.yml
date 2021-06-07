@@ -7,13 +7,13 @@ services:
     environment:
       - 'PUID=${ID}'
       - 'PGID=${ID}'
-      - 'TZ==${TZ}'
+      - 'TZ=${TZ}'
       - 'MSDELAY=10000'
       - 'MAXLINES=32'
       - 'MAXCLIENTS=4096'
       - 'LOGFILE=true'
     volumes:
-      - '/opt/appdata/endlessh:/config'
+      - '${APPFOLDER}/endlessh:/config'
     ports:
       - '22:2222'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'

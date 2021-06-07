@@ -8,19 +8,19 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
       - 'branch=v2-master'
       - 'fpm=false'
     image: 'organizr/organizr'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
-      - '127.0.0.1:8050:5000'
+      - '${PORTBLOCK}:8050:5000'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/organizr:/config:rw'
+      - '${APPFOLDER}/organizr:/config:rw'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'

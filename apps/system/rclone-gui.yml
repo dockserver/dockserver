@@ -8,13 +8,13 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=022'
+      - 'UMASK=${UMASK}'
       - 'USER_ID=100'
       - 'GROUP_ID=99'
       - 'RCUSER=rclone'
       - 'RCPASS=rclone'
     image: 'd2dyno/rclone-gui:latest'
-    restart: 'unless-stopped'
+    restart: '${RESTARTAPP}'
     ports:
       - '5572:5572'
     networks:
@@ -22,7 +22,7 @@ services:
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/opt/appdata/mount:/config:rw'
+      - '${APPFOLDER}/mount:/config:rw'
       - 'unionfs:/mnt'
       - 'unionfs:/media:ro'
       - '/etc/localtime:/etc/localtime:ro'
