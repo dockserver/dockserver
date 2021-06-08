@@ -10,10 +10,10 @@ jobs:
     name: Deploy Wiki on Github Pages
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: actions/setup-python@v2.2.2
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
         with:
           python-version: 3.x
-      - run: python3 -m pip install --upgrade pip
-      - run: python3 -m pip install -r wiki/requirements.txt
+      - run: pip install --upgrade pip
+      - run: pip install -r wiki/requirements.txt
       - run: mkdocs gh-deploy --force --config-file wiki/mkdocs.yml --remote-branch wiki
