@@ -18,6 +18,7 @@
 # Project information
 site_name: DockServer Wiki
 use_directory_urls: false
+site_url: ""
 site_author: DockServer
 site_description: >-
   Use your self hosted Docker as Wiki
