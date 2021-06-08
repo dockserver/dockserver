@@ -22,18 +22,6 @@ jobs:
         src_branch: master
         username: nutsbot
 
-    - name: Copycat
-      uses: andstor/copycat-action@v3
-      with:
-        personal_token: ${{ secrets.CR_PAT }}
-        src_path: wiki/requirements.txt
-        dst_path: /wiki/docs/requirements.txt
-        dst_owner: dockserver
-        dst_repo_name: dockserver
-        dst_branch: master
-        src_branch: master
-        username: nutsbot
-
   deploy:
     needs: copy
     name: Deploy Wiki on Github Pages
@@ -44,5 +32,5 @@ jobs:
         with:
           python-version: 3.x
       - run: python3 -m pip install --upgrade pip
-      - run: python3 -m pip install -r wiki/docs/requirements.txt
+      - run: python3 -m pip install -r wiki/requirements.txt
       - run: mkdocs gh-deploy --force --config-file wiki/mkdocs.yml --remote-branch wiki
