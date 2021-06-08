@@ -15,7 +15,7 @@ jobs:
       with:
         personal_token: ${{ secrets.CR_PAT }}
         src_path: README.md
-        dst_path: wiki/docs/index.md
+        dst_path: /wiki/docs/index.md
         dst_owner: dockserver
         dst_repo_name: dockserver
         dst_branch: master
@@ -27,7 +27,7 @@ jobs:
       with:
         personal_token: ${{ secrets.CR_PAT }}
         src_path: wiki/requirements.txt
-        dst_path: wiki/docs/requirements.txt
+        dst_path: /wiki/docs/requirements.txt
         dst_owner: dockserver
         dst_repo_name: dockserver
         dst_branch: master
