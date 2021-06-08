@@ -6,24 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  copy:
-    name: Copy new Read.me
-    runs-on: ubuntu-latest
-    steps:
-    - name: Copycat
-      uses: andstor/copycat-action@v3
-      with:
-        personal_token: ${{ secrets.CR_PAT }}
-        src_path: README.md
-        dst_path: /wiki/docs/index.md
-        dst_owner: dockserver
-        dst_repo_name: dockserver
-        dst_branch: master
-        src_branch: master
-        username: nutsbot
-
   deploy:
-    needs: copy
     name: Deploy Wiki on Github Pages
     runs-on: ubuntu-latest
     steps:
