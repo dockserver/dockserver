@@ -51,7 +51,7 @@ This support includes Linux, macOS, and Windows, on architectures like amd64, i3
 * Internal cron implementation through go routines
 * Worker pool to parallelize analyses
 * Allow overriding image os and architecture
-* [Docker](providers/docker.md), [Swarm](https://github.com/crazy-max/diun/blob/master/docs/providers/swarm.md), [Kubernetes](https://github.com/crazy-max/diun/blob/master/docs/providers/kubernetes.md),
+* [Docker](https://github.com/crazy-max/diun/blob/master/docs/providers/docker.md), [Swarm](https://github.com/crazy-max/diun/blob/master/docs/providers/swarm.md), [Kubernetes](https://github.com/crazy-max/diun/blob/master/docs/providers/kubernetes.md),
 [Dockerfile](https://github.com/crazy-max/diun/blob/master/docs/providers/dockerfile.md) and [File](https://github.com/crazy-max/diun/blob/master/docs/providers/file.md) providers available
 * Get notified through Gotify, Mail, Slack, Telegram and [more](https://github.com/crazy-max/diun/blob/master/docs/config/index.md#reference)
 * [Healthchecks Support](https://github.com/crazy-max/diun/blob/master/docs/config/watch.md#healthchecks) to monitor Diun watcher
