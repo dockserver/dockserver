@@ -17,7 +17,7 @@
 
 # Project information
 site_name: DockServer Wiki
-#site_url: https://squidfunk.github.io/mkdocs-material/
+use_directory_urls: false
 site_author: DockServer
 site_description: >-
   Use your self hosted Docker as Wiki
@@ -25,7 +25,6 @@ site_description: >-
 # Repository
 repo_name: DockServer Wiki
 repo_url: https://github.com/dockserver/dockserver 
-edit_uri: ""
 copyright: Copyright &copy; 2021 DockServer.io
 
 # Configuration
@@ -248,9 +247,4 @@ nav:
     - Scripts: scripts/scripts.md
   - Sponsorship:
     - Sponsorship: sponsorship/index.md
-
-# Google Analytics
-google_analytics:
-  - !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
-  - auto
 #EOF
