@@ -27,7 +27,7 @@ jobs:
           base: master
 
   copy:
-    needs: [deploy, rebase]
+    needs: [ deploy,rebase ]
     name: Copy new Read.me
     runs-on: ubuntu-latest
     steps:
@@ -43,8 +43,8 @@ jobs:
           src_branch: master
           username: nutsbot
 
-    runs-on: ubuntu-latest
-    steps:
+  copyreq:
+    needs: [ deploy,rebase,copy ]
       - uses: actions/checkout@v2.3.4
       - uses: andstor/copycat-action@v3
         with:
@@ -58,7 +58,7 @@ jobs:
           username: nutsbot
 
   GHRC:
-    needs: [deploy, rebase, copy]
+    needs: [ deploy,copyreq,copy ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -119,7 +119,7 @@ jobs:
         run: echo ${{ steps.docker_build.outputs.digest }}
 
   build:
-    needs: [deploy, rebase, copy, GHRC]
+    needs: [ deploy, rebase, copyreq, copy, GHRC ]
     name: Generate new tag
     runs-on: ubuntu-latest
     steps:
