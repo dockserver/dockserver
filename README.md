@@ -116,6 +116,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/dan3805"><img src="https://avatars.githubusercontent.com/u/35934387?v=4?s=100" width="100px;" alt=""/><br /><sub><b>dan3805</b></sub></a><br /><a href="https://github.com/dockserver/dockserver/commits?author=dan3805" title="Tests">⚠️</a> <a href="https://github.com/dockserver/dockserver/commits?author=dan3805" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/ramsaytc"><img src="https://avatars.githubusercontent.com/u/16809662?v=4?s=100" width="100px;" alt=""/><br /><sub><b>ramsaytc</b></sub></a><br /><a href="https://github.com/dockserver/dockserver/commits?author=ramsaytc" title="Documentation">📖</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/RedDaut"><img src="https://avatars.githubusercontent.com/u/78737369?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Red Daut</b></sub></a><br /><a href="https://github.com/dockserver/dockserver/commits?author=RedDaut" title="Code">💻</a> <a href="https://github.com/dockserver/dockserver/issues?q=author%3ARedDaut" title="Bug reports">🐛</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
