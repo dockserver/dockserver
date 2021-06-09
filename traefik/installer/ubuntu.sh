@@ -31,7 +31,7 @@ exit 0
 fi
 while true; do
   installed=$($(command -v docker) ps -aq --format '{{.Names}}' | grep -x 'traefik' )
-  if [[ $installed == "" ]];then notrunning;else useraction;fi
+  if [[ $installed == "" ]];then overwrite;else useraction;fi
   break
 done
 }
@@ -58,7 +58,7 @@ EOF
 overwrite() {
   basefolder="/opt/appdata"
   source="/opt/dockserver/traefik/templates/"
-  envmigrate="/opt/dockserver/apps/.subactions/envmigrate.sh
+  envmigrate="/opt/dockserver/apps/.subactions/envmigrate.sh"
   if [[ ! -x $(command -v rsync) ]];then $(command -v apt) install --reinstall rsync -yqq 1>/dev/null 2>&1;fi
   $(command -v rsync) ${source} ${basefolder} -aqhv --exclude={'local','installer'} && $(command -v bash) $envmigrate
   basefolder="/opt/appdata"
