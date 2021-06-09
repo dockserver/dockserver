@@ -14,19 +14,14 @@ FROM ghcr.io/squidfunk/mkdocs-material:latest
 LABEL maintainer=dockserver
 LABEL org.opencontainers.image.source https://github.com/dockserver/dockserver/
 
-WORKDIR /tmp
-
 COPY wiki/requirements.txt requirements.txt
 
-RUN apk add --quiet --no-cache --no-progress git git-fast-import openssh \
-    && apk add --quiet --no-cache --virtual .build gcc musl-dev \
-    && python3 -m pip install --upgrade pip \
-    && python3 -m pip install --user -r requirements.txt \
-    && apk del .build gcc musl-dev \
-    && rm -rf /tmp/requirements.txt
+RUN python3 -m pip install --upgrade pip \
+    && python3 -m pip install --no-warn-script-location --upgrade --force-reinstall --no-deps --user -r requirements.txt \
+    && rm -rf /tmp/* && rm -rf /var/cache/apk/* && rm -rf /tmp/* /root/.cache /root/.lib  /root/.local
 
 WORKDIR /docs
 
 EXPOSE 8000
 ENTRYPOINT ["mkdocs"]
-CMD ["serve", "--dev-addr=0.0.0.0:8000"]
+CMD ["serve", "--dev-addr=0.0.0.0:8000" ]
