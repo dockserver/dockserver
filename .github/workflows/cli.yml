@@ -137,13 +137,35 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' && github.ref != 'refs/heads/master'
         uses: actions/checkout@v2.3.4
       - name: Set up Python
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' && github.ref != 'refs/heads/master'
         uses: actions/setup-python@v2.2.2
         with:
           python-version: 3.x
       - run: python3 -m pip install --upgrade pip
       - run: python3 -m pip install --upgrade --force-reinstall -r wiki/docs/requirements.txt
       - run: mkdocs gh-deploy --force --config-file wiki/mkdocs.yml --remote-branch wiki
+
+  discord:
+    name: Discord Notification
+    runs-on: ubuntu-latest
+    needs:
+      - GHRC
+      - deploy
+    if: ${{ always() }}
+    steps:
+      - name: Notify
+        uses: nobrayner/discord-webhook@v1
+        with:
+          github-token: ${{ secrets.CR_PAT }}
+          discord-webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          username: 'DockServer-Bot'
+          avatar-url: 'https://octodex.github.com/images/Terracottocat_Single.png'
+          title: '${{ github.workflow }}: {{STATUS}}'
+          description: '${{ github.event_name }} trigged this {{STATUS}}!'
+          include-details: 'true'
+          color-success: '#4287f5'
+          color-failure: 'eb4034'
+          color-cancelled: '0x42daf5'
