@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2.3.4
       - uses: andstor/copycat-action@v3
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' && github.ref != 'refs/heads/master'
         with:
           personal_token: ${{ secrets.CR_PAT }}
           src_path: README.md
@@ -34,7 +34,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2.3.4
       - uses: andstor/copycat-action@v3
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' && github.ref != 'refs/heads/master'
         with:
           personal_token: ${{ secrets.CR_PAT }}
           src_path: /wiki/requirements.txt
