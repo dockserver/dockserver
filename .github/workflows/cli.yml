@@ -156,35 +156,15 @@ jobs:
       - deploy
     if: ${{ always() }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2.3.4
-      - uses: FranzDiebold/github-env-vars-action@v2.3.0
-      - name: Print environment variables
-        run: |
-          echo "CI_REPOSITORY_NAME=$CI_REPOSITORY_NAME"
-          echo "CI_REF_NAME=$CI_REF_NAME"
-      - name: Prepare GHRC.io
-        id: prep
-        run: |
-          REPO=$CI_REPOSITORY_NAME
-          if [ "$CI_REF_NAME" == "master" ];then TAGS=master;fi
-          if [ "$CI_REF_NAME" == "dev" ];then TAGS=nightly;fi
-          echo ::set-output name=tags::${TAGS}
-          echo ::set-output name=title::${GITHUB_REPOSITORY}
-          echo ::set-output name=version::${VERSION}
-
       - name: Notify
         uses: nobrayner/discord-webhook@v1
         with:
-          labels: |
-            title=${{ steps.prep.outputs.title }}
-            version=${{ steps.prep.outputs.version }}
           github-token: ${{ secrets.CR_PAT }}
           discord-webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          username: 'Bob'
+          username: 'DockServer Bot'
           avatar-url: 'https://octodex.github.com/images/Terracottocat_Single.png'
-          title: '${{ steps.prep.outputs.title }}: {{STATUS}} on ${{ steps.prep.outputs.tags }}'
-          description: '${{ steps.prep.outputs.title }} triggered a release update {{STATUS}}!'
+          title: '${{ github.workflow }}: {{STATUS}}'
+          description: '${{ github.event_name }} trigged this {{STATUS}}!'
           include-details: 'false'
           color-success: '#4287f5'
           color-failure: 'eb4034'
