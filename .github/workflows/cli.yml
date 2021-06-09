@@ -1,0 +1,148 @@
+name: Run CLI
+on:
+  push:
+    branches-ignore:
+      - 'dependabot/**'
+      - 'dev'
+    tags-ignore:
+      - 'v*.*.*'
+  workflow_dispatch:
+
+jobs:
+  copy:
+    name: Copy new Read.me
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - uses: andstor/copycat-action@v3
+        if: github.event_name != 'pull_request'
+        with:
+          personal_token: ${{ secrets.CR_PAT }}
+          src_path: README.md
+          dst_path: /wiki/docs/index.md
+          dst_owner: dockserver
+          dst_repo_name: dockserver
+          dst_branch: master
+          src_branch: master
+          username: nutsbot
+
+  copyreq:
+    needs: [ copy ]
+    name: Copy new requirements
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - uses: andstor/copycat-action@v3
+        if: github.event_name != 'pull_request'
+        with:
+          personal_token: ${{ secrets.CR_PAT }}
+          src_path: /wiki/requirements.txt
+          dst_path: /wiki/docs/requirements.txt
+          dst_owner: dockserver
+          dst_repo_name: dockserver
+          dst_branch: master
+          src_branch: master
+          username: nutsbot
+
+  GHRC:
+    needs: [ copyreq, copy ]
+    name: Create Docker Image for wiki
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+      - uses: FranzDiebold/github-env-vars-action@v2.3.0
+      - name: Print environment variables
+        run: |
+          echo "CI_REPOSITORY_NAME=$CI_REPOSITORY_NAME"
+          echo "CI_REF_NAME=$CI_REF_NAME"
+      - name: Prepare GHRC.io
+        id: prep
+        run: |
+          REPO=$CI_REPOSITORY_NAME
+          DOCKER_IMAGE=dockserver/dockserver
+          if [ "$CI_REF_NAME" == "master" ];then VERSION=latest;fi
+          if [ "$CI_REF_NAME" == "dev" ];then VERSION=nightly;fi
+          TAGS="${DOCKER_IMAGE}:${VERSION}"
+          echo ::set-output name=tags::${TAGS}
+          echo ::set-output name=title::${GITHUB_REPOSITORY}
+          echo ::set-output name=version::${VERSION}
+          echo ::set-output name=created::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+        with:
+          platforms: linux/amd64,linux/armhf,linux/arm64
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v1.3.0
+      - name: Cache Docker layers
+        uses: actions/cache@v2.1.6
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+      - name: Login to GitHub Container Registry
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v1.9.0 
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.CR_PAT }}
+      - name: Build and push GHRC.io
+        id: docker_build
+        uses: docker/build-push-action@v2.5.0
+        with:
+          builder: ${{ steps.buildx.outputs.name }}
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/armhf,linux/arm64
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ghcr.io/${{ steps.prep.outputs.tags }}
+          labels: |
+            org.opencontainers.image.title=${{ steps.prep.outputs.title }}
+            org.opencontainers.image.version=${{ steps.prep.outputs.version }}
+            org.opencontainers.image.created=${{ steps.prep.outputs.created }}
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
+
+  build:
+    needs: [ copyreq, copy, GHRC ]
+    name: Generate new tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@master
+        with:
+          fetch-depth: '0'
+
+      - name: Build Changelog
+        id: github_release
+        uses: mikepenz/release-changelog-builder-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.CR_PAT }}
+
+      - name: Bump version and push tag
+        uses: ChloePlanet/github-tag-action@master
+        with:
+          body: ${{steps.github_release.outputs.changelog}}
+        env:
+          GITHUB_TOKEN: ${{ secrets.CR_PAT }}
+          WITH_V: true
+
+  deploy:
+    needs: [ copyreq, copy, GHRC , build ]
+    name: Deploy Dockserver Wiki on GitHub Pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        if: github.event_name != 'pull_request'
+        uses: actions/checkout@v2.3.4
+      - name: Set up Python
+        if: github.event_name != 'pull_request'
+        uses: actions/setup-python@v2.2.2
+        with:
+          python-version: 3.x
+      - run: python3 -m pip install --upgrade pip
+      - run: python3 -m pip install -r wiki/docs/requirements.txt
+      - run: mkdocs gh-deploy --config-file wiki/mkdocs.yml --remote-branch wiki
