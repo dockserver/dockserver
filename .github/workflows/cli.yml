@@ -4,6 +4,7 @@ on:
     branches-ignore:
       - 'dependabot/**'
       - 'dev'
+      - 'all-contributors/**'
     tags-ignore:
       - 'v*.*.*'
   workflow_dispatch:
@@ -144,5 +145,5 @@ jobs:
         with:
           python-version: 3.x
       - run: python3 -m pip install --upgrade pip
-      - run: python3 -m pip install -r wiki/docs/requirements.txt
+      - run: python3 -m pip install --no-warn-script-location --upgrade --force-reinstall --no-deps --user -r wiki/docs/requirements.txt
       - run: mkdocs gh-deploy --config-file wiki/mkdocs.yml --remote-branch wiki
