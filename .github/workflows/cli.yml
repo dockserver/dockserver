@@ -27,7 +27,7 @@ jobs:
           base: master
 
   copy:
-    needs: [ deploy,rebase ]
+    needs: [ deploy, rebase ]
     name: Copy new Read.me
     runs-on: ubuntu-latest
     steps:
@@ -44,7 +44,9 @@ jobs:
           username: nutsbot
 
   copyreq:
-    needs: [ deploy,rebase,copy ]
+    needs: [ deploy, rebase, copy ]
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v2.3.4
       - uses: andstor/copycat-action@v3
         with:
@@ -58,7 +60,7 @@ jobs:
           username: nutsbot
 
   GHRC:
-    needs: [ deploy,copyreq,copy ]
+    needs: [ deploy, copyreq, copy ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
