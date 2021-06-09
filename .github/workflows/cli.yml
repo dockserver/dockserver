@@ -10,11 +10,11 @@ jobs:
     name: Deploy Dockserver
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2.3.4
       - uses: peter-evans/rebase@v1
         with:
           base: master
 
-      - uses: actions/checkout@v2.3.4
       - uses: andstor/copycat-action@v3
         with:
           personal_token: ${{ secrets.CR_PAT }}
@@ -26,7 +26,6 @@ jobs:
           src_branch: master
           username: nutsbot
 
-      - uses: actions/checkout@v2.3.4
       - uses: andstor/copycat-action@v3
         with:
           personal_token: ${{ secrets.CR_PAT }}
@@ -39,7 +38,6 @@ jobs:
           username: nutsbot
 
       - name: Checkout
-        uses: actions/checkout@v2.3.4
       - uses: FranzDiebold/github-env-vars-action@v2.3.0
       - name: Print environment variables
         run: |
