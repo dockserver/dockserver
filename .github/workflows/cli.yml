@@ -149,7 +149,6 @@ jobs:
       - run: mkdocs gh-deploy --force --config-file wiki/mkdocs.yml --remote-branch wiki
 
   discord:
-    needs: [ copyreq, copy, GHRC , build , deploy ]
     name: Discord Notification
     runs-on: ubuntu-latest
     needs:
