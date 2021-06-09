@@ -140,7 +140,7 @@ jobs:
         if: github.event_name != 'pull_request' && github.ref != 'refs/heads/master'
         uses: actions/checkout@v2.3.4
       - name: Set up Python
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' && github.ref != 'refs/heads/master'
         uses: actions/setup-python@v2.2.2
         with:
           python-version: 3.x
