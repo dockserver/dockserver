@@ -19,13 +19,16 @@
 # IN THE SOFTWARE.
 
 # Direct dependencies
-mkdocs>=1.1
+mkdocs>=1.1.2
 Pygments>=2.4
 markdown>=3.2
 pymdown-extensions>=7.0
 mkdocs-material-extensions>=1.0
-mkdocs-minify-plugin
-mkdocs-redirects
-mkdocs-material
-mkdocs-git-revision-date-plugin
-mkdocs-git-revision-date-localized-plugin
+mkdocs-minify-plugin>=0.3.0
+mkdocs-redirects>=1.0.1
+mkdocs-material>=7.1.0
+pymdown-extensions>=3.3.2
+mkdocs-macros-plugin>=0.4.18
+mkdocs-awesome-pages-plugin>=2.4.0
+mkdocs-git-revision-date-localized-plugin>=0.7.3
+git+git://github.com/g-provost/lightgallery-markdown#egg=lightgallery
