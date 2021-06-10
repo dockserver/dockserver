@@ -61,7 +61,7 @@ jobs:
         id: prep
         run: |
           REPO=$CI_REPOSITORY_NAME
-          DOCKER_IMAGE=dockserver/dockserver
+          DOCKER_IMAGE=${{ github.repository_owner }}/${REPO}
           if [ "$CI_REF_NAME" == "master" ];then VERSION=latest;fi
           if [ "$CI_REF_NAME" == "dev" ];then VERSION=nightly;fi
           TAGS="${DOCKER_IMAGE}:${VERSION}"
