@@ -29,20 +29,27 @@ while true;do
   if [[ -x $(command -v docker) ]] && [[ -x $(command -v docker-compose) ]];then clear && headinterface;fi
 done
 }
+version() {
+GUTHUB=dockserver
+REPO=dockserver
+VERSION=$(curl -sX GET https://api.github.com/repos/${GUTHUB}/${REPO}/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')
+}
+
 selection() {
 LOCATION=${LOCATION}
 cd /opt/dockserver/${LOCATION} && $(command -v bash) install.sh
 }
 headinterface() {
+version
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀 DockServer
+    🚀 DockServer    - Latest ${VERSION}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     
     [ 1 ] DockServer - Traefik + Authelia
     [ 2 ] DockServer - Applications
     [ 3 ] DockServer - Google Service Key Builder
-    [ 4 ] DockServer - Rclone Builder [ ALPHA ]
+    [ 4 ] DockServer - Rclone Builder
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     [ EXIT or Z ] - Exit
