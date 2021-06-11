@@ -9,11 +9,14 @@
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
-createoverwritefile() {
+runscript() {
 basefolder="/opt/appdata"
 composeoverwrite="compose/docker-compose.override.yml"
 typed=rutorrent
-echo -e "
+echo -e "---
+version: '3'
+
+services:
     environment:
       - 'PGID=${ID:-1000}'
       - 'PUID=${ID:-1000}'
@@ -54,10 +57,6 @@ echo -e "
       - 'RU_FORBID_USER_SETTINGS=${RU_FORBID_USER_SETTINGS:-false}'
       - 'RU_LOCALE=${RU_LOCALE:-UTF8}'" > $basefolder/$composeoverwrite
 }
-runscript() {
-basefolder="/opt/appdata"
-typed=rutorrent
-if [[ ! -f $basefolder/$typed/.env ]];then createoverwritefile;fi
-}
+
 runscript
 ## EOF
