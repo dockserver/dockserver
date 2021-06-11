@@ -15,8 +15,8 @@ composeoverwrite="compose/docker-compose.override.yml"
 typed=rutorrent
 echo -e "---
 version: '3'
-
 services:
+  rutorrent:
     environment:
       - 'PGID=${ID:-1000}'
       - 'PUID=${ID:-1000}'
@@ -57,6 +57,5 @@ services:
       - 'RU_FORBID_USER_SETTINGS=${RU_FORBID_USER_SETTINGS:-false}'
       - 'RU_LOCALE=${RU_LOCALE:-UTF8}'" > $basefolder/$composeoverwrite
 }
-
 runscript
 ## EOF
