@@ -53,7 +53,6 @@ echo -e "
       - 'RU_OVERWRITE_UPLOADED_TORRENTS=${RU_OVERWRITE_UPLOADED_TORRENTS:-false}'
       - 'RU_FORBID_USER_SETTINGS=${RU_FORBID_USER_SETTINGS:-false}'
       - 'RU_LOCALE=${RU_LOCALE:-UTF8}'" > $basefolder/$composeoverwrite
-fi
 }
 runscript() {
 basefolder="/opt/appdata"
