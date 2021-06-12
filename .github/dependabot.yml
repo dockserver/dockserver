@@ -9,8 +9,8 @@ updates:
     labels:
       - "dependabot"
     commit-message:
-      prefix: "Github-actions updates"
-      prefix-development: "Github-Actions dev"
+      prefix: "GH updates"
+      prefix-development: "GH dev"
       include: "scope"
 
   - package-ecosystem: "pip"
@@ -22,7 +22,7 @@ updates:
     labels:
       - "dependabot"
     commit-message:
-      prefix: "pip depending updates"
+      prefix: "pip-update"
       prefix-development: "pip dev"
       include: "scope"
 
@@ -35,6 +35,6 @@ updates:
     labels:
       - "dependabot"
     commit-message:
-      prefix: "Dockfile updates"
+      prefix: "DF updates"
       prefix-development: "Dockfile dev"
       include: "scope"
