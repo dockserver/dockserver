@@ -8,7 +8,7 @@ updates:
     target-branch: "dev"
     labels:
       - "dependabot"
-    open-pull-requests-limit: "10"
+    open-pull-requests-limit: 10
     commit-message:
       prefix: "GH updates"
       prefix-development: "GH dev"
@@ -22,7 +22,7 @@ updates:
     target-branch: "dev"
     labels:
       - "dependabot"
-    open-pull-requests-limit: "10"
+    open-pull-requests-limit: 10
     commit-message:
       prefix: "pip-update"
       prefix-development: "pip dev"
@@ -33,7 +33,7 @@ updates:
     schedule:
       interval: "daily"
     rebase-strategy: "auto"
-    open-pull-requests-limit: "10"
+    open-pull-requests-limit: 10
     target-branch: "dev"
     labels:
       - "dependabot"
