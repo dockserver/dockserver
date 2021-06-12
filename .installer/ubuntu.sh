@@ -36,8 +36,8 @@ VERSION=$(curl -sX GET https://api.github.com/repos/${GUTHUB}/${REPO}/releases/l
 }
 updatebin() {
 file=/opt/dockserver/.installer/dockerserver
-store=/etc/dockserver
-if [[ -f "/etc/dockserver" ]];then $(command -v rm) /etc/dockserver && $(command -v rsync) $file $store -aqhv;fi
+store=/bin/dockserver
+if [[ -f "/bin/dockserver" ]];then $(command -v rm) $file && $(command -v rsync) $file $store -aqhv;fi
 }
 
 selection() {
