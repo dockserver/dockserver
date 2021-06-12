@@ -1,8 +1,6 @@
-!/.github/*
+.github
 .all-contributorsrc
-!/CODEOWNERS
-!/CODE_OF_CONDUCT.md
-!/Dockerfile
+Dockerfile
 !/LICENSE
 !/README.md
 *.7z
@@ -13,3 +11,6 @@
 *.rar
 *.tar
 *.zip
+.ideas/*
+.git
+.cache
