@@ -59,6 +59,4 @@ networks:
     driver: bridge
     external: true
   default:
-    external: true
-
 #EOF
