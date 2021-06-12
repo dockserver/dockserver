@@ -1,20 +1,28 @@
 version: 2
-
 updates:
-- package-ecosystem: "github-actions"
-  directory: "/"
-  schedule:
+  - package-ecosystem:  "github-actions"
+    directory: "/"
+    schedule:
+        interval: "daily"
+    rebase-strategy: "auto"
+    target-branch: "dev"
+    labels:
+      - "dependabot"
+
+  - package-ecosystem: "pip"
+    directory: "/wiki/requirements.txt"
+    schedule:
+        interval: "daily"
+    rebase-strategy: "auto"
+    target-branch: "dev"
+    labels:
+      - "dependabot"
+
+  - package-ecosystem: docker
+    directory: "/"
+    schedule:
       interval: "daily"
-  open-pull-requests-limit: 10
-
-- package-ecosystem: "pip"
-  directory: "/wiki"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
-
-- package-ecosystem: docker
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
+    rebase-strategy: "auto"
+    target-branch: "dev"
+    labels:
+      - "dependabot"
