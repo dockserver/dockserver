@@ -14,3 +14,4 @@ Dockerfile
 .ideas/*
 .git
 .cache
+get_pull_request_title.rb
