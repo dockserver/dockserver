@@ -34,6 +34,11 @@ GUTHUB=dockserver
 REPO=dockserver
 VERSION=$(curl -sX GET https://api.github.com/repos/${GUTHUB}/${REPO}/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')
 }
+updatebin() {
+file=/opt/dockserver/.installer/dockerserver
+store=/etc/dockserver
+if [[ -f "/etc/dockserver" ]];then $(command -v rm) /etc/dockserver && $(command -v rsync) $file $store -aqhv;fi
+}
 
 selection() {
 LOCATION=${LOCATION}
@@ -62,7 +67,7 @@ EOF
     2) clear && LOCATION=apps && selection ;;
     3) clear && LOCATION=gdsa && selection ;;
     4) clear && LOCATION=rclone && selection ;;
-    Z|z|exit|EXIT|Exit|close) exit ;;
+    Z|z|exit|EXIT|Exit|close) updatebin && exit ;;
     *) clear && appstartup ;;
   esac
 }
