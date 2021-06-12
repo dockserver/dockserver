@@ -14,7 +14,7 @@ updates:
       include: "scope"
 
   - package-ecosystem: "pip"
-    directory: "/wiki/requirements.txt"
+    directory: "/wiki/"
     schedule:
         interval: "daily"
     rebase-strategy: "auto"
