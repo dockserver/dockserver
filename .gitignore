@@ -1,4 +1,4 @@
-.github
+.github/*
 .all-contributorsrc
 Dockerfile
 !/LICENSE
@@ -11,7 +11,8 @@ Dockerfile
 *.rar
 *.tar
 *.zip
+*.rb
 .ideas/*
-.git
-.cache
-get_pull_request_title.rb
+.git/*
+.cache/*
+get_pull_request_title.*
