@@ -73,6 +73,9 @@ plugins:
 
 # Customization
 extra:
+  analytics:
+    provider: google
+    property: G-ZZKM4MPQXL
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/dockserver/dockserver
