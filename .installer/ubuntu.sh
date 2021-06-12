@@ -35,9 +35,9 @@ REPO=dockserver
 VERSION=$(curl -sX GET https://api.github.com/repos/${GUTHUB}/${REPO}/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')
 }
 updatebin() {
-file=/opt/dockserver/.installer/dockerserver
+file=/opt/dockserver/.installer/dockserver
 store=/bin/dockserver
-if [[ -f "/bin/dockserver" ]];then $(command -v rm) $file && $(command -v rsync) $file $store -aqhv;fi
+if [[ -f "/bin/dockserver" ]];then $(command -v rm) $store && $(command -v rsync) $file $store -aqhv;fi
 }
 
 selection() {
