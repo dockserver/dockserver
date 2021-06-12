@@ -39,7 +39,6 @@ file=/opt/dockserver/.installer/dockserver
 store=/bin/dockserver
 if [[ -f "/bin/dockserver" ]];then $(command -v rm) $store && $(command -v rsync) $file $store -aqhv;fi
 }
-
 selection() {
 LOCATION=${LOCATION}
 cd /opt/dockserver/${LOCATION} && $(command -v bash) install.sh

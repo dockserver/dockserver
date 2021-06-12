@@ -27,140 +27,9 @@ tee <<-EOF
 EOF
 exit
 fi
-##
 if [[ -f "/bin/dockserver" ]];then $(command -v rm) -rf /bin/dockserver;fi
 if [[ -f "/usr/bin/dockserver" ]];then $(command -v rm) -rf /usr/bin/dockserver;fi
 if [[ ! -x $(command -v git) ]];then sudo $(command -v apt) install git -yqq;fi
-
-##migrate from multirepo to one
-old="/opt/apps /opt/gdsa /opt/traefik /opt/installer"
-for i in ${old}; do
-   sudo $(command -v rm) -rf $i
-done
-cat <<'EOF' >> /bin/dockserver
-#!/bin/bash
-####################################
-# All rights reserved.              #
-# started from Zero                 #
-# Docker owned dockserver           #
-# Docker Maintainer dockserver      #
-#####################################
-#####################################
-# THE DOCKER ARE UNDER LICENSE      #
-# NO CUSTOMIZING IS ALLOWED         #
-# NO REBRANDING IS ALLOWED          #
-# NO CODE MIRRORING IS ALLOWED      #
-#####################################
-# shellcheck disable=SC2086
-# shellcheck disable=SC2006
-if [[ $EUID != 0 ]]; then
-    sudo "$0" "$@"
-    exit $?
-fi
-dockserver=/opt/dockserver
-run() {
-if [[ -d ${dockserver} ]];then 
-   cd ${dockserver} && $(command -v bash) install.sh
-else
-   usage
-fi
-}
-update() {
-dockserver=/opt/dockserver
-clear
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "    🚀    DockServer [ UPDATE ] STARTED"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    $(command -v rm) -rf ${dockserver} && git clone --quiet https://github.com/dockserver/dockserver.git ${dockserver}
-    if [[ $EUID != 0 ]];then $(command -v chown) -R $(whoami):$(whoami) ${dockserver};fi
-    if [[ $EUID == 0 ]];then $(command -v chown) -R 1000:1000 ${dockserver};fi
-clear
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "    🚀    DockServer [ UPDATE ] DONE"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo ""
-exit
-
-}
-dev() {
-dockserver=/opt/dockserver
-clear
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "    🚀    DockServer [ DEV - CLONING ] STARTED"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-     $(command -v rm) -rf ${dockserver} && git clone --quiet -b dev https://github.com/dockserver/dockserver.git ${dockserver}
-     if [[ $EUID != 0 ]];then $(command -v chown) -R $(whoami):$(whoami) ${dockserver};fi
-     if [[ $EUID == 0 ]];then $(command -v chown) -R 1000:1000 ${dockserver};fi
-     clear
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "    🚀    DockServer [ DEV - CLONING ] DONE"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo ""
-exit
-}
-
-fork() {
-dockserver=/opt/dockserver
-DOCK=${DOCK}
-FORK=${FORK}
-if [[ ${DOCK} == "-f" || ${DOCK} == "--fork" ]];then
-   if [[${FORK} != "" ]];then
-       if [[ -d ${dockserver} ]];then
-clear
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "    🚀    DockServer FORK Version Pull started"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-     $(command -v rm) -rf ${dockserver}
-     git clone --quiet ${FORK} ${dockserver}
-     if [[ $EUID != 0 ]];then $(command -v chown) -R $(whoami):$(whoami) ${dockserver};fi
-     if [[ $EUID == 0 ]];then $(command -v chown) -R 1000:1000 ${dockserver};fi
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "    🚀    DockServer FORK Version Pull finished"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-       fi
-   fi
-fi
-clear
-}
-
-usage() {
-clear
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "    🚀    DockServer [ USAGE COMMANDS ]"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo ""
-echo "   Commands :"
-echo ""
-echo "   dockserver -i / --install     =   open the dockserver setup"
-echo "   dockserver -h / --help        =   help/usage"
-echo "   dockserver -u / --update      =   update the local dockserver edition"
-echo ""
-echo "   dockserver -d / --dev         =   clone the dev branch of dockserver"
-echo "   dockserver -f / --fork <link> =   run you own repo"
-echo ""
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "    🚀    DockServer [ USAGE COMMANDS ]"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-exit
-}
-
-DOCK=$1
-FORK=$2
-case "$DOCK" in
- "" ) run ;;
- "-i" ) run ;;
- "--install" ) run ;;
- "-u" ) update ;;
- "--update" ) update ;;
- "-h" ) usage ;;
- "--help" ) usage ;;
- "-d" ) dev ;;
- "--dev" ) dev ;;
- "-f" ) fork ;;
- "--fork" ) fork ;;
-esac
-#EOF
-EOF
 dockserver=/opt/dockserver
 if [[ -d ${dockserver} ]];then
     $(command -v rm) -rf ${dockserver}
@@ -168,15 +37,16 @@ if [[ -d ${dockserver} ]];then
 else
     git clone --quiet https://github.com/dockserver/dockserver.git ${dockserver}
 fi
+file=/opt/dockserver/.installer/dockserver
+store=/bin/dockserver
+if [[ ! -x $(command -v rsync) ]];then $(command -v apt) install rsync -yqq;fi
+if [[ -f "/bin/dockserver" ]];then $(command -v rm) $store && $(command -v rsync) $file $store -aqhv;fi
 if [[ $EUID != 0 ]];then
     $(command -v chown) -R $(whoami):$(whoami) ${dockserver}
     $(command -v usermod) -aG sudo $(whoami)
     $(command -v chown) $(whoami):$(whoami) /bin/dockserver
 fi
-if [[ $EUID == 0 ]];then
-    $(command -v chown) -R 1000:1000 ${dockserver}
-    $(command -v chown) 1000:1000 /bin/dockserver
-fi
+if [[ $EUID == 0 ]];then $(command -v chown) -R 1000:1000 ${dockserver} && $(command -v chown) 1000:1000 /bin/dockserver;fi
 $(command -v chmod) 0775 /bin/dockserver
 ##
 tee <<-EOF
