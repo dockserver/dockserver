@@ -78,7 +78,7 @@ jobs:
         with:
           builder: ${{ steps.buildx.outputs.name }}
           context: .
-          file: ./Dockerfile
+          file: ./wiki/Dockerfile
           platforms: linux/amd64,linux/armhf,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ghcr.io/${{ steps.prep.outputs.tags }}
@@ -98,12 +98,6 @@ jobs:
         uses: actions/checkout@master
         with:
           fetch-depth: '0'
-
-      - name: Build Changelog
-        id: github_release
-        uses: mikepenz/release-changelog-builder-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.CR_PAT }}
 
       - name: Bump version and push tag
         uses: ChloePlanet/github-tag-action@master
@@ -150,3 +144,18 @@ jobs:
           color-success: '#4287f5'
           color-failure: 'eb4034'
           color-cancelled: '0x42daf5'
+
+  changelog:
+    needs: [ copy, GHRC , build , discord ]
+    if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/master' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2.3.4
+      - name: Run Changelog CI
+        uses: saadmk11/changelog-ci@v0.8.0
+        with:
+          changelog_filename: wiki/docs/changelog.md
+          config_file: .github/changelog-ci-config.yml
+        env:
+          GITHUB_TOKEN: ${{ secrets.CR_PAT }}

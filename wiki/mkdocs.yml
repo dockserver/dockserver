@@ -132,6 +132,7 @@ nav:
     - cf-companion: install/cf-companion.md
     - Traefik: install/traefik.md
     - LXC-Container: lxc/lxc.md
+    - Changelog: install/changelog.md
   - Commands:
     - Commands: commands/commands.md
     - Backup: commands/backup.md
