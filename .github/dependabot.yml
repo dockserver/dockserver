@@ -1,20 +1,40 @@
 version: 2
-
 updates:
-- package-ecosystem: "github-actions"
-  directory: "/"
-  schedule:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+        interval: "daily"
+    rebase-strategy: "auto"
+    target-branch: "dev"
+    labels:
+      - "dependabot"
+    commit-message:
+      prefix: "GH updates"
+      prefix-development: "GH dev"
+      include: "scope"
+
+  - package-ecosystem: "pip"
+    directory: "/wiki/requirements.txt"
+    schedule:
+        interval: "daily"
+    rebase-strategy: "auto"
+    target-branch: "dev"
+    labels:
+      - "dependabot"
+    commit-message:
+      prefix: "pip-update"
+      prefix-development: "pip dev"
+      include: "scope"
+
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
       interval: "daily"
-  open-pull-requests-limit: 10
-
-- package-ecosystem: "pip"
-  directory: "/wiki"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
-
-- package-ecosystem: docker
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
+    rebase-strategy: "auto"
+    target-branch: "dev"
+    labels:
+      - "dependabot"
+    commit-message:
+      prefix: "DF updates"
+      prefix-development: "Dockfile dev"
+      include: "scope"

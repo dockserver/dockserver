@@ -144,6 +144,8 @@ jobs:
         with:
           python-version: 3.x
       - run: python3 -m pip install --upgrade pip
+      - run: python3 -m pip install pip-upgrader
+      - run: python3 -m pip-upgrade -r wiki/docs/requirements.txt
       - run: python3 -m pip install --upgrade --force-reinstall -r wiki/docs/requirements.txt
       - run: mkdocs gh-deploy --force --config-file wiki/mkdocs.yml --remote-branch wiki
 
