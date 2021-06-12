@@ -448,6 +448,14 @@ EOF
          $(command -v find) $jdl -exec $(command -v chown) -hR 1000:1000 {} \;
      done
   fi
+  if [[ ${section} == "downloadclients" && ${typed} == "rutorrent" ]];then
+     folder=$storage/torrent
+     for rto in ${folder};do
+         $(command -v mkdir) -p $rto/{temp,complete}/{movies,tv,tv4k,movies4k,movieshdr,tvhdr,remux}
+         $(command -v find) $rto -exec $(command -v chmod) a=rx,u+w {} \;
+         $(command -v find) $rto -exec $(command -v chown) -hR 1000:1000 {} \;
+     done
+  fi
   if [[ ${section} == "mediamanager" && ${typed} == "readarr" ]];then
      folder=$storage/books
      for rea in ${folder};do
