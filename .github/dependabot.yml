@@ -1,6 +1,6 @@
 version: 2
 updates:
-  - package-ecosystem:  "github-actions"
+  - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
         interval: "daily"
@@ -8,6 +8,10 @@ updates:
     target-branch: "dev"
     labels:
       - "dependabot"
+    commit-message:
+      prefix: "Github-actions updates"
+      prefix-development: "Github-Actions dev"
+      include: "scope"
 
   - package-ecosystem: "pip"
     directory: "/wiki/requirements.txt"
@@ -17,8 +21,12 @@ updates:
     target-branch: "dev"
     labels:
       - "dependabot"
+    commit-message:
+      prefix: "pip depending updates"
+      prefix-development: "pip dev"
+      include: "scope"
 
-  - package-ecosystem: docker
+  - package-ecosystem: "docker"
     directory: "/"
     schedule:
       interval: "daily"
@@ -26,3 +34,7 @@ updates:
     target-branch: "dev"
     labels:
       - "dependabot"
+    commit-message:
+      prefix: "Dockfile updates"
+      prefix-development: "Dockfile dev"
+      include: "scope"
