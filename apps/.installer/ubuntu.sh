@@ -387,7 +387,6 @@ runinstall() {
   section=${section}
   typed=${typed}
   updatecompose
-  migrateenv
   compose="compose/docker-compose.yml"
   composeoverwrite="compose/docker-compose.override.yml"
   storage="/mnt/downloads"
@@ -502,6 +501,8 @@ EOF
   fi
   if [[ ${typed} == "petio" ]];then $(command -v mkdir) -p $basefolder/${typed}/{db,config,logs} && $(command -v chown) -hR 1000:1000 $basefolder/${typed}/{db,config,logs} 1>/dev/null 2>&1;fi
   if [[ ${typed} == "tdarr" ]];then $(command -v mkdir) -p $basefolder/${typed}/{server,configs,logs,encoders} && $(command -v chown) -hR 1000:1000 $basefolder/${typed}/{server,configs,logs} 1>/dev/null 2>&1;fi
+  envmigrate="/opt/dockserver/apps/.subactions/envmigrate.sh"
+  $(command -v bash) $envmigrate
   if [[ -f $basefolder/$compose ]];then
      $(command -v cd) $basefolder/compose/
      $(command -v docker-compose) config 1>/dev/null 2>&1
@@ -768,14 +769,6 @@ if [[ ! -x $(command -v docker-compose) ]];then
    $(command -v chmod) a=rx,u+w /usr/local/bin/docker-compose >/dev/null 2>&1 
    $(command -v chmod) a=rx,u+w /usr/bin/docker-compose >/dev/null 2>&1
 fi
-}
-## migrator for the env
-migrateenv() {
-basefolder="/opt/appdata"
-envmigrate="/opt/dockserver/apps/.subactions/envmigrate.sh"
-envorg=$(cat /opt/dockserver/traefik/templates/compose/.env | wc -l)
-env=$(cat $basefolder/compose/.env | wc -l)
-if [[ $envorg -gt $env ]];then $(command -v bash) $envmigrate;fi
 }
 ##########
 lubox
