@@ -5,11 +5,35 @@
 [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa)
 [![License: GPL 3](https://img.shields.io/badge/License-GPL%203-blue.svg?style=for-the-badge&colorB=177DC1&label=license)](LICENSE)
 
-## $i
+<p align="center">
+<img src="https://i.imgur.com/TMoEG7g.png" alt="Overseerr">
+</p>
 
-* For the synstax to see
+**Overseerr** is a free and open source software application for managing requests for your media library. It integrates with your existing services, such as **[Sonarr](https://sonarr.tv/)**, **[Radarr](https://radarr.video/)**, and **[Plex](https://www.plex.tv/)**!
+
+## Current Features
+
+- Full Plex integration. Authenticate and manage user access with Plex!
+- Easy integration with your existing services. Currently, Overseerr supports Sonarr and Radarr. More to come!
+- Plex library scan, to keep track of the titles which are already available.
+- Customizable request system, which allows users to request individual seasons or movies in a friendly, easy-to-use interface.
+- Incredibly simple request management UI. Don't dig through the app to simply approve recent requests!
+- Granular permission system.
+- Support for various notification agents.
+- Mobile-friendly design, for when you need to approve requests on the go!
+
+## Preview
+
+<img src="./public/preview.jpg">
 
 ## Support
+
+- Check out the [Overseerr Documentation](https://docs.overseerr.dev/) before asking for help. Your question might already be in the [FAQ](https://docs.overseerr.dev/support/faq).
+- You can get support on [Discord](https://discord.gg/overseerr).
+- You can ask questions in the Help category of our [GitHub Discussions](https://github.com/sct/overseerr/discussions).
+- Bug reports and feature requests can be submitted via [GitHub Issues](https://github.com/sct/overseerr/issues).
+
+## Support by Dockserver
 
 Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
 
