@@ -1,0 +1,6 @@
+.git
+.cache
+docs/*
+material/*
+overrides/*
+mkdocs.yml

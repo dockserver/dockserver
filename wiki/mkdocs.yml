@@ -73,6 +73,9 @@ plugins:
 
 # Customization
 extra:
+  analytics:
+    provider: google
+    property: G-ZZKM4MPQXL
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/dockserver/dockserver
@@ -132,6 +135,7 @@ nav:
     - cf-companion: install/cf-companion.md
     - Traefik: install/traefik.md
     - LXC-Container: lxc/lxc.md
+    - Changelog: install/changelog.md
   - Commands:
     - Commands: commands/commands.md
     - Backup: commands/backup.md
