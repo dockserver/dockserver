@@ -45,9 +45,9 @@ EOF
   folder="/mnt"
   for fo in ${folder}; do
       $(command -v mkdir) -p $fo/{unionfs,downloads,incomplete,torrent,nzb} \
-                             $fo/{incomplete,downloads}/{nzb,torrent}/{complete,temp,movies,tv,tv4k,movies4k,movieshdr,tvhdr,remux} \
-                             $fo/downloads/torrent/{temp,complete}/{movies,tv,tv4k,movies4k,movieshdr,tvhdr,remux} \					 
-                             $fo/{torrent,nzb}/watch
+             $fo/{incomplete,downloads}/{nzb,torrent}/{complete,temp,movies,tv,tv4k,movies4k,movieshdr,tvhdr,remux} \
+             $fo/downloads/torrent/{temp,complete}/{movies,tv,tv4k,movies4k,movieshdr,tvhdr,remux} \
+             $fo/{torrent,nzb}/watch
       $(command -v find) $fo -exec $(command -v chmod) a=rx,u+w {} \;
       $(command -v find) $fo -exec $(command -v chown) -hR 1000:1000 {} \;
   done
