@@ -156,6 +156,6 @@ jobs:
         uses: saadmk11/changelog-ci@v0.8.0
         with:
           changelog_filename: wiki/docs/changelog.md
-          config_file: .github/changelog-ci-config.yml
+          config_file: changelog-ci-config.yml
         env:
           GITHUB_TOKEN: ${{ secrets.CR_PAT }}
