@@ -192,7 +192,7 @@ EOF
    if [[ ! -d ${DESTINATION}/${STORAGE} ]];then $(command -v mkdir) -p ${DESTINATION}/${STORAGE};fi
    forcepush="tar pigz pv"
    for fc in ${forcepush};do
-       $(command -v apt) install $fc --reinstall -yqq 1>/dev/null 2>&1 && sleep 1
+       $(command -v apt) install $fc -yqq 1>/dev/null 2>&1 && sleep 1
    done
    appfolder=/opt/dockserver/apps/
    IGNORE="! -path '**.subactions/**'"
@@ -239,7 +239,7 @@ EOF
    if [[ ! -d ${DESTINATION}/${STORAGE} ]];then $(command -v mkdir) -p ${DESTINATION}/${STORAGE};fi
    forcepush="tar pigz pv"
    for fc in ${forcepush};do
-       $(command -v apt) install $fc --reinstall -yqq 1>/dev/null 2>&1 && sleep 1
+       $(command -v apt) install $fc -yqq 1>/dev/null 2>&1 && sleep 1
    done
    appfolder=/opt/dockserver/apps/
    IGNORE="! -path '**.subactions/**'"
@@ -314,7 +314,7 @@ DESTINATION="/mnt/unionfs/appbackups"
 apps=$(ls -1p /mnt/unionfs/appbackups/${storage} | $(command -v sed) -e 's/.tar.gz//g' | grep -v 'trae' | grep -v 'auth' | grep -v 'sudobox')
 forcepush="tar pigz pv"
 for fc in ${forcepush};do
-     $(command -v apt) install $fc --reinstall -yqq 1>/dev/null 2>&1 && sleep 1
+     $(command -v apt) install $fc -yqq 1>/dev/null 2>&1 && sleep 1
 done
 for app in ${apps};do
    basefolder="/opt/appdata"
@@ -350,7 +350,7 @@ basefolder="/opt/appdata"
 compose="compose/docker-compose.yml"
 forcepush="tar pigz pv"
 for fc in ${forcepush};do
-    $(command -v apt) install $fc --reinstall -yqq 1>/dev/null 2>&1 && sleep 1
+    $(command -v apt) install $fc -yqq 1>/dev/null 2>&1 && sleep 1
 done
 if [[ ! -d $basefolder/${typed} ]];then
    folder=$basefolder/${typed}
@@ -645,7 +645,7 @@ conf=$basefolder/authelia/configuration.yml
 confnew=$basefolder/authelia/.new-configuration.yml.new
 confbackup=$basefolder/authelia/.backup-configuration.yml.backup
 authadd=$(cat $conf | grep -E ${typed})
-  if [[ ! -x $(command -v ansible) || ! -x $(command -v ansible-playbook) ]];then $(command -v apt) ansible --reinstall -yqq;fi
+  if [[ ! -x $(command -v ansible) || ! -x $(command -v ansible-playbook) ]];then $(command -v apt) install ansible -yqq;fi
   if [[ -f $appfolder/.subactions/${typed}.yml ]];then $(command -v ansible-playbook) $appfolder/.subactions/${typed}.yml;fi
      $(grep "model name" /proc/cpuinfo | cut -d ' ' -f3- | head -n1 |grep -qE 'i7|i9' 1>/dev/null 2>&1)
      setcode=$?
