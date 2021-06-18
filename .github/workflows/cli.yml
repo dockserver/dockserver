@@ -155,7 +155,6 @@ jobs:
       - name: Run Changelog CI
         uses: saadmk11/changelog-ci@v0.8.0
         with:
-          changelog_filename: wiki/docs/changelog.md
-          config_file: changelog-ci-config.yml
+          changelog_filename: wiki/docs/install/changelog.md
         env:
           GITHUB_TOKEN: ${{ secrets.CR_PAT }}
