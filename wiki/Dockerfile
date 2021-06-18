@@ -14,7 +14,9 @@ FROM ghcr.io/squidfunk/mkdocs-material:latest
 LABEL maintainer=dockserver
 LABEL org.opencontainers.image.source https://github.com/dockserver/dockserver/
 
-ADD requirements.txt requirements.txt
+RUN rm -rf requirements.txt
+
+COPY requirements.txt requirements.txt
 
 RUN python3 -m pip install --upgrade pip \
     && python3 -m pip install --no-warn-script-location --upgrade --force-reinstall --no-deps --user -r requirements.txt \
