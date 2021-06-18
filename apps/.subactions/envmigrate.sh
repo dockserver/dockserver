@@ -140,3 +140,4 @@ RU_FORBID_USER_SETTINGS=${RU_FORBID_USER_SETTINGS:-false}
 RU_LOCALE=${RU_LOCALE:-UTF8}" >$basefolder/compose/.env
 }
 migrateenv
+#EOF

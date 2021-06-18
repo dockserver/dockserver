@@ -20,7 +20,7 @@ services:
       - 'apparmor:unconfined'
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
-      - '${APPFOLDER}/system:/system:rw'
+      - '${APPFOLDER}/system:/system:rshared'
       - 'unionfs:/mnt'
     labels:
       - 'traefik.enable=true'

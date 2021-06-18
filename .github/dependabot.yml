@@ -29,7 +29,7 @@ updates:
       include: "scope"
 
   - package-ecosystem: "docker"
-    directory: "/"
+    directory: "/wiki/"
     schedule:
       interval: "daily"
     rebase-strategy: "auto"

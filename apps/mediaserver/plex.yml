@@ -44,6 +44,7 @@ services:
       - 'traefik.http.routers.plex-rtr.tls.certresolver=dns-cloudflare'
       - 'traefik.http.routers.plex-rtr.middlewares=chain-authelia@file'
       - 'traefik.http.routers.plex-rtr.service=plex-svc'
+      - 'traefik.http.services.plex-svc.loadbalancer.server.scheme=https'
       - 'traefik.http.services.plex-svc.loadbalancer.server.port=32400'
 networks:
   proxy:

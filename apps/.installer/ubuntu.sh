@@ -387,7 +387,6 @@ runinstall() {
   section=${section}
   typed=${typed}
   updatecompose
-  migrateenv
   compose="compose/docker-compose.yml"
   composeoverwrite="compose/docker-compose.override.yml"
   storage="/mnt/downloads"

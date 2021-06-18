@@ -1,10 +1,8 @@
-!/.github/*
+.github/*
 .all-contributorsrc
-!/CODEOWNERS
-!/CODE_OF_CONDUCT.md
-!/Dockerfile
-!/LICENSE
-!/README.md
+/wiki/Dockerfile
+LICENSE
+README.md
 *.7z
 *.dmg
 *.gz
@@ -13,3 +11,11 @@
 *.rar
 *.tar
 *.zip
+*.rb
+.ideas/*
+.git/*
+.cache/*
+get_pull_request_title.*
+backup.sh
+wgetfile.sh
+.gitattributes
