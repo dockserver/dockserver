@@ -40,7 +40,7 @@ fi
 file=/opt/dockserver/.installer/dockserver
 store=/bin/dockserver
 if [[ ! -x $(command -v rsync) ]];then $(command -v apt) install rsync -yqq;fi
-if [[ -f "/bin/dockserver" ]];then $(command -v rm) $store && $(command -v rsync) $file $store -aqhv;fi
+if [[ -f "/bin/dockserver" ]];then $(command -v rm) $store && $(command -v rsync) $file $store -aqhv;else $(command -v rsync) $file $store -aqhv;fi
 if [[ $EUID != 0 ]];then
     $(command -v chown) -R $(whoami):$(whoami) ${dockserver}
     $(command -v usermod) -aG sudo $(whoami)
