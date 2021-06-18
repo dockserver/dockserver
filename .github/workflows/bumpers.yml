@@ -17,7 +17,7 @@ jobs:
         id: github_release
         uses: mikepenz/release-changelog-builder-action@v1
         with:
-           configuration: "/.github/config.json"
+           configuration: "config.json"
         env:
           GITHUB_TOKEN: ${{ secrets.CR_PAT }}
 
