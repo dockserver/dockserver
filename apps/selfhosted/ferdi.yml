@@ -1,0 +1,71 @@
+---
+version: '3'
+services:
+  db_ferdi:
+    hostname: 'db_ferdi'
+    container_name: 'db_ferdi'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'MYSQL_ROOT_PASSWORD=${FERDI_ROOT_USER}'
+      - 'MYSQL_USER=${FERDI_USER}'
+      - 'MYSQL_PASSWORD=${FERDI_PASSWORD}'
+      - 'MYSQL_DATABASE=${FERDI_DATABASE}'
+      - 'TIMEZONE=${TZ}'
+    image: 'mariadb:10.5'
+    networks:
+      - default
+    restart: '${RESTARTAPP}'
+    volumes:
+      - '${APPFOLDER}/ferdi/mariadb:/var/lib/mysql'
+  ferdi:
+    hostname: 'ferdi'
+    container_name: 'ferdi'
+    depends_on:
+      - db_ferdi
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=${UMASK}'
+      - 'NODE_ENV=development'
+      - 'DB_CONNECTION=mysql'
+      - 'CONNECT_WITH_FRANZ=true'
+      - 'EXTERNAL_DOMAIN=ferdi.${DOMAIN}'
+      - 'IS_CREATION_ENABLED=${FERDI_CREATION}'
+      - 'IS_REGISTRATION_ENABLED=${FERDI_REGISTRATION}'
+      - 'DB_HOST=db_ferdi'
+      - 'DB_PORT=3306'
+      - 'DB_USER=${FERDI_USER}'
+      - 'DB_PASSWORD=${FERDI_PASSWORD}'
+      - 'DB_DATABASE=${FERDI_DATABASE}'
+    image: 'getferdi/ferdi-server'
+    restart: '${RESTARTAPP}'
+    ports:
+      - '${PORTBLOCK}:3482:80'
+    volumes:
+      - '${APPFOLDER}/ferdi/:/config'
+      - '${APPFOLDER}/ferdi/database:/app/database'
+      - '${APPFOLDER}/ferdi/recipes:/app/recipes'
+    networks:
+      - proxy
+      - default
+    security_opt:
+      - 'no-new-privileges:true'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.ferdi-rtr.entrypoints=https'
+      - 'traefik.http.routers.ferdi-rtr.rule=Host(`ferdi.${DOMAIN}`)'
+      - 'traefik.http.routers.ferdi-rtr.tls=true'
+      - 'traefik.http.routers.ferdi-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.ferdi-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.ferdi-rtr.service=ferdi-svc'
+      - 'traefik.http.services.ferdi-svc.loadbalancer.server.port=80'
+networks:
+  proxy:
+    driver: bridge
+    external: true
+  default:
+#EOF
