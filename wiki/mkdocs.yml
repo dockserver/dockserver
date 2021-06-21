@@ -87,7 +87,7 @@ extra:
     - icon: fontawesome/brands/discord
       link: https://discord.gg/A7h7bKBCVa
     - icon: fontawesome/brands/firefox
-      link: https://docs.dockserver.io/
+      link: https://dockserver.io/
 
 markdown_extensions:
   - admonition
