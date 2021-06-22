@@ -14,6 +14,7 @@ services:
       - 'EXTERNAL_DOMAIN=ferdi.${DOMAIN}'
       - 'IS_CREATION_ENABLED=${FERDI_CREATION}'
       - 'IS_REGISTRATION_ENABLED=${FERDI_REGISTRATION}'
+      - 'IS_DASHBOARD_ENABLED=${FERDI_DASHBOARD}'
     image: 'getferdi/ferdi-server'
     restart: '${RESTARTAPP}'
     ports:
@@ -24,7 +25,6 @@ services:
       - '${APPFOLDER}/ferdi/recipes:/app/recipes'
     networks:
       - proxy
-      - default
     security_opt:
       - 'no-new-privileges:true'
     labels:
@@ -42,5 +42,4 @@ networks:
   proxy:
     driver: bridge
     external: true
-  default:
 #EOF
