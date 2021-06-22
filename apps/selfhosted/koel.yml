@@ -62,4 +62,9 @@ networks:
     driver: bridge
     external: true
   default:
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt
 #EOF
