@@ -47,7 +47,7 @@ Now you are ready to backup your PG apps.
 
 This will create a folder named /appbackups on the root of your remote drive. When the backup is done, check that these files exist on your remote drive. Also, check them for file sizes to make sure it looks right. Plex can take a long time, be patient. 
 
-Now, please order a VPS with ubuntu 18/20 on it and follow the instructions on the [frontpage](http://docs.dockserver.io "frontpage"). When dockserver is installed on your host, return here and follow instructions
+Now, please order a VPS with ubuntu 18/20 on it and follow the instructions on the [frontpage](http://dockserver.io "frontpage"). When dockserver is installed on your host, return here and follow instructions
 
 
 # Mount & Uploader
@@ -71,10 +71,20 @@ Rename all service keys to not containing a 0 so GDSA01 becomes GDSA1 and so for
 
 Open a terminal
 
+Creatw the folders
+
+`sudo mkdir -p /opt/appdata/system/{rclone,servicekeys}`
+
+`sudo chown -cR 1000:1000 /opt/appdata`
+
+Edit your rclone.conf
+
 `sudo nano /opt/appdata/system/rclone/rclone.conf`
 
 Remove all GDSA lines here, only the remotes(g/tdrive, g/tcrypt) are left in the file - PGUNION has to be deleted as well
 CTRX+X press y 
+
+Edit the rclone.conf to rclonegdsa.conf
 
 `sudo nano /opt/appdata/system/servicekeys/rclonegdsa.conf`
 
