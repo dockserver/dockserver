@@ -37,7 +37,14 @@ VERSION=$(curl -sX GET https://api.github.com/repos/${GUTHUB}/${REPO}/releases/l
 updatebin() {
 file=/opt/dockserver/.installer/dockserver
 store=/bin/dockserver
-if [[ -f "/bin/dockserver" ]];then $(command -v rm) $store && $(command -v rsync) $file $store -aqhv;fi
+store2=/usr/bin/dockserver
+if [[ -f "/bin/dockserver" ]];then
+   $(command -v rm) $store
+   $(command -v rsync) $file $store -aqhv
+   $(command -v rsync) $file $store2 -aqhv
+   $(command -v chown) -R 1000:1000 $store $store2
+   $(command -v chmod) -R 755 $store $store2
+fi
 }
 selection() {
 LOCATION=${LOCATION}

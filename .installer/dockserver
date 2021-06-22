@@ -33,8 +33,8 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo "    🚀    DockServer [ UPDATE ] STARTED"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     $(command -v rm) -rf ${dockserver} && git clone --quiet https://github.com/dockserver/dockserver.git ${dockserver}
-    if [[ $EUID != 0 ]];then $(command -v chown) -R $(whoami):$(whoami) ${dockserver};fi
-    if [[ $EUID == 0 ]];then $(command -v chown) -R 1000:1000 ${dockserver};fi
+    if [[ $EUID != 0 ]];then $(command -v chown) -hR $(whoami):$(whoami) ${dockserver};fi
+    if [[ $EUID == 0 ]];then $(command -v chown) -hR 1000:1000 ${dockserver};fi
     envmigra && clear
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "    🚀    DockServer [ UPDATE ] DONE"
@@ -71,8 +71,8 @@ echo "    🚀    DockServer FORK Version Pull started"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
      $(command -v rm) -rf ${dockserver}
      git clone --quiet ${FORK} ${dockserver}
-     if [[ $EUID != 0 ]];then $(command -v chown) -R $(whoami):$(whoami) ${dockserver};fi
-     if [[ $EUID == 0 ]];then $(command -v chown) -R 1000:1000 ${dockserver};fi
+     if [[ $EUID != 0 ]];then $(command -v chown) -hR $(whoami):$(whoami) ${dockserver};fi
+     if [[ $EUID == 0 ]];then $(command -v chown) -hR 1000:1000 ${dockserver};fi
      envmigra
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "    🚀    DockServer FORK Version Pull finished"
