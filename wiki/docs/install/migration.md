@@ -27,10 +27,11 @@ Even though PGblitz still works, **there are numerous upsides in shifting to doc
 
 # Before you start: 
 
-We strongly recommend restoring your Server on a [VPS](https://www.hetzner.com/cloud "VPS") or something similar before making the final migration. This is to avoid data-loss and to harden your backups for your final dockserver migration.
+We strongly recommend restoring your Server on a [VPS](https://www.hetzner.com/cloud "VPS") or something similar before making the final migration. This is to avoid data-loss and to harden your backups for your final dockserver migration. This guide will take you through a migration with Teamdrive deployed on your pg installation. Feel free to experiement with the gdsa builder in the CLI.
 
 ## Prerequisites:
 - PGblitz
+- Tdrive/Tcrypt mount deployed
 - CloudCMD deployed (Under Community Apps) 
 
 Open CloudCMD, Navigate to: 
@@ -71,7 +72,7 @@ Rename all service keys to not containing a 0 so GDSA01 becomes GDSA1 and so for
 
 Open a terminal
 
-Creatw the folders
+Create the folders
 
 `sudo mkdir -p /opt/appdata/system/{rclone,servicekeys}`
 
@@ -113,8 +114,4 @@ After this you are ready to restore your PG apps on a brand new Dockserver insta
 Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
 
 * Join our <a href="https://discord.gg/FYSvu83caM">
-        <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
-    </a> for Support
-
-----
 
