@@ -55,17 +55,17 @@ Now, please order a VPS with ubuntu 18/20 on it and follow the instructions on t
 Install CloudCMD (under addons) 
 
 Navigate to 
-/opt/system/rclone
+/opt/appdata/system/rclone
 Upload the rclone.conf from your old server
 
 Navigate to 
-/opt/system/servicekeys
+/opt/appdata/system/servicekeys
 
 Upload the rclone.conf to this folder
 Rename rclone.conf to rclonegdsa.conf
 
 Navigate to 
-/opt/system/servicekeys/keys
+/opt/appdata/system/servicekeys/keys
 Upload all service keys (GDSA01,02..)
 Rename all service keys to not containing a 0 so GDSA01 becomes GDSA1 and so forth..
 
