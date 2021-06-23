@@ -16,14 +16,13 @@
 
 
 
-Requestrr 
-=================
+# Requestrr 
 
 ![logo](https://i.imgur.com/0UzLYvw.png)
 
 Requestrr is a chatbot used to simplify using services like Sonarr/Radarr/Ombi via the use of chat!  
 
-### Features
+## Features
 
 - Ability to request content via Discord
 - Apple's Siri integration
@@ -33,14 +32,17 @@ Requestrr is a chatbot used to simplify using services like Sonarr/Radarr/Ombi v
 - Ombi V3 integration with support for per user roles/quotas
 - Fully configurable via a web portal
 
-Configuration
-==================
+
+You can also choose to run the container as a different user. See [docker run](https://docs.docker.com/engine/reference/run/#user) reference for how to set the user for your container.
+
+Then simply access the web portal at http://youraddress:4545/ to create your admin account, then you can configure everything through the web portal.
+
+Once you have configured the bot and invited it to your Discord server, simply type **!help** to see all available commands.
+
 
 Refer to the Wiki for detailed steps:
 https://github.com/darkalfx/requestrr/wiki
 
-
-----
 
 ## Support
 
