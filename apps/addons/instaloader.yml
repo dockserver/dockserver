@@ -24,7 +24,7 @@ services:
       - '/opt/appdata/nextcloud/data/mrv/files/data/instaload:/download:shared'
       - '/var/run/docker.sock:/var/run/docker.sock'
     labels:
-      - 'dockupdater.disable=true'
+      - 'dockupdater.enable=true'
 networks:
   proxy:
     driver: bridge
