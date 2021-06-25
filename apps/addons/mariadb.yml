@@ -19,7 +19,7 @@ services:
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '${APPFOLDER}/mariadb:/var/lib/mysql:shared'
+      - '${APPFOLDER}/mariadb:/var/lib/mysql:rw'
     labels:
       - 'dockupdater.enable=true'
 networks:
