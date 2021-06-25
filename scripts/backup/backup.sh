@@ -19,7 +19,7 @@
 ## 5 3 * * * bash /opt/dockserver/scripts/backup/backup.sh >/dev/null 2>&1
 ## 03:05 each day to storage local
 
-STORAGE=local
+STORAGE=$(date +"%d-%m-%Y_%T")
 
 OPTIONSTAR="--warning=no-file-changed \
   --ignore-failed-read \
