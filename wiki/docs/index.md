@@ -118,6 +118,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/RedDaut"><img src="https://avatars.githubusercontent.com/u/78737369?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Red Daut</b></sub></a><br /><a href="https://github.com/dockserver/dockserver/commits?author=RedDaut" title="Code">💻</a> <a href="https://github.com/dockserver/dockserver/issues?q=author%3ARedDaut" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/brtbach"><img src="https://avatars.githubusercontent.com/u/24246495?v=4?s=100" width="100px;" alt=""/><br /><sub><b>brtbach</b></sub></a><br /><a href="https://github.com/dockserver/dockserver/commits?author=brtbach" title="Code">💻</a></td>
   </tr>
 </table>
 
