@@ -1,0 +1,31 @@
+---
+version: '3'
+services:
+  instaloader:
+    cap_add:
+      - 'SYS_ADMIN'
+    container_name: 'instaloader'
+    hostname: 'instaloader'
+    privileged: 'true'
+    devices:
+      - '/dev/fuse:/dev/fuse'
+    image: 'didc/docker-instaloader:latest'
+    restart: always
+    networks:
+      - proxy
+    security_opt:
+      - 'apparmor:unconfined'
+      - 'no-new-privileges:true'
+    volumes:
+      - '/etc/localtime:/etc/localtime:ro'
+      - '/opt/appdata/instaloader/il_args.txt:/il_args.txt:rw'
+      - '/opt/appdata/instaloader/il_targets.txt:/il_targets.txt:rw'
+      - '/opt/appdata/instaloader/session-username:/session-username:rw'
+      - '/opt/appdata/nextcloud/data/mrv/files/data/instaload:/download:shared'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    labels:
+      - 'dockupdater.disable=true'
+networks:
+  proxy:
+    driver: bridge
+    external: true
