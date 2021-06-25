@@ -1,0 +1,33 @@
+---
+version: '3'
+services:
+  mariadb:
+    cap_add:
+      - 'SYS_ADMIN'
+    container_name: 'mariadb'
+    hostname: 'mariadb'
+    privileged: 'true'
+    devices:
+      - '/dev/fuse:/dev/fuse'
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    image: 'mariadb:latest'
+    restart: '${RESTARTAPP}'
+    ports:
+      - '${PORTBLOCK}:3306:3306'
+    networks:
+      - proxy
+    security_opt:
+      - 'apparmor:unconfined'
+      - 'no-new-privileges:true'
+    volumes:
+      - '/etc/localtime:/etc/localtime:ro'
+      - '${APPFOLDER}/system:/system:rshared'
+      - '/opt/appdata/mariadb:/var/lib/mysql:shared'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    labels:
+      - 'dockupdater.disable=true'
+networks:
+  proxy:
+    driver: bridge
+    external: true
