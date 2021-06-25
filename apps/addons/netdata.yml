@@ -26,6 +26,8 @@ services:
       - '/proc:/host/proc:ro'
       - '/sys:/host/sys:ro'
       - '/etc/os-release:/host/etc/os-release:ro'
+      - '/opt/appdata/netdata/health.d:/etc/netdata/health.d:rw'
+      - '/opt/appdata/netdata/netdata.conf:/etc/netdata/netdata.conf:rw'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'
