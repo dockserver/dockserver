@@ -2,15 +2,14 @@
 version: '3'
 services:
   mariadb:
-    cap_add:
-      - 'SYS_ADMIN'
     container_name: 'mariadb'
     hostname: 'mariadb'
-    privileged: 'true'
-    devices:
-      - '/dev/fuse:/dev/fuse'
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=${UMASK}'
+      - 'MYSQL_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}'
     image: 'mariadb:latest'
     restart: '${RESTARTAPP}'
     ports:
@@ -18,15 +17,11 @@ services:
     networks:
       - proxy
     security_opt:
-      - 'apparmor:unconfined'
       - 'no-new-privileges:true'
     volumes:
-      - '/etc/localtime:/etc/localtime:ro'
-      - '${APPFOLDER}/system:/system:rshared'
-      - '/opt/appdata/mariadb:/var/lib/mysql:shared'
-      - '/var/run/docker.sock:/var/run/docker.sock'
+      - '${APPFOLDER}/mariadb:/var/lib/mysql:shared'
     labels:
-      - 'dockupdater.disable=true'
+      - 'dockupdater.enable=true'
 networks:
   proxy:
     driver: bridge
