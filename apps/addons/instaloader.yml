@@ -2,19 +2,13 @@
 version: '3'
 services:
   instaloader:
-    cap_add:
-      - 'SYS_ADMIN'
     container_name: 'instaloader'
     hostname: 'instaloader'
-    privileged: 'true'
-    devices:
-      - '/dev/fuse:/dev/fuse'
     image: 'didc/docker-instaloader:latest'
     restart: '${RESTARTAPP}'
     networks:
       - proxy
     security_opt:
-      - 'apparmor:unconfined'
       - 'no-new-privileges:true'
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
