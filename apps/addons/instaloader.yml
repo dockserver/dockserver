@@ -10,7 +10,7 @@ services:
     devices:
       - '/dev/fuse:/dev/fuse'
     image: 'didc/docker-instaloader:latest'
-    restart: always
+    restart: '${RESTARTAPP}'
     networks:
       - proxy
     security_opt:
@@ -18,10 +18,9 @@ services:
       - 'no-new-privileges:true'
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
-      - '/opt/appdata/instaloader/il_args.txt:/il_args.txt:rw'
-      - '/opt/appdata/instaloader/il_targets.txt:/il_targets.txt:rw'
-      - '/opt/appdata/instaloader/session-username:/session-username:rw'
-      - '/opt/appdata/nextcloud/data/mrv/files/data/instaload:/download:shared'
+      - '${APPFOLDER}/instaloader/il_args.txt:/il_args.txt:rw'
+      - '${APPFOLDER}/instaloader/il_targets.txt:/il_targets.txt:rw'
+      - '${APPFOLDER}/instaloader/session-username:/session-username:rw'
       - '/var/run/docker.sock:/var/run/docker.sock'
     labels:
       - 'dockupdater.disable=true'
