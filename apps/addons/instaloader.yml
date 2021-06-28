@@ -6,6 +6,10 @@ services:
     hostname: 'instaloader'
     image: 'didc/docker-instaloader:latest'
     restart: '${RESTARTAPP}'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
     networks:
       - proxy
     security_opt:
@@ -16,7 +20,7 @@ services:
       - '${APPFOLDER}/instaloader/il_targets.txt:/il_targets.txt:rw'
       - '${APPFOLDER}/instaloader/session-username:/session-username:rw'
     labels:
-      - 'dockupdater.disable=true'
+      - 'dockupdater.enable=true'
 networks:
   proxy:
     driver: bridge
