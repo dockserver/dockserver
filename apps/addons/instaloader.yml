@@ -15,7 +15,6 @@ services:
       - '${APPFOLDER}/instaloader/il_args.txt:/il_args.txt:rw'
       - '${APPFOLDER}/instaloader/il_targets.txt:/il_targets.txt:rw'
       - '${APPFOLDER}/instaloader/session-username:/session-username:rw'
-      - '/var/run/docker.sock:/var/run/docker.sock'
     labels:
       - 'dockupdater.disable=true'
 networks:
