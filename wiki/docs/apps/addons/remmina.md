@@ -5,9 +5,14 @@
 [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa)
 [![License: GPL 3](https://img.shields.io/badge/License-GPL%203-blue.svg?style=for-the-badge&colorB=177DC1&label=license)](LICENSE)
 
-## $i
+## Remmina remote desktop client
 
-* For the synstax to see
+*Use other desktops remotely, from a tiny screen or large monitors.*
+
+
+* RDP, VNC, SPICE, NX, XDMCP, SSH and EXEC network protocols are supported.
+* Written in GTK, with a port to Qt underway. 
+* Released as "remmina" (the main program) and "remmina-plugins".
 
 ## Support
 
