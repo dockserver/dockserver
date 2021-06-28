@@ -20,8 +20,6 @@ services:
       - '${APPFOLDER}/instaloader/il_targets.txt:/il_targets.txt:rw'
       - '${APPFOLDER}/instaloader/session-username:/session-username:rw'
     labels:
-      - 'traefik.enable=true'
-      - 'traefik.docker.network=proxy'
       - 'dockupdater.enable=true'
 networks:
   proxy:
