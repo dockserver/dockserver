@@ -5,21 +5,14 @@
 [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa)
 [![License: GPL 3](https://img.shields.io/badge/License-GPL%203-blue.svg?style=for-the-badge&colorB=177DC1&label=license)](LICENSE)
 
-## Advanced, lightweight Torrent client
+# Deluge BitTorrent Client
 
-### INSTALLATION NOTES: 
+Deluge is a BitTorrent client that utilizes a daemon/client model.
+It has various user interfaces available such as the GTK-UI, Web-UI and
+a Console-UI. It uses [libtorrent][lt] at it's core to handle the BitTorrent
+protocol.
 
- In order for it to work with sonarr/radarr downloads that are compressed, you need to install the extractor module
-
-*Preferences -> Plugins ->* **tick off label and extractor**:tw-2714:
-
-*In the extractor section, tick off* **"create torrent name sub-folder"**:tw-2714:
-
-Set it to: **/mnt/downloads/torrent**
-
-Now sonarr/radarr can grab the extracted files. 
-
-**Deluge is set to only seed 4 torrents per default. If your provider is seeding-sensetive you might wanna look into that under preferences->bandwith->upload slots **
+Advanced, lightweight Torrent client
 
 ## Support
 
