@@ -11,6 +11,8 @@ services:
     environment:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=${UMASK}'
       - 'AUTOSTART=true'
       - 'SCRIPTINTERVAL=1h'
       - 'DOWNLOADMODE=wanted'
