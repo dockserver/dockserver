@@ -1,8 +1,10 @@
 version: "2.1"
 services:
   amd:
-    image: randomninjaatk/amd:latest
-    container_name: amd
+    hostname: 'amd'
+    container_name: 'amd'
+    image: 'randomninjaatk/amd:latest'
+    restart: '${RESTARTAPP}'
     volumes:
       - '${APPFOLDER}/amd:/config:rw'
       - '${APPFOLDER}/amd/downloads-amd:/downloads-amd:rw'
@@ -10,39 +12,40 @@ services:
     environment:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
-      - AUTOSTART=true
-      - SCRIPTINTERVAL=1h
-      - DOWNLOADMODE=wanted
-      - FALLBACKSEARCH=True
-      - LIST=both
-      - SearchType=both
-      - Concurrency=1
-      - EMBEDDED_COVER_QUALITY=80
-      - FORMAT=FLAC
-      - BITRATE=320
-      - ENABLEPOSTPROCESSING=true
-      - FORCECONVERT=false
-      - requirequality=false
-      - MatchDistance=10
-      - replaygain=true
-      - FolderPermissions=766
-      - FilePermissions=666
+      - 'AUTOSTART=true'
+      - 'SCRIPTINTERVAL=1h'
+      - 'DOWNLOADMODE=wanted'
+      - 'FALLBACKSEARCH=True'
+      - 'LIST=both'
+      - 'SearchType=both'
+      - 'Concurrency=1'
+      - 'EMBEDDED_COVER_QUALITY=80'
+      - 'FORMAT=FLAC'
+      - 'BITRATE=320'
+      - 'ENABLEPOSTPROCESSING=true'
+      - 'FORCECONVERT=false'
+      - 'requirequality=false'
+      - 'MatchDistance=10'
+      - 'replaygain=true'
+      - 'FolderPermissions=766'
+      - 'FilePermissions=666'
       - 'MBRAINZMIRROR=${AMDMBRAINZMIRROR=}'
-      - MBRATELIMIT=1
+      - 'MBRATELIMIT=1'
       - 'LidarrUrl=${AMDLidarrUrl}'
       - 'LidarrAPIkey=${AMDLidarrAPIkey}'
       - 'ARL_TOKEN=${AMDARL_TOKEN}'
-      - NOTIFYPLEX=true
+      - 'NOTIFYPLEX=true'
       - 'PLEXLIBRARYNAME=${AMDPLEXLIBRARYNAME}'
       - 'PLEXURL=${AMDPLEXURL}'
       - 'PLEXTOKEN=${AMDPLEXTOKEN}'
-      - ALBUM_TYPE_FILTER=COMPILE
-      - POSTPROCESSTHREADS=1
-    labels:
-      - 'dockupdater.enable=true'
-    restart: '${RESTARTAPP}'
+      - 'ALBUM_TYPE_FILTER=COMPILE'
+      - 'POSTPROCESSTHREADS=1'
     networks:
       - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    labels:
+      - 'dockupdater.enable=true'
 
 networks:
   proxy:
