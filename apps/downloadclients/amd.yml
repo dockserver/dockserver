@@ -7,7 +7,6 @@ services:
     restart: '${RESTARTAPP}'
     volumes:
       - '${APPFOLDER}/amd:/config:rw'
-      - '${APPFOLDER}/amd/downloads-amd:/downloads-amd:rw'
       - 'unionfs:/mnt'
     environment:
       - 'PGID=${ID}'
