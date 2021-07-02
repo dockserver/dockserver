@@ -455,6 +455,14 @@ EOF
          $(command -v find) $rto -exec $(command -v chown) -hR 1000:1000 {} \;
      done
   fi
+  if [[ ${section} == "mediamanager" && ${typed} == "lidarr" ]];then
+     folder=$storage/amd
+     for lid in ${folder};do
+         $(command -v mkdir) -p $lid
+         $(command -v find) $lid -exec $(command -v chmod) a=rx,u+w {} \;
+         $(command -v find) $lid -exec $(command -v chown) -hR 1000:1000 {} \;
+     done
+  fi
   if [[ ${section} == "mediamanager" && ${typed} == "readarr" ]];then
      folder=$storage/books
      for rea in ${folder};do
