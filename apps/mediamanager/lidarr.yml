@@ -22,6 +22,7 @@ services:
     volumes:
       - '${APPFOLDER}/lidarr:/config:rw'
       - 'unionfs:/mnt'
+      - '/mnt/downloads/amd:/downloads-amd:rw'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'
