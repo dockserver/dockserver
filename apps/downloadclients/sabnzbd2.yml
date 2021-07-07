@@ -1,0 +1,44 @@
+---
+version: '3'
+services:
+  sabnzbd2:
+    hostname: 'sabnzbd2'
+    container_name: 'sabnzbd2'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=${UMASK}'
+      - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:sabnzbd'
+      - 'TP_THEME=${SABNZBDTHEME}'
+    image: '${SABNZBDIMAGE}'
+    restart: '${RESTARTAPP}'
+    ports:
+      - '${PORTBLOCK}:8013:8080'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '${APPFOLDER}/sabnzbd2:/config:rw'
+      - 'unionfs:/mnt'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.sabnzbd2-rtr.entrypoints=https'
+      - 'traefik.http.routers.sabnzbd2-rtr.rule=Host(`sabnzbd2.${DOMAIN}`)'
+      - 'traefik.http.routers.sabnzbd2-rtr.tls=true'
+      - 'traefik.http.routers.sabnzbd2-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.sabnzbd2-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.sabnzbd2-rtr.service=sabnzbd2-svc'
+      - 'traefik.http.services.sabnzbd2-svc.loadbalancer.server.port=8080'
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt
