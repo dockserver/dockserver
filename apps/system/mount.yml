@@ -16,7 +16,7 @@ services:
     image: 'ghcr.io/dockserver/docker-mount:dockserver'
     restart: '${RESTARTAPP}'
     ports:
-      - '7755:8080'
+      - '${PORTBLOCK}:7755:8080'
     networks:
       - proxy
     security_opt:
