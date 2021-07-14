@@ -5,10 +5,10 @@ services:
   qbittorrentvpn:
     cap_add:
       - 'NET_ADMIN'
-    hostname: 'qbittorrentvpnvpn'
+    hostname: 'qbittorrentvpn'
     container_name: 'qbittorrentvpn'
     env_file:
-      - ${APPFOLDER}/qbittorrentvpn/qbittorrentvpn.env
+      - '${APPFOLDER}/qbittorrentvpn/qbittorrentvpn.env'
     image: 'binhex/arch-qbittorrentvpn:latest'
     restart: '${RESTARTAPP}'
     ports:
