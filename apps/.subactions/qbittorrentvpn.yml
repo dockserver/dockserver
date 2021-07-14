@@ -25,13 +25,13 @@
         group: 1000
         force: no
         content: |
-          PGID=${ID}
-          PUID=${ID}
+          PGID=1000
+          PUID=1000
           TZ=${TZ}
           UMASK=022
           WEBUI_PORT=8080
           DEBUG=false
-          VPN_ENABLED=<yes|no>
+          VPN_ENABLED=no
           VPN_USER=<vpn username>
           VPN_PASS=<vpn password>
           VPN_PROV=<pia|airvpn>
@@ -40,7 +40,8 @@
           ENABLE_PRIVOXY=no
           NAME_SERVERS=209.222.18.222,84.200.69.80,37.235.1.174,1.1.1.1,209.222.18.218,37.235.1.177,84.200.70.40,1.0.0.1
           VPN_INPUT_PORTS=<input port>
-          VPN_OUTPUT_PORTS=<output port>        
+          VPN_OUTPUT_PORTS=<output port>  
+          LAN_NETWORK=192.168.1.0/24
     - name: 'Register Domain'
       shell: cat /etc/hosts | grep 127.0.0.1 | tail -n 1 | awk '{print $2}'
       register: domain
