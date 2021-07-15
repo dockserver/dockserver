@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Close Stale Issues
-        uses: actions/stale@v3.0.19
+        uses: actions/stale@v4
         with:
           repo-token: ${{ secrets.CR_PAT }}
           stale-issue-message: 'This issue has not had any activity in 30 days. Marking it stale. It will be closed in 14 days.'
