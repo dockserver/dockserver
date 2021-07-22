@@ -20,7 +20,7 @@
 ## 03:05 each day to storage date 
 ## sample date 2021-07-22
 
-STORAGE=$($date "+%Y-%m-%d")
+STORAGE=$(date "+%Y-%m-%d")
 
 OPTIONSTAR="--warning=no-file-changed \
   --ignore-failed-read \
