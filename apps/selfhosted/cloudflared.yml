@@ -6,7 +6,7 @@ services:
     hostname: cloudflared
     container_name: cloudflared
     ports:
-      - ${PORTBLOCK}:5053:5053/udp #Donot expose this publically on a remote server only use VPN
+      - ${PORTBLOCK}:5053:5053/udp #Donot expose this publicly on a remote server, only use VPN
       - ${PORTBLOCK}:49312:49312/tcp
     networks:
       - proxy     
