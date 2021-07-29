@@ -8,9 +8,9 @@ services:
     ports:
       - ${PORTBLOCK}:446:443
       - ${PORTBLOCK}:8008:80
-      - ${PORTBLOCK}:53:53 #Donot expose this publically on a remote server only use VPN
-      - ${PORTBLOCK}:53:53/udp #Donot expose this publically on a remote server only use VPN
-      - ${PORTBLOCK}:67:67/udp 
+      - ${PORTBLOCK}:53:53 #Donot expose this publicly on a remote server, only use VPN
+      - ${PORTBLOCK}:53:53/udp #Donot expose this publicly on a remote server, only use VPN
+      - ${PORTBLOCK}:67:67/udp
     cap_add:
       - NET_ADMIN
     networks:
