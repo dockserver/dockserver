@@ -6,11 +6,11 @@ services:
     hostname: pihole
     container_name: pihole
     ports:
-      - 446:443
-      - 8008:80
-      - ${SERVERIP}:53:53
-      - ${SERVERIP}:53:53/udp
-      - ${SERVERIP}:67:67/udp
+      - ${PORTBLOCK}:446:443
+      - ${PORTBLOCK}:8008:80
+      - ${PORTBLOCK}:53:53 #Donot expose this publically on a remote server only use VPN
+      - ${PORTBLOCK}:53:53/udp #Donot expose this publically on a remote server only use VPN
+      - ${PORTBLOCK}:67:67/udp 
     cap_add:
       - NET_ADMIN
     networks:
@@ -23,8 +23,8 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'DNS1=1.1.1.1'
-      - 'DNS2=8.8.8.8'
-      - 'ServerIP=${SERVERIP}'
+      - 'DNS2=1.0.0.1'
+      - 'ServerIP=${PORTBLOCK}'
       - 'TZ=${TZ}'
       - 'WEBPASSWORD=WEBPASSWORD'
     restart: unless-stopped
