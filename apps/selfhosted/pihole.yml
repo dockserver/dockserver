@@ -5,7 +5,7 @@ services:
     image: pihole/pihole 
     hostname: pihole
     container_name: pihole
-# TIP: Just replace ${PORTBLOCK} with your servers VPN IP to set this up.
+#TIP: Just replace ${PORTBLOCK} with your servers VPN IP to set this up.
     ports:
       - ${PORTBLOCK}:446:443
       - ${PORTBLOCK}:8008:80
