@@ -2,9 +2,10 @@
 version: '3'
 services:  
   pihole:
-    image: pihole/pihole
+    image: pihole/pihole 
     hostname: pihole
     container_name: pihole
+# TIP: Just replace ${PORTBLOCK} with your servers VPN IP to set this up.
     ports:
       - ${PORTBLOCK}:446:443
       - ${PORTBLOCK}:8008:80
@@ -22,11 +23,11 @@ services:
     environment:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
-      - 'DNS1=1.1.1.1'
-      - 'DNS2=1.0.0.1'
+      - 'PIHOLE_DNS_=${PORTBLOCK}#5053;${PORTBLOCK}#5053' #Unbound DNS, Set this to Cloudflare or Google etc if not using Unbound.
       - 'ServerIP=${PORTBLOCK}'
       - 'TZ=${TZ}'
       - 'WEBPASSWORD=WEBPASSWORD'
+      - 'DNSSEC=true'
     restart: unless-stopped
     volumes:
       - /etc/localtime:/etc/localtime:ro
