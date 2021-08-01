@@ -5,13 +5,12 @@ services:
     image: pihole/pihole
     hostname: pihole
     container_name: pihole
-#TIP: Just replace ${PORTBLOCK} with your servers VPN IP to set this up.
     ports:
-      - ${PORTBLOCK}:446:443
-      - ${PORTBLOCK}:8008:80
-      - ${PORTBLOCK}:53:53 #Donot expose this publicly on a remote server, only use VPN
-      - ${PORTBLOCK}:53:53/udp #Donot expose this publicly on a remote server, only use VPN
-      - ${PORTBLOCK}:67:67/udp
+      - 446:443
+      - 8008:80
+      - ${SERVERIP}:53:53
+      - ${SERVERIP}:53:53/udp
+      - ${SERVERIP}:67:67/udp
     cap_add:
       - NET_ADMIN
     networks:
@@ -23,11 +22,11 @@ services:
     environment:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
-      - 'PIHOLE_DNS_=${PORTBLOCK}#5053;${PORTBLOCK}#5053' #Unbound DNS, Set this to Cloudflare or Google etc if not using Unbound.
-      - 'ServerIP=${PORTBLOCK}'
+      - 'DNS1=1.1.1.1'
+      - 'DNS2=8.8.8.8'
+      - 'ServerIP=${SERVERIP}'
       - 'TZ=${TZ}'
       - 'WEBPASSWORD=WEBPASSWORD'
-      - 'DNSSEC=true'
     restart: unless-stopped
     volumes:
       - /etc/localtime:/etc/localtime:ro
