@@ -2,7 +2,7 @@
 version: '3'
 services:  
   pihole:
-    image: pihole/pihole 
+    image: pihole/pihole
     hostname: pihole
     container_name: pihole
 #TIP: Just replace ${PORTBLOCK} with your servers VPN IP to set this up.
