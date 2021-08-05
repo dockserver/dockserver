@@ -10,9 +10,6 @@ services:
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
       - 'PASSWORD=password'
-      - 'HASHED_PASSWORD=#fillthisself'
-      - 'SUDO_PASSWORD=sudopassword'
-      - 'SUDO_PASSWORD_HASH=#fillthisself' 
     image: 'ghcr.io/linuxserver/code-server'
     restart: '${RESTARTAPP}'
     ports:
