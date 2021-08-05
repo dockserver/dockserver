@@ -67,6 +67,10 @@ EOF
             echo 'net.ipv6.conf.default.disable_ipv6 = 1' >> $config
        grep -qE 'net.ipv6.conf.lo.disable_ipv6 = 1' $config || \
             echo 'net.ipv6.conf.lo.disable_ipv6 = 1' >> $config
+       grep -qE 'net.core.default_qdisc=fq' $config || \
+            echo 'net.core.default_qdisc=fq' >> $config
+       grep -qE 'net.ipv4.tcp_congestion_control=bbr' $config || \
+            echo 'net.ipv4.tcp_congestion_control=bbr' >> $config            
        sysctl -p -q
      fi
   fi

@@ -473,10 +473,18 @@ EOF
   fi
   if [[ ${section} == "system" && ${typed} == "mount" ]];then
      checkmnt=$($(command -v mountpoint) -q /mnt/unionfs && echo true || echo false)
-     mount=$($(command -v docker) ps -aq --format={{.Names}} | grep -x 'mount')
+     checkrcc=$($(command -v mountpoint) -q /mnt/rclone_cache && echo true || echo false)
+     checkrmt=$($(command -v mountpoint) -q /mnt/remotes && echo true || echo false)
+        mount=$($(command -v docker) ps -aq --format={{.Names}} | grep -x 'mount')
      if [[ ${checkmnt} == "true" && ${mount} == "mount" ]];then $(command -v docker) stop mount 1>/dev/null 2>&1 && $(command -v fusermount) -uzq /mnt/unionfs 1>/dev/null 2>&1;fi
      if [[ ${checkmnt} == "false" && ${mount} == "mount" ]];then $(command -v docker) stop mount 1>/dev/null 2>&1 && $(command -v fusermount) -uzq /mnt/unionfs 1>/dev/null 2>&1;fi
      if [[ ${checkmnt} == "false" && ${mount} == "" ]];then $(command -v fusermount) -uzq /mnt/unionfs 1>/dev/null 2>&1;fi
+     if [[ ${checkrcc} == "true" && ${mount} == "mount" ]];then $(command -v docker) stop mount 1>/dev/null 2>&1 && $(command -v fusermount) -uzq /mnt/rclone_cache 1>/dev/null 2>&1;fi
+     if [[ ${checkrcc} == "false" && ${mount} == "mount" ]];then $(command -v docker) stop mount 1>/dev/null 2>&1 && $(command -v fusermount) -uzq /mnt/rclone_cache 1>/dev/null 2>&1;fi
+     if [[ ${checkrcc} == "false" && ${mount} == "" ]];then $(command -v fusermount) -uzq /mnt/rclone_cache 1>/dev/null 2>&1;fi
+     if [[ ${checkrmt} == "true" && ${mount} == "mount" ]];then $(command -v docker) stop mount 1>/dev/null 2>&1 && $(command -v fusermount) -uzq /mnt/remotes 1>/dev/null 2>&1;fi
+     if [[ ${checkrmt} == "false" && ${mount} == "mount" ]];then $(command -v docker) stop mount 1>/dev/null 2>&1 && $(command -v fusermount) -uzq /mnt/remotes 1>/dev/null 2>&1;fi
+     if [[ ${checkrmt} == "false" && ${mount} == "" ]];then $(command -v fusermount) -uzq /mnt/remotes 1>/dev/null 2>&1;fi
 	 dockers=$($(command -v docker) ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -E 'ple|arr|emby|jelly')
      for doc in ${dockers};do
          $(command -v docker) stop $doc >> /dev/null
