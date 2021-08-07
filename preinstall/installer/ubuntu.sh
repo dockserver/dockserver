@@ -126,7 +126,7 @@ EOF
      gpu="ntel NVIDIA"
      for i in ${gpu};do
          TDV=$(lspci | grep -i --color 'vga\|3d\|2d' | grep -E $i 1>/dev/null 2>&1 && echo true || echo false)
-         if [[ $TDV == "true" ]];then $(command -v bash) ./templates/local/gpu.sh;fi
+         if [[ $TDV == "true" ]];then $(command -v bash) ${source}/gpu.sh;fi
      done
   fi
   if [[ ! -x $(command -v ansible) ]];then
@@ -206,7 +206,7 @@ for i in ${delproxy};do
 done
 }
 oldsinstall() {
-  oldsolutions="plexguide cloudbox gooby sudobox"
+  oldsolutions="plexguide cloudbox gooby sudobox sbox"
   for i in ${oldsolutions};do
       folders="/var/ /opt/ /home/ /srv/"
       for ii in ${folders};do
