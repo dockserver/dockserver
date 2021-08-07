@@ -36,7 +36,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   basefolder="/opt/appdata"
-  source="/opt/dockserver/preinstall/templates/local/"
+  source="/opt/dockserver/preinstall/templates/local"
   oldsinstall && proxydel
   package_list="update upgrade dist-upgrade autoremove autoclean"
   for i in ${package_list}; do
