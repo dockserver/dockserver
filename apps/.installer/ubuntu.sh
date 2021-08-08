@@ -670,20 +670,20 @@ authadd=$(cat $conf | grep -E ${typed})
      fi
   if [[ $authadd == "" ]];then
      if [[ ${section} == "mediaserver" || ${section} == "request" ]];then
-     { head -n 38 $conf;
+     { head -n 56 $conf;
      echo "\
     - domain: ${typed}.${DOMAIN}
-      policy: bypass"; tail -n +39 $conf; } > $confnew
+      policy: bypass"; tail -n +57 $conf; } > $confnew
         if [[ -f $conf ]];then $(command -v rsync) $conf $confbackup -aqhv;fi
         if [[ -f $conf ]];then $(command -v rsync) $confnew $conf -aqhv;fi
         if [[ $authcheck == "true" ]];then $(command -v docker) restart authelia 1>/dev/null 2>&1;fi
         if [[ -f $conf ]];then $(command -v rm) -rf $confnew;fi
      fi
      if [[ ${typed} == "xteve" || ${typed} == "heimdall" || ${typed} == "librespeed" || ${typed} == "tautulli" || ${typed} == "nextcloud" ]];then
-     { head -n 38 $conf;
+     { head -n 56 $conf;
      echo "\
     - domain: ${typed}.${DOMAIN}
-      policy: bypass"; tail -n +39 $conf; } > $confnew
+      policy: bypass"; tail -n +57 $conf; } > $confnew
         if [[ -f $conf ]];then $(command -v rsync) $conf $confbackup -aqhv;fi
         if [[ -f $conf ]];then $(command -v rsync) $confnew $conf -aqhv;fi
         if [[ $authcheck == "true" ]];then $(command -v docker) restart authelia 1>/dev/null 2>&1;fi
