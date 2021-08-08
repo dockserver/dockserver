@@ -10,7 +10,7 @@ services:
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
       - 'MYSQL_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}'
-    image: 'mariadb:latest'
+    image: 'ghcr.io/linuxserver/mariadb:alpine-version-10.5.11-r0'
     restart: '${RESTARTAPP}'
     ports:
       - '${PORTBLOCK}:3306:3306'
@@ -19,7 +19,7 @@ services:
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '${APPFOLDER}/mariadb:/var/lib/mysql:rw'
+      - '${APPFOLDER}/mariadb:/config:rw'
     labels:
       - 'dockupdater.enable=true'
 networks:
