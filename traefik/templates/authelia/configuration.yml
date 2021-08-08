@@ -93,7 +93,7 @@ session:
 regulation:
   max_retries: 3
   find_time: 60m
-  ban_time: 48
+  ban_time: 48h
 
 storage:
   local:
