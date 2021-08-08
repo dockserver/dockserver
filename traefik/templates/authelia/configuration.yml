@@ -58,9 +58,9 @@ access_control:
     - domain: "*.example.com"
       policy: bypass
       resources:
-        - "^/api.*$"
-        - "^/identity.*$"
-        - "^/triggers/*$"
+        - "^/api/.*$"
+        - "^/identity/.*$"
+        - "^/triggers/.*$"
         - "^/rss/*$"
         - "^/xmltv/*$"
         - "^/liverel.*$"
