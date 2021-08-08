@@ -21,7 +21,6 @@ log:
   log_level: debug
   log_format: text
   log_file_path: /config/authelia.log
-  jwt_secret: JWTTOKENID
 
 totp:
   issuer: example.com
