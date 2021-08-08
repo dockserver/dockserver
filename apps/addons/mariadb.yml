@@ -21,7 +21,7 @@ services:
     volumes:
       - '${APPFOLDER}/mariadb:/config:rw'
     labels:
-      - 'dockupdater.enable=false'
+      - 'dockupdater.enable=true'
 networks:
   proxy:
     driver: bridge
