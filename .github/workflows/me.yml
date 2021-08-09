@@ -16,5 +16,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.CR_PAT }}
         with:
-          COMMIT_MSG: '## Changelog ##'
+          COMMIT_MSG: '#patch ## Changelog ##'
           MAX_LINES: 10
