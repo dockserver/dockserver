@@ -17,9 +17,10 @@ server:
   disable_healthcheck: false
 
 log:
-  log_level: debug
-  log_format: text
-  log_file_path: /config/authelia.log
+  level: debug
+  format: text
+  file_path: /config/authelia.log
+  keep_stdout: false
 
 totp:
   issuer: example.com
