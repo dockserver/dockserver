@@ -12,7 +12,7 @@ services:
     image: 'coderaiser/cloudcmd'
     restart: '${RESTARTAPP}'
     ports:
-      - '7999:8000'
+      - '${PORTBLOCK}:7999:8000'
     networks:
       - proxy
     security_opt:
