@@ -32,7 +32,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ${APPFOLDER}/pihole/dnsmasq.d:/etc/dnsmasq.d
-      - ${APPFOLDER}/pihole/pihole:/etc/pihole
+      - ${APPFOLDER}/pihole:/etc/pihole
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'
