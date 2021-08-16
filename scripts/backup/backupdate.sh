@@ -14,10 +14,10 @@
 #####################################
 
 ## sample crontab ##
-## sudo crontab -e 
-## ## Autobackup all Dockers 
+## sudo crontab -e
+## ## Autobackup all Dockers
 ## 5 3 * * * bash /opt/dockserver/scripts/backup/backupdate.sh >/dev/null 2>&1
-## 03:05 each day to storage date 
+## 03:05 each day to storage date
 ## by default this script will make backups with 7 days of retention, Uncomment the other options if you want to run.
 
 ## weekday name (e.g., Sunday) = 7 days retention ##
@@ -28,7 +28,6 @@ STORAGE=$(date '+%A')
 
 ## sample date 2021-07-22 = for the paranoids ##
 #STORAGE=$(date "+%Y-%m-%d")
-
 
 HOSTNAME=$(hostname)
 
