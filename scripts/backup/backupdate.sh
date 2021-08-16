@@ -18,9 +18,18 @@
 ## ## Autobackup all Dockers 
 ## 5 3 * * * bash /opt/dockserver/scripts/backup/backupdate.sh >/dev/null 2>&1
 ## 03:05 each day to storage date 
-## sample date 2021-07-22
+## by default this script will make backups with 7 days of retention, Uncomment the other options if you want to run.
 
-STORAGE=$(date "+%Y-%m-%d")
+## weekday name (e.g., Sunday) = 7 days retention ##
+STORAGE=$(date '+%A')
+
+## day of month (e.g., 01) = 30-31 days retention ##
+#STORAGE=$(date '+%d')
+
+## sample date 2021-07-22 = for the paranoids ##
+#STORAGE=$(date "+%Y-%m-%d")
+
+
 HOSTNAME=$(hostname)
 
 OPTIONSTAR="--warning=no-file-changed \
