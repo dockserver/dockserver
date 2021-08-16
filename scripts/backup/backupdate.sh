@@ -21,6 +21,7 @@
 ## sample date 2021-07-22
 
 STORAGE=$(date "+%Y-%m-%d")
+HOSTNAME=$(hostname)
 
 OPTIONSTAR="--warning=no-file-changed \
   --ignore-failed-read \
@@ -36,7 +37,7 @@ dockers=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -v 'trae' | g
 for i in ${dockers};do
    ARCHIVE=$i
    ARCHIVETAR=${ARCHIVE}.tar.gz
-   if [[ ! -d ${DESTINATION}/${STORAGE} ]];then $(command -v mkdir) -p ${DESTINATION}/${STORAGE};fi
+   if [[ ! -d ${DESTINATION}/${HOSTNAME}/${STORAGE} ]];then $(command -v mkdir) -p ${DESTINATION}/${HOSTNAME}/${STORAGE};fi
    forcepush="tar pigz pv"
    for fc in ${forcepush};do
        $(command -v apt) install $fc --reinstall -yqq 1>/dev/null 2>&1 && sleep 1
@@ -49,12 +50,12 @@ for i in ${dockers};do
    done
    if [[ ${section} == "mediaserver" || ${section} == "mediamanager" ]];then
       $(command -v docker) stop ${typed} 1>/dev/null 2>&1 && echo "We stopped now $typed"
-      $(command -v tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${STORAGE}/${ARCHIVETAR} ./
+      $(command -v tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${HOSTNAME}/${STORAGE}/${ARCHIVETAR} ./
       $(command -v docker) start ${typed} 1>/dev/null 2>&1  && echo "We started now $typed"
    else
-      $(command -v tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${STORAGE}/${ARCHIVETAR} ./
+      $(command -v tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${HOSTNAME}/${STORAGE}/${ARCHIVETAR} ./
    fi
-   $(command -v chown) -hR 1000:1000 ${DESTINATION}/${STORAGE}/${ARCHIVETAR}
+   $(command -v chown) -hR 1000:1000 ${DESTINATION}/${HOSTNAME}/${STORAGE}/${ARCHIVETAR}
 done
 
 #EOF
