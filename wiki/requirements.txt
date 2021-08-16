@@ -27,6 +27,6 @@ mkdocs-macros-plugin==0.5.12
 mkdocs-awesome-pages-plugin==2.5.0
 mkdocs-git-revision-date-localized-plugin==0.9.2
 markdown==3.3.4
-pygments==2.9.0
+pygments==2.10.0
 pymdown-extensions==8.2
 git+git://github.com/g-provost/lightgallery-markdown#egg=lightgallery
