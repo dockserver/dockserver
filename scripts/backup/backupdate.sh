@@ -13,21 +13,24 @@
 # NO CODE MIRRORING IS ALLOWED      #
 #####################################
 
-## sample crontab ##
-## sudo crontab -e
-## ## Autobackup all Dockers
+### START OF SETTINGS
+## sample crontab
+## sudo crontab -e 
+
+## ## Autobackup all Dockers 
 ## 5 3 * * * bash /opt/dockserver/scripts/backup/backupdate.sh >/dev/null 2>&1
-## 03:05 each day to storage date
-## by default this script will make backups with 7 days of retention, Uncomment the other options if you want to run.
 
-## weekday name (e.g., Sunday) = 7 days retention ##
-STORAGE=$(date '+%A')
+##### INFORMATIONS
+## 03:05 each day to storage date 
+## BASIC setting is STORAGE=local
+## sample date 2021-07-22
+## DATE BASED setting is STORAGE=$(date "+%Y-%m-%d")
+## STORAGE=local
+## STORAGE=$(date "+%Y-%m-%d")
 
-## day of month (e.g., 01) = 30-31 days retention ##
-#STORAGE=$(date '+%d')
-
-## sample date 2021-07-22 = for the paranoids ##
-#STORAGE=$(date "+%Y-%m-%d")
+## USER SETTINGS
+STORAGE=local
+### ENF OF SETTINGS
 
 OPTIONSTAR="--warning=no-file-changed \
   --ignore-failed-read \
@@ -65,3 +68,5 @@ for i in ${dockers};do
 done
 
 #EOF
+
+
