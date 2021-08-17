@@ -75,9 +75,9 @@ sudo wget -qO- https://git.io/J3GDc | sudo bash
 ## Latest Changes 🎉
 
 <!--START_SECTION:activity-->
-1. 💪 Opened PR [#185](https://github.com/dockserver/dockserver/pull/185) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-2. 💪 Opened PR [#184](https://github.com/dockserver/dockserver/pull/184) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-3. 🗣 Commented on [#183](https://github.com/dockserver/dockserver/issues/183) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+1. 🎉 Merged PR [#185](https://github.com/dockserver/dockserver/pull/185) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+2. 💪 Opened PR [#185](https://github.com/dockserver/dockserver/pull/185) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+3. 💪 Opened PR [#184](https://github.com/dockserver/dockserver/pull/184) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 4. 🗣 Commented on [#183](https://github.com/dockserver/dockserver/issues/183) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 5. 🗣 Commented on [#183](https://github.com/dockserver/dockserver/issues/183) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 6. 🗣 Commented on [#183](https://github.com/dockserver/dockserver/issues/183) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
