@@ -4,7 +4,7 @@ services:
   pihole:
     hostname: pihole
     container_name: pihole
-    image: cbcrowe/pihole-unbound:latest
+    image: ${PIHOLEIMAGE}
 #TIP: Just replace ${PORTBLOCK} with your servers VPN IP to set this up.
     ports:
       - ${PORTBLOCK}:446:443
@@ -23,11 +23,11 @@ services:
     environment:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
-      - 'PIHOLE_DNS_=${PORTBLOCK}#5335;${PORTBLOCK}#5335' #Unbound DNS, Set this to Cloudflare or Google etc if not using Unbound.
+      - 'PIHOLE_DNS_=${PIHOLE_DNS_}' #Unbound DNS, Set this to Cloudflare or Google etc if not using Unbound.
       - 'ServerIP=${PORTBLOCK}'
       - 'TZ=${TZ}'
-      - 'WEBPASSWORD=WEBPASSWORD'
-      - 'DNSSEC=true'
+      - 'WEBPASSWORD=${WEBPASSWORD}'
+      - 'DNSSEC=${DNSSEC}'
     restart: unless-stopped
     volumes:
       - /etc/localtime:/etc/localtime:ro
