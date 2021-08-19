@@ -12,7 +12,7 @@ services:
       - '${PORTBLOCK}:8265:8265'
       - '${PORTBLOCK}:8266:8266'
       - '${PORTBLOCK}:8267:8267'
-     environment:
+    environment:
       - 'TZ=${TZ}'
       - 'PUID=${ID}'
       - 'PGID=${ID}'

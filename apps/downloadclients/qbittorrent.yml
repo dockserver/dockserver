@@ -16,7 +16,6 @@ services:
     restart: '${RESTARTAPP}'
     networks:
       - proxy
-    restart: '${RESTARTAPP}'
     security_opt:
       - 'no-new-privileges:true'
     ports:
