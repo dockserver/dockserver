@@ -33,6 +33,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ${APPFOLDER}/pihole/dnsmasq.d:/etc/dnsmasq.d
       - ${APPFOLDER}/pihole:/etc/pihole
+      - ${APPFOLDER}/pihole/pihole-updatelists:/etc/pihole-updatelists
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'
