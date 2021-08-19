@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Title:      headinstaller based of matched OS 
+# Title:      headinstaller based of matched OS
 # Author(s):  mrdoob
 # GNU:        General Public License v3.0
 ################################################
