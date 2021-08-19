@@ -9,7 +9,7 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-      - 'PASSWORD=password'
+      - 'PASSWORD=${PASSWORD}'
     image: 'ghcr.io/linuxserver/code-server'
     restart: '${RESTARTAPP}'
     ports:
