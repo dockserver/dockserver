@@ -91,6 +91,11 @@ QBITORRENTTHEME=${QBITORRENTTHEME:-organizr-dark}
 
 ### APP CUSTOMEVARIABLES
 
+##Pihole
+PIHOLEIMAGE=${PIHOLEIMAGE:-pihole/pihole}
+PIHOLE_DNS_=${PIHOLE_DNS_:-1.1.1.1;1.0.0.1}
+WEBPASSWORD=${WEBPASSWORD:-WEBPASSWORD}
+
 ##Invitarr
 Discord_bot_token=${Discord_bot_token:-null}
 roleid=${roleid:-null}
