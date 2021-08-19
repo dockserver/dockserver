@@ -13,14 +13,24 @@
 # NO CODE MIRRORING IS ALLOWED      #
 #####################################
 
-## sample crontab ##
+### START OF SETTINGS
+## sample crontab
 ## sudo crontab -e 
+
 ## ## Autobackup all Dockers 
 ## 5 3 * * * bash /opt/dockserver/scripts/backup/backupdate.sh >/dev/null 2>&1
-## 03:05 each day to storage date 
-## sample date 2021-07-22
 
-STORAGE=$(date "+%Y-%m-%d")
+##### INFORMATIONS
+## 03:05 each day to storage date 
+## BASIC setting is STORAGE=local
+## sample date 2021-07-22
+## DATE BASED setting is STORAGE=$(date "+%Y-%m-%d")
+## STORAGE=local
+## STORAGE=$(date "+%Y-%m-%d")
+
+## USER SETTINGS
+STORAGE=local
+### ENF OF SETTINGS
 
 OPTIONSTAR="--warning=no-file-changed \
   --ignore-failed-read \
