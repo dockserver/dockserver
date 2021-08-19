@@ -2,7 +2,7 @@
 version: '3'
 services:  
   pihole:
-    image: pihole/pihole
+    image: jacklul/pihole:latest
     hostname: pihole
     container_name: pihole
 #TIP: Just replace ${PORTBLOCK} with your servers VPN IP to set this up.
@@ -27,12 +27,13 @@ services:
       - 'ServerIP=${PORTBLOCK}'
       - 'TZ=${TZ}'
       - 'WEBPASSWORD=WEBPASSWORD'
-      - 'DNSSEC=true'
+      - 'DNSSEC=true' #If using unbound set this to false as unbound uses DNSSEC
     restart: unless-stopped
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ${APPFOLDER}/pihole/dnsmasq.d:/etc/dnsmasq.d
       - ${APPFOLDER}/pihole:/etc/pihole
+      - ${APPFOLDER}/pihole/pihole-updatelists:/etc/pihole-updatelists
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'
