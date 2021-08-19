@@ -27,7 +27,7 @@ services:
       - 'ServerIP=${PORTBLOCK}'
       - 'TZ=${TZ}'
       - 'WEBPASSWORD=${WEBPASSWORD}'
-      - 'DNSSEC=true'
+      - 'DNSSEC=${DNSSEC}'
     restart: unless-stopped
     volumes:
       - /etc/localtime:/etc/localtime:ro
