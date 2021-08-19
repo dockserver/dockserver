@@ -93,7 +93,7 @@ if [[ $NSOE != "" ]];then
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
       NVIDIA ❌ ERROR
-      NVIDIA don't support your running Distribution 
+      NVIDIA don't support your running Distribution
       Installed Distribution = $DIST
       Please visit the link below to see all supported Distributionen
       NVIDIA ❌ ERROR

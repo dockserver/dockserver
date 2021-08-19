@@ -53,7 +53,7 @@ done
 checkfields() {
 basefolder="/opt/appdata"
 if [[ ! -d "$basefolder/system/servicekeys/" ]];then $(command -v mkdir) -p $basefolder/system/servicekeys/;fi
-if [[ ! -f "$basefolder/system/servicekeys/.env" ]];then 
+if [[ ! -f "$basefolder/system/servicekeys/.env" ]];then
 echo -n "\
 #!/usr/bin/with-contenv bash
 # shellcheck shell=bash
@@ -93,7 +93,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
    read -erp "Enter your Projectname: " PROJECTNAME </dev/tty
-   if [[ $(echo $PROJECTNAME | wc -m) -le "6" || $(echo $PROJECTNAME | wc -m) -ge "16" ]];then 
+   if [[ $(echo $PROJECTNAME | wc -m) -le "6" || $(echo $PROJECTNAME | wc -m) -ge "16" ]];then
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Sorry the minimum of chars are 6 and maximum is 16
@@ -122,7 +122,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
    read -erp "Enter your Service Account Name: " SABASENAME </dev/tty
-   if [[ $(echo $SABASENAME | wc -m) -le "6" || $(echo $SABASENAME | wc -m) -ge "16" ]];then 
+   if [[ $(echo $SABASENAME | wc -m) -le "6" || $(echo $SABASENAME | wc -m) -ge "16" ]];then
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Sorry the minimum of chars are 6 and maximum is 16
@@ -187,7 +187,7 @@ tee <<-EOF
     In the Link its shows behind /folders/<ID HERE>
     The Shared Drive ID !!
 
-    Please dont use the name of the Shared Drive   
+    Please dont use the name of the Shared Drive
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -212,7 +212,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
    read -erp '↘️  Type a Number [ 4 thru 60 ] | Press [ENTER]: ' KEYS </dev/tty
-  if [[ $KEYS -le "3" || $KEYS -ge "60" ]];then 
+  if [[ $KEYS -le "3" || $KEYS -ge "60" ]];then
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Sorry $KEYS is more then 60 or less than 3
@@ -220,7 +220,7 @@ tee <<-EOF
 EOF
 sleep 5 && servicekeysnumber
 fi
-  if [[ $KEYS -ge "3" || $KEYS -le "60" ]];then 
+  if [[ $KEYS -ge "3" || $KEYS -le "60" ]];then
      if [[ $(uname) == "Darwin" ]];then
         sed -i '' "s/NUMGDSAS=NOT-SET/NUMGDSAS=$KEYS/g" $basefolder/system/servicekeys/.env
      else
@@ -242,7 +242,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 $(command -v docker) run --rm --volumes-from gcloud-config -v $basefolder/system/servicekeys:/system/servicekeys:rw ghcr.io/dockserver/docker-gdsa:latest
-sleep 5 && clear 
+sleep 5 && clear
 members=$(cat $basefolder/system/servicekeys/members.csv)
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -251,7 +251,7 @@ tee <<-EOF
 
 ${members}
 
-    Shortcut to Google Team Drives 
+    Shortcut to Google Team Drives
     Share the E-Mails with the CORRECT TEAMDRIVE: ${TEAMDRIVEID}
     SAVE TIME! Copy & Paste the all the E-Mails into the share!
 
