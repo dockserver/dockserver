@@ -95,6 +95,7 @@ QBITORRENTTHEME=${QBITORRENTTHEME:-organizr-dark}
 PIHOLEIMAGE=${PIHOLEIMAGE:-pihole/pihole}
 PIHOLE_DNS_=${PIHOLE_DNS_:-1.1.1.1;1.0.0.1}
 WEBPASSWORD=${WEBPASSWORD:-WEBPASSWORD}
+DNSSEC=${DNSSEC:-false}
 
 ##Invitarr
 Discord_bot_token=${Discord_bot_token:-null}
