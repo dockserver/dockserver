@@ -8,7 +8,7 @@ services:
     image: 'ghcr.io/crazy-max/diun:latest'
     restart: '${RESTARTAPP}'
     environment:
-      - 'TZ=${TZ}
+      - 'TZ=${TZ}'
       - 'LOG_LEVEL=info'
       - 'LOG_JSON=false'
       - 'DIUN_WATCH_WORKERS=20'

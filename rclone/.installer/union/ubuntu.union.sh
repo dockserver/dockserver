@@ -29,7 +29,7 @@ done
 }
 headinterface() {
 echo " rclone union builder "
-sleep 5 && exit 
+sleep 5 && exit
 }
 ##
 appstartup

@@ -78,10 +78,10 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
      DNS records will not be automatically added
-           with the following TLD Domains 
-           .a, .cf, .ga, .gq, .ml or .tk 
+           with the following TLD Domains
+           .a, .cf, .ga, .gq, .ml or .tk
      Cloudflare has limited their API so you
-          will have to manually add these 
+          will have to manually add these
    records yourself via the Cloudflare dashboard.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -269,7 +269,7 @@ TZONE=$($(command -v timedatectl) | grep "Time zone:" | awk '{print $3}')
 if [[ $TZTEST != "false" ]];then
    if [[ $TZONE != "" ]];then
       if [[ -f $basefolder/compose/.env ]];then sed -i '/TZ=/d' $basefolder/compose/.env;fi
-      TZ=$TZONE 
+      TZ=$TZONE
       grep -qE 'TZ=$TZONE' $basefolder/compose/.env || \
            echo "TZ=$TZONE" >> $basefolder/compose/.env
    fi
@@ -336,7 +336,7 @@ if [[ -f $basefolder/$compose ]];then
       🚀   Treafik with Authelia
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  	   Treafik with Authelia is deployed
-    Please Wait some minutes Authelia and Traefik 
+    Please Wait some minutes Authelia and Traefik
      need some minutes to start all services
 
      Access to the apps are only over https://

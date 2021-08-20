@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Title:      LXC Bypass the mount :shared 
+# Title:      LXC Bypass the mount :shared
 # OS Branch:  ubuntu,debian,rasbian
 # Author(s):  mrdoob
 # Coauthor:   DrAgOn141
@@ -17,7 +17,7 @@
 LXC() {
   if [[ ! -x $(command -v rsync) ]];then $(command -v apt) install --reinstall rsync -yqq 1>/dev/null 2>&1;fi
   if [[ ! -f "/home/.lxcstart.sh" ]];then $(command -v rsync) -aqhv /opt/dockserver/preinstall/installer/subinstall/lxcstart.sh /home/.lxcstart.sh;fi
-  if [[ -f "/home/.lxcstart.sh" ]];then 
+  if [[ -f "/home/.lxcstart.sh" ]];then
      $(command -v chmod) a=rx,u+w /home/.lxcstart.sh
      $(command -v bash) /home/.lxcstart.sh
      $(command -v ansible-playbook) /opt/dockserver/preinstall/installer/subinstall/lxc.yml 1>/dev/null 2>&1
@@ -38,10 +38,10 @@ ending() {
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ❌ INFO
-    Please be sure that you have add the following features 
-    keyctl, nesting and fuse under LXC Options > Features, 
+    Please be sure that you have add the following features
+    keyctl, nesting and fuse under LXC Options > Features,
     this is only available when Unprivileged container=Yes
-    The mount-docker takes round about 2 minutes to start 
+    The mount-docker takes round about 2 minutes to start
     after the installation, please be patient
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
