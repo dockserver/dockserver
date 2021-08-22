@@ -4,8 +4,9 @@ services:
   glances:
     hostname: 'glances'
     container_name: 'glances'
-    image: 'nicolargo/glances:latest-alpine'
+    image: 'nicolargo/glances:alpine-latest-full'
     restart: '${RESTARTAPP}'
+    pid: host
     ports:
       - '${PORTBLOCK}:61208:61208'  
     environment:
