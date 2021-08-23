@@ -1,6 +1,6 @@
 ---
 version: '3'
-services:  
+services:
   pihole:
     image: ${PIHOLEIMAGE}
     hostname: pihole
@@ -17,13 +17,13 @@ services:
     networks:
       - proxy
     dns:
-      - 127.0.0.1
-      - 1.1.1.1
-      - 8.8.8.8
+      - ${PORTBLOCK}
+      - ${NS1}
+      - ${NS2}
     environment:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
-      - 'PIHOLE_DNS_=${PIHOLEDNS}' #Unbound DNS, Set this to Cloudflare or Google etc if not using Unbound.
+      - 'PIHOLE_DNS_=${NS1};${NS2}' #Unbound DNS, Set this to Cloudflare or Google etc if not using Unbound.
       - 'ServerIP=${PORTBLOCK}'
       - 'TZ=${TZ}'
       - 'WEBPASSWORD=${PIHOLEWEBPASSWORD}'
