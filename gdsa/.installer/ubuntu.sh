@@ -42,7 +42,7 @@ basefolder="/opt/appdata"
 if [[ ! -d "$basefolder/GDSA/" ]];then $(command -v rm) -rf $basefolder/GDSA/;fi
 if [[ ! -d "$basefolder/system/servicekeys/" ]];then $(command -v mkdir) -p $basefolder/system/servicekeys/;fi
 if [[ ! -d "$basefolder/system/servicekeys/keys" ]];then $(command -v mkdir) -p $basefolder/system/servicekeys/keys;fi
-if [[ ! -f "$basefolder/system/servicekeys/.env" ]];then 
+if [[ ! -f "$basefolder/system/servicekeys/.env" ]];then
 echo -n "\
 #!/usr/bin/with-contenv bash
 # shellcheck shell=bash
@@ -93,7 +93,7 @@ EOF
 }
 remove() {
 basefolder="/opt/appdata"
-if [[ -f "$basefolder/system/servicekeys/.env" ]];then 
+if [[ -f "$basefolder/system/servicekeys/.env" ]];then
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   ServiceKey.env force reset
@@ -104,7 +104,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 $(command -v rm) -rf $basefolder/system/servicekeys/.env && sleep 5 && clear && checkfields && interface
-else 
+else
    notfound
 fi
 }
@@ -114,7 +114,7 @@ tee <<-EOF
     🚀   servicekeys.env force reset
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-    Sorry we could not find the servicekeys.env file. 
+    Sorry we could not find the servicekeys.env file.
     No force reset was done !
 
     Type Confirm !

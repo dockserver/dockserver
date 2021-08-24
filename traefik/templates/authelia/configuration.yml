@@ -74,7 +74,7 @@ access_control:
       policy: one_factor
       resources:
         - "^/admin.*$"
-    ## one factor login 
+    ## one factor login
     - domain: "*.example.com"
       policy: one_factor
     ## deny rule
@@ -88,7 +88,7 @@ session:
   secret: unsecure_session_secret
   expiration: 1h
   inactivity: 10m
-  remember_me_duration: 1M  
+  remember_me_duration: 1M
   domain: example.com
 
 regulation:

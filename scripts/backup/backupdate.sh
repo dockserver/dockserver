@@ -15,13 +15,13 @@
 
 ### START OF SETTINGS
 ## sample crontab
-## sudo crontab -e 
+## sudo crontab -e
 
-## ## Autobackup all Dockers 
+## ## Autobackup all Dockers
 ## 5 3 * * * bash /opt/dockserver/scripts/backup/backupdate.sh >/dev/null 2>&1
 
 ##### INFORMATIONS
-## 03:05 each day to storage date 
+## 03:05 each day to storage date
 ## BASIC setting is STORAGE=local
 ## sample date 2021-07-22
 ## DATE BASED setting is STORAGE=$(date "+%Y-%m-%d")

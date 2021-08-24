@@ -16,7 +16,7 @@ services:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
-     volumes:
+    volumes:
       - '${APPFOLDER}/webgrabplus/config:/config:rw'
       - '${APPFOLDER}/webgrabplus/data:/data:rw'
     labels:

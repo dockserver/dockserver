@@ -43,7 +43,7 @@ checkfields() {
 basefolder="/opt/appdata"
 if [[ ! -d "$basefolder/system/rclone/" ]];then $(command -v mkdir) -p $basefolder/system/rclone/;fi
 if [[ -f "$basefolder/system/rclone/.token" ]];then $(command -v rm) -rf $basefolder/system/rclone/.token;fi
-if [[ ! -f "$basefolder/system/rclone/.env" ]];then 
+if [[ ! -f "$basefolder/system/rclone/.env" ]];then
 echo -n "\
 #!/usr/bin/with-contenv bash
 # shellcheck shell=bash
@@ -102,7 +102,7 @@ project() {
 basefolder="/opt/appdata"
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀   Please Create a New Project for this TDrive 
+    🚀   Please Create a New Project for this TDrive
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
          minimum is 6 chars | maximum is 16 chars
@@ -112,12 +112,12 @@ EOF
    if [[ ${ACCOUNT} == "NOT-SET" ]];then
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀   You forgot to set your Account 
+    🚀   You forgot to set your Account
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
    sleep 5 && clear && interface
 fi
-   if [[ $(echo $PROJECTNAME | wc -m) -le "6" || $(echo $PROJECTNAME | wc -m) -ge "16" ]];then 
+   if [[ $(echo $PROJECTNAME | wc -m) -le "6" || $(echo $PROJECTNAME | wc -m) -ge "16" ]];then
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Sorry the minimum of chars are 6 and maximum is 16
@@ -243,10 +243,10 @@ tee <<-EOF
     Click on the Shared Drive !
 
     In the Link its shows behind /folders/<ID HERE>
- 
+
     The Shared Drive ID !!
 
-    Please dont use the name of the Shared Drive   
+    Please dont use the name of the Shared Drive
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
    read -erp "Enter your Team Drive ID: " TDID </dev/tty
@@ -309,7 +309,7 @@ source $basefolder/system/rclone/.env
 CLIENT_ID_FROM_GOOGLE=${CLIENT_ID_FROM_GOOGLE}
 if [[ ${CLIENT_ID_FROM_GOOGLE} != "NOT-SET" ]];then
 $(command -v docker) run --rm --name rclonebuilder -v $basefolder/system/rclone:/system/rclone:rw ghcr.io/dockserver/docker-rclone:latest 1>/dev/null 2>&1
-sleep 5 && clear 
+sleep 5 && clear
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   SYSTEM MESSAGE: TCRYPT is added
@@ -338,7 +338,7 @@ tee <<-EOF
 
 
     [ 1 ] Account Details        [ ${ACCOUNT} ]
-    [ 2 ] Create Google Project  [ ${PROJECT} }
+    [ 2 ] Create Google Project  [ ${PROJECT} ]
     [ 3 ] Name of Shared Drive   [ ${NAME} ]
     [ 4 ] Cliemt ID              [ ${CLIENT_ID_FROM_GOOGLE} ]
     [ 5 ] Client Secret          [ ${CLIENT_SECRET_FROM_GOOGLE} ]
@@ -364,7 +364,7 @@ EOF
     4) clear && clientid ;;
     5) clear && clientsec ;;
     6) clear && teamdriveid ;;
-    7) clear && rpassword ;; 
+    7) clear && rpassword ;;
     8) clear && rsalt ;;
     d|D) clear && validauth ;;
     Z|z|exit|EXIT|Exit|close) clear && exit ;;

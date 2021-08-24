@@ -29,7 +29,7 @@ services:
       - 'UN_SONARR_0_DELETE_ORIG=false'
       - 'UN_SONARR_0_DELETE_DELAY=5m'
       # Radarr Config
-      - 'UN_RADARR_0_URL=http://radarr:8989#
+      - 'UN_RADARR_0_URL=http://radarr:8989#'
       - 'UN_RADARR_0_API_KEY==NULL'
       - 'UN_RADARR_0_PATHS_0=/mnt/downloads/torrent'
       - 'UN_RADARR_0_PROTOCOLS=torrent'
@@ -37,7 +37,7 @@ services:
       - 'UN_RADARR_0_DELETE_ORIG=false'
       - 'UN_RADARR_0_DELETE_DELAY=5m'
       # Lidarr Config
-      - 'UN_LIDARR_0_URL=http://lidarr:8989
+      - 'UN_LIDARR_0_URL=http://lidarr:8989'
       - 'UN_LIDARR_0_API_KEY=NULL'
       - 'UN_LIDARR_0_PATHS_0=/mnt/downloads/torrent'
       - 'UN_LIDARR_0_PROTOCOLS=torrent'

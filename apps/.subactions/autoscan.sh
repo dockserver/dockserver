@@ -243,7 +243,7 @@ Token :
 
 ( must be added self )
 
-We need a Jellyfin API Token to make requests on your behalf. 
+We need a Jellyfin API Token to make requests on your behalf.
 This article should help you out.
 
 https://github.com/MediaBrowser/Emby/wiki/Api-Key-Authentication
@@ -266,7 +266,7 @@ Token :
 
 ( must be added self )
 
-We need a Jellyfin API Token to make requests on your behalf. 
+We need a Jellyfin API Token to make requests on your behalf.
 This article should help you out.
 
 https://github.com/MediaBrowser/Emby/wiki/Api-Key-Authentication
@@ -285,10 +285,10 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
  autoscandomain :
- 
+
  Username : $USERAUTOSCAN
  Password : $PASSWORD
- 
+
  local  : http://autoscan:3030/triggers/{name of app}
  remote : https://autoscan.${DOMAIN}/triggers/{name of app}
  manual : https://autoscan.${DOMAIN}/triggers/manual
@@ -309,7 +309,7 @@ else
        $(command -v docker) rm $i 1>/dev/null 2>&1
        $(command -v docker) image prune -af 1>/dev/null 2>&1
    done
-   if [[ -d $basefolder/${typed} ]];then 
+   if [[ -d $basefolder/${typed} ]];then
       folder=$basefolder/${typed}
       for i in ${folder}; do
           $(command -v rm) -rf $i 1>/dev/null 2>&1
@@ -320,7 +320,7 @@ tee <<-EOF
                    ❌ ERROR
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
          Sorry we cannot find any running
-          Arrs , Plex , Emby or Jellyfin 
+          Arrs , Plex , Emby or Jellyfin
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 fi
