@@ -36,7 +36,7 @@ services:
       - '/etc/localtime:/etc/localtime:ro'
       - '${APPFOLDER}/plex/database:/config:rw'
       - 'unionfs:/mnt:ro'
-      - '/dev/shm:/ram_transcode"
+      - '/dev/shm:/ram_transcode:rw'
     tmpfs:
       - '/transcode:rw'
     labels:
