@@ -72,6 +72,8 @@ services:
       - 'UN_WEBHOOK_0_TEMPLATE_PATH=NULL'
       - 'UN_WEBHOOK_0_CONTENT_TYPE=application/json'
     image: 'ghcr.io/hotio/unpackerr'
+    labels:
+      - 'dockupdater.enable=true'
     restart: '${RESTARTAPP}'
     networks:
       - proxy
