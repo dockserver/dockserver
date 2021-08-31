@@ -20,7 +20,7 @@ services:
       - 'SYS_NICE'
     ports:
       - '${PORTBLOCK}:5800:5800'
-      - '3219:3129'
+      - '${PORTBLOCK}:3219:3129'
     networks:
       - proxy
     security_opt:
