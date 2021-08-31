@@ -81,7 +81,6 @@ services:
       nofile:
         soft: 32000
         hard: 40000
-    restart: always
 networks:
   proxy:
     driver: bridge
