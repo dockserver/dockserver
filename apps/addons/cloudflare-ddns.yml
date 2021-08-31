@@ -16,6 +16,8 @@ services:
       - 'API_KEY=${CLOUDFLARE_API}'
       - 'ZONE=${DOMAIN}'
       - 'PROXIED=true'
+    labels:
+      - 'dockupdater.enable=true'
 networks:
   proxy:
     driver: bridge
