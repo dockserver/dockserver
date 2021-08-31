@@ -13,7 +13,7 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-      - 'API_KEY=${CLOUDFLARE_API}'
+      - 'API_KEY=${CLOUDFLARE_API_KEY}'
       - 'ZONE=${DOMAIN}'
       - 'PROXIED=true'
     labels:
