@@ -1,0 +1,22 @@
+---
+version: '3'
+services:
+  cloudflare-ddns:
+    image: oznu/cloudflare-ddns:latest
+    hostname: cloudflare-ddns
+    container_name: cloudflare-ddns
+    restart: '${RESTARTAPP}'
+    networks:
+      - proxy
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=${UMASK}'
+      - 'API_KEY=${CLOUDFLARE_API}'
+      - 'ZONE=${DOMAIN}'
+      - 'PROXIED=true'
+networks:
+  proxy:
+    driver: bridge
+    external: true
