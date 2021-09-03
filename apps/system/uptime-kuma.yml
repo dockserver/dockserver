@@ -17,7 +17,7 @@ services:
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '${APPFOLDER}/uptime-kuma/config:/app/data:rw'
+      - '${APPFOLDER}/uptime-kuma:/app/data:rw'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'
