@@ -30,7 +30,7 @@
 
 ## USER SETTINGS
 HOSTNAME=$(cat /etc/hostname)
-tag=local
+tag=local # tag can also be a date, Example | tag=$(date "+%Y-%m-%d")
 STORAGE=$HOSTNAME-$tag # Remove HOSTNAME if you only want to use the tag, Example | STORAGE=$tag
 ### ENF OF SETTINGS
 
