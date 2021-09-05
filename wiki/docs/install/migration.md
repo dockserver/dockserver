@@ -36,66 +36,110 @@ We strongly recommend restoring your Server on a [VPS](https://www.hetzner.com/c
 
 Open CloudCMD, Navigate to: 
 
-/appdata/plexguide/.blitzkeys
+```sh
+/opt/appdata/plexguide/.blitzkeys
+```
 
-Download the contents of that folder (rclone.conf and GDSA keys) to your local machine. These files are very important. Handle with care.
+Download the contents of that folder (rclone.conf and GDSA keys) to your local machine.
+These files are very important. Handle with care.
 
 On some forks of PG these files are placed under /uploader and /mount.
 
 Now you are ready to backup your PG apps.
 
-`sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/backup.sh | sudo bash`
+```sh
+sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/backup.sh | sudo bash
+```
 
-This will create a folder named /appbackups on the root of your remote drive. When the backup is done, check that these files exist on your remote drive. Also, check them for file sizes to make sure it looks right. Plex can take a long time, be patient. 
+This will create a folder named */appbackups* on the root of your remote drive.
+When the backup is done, check that these files exist on your remote drive.
+Also, check them for file sizes to make sure it looks right.
+Plex can take a long time, be patient. 
 
-Now, please order a VPS with ubuntu 18/20 on it and follow the instructions on the [frontpage](http://dockserver.io "frontpage"). When dockserver is installed on your host, return here and follow instructions
+
+Now, please order a VPS with ubuntu 18/20 on it and follow the instructions on the [frontpage](http://dockserver.io "frontpage").
+
+When dockserver is installed on your host, return here and follow instructions
 
 
 # Mount & Uploader
-
-Install CloudCMD (under addons) 
-
-Navigate to 
-/opt/appdata/system/rclone
-Upload the rclone.conf from your old server
-
-Navigate to 
-/opt/appdata/system/servicekeys
-
-Upload the rclone.conf to this folder
-Rename rclone.conf to rclonegdsa.conf
-
-Navigate to 
-/opt/appdata/system/servicekeys/keys
-Upload all service keys (GDSA01,02..)
-Rename all service keys to not containing a 0 so GDSA01 becomes GDSA1 and so forth..
 
 Open a terminal
 
 Create the folders
 
-`sudo mkdir -p /opt/appdata/system/{rclone,servicekeys}`
+```sh
+sudo mkdir -p /opt/appdata/system/{rclone,servicekeys}
+```
 
-`sudo chown -cR 1000:1000 /opt/appdata`
+```sh
+sudo chown -cR 1000:1000 /opt/appdata
+```
+
+
+Install CloudCMD (under addons) 
+
+```sh
+dockserver > [ 2 ] DockServer - Applications > addons > cloudcmd
+```
+
+Navigate to
+
+```sh
+/opt/appdata/system/rclone
+```
+
+Upload the rclone.conf from your old server
+
+Navigate to
+
+```sh
+/opt/appdata/system/servicekeys
+```
+
+Rename rclone.conf to rclonegdsa.conf
+
+
+Navigate to
+
+
+```sh
+/opt/appdata/system/servicekeys/keys
+```
+Upload all service keys (GDSA01,02..)
+Rename all service keys to not containing a 0 so GDSA01 becomes GDSA1 and so forth..
+
 
 Edit your rclone.conf
 
-`sudo nano /opt/appdata/system/rclone/rclone.conf`
+
+```sh
+sudo nano /opt/appdata/system/rclone/rclone.conf
+```
 
 Remove all GDSA lines here, only the remotes(g/tdrive, g/tcrypt) are left in the file - PGUNION has to be deleted as well
 CTRX+X press y 
 
+
+
 Edit the rclone.conf to rclonegdsa.conf
 
-`sudo nano /opt/appdata/system/servicekeys/rclonegdsa.conf`
+```sh
+sudo nano /opt/appdata/system/servicekeys/rclonegdsa.conf
+```
 
 Again, remove all zeroes so that the values will be displayed like this:
 
+```sh
 [GDSA1] 
 service_account_file = /system/servicekeys/keys/GDSA1
 
 [GDSA2] 
 service_account_file = /system/servicekeys/keys/GDSA2
+
+And ao go one......
+
+```
 
 CTRL+X y 
 
@@ -107,11 +151,10 @@ After this you are ready to restore your PG apps on a brand new Dockserver insta
 
 
 
-
-
 ## Support
 
 Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
 
 * Join our <a href="https://discord.gg/FYSvu83caM">
-
+        <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
+    </a> for Support
