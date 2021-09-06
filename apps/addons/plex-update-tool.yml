@@ -17,6 +17,8 @@ services:
     volumes:
       - '${APPFOLDER}/plex-update-tool:/config:rw'
       - '${APPFOLDER}/plex/database/Library/Application Support/Plex Media Server:/plexdata'
+    labels:
+      - 'dockupdater.enable=true'
 networks:
   proxy:
     driver: bridge
