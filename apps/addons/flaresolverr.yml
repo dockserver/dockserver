@@ -9,9 +9,9 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-      - LOG_LEVEL=${LOG_LEVEL:-info}
-      - LOG_HTML=${LOG_HTML:-false}
-      - CAPTCHA_SOLVER=${CAPTCHA_SOLVER:-none}
+      - LOG_LEVEL=${FLARE_LOG_LEVEL}
+      - LOG_HTML=${FLARE_LOG_HTML}
+      - CAPTCHA_SOLVER=${FLARE_CAPTCHA_SOLVER}
     image: 'flaresolverr/flaresolverr:latest'
     restart: '${RESTARTAPP}'
     ports:
