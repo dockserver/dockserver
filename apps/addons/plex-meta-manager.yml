@@ -1,0 +1,25 @@
+---
+version: '3'
+services:
+  plex-meta-manager:
+    container_name: 'plex-meta-manager'
+    hostname: 'plex-meta-manager'
+    image: 'meisnate12/plex-meta-manager:latest'
+    restart: '${RESTARTAPP}'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/etc/localtime:/etc/localtime:ro'
+      - '${APPFOLDER}/plex-meta-manager:/config:rw'
+    labels:
+      - 'dockupdater.enable=true'
+networks:
+  proxy:
+    driver: bridge
+    external: true
