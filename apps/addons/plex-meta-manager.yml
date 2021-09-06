@@ -10,6 +10,10 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
+      - 'PMM_TIME=${PMM_TIME}' # comma-separated list of times to update each day Format: HH:MM
+      - 'PMM_COLLECTIONS_ONLY=${PMM_COLLECTIONS_ONLY}' # Process only collections during the run DEFAULT: false
+      - 'PMM_LIBRARIES_ONLY=${PMM_LIBRARIES_ONLY}' # Process everything but collections during the run DEFAULT: false
+      - 'PMM_NO_MISSING=${PMM_NO_MISSING}' # Run without any of the missing movie/show functions DEFAULT: false
     networks:
       - proxy
     security_opt:

@@ -97,6 +97,12 @@ IMDBAPI=${IMDBAPI:-YOUR_IMDB_API}
 TVDBAPI=${TVDBAPI:-YOUR_TVDB_API}
 TMDBAPI=${TMDBAPI:-YOUR_TMDB_API}
 
+##plex-meta-manager
+PMM_TIME=${PMM_TIME:-06:00}
+PMM_COLLECTIONS_ONLY=${PMM_COLLECTIONS_ONLY:-false}
+PMM_LIBRARIES_ONLY=${PMM_LIBRARIES_ONLY:-false}
+PMM_NO_MISSING=${PMM_NO_MISSING:-false}
+
 ##Invitarr
 Discord_bot_token=${Discord_bot_token:-null}
 roleid=${roleid:-null}
