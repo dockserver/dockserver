@@ -1,0 +1,23 @@
+---
+version: '3'
+services:
+  plex-update-tool:
+    hostname: 'plex-update-tool'
+    container_name: 'plex-update-tool'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'TMDB_API_KEY=${TMDBAPI}'
+      - 'RUN_EVERY_N_HOURS=12'
+    image: 'mynttt/updatetool'
+    restart: '${RESTARTAPP}'
+    networks:
+      - proxy
+    volumes:
+      - '${APPFOLDER}/plex-update-tool:/config:rw'
+      - '${APPFOLDER}/plex/database/Library/Application Support/Plex Media Server:/plexdata'
+networks:
+  proxy:
+    driver: bridge
+    external: true

@@ -92,6 +92,11 @@ QBITORRENTTHEME=${QBITORRENTTHEME:-organizr-dark}
 
 ### APP CUSTOMEVARIABLES
 
+##API's
+IMDBAPI=${IMDBAPI:-YOUR_IMDB_API}
+TVDBAPI=${TVDBAPI:-YOUR_TVDB_API}
+TMDBAPI=${TMDBAPI:-YOUR_TMDB_API}
+
 ##Invitarr
 Discord_bot_token=${Discord_bot_token:-null}
 roleid=${roleid:-null}
