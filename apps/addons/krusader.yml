@@ -9,8 +9,8 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-      - 'VNC_PASSWORD=${KRUSADERPASSWORD}'
-      - 'WEBPAGE_TITLE=${KRUSADER_PASSWORD}'
+      - 'VNC_PASSWORD=${KRUSADER_PASSWORD}'
+      - 'WEBPAGE_TITLE=${KRUSADER_WEBPAGE_TITLE}'
       - 'TEMP_FOLDER=/config/krusader/tmp'
     image: 'binhex/arch-krusader'
     ports:
