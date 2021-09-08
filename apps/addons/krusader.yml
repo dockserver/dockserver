@@ -10,7 +10,7 @@ services:
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
       - 'VNC_PASSWORD=${KRUSADERPASSWORD}'
-      - 'WEBPAGE_TITLE=Tower'
+      - 'WEBPAGE_TITLE=${KRUSADER_PASSWORD}'
       - 'TEMP_FOLDER=/config/krusader/tmp'
     image: 'binhex/arch-krusader'
     ports:
