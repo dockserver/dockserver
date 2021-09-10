@@ -9,7 +9,7 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'TMDB_API_KEY=${TMDBAPI}'
-      - 'RUN_EVERY_N_HOURS=12'
+      - 'RUN_EVERY_N_HOURS=${RUN_EVERY_N_HOURS}'
     image: 'mynttt/updatetool'
     restart: '${RESTARTAPP}'
     networks:
