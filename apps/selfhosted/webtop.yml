@@ -19,7 +19,7 @@ services:
       - '${PORTBLOCK}:3000:3000'
     volumes:
       - '${APPFOLDER}/webtop:/config'
-      - '/var/run/docker.sock:/var/run/docker.sock'
+      - '/var/run/docker.sock:/var/run/docker.sock:ro'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'
