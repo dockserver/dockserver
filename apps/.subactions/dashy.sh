@@ -25,7 +25,4 @@ fi
 }
 
 appstartup
-
-
-
-
+#EOF
