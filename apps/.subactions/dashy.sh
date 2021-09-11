@@ -16,7 +16,7 @@
 FOLDER="/opt/appdata"
 CONF="${FOLDER}/dashy/conf.yml"
 appfolder="/opt/dockserver/apps"
-FILE=".subactions/dashy.yml"
+FILE=".subactions/dashy.j2"
 
 appstartup() {
 if [[ ! -f $CONF ]];then
