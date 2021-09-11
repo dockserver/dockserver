@@ -9,7 +9,8 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-    image: 'lissy93/dashy:latest'
+      - 'NODE_ENV=production'
+    image: 'ghcr.io/lissy93/dashy:latest'
     restart: '${RESTARTAPP}'
     networks:
       - proxy
@@ -28,6 +29,12 @@ services:
       - 'traefik.http.routers.dashy-rtr.middlewares=chain-authelia@file'
       - 'traefik.http.routers.dashy-rtr.service=dashy-svc'
       - 'traefik.http.services.dashy-svc.loadbalancer.server.port=80'
+    healthcheck:
+      test: ['CMD', 'node', '/app/services/healthcheck']
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 networks:
   proxy:
     driver: bridge
