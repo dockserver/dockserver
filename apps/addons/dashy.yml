@@ -5,8 +5,8 @@ services:
     hostname: 'dashy'
     container_name: 'dashy'
     environment:
-      - 'PGID=${ID}'
-      - 'PUID=${ID}'
+      - 'GID=${ID}'
+      - 'UID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
       - 'NODE_ENV=production'
