@@ -8,9 +8,12 @@ pageInfo:
     path: /about
   - title: Source Code
     path: https://github.com/Lissy93/dashy
+
 appConfig:
   theme: colorful
   fontAwesomeKey: 0821c65656
+  lang: en
+
 sections:
 - name: Getting Started
   items:
