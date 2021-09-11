@@ -22,11 +22,3 @@ sections:
     description: View currently open issues, or raise a new one
     icon: fas fa-bug
     url: https://github.com/Lissy93/dashy/issues
-  - title: Demo 1
-    description: 'Live Demo #1'
-    icon: far fa-rocket
-    url: https://dashy-demo-1.netlify.app 
-  - title: Demo 2
-    description: 'Live Demo #2'
-    icon: fad fa-planet-ringed
-    url: https://dashy-demo-2.netlify.app
