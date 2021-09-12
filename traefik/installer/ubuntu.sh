@@ -235,12 +235,17 @@ EOF
    for file in "$basefolder"/cloudflared/*.json
    do
    if [ ! -e $file ]; then
+   # Temp permission
+   sudo $(command -v chmod) 777 -R $basefolder/cloudflared
    $(command -v docker) pull cloudflare/cloudflared:2021.8.7-amd64
    $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:2021.8.7-amd64 tunnel login
    # create
    $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:2021.8.7-amd64 tunnel create dockserver
    fi
    done
+   # permission fix
+   sudo $(command -v chown) -hR 1000:1000 $basefolder/cloudflared
+   sudo $(command -v chmod) 755 -R $basefolder/cloudflared
    # grep UUID ( TunnelID )
    UUID=$(grep -Po '"TunnelID": *\K"[^"]*"' $basefolder/cloudflared/*.json | sed 's/"\|,//g')
    if [[ $(uname) == "Darwin" ]];then
