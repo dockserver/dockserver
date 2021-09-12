@@ -231,6 +231,7 @@ VERSION=$(curl -sX GET https://api.github.com/repos/cloudflare/cloudflared/relea
 #tunnelNAME=$(cat /etc/hostname)
 #Random tunnel Name
 tunnelNAME=$(cat /dev/urandom | tr -dc 'A-Z' | fold -w 8 | head -n 1)
+
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    🚀   Cloudflared Docker ( Argo Tunnel )
@@ -239,12 +240,17 @@ EOF
    for file in "$basefolder"/cloudflared/*.json
    do
    if [ ! -e $file ]; then
+      # Temp permission
+      $(command -v chmod) 777 -R $basefolder/cloudflared
       $(command -v docker) pull cloudflare/cloudflared:${VERSION}
       $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:${VERSION} tunnel login
       # create
       $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:${VERSION} tunnel create $tunnelNAME
    fi
    done
+   # permission fix
+   $(command -v chown) -hR 1000:1000 $basefolder/cloudflared
+   $(command -v chmod) 755 -R $basefolder/cloudflared
    # grep UUID ( TunnelID )
    UUID=$(grep -Po '"TunnelID": *\K"[^"]*"' $basefolder/cloudflared/*.json | sed 's/"\|,//g')
    if [[ $(uname) == "Darwin" ]];then
