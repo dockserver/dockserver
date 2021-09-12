@@ -32,7 +32,20 @@ clear
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "    🚀    DockServer [ UPDATE ] STARTED"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    $(command -v rm) -rf ${dockserver} && git clone --quiet https://github.com/dockserver/dockserver.git ${dockserver}
+    basefolder="/opt/appdata"
+    compose="compose/docker-compose.yml"
+    ds=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -v 'trae' | grep -x 'dockserver')
+    if [[ $ds != 'dockserver' ]];then
+       $(command -v rsync) ${dockserver}/dockserver/docker.yml $basefolder/$compose -aqhv;fi
+       if [[ -f $basefolder/$compose ]];then
+          $(command -v cd) $basefolder/compose/
+          $(command -v docker-compose) config 1>/dev/null 2>&1
+          errorcode=$?
+          if [[ $errorcode -eq 0 ]];then
+             $(command -v docker-compose) up -d --force-recreate 1>/dev/null 2>&1
+          fi
+    fi
+    ##$(command -v rm) -rf ${dockserver} && git clone --quiet https://github.com/dockserver/dockserver.git ${dockserver}
     if [[ $EUID != 0 ]];then $(command -v chown) -hR $(whoami):$(whoami) ${dockserver};fi
     if [[ $EUID == 0 ]];then $(command -v chown) -hR 1000:1000 ${dockserver};fi
     envmigra && clear
