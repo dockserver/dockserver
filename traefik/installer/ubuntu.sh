@@ -234,7 +234,7 @@ tee <<-EOF
 EOF
    for file in "$basefolder"/cloudflared/*.json
    do
-   if [[ ! -e $file ]]; then
+   if [ ! -e $file ]; then
    $(command -v docker) pull cloudflare/cloudflared:2021.8.7-amd64
    $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:2021.8.7-amd64 tunnel login
    # create
