@@ -227,6 +227,7 @@ clear && interface
 }
 cfdocker() {
 basefolder="/opt/appdata"
+VERSION=$(curl -sX GET https://api.github.com/repos/cloudflare/cloudflared/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')
 tunnelNAME=$(cat /etc/hostname)
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -236,12 +237,12 @@ EOF
    for file in "$basefolder"/cloudflared/*.json
    do
    if [ ! -e $file ]; then
-   # Temp permission
-   $(command -v chmod) 777 -R $basefolder/cloudflared
-   $(command -v docker) pull cloudflare/cloudflared:2021.8.7-amd64
-   $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:2021.8.7-amd64 tunnel login
-   # create
-   $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:2021.8.7-amd64 tunnel create $tunnelNAME
+      # Temp permission
+      $(command -v chmod) 777 -R $basefolder/cloudflared
+      $(command -v docker) pull --quite cloudflare/cloudflared:${VERSION}
+      $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:${VERSION} tunnel login
+      # create
+      $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:${VERSION} tunnel create $tunnelNAME
    fi
    done
    # permission fix
