@@ -78,6 +78,22 @@ services:
       - 'traefik.http.routers.traefik-rtr.rule=HostHeader(`traefik.${DOMAIN}`)'
       - 'traefik.http.routers.traefik-rtr.service=api@internal'
       - 'traefik.http.routers.traefik-rtr.middlewares=chain-authelia@file'
+  cloudflared:
+    image: 'cloudflare/cloudflared:2021.8.7-amd64'
+    hostname: 'cloudflared'
+    container_name: 'cloudflared'
+    command: "'tunnel' 'run' '${CLOUDFLARED_UUID}'"
+    depends_on:
+      - traefik
+    networks:
+      - proxy
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+    volumes:
+      - '${APPFOLDER}/cloudflared:/home/nonroot/.cloudflared'
+    restart: 'always'
   cf-companion:
     container_name: 'cf-companion'
     image: 'tiredofit/traefik-cloudflare-companion:latest'
