@@ -247,7 +247,19 @@ EOF
       # create
       $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:${VERSION} tunnel create $tunnelNAME
    fi
-   done
+   done   
+   listnumber=$($(command -v docker) run -it --rm -v /opt/appdata/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:${VERSION} tunnel list | wc -l)
+   if [[ $listnumber -gt "30" ]];then
+      if [[ -f "/tmp/cloudflared" ]];then
+         $(command -v rm) -rf /tmp/cloudflared
+         $(command -v docker) run -it --rm -v /opt/appdata/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:${VERSION} tunnel list | awk '{print $2}' >/tmp/cloudflared
+         delcommand=$(cat /tmp/cloudflared)
+         mapfile -t delfi < <(eval $delcommand)
+         for del in "${delfi[@]}"; do
+             $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:${VERSION} tunnel delete $del
+         done
+      fi
+   fi
    # permission fix
    $(command -v chown) -hR 1000:1000 $basefolder/cloudflared
    $(command -v chmod) 755 -R $basefolder/cloudflared
