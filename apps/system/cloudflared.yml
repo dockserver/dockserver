@@ -5,7 +5,7 @@ services:
     image: 'cloudflare/cloudflared:2021.8.7-amd64'
     hostname: 'cloudflared'
     container_name: 'cloudflared'
-    command: "'tunnel' 'run' 'your_uuid_here'"
+    command: "'tunnel' 'run' '${CLOUDFLARED_UUID}'"
     networks:
       - proxy
     environment:
