@@ -2,7 +2,7 @@
 version: '3'
 services:
   cloudflared:
-    image: 'cloudflare/cloudflared:2021.8.7-amd64'
+    image: 'cloudflare/cloudflared:2021.8.7'
     hostname: 'cloudflared'
     container_name: 'cloudflared'
     command: "'tunnel' 'run' '${CLOUDFLARED_UUID}'"
