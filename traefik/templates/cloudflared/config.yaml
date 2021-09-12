@@ -12,11 +12,16 @@ credentials-file: /home/nonroot/.cloudflared/TUNNEL_UUID_HERE.json
       
 #forward all traffic to Reverse Proxy w/ SSL and no TLS Verify
 ingress:
-  - hostname: ssh.domain.com
-    service: ssh://SSHIP:PORT
   - service: https://traefik:443
     originRequest:
       noTLSVerify: true
+
+#ingress:
+#  - hostname: ssh.domain.com
+#    service: ssh://SSHIP:PORT
+#  - service: https://traefik:443
+#    originRequest:
+#      noTLSVerify: true
 # forward all traffic to reverse proxy over http
 #ingress:
 #  - service: http://REVERSEPROXYIP:PORT
