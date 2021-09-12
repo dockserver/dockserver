@@ -1,3 +1,4 @@
+---
 name: Run CLI
 on:
   push:
@@ -95,12 +96,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@master
+        uses: actions/checkout@v2.3.4
         with:
           fetch-depth: '0'
 
+
       - name: Bump version and push tag
-        uses: ChloePlanet/github-tag-action@master
+        uses: ChloePlanet/github-tag-action@2.0.0
         with:
           body: ${{steps.github_release.outputs.changelog}}
         env:

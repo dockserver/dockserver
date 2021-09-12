@@ -242,7 +242,7 @@ EOF
    if [ ! -e $file ]; then
       # Temp permission
       $(command -v chmod) 777 -R $basefolder/cloudflared
-      $(command -v docker) pull --quite cloudflare/cloudflared:${VERSION}
+      $(command -v docker) pull cloudflare/cloudflared:${VERSION}
       $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:${VERSION} tunnel login
       # create
       $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:${VERSION} tunnel create $tunnelNAME
