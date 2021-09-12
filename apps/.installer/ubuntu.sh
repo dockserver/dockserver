@@ -12,7 +12,8 @@
 # NO REBRANDING IS ALLOWED          #
 # NO CODE MIRRORING IS ALLOWED      #
 #####################################
-source /opt/dockserver/apps/.installer/function.sh
+#later Function options
+#source /opt/dockserver/apps/.installer/function.sh
 
 appstartup() {
 if [[ $EUID -ne 0 ]];then
