@@ -2,9 +2,9 @@
 version: '3'
 services:
   cloudflared:
-    image: cloudflare/cloudflared:2021.8.2
-    hostname: cloudflared
-    container_name: cloudflared
+    image: 'cloudflare/cloudflared:2021.8.7-amd64'
+    hostname: 'cloudflared'
+    container_name: 'cloudflared'
     command: "'tunnel' 'run' 'your_uuid_here'"
     networks:
       - proxy
@@ -13,9 +13,10 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
     volumes:
-      - /opt/appdata/cloudflared:/home/nonroot/.cloudflared
+      - '${APPFOLDER}/cloudflared:/home/nonroot/.cloudflared'
     restart: always
 networks:
   proxy:
     driver: bridge
     external: true
+#EOF
