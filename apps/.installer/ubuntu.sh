@@ -12,6 +12,8 @@
 # NO REBRANDING IS ALLOWED          #
 # NO CODE MIRRORING IS ALLOWED      #
 #####################################
+source /opt/dockserver/apps/.installer/function.sh
+
 appstartup() {
 if [[ $EUID -ne 0 ]];then
 tee <<-EOF
@@ -630,9 +632,13 @@ if [[ $kbox != "" || $lbox != "" ]];then
    done
 fi
 }
+
 plexclaim() {
 compose="compose/docker-compose.yml"
 basefolder="/opt/appdata"
+ENV="$basefolder/compose/.env"
+PCLAIM=$(grep -e "PLEX_CLAIM" "$ENV" | sed "s#.*=##")
+if [[ $PCLAIM == "PLEX_CLAIM_ID" ]];then
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀  PLEX CLAIM
@@ -645,13 +651,16 @@ EOF
   if [[ $PLEXCLAIM != "" ]];then
      if [[ $(uname) == "Darwin" ]];then
         $(command -v sed) -i '' "s/PLEX_CLAIM_ID/$PLEXCLAIM/g" $basefolder/$compose
+        $(command -v sed) -i '' "s/PLEX_CLAIM_ID/$PLEXCLAIM/g" $basefolder/compose/.env
      else
         $(command -v sed) -i "s/PLEX_CLAIM_ID/$PLEXCLAIM/g" $basefolder/$compose
+        $(command -v sed) -i "s/PLEX_CLAIM_ID/$PLEXCLAIM/g" $basefolder/compose/.env
      fi
   else
      echo "Plex Claim cannot be empty"
      plexclaim
   fi
+fi
 }
 subtasks() {
 typed=${typed}
