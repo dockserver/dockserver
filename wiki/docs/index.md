@@ -74,16 +74,16 @@ sudo wget -qO- https://git.io/J3GDc | sudo bash
 ## Latest Changes 🎉
 
 <!--START_SECTION:activity-->
-1. 💪 Opened PR [#199](https://github.com/dockserver/dockserver/pull/199) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-2. 🎉 Merged PR [#196](https://github.com/dockserver/dockserver/pull/196) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-3. 🎉 Merged PR [#198](https://github.com/dockserver/dockserver/pull/198) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-4. 🎉 Merged PR [#197](https://github.com/dockserver/dockserver/pull/197) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-5. 💪 Opened PR [#198](https://github.com/dockserver/dockserver/pull/198) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-6. 💪 Opened PR [#197](https://github.com/dockserver/dockserver/pull/197) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-7. 🗣 Commented on [#196](https://github.com/dockserver/dockserver/issues/196) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-8. 💪 Opened PR [#196](https://github.com/dockserver/dockserver/pull/196) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-9. 🎉 Merged PR [#195](https://github.com/dockserver/dockserver/pull/195) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-10. 💪 Opened PR [#195](https://github.com/dockserver/dockserver/pull/195) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+1. 🗣 Commented on [#217](https://github.com/dockserver/dockserver/issues/217) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+2. 💪 Opened PR [#217](https://github.com/dockserver/dockserver/pull/217) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+3. 🗣 Commented on [#179](https://github.com/dockserver/dockserver/issues/179) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+4. 🎉 Merged PR [#216](https://github.com/dockserver/dockserver/pull/216) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+5. 🗣 Commented on [#216](https://github.com/dockserver/dockserver/issues/216) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+6. 💪 Opened PR [#216](https://github.com/dockserver/dockserver/pull/216) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+7. 🎉 Merged PR [#215](https://github.com/dockserver/dockserver/pull/215) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+8. 💪 Opened PR [#215](https://github.com/dockserver/dockserver/pull/215) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+9. 🎉 Merged PR [#214](https://github.com/dockserver/dockserver/pull/214) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+10. 💪 Opened PR [#214](https://github.com/dockserver/dockserver/pull/214) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 10. 🗣 Commented on [#15](https://github.com/dockserver/dockserver/issues/15) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 <!-- markdownlint-restore -->
 <!--END_SECTION:activity-->
