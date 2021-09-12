@@ -1,0 +1,23 @@
+# Cloudflared
+tunnel: TUNNEL_UUID_HERE
+credentials-file: /home/nonroot/.cloudflared/TUNNEL_UUID_HERE.json
+
+# NOTE: You should only have one ingress tag, so if you uncomment one block comment the others
+
+# forward all traffic to Reverse Proxy w/ SSL
+#ingress:
+  #- service: https://${SERVERIP}:443
+    #originRequest:
+      #originServerName: dns-cloudflare.acme
+      
+#forward all traffic to Reverse Proxy w/ SSL and no TLS Verify
+ingress:
+  - hostname: ssh.domain.com
+    service: ssh://SSHIP:PORT
+  - service: https://traefik:443
+    originRequest:
+      noTLSVerify: true
+# forward all traffic to reverse proxy over http
+#ingress:
+#  - service: http://REVERSEPROXYIP:PORT
+
