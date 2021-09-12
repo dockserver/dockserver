@@ -227,6 +227,7 @@ clear && interface
 }
 cfdocker() {
 basefolder="/opt/appdata"
+tunnelNAME=$(cat /etc/hostname)
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    🚀   Cloudflared Docker ( Argo Tunnel )
@@ -236,16 +237,16 @@ EOF
    do
    if [ ! -e $file ]; then
    # Temp permission
-   sudo $(command -v chmod) 777 -R $basefolder/cloudflared
+   $(command -v chmod) 777 -R $basefolder/cloudflared
    $(command -v docker) pull cloudflare/cloudflared:2021.8.7-amd64
    $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:2021.8.7-amd64 tunnel login
    # create
-   $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:2021.8.7-amd64 tunnel create dockserver
+   $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:2021.8.7-amd64 tunnel create $tunnelNAME
    fi
    done
    # permission fix
-   sudo $(command -v chown) -hR 1000:1000 $basefolder/cloudflared
-   sudo $(command -v chmod) 755 -R $basefolder/cloudflared
+   $(command -v chown) -hR 1000:1000 $basefolder/cloudflared
+   $(command -v chmod) 755 -R $basefolder/cloudflared
    # grep UUID ( TunnelID )
    UUID=$(grep -Po '"TunnelID": *\K"[^"]*"' $basefolder/cloudflared/*.json | sed 's/"\|,//g')
    if [[ $(uname) == "Darwin" ]];then
