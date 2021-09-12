@@ -1,0 +1,34 @@
+---
+version: '3'
+services:
+  homer:
+    hostname: 'homer'
+    container_name: 'homer'
+    environment:
+      - 'GID=${ID}'
+      - 'UID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=${UMASK}'
+    image: 'b4bz/homer:latest'
+    restart: '${RESTARTAPP}'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '${APPFOLDER}/homer:/www/assets:rw'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.homer-rtr.entrypoints=https'
+      - 'traefik.http.routers.homer-rtr.rule=Host(`homer.${DOMAIN}`)'
+      - 'traefik.http.routers.homer-rtr.tls=true'
+      - 'traefik.http.routers.homer-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.homer-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.homer-rtr.service=homer-svc'
+      - 'traefik.http.services.homer-svc.loadbalancer.server.port=8080'
+networks:
+  proxy:
+    driver: bridge
+    external: true
