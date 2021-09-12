@@ -232,10 +232,15 @@ tee <<-EOF
    🚀   Cloudflared Docker ( Argo Tunnel )
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
+   for file in "$basefolder"/cloudflared/*.json
+   do
+   if [[ ! -e $file ]]; then
    $(command -v docker) pull cloudflare/cloudflared:2021.8.7-amd64
    $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:2021.8.7-amd64 tunnel login
    # create
-   $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:2021.8.7-amd64 tunnel create dockserver 
+   $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:2021.8.7-amd64 tunnel create dockserver
+   fi
+   done
    # grep UUID ( TunnelID )
    UUID=$(grep -Po '"TunnelID": *\K"[^"]*"' $basefolder/cloudflared/*.json | sed 's/"\|,//g')
    if [[ $(uname) == "Darwin" ]];then
