@@ -673,6 +673,12 @@ conf=$basefolder/authelia/configuration.yml
 confnew=$basefolder/authelia/.new-configuration.yml.new
 confbackup=$basefolder/authelia/.backup-configuration.yml.backup
 authadd=$(cat $conf | grep -E ${typed})
+
+#to fix the issue with Authelia
+if [[ ! -x $(command -v bc) ]];then $(command  -v apt) install bc -yqq;fi
+lnnumber=$(grep -inE 'policy: bypass' $conf | awk '{print $1}' | sed 's/:/ /' | head -n1)
+lmsecond=$(echo "${lnnumber} + 1" | bc)
+
   if [[ ! -x $(command -v ansible) || ! -x $(command -v ansible-playbook) ]];then $(command -v apt) install ansible -yqq;fi
   if [[ -f $appfolder/.subactions/${typed}.yml ]];then $(command -v ansible-playbook) $appfolder/.subactions/${typed}.yml;fi
      $(grep "model name" /proc/cpuinfo | cut -d ' ' -f3- | head -n1 |grep -qE 'i7|i9' 1>/dev/null 2>&1)
@@ -682,20 +688,20 @@ authadd=$(cat $conf | grep -E ${typed})
      fi
   if [[ $authadd == "" ]];then
      if [[ ${section} == "mediaserver" || ${section} == "request" ]];then
-     { head -n 55 $conf;
+     { head -n $lnnumber $conf;
      echo "\
     - domain: ${typed}.${DOMAIN}
-      policy: bypass"; tail -n +56 $conf; } > $confnew
+      policy: bypass"; tail -n +$lmsecond $conf; } > $confnew
         if [[ -f $conf ]];then $(command -v rsync) $conf $confbackup -aqhv;fi
         if [[ -f $conf ]];then $(command -v rsync) $confnew $conf -aqhv;fi
         if [[ $authcheck == "true" ]];then $(command -v docker) restart authelia 1>/dev/null 2>&1;fi
         if [[ -f $conf ]];then $(command -v rm) -rf $confnew;fi
      fi
      if [[ ${typed} == "xteve" || ${typed} == "heimdall" || ${typed} == "librespeed" || ${typed} == "tautulli" || ${typed} == "nextcloud" ]];then
-     { head -n 55 $conf;
+     { head -n $lnnumber $conf;
      echo "\
     - domain: ${typed}.${DOMAIN}
-      policy: bypass"; tail -n +56 $conf; } > $confnew
+      policy: bypass"; tail -n +$lmsecond $conf; } > $confnew
         if [[ -f $conf ]];then $(command -v rsync) $conf $confbackup -aqhv;fi
         if [[ -f $conf ]];then $(command -v rsync) $confnew $conf -aqhv;fi
         if [[ $authcheck == "true" ]];then $(command -v docker) restart authelia 1>/dev/null 2>&1;fi
