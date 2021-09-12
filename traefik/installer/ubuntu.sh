@@ -63,7 +63,7 @@ overwrite() {
   $(command -v rsync) ${source} ${basefolder} -aqhv --exclude={'local','installer'} && $(command -v bash) $envmigrate
   basefolder="/opt/appdata"
   for i in ${basefolder};do
-      $(command -v mkdir) -p $i/{authelia,traefik} $i/traefik/{rules,acme}
+      $(command -v mkdir) -p $i/{authelia,traefik,cloudflared} $i/traefik/{rules,acme}
       $(command -v find) $i/{authelia,traefik} -exec $(command -v chown) -hR 1000:1000 {} \;
       $(command -v touch) $i/traefik/acme/acme.json $i/traefik/traefik.log $i/authelia/authelia.log
       $(command -v chmod) 600 $i/traefik/traefik.log $i/authelia/authelia.log $i/traefik/acme/acme.json
@@ -225,6 +225,28 @@ else
 fi
 clear && interface
 }
+cfdocker() {
+basefolder="/opt/appdata"
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   🚀   Cloudflared Docker ( Argo Tunnel )
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+   $(command -v docker) pull cloudflare/cloudflared:2021.8.7-amd64
+   $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:2021.8.7-amd64 tunnel login
+   # create
+   $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:2021.8.7-amd64 tunnel create dockserver 
+   # grep UUID ( TunnelID )
+   UUID=$(grep -Po '"TunnelID": *\K"[^"]*"' $basefolder/cloudflared/*.json | sed 's/"\|,//g')
+   if [[ $(uname) == "Darwin" ]];then
+      sed -i '' "s/TUNNEL_UUID_HERE/$UUID/g" $basefolder/cloudflared/config.yaml
+      sed -i '' "s/TUNNEL_UUID_HERE/$UUID/g" $basefolder/compose/.env
+   else
+      sed -i "s/TUNNEL_UUID_HERE/$UUID/g" $basefolder/cloudflared/config.yaml
+      sed -i "s/TUNNEL_UUID_HERE/$UUID/g" $basefolder/compose/.env
+   fi
+}
+
 jounanctlpatch() {
 CTPATCH=$(cat /etc/systemd/journald.conf | grep "#PATCH" && echo true || echo false)
 if [[ $CTPATCH == "false" ]];then
@@ -365,6 +387,7 @@ tee <<-EOF
    [4] CloudFlare-Email-Address       [ ${CLOUDFLARE_EMAIL} ]
    [5] CloudFlare-Global-Key          [ ${CLOUDFLARE_API_KEY} ]
    [6] CloudFlare-Zone-ID             [ ${DOMAIN1_ZONE_ID} ]
+   [7] Cloudflared-Docker
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -382,6 +405,7 @@ EOF
      4) cfemail ;;
      5) cfkey ;;
      6) cfzoneid ;;
+     7) cfdocker ;;
      d|D) deploynow ;;
      Z|z|exit|EXIT|Exit|close) exit ;;
      *) clear && interface ;;
