@@ -228,7 +228,10 @@ clear && interface
 cfdocker() {
 basefolder="/opt/appdata"
 VERSION=$(curl -sX GET https://api.github.com/repos/cloudflare/cloudflared/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')
-tunnelNAME=$(cat /etc/hostname)
+#tunnelNAME=$(cat /etc/hostname)
+#Random tunnel Name
+tunnelNAME=$(cat /dev/urandom | tr -dc 'A-Z' | fold -w 8 | head -n 1)
+
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    🚀   Cloudflared Docker ( Argo Tunnel )
