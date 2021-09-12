@@ -1,0 +1,4 @@
+repositories:
+  dockserver:
+    directory: /gitrepos/dockserver 
+    gitpullflags: ["--verbose", "--autostash"]
