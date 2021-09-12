@@ -246,8 +246,9 @@ EOF
       $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:${VERSION} tunnel login
       # create
       $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:${VERSION} tunnel create $tunnelNAME
+      $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:${VERSION} tunnel route dns $tunnelNAME ${DOMAIN}
    fi
-   done   
+   done
    listnumber=$($(command -v docker) run -it --rm -v /opt/appdata/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:${VERSION} tunnel list | wc -l)
    if [[ $listnumber -gt "30" ]];then
       if [[ -f "/tmp/cloudflared" ]];then
