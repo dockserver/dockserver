@@ -6,7 +6,8 @@ services:
     container_name: 'rutorrent'
     image: 'ghcr.io/dockserver/docker-rutorrent:latest'
     networks:
-      - proxy
+            proxy:
+                ipv4_address: 172.18.0.135
     restart: '${RESTARTAPP}'
     security_opt:
       - 'no-new-privileges:true'

@@ -5,14 +5,14 @@ services:
     image: 'p3terx/aria2-pro:latest'
     hostname: 'aria'
     container_name: 'aria'
-    restart: '${RESTARTAPP}'	
+    restart: '${RESTARTAPP}'
     ports:
       - '6888:6888'
-      - '6888:6888/udp' 
+      - '6888:6888/udp'
     volumes:
       - '${APPFOLDER}/aria:/config:rw'
       - '/mnt/downloads/aria:/downloads:rw'
-      - 'unionfs:/mnt'	  
+      - 'unionfs:/mnt'
     environment:
       - 'TZ=${TZ}'
       - 'PUID=${ID}'
@@ -25,14 +25,15 @@ services:
       - 'IPV6_MODE=false'
       - 'UPDATE_TRACKERS=true'
     networks:
-      - proxy
+            proxy:
+                ipv4_address: 172.18.0.125
     security_opt:
       - 'no-new-privileges:true'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'
       - 'traefik.http.routers.aria-rtr.entrypoints=https'
-      - 'traefik.http.routers.aria-rtr.rule=Host(`aria.${DOMAIN}`) && Path(`/jsonrpc`)
+      - 'traefik.http.routers.aria-rtr.rule=Host(`aria.${DOMAIN}`) && Path(`/jsonrpc`)'
       - 'traefik.http.routers.aria-rtr.tls=true'
       - 'traefik.http.routers.aria-rtr.tls.certresolver=dns-cloudflare'
       - 'traefik.http.routers.aria-rtr.middlewares=chain-no-auth@file'
@@ -44,7 +45,7 @@ services:
     image: 'p3terx/ariang:latest'
     hostname: 'ariang'
     container_name: 'ariang'
-    restart: '${RESTARTAPP}'	
+    restart: '${RESTARTAPP}'
     depends_on:
       - 'aria'
     environment:
