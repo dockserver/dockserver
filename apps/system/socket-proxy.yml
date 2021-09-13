@@ -47,11 +47,11 @@ services:
     labels:
       - 'dockupdater.enable=true'
     healthcheck:
-     test: 'wget --spider http://localhost:2375/version || exit 1'
-     interval: '60s'
-     timeout: '10s'
-     retries: '3'
-     start_period: '20s'	  
+      test: 'wget --spider http://localhost:2375/version || exit 1'
+      interval: '60s'
+      timeout: '10s'
+      retries: '3'
+      start_period: '20s'	  
 networks:
   socket-proxy:
     driver: bridge
