@@ -18,7 +18,8 @@ services:
     ports:
       - '7755:8080'
     networks:
-      - proxy
+            proxy:
+                ipv4_address: 172.18.0.141
     security_opt:
       - 'apparmor:unconfined'
       - 'no-new-privileges:true'

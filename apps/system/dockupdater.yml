@@ -17,7 +17,8 @@ services:
     security_opt:
       - 'no-new-privileges:true'
     networks:
-      - proxy
+            proxy:
+                ipv4_address: 172.18.0.140
     volumes:
       - '/var/run/docker.sock:/var/run/docker.sock'
 networks:
