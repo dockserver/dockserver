@@ -58,6 +58,7 @@ access_control:
       policy: bypass
       resources:
         - "^/api/.*$"
+        - "^/api?.*$"
         - "^/identity/.*$"
         - "^/triggers/.*$"
         - "^/rss/*$"
