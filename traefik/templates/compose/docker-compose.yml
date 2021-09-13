@@ -1,6 +1,57 @@
 ---
 version: '3.3'
 services:
+  socket-proxy:
+    image: 'ghcr.io/tecnativa/docker-socket-proxy:latest'
+    hostname: 'socket-proxy'
+    container_name: 'socket-proxy'
+    restart: 'always'
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock:ro'
+    environment:
+      - 'TZ=${TZ}'
+      - 'LOG_LEVEL=info'
+      - 'EVENTS=1'
+      - 'PING=1'
+      - 'VERSION=1'
+      - 'AUTH=0'
+      - 'SECRETS=0'
+      - 'POST=1' # Dockupdater
+      - 'DELETE=1' # Dockupdater
+      - 'BUILD=0'
+      - 'COMMIT=0'
+      - 'CONFIGS=0'
+      - 'CONTAINERS=1' # Traefik
+      - 'DISTRIBUTION=0'
+      - 'EXEC=0'
+      - 'IMAGES=1' # Dockupdater
+      - 'INFO=0'
+      - 'NETWORKS=1' # Dockupdater
+      - 'NODES=0'
+      - 'PLUGINS=0'
+      - 'SERVICES=0'
+      - 'SESSION=0'
+      - 'SWARM=0'
+      - 'SYSTEM=0'
+      - 'TASKS=0'
+      - 'VOLUMES=0'
+      - 'CONTAINERS_CREATE=1' # Dockupdater
+      - 'CONTAINERS_START=1' # Dockupdater
+      - 'CONTAINERS_UPDATE=1' # Dockupdater
+      - 'CONTAINERS_DELETE=1' # Dockupdater
+      - 'IMAGES_DELETE=1' # Dockupdater
+    networks:
+      - proxy-basic
+    security_opt:
+      - 'no-new-privileges:true'
+    labels:
+      - 'dockupdater.enable=true'
+    healthcheck:
+      test: 'wget --spider http://localhost:2375/version || exit 1'
+      interval: '60s'
+      timeout: '10s'
+      retries: '3'
+      start_period: '20s'
   traefik:
     container_name: 'traefik'
     image: 'traefik:latest'
@@ -23,7 +74,7 @@ services:
       - --accessLog.bufferingSize=100
       - --accessLog.filters.statusCodes=400-499
       - --providers.docker=true
-      - --providers.docker.endpoint=unix:///var/run/docker.sock
+      - --providers.docker.endpoint=tcp://socket-proxy:2375
       - --providers.docker.exposedByDefault=false
       - --entrypoints.https.http.middlewares=chain-authelia@file
       - --entrypoints.https.http.tls.certresolver=dns-cloudflare
@@ -39,6 +90,8 @@ services:
       - --certificatesResolvers.dns-cloudflare.acme.dnsChallenge.provider=cloudflare
       - --certificatesResolvers.dns-cloudflare.acme.dnsChallenge.resolvers=1.1.1.1:53,1.0.0.1:53
       - --certificatesResolvers.dns-cloudflare.acme.dnsChallenge.delayBeforeCheck=60
+    depends_on:
+      - socket-proxy
     networks:
       - proxy
     security_opt:
@@ -58,7 +111,6 @@ services:
         mode: host
     volumes:
       - '${APPFOLDER}/traefik/rules:/rules'
-      - '/var/run/docker.sock:/var/run/docker.sock:ro'
       - '${APPFOLDER}/traefik/acme/acme.json:/acme.json'
       - '${APPFOLDER}/traefik/traefik.log:/traefik.log'
     environment:
@@ -86,6 +138,7 @@ services:
     depends_on:
       - traefik
     networks:
+      - proxy-basic
       - proxy
     environment:
       - 'PGID=${ID}'
@@ -100,14 +153,13 @@ services:
     depends_on:
       - traefik
     networks:
+      - proxy-basic
       - proxy
     security_opt:
       - 'no-new-privileges:true'
     restart: 'always'
     labels:
       - 'dockupdater.enable=true'
-    volumes:
-      - '/var/run/docker.sock:/var/run/docker.sock:ro'
     environment:
       - 'TIMEZONE=${TZ}'
       - 'TRAEFIK_VERSION=2'
@@ -119,7 +171,7 @@ services:
       - 'DOMAIN1_PROXIED=TRUE'
       - 'DEFAULT_TTL=1'
       - 'REFRESH_ENTRIES=TRUE'
-      - 'DOCKER_ENTRYPOINT=unix://var/run/docker.sock'
+      - 'DOCKER_ENTRYPOINT=tcp://socket-proxy:2375'
       - 'SWARM_MODE=FALSE'
   traefik-error-pages:
     container_name: 'traefik-error-pages'
@@ -173,3 +225,6 @@ networks:
   proxy:
     driver: bridge
     external: true
+  proxy-basic:
+    driver: bridge
+    external: true    
