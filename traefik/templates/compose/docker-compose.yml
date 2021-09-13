@@ -94,7 +94,7 @@ services:
       - socket-proxy
     networks:
             proxy:
-                ipv4_address: 172.18.0.150
+                ipv4_address: 172.18.0.254
     security_opt:
       - 'no-new-privileges:true'
     volumes:
@@ -128,7 +128,7 @@ services:
     networks:
             proxy-basic:
             proxy:
-                ipv4_address: 172.18.0.151
+                ipv4_address: 172.18.0.253
     environment:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
@@ -144,7 +144,7 @@ services:
     networks:
             proxy-basic:
             proxy:
-                ipv4_address: 172.18.0.152
+                ipv4_address: 172.18.0.252
     security_opt:
       - 'no-new-privileges:true'
     restart: 'always'
@@ -169,7 +169,7 @@ services:
     restart: 'unless-stopped'
     networks:
             proxy:
-                ipv4_address: 172.18.0.153
+                ipv4_address: 172.18.0.251
     environment:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
@@ -197,7 +197,7 @@ services:
       - traefik
     networks:
             proxy:
-                ipv4_address: 172.18.0.154
+                ipv4_address: 172.18.0.250
     volumes:
       - '${APPFOLDER}/authelia:/config'
     environment:
