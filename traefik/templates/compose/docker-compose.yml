@@ -93,7 +93,8 @@ services:
     depends_on:
       - socket-proxy
     networks:
-      - proxy
+            proxy:
+                ipv4_address: 172.18.0.150
     security_opt:
       - 'no-new-privileges:true'
     volumes:
@@ -125,8 +126,9 @@ services:
     depends_on:
       - traefik
     networks:
-      - proxy-basic
-      - proxy
+            proxy-basic:
+            proxy:
+                ipv4_address: 172.18.0.160
     environment:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
@@ -140,8 +142,9 @@ services:
     depends_on:
       - traefik
     networks:
-      - proxy-basic
-      - proxy
+            proxy-basic:
+            proxy:
+                ipv4_address: 172.18.0.170
     security_opt:
       - 'no-new-privileges:true'
     restart: 'always'
@@ -165,7 +168,8 @@ services:
     image: 'guillaumebriday/traefik-custom-error-pages'
     restart: 'unless-stopped'
     networks:
-      - proxy
+            proxy:
+                ipv4_address: 172.18.0.180
     environment:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
@@ -192,7 +196,8 @@ services:
     depends_on:
       - traefik
     networks:
-      - proxy
+            proxy:
+                ipv4_address: 172.18.0.190
     volumes:
       - '${APPFOLDER}/authelia:/config'
     environment:
