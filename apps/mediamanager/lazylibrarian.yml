@@ -16,7 +16,8 @@ services:
     ports:
       - '${PORTBLOCK}:5299:5299'
     networks:
-      - proxy
+            proxy:
+                ipv4_address: 172.18.0.106
     security_opt:
       - 'no-new-privileges:true'
     volumes:
