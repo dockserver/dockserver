@@ -50,7 +50,7 @@ services:
       test: 'wget --spider http://localhost:2375/version || exit 1'
       interval: '60s'
       timeout: '10s'
-      retries: '3'
+      retries: 3
       start_period: '20s'
   traefik:
     container_name: 'traefik'
@@ -96,19 +96,6 @@ services:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
-    ports:
-      - target: 80
-        published: 80
-        protocol: tcp
-        mode: host
-      - target: 443
-        published: 443
-        protocol: tcp
-        mode: host
-      - target: 8080
-        published: 8099
-        protocol: tcp
-        mode: host
     volumes:
       - '${APPFOLDER}/traefik/rules:/rules'
       - '${APPFOLDER}/traefik/acme/acme.json:/acme.json'
@@ -227,4 +214,4 @@ networks:
     external: true
   proxy-basic:
     driver: bridge
-    external: true    
+    external: true
