@@ -9,7 +9,7 @@ services:
     volumes:
       - '/var/run/docker.sock:/var/run/docker.sock:ro'
     environment:
-      - 'TZ=Europe/Berlin'
+      - 'TZ=${TZ}'
       - 'LOG_LEVEL=info'
       - 'EVENTS=1'
       - 'PING=1'
