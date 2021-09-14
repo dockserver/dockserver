@@ -6,10 +6,10 @@ services:
     container_name: 'watchtower'
     image: 'ghcr.io/containrrr/watchtower:latest'
     environment:
-      - 'PUID=${ID}
+      - 'PUID=${ID}'
       - 'PGID=${ID}'
       - 'TZ=${TZ}'
-      - 'WATCHTOWER_CLEANUP=true'
+      - 'WATCHTOWER_CLEANUP=${WATCHTOWER_CLEANUP}'
       - 'WATCHTOWER_REMOVE_VOLUMES=true'
       - 'WATCHTOWER_INCLUDE_STOPPED=false'
       - 'WATCHTOWER_NO_STARTUP_MESSAGE=true'
@@ -18,7 +18,7 @@ services:
       - 'WATCHTOWER_ROLLING_RESTART=false'
       - 'WATCHTOWER_TIMEOUT=180s'
       - 'DOCKER_HOST=tcp://socket-proxy:2375'
-      - 'DOCKER_API_VERSION=1.40'	  
+      - 'DOCKER_API_VERSION=1.40'
     restart: '${RESTARTAPP}'
     labels:
       - 'com.centurylinklabs.watchtower.enable=true'

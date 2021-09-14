@@ -94,6 +94,9 @@ QBITORRENTTHEME=${QBITORRENTTHEME:-organizr-dark}
 
 ### APP CUSTOMEVARIABLES
 
+#Watchtower
+WATCHTOWER_CLEANUP=${WATCHTOWER_CLEANUP:-true}
+
 ##Webtop
 WEBTOP_IMAGE=${WEBTOP_IMAGE:-ghcr.io/linuxserver/webtop:ubuntu-xfce}
 WEBTOP_SHM_SIZE=${WEBTOP_SHM_SIZE:-1gb}
