@@ -19,7 +19,7 @@ if [[ $EUID != 0 ]]; then
 fi
 dockserver=/opt/dockserver
 run() {
-if [[ -d ${dockserver} ]];then 
+if [[ -d ${dockserver} ]];then
    cd ${dockserver} && $(command -v bash) install.sh
 else
    usage

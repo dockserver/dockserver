@@ -19,7 +19,7 @@ appfolder="/opt/dockserver/apps"
 FILE=".subactions/dashy.j2"
 
 appstartup() {
-if [[ -f $CONF ]];then 
+if [[ -f $CONF ]];then
    $(command -v chown) -cR 1000:1000 $FOLDER/dashy
 fi
 
