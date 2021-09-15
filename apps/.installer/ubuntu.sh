@@ -100,14 +100,14 @@ EOF
 ### backup docker ###
 backupstorage() {
 storagefolder=$(ls -1p /mnt/unionfs/appbackups/ | grep '/$' | $(command -v sed) 's/\/$//')
-if [[ $storagefolder == "" ]];then 
+if [[ $storagefolder == "" ]];then
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀  Backup folder
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
  You need to set a backup folder
- 
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    [ EXIT or Z ] - Exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -135,7 +135,7 @@ EOF
   if [[ $storage == "" ]];then clear && backupstorage;fi
      teststorage=$(ls -1p /mnt/unionfs/appbackups/ | grep '/$' | $(command -v sed) 's/\/$//' | grep -x $storage)
   if [[ $teststorage == $storage ]];then backupdocker;fi
-  if [[ $storage != "" ]];then 
+  if [[ $storage != "" ]];then
      $(command -v mkdir) -p /mnt/unionfs/appbackups/${storage}
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -324,7 +324,7 @@ for app in ${apps};do
    if [[ ! -d $basefolder/$app ]];then
    ARCHIVE=$app
    ARCHIVETAR=${ARCHIVE}.tar.gz
-      echo "Create folder for $i is running"  
+      echo "Create folder for $i is running"
       folder=$basefolder/$app
       for appset in ${folder};do
           $(command -v mkdir) -p $appset
@@ -488,7 +488,7 @@ EOF
      if [[ ${checkrmt} == "true" && ${mount} == "mount" ]];then $(command -v docker) stop mount 1>/dev/null 2>&1 && $(command -v fusermount) -uzq /mnt/remotes 1>/dev/null 2>&1;fi
      if [[ ${checkrmt} == "false" && ${mount} == "mount" ]];then $(command -v docker) stop mount 1>/dev/null 2>&1 && $(command -v fusermount) -uzq /mnt/remotes 1>/dev/null 2>&1;fi
      if [[ ${checkrmt} == "false" && ${mount} == "" ]];then $(command -v fusermount) -uzq /mnt/remotes 1>/dev/null 2>&1;fi
-	 dockers=$($(command -v docker) ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -E 'ple|arr|emby|jelly')
+    dockers=$($(command -v docker) ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -E 'ple|arr|emby|jelly')
      for doc in ${dockers};do
          $(command -v docker) stop $doc >> /dev/null
      done
@@ -555,7 +555,7 @@ EOF
   if [[ ${typed} == "mount" || ${typed} == "dockupdater" || ${typed} == "endlessh" ]];then
   tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    ${typed} has successfully deployed and is now working     
+    ${typed} has successfully deployed and is now working
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 else
@@ -742,7 +742,7 @@ deleteapp() {
   if [[ $checktyped == $typed ]];then
     tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    ${typed} removal started    
+    ${typed} removal started
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
      app=${typed}
@@ -751,7 +751,7 @@ EOF
          $(command -v docker) rm $i 1>/dev/null 2>&1
          $(command -v docker) image prune -af 1>/dev/null 2>&1
      done
-     if [[ -d $basefolder/${typed} ]];then 
+     if [[ -d $basefolder/${typed} ]];then
         folder=$basefolder/${typed}
     tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -762,7 +762,7 @@ EOF
             $(command -v rm) -rf $i 1>/dev/null 2>&1
         done
      fi
-     if [[ -d $storage/${typed} ]];then 
+     if [[ -d $storage/${typed} ]];then
         folder=$storage/${typed}
     tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -794,12 +794,12 @@ EOF
   fi
 }
 updatecompose() {
-if [[ ! -x $(command -v docker-compose) ]];then 
+if [[ ! -x $(command -v docker-compose) ]];then
    COMPOSE_VERSION=$($(command -v curl) --silent -fsSL https://api.github.com/repos/docker/releases/latest | grep 'tag_name' | cut -d\" -f4)
    sh -c "curl --silent -L https://github.com/docker/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose"
    sh -c "curl --silent -L https://raw.githubusercontent.com/docker/${COMPOSE_VERSION}/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose"
    if [[ ! -L "/usr/bin/docker-compose" ]];then $(command -v rm) -f /usr/bin/docker-compose && ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose;fi
-   $(command -v chmod) a=rx,u+w /usr/local/bin/docker-compose >/dev/null 2>&1 
+   $(command -v chmod) a=rx,u+w /usr/local/bin/docker-compose >/dev/null 2>&1
    $(command -v chmod) a=rx,u+w /usr/bin/docker-compose >/dev/null 2>&1
 fi
 }
