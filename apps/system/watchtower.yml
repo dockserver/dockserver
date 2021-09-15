@@ -18,7 +18,6 @@ services:
       - 'WATCHTOWER_ROLLING_RESTART=${WATCHTOWER_ROLLING_RESTART}'
       - 'WATCHTOWER_TIMEOUT=${WATCHTOWER_TIMEOUT}'
       - 'DOCKER_HOST=tcp://socket-proxy:2375'
-      - 'DOCKER_API_VERSION=1.40'
     restart: '${RESTARTAPP}'
     labels:
       - 'com.centurylinklabs.watchtower.enable=true'
