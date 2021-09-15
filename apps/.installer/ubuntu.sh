@@ -262,7 +262,7 @@ EOF
    else
       $(command -v tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${STORAGE}/${ARCHIVETAR} ./
    fi
-      $(command -v chown) -hR 1000:1000 ${DESTINATION}/${STORAGE}/${ARCHIVETAR}
+   $(command -v chown) -hR 1000:1000 ${DESTINATION}/${STORAGE}/${ARCHIVETAR}
    clear && backupdocker
 else
    clear && backupdocker
@@ -317,7 +317,7 @@ DESTINATION="/mnt/unionfs/appbackups"
 apps=$(ls -1p /mnt/unionfs/appbackups/${storage} | $(command -v sed) -e 's/.tar.gz//g' | grep -v 'trae' | grep -v 'auth' | grep -v 'sudobox')
 forcepush="tar pigz pv"
 for fc in ${forcepush};do
-     $(command -v apt) install $fc -yqq 1>/dev/null 2>&1 && sleep 1
+   $(command -v apt) install $fc -yqq 1>/dev/null 2>&1 && sleep 1
 done
 for app in ${apps};do
    basefolder="/opt/appdata"
@@ -478,7 +478,7 @@ EOF
      checkmnt=$($(command -v mountpoint) -q /mnt/unionfs && echo true || echo false)
      checkrcc=$($(command -v mountpoint) -q /mnt/rclone_cache && echo true || echo false)
      checkrmt=$($(command -v mountpoint) -q /mnt/remotes && echo true || echo false)
-        mount=$($(command -v docker) ps -aq --format={{.Names}} | grep -x 'mount')
+     mount=$($(command -v docker) ps -aq --format={{.Names}} | grep -x 'mount')
      if [[ ${checkmnt} == "true" && ${mount} == "mount" ]];then $(command -v docker) stop mount 1>/dev/null 2>&1 && $(command -v fusermount) -uzq /mnt/unionfs 1>/dev/null 2>&1;fi
      if [[ ${checkmnt} == "false" && ${mount} == "mount" ]];then $(command -v docker) stop mount 1>/dev/null 2>&1 && $(command -v fusermount) -uzq /mnt/unionfs 1>/dev/null 2>&1;fi
      if [[ ${checkmnt} == "false" && ${mount} == "" ]];then $(command -v fusermount) -uzq /mnt/unionfs 1>/dev/null 2>&1;fi
@@ -488,7 +488,7 @@ EOF
      if [[ ${checkrmt} == "true" && ${mount} == "mount" ]];then $(command -v docker) stop mount 1>/dev/null 2>&1 && $(command -v fusermount) -uzq /mnt/remotes 1>/dev/null 2>&1;fi
      if [[ ${checkrmt} == "false" && ${mount} == "mount" ]];then $(command -v docker) stop mount 1>/dev/null 2>&1 && $(command -v fusermount) -uzq /mnt/remotes 1>/dev/null 2>&1;fi
      if [[ ${checkrmt} == "false" && ${mount} == "" ]];then $(command -v fusermount) -uzq /mnt/remotes 1>/dev/null 2>&1;fi
-    dockers=$($(command -v docker) ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -E 'ple|arr|emby|jelly')
+     dockers=$($(command -v docker) ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -E 'ple|arr|emby|jelly')
      for doc in ${dockers};do
          $(command -v docker) stop $doc >> /dev/null
      done
@@ -661,6 +661,8 @@ EOF
      echo "Plex Claim cannot be empty"
      plexclaim
   fi
+else
+  $(command -v sed) -i "s/PLEX_CLAIM_ID/$PCLAIM/g" $basefolder/$compose
 fi
 }
 subtasks() {
@@ -675,27 +677,28 @@ confnew=$basefolder/authelia/.new-configuration.yml.new
 confbackup=$basefolder/authelia/.backup-configuration.yml.backup
 authadd=$(cat $conf | grep -E ${typed})
 
-#to fix the issue with Authelia
 if [[ ! -x $(command -v bc) ]];then $(command  -v apt) install bc -yqq;fi
+
 lnnumber=$(grep -inE 'policy: bypass' $conf | awk '{print $1}' | sed 's/:/ /' | head -n1)
 lmsecond=$(echo "${lnnumber} + 1" | bc)
 
-  if [[ ! -x $(command -v ansible) || ! -x $(command -v ansible-playbook) ]];then $(command -v apt) install ansible -yqq;fi
-  if [[ -f $appfolder/.subactions/${typed}.yml ]];then $(command -v ansible-playbook) $appfolder/.subactions/${typed}.yml;fi
-     $(grep "model name" /proc/cpuinfo | cut -d ' ' -f3- | head -n1 |grep -qE 'i7|i9' 1>/dev/null 2>&1)
-     setcode=$?
-     if [[ $setcode -eq 0 ]];then
-        if [[ -f $appfolder/.subactions/${typed}.sh ]];then $(command -v bash) $appfolder/.subactions/${typed}.sh;fi
-     fi
-  if [[ $authadd == "" ]];then
-     if [[ ${section} == "mediaserver" || ${section} == "request" ]];then
-     { head -n $lnnumber $conf;
-     echo "\
+if [[ ! -x $(command -v ansible) || ! -x $(command -v ansible-playbook) ]];then $(command -v apt) install ansible -yqq;fi
+if [[ -f $appfolder/.subactions/${typed}.yml ]];then $(command -v ansible-playbook) $appfolder/.subactions/${typed}.yml;fi
+   $(grep "model name" /proc/cpuinfo | cut -d ' ' -f3- | head -n1 |grep -qE 'i7|i9' 1>/dev/null 2>&1)
+   setcode=$?
+if [[ $setcode -eq 0 ]];then
+   if [[ -f $appfolder/.subactions/${typed}.sh ]];then $(command -v bash) $appfolder/.subactions/${typed}.sh;fi
+fi
+
+if [[ $authadd == "" ]];then
+   if [[ ${section} == "mediaserver" || ${section} == "request" ]];then
+   { head -n $lnnumber $conf;
+   echo "\
     - domain: ${typed}.${DOMAIN}
       policy: bypass"; tail -n +$lmsecond $conf; } > $confnew
-        if [[ -f $conf ]];then $(command -v rsync) $conf $confbackup -aqhv;fi
-        if [[ -f $conf ]];then $(command -v rsync) $confnew $conf -aqhv;fi
-        if [[ $authcheck == "true" ]];then $(command -v docker) restart authelia 1>/dev/null 2>&1;fi
+     if [[ -f $conf ]];then $(command -v rsync) $conf $confbackup -aqhv;fi
+     if [[ -f $conf ]];then $(command -v rsync) $confnew $conf -aqhv;fi
+     if [[ $authcheck == "true" ]];then $(command -v docker) restart authelia 1>/dev/null 2>&1;fi
         if [[ -f $conf ]];then $(command -v rm) -rf $confnew;fi
      fi
      if [[ ${typed} == "xteve" || ${typed} == "heimdall" || ${typed} == "librespeed" || ${typed} == "tautulli" || ${typed} == "nextcloud" ]];then
@@ -703,14 +706,14 @@ lmsecond=$(echo "${lnnumber} + 1" | bc)
      echo "\
     - domain: ${typed}.${DOMAIN}
       policy: bypass"; tail -n +$lmsecond $conf; } > $confnew
-        if [[ -f $conf ]];then $(command -v rsync) $conf $confbackup -aqhv;fi
-        if [[ -f $conf ]];then $(command -v rsync) $confnew $conf -aqhv;fi
-        if [[ $authcheck == "true" ]];then $(command -v docker) restart authelia 1>/dev/null 2>&1;fi
-        if [[ -f $conf ]];then $(command -v rm) -rf $confnew;fi
-     fi
-  fi
-  if [[ ${section} == "mediaserver" || ${section} == "request" || ${section} == "downloadclients" ]];then $(command -v docker) restart ${typed} 1>/dev/null 2>&1;fi
-  if [[ ${section} == "request" ]];then $(command -v chown) -R 1000:1000 $basefolder/${typed} 1>/dev/null 2>&1;fi
+     if [[ -f $conf ]];then $(command -v rsync) $conf $confbackup -aqhv;fi
+     if [[ -f $conf ]];then $(command -v rsync) $confnew $conf -aqhv;fi
+     if [[ $authcheck == "true" ]];then $(command -v docker) restart authelia 1>/dev/null 2>&1;fi
+     if [[ -f $conf ]];then $(command -v rm) -rf $confnew;fi
+   fi
+fi
+if [[ ${section} == "mediaserver" || ${section} == "request" || ${section} == "downloadclients" ]];then $(command -v docker) restart ${typed} 1>/dev/null 2>&1;fi
+if [[ ${section} == "request" ]];then $(command -v chown) -R 1000:1000 $basefolder/${typed} 1>/dev/null 2>&1;fi
 }
 removeapp() {
 list=$($(command -v docker) ps -aq --format '{{.Names}}' | grep -vE 'auth|trae|cf-companion')
@@ -747,9 +750,9 @@ deleteapp() {
 EOF
      app=${typed}
      for i in ${app};do
-         $(command -v docker) stop $i 1>/dev/null 2>&1
-         $(command -v docker) rm $i 1>/dev/null 2>&1
-         $(command -v docker) image prune -af 1>/dev/null 2>&1
+        $(command -v docker) stop $i 1>/dev/null 2>&1
+        $(command -v docker) rm $i 1>/dev/null 2>&1
+        $(command -v docker) image prune -af 1>/dev/null 2>&1
      done
      if [[ -d $basefolder/${typed} ]];then
         folder=$basefolder/${typed}
@@ -759,7 +762,7 @@ EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
         for i in ${folder};do
-            $(command -v rm) -rf $i 1>/dev/null 2>&1
+          $(command -v rm) -rf $i 1>/dev/null 2>&1
         done
      fi
      if [[ -d $storage/${typed} ]];then
@@ -788,7 +791,7 @@ EOF
     ${typed} removal finished
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-    sleep 2 && removeapp
+     sleep 2 && removeapp
   else
      removeapp
   fi
