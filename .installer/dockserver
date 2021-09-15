@@ -76,7 +76,7 @@ dockserver=/opt/dockserver
 DOCK=${DOCK}
 FORK=${FORK}
 if [[ ${DOCK} == "-f" || ${DOCK} == "--fork" ]];then
-   if [[${FORK} != "" ]];then
+   if [[ ${FORK} != "" ]];then
        if [[ -d ${dockserver} ]];then
 clear
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
