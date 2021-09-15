@@ -625,7 +625,7 @@ if [[ $kbox != "" || $lbox != "" ]];then
    box=$($(command -v docker) pa -aq --format {{.Names}} | grep -E 'box')
    for nb in ${box};do
        del="stop rm"
-       for del in ${delb};do
+       for del in ${del};do
           $(command -v docker) $del $nb 1>/dev/null 2>&1
           $(command -v docker) system prune -af 1>/dev/null 2>&1
           $(command -v rm) -rf $basefolder/$nb 1>/dev/null 2>&1
