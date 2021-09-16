@@ -4,7 +4,7 @@ services:
   dockupdater:
     hostname: 'dockupdater'
     container_name: 'dockupdater'
-    image: 'dockupdater/dockupdater'
+    image: 'dockupdater/dockupdater:latest'
     environment:
       - 'CLEANUP=true'
       - 'LOG_LEVEL=info'
