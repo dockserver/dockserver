@@ -14,9 +14,9 @@ services:
       - 'DIUN_WATCH_WORKERS=20'
       - 'DIUN_WATCH_SCHEDULE=0 */6 * * *'
       - 'DIUN_PROVIDERS_DOCKER=true'
+      - 'DIUN_PROVIDERS_DOCKER_ENDPOINT=tcp://socket-proxy:2375'
     volumes:
       - '${APPFOLDER}/diun:/data'
-      - '/var/run/docker.sock:/var/run/docker.sock:ro'
     networks:
       - proxy
     labels:
