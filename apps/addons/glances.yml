@@ -12,8 +12,7 @@ services:
     environment:
       - 'TZ=${TZ}'
       - 'GLANCES_OPT=-w'
-    volumes:
-      - '/var/run/docker.sock:/var/run/docker.sock:ro'
+      - 'DOCKER_HOST=tcp://socket-proxy:2375'
     networks:
       - proxy
     labels:
