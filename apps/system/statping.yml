@@ -21,7 +21,6 @@ services:
     volumes:
       - '${APPFOLDER}/statping/config:/app:rw'
       - '/etc/localtime:/etc/localtime:ro'
-      - '/var/run/docker.sock:/var/run/docker.sock:ro'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'
