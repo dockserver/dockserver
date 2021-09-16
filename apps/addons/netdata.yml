@@ -8,6 +8,7 @@ services:
     image: 'netdata/netdata'
     networks:
       - proxy
+      - proxy-basic
     ports:
       - '${PORTBLOCK}:19999:19999'
     cap_add:
@@ -19,6 +20,7 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
+      - 'DOCKER_HOST=socket-proxy:2375'
     volumes:
       - '${APPFOLDER}/netdata/netdataconfig:/etc/netdata:rw'
       - '${APPFOLDER}/netdata/netdatalib:/var/lib/netdata:rw'
@@ -41,5 +43,8 @@ services:
       - 'traefik.http.services.netdata-svc.loadbalancer.server.port=19999'
 networks:
   proxy:
+    driver: bridge
+    external: true
+  proxy-basic:
     driver: bridge
     external: true
