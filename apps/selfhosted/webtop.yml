@@ -16,6 +16,7 @@ services:
     shm_size: '${WEBTOP_SHM_SIZE}'
     networks:
       - proxy
+      - socket-proxy
     ports:
       - '${PORTBLOCK}:3000:3000'
     volumes:
@@ -33,5 +34,8 @@ services:
       - 'traefik.http.services.webtop-svc.loadbalancer.server.port=3000'
 networks:
   proxy:
+    driver: bridge
+    external: true
+  socket-proxy:
     driver: bridge
     external: true

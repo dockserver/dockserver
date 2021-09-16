@@ -24,8 +24,8 @@ services:
     security_opt:
       - 'no-new-privileges:true'
     networks:
-      - proxy-basic
+      - socket-proxy
 networks:
-  proxy-basic:
+  socket-proxy:
     driver: bridge
     external: true

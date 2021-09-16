@@ -15,6 +15,7 @@ services:
       - 'DOCKER_HOST=tcp://socket-proxy:2375'
     networks:
       - proxy
+      - socket-proxy
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'
@@ -28,5 +29,8 @@ services:
       - 'traefik.http.services.glances-svc.loadbalancer.server.port=61208'
 networks:
   proxy:
+    driver: bridge
+    external: true
+  socket-proxy:
     driver: bridge
     external: true

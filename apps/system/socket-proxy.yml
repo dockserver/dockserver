@@ -41,7 +41,7 @@ services:
       - 'CONTAINERS_DELETE=1' # Dockupdater
       - 'IMAGES_DELETE=1' # Dockupdater
     networks:
-      - proxy-basic
+      - socket-proxy
     security_opt:
       - 'no-new-privileges:true'
     labels:
@@ -53,6 +53,6 @@ services:
       retries: '3'
       start_period: '20s'
 networks:
-  proxy-basic:
+  socket-proxy:
     driver: bridge
     external: true

@@ -16,6 +16,7 @@ services:
       - '${PORTBLOCK}:9999:8080'
     networks:
       - proxy
+      - socket-proxy
     security_opt:
       - 'no-new-privileges:true'
     labels:
@@ -31,5 +32,8 @@ services:
       - 'traefik.http.services.dozzle-svc.loadbalancer.server.port=8080'
 networks:
   proxy:
+    driver: bridge
+    external: true
+  socket-proxy:
     driver: bridge
     external: true

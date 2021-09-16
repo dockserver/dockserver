@@ -16,6 +16,7 @@ services:
     ports:
       - '${PORTBLOCK}:8000:8000'
     networks:
+            socket-proxy:
             proxy:
                 ipv4_address: 172.18.0.138
     security_opt:
@@ -37,6 +38,9 @@ services:
       - 'traefik.http.services.cloud9-svc.loadbalancer.server.port=8000'
 networks:
   proxy:
+    driver: bridge
+    external: true
+  socket-proxy:
     driver: bridge
     external: true
 volumes:

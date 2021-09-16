@@ -8,7 +8,7 @@ services:
     image: 'netdata/netdata:latest'
     networks:
       - proxy
-      - proxy-basic
+      - socket-proxy
     ports:
       - '${PORTBLOCK}:19999:19999'
     cap_add:
@@ -45,6 +45,6 @@ networks:
   proxy:
     driver: bridge
     external: true
-  proxy-basic:
+  socket-proxy:
     driver: bridge
     external: true

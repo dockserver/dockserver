@@ -8,6 +8,7 @@ services:
     restart: '${RESTARTAPP}'
     networks:
       - proxy
+      - socket-proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
@@ -27,5 +28,8 @@ services:
       - 'traefik.http.routers.frontend.tls.certresolver=dns-cloudflare'
 networks:
   proxy:
+    driver: bridge
+    external: true
+  socket-proxy:
     driver: bridge
     external: true
