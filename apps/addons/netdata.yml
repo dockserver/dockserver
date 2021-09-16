@@ -17,17 +17,17 @@ services:
     environment:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=${UMASK}'
     volumes:
-      - 'netdataconfig:/etc/netdata'
-      - 'netdatalib:/var/lib/netdata'
-      - 'netdatacache:/var/cache/netdata'
+      - '${APPFOLDER}/netdata/netdataconfig:/etc/netdata:rw'
+      - '${APPFOLDER}/netdata/netdatalib:/var/lib/netdata:rw'
+      - '${APPFOLDER}/netdata/netdatacache:/var/cache/netdata:rw'
       - '/etc/passwd:/host/etc/passwd:ro'
       - '/etc/group:/host/etc/group:ro'
       - '/proc:/host/proc:ro'
       - '/sys:/host/sys:ro'
       - '/etc/os-release:/host/etc/os-release:ro'
-      - '${APPFOLDER}/netdata/health.d:/etc/netdata/health.d:rw'
-      - '${APPFOLDER}/netdata/netdata.conf:/etc/netdata/netdata.conf:rw'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'
@@ -39,10 +39,6 @@ services:
       - 'traefik.http.routers.netdata-rtr.middlewares=chain-authelia@file'
       - 'traefik.http.routers.netdata-rtr.service=netdata-svc'
       - 'traefik.http.services.netdata-svc.loadbalancer.server.port=19999'
-volumes:
-  netdataconfig:
-  netdatalib:
-  netdatacache:
 networks:
   proxy:
     driver: bridge
