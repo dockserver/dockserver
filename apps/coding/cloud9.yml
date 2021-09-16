@@ -10,6 +10,7 @@ services:
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
       - 'GITURL=https://github.com/linuxserver/docker-cloud9.git'
+      - 'DOCKER_HOST=tcp://socket-proxy:2375'
     image: 'ghcr.io/linuxserver/cloud9'
     restart: '${RESTARTAPP}'
     ports:
@@ -23,7 +24,6 @@ services:
       - '${APPFOLDER}/cloud9:/config:rw'
       - 'unionfs:/mnt'
       - '${APPFOLDER}/cloud9/code:/code'
-      - '/var/run/docker.sock:/var/run/docker.sock:ro'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'
