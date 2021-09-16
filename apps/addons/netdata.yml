@@ -5,7 +5,7 @@ services:
     container_name: 'netdata'
     hostname: 'netdata'
     restart: '${RESTARTAPP}'
-    image: 'netdata/netdata'
+    image: 'netdata/netdata:latest'
     networks:
       - proxy
       - proxy-basic
