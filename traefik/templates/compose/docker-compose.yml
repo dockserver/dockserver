@@ -41,7 +41,7 @@ services:
       - 'CONTAINERS_DELETE=1' # Dockupdater
       - 'IMAGES_DELETE=1' # Dockupdater
     networks:
-      - proxy-basic
+      - socket-proxy
     security_opt:
       - 'no-new-privileges:true'
     labels:
@@ -93,6 +93,7 @@ services:
     depends_on:
       - socket-proxy
     networks:
+            socket-proxy:
             proxy:
                 ipv4_address: 172.18.0.254
     security_opt:
@@ -142,7 +143,7 @@ services:
     depends_on:
       - traefik
     networks:
-            proxy-basic:
+            socket-proxy:
             proxy:
                 ipv4_address: 172.18.0.252
     security_opt:
@@ -217,6 +218,6 @@ networks:
   proxy:
     driver: bridge
     external: true
-  proxy-basic:
+  socket-proxy:
     driver: bridge
     external: true
