@@ -11,6 +11,7 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
+      - 'DOCKER_HOST=tcp://socket-proxy:2375'
     restart: '${RESTARTAPP}'
     shm_size: '${WEBTOP_SHM_SIZE}'
     networks:
@@ -19,7 +20,6 @@ services:
       - '${PORTBLOCK}:3000:3000'
     volumes:
       - '${APPFOLDER}/webtop:/config'
-      - '/var/run/docker.sock:/var/run/docker.sock:ro'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'
