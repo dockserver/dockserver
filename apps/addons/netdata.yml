@@ -20,7 +20,7 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-      - 'DOCKER_HOST=socket-proxy:2375'
+      - 'DOCKER_HOST=tcp://socket-proxy:2375'
     volumes:
       - '${APPFOLDER}/netdata/netdataconfig:/etc/netdata:rw'
       - '${APPFOLDER}/netdata/netdatalib:/var/lib/netdata:rw'
