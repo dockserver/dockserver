@@ -783,7 +783,7 @@ EOF
          source $basefolder/compose/.env
          authrmapp=$(cat -An $conf | grep -x ${typed}.${DOMAIN})
          authrmapp2=$(echo "$(${authrmapp} + 1)" | bc)
-         if [[ $authrmapp != "" ]]; then sed -i '${authrmapp};${authrmapp2}d' $conf; fi
+         if [[ $authrmapp != "" ]]; then sed -i "${authrmapp};${authrmapp2}d" $conf; fi
          $($(command -v docker) ps -aq --format '{{.Names}}' | grep -x authelia 1>/dev/null 2>&1)
          newcode=$?
          if [[ $newcode -eq 0 ]]; then $(command -v docker) restart authelia; fi
