@@ -74,14 +74,14 @@ sudo wget -qO- https://git.io/J3GDc | sudo bash
 ## Latest Changes 🎉
 
 <!--START_SECTION:activity-->
-1. 🗣 Commented on [#203](https://github.com/dockserver/dockserver/issues/203) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-2. 🗣 Commented on [#203](https://github.com/dockserver/dockserver/issues/203) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+1. 💪 Opened PR [#220](https://github.com/dockserver/dockserver/pull/220) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+2. 💪 Opened PR [#219](https://github.com/dockserver/dockserver/pull/219) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 3. 🗣 Commented on [#203](https://github.com/dockserver/dockserver/issues/203) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 4. 🗣 Commented on [#203](https://github.com/dockserver/dockserver/issues/203) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 5. 🗣 Commented on [#203](https://github.com/dockserver/dockserver/issues/203) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-6. 🎉 Merged PR [#218](https://github.com/dockserver/dockserver/pull/218) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-7. 💪 Opened PR [#218](https://github.com/dockserver/dockserver/pull/218) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-8. 🗣 Commented on [#203](https://github.com/dockserver/dockserver/issues/203) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+6. 🗣 Commented on [#203](https://github.com/dockserver/dockserver/issues/203) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+7. 🗣 Commented on [#203](https://github.com/dockserver/dockserver/issues/203) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+8. 🎉 Merged PR [#218](https://github.com/dockserver/dockserver/pull/218) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 9. 🗣 Commented on [#217](https://github.com/dockserver/dockserver/issues/217) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 10. 💪 Opened PR [#217](https://github.com/dockserver/dockserver/pull/217) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 10. 🗣 Commented on [#15](https://github.com/dockserver/dockserver/issues/15) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
