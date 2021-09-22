@@ -12,7 +12,7 @@ services:
     image: 'ghcr.io/roxedus/conreq:latest'
     restart: '${RESTARTAPP}'
     ports:
-      - '${PORTBLOCK}:8071:8071'
+      - '${PORTBLOCK}:8071:8000'
     networks:
       - proxy
     security_opt:
@@ -30,7 +30,7 @@ services:
       - 'traefik.http.routers.conreq-rtr.tls.certresolver=dns-cloudflare'
       - 'traefik.http.routers.conreq-rtr.middlewares=chain-authelia@file'
       - 'traefik.http.routers.conreq-rtr.service=conreq-svc'
-      - 'traefik.http.services.conreq-svc.loadbalancer.server.port=8071'
+      - 'traefik.http.services.conreq-svc.loadbalancer.server.port=8000'
 networks:
   proxy:
     driver: bridge
