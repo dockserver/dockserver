@@ -20,9 +20,9 @@ services:
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'      
     volumes:
-      - '${APPFOLDER}/netdataconfig:/etc/netdata'
-      - '${APPFOLDER}/netdatalib:/var/lib/netdata'
-      - '${APPFOLDER}/netdatacache:/var/cache/netdata'
+      - 'netdataconfig:/etc/netdata'
+      - 'netdatalib:/var/lib/netdata'
+      - 'netdatacache:/var/cache/netdata'
       - '/etc/passwd:/host/etc/passwd:ro'
       - '/etc/group:/host/etc/group:ro'
       - '/proc:/host/proc:ro'
@@ -39,6 +39,10 @@ services:
       - 'traefik.http.routers.netdata-rtr.middlewares=chain-authelia@file'
       - 'traefik.http.routers.netdata-rtr.service=netdata-svc'
       - 'traefik.http.services.netdata-svc.loadbalancer.server.port=19999'
+volumes:
+  netdataconfig:
+  netdatalib:
+  netdatacache:      
 networks:
   proxy:
     driver: bridge
