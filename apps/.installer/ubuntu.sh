@@ -406,7 +406,7 @@ EOF
   if [[ ${section} == "mediaserver" || ${section} == "encoder" ]];then
      gpu="Intel NVIDIA"
      for i in ${gpu};do
-        TDV=$(lspci | grep -i --color 'vga\|3d\|2d' | grep -E $i 1>/dev/null 2>&1 && echo true || echo false)
+        TDV=$(lspci | grep -i --color 'vga\|display\|3d\|2d' | grep -E $i 1>/dev/null 2>&1 && echo true || echo false)
         if [[ $TDV == "true" ]];then $(command -v rsync) $appfolder/${section}/.gpu/$i.yml $basefolder/$composeoverwrite -aqhv;fi
      done
      if [[ -f $basefolder/$composeoverwrite ]];then
