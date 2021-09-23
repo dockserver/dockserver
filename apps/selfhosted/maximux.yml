@@ -12,7 +12,7 @@ services:
     image: 'ghcr.io/linuxserver/muximux'
     restart: '${RESTARTAPP}'
     ports:
-      - '${PORTBLOCK}:8010:80'
+      - '${PORTBLOCK}:8015:80'
     networks:
       - proxy
     volumes:
