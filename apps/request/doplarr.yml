@@ -1,0 +1,48 @@
+---
+version: '3'
+services:
+  doplarr:
+    hostname: 'doplarr'
+    container_name: 'doplarr'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=${UMASK}'
+      - 'SONARR_URL=${DROPLARR_SONARR_URL}'
+      - 'RADARR_URL=${DROPLARR_RADARR_URL}'
+      - 'SONARR_API=${DROPLARR_SONARR_API}'
+      - 'RADARR_API=${DROPLARR_RADARR_API}'
+      - 'BOT_TOKEN=${DROPLARR_BOT_TOKEN}'
+      - 'ROLE_ID=${DROPLARR_ROLE_ID}'
+    image: 'ghcr.io/kiranshila/doplarr:latest'
+    restart: '${RESTARTAPP}'
+    ports:
+      - '${PORTBLOCK}:8000:8071'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '${APPFOLDER}/doplarr:/config:rw'
+      - 'unionfs:/mnt'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.doplarr-rtr.entrypoints=https'
+      - 'traefik.http.routers.doplarr-rtr.rule=Host(`doplarr.${DOMAIN}`)'
+      - 'traefik.http.routers.doplarr-rtr.tls=true'
+      - 'traefik.http.routers.doplarr-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.doplarr-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.doplarr-rtr.service=doplarr-svc'
+      - 'traefik.http.services.doplarr-svc.loadbalancer.server.port=8000'
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt
