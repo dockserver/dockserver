@@ -164,6 +164,13 @@
         attribute: allowLocalhostOnly
         value: '0'
       when: plex_prefs.stat.exists
+    - name: 'Add Generate BIFF Interval'
+      xml:
+        path: '/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Preferences.xml'
+        xpath: /Preferences
+        attribute: GenerateBIFFrameInterval
+        value: '10'
+      when: plex_prefs.stat.exists
 
     - name: 'Check /dev/dri exists'
       stat:
