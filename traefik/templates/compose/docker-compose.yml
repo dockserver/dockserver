@@ -120,7 +120,7 @@ services:
       - 'traefik.http.routers.traefik-rtr.service=api@internal'
       - 'traefik.http.routers.traefik-rtr.middlewares=chain-authelia@file'
   cloudflared:
-    image: 'cloudflare/cloudflared:2021.8.7-amd64'
+    image: 'cloudflare/cloudflared:2021.9.1-amd64'
     hostname: 'cloudflared'
     container_name: 'cloudflared'
     command: "'tunnel' 'run' '${CLOUDFLARED_UUID}'"
