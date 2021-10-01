@@ -22,9 +22,9 @@ EOF
 exit 0
 fi
 while true; do
-  if [[ ! -x $(command -v docker) ]];then exit;fi
-  if [[ ! -x $(command -v docker-compose) ]];then exit;fi
-  headinterface
+      if [[ ! $(which docker) ]]; then exit; fi
+      if [[ $(which docker-compose) ]]; then updatecompose; fi
+      headinterface
 done
 }
 headinterface() {
@@ -39,7 +39,6 @@ tee <<-EOF
     [ 2 ] TDRIVE                    ( ALPHA LEVEL )
     [ 3 ] GCRYPT                    ( not done yet )
     [ 4 ] TCRYPT                    ( ALPHA LEVEL )
-    [ 5 ] RCLONE UNION              ( not done yet )
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     [ EXIT or Z ] - Exit || [ help or HELP ] - Help
@@ -51,8 +50,6 @@ EOF
     2) clear && LOCATION=tdrive && selection ;;
     3) clear && LOCATION=gcrypt && selection ;;
     4) clear && LOCATION=tcrypt && selection ;;
-    5) clear && LOCATION=union && selection ;;
-    #help|HELP|Help) clear && sectionhelplayout ;;
     Z|z|exit|EXIT|Exit|close) exit ;;
     *) appstartup ;;
   esac
@@ -68,6 +65,14 @@ case $(. /etc/os-release && echo "$ID") in
     *)          type='' ;;
 esac
 if [[ -f ./.installer/${LOCATION}/$type.${LOCATION}.sh ]];then bash ./.installer/${LOCATION}/$type.${LOCATION}.sh;fi
+}
+updatecompose() {
+   if [[ $(which docker-compose) ]]; then
+      rm -f /usr/local/bin/docker-compose /usr/bin/docker-compose
+      curl -fL https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh 1>/dev/null 2>&1
+   else
+      curl -fL https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh 1>/dev/null 2>&1
+   fi
 }
 ##
 appstartup
