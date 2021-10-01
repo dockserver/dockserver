@@ -25,8 +25,8 @@ EOF
       exit 0
    fi
    while true; do
-      if [[ ! -x $(command -v docker) ]]; then exit; fi
-      if [[ ! -x $(command -v docker-compose) ]]; then exit; fi
+      if [[ ! $(which docker) ]]; then exit; fi
+      if [[ $(which docker-compose) ]]; then updatecompose; fi
       headinterface
    done
 }
@@ -799,7 +799,7 @@ EOF
    fi
 }
 updatecompose() {
-   if [[ -x $(command -v docker-compose) ]]; then
+   if [[ $(which docker-compose) ]]; then
       rm -f /usr/local/bin/docker-compose /usr/bin/docker-compose
       curl -fL https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh 1>/dev/null 2>&1
    else
