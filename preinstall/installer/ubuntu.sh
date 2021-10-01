@@ -108,7 +108,7 @@ EOF
      networkcheck=$($(command -v docker) network ls | grep -qE 'socket-proxy' && echo true || echo false)
   if [[ $networkcheck == "false" ]];then $(command -v docker) network create --driver=bridge socket-proxy 1>/dev/null 2>&1;fi  
   if [[ ! -x $(command -v rsync) ]];then $(command -v apt) install --reinstall rsync -yqq 1>/dev/null 2>&1;fi
-  if [ ! -x $(command -v docker-compose) ] || [ -x $(command -v docker-compose) ];then
+  if [ ! -x $(command -v docker compose) ] || [ -x $(command -v docker compose) ];then
      curl -fL https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh
   fi
      dailyapt=$($(command -v systemctl) is-active apt-daily | grep -qE 'active' && echo true || echo false)
