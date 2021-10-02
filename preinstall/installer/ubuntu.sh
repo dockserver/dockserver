@@ -108,7 +108,6 @@ EOF
      networkcheck=$($(command -v docker) network ls | grep -qE 'socket-proxy' && echo true || echo false)
   if [[ $networkcheck == "false" ]];then $(command -v docker) network create --driver=bridge socket-proxy 1>/dev/null 2>&1;fi  
   if [[ ! -x $(command -v rsync) ]];then $(command -v apt) install --reinstall rsync -yqq 1>/dev/null 2>&1;fi
-  if [ `docker compose version` == "" ] || [ `docker compose version` != "" ]; then 
      COMPOSE_VERSION=$($(command -v curl) --silent -fsSL https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)
      ARCH=$(command arch)
      DIST="$(uname -s)"
@@ -119,11 +118,18 @@ EOF
      else
         echo "**** Unsupported Linux architecture ${ARCH} found, exiting... ****" && sleep 30 && exit 1
      fi
-     if [[ -f ~/.docker/cli-plugins/docker-compose ]]; then rm -f ~/.docker/cli-plugins/docker-compose;fi
-     mkdir -p ~/.docker/cli-plugins/
-     curl --silent -SL https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-linux-${ARCH} -o ~/.docker/cli-plugins/docker-compose 
-     chmod +x ~/.docker/cli-plugins/docker-compose
-  fi
+     if [[ $(which docker-compose) ]]; then
+        rm -f /usr/local/bin/docker-compose /usr/bin/docker-compose
+        curl --silent -fL https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh
+     else
+        DCTEST=$(docker compose version| awk $'{print $4}')
+        if [ ${DCTEST} == "" ] || [ ${DCTEST} != "" ]; then 
+           if [[ -f ~/.docker/cli-plugins/docker-compose ]]; then rm -f ~/.docker/cli-plugins/docker-compose;fi
+           mkdir -p ~/.docker/cli-plugins/
+           curl --silent -SL https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-linux-${ARCH} -o ~/.docker/cli-plugins/docker-compose 
+          chmod +x ~/.docker/cli-plugins/docker-compose
+        fi
+     fi
      dailyapt=$($(command -v systemctl) is-active apt-daily | grep -qE 'active' && echo true || echo false)
      dailyupg=$($(command -v systemctl) is-active apt-daily-upgrade | grep -qE 'active' && echo true || echo false)
   if [[ $dailyapt == "true" || $dailyupg == "true" ]];then
