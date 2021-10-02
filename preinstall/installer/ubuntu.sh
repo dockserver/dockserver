@@ -222,7 +222,7 @@ for i in ${delproxy};do
 done
 }
 oldsinstall() {
-  oldsolutions="plexguide cloudbox gooby sudobox sbox"
+  oldsolutions="plexguide cloudbox gooby sudobox sbox salty"
   for i in ${oldsolutions};do
       folders="/var/ /opt/ /home/ /srv/"
       for ii in ${folders};do
