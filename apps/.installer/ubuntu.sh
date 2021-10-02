@@ -26,7 +26,7 @@ EOF
    fi
    while true; do
       if [[ ! $(which docker) ]]; then exit; fi
-      if [[ $(which docker compose) ]]; then updatecompose; fi
+      if [[ $(which docker-compose) ]]; then updatecompose; fi
       headinterface
    done
 }
