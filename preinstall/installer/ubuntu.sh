@@ -109,10 +109,20 @@ EOF
   if [[ $networkcheck == "false" ]];then $(command -v docker) network create --driver=bridge socket-proxy 1>/dev/null 2>&1;fi  
   if [[ ! -x $(command -v rsync) ]];then $(command -v apt) install --reinstall rsync -yqq 1>/dev/null 2>&1;fi
   if [ ! -x $(command -v docker compose) ] || [ -x $(command -v docker compose) ];then
-     COMPOSE_VERSION=$($(command -v curl) --silent -fsSL https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)    
+     COMPOSE_VERSION=$($(command -v curl) --silent -fsSL https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)
+     ARCH=$(command arch)
+     DIST="$(uname -s)"
+     if [ "${DIST}" = "Linux" ]; then 
+        DIST="linux"
+     elif [ "${DIST}" = "Darwin" ]; then 
+        DIST="darwin" 
+     else
+        echo "**** Unsupported Linux architecture ${ARCH} found, exiting... ****" && sleep 30 && exit 1
+     fi
+     if [[ -f ~/.docker/cli-plugins/docker-compose ]]; then rm -f ~/.docker/cli-plugins/docker-compose;fi
      mkdir -p ~/.docker/cli-plugins/
-     curl --silent -SL https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-linux-amd64 -o ~/.docker/cli-plugins/docker-compose 
-     chmod +x ~/.docker/cli-plugins/docker-compose 
+     curl --silent -SL https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-linux-${ARCH} -o ~/.docker/cli-plugins/docker-compose 
+     chmod +x ~/.docker/cli-plugins/docker-compose
   fi
      dailyapt=$($(command -v systemctl) is-active apt-daily | grep -qE 'active' && echo true || echo false)
      dailyupg=$($(command -v systemctl) is-active apt-daily-upgrade | grep -qE 'active' && echo true || echo false)
