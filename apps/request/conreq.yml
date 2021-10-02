@@ -12,7 +12,7 @@ services:
     image: 'ghcr.io/roxedus/conreq:latest'
     restart: '${RESTARTAPP}'
     ports:
-      - '${PORTBLOCK}:8000:8071'
+      - '${PORTBLOCK}:8071:8000'
     networks:
       - proxy
     security_opt:

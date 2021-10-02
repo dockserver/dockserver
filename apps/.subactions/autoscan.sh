@@ -102,21 +102,23 @@ echo "\
 
 targets:" >> $basefolder/${typed}/config.yml
 plex=$(docker ps -aq --format={{.Names}} | grep -E 'plex' 1>/dev/null 2>&1 && echo true || echo false)
-prun=$(docker ps -aq --format={{.Names}} | grep 'plex')
-token=$(cat "/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Preferences.xml" | sed -e 's;^.* PlexOnlineToken=";;' | sed -e 's;".*$;;' | tail -1)
-if [[ $token == "" ]];then
-   token=youneedtoreplacethemselfnow
-fi
-if [[ $plex == "true" ]];then
-   for i in ${prun};do
-echo "\
+prun=$(docker ps -aq --format={{.Names}} | grep -E 'plex')
+if [[ -d "/opt/appdata/plex/" && $plex == "true" ]]; then
+   token=$(cat "/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Preferences.xml" | sed -e 's;^.* PlexOnlineToken=";;' | sed -e 's;".*$;;' | tail -1)
+   if [[ $token == "" ]];then
+      token=youneedtoreplacethemselfnow
+   fi
+   if [[ $plex == "true" ]];then
+      for i in ${prun};do
+   echo "\
   $i:
     - url: http://$i:32400
       token: $token" >> $basefolder/${typed}/config.yml
-   done
+     done
+   fi
 fi
 emby=$(docker ps -aq --format={{.Names}} | grep -E 'emby' 1>/dev/null 2>&1 && echo true || echo false)
-erun=$(docker ps -aq --format={{.Names}} | grep 'emby')
+erun=$(docker ps -aq --format={{.Names}} | grep -E 'emby')
 token=youneedtoreplacethemselfnow
 if [[ $emby == "true" ]];then
    for i in ${erun};do
@@ -127,7 +129,7 @@ echo "\
    done
 fi
 jelly=$(docker ps -aq --format={{.Names}} | grep -E 'jelly' 1>/dev/null 2>&1 && echo true || echo false)
-jrun=$(docker ps -aq --format={{.Names}} | grep 'jelly')
+jrun=$(docker ps -aq --format={{.Names}} | grep -E 'jelly')
 token=youneedtoreplacethemselfnow
 if [[ $jelly == "true" ]];then
    for i in ${jrun};do
