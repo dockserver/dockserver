@@ -23,7 +23,7 @@ exit 0
 fi
 while true; do
   if [[ ! -x $(command -v docker) ]];then exit;fi
-  if [[ ! -x $(command -v docker-compose) ]];then exit;fi
+  if [[ ! -x $(which docker compose) ]];then exit;fi
   headinterface
 done
 }

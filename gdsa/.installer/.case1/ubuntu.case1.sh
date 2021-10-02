@@ -285,7 +285,7 @@ if [[ ${uploader} == ${typed} ]];then
       $(command -v rsync) $appfolder/${section}/compose/${typed}.yml $basefolder/$compose -aqhv
    if [[ -f $basefolder/$compose ]];then
        $(command -v cd) $basefolder/compose/
-       $(command -v docker-compose) config 1>/dev/null 2>&1
+       $(which docker compose) config 1>/dev/null 2>&1
        errorcode=$?
        if [[ $errorcode -ne 0 ]];then
   tee <<-EOF
@@ -298,7 +298,7 @@ EOF
   read -erp "Confirm Info | PRESS [ENTER]" typed </dev/tty
   clear && interface
      else
-       composer=$(command -v docker-compose)
+       composer=$(which docker compose)
        for i in ${composer};do
           $i down ${typed} 1>/dev/null 2>&1
           $i rm ${typed} 1>/dev/null 2>&1

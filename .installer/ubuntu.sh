@@ -25,12 +25,12 @@ exit 0
 fi
 while true;do
   $(command -v apt) update -yqq && $(command -v apt) upgrade -yqq
-  if [[ ! -x $(command -v docker) ]] && [[ ! -x $(command -v docker-compose) ]];then clear && LOCATION=preinstall && selection;fi
+  if [[ ! -x $(command -v docker) ]] && [[ ! -x $(which docker compose) ]];then clear && LOCATION=preinstall && selection;fi
   if [[ $(which docker) ]] && [[ $(which docker compose) ]];then clear && headinterface;fi
 done
 }
 updatecompose() {
-   if [[ $(which docker-compose) ]]; then
+   if [[ $(which docker compose) ]]; then
       rm -f /usr/local/bin/docker-compose /usr/bin/docker-compose
       curl -fL https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh 1>/dev/null 2>&1
    fi

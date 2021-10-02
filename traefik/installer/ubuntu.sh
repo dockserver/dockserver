@@ -353,7 +353,7 @@ serverip
 ccont
 $(command -v cd) $basefolder/compose/
 if [[ -f $basefolder/$compose ]];then
-   $(command -v docker-compose) config 1>/dev/null 2>&1
+   $(which docker compose) config 1>/dev/null 2>&1
    code=$?
    if [[ $code -ne 0 ]];then
 tee <<-EOF
@@ -366,7 +366,7 @@ EOF
    fi
 fi
 if [[ -f $basefolder/$compose ]];then
-   $(command -v docker-compose) pull 1>/dev/null 2>&1
+   $(which docker compose) pull 1>/dev/null 2>&1
    code=$?
    if [[ $code -ne 0 ]];then
 tee <<-EOF
@@ -379,7 +379,7 @@ EOF
    fi
 fi
 if [[ -f $basefolder/$compose ]];then
-   $(command -v docker-compose) up -d --force-recreate 1>/dev/null 2>&1
+   $(which docker compose) up -d --force-recreate 1>/dev/null 2>&1
    source $basefolder/compose/.env
    tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

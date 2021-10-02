@@ -26,7 +26,7 @@ EOF
    fi
    while true; do
       if [[ ! $(which docker) ]]; then exit; fi
-      if [[ $(which docker-compose) ]]; then updatecompose; fi
+      if [[ $(which docker compose) ]]; then updatecompose; fi
       headinterface
    done
 }
@@ -521,7 +521,7 @@ EOF
    if [[ ${typed} == "tdarr" ]]; then $(command -v mkdir) -p $basefolder/${typed}/{server,configs,logs,encoders} && $(command -v chown) -hR 1000:1000 $basefolder/${typed}/{server,configs,logs} 1>/dev/null 2>&1; fi
    if [[ -f $basefolder/$compose ]]; then
       $(command -v cd) $basefolder/compose/
-      $(command -v docker-compose) config 1>/dev/null 2>&1
+      $(which docker compose) config 1>/dev/null 2>&1
       errorcode=$?
       if [[ $errorcode -ne 0 ]]; then
          tee <<-EOF
@@ -534,7 +534,7 @@ EOF
          read -erp "Confirm Info | PRESS [ENTER]" typed </dev/tty
          clear && interface
       else
-         composer=$(command -v docker-compose)
+         composer=$(which docker compose)
          for i in ${composer}; do
             $i up -d --force-recreate 1>/dev/null 2>&1
          done
@@ -799,7 +799,7 @@ EOF
    fi
 }
 updatecompose() {
-   if [[ $(which docker-compose) ]]; then
+   if [[ $(which docker compose) ]]; then
       rm -f /usr/local/bin/docker-compose /usr/bin/docker-compose
       curl -fL https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh 1>/dev/null 2>&1
    else

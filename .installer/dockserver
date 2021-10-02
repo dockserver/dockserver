@@ -39,10 +39,10 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
        $(command -v rsync) ${dockserver}/dockserver/docker.yml $basefolder/$compose -aqhv;fi
        if [[ -f $basefolder/$compose ]];then
           $(command -v cd) $basefolder/compose/
-          $(command -v docker-compose) config 1>/dev/null 2>&1
+          $(which docker compose) config 1>/dev/null 2>&1
           errorcode=$?
           if [[ $errorcode -eq 0 ]];then
-             $(command -v docker-compose) up -d --force-recreate 1>/dev/null 2>&1
+             $(which docker compose) up -d --force-recreate 1>/dev/null 2>&1
           fi
     fi
     ##$(command -v rm) -rf ${dockserver} && git clone --quiet https://github.com/dockserver/dockserver.git ${dockserver}

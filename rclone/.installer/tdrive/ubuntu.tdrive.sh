@@ -24,7 +24,7 @@ fi
 while true; do
 basefolder="/opt/appdata"
   if [[ ! -x $(command -v docker) ]];then exit;fi
-  if [[ ! -x $(command -v docker-compose) ]];then exit;fi
+  if [[ ! -x $(which docker compose) ]];then exit;fi
   if [[ -f "$basefolder/system/rclone/.env" ]];then $(command -v rm) -rf $basefolder/system/rclone/.env;fi
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
