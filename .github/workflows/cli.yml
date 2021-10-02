@@ -16,7 +16,8 @@ jobs:
     if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/master' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
       - uses: andstor/copycat-action@v3
         with:
           personal_token: ${{ secrets.CR_PAT }}
@@ -26,7 +27,7 @@ jobs:
           dst_repo_name: dockserver
           dst_branch: master
           src_branch: master
-          username: nutsbot
+          clean: true
 
   GHRC:
     needs: copy
