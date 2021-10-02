@@ -810,7 +810,8 @@ updatecompose() {
       rm -f /usr/local/bin/docker-compose /usr/bin/docker-compose
       curl --silent -fL https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh
    else
-     if [ `docker compose version` == "" ] || [ `docker compose version` != "" ]; then 
+     DCTEST=$(docker compose version| awk $'{print $4}')
+     if [ ${DCTEST} == "" ] || [ ${DCTEST} != "" ]; then 
         if [[ -f ~/.docker/cli-plugins/docker-compose ]]; then rm -f ~/.docker/cli-plugins/docker-compose;fi
         mkdir -p ~/.docker/cli-plugins/
         curl --silent -SL https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-linux-${ARCH} -o ~/.docker/cli-plugins/docker-compose 
