@@ -108,7 +108,7 @@ EOF
      networkcheck=$($(command -v docker) network ls | grep -qE 'socket-proxy' && echo true || echo false)
   if [[ $networkcheck == "false" ]];then $(command -v docker) network create --driver=bridge socket-proxy 1>/dev/null 2>&1;fi  
   if [[ ! -x $(command -v rsync) ]];then $(command -v apt) install --reinstall rsync -yqq 1>/dev/null 2>&1;fi
-  if [ ! -x $(command -v docker compose) ] || [ -x $(command -v docker compose) ];then
+  if [ ! -x docker compose ] || [ -x docker compose ];then
      COMPOSE_VERSION=$($(command -v curl) --silent -fsSL https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)
      ARCH=$(command arch)
      DIST="$(uname -s)"

@@ -42,7 +42,7 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
           docker compose config 1>/dev/null 2>&1
           errorcode=$?
           if [[ $errorcode -eq 0 ]];then
-             $(which docker compose) up -d --force-recreate 1>/dev/null 2>&1
+             docker compose up -d --force-recreate 1>/dev/null 2>&1
           fi
     fi
     ##$(command -v rm) -rf ${dockserver} && git clone --quiet https://github.com/dockserver/dockserver.git ${dockserver}

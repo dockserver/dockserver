@@ -379,7 +379,7 @@ EOF
    fi
 fi
 if [[ -f $basefolder/$compose ]];then
-   $(which docker compose) up -d --force-recreate 1>/dev/null 2>&1
+   docker compose up -d --force-recreate 1>/dev/null 2>&1
    source $basefolder/compose/.env
    tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
