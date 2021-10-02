@@ -11,6 +11,14 @@
       {
         "title": "## 🧪 Tests",
         "labels": ["test"]
+      },
+      {
+        "title": "## 🚀 PiP-Update",
+        "labels": ["pip"]
+      },
+      {
+        "title": "## 🚀 GitHub updates",
+        "labels": ["GH updates"]
       }
     ],
     "ignore_labels": [
@@ -19,7 +27,7 @@
     "sort": "ASC",
     "template": "${{CHANGELOG}}\n\n<details>\n<summary>Uncategorized</summary>\n\n${{UNCATEGORIZED}}\n</details>",
     "pr_template": "- ${{TITLE}}\n   - PR: #${{NUMBER}}",
-    "empty_template": "- no changes",
+    "empty_template": "other changes",
     "label_extractor": [
       {
         "pattern": "(.) (.+)",
