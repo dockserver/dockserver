@@ -25,8 +25,11 @@ exit 0
 fi
 while true;do
   $(command -v apt) update -yqq && $(command -v apt) upgrade -yqq
-  if [[ ! -x $(command -v docker) ]] && [[ ! -x $(which docker compose) ]];then clear && LOCATION=preinstall && selection;fi
-  if [[ $(which docker) ]] && [[ `docker compose version` != "" ]];then clear && headinterface;fi
+  if [[ ! -x $(command -v docker) ]] && [[ ! -f ~/.docker/cli-plugins/docker-compose ]];then 
+     clear && LOCATION=preinstall && selection
+  else
+     clear && headinterface
+  fi
 done
 }
 updatecompose() {
