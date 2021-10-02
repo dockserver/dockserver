@@ -30,15 +30,24 @@ while true;do
 done
 }
 updatecompose() {
-   if [[ $(which docker compose) ]]; then
+   if [[ $(which docker-compose) ]]; then
       rm -f /usr/local/bin/docker-compose /usr/bin/docker-compose
       curl --silent -fL https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh
    else
-     COMPOSE_VERSION=$($(command -v curl) --silent -fsSL https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)    
-     mkdir -p ~/.docker/cli-plugins/
+     COMPOSE_VERSION=$($(command -v curl) --silent -fsSL https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)
+     ARCH=$(command arch)
+     DIST="$(uname -s)"
+     if [ "${DIST}" = "Linux" ]; then 
+        DIST="linux"
+     elif [ "${DIST}" = "Darwin" ]; then 
+        DIST="darwin" 
+     else
+        echo "**** Unsupported Linux architecture ${ARCH} found, exiting... ****" && sleep 30 && exit 1
+     fi
      if [[ -f ~/.docker/cli-plugins/docker-compose ]]; then rm -f ~/.docker/cli-plugins/docker-compose;fi
-        curl --silent -SL https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-linux-amd64 -o ~/.docker/cli-plugins/docker-compose 
-        chmod +x ~/.docker/cli-plugins/docker-compose
+     mkdir -p ~/.docker/cli-plugins/
+     curl --silent -SL https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-linux-${ARCH} -o ~/.docker/cli-plugins/docker-compose 
+     chmod +x ~/.docker/cli-plugins/docker-compose
    fi
 }
 updatebin() {
