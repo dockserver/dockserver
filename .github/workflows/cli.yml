@@ -10,7 +10,7 @@ on:
 
 jobs:
   GHRC:
-    if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/tags/*' }}
+    if: ${{ github.event_name != 'pull_request' }}
     name: Create Docker Image for wiki
     runs-on: ubuntu-latest
     steps:
