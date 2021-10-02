@@ -353,7 +353,7 @@ serverip
 ccont
 $(command -v cd) $basefolder/compose/
 if [[ -f $basefolder/$compose ]];then
-   $(which docker compose) config 1>/dev/null 2>&1
+   docker compose config 1>/dev/null 2>&1
    code=$?
    if [[ $code -ne 0 ]];then
 tee <<-EOF

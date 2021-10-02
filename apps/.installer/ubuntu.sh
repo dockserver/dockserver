@@ -521,7 +521,7 @@ EOF
    if [[ ${typed} == "tdarr" ]]; then $(command -v mkdir) -p $basefolder/${typed}/{server,configs,logs,encoders} && $(command -v chown) -hR 1000:1000 $basefolder/${typed}/{server,configs,logs} 1>/dev/null 2>&1; fi
    if [[ -f $basefolder/$compose ]]; then
       $(command -v cd) $basefolder/compose/
-      $(which docker compose) config 1>/dev/null 2>&1
+      docker compose config 1>/dev/null 2>&1
       errorcode=$?
       if [[ $errorcode -ne 0 ]]; then
          tee <<-EOF

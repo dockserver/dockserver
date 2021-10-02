@@ -39,7 +39,7 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
        $(command -v rsync) ${dockserver}/dockserver/docker.yml $basefolder/$compose -aqhv;fi
        if [[ -f $basefolder/$compose ]];then
           $(command -v cd) $basefolder/compose/
-          $(which docker compose) config 1>/dev/null 2>&1
+          docker compose config 1>/dev/null 2>&1
           errorcode=$?
           if [[ $errorcode -eq 0 ]];then
              $(which docker compose) up -d --force-recreate 1>/dev/null 2>&1
