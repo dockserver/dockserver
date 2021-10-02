@@ -803,7 +803,7 @@ updatecompose() {
       rm -f /usr/local/bin/docker-compose /usr/bin/docker-compose
       curl --silent --output /dev/null https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh
    else
-      curl -fL https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh 1>/dev/null 2>&1
+      curl --silent --output /dev/null https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh
    fi
 }
 ## migrator for the env
