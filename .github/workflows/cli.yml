@@ -34,7 +34,8 @@ jobs:
           echo ::set-output name=tags::${TAGS}
           echo ::set-output name=title::${GITHUB_REPOSITORY}
           echo ::set-output name=version::${VERSION}
-          echo ::set-output name=created::$(date -u +'%Y-%m-%dT%H:%M:%SZ')        uses: docker/setup-qemu-action@v1
+          echo ::set-output name=created::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+        uses: docker/setup-qemu-action@v1
         with:
           platforms: linux/amd64,linux/armhf,linux/arm64
       - name: Set up Docker Buildx
