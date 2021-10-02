@@ -801,9 +801,13 @@ EOF
 updatecompose() {
    if [[ $(which docker-compose) ]]; then
       rm -f /usr/local/bin/docker-compose /usr/bin/docker-compose
-      curl --silent --output /dev/null https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh
+      curl --silent -fL https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh
    else
-      curl --silent --output /dev/null https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh
+     COMPOSE_VERSION=$($(command -v curl) --silent -fsSL https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)    
+     mkdir -p ~/.docker/cli-plugins/
+     if [[ -f ~/.docker/cli-plugins/docker-compose ]]; then rm -f ~/.docker/cli-plugins/docker-compose;fi
+        curl --silent -SL https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-linux-amd64 -o ~/.docker/cli-plugins/docker-compose 
+        chmod +x ~/.docker/cli-plugins/docker-compose
    fi
 }
 ## migrator for the env
