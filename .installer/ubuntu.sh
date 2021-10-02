@@ -53,7 +53,6 @@ cd /opt/dockserver/${LOCATION} && $(command -v bash) install.sh
 }
 headinterface() {
 updatecompose
-version
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀 DockServer
