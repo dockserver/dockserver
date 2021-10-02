@@ -4,13 +4,14 @@ services:
   portainer:
     container_name: 'portainer'
     image: 'portainer/portainer-ce:latest'
+    command: '-H tcp://socket-proxy:2375'
     restart: '${RESTARTAPP}'
     networks:
       - proxy
+      - socket-proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
-      - '/var/run/docker.sock:/var/run/docker.sock:ro'
       - '${APPFOLDER}/portainer:/data'
     environment:
       - 'PGID=${ID}'
@@ -27,5 +28,8 @@ services:
       - 'traefik.http.routers.frontend.tls.certresolver=dns-cloudflare'
 networks:
   proxy:
+    driver: bridge
+    external: true
+  socket-proxy:
     driver: bridge
     external: true

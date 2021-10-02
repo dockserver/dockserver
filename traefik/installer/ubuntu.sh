@@ -63,7 +63,7 @@ overwrite() {
   $(command -v rsync) ${source} ${basefolder} -aqhv --exclude={'local','installer'} && $(command -v bash) $envmigrate
   basefolder="/opt/appdata"
   for i in ${basefolder};do
-      $(command -v mkdir) -p $i/{authelia,traefik} $i/traefik/{rules,acme}
+      $(command -v mkdir) -p $i/{authelia,traefik,cloudflared} $i/traefik/{rules,acme}
       $(command -v find) $i/{authelia,traefik} -exec $(command -v chown) -hR 1000:1000 {} \;
       $(command -v touch) $i/traefik/acme/acme.json $i/traefik/traefik.log $i/authelia/authelia.log
       $(command -v chmod) 600 $i/traefik/traefik.log $i/authelia/authelia.log $i/traefik/acme/acme.json
@@ -225,6 +225,56 @@ else
 fi
 clear && interface
 }
+cfdocker() {
+basefolder="/opt/appdata"
+VERSION=$(curl -sX GET https://api.github.com/repos/cloudflare/cloudflared/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')
+#tunnelNAME=$(cat /etc/hostname)
+#Random tunnel Name
+tunnelNAME=$(cat /dev/urandom | tr -dc 'A-Z' | fold -w 8 | head -n 1)
+
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   🚀   Cloudflared Docker ( Argo Tunnel )
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+   for file in "$basefolder"/cloudflared/*.json
+   do
+   if [ ! -e $file ]; then
+      # Temp permission
+      $(command -v chmod) 777 -R $basefolder/cloudflared
+      $(command -v docker) pull cloudflare/cloudflared:${VERSION}
+      $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:${VERSION} tunnel login
+      # create
+      $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:${VERSION} tunnel create $tunnelNAME
+      $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:${VERSION} tunnel route dns $tunnelNAME ${DOMAIN}
+   fi
+   done
+   listnumber=$($(command -v docker) run -it --rm -v /opt/appdata/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:${VERSION} tunnel list | wc -l)
+   if [[ $listnumber -gt "30" ]];then
+      if [[ -f "/tmp/cloudflared" ]];then
+         $(command -v rm) -rf /tmp/cloudflared
+         $(command -v docker) run -it --rm -v /opt/appdata/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:${VERSION} tunnel list | awk '{print $2}' >/tmp/cloudflared
+         delcommand=$(cat /tmp/cloudflared)
+         mapfile -t delfi < <(eval $delcommand)
+         for del in "${delfi[@]}"; do
+             $(command -v docker) run -it --rm -v $basefolder/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:${VERSION} tunnel delete $del
+         done
+      fi
+   fi
+   # permission fix
+   $(command -v chown) -hR 1000:1000 $basefolder/cloudflared
+   $(command -v chmod) 755 -R $basefolder/cloudflared
+   # grep UUID ( TunnelID )
+   UUID=$(grep -Po '"TunnelID": *\K"[^"]*"' $basefolder/cloudflared/*.json | sed 's/"\|,//g')
+   if [[ $(uname) == "Darwin" ]];then
+      sed -i '' "s/TUNNEL_UUID_HERE/$UUID/g" $basefolder/cloudflared/config.yaml
+      sed -i '' "s/TUNNEL_UUID_HERE/$UUID/g" $basefolder/compose/.env
+   else
+      sed -i "s/TUNNEL_UUID_HERE/$UUID/g" $basefolder/cloudflared/config.yaml
+      sed -i "s/TUNNEL_UUID_HERE/$UUID/g" $basefolder/compose/.env
+   fi
+}
+
 jounanctlpatch() {
 CTPATCH=$(cat /etc/systemd/journald.conf | grep "#PATCH" && echo true || echo false)
 if [[ $CTPATCH == "false" ]];then
@@ -303,7 +353,7 @@ serverip
 ccont
 $(command -v cd) $basefolder/compose/
 if [[ -f $basefolder/$compose ]];then
-   $(command -v docker-compose) config 1>/dev/null 2>&1
+   docker compose config 1>/dev/null 2>&1
    code=$?
    if [[ $code -ne 0 ]];then
 tee <<-EOF
@@ -316,7 +366,7 @@ EOF
    fi
 fi
 if [[ -f $basefolder/$compose ]];then
-   $(command -v docker-compose) pull 1>/dev/null 2>&1
+   $(which docker compose) pull 1>/dev/null 2>&1
    code=$?
    if [[ $code -ne 0 ]];then
 tee <<-EOF
@@ -329,7 +379,7 @@ EOF
    fi
 fi
 if [[ -f $basefolder/$compose ]];then
-   $(command -v docker-compose) up -d --force-recreate 1>/dev/null 2>&1
+   docker compose up -d --force-recreate 1>/dev/null 2>&1
    source $basefolder/compose/.env
    tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -365,6 +415,7 @@ tee <<-EOF
    [4] CloudFlare-Email-Address       [ ${CLOUDFLARE_EMAIL} ]
    [5] CloudFlare-Global-Key          [ ${CLOUDFLARE_API_KEY} ]
    [6] CloudFlare-Zone-ID             [ ${DOMAIN1_ZONE_ID} ]
+   [7] Cloudflared-Docker
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -382,6 +433,7 @@ EOF
      4) cfemail ;;
      5) cfkey ;;
      6) cfzoneid ;;
+     7) cfdocker ;;
      d|D) deploynow ;;
      Z|z|exit|EXIT|Exit|close) exit ;;
      *) clear && interface ;;

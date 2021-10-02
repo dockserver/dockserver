@@ -58,6 +58,7 @@ access_control:
       policy: bypass
       resources:
         - "^/api/.*$"
+        - "^/api?.*$"
         - "^/identity/.*$"
         - "^/triggers/.*$"
         - "^/rss/*$"
@@ -69,6 +70,14 @@ access_control:
         - "^/control.*$"
         - "^/meshrelay.*$"
         - "^/wl/.*$"
+    ## bypass rule for Uptime-Kuma (Status Page)
+    - domain: "uptime-kuma.example.com"
+      policy: bypass
+      resources:
+        - "^/status-page?.*$"
+        - "^/assets/.*$"
+        - "^/upload/logo.png.*$"
+        - "^/icon.svg"    
     ## block admin bitwarden.example.com resources
     - domain: "bitwarden.example.com"
       policy: one_factor

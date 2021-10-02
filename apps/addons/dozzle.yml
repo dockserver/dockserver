@@ -9,16 +9,16 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
+      - 'DOCKER_HOST=tcp://socket-proxy:2375'
     image: 'amir20/dozzle:latest'
     restart: '${RESTARTAPP}'
     ports:
       - '${PORTBLOCK}:9999:8080'
     networks:
       - proxy
+      - socket-proxy
     security_opt:
       - 'no-new-privileges:true'
-    volumes:
-      - '/var/run/docker.sock:/var/run/docker.sock:ro'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'
@@ -32,5 +32,8 @@ services:
       - 'traefik.http.services.dozzle-svc.loadbalancer.server.port=8080'
 networks:
   proxy:
+    driver: bridge
+    external: true
+  socket-proxy:
     driver: bridge
     external: true

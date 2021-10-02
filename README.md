@@ -1,5 +1,5 @@
-# **DockServer**   
-      
+# **DockServer**
+
 <p align="left">
     <a href="https://discord.gg/FYSvu83caM">
         <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
@@ -19,7 +19,7 @@
 
 ----
 
-## Minimum Specs and Requirements 
+## Minimum Specs and Requirements
 
 * Ubuntu 18/20 or Debian 9/10
 * 2 Cores

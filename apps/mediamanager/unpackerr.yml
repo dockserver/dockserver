@@ -72,9 +72,12 @@ services:
       - 'UN_WEBHOOK_0_TEMPLATE_PATH=NULL'
       - 'UN_WEBHOOK_0_CONTENT_TYPE=application/json'
     image: 'ghcr.io/hotio/unpackerr'
+    labels:
+      - 'dockupdater.enable=true'
     restart: '${RESTARTAPP}'
     networks:
-      - proxy
+            proxy:
+                ipv4_address: 172.18.0.122
     security_opt:
       - 'no-new-privileges:true'
     volumes:

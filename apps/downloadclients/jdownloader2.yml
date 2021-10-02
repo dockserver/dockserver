@@ -20,9 +20,10 @@ services:
       - 'SYS_NICE'
     ports:
       - '${PORTBLOCK}:5800:5800'
-      - '3219:3129'
+      - '${PORTBLOCK}:3219:3129'
     networks:
-      - proxy
+            proxy:
+                ipv4_address: 172.18.0.130
     security_opt:
       - 'no-new-privileges:true'
     volumes:

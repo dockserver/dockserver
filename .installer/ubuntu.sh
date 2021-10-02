@@ -25,14 +25,33 @@ exit 0
 fi
 while true;do
   $(command -v apt) update -yqq && $(command -v apt) upgrade -yqq
-  if [[ ! -x $(command -v docker) ]] && [[ ! -x $(command -v docker-compose) ]];then clear && LOCATION=preinstall && selection;fi
-  if [[ -x $(command -v docker) ]] && [[ -x $(command -v docker-compose) ]];then clear && headinterface;fi
+  if [[ ! -x $(command -v docker) ]] && [[ ! -x $(which docker compose) ]];then clear && LOCATION=preinstall && selection;fi
+  if [[ $(which docker) ]] && [[ `docker compose version` != "" ]];then clear && headinterface;fi
 done
 }
-version() {
-GUTHUB=dockserver
-REPO=dockserver
-VERSION=$(curl -sX GET https://api.github.com/repos/${GUTHUB}/${REPO}/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')
+updatecompose() {
+   COMPOSE_VERSION=$($(command -v curl) --silent -fsSL https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)
+   ARCH=$(command arch)
+   DIST="$(uname -s)"
+   if [ "${DIST}" = "Linux" ]; then 
+      DIST="linux"
+   elif [ "${DIST}" = "Darwin" ]; then 
+      DIST="darwin" 
+   else
+      echo "**** Unsupported Linux architecture ${ARCH} found, exiting... ****" && sleep 30 && exit 1
+   fi
+   if [[ $(which docker-compose) ]]; then
+      rm -f /usr/local/bin/docker-compose /usr/bin/docker-compose
+      curl --silent -fL https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh
+   else
+     DCTEST=$(docker compose version| awk $'{print $4}')
+     if [ ${DCTEST} == "" ] || [ ${DCTEST} != "" ]; then 
+        if [[ -f ~/.docker/cli-plugins/docker-compose ]]; then rm -f ~/.docker/cli-plugins/docker-compose;fi
+        mkdir -p ~/.docker/cli-plugins/
+        curl --silent -SL https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-linux-${ARCH} -o ~/.docker/cli-plugins/docker-compose 
+        chmod +x ~/.docker/cli-plugins/docker-compose
+     fi
+   fi
 }
 updatebin() {
 file=/opt/dockserver/.installer/dockserver
@@ -51,12 +70,12 @@ LOCATION=${LOCATION}
 cd /opt/dockserver/${LOCATION} && $(command -v bash) install.sh
 }
 headinterface() {
-version
+updatecompose
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀 DockServer    - Latest ${VERSION}
+    🚀 DockServer
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    
+
     [ 1 ] DockServer - Traefik + Authelia
     [ 2 ] DockServer - Applications
     [ 3 ] DockServer - Google Service Key Builder

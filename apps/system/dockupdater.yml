@@ -4,7 +4,7 @@ services:
   dockupdater:
     hostname: 'dockupdater'
     container_name: 'dockupdater'
-    image: 'dockupdater/dockupdater'
+    image: 'dockupdater/dockupdater:latest'
     environment:
       - 'CLEANUP=true'
       - 'LOG_LEVEL=info'
@@ -17,9 +17,10 @@ services:
     security_opt:
       - 'no-new-privileges:true'
     networks:
-      - proxy
+            proxy:
+                ipv4_address: 172.18.0.140
     volumes:
-      - '/var/run/docker.sock:/var/run/docker.sock'
+      - '/var/run/docker.sock:/var/run/docker.sock:ro'
 networks:
   proxy:
     driver: bridge

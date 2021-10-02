@@ -15,7 +15,9 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-    restart: unless-stopped
+    restart: '${RESTARTAPP}'
+    labels:
+      - 'dockupdater.enable=true'
     volumes:
       - ${APPFOLDER}/unbound:/config:ro
 networks:

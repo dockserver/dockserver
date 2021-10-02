@@ -24,7 +24,7 @@ services:
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'
-      #- 'dockupdater.enable=true' ## Enable auto update docker 
+      #- 'dockupdater.enable=true' ## Enable auto update docker
       #- 'dockupdater.disable=false' ## Disable auto update docker
       - 'traefik.http.routers.<CONTAINERNAME>-rtr.entrypoints=https'
       - 'traefik.http.routers.<CONTAINERNAME>-rtr.rule=Host(`<CONTAINERNAME>.${DOMAIN}`)'

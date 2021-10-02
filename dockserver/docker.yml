@@ -1,0 +1,18 @@
+---
+version: '3'
+services:
+  dockserver:
+    hostname: 'dockserver'
+    container_name: 'dockserver'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+    image: 'psidex/crowsnest:latest'
+    restart: '${RESTARTAPP}'
+    volumes:
+      - '/opt/dockserver/dockserver/config.yaml:/app/config.yaml:ro'
+      - '/opt/dockserver:/gitrepos/dockserver'
+networks:
+  proxy:
+    driver: bridge
+    external: true

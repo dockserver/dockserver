@@ -8,6 +8,7 @@ services:
     image: 'netdata/netdata:latest'
     networks:
       - proxy
+      - socket-proxy
     ports:
       - '${PORTBLOCK}:19999:19999'
     cap_add:
@@ -18,11 +19,12 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'UMASK=${UMASK}'      
+      - 'UMASK=${UMASK}'
+      - 'DOCKER_HOST=tcp://socket-proxy:2375'
     volumes:
       - 'netdataconfig:/etc/netdata'
       - 'netdatalib:/var/lib/netdata'
-      - 'netdatacache:/var/cache/netdata'
+      - 'netdatacache:/var/cache/netdata'    
       - '/etc/passwd:/host/etc/passwd:ro'
       - '/etc/group:/host/etc/group:ro'
       - '/proc:/host/proc:ro'
@@ -42,8 +44,11 @@ services:
 volumes:
   netdataconfig:
   netdatalib:
-  netdatacache:      
+  netdatacache:
 networks:
   proxy:
+    driver: bridge
+    external: true
+  socket-proxy:
     driver: bridge
     external: true

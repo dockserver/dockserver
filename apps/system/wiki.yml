@@ -13,7 +13,8 @@ services:
     ports:
       - '${PORTBLOCK}:7412:8000'
     networks:
-      - proxy
+            proxy:
+                ipv4_address: 172.18.0.146
     security_opt:
       - 'apparmor:unconfined'
     volumes:

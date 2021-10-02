@@ -9,16 +9,14 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-      - 'PASSWORD=password'
-      - 'HASHED_PASSWORD=#fillthisself'
-      - 'SUDO_PASSWORD=sudopassword'
-      - 'SUDO_PASSWORD_HASH=#fillthisself' 
+      - 'PASSWORD=${DAVOS_PASSWORD}'
     image: 'ghcr.io/linuxserver/davos'
     restart: '${RESTARTAPP}'
     ports:
       - '${PORTBLOCK}:8088:8080'
     networks:
-      - proxy
+            proxy:
+                ipv4_address: 172.18.0.126
     security_opt:
       - 'no-new-privileges:true'
     volumes:

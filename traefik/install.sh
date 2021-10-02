@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=SC1091
 #
 # Title:      headinstaller based of matched OS
 # Author(s):  mrdoob

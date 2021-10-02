@@ -14,13 +14,13 @@ services:
     ports:
       - '${PORTBLOCK}:8366:8080'
     networks:
-      - proxy
+            proxy:
+                ipv4_address: 172.18.0.143
     security_opt:
       - 'no-new-privileges:true'
     volumes:
       - '${APPFOLDER}/statping/config:/app:rw'
       - '/etc/localtime:/etc/localtime:ro'
-      - '/var/run/docker.sock:/var/run/docker.sock:ro'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'
