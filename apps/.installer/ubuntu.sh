@@ -534,10 +534,7 @@ EOF
          read -erp "Confirm Info | PRESS [ENTER]" typed </dev/tty
          clear && interface
       else
-         composer=$(which docker compose)
-         for i in ${composer}; do
-            $i up -d --force-recreate 1>/dev/null 2>&1
-         done
+          docker compose up -d --force-recreate
       fi
    fi
    if [[ ${section} == "mediaserver" || ${section} == "request" ]]; then subtasks; fi
