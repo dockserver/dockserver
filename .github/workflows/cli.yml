@@ -11,23 +11,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  copy:
-    name: Copy new Read.me
-    #if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/master' }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: andstor/copycat-action@v3.2.4
-        with:
-          personal_token: ${{ secrets.CR_PAT }}
-          src_path: README.md
-          dst_path: /wiki/docs/index.md
-          dst_owner: dockserver
-          dst_repo_name: dockserver
-          username: nutsbot
-
   GHRC:
-    needs: copy
+    if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/master' }}
     name: Create Docker Image for wiki
     runs-on: ubuntu-latest
     steps:
@@ -89,7 +74,7 @@ jobs:
         run: echo ${{ steps.docker_build.outputs.digest }}
 
   build:
-    needs: [ copy, GHRC ]
+    needs: GHRC
     name: Generate new tag
     runs-on: ubuntu-latest
     steps:
@@ -108,7 +93,7 @@ jobs:
           WITH_V: true
 
   deploy:
-    needs: [ copy, GHRC , build ]
+    needs: [ GHRC , build ]
     name: Deploy Dockserver Wiki on GitHub Pages
     if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/master' }}
     runs-on: ubuntu-latest
