@@ -5,12 +5,12 @@ updates:
     schedule:
       interval: "daily"
     rebase-strategy: "auto"
-    target-branch: "dev"
+    target-branch: "master"
     labels:
       - "dependabot"
     open-pull-requests-limit: 10
     commit-message:
-      prefix: "GH updates"
+      prefix: "GH updates "
       prefix-development: "GH dev"
       include: "scope"
 
@@ -19,12 +19,12 @@ updates:
     schedule:
       interval: "daily"
     rebase-strategy: "auto"
-    target-branch: "dev"
+    target-branch: "master"
     labels:
       - "dependabot"
     open-pull-requests-limit: 10
     commit-message:
-      prefix: "pip-update"
+      prefix: "pip "
       prefix-development: "pip dev"
       include: "scope"
 
@@ -34,10 +34,10 @@ updates:
       interval: "daily"
     rebase-strategy: "auto"
     open-pull-requests-limit: 10
-    target-branch: "dev"
+    target-branch: "master"
     labels:
       - "dependabot"
     commit-message:
-      prefix: "DF updates"
+      prefix: "GH updates "
       prefix-development: "Dockfile dev"
       include: "scope"
