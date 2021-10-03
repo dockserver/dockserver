@@ -76,7 +76,6 @@ tee <<-EOF
 
     [ 1 ] DockServer - Traefik + Authelia
     [ 2 ] DockServer - Applications
-    [ 3 ] DockServer - Google Service Key Builder
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     [ EXIT or Z ] - Exit
@@ -87,13 +86,15 @@ EOF
   case $headsection in
     1) clear && LOCATION=traefik && selection ;;
     2) clear && LOCATION=apps && selection ;;
-    3) clear && LOCATION=gdsa && selection ;;
     Z|z|exit|EXIT|Exit|close) updatebin && exit ;;
     *) clear && appstartup ;;
   esac
-
-    ##4) clear && LOCATION=rclone && selection ;;
-    ##[ 4 ] DockServer - Rclone Builder
 }
 appstartup
 #EOF
+## REWORK FOR KEY MOUNTING
+    ##[ 3 ] DockServer - Google Service Key Builder
+    ##3) clear && LOCATION=gdsa && selection ;;
+    ##4) clear && LOCATION=rclone && selection ;;
+    ##[ 4 ] DockServer - Rclone Builder
+## REWORK FOR KEY MOUNTING
