@@ -273,6 +273,7 @@ EOF
       sed -i "s/TUNNEL_UUID_HERE/$UUID/g" $basefolder/cloudflared/config.yaml
       sed -i "s/TUNNEL_UUID_HERE/$UUID/g" $basefolder/compose/.env
    fi
+   clear && interface
 }
 
 jounanctlpatch() {
