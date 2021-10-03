@@ -119,17 +119,13 @@ EOF
         echo "**** Unsupported Linux architecture ${ARCH} found, exiting... ****" && sleep 30 && exit 1
      fi
      if [[ $(which docker-compose) ]]; then
-        rm -f /usr/local/bin/docker-compose /usr/bin/docker-compose
-        curl --silent -fL https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh
-     else
-        DCTEST=$(docker compose version| awk $'{print $4}')
-        if [ ${DCTEST} == "" ] || [ ${DCTEST} != "" ]; then 
-           if [[ -f ~/.docker/cli-plugins/docker-compose ]]; then rm -f ~/.docker/cli-plugins/docker-compose;fi
-           mkdir -p ~/.docker/cli-plugins/
-           curl --silent -SL https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-linux-${ARCH} -o ~/.docker/cli-plugins/docker-compose 
-          chmod +x ~/.docker/cli-plugins/docker-compose
-        fi
+        rm -rf /usr/local/bin/docker-compose
+        rm -rf /usr/bin/docker-compose
      fi
+     if [[ -f ~/.docker/cli-plugins/docker-compose ]]; then rm -f ~/.docker/cli-plugins/docker-compose;fi
+     mkdir -p ~/.docker/cli-plugins/
+     curl --silent -SL https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-linux-${ARCH} -o ~/.docker/cli-plugins/docker-compose 
+     chmod +x ~/.docker/cli-plugins/docker-compose
      dailyapt=$($(command -v systemctl) is-active apt-daily | grep -qE 'active' && echo true || echo false)
      dailyupg=$($(command -v systemctl) is-active apt-daily-upgrade | grep -qE 'active' && echo true || echo false)
   if [[ $dailyapt == "true" || $dailyupg == "true" ]];then
