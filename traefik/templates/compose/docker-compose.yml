@@ -127,7 +127,7 @@ services:
     depends_on:
       - traefik
     networks:
-            proxy-basic:
+            socket-proxy:
             proxy:
                 ipv4_address: 172.18.0.253
     environment:
