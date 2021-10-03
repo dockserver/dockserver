@@ -367,7 +367,7 @@ EOF
    fi
 fi
 if [[ -f $basefolder/$compose ]];then
-   $(which docker compose) pull 1>/dev/null 2>&1
+   docker compose pull
    code=$?
    if [[ $code -ne 0 ]];then
 tee <<-EOF
@@ -380,7 +380,7 @@ EOF
    fi
 fi
 if [[ -f $basefolder/$compose ]];then
-   docker compose up -d --force-recreate 1>/dev/null 2>&1
+   docker compose up -d --force-recreate
    source $basefolder/compose/.env
    tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
