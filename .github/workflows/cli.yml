@@ -22,7 +22,7 @@ jobs:
         id: prep
         run: |
           DOCKER_IMAGE=ghcr.io/${GITHUB_REPOSITORY}
-          VERSION=lastet
+          VERSION=latest
           TAGS="${DOCKER_IMAGE}:${VERSION}"
           echo ::set-output name=tags::${TAGS}
           echo ::set-output name=title::${GITHUB_REPOSITORY}
