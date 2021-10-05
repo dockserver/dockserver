@@ -2,9 +2,18 @@
 # shellcheck shell=bash
 # Copyright (c) 2020, MrDoob
 # All rights reserved.
-migrateenv() {
 basefolder="/opt/appdata"
-source $basefolder/compose/.env
+activeenv=$basefolder/compose/.env
+tmpenv=$basefolder/compose/temp.env
+sampleenv=/opt/dockserver/traefik/templates/compose/.env
+
+if [[ -f ${activeenv} ]]; then
+   mv ${activeenv} ${tmpenv}
+else
+   mv ${sampleenv} ${tmpenv}
+fi
+
+source ${tmpenv}
 echo -e "##Environment for Docker-Compose
 ##TRAEFIK
 CLOUDFLARE_EMAIL=${CLOUDFLARE_EMAIL:-CF-EMAIL}
@@ -233,7 +242,4 @@ RU_SAVE_UPLOADED_TORRENTS=${RU_SAVE_UPLOADED_TORRENTS:-false}
 RU_OVERWRITE_UPLOADED_TORRENTS=${RU_OVERWRITE_UPLOADED_TORRENTS:-false}
 RU_FORBID_USER_SETTINGS=${RU_FORBID_USER_SETTINGS:-false}
 RU_LOCALE=${RU_LOCALE:-UTF8}
-#EOF" >$basefolder/compose/.env
-}
-migrateenv
-#EOF
+#EOF" > $basefolder/compose/.env && rm -rf ${tmpenv}
