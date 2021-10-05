@@ -43,8 +43,7 @@ services:
       - 'ALBUM_TYPE_FILTER=COMPILE'
       - 'POSTPROCESSTHREADS=1'
     networks:
-            proxy:
-                ipv4_address: 172.18.0.124
+      - proxy
     security_opt:
       - 'no-new-privileges:true'
     labels:
