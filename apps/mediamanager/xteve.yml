@@ -14,8 +14,7 @@ services:
     ports:
       - '34400:34400'
     networks:
-            proxy:
-                ipv4_address: 172.18.0.123
+      - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
