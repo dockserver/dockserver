@@ -6,7 +6,7 @@ services:
       - 'SYS_ADMIN'
     container_name: 'mount'
     hostname: 'mount'
-    privileged: true
+    privileged: 'true'
     devices:
       - '/dev/fuse:/dev/fuse'
     environment:
@@ -16,8 +16,7 @@ services:
     image: 'ghcr.io/dockserver/docker-mount:dockserver'
     restart: '${RESTARTAPP}'
     networks:
-            proxy:
-                ipv4_address: 172.18.0.141
+      - proxy
     security_opt:
       - 'apparmor:unconfined'
       - 'no-new-privileges:true'
@@ -25,8 +24,6 @@ services:
       - '/etc/localtime:/etc/localtime:ro'
       - '${APPFOLDER}/system:/system:rshared'
       - '/mnt:/mnt:shared'
-    labels:
-      - 'dockupdater.disable=true'
 networks:
   proxy:
     driver: bridge
