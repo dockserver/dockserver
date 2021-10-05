@@ -50,8 +50,7 @@ services:
     hostname: pi-cloudflared
     container_name: pi-cloudflared
     networks:
-            proxy:
-                ipv4_address: 172.18.0.200
+      - proxy
     environment:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
