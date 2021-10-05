@@ -14,8 +14,7 @@ services:
       - 'TP_THEME=${DELUGETHEME}'
     image: '${DELUGEIMAGE}'
     networks:
-            proxy:
-                ipv4_address: 172.18.0.127
+      - proxy
     restart: '${RESTARTAPP}'
     security_opt:
       - 'no-new-privileges:true'
