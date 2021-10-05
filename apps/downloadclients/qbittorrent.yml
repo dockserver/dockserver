@@ -15,8 +15,7 @@ services:
     image: '${QBITORRENTIMAGE}'
     restart: '${RESTARTAPP}'
     networks:
-            proxy:
-                ipv4_address: 172.18.0.133
+      - proxy
     security_opt:
       - 'no-new-privileges:true'
     ports:
