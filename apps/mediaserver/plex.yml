@@ -17,8 +17,7 @@ services:
     image: '${PLEXIMAGE}'
     restart: '${RESTARTAPP}'
     networks:
-            proxy:
-                ipv4_address: 172.18.0.223
+      - proxy
     security_opt:
       - 'no-new-privileges:true'
     extra_hosts:
