@@ -534,7 +534,15 @@ EOF
          read -erp "Confirm Info | PRESS [ENTER]" typed </dev/tty
          clear && interface
       else
-          docker compose up -d --force-recreate
+          if [[ ${typed} == "mount" ]] || [[ ${typed} == "uploader" ]];then
+             if [[ ! -f /usr/local/bin/docker-compose ]]; then
+                curl --silent -L --fail https://raw.githubusercontent.com/linuxserver/docker-docker-compose/master/run.sh -o /usr/local/bin/docker-compose
+                chmod +x /usr/local/bin/docker-compose
+             fi
+             docker-compose up -d --force-recreate
+          else 
+             docker compose up -d --force-recreate
+          fi
       fi
    fi
    if [[ ${section} == "mediaserver" || ${section} == "request" ]]; then subtasks; fi
