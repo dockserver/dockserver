@@ -18,8 +18,7 @@ services:
     ports:
       - '5572:5572'
     networks:
-            proxy:
-                ipv4_address: 172.18.0.142
+      - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
