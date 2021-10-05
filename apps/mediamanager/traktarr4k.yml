@@ -21,8 +21,7 @@ services:
     labels:
       - 'dockupdater.enable=true'
     networks:
-            proxy:
-                ipv4_address: 172.18.0.120
+      - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
