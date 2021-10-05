@@ -76,8 +76,7 @@ services:
       - 'dockupdater.enable=true'
     restart: '${RESTARTAPP}'
     networks:
-            proxy:
-                ipv4_address: 172.18.0.122
+      - proxy
     security_opt:
       - 'no-new-privileges:true'
     volumes:
