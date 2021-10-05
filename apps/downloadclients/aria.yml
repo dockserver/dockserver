@@ -25,8 +25,7 @@ services:
       - 'IPV6_MODE=false'
       - 'UPDATE_TRACKERS=true'
     networks:
-            proxy:
-                ipv4_address: 172.18.0.125
+      - proxy
     security_opt:
       - 'no-new-privileges:true'
     labels:
