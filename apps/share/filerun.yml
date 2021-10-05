@@ -14,7 +14,6 @@ services:
       - 'TZ=${TZ}'
     image: 'mariadb:10.5'
     networks:
-      - proxy
       - default
     restart: '${RESTARTAPP}' 
     volumes:
