@@ -7,8 +7,7 @@ services:
     image: '${EMBYIMAGE}'
     restart: '${RESTARTAPP}'
     networks:
-            proxy:
-                ipv4_address: 172.18.0.220
+      - proxy
     security_opt:
       - 'no-new-privileges:true'
     environment:
