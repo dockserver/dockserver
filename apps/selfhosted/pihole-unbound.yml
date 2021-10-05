@@ -50,8 +50,7 @@ services:
     hostname: unbound
     container_name: unbound
     networks:
-            proxy:
-                ipv4_address: 172.18.0.201
+      - proxy
     environment:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
