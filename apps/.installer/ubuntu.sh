@@ -522,7 +522,7 @@ EOF
    if [[ ${typed} == "tdarr" ]]; then $(command -v mkdir) -p $basefolder/${typed}/{server,configs,logs,encoders} && $(command -v chown) -hR 1000:1000 $basefolder/${typed}/{server,configs,logs} 1>/dev/null 2>&1; fi
    if [[ -f $basefolder/$compose ]]; then
       $(command -v cd) $basefolder/compose/
-      docker compose config 1>/dev/null 2>&1
+      docker-compose config 1>/dev/null 2>&1
       errorcode=$?
       if [[ $errorcode -ne 0 ]]; then
          tee <<-EOF
@@ -537,7 +537,7 @@ EOF
       else
          curl -L --fail https://github.com/linuxserver/docker-docker-compose/releases/download/1.29.2-ls51/docker-cli-amd64 -o /usr/local/bin/docker-compose
          chmod +x /usr/local/bin/docker-compose
-         docker-compose up -d --force-recreate
+         docker-compose pull && docker-compose up -d --force-recreate
       fi
    fi
    if [[ ${section} == "mediaserver" || ${section} == "request" ]]; then subtasks; fi
@@ -815,9 +815,6 @@ updatecompose() {
    fi
    if [[ -f ~/.docker/cli-plugins/docker-compose ]]; then
       rm -f ~/.docker/cli-plugins/docker-compose
-      mkdir -p ~/.docker/cli-plugins/
-      curl --silent -SL https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-linux-${ARCH} -o ~/.docker/cli-plugins/docker-compose 
-      chmod +x ~/.docker/cli-plugins/docker-compose
    fi
 }
 ## migrator for the env
