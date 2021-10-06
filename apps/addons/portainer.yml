@@ -4,7 +4,6 @@ services:
   portainer:
     container_name: 'portainer'
     image: 'portainer/portainer-ce:latest'
-    command: '-H tcp://socket-proxy:2375'
     restart: '${RESTARTAPP}'
     networks:
       - proxy
