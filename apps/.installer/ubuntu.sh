@@ -25,8 +25,9 @@ EOF
       exit 0
    fi
    while true; do
-      if [[ ! $(which docker) ]]; then exit; fi
-      #if [[ $(which docker-compose) ]]; then updatecompose; fi
+     # if [[ ! $(which docker) ]]; then exit; fi
+     # if [[ $(which docker-compose) ]]; then updatecompose; fi
+      updatecompose
       headinterface
    done
 }
@@ -534,11 +535,9 @@ EOF
          read -erp "Confirm Info | PRESS [ENTER]" typed </dev/tty
          clear && interface
       else
-          if [[ ${typed} == "mount" ]] || [[ ${typed} == "uploader" ]];then
-             if [[ ! -f /usr/local/bin/docker-compose ]]; then
-                curl --silent -L --fail https://raw.githubusercontent.com/linuxserver/docker-docker-compose/master/run.sh -o /usr/local/bin/docker-compose
-                chmod +x /usr/local/bin/docker-compose
-             fi
+          if [[ ${section} == "system" && ${typed} == "mount" ]]; then
+             curl -L --fail https://raw.githubusercontent.com/linuxserver/docker-docker-compose/master/run.sh -o /usr/local/bin/docker-compose
+             chmod +x /usr/local/bin/docker-compose
              docker-compose up -d --force-recreate
           else 
              docker compose up -d --force-recreate
@@ -814,8 +813,8 @@ updatecompose() {
    else
       echo "**** Unsupported Linux architecture ${ARCH} found, exiting... ****" && sleep 30 && exit 1
    fi
-   if [[ ! $(which docker-compose) ]]; then
-      curl --silent -L --fail https://raw.githubusercontent.com/linuxserver/docker-docker-compose/master/run.sh -o /usr/local/bin/docker-compose
+   if [[ ! -f /usr/local/bin/docker-compose ]]; then
+      curl -L --fail https://raw.githubusercontent.com/linuxserver/docker-docker-compose/master/run.sh -o /usr/local/bin/docker-compose
       chmod +x /usr/local/bin/docker-compose
    fi
    if [[ -f ~/.docker/cli-plugins/docker-compose ]]; then
