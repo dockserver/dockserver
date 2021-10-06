@@ -26,7 +26,7 @@ EOF
    fi
    while true; do
       if [[ ! $(which docker) ]]; then exit; fi
-      if [[ $(which docker-compose) ]]; then updatecompose; fi
+      #if [[ $(which docker-compose) ]]; then updatecompose; fi
       headinterface
    done
 }
@@ -815,8 +815,8 @@ updatecompose() {
       echo "**** Unsupported Linux architecture ${ARCH} found, exiting... ****" && sleep 30 && exit 1
    fi
    if [[ ! $(which docker-compose) ]]; then
-      rm -f /usr/local/bin/docker-compose /usr/bin/docker-compose
-      curl --silent -fL https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh
+      curl --silent -L --fail https://raw.githubusercontent.com/linuxserver/docker-docker-compose/master/run.sh -o /usr/local/bin/docker-compose
+      chmod +x /usr/local/bin/docker-compose
    fi
    if [[ -f ~/.docker/cli-plugins/docker-compose ]]; then
       rm -f ~/.docker/cli-plugins/docker-compose
