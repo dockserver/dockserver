@@ -814,17 +814,15 @@ updatecompose() {
    else
       echo "**** Unsupported Linux architecture ${ARCH} found, exiting... ****" && sleep 30 && exit 1
    fi
-   if [[ $(which docker-compose) ]]; then
+   if [[ ! $(which docker-compose) ]]; then
       rm -f /usr/local/bin/docker-compose /usr/bin/docker-compose
       curl --silent -fL https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh
-   else
-     DCTEST=$(docker compose version| awk $'{print $4}')
-     if [ ${DCTEST} == "" ] || [ ${DCTEST} != "" ]; then 
-        if [[ -f ~/.docker/cli-plugins/docker-compose ]]; then rm -f ~/.docker/cli-plugins/docker-compose;fi
-        mkdir -p ~/.docker/cli-plugins/
-        curl --silent -SL https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-linux-${ARCH} -o ~/.docker/cli-plugins/docker-compose 
-        chmod +x ~/.docker/cli-plugins/docker-compose
-     fi
+   fi
+   if [[ -f ~/.docker/cli-plugins/docker-compose ]]; then
+      rm -f ~/.docker/cli-plugins/docker-compose
+      mkdir -p ~/.docker/cli-plugins/
+      curl --silent -SL https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-linux-${ARCH} -o ~/.docker/cli-plugins/docker-compose 
+      chmod +x ~/.docker/cli-plugins/docker-compose
    fi
 }
 ## migrator for the env
