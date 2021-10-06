@@ -43,9 +43,9 @@ updatecompose() {
    else
       echo "**** Unsupported Linux architecture ${ARCH} found, exiting... ****" && sleep 30 && exit 1
    fi
-   if [[ $(which docker-compose) ]]; then
-      rm -f /usr/local/bin/docker-compose /usr/bin/docker-compose
-   fi
+   #if [[ $(which docker-compose) ]]; then
+   #   rm -f /usr/local/bin/docker-compose /usr/bin/docker-compose
+   #fi
    if [[ -f ~/.docker/cli-plugins/docker-compose ]]; then rm -f ~/.docker/cli-plugins/docker-compose;fi
       mkdir -p ~/.docker/cli-plugins/
       curl --silent -SL https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-linux-${ARCH} -o ~/.docker/cli-plugins/docker-compose 
