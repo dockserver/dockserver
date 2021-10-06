@@ -535,13 +535,9 @@ EOF
          read -erp "Confirm Info | PRESS [ENTER]" typed </dev/tty
          clear && interface
       else
-          if [[ ${section} == "system" && ${typed} == "mount" ]]; then
-             curl -L --fail https://raw.githubusercontent.com/linuxserver/docker-docker-compose/master/run.sh -o /usr/local/bin/docker-compose
-             chmod +x /usr/local/bin/docker-compose
-             docker-compose up -d --force-recreate
-          else 
-             docker compose up -d --force-recreate
-          fi
+         curl -L --fail https://github.com/linuxserver/docker-docker-compose/releases/download/1.29.2-ls51/docker-cli-amd64 -o /usr/local/bin/docker-compose
+         chmod +x /usr/local/bin/docker-compose
+         docker-compose up -d --force-recreate
       fi
    fi
    if [[ ${section} == "mediaserver" || ${section} == "request" ]]; then subtasks; fi
@@ -814,7 +810,7 @@ updatecompose() {
       echo "**** Unsupported Linux architecture ${ARCH} found, exiting... ****" && sleep 30 && exit 1
    fi
    if [[ ! -f /usr/local/bin/docker-compose ]]; then
-      curl -L --fail https://raw.githubusercontent.com/linuxserver/docker-docker-compose/master/run.sh -o /usr/local/bin/docker-compose
+      curl -L --fail https://github.com/linuxserver/docker-docker-compose/releases/download/1.29.2-ls51/docker-cli-amd64 -o /usr/local/bin/docker-compose
       chmod +x /usr/local/bin/docker-compose
    fi
    if [[ -f ~/.docker/cli-plugins/docker-compose ]]; then
