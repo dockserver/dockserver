@@ -25,7 +25,7 @@ exit 0
 fi
 while true;do
   $(command -v apt) update -yqq && $(command -v apt) upgrade -yqq
-  if [[ ! -x $(command -v docker) ]] && [[ ! -f ~/.docker/cli-plugins/docker-compose ]];then 
+  if [[ ! -x $(command -v docker) ]];then 
      clear && LOCATION=preinstall && selection
   else
      clear && headinterface
@@ -43,13 +43,13 @@ updatecompose() {
    else
       echo "**** Unsupported Linux architecture ${ARCH} found, exiting... ****" && sleep 30 && exit 1
    fi
-   #if [[ $(which docker-compose) ]]; then
-   #   rm -f /usr/local/bin/docker-compose /usr/bin/docker-compose
-   #fi
-   if [[ -f ~/.docker/cli-plugins/docker-compose ]]; then rm -f ~/.docker/cli-plugins/docker-compose;fi
-      mkdir -p ~/.docker/cli-plugins/
-      curl --silent -SL https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-linux-${ARCH} -o ~/.docker/cli-plugins/docker-compose 
-      chmod +x ~/.docker/cli-plugins/docker-compose
+   if [[ -f ~/.docker/cli-plugins/docker-compose ]]; then
+      rm -f ~/.docker/cli-plugins/docker-compose
+   fi
+   if [[ ! -f /usr/local/bin/docker-compose ]]; then
+      curl -L --fail https://github.com/linuxserver/docker-docker-compose/releases/download/1.29.2-ls51/docker-cli-amd64 -o /usr/local/bin/docker-compose
+      chmod +x /usr/local/bin/docker-compose
+   fi
 }
 updatebin() {
 file=/opt/dockserver/.installer/dockserver
