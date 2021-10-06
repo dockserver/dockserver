@@ -33,16 +33,6 @@ while true;do
 done
 }
 updatecompose() {
-   COMPOSE_VERSION=$($(command -v curl) --silent -fsSL https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)
-   ARCH=$(command arch)
-   DIST="$(uname -s)"
-   if [ "${DIST}" = "Linux" ]; then 
-      DIST="linux"
-   elif [ "${DIST}" = "Darwin" ]; then 
-      DIST="darwin" 
-   else
-      echo "**** Unsupported Linux architecture ${ARCH} found, exiting... ****" && sleep 30 && exit 1
-   fi
    if [[ -f ~/.docker/cli-plugins/docker-compose ]]; then
       rm -f ~/.docker/cli-plugins/docker-compose
    fi
