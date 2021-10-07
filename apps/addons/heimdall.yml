@@ -9,7 +9,7 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-    image: 'ghcr.io/linuxserver/heimdall'
+    image: 'ghcr.io/linuxserver/heimdall:latest'
     restart: '${RESTARTAPP}'
     ports:
       - '${PORTBLOCK}:5555:80'
