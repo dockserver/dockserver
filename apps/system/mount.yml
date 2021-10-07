@@ -6,7 +6,7 @@ services:
       - 'SYS_ADMIN'
     container_name: 'mount'
     hostname: 'mount'
-    privileged: 'true'
+    privileged: true
     devices:
       - '/dev/fuse:/dev/fuse'
     environment:
