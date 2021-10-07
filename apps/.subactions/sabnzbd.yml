@@ -68,7 +68,7 @@
             path: '/opt/appdata/{{app}}/sabnzbd.ini'
             section: misc
             option: host_whitelist
-            value: 'sabnzbd.{{domain.stdout}},'
+            value: 'sabnzbd.{{domain}},sabnzbd'
             state: present
         - name: 'Set direct_unpack'
           ini_file:
