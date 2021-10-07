@@ -18,7 +18,9 @@ services:
       - 'TUNNEL_DNS_ADDRESS=0.0.0.0' #This should not be changed unless you know what you are doing
       - 'TUNNEL_DNS_PORT=5053' #This should not be changed unless you know what you are doing
       - 'TUNNEL_METRICS=0.0.0.0:49312' #This should not be changed unless you know what you are doing
-    restart: always
+    labels:
+      - 'dockupdater.enable=true'
+    restart: '${RESTARTAPP}'
 networks:
   proxy:
     driver: bridge
