@@ -26,9 +26,17 @@ fi
 while true;do
   $(command -v apt) update -yqq && $(command -v apt) upgrade -yqq
   if [[ ! -x $(command -v docker) ]] && [[ ! -x $(command -v docker-compose) ]];then clear && LOCATION=preinstall && selection;fi
+  if [[ -x $(command -v docker) ]] && [[ ! -x $(command -v docker-compose) ]];then revertcommand;fi
   if [[ -x $(command -v docker) ]] && [[ -x $(command -v docker-compose) ]];then clear && headinterface;fi
 done
 }
+revertcommand() {
+sudo apt install curl -y
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
+sudo chmod +x /usr/local/bin/docker-compose
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+}
+
 version() {
 GUTHUB=dockserver
 REPO=dockserver
