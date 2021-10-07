@@ -11,6 +11,18 @@
       {
         "title": "## 🧪 Tests",
         "labels": ["test"]
+      },
+      {
+        "title": "## 🚀 PiP-Update",
+        "labels": ["pip"]
+      },
+      {
+        "title": "## 🚀 GitHub updates",
+        "labels": ["GH updates"]
+      },
+      {
+        "title": "## 🚀 DockServer Update 🚀 ##",
+        "labels": ["Update"]
       }
     ],
     "ignore_labels": [
@@ -19,7 +31,7 @@
     "sort": "ASC",
     "template": "${{CHANGELOG}}\n\n<details>\n<summary>Uncategorized</summary>\n\n${{UNCATEGORIZED}}\n</details>",
     "pr_template": "- ${{TITLE}}\n   - PR: #${{NUMBER}}",
-    "empty_template": "- no changes",
+    "empty_template": "other changes",
     "label_extractor": [
       {
         "pattern": "(.) (.+)",
@@ -37,9 +49,9 @@
         "target": "- $4\n  - $6"
       }
     ],
-    "max_tags_to_fetch": 200,
-    "max_pull_requests": 200,
-    "max_back_track_time_days": 365,
+    "max_tags_to_fetch": 500,
+    "max_pull_requests": 500,
+    "max_back_track_time_days": 720,
     "exclude_merge_branches": [
       "Owner/qa"
     ],
@@ -47,6 +59,6 @@
       "method": "semver"
     },
     "base_branches": [
-      "dev"
+      "master"
     ]
 }
