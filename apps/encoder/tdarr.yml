@@ -17,7 +17,7 @@ services:
       - 'PUID=${ID}'
       - 'PGID=${ID}'
       - 'UMASK_SET=002'
-      - 'serverIP=127.0.0.1'
+      - 'serverIP=${PORTBLOCK}'
       - 'serverPort=8266'
       - 'webUIPort=8265'
     volumes:
