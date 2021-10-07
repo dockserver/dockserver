@@ -775,10 +775,10 @@ EOF
 }
 updatecompose() {
 if [[ ! -x $(command -v docker-compose) ]];then 
-   COMPOSE_VERSION=$($(command -v curl) --silent -fsSL https://api.github.com/repos/docker/releases/latest | grep 'tag_name' | cut -d\" -f4)
-   sh -c "curl --silent -L https://github.com/docker/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose"
-   sh -c "curl --silent -L https://raw.githubusercontent.com/docker/${COMPOSE_VERSION}/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose"
-   if [[ ! -L "/usr/bin/docker-compose" ]];then $(command -v rm) -f /usr/bin/docker-compose && ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose;fi
+   if [[ -f /usr/bin/docker-compose ]];then rm -rf /usr/bin/docker-compose /usr/local/bin/docker-compose;fi
+   curl -L --fail https://raw.githubusercontent.com/linuxserver/docker-docker-compose/master/run.sh -o /usr/bin/docker-compose
+   curl -L --fail https://raw.githubusercontent.com/linuxserver/docker-docker-compose/master/run.sh -o /usr/local/bin/docker-compose
+   $(command -v chmod) +x /usr/local/bin/docker-compose
    $(command -v chmod) a=rx,u+w /usr/local/bin/docker-compose >/dev/null 2>&1 
    $(command -v chmod) a=rx,u+w /usr/bin/docker-compose >/dev/null 2>&1
 fi
