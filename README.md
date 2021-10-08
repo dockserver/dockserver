@@ -71,24 +71,6 @@ sudo wget -qO- https://git.io/J3GDc | sudo bash
 
 ----
 
-## Latest Changes 🎉
-
-<!--START_SECTION:activity-->
-1. 🎉 Merged PR [#241](https://github.com/dockserver/dockserver/pull/241) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-2. 🎉 Merged PR [#240](https://github.com/dockserver/dockserver/pull/240) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-3. 🎉 Merged PR [#239](https://github.com/dockserver/dockserver/pull/239) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-4. 🎉 Merged PR [#238](https://github.com/dockserver/dockserver/pull/238) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-5. ❗️ Closed issue [#226](https://github.com/dockserver/dockserver/issues/226) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-6. 🗣 Commented on [#226](https://github.com/dockserver/dockserver/issues/226) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-7. 💪 Opened PR [#227](https://github.com/dockserver/dockserver/pull/227) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-8. 🗣 Commented on [#179](https://github.com/dockserver/dockserver/issues/179) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-9. 🗣 Commented on [#226](https://github.com/dockserver/dockserver/issues/226) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-10. 🗣 Commented on [#226](https://github.com/dockserver/dockserver/issues/226) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-10. 🗣 Commented on [#15](https://github.com/dockserver/dockserver/issues/15) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
-<!-- markdownlint-restore -->
-<!--END_SECTION:activity-->
-
-----
 
 ## Contributors ✨
 
