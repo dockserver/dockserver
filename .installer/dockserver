@@ -19,7 +19,7 @@ if [[ $EUID != 0 ]]; then
 fi
 dockserver=/opt/dockserver
 run() {
-if [[ -d ${dockserver} ]];then 
+if [[ -d ${dockserver} ]];then
    cd ${dockserver} && $(command -v bash) install.sh
 else
    usage
@@ -32,9 +32,20 @@ clear
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "    🚀    DockServer [ UPDATE ] STARTED"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    $(command -v rm) -rf ${dockserver} && git clone --quiet https://github.com/dockserver/dockserver.git ${dockserver}
-    if [[ $EUID != 0 ]];then $(command -v chown) -hR $(whoami):$(whoami) ${dockserver};fi
-    if [[ $EUID == 0 ]];then $(command -v chown) -hR 1000:1000 ${dockserver};fi
+    basefolder="/opt/appdata"
+    compose="compose/docker-compose.yml"
+    ds=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -v 'trae' | grep -x 'dockserver')
+    if [[ $ds != 'dockserver' ]];then
+       $(command -v rsync) ${dockserver}/dockserver/docker.yml $basefolder/$compose -aqhv;fi
+       if [[ -f $basefolder/$compose ]];then
+          $(command -v cd) $basefolder/compose/
+          docker-compose config 1>/dev/null 2>&1
+          errorcode=$?
+          if [[ $errorcode -eq 0 ]];then
+             docker-compose up -d --force-recreate 1>/dev/null 2>&1
+          fi
+    fi
+    $(command -v chown) -cR 1000:1000 ${dockserver} 1>/dev/null 2>&1
     envmigra && clear
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "    🚀    DockServer [ UPDATE ] DONE"
@@ -48,9 +59,9 @@ clear
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "    🚀    DockServer [ DEV - CLONING ] STARTED"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-     $(command -v rm) -rf ${dockserver} && git clone --quiet -b dev https://github.com/dockserver/dockserver.git ${dockserver}
-     if [[ $EUID != 0 ]];then $(command -v chown) -R $(whoami):$(whoami) ${dockserver};fi
-     if [[ $EUID == 0 ]];then $(command -v chown) -R 1000:1000 ${dockserver};fi
+     $(command -v rm) -rf ${dockserver}
+     git clone --quiet -b dev https://github.com/dockserver/dockserver.git ${dockserver}
+     $(command -v chown) -cR 1000:1000 ${dockserver} 1>/dev/null 2>&1
      envmigra && clear
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "    🚀    DockServer [ DEV - CLONING ] DONE"
@@ -63,7 +74,7 @@ dockserver=/opt/dockserver
 DOCK=${DOCK}
 FORK=${FORK}
 if [[ ${DOCK} == "-f" || ${DOCK} == "--fork" ]];then
-   if [[${FORK} != "" ]];then
+   if [[ ${FORK} != "" ]];then
        if [[ -d ${dockserver} ]];then
 clear
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -71,8 +82,7 @@ echo "    🚀    DockServer FORK Version Pull started"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
      $(command -v rm) -rf ${dockserver}
      git clone --quiet ${FORK} ${dockserver}
-     if [[ $EUID != 0 ]];then $(command -v chown) -hR $(whoami):$(whoami) ${dockserver};fi
-     if [[ $EUID == 0 ]];then $(command -v chown) -hR 1000:1000 ${dockserver};fi
+     $(command -v chown) -cR 1000:1000 ${dockserver} 1>/dev/null 2>&1
      envmigra
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "    🚀    DockServer FORK Version Pull finished"
