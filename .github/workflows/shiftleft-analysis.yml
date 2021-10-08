@@ -28,8 +28,7 @@ jobs:
       with:
         output: reports
         # Scan auto-detects the languages in your project. To override uncomment the below variable and set the type
-        type: composer
-        type: shell
+        type: composer,shell
 
     - name: Upload report
       uses: github/codeql-action/upload-sarif@v1
