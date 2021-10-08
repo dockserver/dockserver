@@ -14,7 +14,6 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-    steps:
       - name: Checkout
         uses: actions/checkout@v2.3.4
       - name: Run Shellcheck
@@ -46,7 +45,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.4
-      - uses: FranzDiebold/github-env-vars-action@v2.3.0
+      - name: Get Repository Info
+        uses: FranzDiebold/github-env-vars-action@v2.3.0
       - name: Print environment variables
         run: |
           echo "CI_REPOSITORY_NAME=$CI_REPOSITORY_NAME"
