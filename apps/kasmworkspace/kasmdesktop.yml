@@ -10,6 +10,7 @@ services:
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
       - 'VNC_PW=${KASMPW}'
+      - 'VNC_RESOLUTION=${KASMRES}'
     image: 'kasmdesktop/desktop-deluxe:1.9.0-rolling'
     restart: '${RESTARTAPP}'
     shm_size: '512m'
@@ -18,7 +19,9 @@ services:
     security_opt:
       - 'no-new-privileges:true'
     volumes:
+      - '/etc/localtime:/etc/localtime:ro'
       - '${APPFOLDER}/kasmdesktop:/share:rw'
+      - 'unionfs:/mnt:rw'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'

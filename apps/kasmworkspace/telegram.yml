@@ -12,17 +12,18 @@ services:
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
       - 'VNC_RESOLUTION=1920x1080'
-      - 'VNC_PW=password'
+      - 'VNC_PW=${KASMPW}'
+      - 'VNC_RESOLUTION=${KASMRES}'
     networks:
       - proxy
     ports:
-      - '6905:6901'  
+      - '${PORTBLOCK}:6905:6901'  
     security_opt:
       - 'no-new-privileges:true'
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
       - '${APPFOLDER}/telegram:/config:rw'
-      - '/mnt:/mnt'
+      - 'unionfs:/mnt:rw'
     shm_size: '512m'
     labels:
       - 'traefik.enable=true'
