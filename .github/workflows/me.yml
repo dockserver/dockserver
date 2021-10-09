@@ -2,7 +2,7 @@ name: Update README
 
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '* */30 * * *'
   workflow_dispatch:
 
 jobs:
@@ -17,4 +17,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.CR_PAT }}
         with:
           COMMIT_MSG: '#patch ## Changelog ##'
-          MAX_LINES: 10
+          MAX_LINES: 50
