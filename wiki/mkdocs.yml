@@ -189,6 +189,8 @@ nav:
       - Youtubedl-Material: apps/downloadclients/youtubedl-material.md
     - Encoder:
       - Tdarr: apps/encoder/tdarr.md
+    - KASM Workspace:
+      - Kasmdesktop: apps/kasmworkspace/kasmdesktop.md
     - MediaManager:
       - Bazarr: apps/mediamanager/bazarr.md
       - Calibre-WEB: apps/mediamanager/calibre-web.md
