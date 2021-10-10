@@ -39,8 +39,8 @@ RT_INC_PORT=${RT_INC_PORT:-50000}
 
 ## KASM Workspace Variables
 
-KASMPW=${KASMPW:-passwordbasic}
-VNC_RESOLUTION=${KASMRES:-1920x1080}
+VNC_PW=${VNC_PW:-passwordbasic}
+VNC_RESOLUTION=${VNC_RESOLUTION:-1920x1080}
 
 ## MediaServer
 PLEXIMAGE=${PLEXIMAGE:-ghcr.io/linuxserver/plex:latest}
