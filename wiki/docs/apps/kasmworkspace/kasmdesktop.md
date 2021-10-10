@@ -8,7 +8,7 @@
 # INTRODUCTION
 
 Kasm Workspaces - The Container Streaming Platform
-Streaming containerized apps and desktops to end-users. The Workspaces platform provides enterprise-class orchestration, data loss prevention, and web streaming technology to enable the delivery of containerized workloads to your browser.
+Streaming containerized apps and desktops to end-users. The Workspaces platform provides enterprise-class orchestration, data loss prevention, and web streaming technology to enable the delivery of containerized workloads to your browser. For more in-depth information about KASM, visit: https://www.kasmweb.com/
 
 Kasm Desktop Provides Ubuntu Desktop with all available applications from KASM included. Individual apps are also available via DockServer Menu under `kasmworkspaces`.
 
