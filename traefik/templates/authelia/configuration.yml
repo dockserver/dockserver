@@ -73,7 +73,7 @@ access_control:
     - domain: "uptime-kuma.example.com"
       policy: bypass
       resources:
-        - "^/status-page?.*$"
+        - "^/status?.*$"
         - "^/assets/.*$"
         - "^/upload/logo.png.*$"
         - "^/icon.svg"
