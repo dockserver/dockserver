@@ -2,7 +2,6 @@
 # shellcheck shell=bash
 # Copyright (c) 2020, MrDoob
 # All rights reserved.
-
 #########################################################################
 # Author:         l3uddz / m-rots && cloudbox                           #
 # Docker:         https://github.com/Cloudbox/autoscan                  #
