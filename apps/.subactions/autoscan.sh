@@ -101,8 +101,8 @@ echo "\
       - path: /mnt/unionfs/
 
 targets:" >> $basefolder/${typed}/config.yml
-plex=$(docker ps -aq --format={{.Names}} | grep -E 'plex' 1>/dev/null 2>&1 && echo true || echo false)
-prun=$(docker ps -aq --format={{.Names}} | grep -E 'plex')
+plex=$(docker ps -aq --format={{.Names}} | grep -x 'plex' 1>/dev/null 2>&1 && echo true || echo false)
+prun=$(docker ps -aq --format={{.Names}} | grep -x 'plex')
 if [[ -d "/opt/appdata/plex/" && $plex == "true" ]]; then
    token=$(cat "/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Preferences.xml" | sed -e 's;^.* PlexOnlineToken=";;' | sed -e 's;".*$;;' | tail -1)
    if [[ $token == "" ]];then
@@ -117,8 +117,8 @@ if [[ -d "/opt/appdata/plex/" && $plex == "true" ]]; then
      done
    fi
 fi
-emby=$(docker ps -aq --format={{.Names}} | grep -E 'emby' 1>/dev/null 2>&1 && echo true || echo false)
-erun=$(docker ps -aq --format={{.Names}} | grep -E 'emby')
+emby=$(docker ps -aq --format={{.Names}} | grep -x 'emby' 1>/dev/null 2>&1 && echo true || echo false)
+erun=$(docker ps -aq --format={{.Names}} | grep -x 'emby')
 token=youneedtoreplacethemselfnow
 if [[ $emby == "true" ]];then
    for i in ${erun};do
@@ -128,8 +128,8 @@ echo "\
       token: $token" >> $basefolder/${typed}/config.yml
    done
 fi
-jelly=$(docker ps -aq --format={{.Names}} | grep -E 'jelly' 1>/dev/null 2>&1 && echo true || echo false)
-jrun=$(docker ps -aq --format={{.Names}} | grep -E 'jelly')
+jelly=$(docker ps -aq --format={{.Names}} | grep -x 'jelly' 1>/dev/null 2>&1 && echo true || echo false)
+jrun=$(docker ps -aq --format={{.Names}} | grep -x 'jelly')
 token=youneedtoreplacethemselfnow
 if [[ $jelly == "true" ]];then
    for i in ${jrun};do
