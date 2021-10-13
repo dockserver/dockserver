@@ -2,7 +2,7 @@
 version: '3'
 services:
   endlessh:
-    image: 'ghcr.io/linuxserver/endlessh:latest'
+    image: 'lscr.io/linuxserver/endlessh:latest'
     container_name: 'endlessh'
     environment:
       - 'PUID=${ID}'

@@ -9,7 +9,7 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-    image: 'ghcr.io/linuxserver/snapdrop'
+    image: 'lscr.io/linuxserver/snapdrop'
     restart: '${RESTARTAPP}'
     ports:
       - '${PORTBLOCK}:6459:80'

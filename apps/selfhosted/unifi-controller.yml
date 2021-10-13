@@ -9,7 +9,7 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-    image: 'ghcr.io/linuxserver/unifi-controller'
+    image: 'lscr.io/linuxserver/unifi-controller'
     restart: '${RESTARTAPP}'
     ports:
       - '3478:3478/udp'

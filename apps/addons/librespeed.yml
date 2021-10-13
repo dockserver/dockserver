@@ -3,7 +3,7 @@ version: '3'
 services:
   librespeed:
     hostname: 'librespeed'
-    image: 'ghcr.io/linuxserver/librespeed'
+    image: 'lscr.io/linuxserver/librespeed'
     container_name: 'librespeed'
     restart: '${RESTARTAPP}'
     environment:

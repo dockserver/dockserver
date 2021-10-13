@@ -10,7 +10,7 @@ services:
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
       - 'PASSWORD=${PASSWORD}'
-    image: 'ghcr.io/linuxserver/code-server'
+    image: 'lscr.io/linuxserver/code-server'
     restart: '${RESTARTAPP}'
     ports:
       - '${PORTBLOCK}:8443:8443'

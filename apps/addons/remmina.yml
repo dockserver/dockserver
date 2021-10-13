@@ -9,7 +9,7 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-    image: 'ghcr.io/linuxserver/remmina'
+    image: 'lscr.io/linuxserver/remmina'
     restart: '${RESTARTAPP}'
     ports:
       - '${PORTBLOCK}:3000:3000'

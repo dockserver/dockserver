@@ -9,7 +9,7 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-    image: 'ghcr.io/linuxserver/nzbhydra2'
+    image: 'lscr.io/linuxserver/nzbhydra2'
     restart: '${RESTARTAPP}'
     ports:
       - '${PORTBLOCK}:5076:5076'

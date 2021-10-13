@@ -13,7 +13,7 @@ services:
       - 'HASHED_PASSWORD=#fillthisself'
       - 'SUDO_PASSWORD=sudopassword'
       - 'SUDO_PASSWORD_HASH=#fillthisself' 
-    image: 'ghcr.io/linuxserver/davos'
+    image: 'lscr.io/linuxserver/davos'
     restart: '${RESTARTAPP}'
     ports:
       - '${PORTBLOCK}:8088:8080'

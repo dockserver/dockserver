@@ -50,7 +50,7 @@ services:
       - 'REDIS_HOST=redis_netbox'
       - 'REDIS_PORT=6379'
       - 'DB_PASSWORD=netboxpw'
-    image: 'ghcr.io/linuxserver/netbox'
+    image: 'lscr.io/linuxserver/netbox'
     restart: '${RESTARTAPP}'
     volumes:
       - '${APPFOLDER}/netbox/config:/config'

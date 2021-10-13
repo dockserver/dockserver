@@ -9,16 +9,35 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-    image: 'ghcr.io/linuxserver/duplicati'
+    image: 'lscr.io/linuxserver/duplicati'
     restart: '${RESTARTAPP}'
     networks:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
+    ports:
+      - '${PORTBLOCK}:8200:8200'
     volumes:
       - '${APPFOLDER}/duplicati:/config:rw'
-      - './:/source:rw'
+      - '/opt/appdata:/source:rw'
+      - 'unionfs:/backups:rw'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.duplicati-rtr.entrypoints=https'
+      - 'traefik.http.routers.duplicati-rtr.rule=Host(`duplicati.${DOMAIN}`)'
+      - 'traefik.http.routers.duplicati-rtr.tls=true'
+      - 'traefik.http.routers.duplicati-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.duplicati-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.duplicati-rtr.service=duplicati-svc'
+      - 'traefik.http.services.duplicati-svc.loadbalancer.server.port=8200'
 networks:
   proxy:
     driver: bridge
     external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

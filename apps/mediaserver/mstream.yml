@@ -9,7 +9,7 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-    image: 'ghcr.io/linuxserver/mstream:latest'
+    image: 'lscr.io/linuxserver/mstream:latest'
     restart: '${RESTARTAPP}'
     ports:
       - '3000:3000'

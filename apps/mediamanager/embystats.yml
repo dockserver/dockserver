@@ -9,7 +9,7 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-    image: 'ghcr.io/linuxserver/embystat:latest'
+    image: 'lscr.io/linuxserver/embystat:latest'
     restart: '${RESTARTAPP}'
     ports:
       - '${PORTBLOCK}:6555:6555'

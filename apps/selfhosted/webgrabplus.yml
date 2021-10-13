@@ -10,7 +10,7 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=022'
-    image: 'ghcr.io/linuxserver/webgrabplus'
+    image: 'lscr.io/linuxserver/webgrabplus'
     restart: '${RESTARTAPP}'
     networks:
       - proxy

@@ -9,7 +9,7 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-    image: 'ghcr.io/linuxserver/freshrss'
+    image: 'lscr.io/linuxserver/freshrss'
     restart: '${RESTARTAPP}'
     ports:
       - '${PORTBLOCK}:8678:80'

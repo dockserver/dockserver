@@ -9,7 +9,7 @@ services:
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
-    image: 'ghcr.io/linuxserver/muximux'
+    image: 'lscr.io/linuxserver/muximux'
     restart: '${RESTARTAPP}'
     ports:
       - '${PORTBLOCK}:8015:80'

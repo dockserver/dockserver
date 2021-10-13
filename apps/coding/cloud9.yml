@@ -10,7 +10,7 @@ services:
       - 'TZ=${TZ}'
       - 'UMASK=${UMASK}'
       - 'GITURL=https://github.com/linuxserver/docker-cloud9.git'
-    image: 'ghcr.io/linuxserver/cloud9'
+    image: 'lscr.io/linuxserver/cloud9'
     restart: '${RESTARTAPP}'
     ports:
       - '${PORTBLOCK}:8000:8000'
