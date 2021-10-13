@@ -29,3 +29,24 @@ jobs:
           body: ${{steps.github_release.outputs.changelog}}
         env:
           GITHUB_TOKEN: ${{ secrets.CR_PAT }}
+
+  discord:
+    name: Discord Notification
+    runs-on: ubuntu-latest
+    needs:
+      - release
+    if: ${{ success() }}
+    steps:
+      - name: Notify
+        uses: nobrayner/discord-webhook@v1
+        with:
+          github-token: ${{ secrets.CR_PAT }}
+          discord-webhook: ${{ secrets.DISCORD_RLS }}
+          username: 'DockServerRelease-Bot'
+          avatar-url: 'https://octodex.github.com/images/Terracottocat_Single.png'
+          title: 'DockServerRelease-Bot: {{STATUS}}'
+          description: 'DockServerRelease-Bot create new Release ${{ github.ref }}! - ${{steps.github_release.outputs.changelog}}'
+          include-details: 'true'
+          color-success: '#4287f5'
+          color-failure: 'eb4034'
+          color-cancelled: '0x42daf5'
