@@ -37,15 +37,21 @@ jobs:
       - release
     if: ${{ success() }}
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2.3.4
+        with:
+          fetch-depth: 0
+      - name: Get Repository Info
+        uses: FranzDiebold/github-env-vars-action@v2.3.0
       - name: Notify
         uses: nobrayner/discord-webhook@v1
         with:
           github-token: ${{ secrets.CR_PAT }}
-          discord-webhook: ${{ secrets.DISCORD_RLS }}
+          discord-webhook: ${{ secrets.DISCORD_WEBHOOK }}
           username: 'DockServerRelease-Bot'
           avatar-url: 'https://octodex.github.com/images/Terracottocat_Single.png'
           title: 'DockServerRelease-Bot: {{STATUS}}'
-          description: 'DockServerRelease-Bot create new Release ${{ github.ref }}! - ${{steps.github_release.outputs.changelog}}'
+          description: 'DockServerRelease-Bot create new Release $CI_REF_NAME for $CI_REPOSITORY_NAME!'
           include-details: 'true'
           color-success: '#4287f5'
           color-failure: 'eb4034'
