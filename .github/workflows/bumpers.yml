@@ -43,6 +43,10 @@ jobs:
           fetch-depth: 0
       - name: Get Repository Info
         uses: FranzDiebold/github-env-vars-action@v2.3.0
+      - name: Print environment variables
+        run: |
+          echo "CI_REPOSITORY_NAME=$CI_REPOSITORY_NAME"
+          echo "CI_REF_NAME=$CI_REF_NAME"
       - name: Notify
         uses: nobrayner/discord-webhook@v1
         with:
