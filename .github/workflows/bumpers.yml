@@ -45,7 +45,7 @@ jobs:
         uses: nobrayner/discord-webhook@v1
         with:
           github-token: ${{ secrets.CR_PAT }}
-          discord-webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          discord-webhook: ${{ secrets.DISCORD_RLS }}
           username: 'DockServerRelease-Bot'
           avatar-url: 'https://octodex.github.com/images/Terracottocat_Single.png'
           title: 'DockServerRelease-Bot: {{STATUS}}'
