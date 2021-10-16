@@ -5,6 +5,7 @@
 ./database/Library/Application Support/Plex Media Server/Crash Reports
 ./database/Library/Application Support/Plex Media Server/Metadata/*.bif
 ./database/Library/Application Support/Plex Media Server/Media/*.bif
+./database/Library/Application Support/Plex Media Server/Metadata/*
 ./database/Library/Logs/Plex Media Server/
 ./database/Library/Application Support/Plex Media Server/Plug-ins
 ./database/Library/Logs/
@@ -12,6 +13,8 @@
 ./database/Library/Codecs/
 ./transcoding-temp
 ./nzbget.log
+./MediaCover/*
+./logs/*
 ./logs
 ./log
 ./logs
@@ -33,3 +36,4 @@
 ./plexguide/
 *.db-wal
 *.db-shm
+
