@@ -36,14 +36,14 @@ fi
 while true; do
 basefolder="/opt/appdata"
   if [[ ! -x $(command -v docker) ]];then exit;fi
-  if [[ -f "$basefolder/system/servicekeys/.env" ]];then $(command -v rm) -rf $basefolder/system/servicekeys/.env;fi
+  if [[ -f "$basefolder/system/mount/.env" ]];then $(command -v rm) -rf $basefolder/system/mount/.env;fi
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      Please wait while we pull the needed dockers
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   $(command -v docker) system prune -af 1>/dev/null 2>&1
-  pulls="ghcr.io/dockserver/docker-gdsa:latest rclone/rclone:latest gcr.io/google.com/cloudsdktool/cloud-sdk:alpine"
+  pulls="ghcr.io/dockserver/docker-gdsa:latest gcr.io/google.com/cloudsdktool/cloud-sdk:alpine"
   for pull in ${pulls};do
      $(command -v docker) pull $pull --quiet
   done
@@ -52,11 +52,10 @@ done
 }
 checkfields() {
 basefolder="/opt/appdata"
-if [[ ! -d "$basefolder/GDSA/" ]];then $(command -v rm) -rf $basefolder/GDSA/;fi
-if [[ ! -d "$basefolder/system/servicekeys/" ]];then $(command -v mkdir) -p $basefolder/system/servicekeys/;fi
-if [[ ! -d "$basefolder/system/servicekeys/keys" ]];then $(command -v mkdir) -p $basefolder/system/servicekeys/keys;fi
-if [[ ! -d "$basefolder/system/servicekeys/" ]];then $(command -v mkdir) -p $basefolder/system/servicekeys/;fi
-if [[ ! -f "$basefolder/system/servicekeys/.env" ]];then
+if [[ ! -d "$basefolder/system/mount/" ]];then $(command -v mkdir) -p $basefolder/system/mount/;fi
+if [[ ! -d "$basefolder/system/mount/keys" ]];then $(command -v mkdir) -p $basefolder/system/mount/keys;fi
+if [[ ! -d "$basefolder/system/mount/" ]];then $(command -v mkdir) -p $basefolder/system/mount/;fi
+if [[ ! -f "$basefolder/system/mount/.env" ]];then
 echo -n "\
 #!/usr/bin/with-contenv bash
 # shellcheck shell=bash
@@ -70,20 +69,9 @@ echo -n "\
 # sagen is under MIT License                                        #
 # Copyright (c) 2019 88lex                                          #
 #####################################################################
-CYCLEDELAY=0.1s
-SANAME=${SANAME:-NOT-SET}
-FIRSTGDSA=1
-LASTPROJECTNUM=1
-NUMGDSAS=${NUMGDSAS:-NOT-SET}
-PROGNAME=${PROGNAME:-NOT-SET}
-SECTION_DELAY=5
-#### USER VALUES ####
 ACCOUNT=${ACCOUNT:-NOT-SET}
-PROJECT=${PROJECT:-NOT-SET}
-TEAMDRIVEID=${TEAMDRIVEID:-NOT-SET}
-ENCRYPT=${ENCRYPT:-FALSE}
-PASSWORD=${PASSWORD:-FALSE}
-SALT=${SALTPASSWORD:-FALSE}" >$basefolder/system/servicekeys/.env
+GROUP_NAME=${GROUPNAME:-NOT-SET}
+PROJECT_BASE_NAME=${PROJECT:-NOT-SET}" >$basefolder/system/mount/.env
 fi
 }
 projectname() {
@@ -106,9 +94,9 @@ EOF
 fi
 if [[ $PROJECTNAME != "" ]];then
    if [[ $(uname) == "Darwin" ]];then
-      sed -i '' "s/PROJECT=NOT-SET/PROJECT=$PROJECTNAME/g" $basefolder/system/servicekeys/.env
+      sed -i '' "s/PROJECT_BASE_NAME=NOT-SET/PROJECT=$PROJECTNAME/g" $basefolder/system/mount/.env
    else
-      sed -i "s/PROJECT=NOT-SET/PROJECT=$PROJECTNAME/g" $basefolder/system/servicekeys/.env
+      sed -i "s/PROJECT_BASE_NAME=NOT-SET/PROJECT=$PROJECTNAME/g" $basefolder/system/mount/.env
    fi
 else
   echo "Project Name cannot be empty"
@@ -116,32 +104,33 @@ else
 fi
 clear && interface
 }
-sabasename() {
+groupname() {
 basefolder="/opt/appdata"
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀   Service Account Name
-         min is 6 chars
+    🚀   GROUPNAME
+
+         min is 4 chars
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-   read -erp "Enter your Service Account Name: " SABASENAME </dev/tty
-   if [[ $(echo $SABASENAME | wc -m) -le "6" || $(echo $SABASENAME | wc -m) -ge "16" ]];then
+   read -erp "Enter your Projectname: " GROUPNAME </dev/tty
+   if [[ $(echo $GROUPNAME | wc -m) -le "4" || $(echo $GROUPNAME | wc -m) -ge "12" ]];then
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀   Sorry the minimum of chars are 6 and maximum is 16
+    🚀   Sorry the minimum of chars are 4 and maximum is 16
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-   sleep 5 && sabasename
+   sleep 5 && groupname
 fi
-if [[ $SABASENAME != "" ]];then
+if [[ $GROUPNAME != "" ]];then
    if [[ $(uname) == "Darwin" ]];then
-      sed -i '' "s/SANAME=NOT-SET/SANAME=$SABASENAME/g" $basefolder/system/servicekeys/.env
+      sed -i '' "s/GROUP_NAME=NOT-SET/GROUP_NAME=$GROUPNAME/g" $basefolder/system/mount/.env
    else
-      sed -i "s/SANAME=NOT-SET/SANAME=$SABASENAME/g" $basefolder/system/servicekeys/.env
+      sed -i "s/GROUP_NAME=NOT-SET/GROUP_NAME=$GROUPNAME/g" $basefolder/system/mount/.env
    fi
 else
-  echo " Service Account Base name cannot be empty"
-  sabasename
+  echo "Project Name cannot be empty"
+  groupname
 fi
 clear && interface
 }
@@ -155,7 +144,7 @@ EOF
    read -erp "Enter your Account Email: " ACCOUNTNAME </dev/tty
 if [[ $ACCOUNTNAME != "" ]];then
    if [[ $(uname) == "Darwin" ]];then
-      sed -i '' "s/ACCOUNT=NOT-SET/ACCOUNT=$ACCOUNTNAME/g" $basefolder/system/servicekeys/.env
+      sed -i '' "s/ACCOUNT=NOT-SET/ACCOUNT=$ACCOUNTNAME/g" $basefolder/system/mount/.env
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Validate your Google Authentication
@@ -163,7 +152,7 @@ tee <<-EOF
 EOF
       $(command -v docker) run -ti --name gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk:alpine gcloud auth login --no-launch-browser --account=${ACCOUNTNAME}
    else
-      sed -i "s/ACCOUNT=NOT-SET/ACCOUNT=$ACCOUNTNAME/g" $basefolder/system/servicekeys/.env
+      sed -i "s/ACCOUNT=NOT-SET/ACCOUNT=$ACCOUNTNAME/g" $basefolder/system/mount/.env
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Validate your Google Authentication
@@ -177,88 +166,26 @@ else
 fi
 clear && interface
 }
-teamdriveid() {
-basefolder="/opt/appdata"
-tee <<-EOF
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀   Team Drive ID
-
-    https://drive.google.com/drive/u/1/shared-drives
-
-    Click on the Shared Drive !
-
-    In the Link its shows behind /folders/<ID HERE>
-    The Shared Drive ID !!
-
-    Please dont use the name of the Shared Drive
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-   read -erp "Enter your Team Drive ID: " TEAMDRVEID </dev/tty
-if [[ $TEAMDRVEID != "" ]];then
-   if [[ $(uname) == "Darwin" ]];then
-      sed -i '' "s/TEAMDRIVEID=NOT-SET/TEAMDRIVEID=$TEAMDRVEID/g" $basefolder/system/servicekeys/.env
-   else
-      sed -i "s/TEAMDRIVEID=NOT-SET/TEAMDRIVEID=$TEAMDRVEID/g" $basefolder/system/servicekeys/.env
-   fi
-else
-  echo "Team Drive ID name cannot be empty"
-  teamdriveid
-fi
-clear && interface
-}
-servicekeysnumber() {
-basefolder="/opt/appdata"
-tee <<-EOF
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀   Google Service Keys
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-   read -erp '↘️  Type a Number [ 4 thru 60 ] | Press [ENTER]: ' KEYS </dev/tty
-  if [[ $KEYS -le "3" || $KEYS -ge "60" ]];then
-tee <<-EOF
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀   Sorry $KEYS is more then 60 or less than 3
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-sleep 5 && servicekeysnumber
-fi
-  if [[ $KEYS -ge "3" || $KEYS -le "60" ]];then
-     if [[ $(uname) == "Darwin" ]];then
-        sed -i '' "s/NUMGDSAS=NOT-SET/NUMGDSAS=$KEYS/g" $basefolder/system/servicekeys/.env
-     else
-        sed -i "s/NUMGDSAS=NOT-SET/NUMGDSAS=$KEYS/g" $basefolder/system/servicekeys/.env
-     fi
-  fi
-clear && interface
-}
 validauth() {
 basefolder="/opt/appdata"
+source $basefolder/system/mount/.env
 ACCOUNT=${ACCOUNT}
-source $basefolder/system/servicekeys/.env
-if [[ -d "$basefolder/system/servicekeys/keys" ]];then $(command -v rm) -rf $basefolder/system/servicekeys/keys;fi
-if [[ ! -d "$basefolder/system/servicekeys/keys" ]];then $(command -v mkdir) -p $basefolder/system/servicekeys/keys;fi
 if [[ ${ACCOUNT} != "NOT-SET" ]];then
+if [[ -d "$basefolder/system/mount/keys" ]];then $(command -v rm) -rf $basefolder/system/mount/keys;fi
+if [[ ! -d "$basefolder/system/mount/keys" ]];then $(command -v mkdir) -p $basefolder/system/mount/keys;fi
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         🚀   Google Service Key running now
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-$(command -v docker) run --rm --volumes-from gcloud-config -v $basefolder/system/servicekeys:/system/servicekeys:rw ghcr.io/dockserver/docker-gdsa:latest
+$(command -v docker) run --rm --volumes-from gcloud-config -v $basefolder/system/mount:/system/mount:rw ghcr.io/dockserver/docker-gdsa:latest
 sleep 5 && clear
-members=$(cat $basefolder/system/servicekeys/members.csv)
+members=$(cat $basefolder/system/mount/members.csv)
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   SYSTEM MESSAGE: Key Generation Complete!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-${members}
-
-    Shortcut to Google Team Drives
-    Share the E-Mails with the CORRECT TEAMDRIVE: ${TEAMDRIVEID}
-    SAVE TIME! Copy & Paste the all the E-Mails into the share!
-
-     Type confirm ! when all is done !
+    Type confirm ! when all is done !
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   read -erp "Confirm Info | PRESS [ENTER] " input </dev/tty
@@ -316,21 +243,19 @@ if [[ $(whoami) == "root" ]];then $(command -v chown) -hR 1000:1000 $basefolder/
 if [[ $(whoami) != "root" ]];then $(command -v chown) -hR $(whoami):$(whoami) $basefolder/system;fi
 }
 interface() {
-source $basefolder/system/servicekeys/.env
+source $basefolder/system/mount/.env
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀   Google Service Key Builder  || UNENCRYPTED
+    🚀   Google Service Key Builder  || ENCRYPTED
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
     [ 1 ] Account Details            [ ${ACCOUNT} ]
     [ 2 ] Service Account Name       [ ${SANAME} ]
     [ 3 ] Project Name               [ ${PROJECT} ]
-    [ 4 ] Team Drive ID              [ ${TEAMDRIVEID} ]
-    [ 5 ] Numbers of service Keys    [ ${NUMGDSAS} ]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-    [ D ] Deploy UNENCRYPTED Service Keys
+    [ D ] Deploy Service Keys for mounting
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -338,13 +263,11 @@ tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-  read -erp "↘️  Type Number and Press [ENTER]: " headsectionun </dev/tty
-  case $headsectionun in
+  read -erp "↘️  Type Number and Press [ENTER]: " headsectionen </dev/tty
+  case $headsectionen in
     1) clear && account ;;
     2) clear && sabasename ;;
     3) clear && projectname ;;
-    4) clear && teamdriveid ;;
-    5) clear && servicekeysnumber ;;
     d|D) clear && validauth ;;
     Z|z|exit|EXIT|Exit|close) clear && exit ;;
     *) appstartup ;;

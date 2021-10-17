@@ -52,6 +52,9 @@ done
 }
 checkfields() {
 basefolder="/opt/appdata"
+if [[ ! -d "$basefolder/GDSA/" ]];then $(command -v rm) -rf $basefolder/GDSA/;fi
+if [[ ! -d "$basefolder/system/servicekeys/" ]];then $(command -v mkdir) -p $basefolder/system/servicekeys/;fi
+if [[ ! -d "$basefolder/system/servicekeys/keys" ]];then $(command -v mkdir) -p $basefolder/system/servicekeys/keys;fi
 if [[ ! -d "$basefolder/system/servicekeys/" ]];then $(command -v mkdir) -p $basefolder/system/servicekeys/;fi
 if [[ ! -f "$basefolder/system/servicekeys/.env" ]];then
 echo -n "\

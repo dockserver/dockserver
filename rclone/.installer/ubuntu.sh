@@ -34,25 +34,19 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
            FYI ITS A PREALPHA VERSION !
-
-    [ 1 ] GDRIVE                    ( not done yet )
-    [ 2 ] TDRIVE                    ( ALPHA LEVEL )
-    [ 3 ] GCRYPT                    ( not done yet )
-    [ 4 ] TCRYPT                    ( ALPHA LEVEL )
-    [ 5 ] RCLONE UNION              ( not done yet )
+               NOTHING TO SEE HERE
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    [ EXIT or Z ] - Exit || [ help or HELP ] - Help
+    [ EXIT or Z ] - Exit 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   read -erp "↘️  Type Number and Press [ENTER]: " headsection </dev/tty
   case $headsection in
-    1) clear && LOCATION=gdrive && selection ;;
-    2) clear && LOCATION=tdrive && selection ;;
-    3) clear && LOCATION=gcrypt && selection ;;
-    4) clear && LOCATION=tcrypt && selection ;;
-    5) clear && LOCATION=union && selection ;;
-    #help|HELP|Help) clear && sectionhelplayout ;;
+    # 1) clear && LOCATION=gdrive && selection ;;
+    # 2) clear && LOCATION=tdrive && selection ;;
+    # 3) clear && LOCATION=gcrypt && selection ;;
+    # 4) clear && LOCATION=tcrypt && selection ;;
+    # 5) clear && LOCATION=union && selection ;;
     Z|z|exit|EXIT|Exit|close) exit ;;
     *) appstartup ;;
   esac

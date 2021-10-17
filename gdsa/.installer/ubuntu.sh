@@ -34,43 +34,8 @@ exit
 fi
 while true; do
   if [[ ! -x $(command -v docker) ]];then exit;fi
-  clear && checkfields && interface
+  clear && interface
 done
-}
-checkfields() {
-basefolder="/opt/appdata"
-if [[ ! -d "$basefolder/GDSA/" ]];then $(command -v rm) -rf $basefolder/GDSA/;fi
-if [[ ! -d "$basefolder/system/servicekeys/" ]];then $(command -v mkdir) -p $basefolder/system/servicekeys/;fi
-if [[ ! -d "$basefolder/system/servicekeys/keys" ]];then $(command -v mkdir) -p $basefolder/system/servicekeys/keys;fi
-if [[ ! -f "$basefolder/system/servicekeys/.env" ]];then
-echo -n "\
-#!/usr/bin/with-contenv bash
-# shellcheck shell=bash
-#####################################################################
-# Copyright (c) 2021, dockserver                                    #
-#####################################################################
-# All rights reserved.                                              #
-# started from Zero                                                 #
-# Docker owned by dockserver                                        #
-# some codeparts are copyed from sagen by 88lex                     #
-# sagen is under MIT License                                        #
-# Copyright (c) 2019 88lex                                          #
-#####################################################################
-CYCLEDELAY=0.1s
-SANAME=${SANAME:-NOT-SET}
-FIRSTGDSA=1
-LASTPROJECTNUM=1
-NUMGDSAS=${NUMGDSAS:-NOT-SET}
-PROGNAME=${PROGNAME:-NOT-SET}
-SECTION_DELAY=5
-#### USER VALUES ####
-ACCOUNT=${ACCOUNT:-NOT-SET}
-PROJECT=${PROJECT:-NOT-SET}
-TEAMDRIVEID=${TEAMDRIVEID:-NOT-SET}
-ENCRYPT=${ENCRYPT:-FALSE}
-PASSWORD=${PASSWORD:-FALSE}
-SALT=${SALTPASSWORD:-FALSE}" >$basefolder/system/servicekeys/.env
-fi
 }
 forcereset() {
 tee <<-EOF
@@ -140,9 +105,10 @@ tee <<-EOF
     🚀   ServiceKey Head Section Menu
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-    [ 1 ] Google ServiceKey Builder   || UNENCRYPTED
-    [ 2 ] Google ServiceKey Builder   || ENCRYPTED
-    [ 3 ] Remove ServiceKey           || Force Reset
+    [ 1 ] Google ServiceKey UPLOADER  || UNENCRYPTED
+    [ 2 ] Google ServiceKey UPLOADER  || ENCRYPTED
+    [ 3 ] Google ServiceKey MOUNTKEYS
+    [ 4 ] Remove ServiceKey UPLOADER  || Force Reset
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     [ EXIT or Z ] - Exit
@@ -150,11 +116,12 @@ tee <<-EOF
 EOF
   read -erp "↘️  Type Number and Press [ENTER]: " headsection </dev/tty
   case $headsection in
-    1) clear && LOCATION=case1 && selection ;;
+    1) clear && LOCATION=case1 && selection;;
     2) clear && LOCATION=case2 && selection;;
-    3) clear && forcereset ;;
+    2) clear && LOCATION=case3 && selection;;
+    4) clear && forcereset;;
     Z|z|exit|EXIT|Exit|close) exit ;;
-    *) appstartup ;;
+    *) appstartup;;
   esac
 }
 appstartup

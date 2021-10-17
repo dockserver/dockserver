@@ -49,58 +49,58 @@ VNC_PW=${VNC_PW:-passwordbasic}
 VNC_RESOLUTION=${VNC_RESOLUTION:-1920x1080}
 
 ## MediaServer
-PLEXIMAGE=${PLEXIMAGE:-ghcr.io/linuxserver/plex:latest}
+PLEXIMAGE=${PLEXIMAGE:-lscr.io/linuxserver/plex:latest}
 PLEXTHEME=${PLEXTHEME:-organizr-dark}
 PLEXVERSION=${PLEXVERSION:-latest}
-EMBYIMAGE=${EMBYIMAGE:-ghcr.io/linuxserver/emby:latest}
+EMBYIMAGE=${EMBYIMAGE:-lscr.io/linuxserver/emby:latest}
 EMBYTHEME=${EMBYTHEME:-organizr-dark}
-JELLYFINIMAGE=${JELLYFINIMAGE:-ghcr.io/linuxserver/jellyfin:latest}
+JELLYFINIMAGE=${JELLYFINIMAGE:-lscr.io/linuxserver/jellyfin:latest}
 JELLYFINTHEME=${JELLYFINTHEME:-organizr-dark}
 
 ## MediaManager
-BAZARRIMAGE=${BAZARRIMAGE:-ghcr.io/linuxserver/bazarr:latest}
+BAZARRIMAGE=${BAZARRIMAGE:-lscr.io/linuxserver/bazarr:latest}
 BAZARRTHEME=${BAZARRTHEME:-organizr-dark}
-BAZARR4KIMAGE=${BAZARR4KIMAGE:-ghcr.io/linuxserver/bazarr}
+BAZARR4KIMAGE=${BAZARR4KIMAGE:-lscr.io/linuxserver/bazarr}
 BAZARR4KTHEME=${BAZARR4KTHEME:-organizr-dark}
-CALIBREIMAGE=${CALIBREIMAGE:-ghcr.io/linuxserver/calibre-web}
+CALIBREIMAGE=${CALIBREIMAGE:-lscr.io/linuxserver/calibre-web}
 CALIBRETHEME=${CALIBRETHEME:-organizr-dark}
-RADARRIMAGE=${RADARRIMAGE:-ghcr.io/linuxserver/radarr:nightly}
+RADARRIMAGE=${RADARRIMAGE:-lscr.io/linuxserver/radarr:nightly}
 RADARRTHEME=${RADARRTHEME:-organizr-dark}
-RADARR4KIMAGE=${RADARR4KIMAGE:-ghcr.io/linuxserver/radarr:nightly}
+RADARR4KIMAGE=${RADARR4KIMAGE:-lscr.io/linuxserver/radarr:nightly}
 RADARR4KTHEME=${RADARR4KTHEME:-organizr-dark}
-RADARRHDRIMAGE=${RADARRHDRIMAGE:-ghcr.io/linuxserver/radarr:nightly}
+RADARRHDRIMAGE=${RADARRHDRIMAGE:-lscr.io/linuxserver/radarr:nightly}
 RADARRHDRTHEME=${RADARRHDRTHEME:-organizr-dark}
 READARRIMAGE=${READARRIMAGE:-ghcr.io/hotio/readarr:nightly}
 READARRTHEME=${READARRTHEME:-organizr-dark}
-PROWLARRIMAGE=${PROWLARRIMAGE:-ghcr.io/linuxserver/prowlarr:develop}
+PROWLARRIMAGE=${PROWLARRIMAGE:-lscr.io/linuxserver/prowlarr:develop}
 PROWLARRTHEME=${PROWLARRTHEME:-organizr-dark}
-PROWLARR4KIMAGE=${PROWLARR4KIMAGE:-ghcr.io/linuxserver/prowlarr:develop}
+PROWLARR4KIMAGE=${PROWLARR4KIMAGE:-lscr.io/linuxserver/prowlarr:develop}
 PROWLARR4KTHEME=${PROWLARR4KTHEME:-organizr-dark}
-PROWLARRHDRIMAGE=${PROWLARRHDRIMAGE:-ghcr.io/linuxserver/prowlarr:develop}
+PROWLARRHDRIMAGE=${PROWLARRHDRIMAGE:-lscr.io/linuxserver/prowlarr:develop}
 PROWLARRHDRTHEME=${PROWLARRHDRTHEME:-organizr-dark}
-SONARRIMAGE=${SONARRIMAGE:-ghcr.io/linuxserver/sonarr:develop}
+SONARRIMAGE=${SONARRIMAGE:-lscr.io/linuxserver/sonarr:develop}
 SONARRTHEME=${SONARRTHEME:-organizr-dark}
-SONARR4KIMAGE=${SONARR4KIMAGE:-ghcr.io/linuxserver/sonarr:develop}
+SONARR4KIMAGE=${SONARR4KIMAGE:-lscr.io/linuxserver/sonarr:develop}
 SONARR4KTHEME=${SONARR4KTHEME:-organizr-dark}
-SONARRHDRIMAGE=${SONARRHDRIMAGE:-ghcr.io/linuxserver/sonarr:develop}
+SONARRHDRIMAGE=${SONARRHDRIMAGE:-lscr.io/linuxserver/sonarr:develop}
 SONARRHDRTHEME=${SONARRHDRTHEME:-organizr-dark}
-TAUTULLIIMAGE=${TAUTULLIIMAGE:-ghcr.io/linuxserver/tautulli:latest}
+TAUTULLIIMAGE=${TAUTULLIIMAGE:-lscr.io/linuxserver/tautulli:latest}
 TAUTULLITHEME=${TAUTULLITHEME:-organizr-dark}
-LIDARRIMAGE=${LIDARRIMAGE:-ghcr.io/linuxserver/lidarr:nightly}
+LIDARRIMAGE=${LIDARRIMAGE:-lscr.io/linuxserver/lidarr:nightly}
 LIDARRTHEME=${LIDARRTHEME:-organizr-dark}
-LAZYLIBRARIANIMAGE=${LAZYLIBRARIANIMAGE:-ghcr.io/linuxserver/lazylibrarian:latest}
+LAZYLIBRARIANIMAGE=${LAZYLIBRARIANIMAGE:-lscr.io/linuxserver/lazylibrarian:latest}
 LAZYLIBRARIANTHEME=${LAZYLIBRARIANTHEME:-organizr-dark}
 
 ##DownloadClients
-DELUGEIMAGE=${DELUGEIMAGE:-ghcr.io/linuxserver/deluge:latest}
+DELUGEIMAGE=${DELUGEIMAGE:-lscr.io/linuxserver/deluge:latest}
 DELUGETHEME=${DELUGETHEME:-organizr-dark}
 JACKETTIMAGE=${JACKETTIMAGE:-ghcr.io/hotio/jackett:latest}
 JACKETTTHEME=${JACKETTTHEME:-organizr-dark}
-NZBGETIMAGE=${NZBGETIMAGE:-ghcr.io/linuxserver/nzbget:latest}
+NZBGETIMAGE=${NZBGETIMAGE:-lscr.io/linuxserver/nzbget:latest}
 NZBGETTHEME=${NZBGETTHEME:-organizr-dark}
-SABNZBDIMAGE=${SABNZBDIMAGE:-ghcr.io/linuxserver/sabnzbd:latest}
+SABNZBDIMAGE=${SABNZBDIMAGE:-lscr.io/linuxserver/sabnzbd:latest}
 SABNZBDTHEME=${SABNZBDTHEME:-organizr-dark}
-QBITORRENTIMAGE=${QBITORRENTIMAGE:-ghcr.io/linuxserver/qbittorrent:latest}
+QBITORRENTIMAGE=${QBITORRENTIMAGE:-lscr.io/linuxserver/qbittorrent:latest}
 QBITORRENTTHEME=${QBITORRENTTHEME:-organizr-dark}
 
 ### APP CUSTOMEVARIABLES
@@ -124,7 +124,7 @@ WATCHTOWER_ROLLING_RESTART=${WATCHTOWER_ROLLING_RESTART:-false}
 WATCHTOWER_TIMEOUT=${WATCHTOWER_TIMEOUT:-180s}
 
 ##Webtop
-WEBTOP_IMAGE=${WEBTOP_IMAGE:-ghcr.io/linuxserver/webtop:ubuntu-xfce}
+WEBTOP_IMAGE=${WEBTOP_IMAGE:-lscr.io/linuxserver/webtop:ubuntu-xfce}
 WEBTOP_SHM_SIZE=${WEBTOP_SHM_SIZE:-1gb}
 
 ##APIs
