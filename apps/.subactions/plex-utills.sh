@@ -20,16 +20,26 @@ token=$(cat "/opt/appdata/plex/database/Library/Application Support/Plex Media S
 
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-INSTRUCTIONS HERE !!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+In Plex-Utils
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Navigate to Config Page: https://plex-utills.${DOMAIN}/config
+  
+  Plex Connection
+- Enter Plex Url : http://${SERVERIP}:32400
+- Enter Plex Token : ${token}
 
-( must be added self )
+  Libraries
+- Enter Library Names ( Must match Plex Library Names )
 
-Plex Connection
-Plex URL :
-http://${SERVERIP}:32400
+  Schedules
+- Set Schedules ( These must be Set, even If you disable a script )
 
-Token :
-${token}
+  Script Options
+- Set Desired Script Options ( 4K/HDR/3D Posters/Banners )
+
+  
+  Save Configuration and you are good to go. 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
