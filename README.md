@@ -73,7 +73,7 @@ sudo wget -qO- https://git.io/J3GDc | sudo bash
 
 <!--START_SECTION:activity-->
 
-1. 💪 Opened PR [#253](https://github.com/dockserver/dockserver/pull/253) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+1. 🎉 Merged PR [#254](https://github.com/dockserver/dockserver/pull/254) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 <!--END_SECTION:activity-->
 
 ----
