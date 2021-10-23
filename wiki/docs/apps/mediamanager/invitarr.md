@@ -16,38 +16,49 @@ Invitarr is a chatbot that invites discord users to plex. You can also automate 
 - Fully automatic invites using roles 
 - Ability to kick users from plex if they leave the discord server or if their role is taken away.
 - Ability to view the database in discord and to edit it.
-- Fully configurable via a web portal
+- Fully configurable via discord.
 
 ## Commands: 
 ```
--plex add <email>
+.plexinvite <email>
 This command is used to add an email to plex
--plex rm <email>
+.plexremove <email>
 This command is used to remove an email from plex
--db ls
+.dbls
 This command is used to list Invitarrs database
--db add <email> <@user>
+.dbadd <email> <@user>
 This command is used to add exsisting users email and discord id to the DB.
--db rm <position>
+.dbrm <position>
 This command is used to remove a record from the Db. Use -db ls to determine record position. ex: -db rm 1
 ```
 
-Refer to the [Wiki](https://github.com/Sleepingpirates/Invitarr/wiki) for detailed steps.
+# Docker Setup & Start
+
+1. Insatll Invitarr over Dockserver App Install Menu 
+
+2. Follow this [Guide](https://discordpy.readthedocs.io/en/latest/discord.html) on how to get the discord bot token. Note: When inviting the bot to your discord server make sure    it has “Administrator” permission.
 
 **Enable Intents else bot will not Dm users after they get the role.**
 https://discordpy.readthedocs.io/en/latest/intents.html#privileged-intents
 
+3. Open Portainer an edit Invitarr conatiner to add BOT TOKEN
 
-**Default login**
+Refer to the [Wiki](https://github.com/Sleepingpirates/Invitarr/wiki) for detailed steps.
+
+# After bot has started 
+
+## Setup Commands: 
 
 ```
-User: admin
-Pass: admin
+.setupplex
+This command is used to setup plex login. 
+.roleadd <@role>
+These role(s) will be used as the role(s) to automatically invite user to plex
+.setuplibs (optional)
+This command is used to setup plex libraries. Default is set to all. 
 ```
 
-
-## Screenshot
-![bot](https://github.com/Sleepingpirates/Invitarr/blob/master/Screenshots/June_06.10.2020_07.08.21_PM.png)
+Refer to the [Wiki](https://github.com/Sleepingpirates/Invitarr/wiki) for detailed steps.
 
 
 ## Support
