@@ -139,7 +139,6 @@ nav:
     - Traefik: install/traefik.md
     - LXC-Container: lxc/lxc.md
     - Migration: install/migration.md 
-    - Changelog: install/changelog.md
   - Commands:
     - Commands: commands/commands.md
     - Backup: commands/backup.md
@@ -149,7 +148,7 @@ nav:
     - GCrypt: drive/gcrypt.md
     - TDrive: drive/tdrive.md
     - TCrypt: drive/tcrypt.md
-    - Rclone Union: drive/union.md
+    - Mount Keys: drive/mdkeys.md
     - Service Accounts: drive/saccounts.md
   - Applikation:
     - Applikation: apps/apps.md
@@ -256,6 +255,5 @@ nav:
       - DockServerWiki: apps/system/wiki.md
   - Scripts:
     - Scripts: scripts/scripts.md
-  - Sponsorship:
-    - Sponsorship: sponsorship/index.md
+
 #EOF
