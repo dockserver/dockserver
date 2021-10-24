@@ -514,7 +514,7 @@ EOF
   if [[ ${typed} == "dashy" ]];then
      if [[ -f $appfolder/.subactions/${typed}.sh ]];then $(command -v bash) $appfolder/.subactions/${typed}.sh;fi
   fi
-  if [[ $(typed) == "invitarr" ]];then
+  if [[ ${typed} == "invitarr" ]];then
       $(command -v nano) $basefolder/$compose      
       $(command -v rsync) $appfolder/.subactions/${typed}.js $basefolder/${typed}/config.ini -aqhv
       $(command -v nano) $basefolder/${typed}/config.ini
