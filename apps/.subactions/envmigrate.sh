@@ -134,13 +134,6 @@ PMM_NO_MISSING=${PMM_NO_MISSING:-false}
 
 ##Invitarr
 Discord_bot_token=${Discord_bot_token:-null}
-roleid=${roleid:-null}
-PLEXUSER=${PLEXUSER:-null}
-PLEXPASS=${PLEXPASS:-null}
-PLEX_SERVER_NAME=${PLEX_SERVER_NAME:-null}
-Plex_LIBS=${Plex_LIBS:-null}
-channelid=${channelid:-nul}
-Webhookurl=${Webhookurl:-null}
 
 #Pihole
 PIHOLEIMAGE=${PIHOLEIMAGE:-pihole/pihole}
