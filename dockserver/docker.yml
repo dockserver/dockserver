@@ -9,6 +9,10 @@ services:
       - 'PUID=${ID}'
     image: 'psidex/crowsnest:latest'
     restart: '${RESTARTAPP}'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
     volumes:
       - '/opt/dockserver/dockserver/config.yaml:/app/config.yaml:ro'
       - '/opt/dockserver:/gitrepos/dockserver'
