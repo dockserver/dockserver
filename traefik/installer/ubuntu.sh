@@ -350,8 +350,15 @@ EOF
 clear && interface
 fi
 }
+
+envmigra() {
+    envmigrate="/opt/dockserver/apps/.subactions/envmigrate.sh"
+    $(command -v bash) $envmigrate
+}
+
 ######################################################
 interface() {
+envmigra
 basefolder="/opt/appdata"
 source $basefolder/compose/.env
 tee <<-EOF
