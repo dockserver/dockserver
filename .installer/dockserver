@@ -44,9 +44,11 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
           if [[ $errorcode -eq 0 ]];then
              docker-compose up -d --force-recreate 1>/dev/null 2>&1
           fi
+    else
+       $(command -v docker) restart dockserver 1>/dev/null 2>&1
     fi
     $(command -v chown) -cR 1000:1000 ${dockserver} 1>/dev/null 2>&1
-    envmigra && clear
+    clear
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "    🚀    DockServer [ UPDATE ] DONE"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -113,23 +115,23 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 
 }
 envmigra() {
-envmigrate="/opt/dockserver/apps/.subactions/envmigrate.sh"
-$(command -v bash) $envmigrate
+    envmigrate="/opt/dockserver/apps/.subactions/envmigrate.sh"
+     $(command -v bash) $envmigrate
 }
 
 DOCK=$1
 FORK=$2
 case "$DOCK" in
- "" ) run ;;
- "-i" ) run ;;
- "--install" ) run ;;
+ "" ) envmigra && run ;;
+ "-i" ) envmigra && run ;;
+ "--install" ) envmigra && run ;;
  "-u" ) update ;;
  "--update" ) update ;;
  "-h" ) usage ;;
  "--help" ) usage ;;
- "-d" ) dev ;;
- "--dev" ) dev ;;
- "-f" ) fork ;;
- "--fork" ) fork ;;
+ "-d" ) envmigra && dev ;;
+ "--dev" ) envmigra && dev ;;
+ "-f" ) envmigra && fork ;;
+ "--fork" ) envmigra && fork ;;
 esac
 #EOF
