@@ -115,8 +115,11 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 
 }
 envmigra() {
-    envmigrate="/opt/dockserver/apps/.subactions/envmigrate.sh"
-     $(command -v bash) $envmigrate
+basefolder="/opt/appdata"
+envmigrate="$basefolder/apps/.subactions/envmigrate.sh
+if [[ -f "$basefolder/compose/.env" ]] 
+   $(command -v bash) $envmigrate
+fi 
 }
 
 DOCK=$1
