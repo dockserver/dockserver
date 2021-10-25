@@ -20,7 +20,7 @@ fi
 dockserver=/opt/dockserver
 run() {
 if [[ -d ${dockserver} ]];then
-   cd ${dockserver} && $(command -v bash) install.sh
+   envmigra && $(command -v cd) ${dockserver} && $(command -v bash) install.sh
 else
    usage
 fi
@@ -34,21 +34,13 @@ echo "    🚀    DockServer [ UPDATE ] STARTED"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     basefolder="/opt/appdata"
     compose="compose/docker-compose.yml"
-    ds=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -v 'trae' | grep -x 'dockserver')
-    if [[ $ds != 'dockserver' ]];then
-       $(command -v rsync) ${dockserver}/dockserver/docker.yml $basefolder/$compose -aqhv;fi
-       if [[ -f $basefolder/$compose ]];then
-          $(command -v cd) $basefolder/compose/
-          docker-compose config 1>/dev/null 2>&1
-          errorcode=$?
-          if [[ $errorcode -eq 0 ]];then
-             docker-compose up -d --force-recreate 1>/dev/null 2>&1
-          fi
-    else
-       $(command -v docker) restart dockserver 1>/dev/null 2>&1
+    $(command -v rsync) ${dockserver}/dockserver/docker.yml $basefolder/$compose -aqhv
+    if [[ -f $basefolder/$compose ]];then
+       $(command -v cd) $basefolder/compose/ && docker-compose config 1>/dev/null 2>&1
+       $(command -v cd) $basefolder/compose/ && docker-compose up -d --force-recreate 1>/dev/null 2>&1
     fi
     $(command -v chown) -cR 1000:1000 ${dockserver} 1>/dev/null 2>&1
-    clear
+    envmigra && clear
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "    🚀    DockServer [ UPDATE ] DONE"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -123,16 +115,16 @@ if [[ -f "$basefolder/compose/.env" ]];then $(command -v bash) $envmigrate;fi
 DOCK=$1
 FORK=$2
 case "$DOCK" in
- "" ) envmigra && run ;;
- "-i" ) envmigra && run ;;
- "--install" ) envmigra && run ;;
+ "" ) run ;;
+ "-i" ) run ;;
+ "--install" ) run ;;
  "-u" ) update ;;
  "--update" ) update ;;
  "-h" ) usage ;;
  "--help" ) usage ;;
- "-d" ) envmigra && dev ;;
- "--dev" ) envmigra && dev ;;
- "-f" ) envmigra && fork ;;
- "--fork" ) envmigra && fork ;;
+ "-d" ) dev ;;
+ "--dev" ) dev ;;
+ "-f" ) fork ;;
+ "--fork" ) fork ;;
 esac
 #EOF
