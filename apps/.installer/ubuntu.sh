@@ -14,7 +14,7 @@
 #####################################
 appstartup() {
 ds=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -x 'traefik')
-if [[ $ds != "" ]];then
+if [[ ${ds} == "" ]];then
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔  You deploy Traefik before you can deploy any Apps
