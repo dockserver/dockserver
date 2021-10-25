@@ -383,6 +383,7 @@ else
 fi
 }
 runinstall() {
+  migrateenv
   restorebackup=${restorebackup:-null}
   section=${section}
   typed=${typed}
@@ -790,11 +791,6 @@ if [[ ! -x $(command -v docker-compose) ]];then
    $(command -v chmod) a=rx,u+w /usr/local/bin/docker-compose >/dev/null 2>&1 
    $(command -v chmod) a=rx,u+w /usr/bin/docker-compose >/dev/null 2>&1
 fi
-}
-## migrator for the env
-migrateenv() {
-envmigrate="/opt/dockserver/apps/.subactions/envmigrate.sh"
-$(command -v bash) $envmigrate
 }
 ##########
 lubox
