@@ -393,7 +393,6 @@ else
 fi
 }
 runinstall() {
-  migrateenv
   restorebackup=${restorebackup:-null}
   section=${section}
   typed=${typed}
