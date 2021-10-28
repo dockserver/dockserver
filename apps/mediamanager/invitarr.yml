@@ -11,19 +11,12 @@ services:
       - 'UMASK=${UMASK}'
       - 'token=${Discord_bot_token}'
     image: 'piratify/invitarr:latest'
-    restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:5001:5001'
-    networks:
-      - proxy
-    security_opt:
-      - 'no-new-privileges:true'
     volumes:
       - '${APPFOLDER}/invitarr:/app/app/config'
-      - '/etc/localtime:/etc/localtime:ro'
+      - '${LOCALTIME}:${LOCALTIME}:ro'
     labels:
       - 'traefik.enable=true'
-      - 'traefik.docker.network=proxy'
+      - 'traefik.docker.network=${DOCKERNETWORK}'
       - 'dockupdater.enable=true'
       - 'traefik.http.routers.invitarr-rtr.entrypoints=https'
       - 'traefik.http.routers.invitarr-rtr.rule=Host(`invitarr.${DOMAIN}`)'
@@ -33,6 +26,6 @@ services:
       - 'traefik.http.routers.invitarr-rtr.service=invitarr-svc'
       - 'traefik.http.services.invitarr-svc.loadbalancer.server.port=5001'
 networks:
-  proxy:
+  ${DOCKERNETWORK}:
     driver: bridge
     external: true
