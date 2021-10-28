@@ -13,8 +13,6 @@ services:
       - 'TP_THEME=${CALIBRETHEME}'
     image: '${CALIBREIMAGE}'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:8083:8083'
     networks:
       - proxy
     security_opt:
