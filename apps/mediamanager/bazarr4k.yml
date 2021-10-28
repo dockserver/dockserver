@@ -14,8 +14,6 @@ services:
       - 'TP_ADDON=bazarr-4k-logo'
     image: '${BAZARR4KIMAGE}'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:6768:6767'
     networks:
       - proxy
     security_opt:
