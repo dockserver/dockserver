@@ -11,6 +11,11 @@ services:
       - 'UMASK=${UMASK}'
       - 'token=${Discord_bot_token}'
     image: 'piratify/invitarr:latest'
+    restart: '${RESTARTAPP}'
+    networks:
+      - '${DOCKERNETWORK}'
+    security_opt:
+      - '${SECURITYOPS}:${SECURITYOPSSET}'
     volumes:
       - '${APPFOLDER}/invitarr:/app/app/config'
       - '${LOCALTIME}:${LOCALTIME}:ro'
