@@ -96,6 +96,8 @@ echo "\
         - ^/mnt/unionfs/
       exclude:
         - '\.(srt|pdf)$'
+        - ^/mnt/unionfs/nzb/
+        - ^/mnt/unionfs/torrent/
       paths:
       - path: /mnt/unionfs/
 
@@ -209,7 +211,7 @@ tee <<-EOF
   http://autoscan:3030/triggers/radarr
   http://autoscan:3030/triggers/sonarr
 
-  Method: PUT
+  Method: POST
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
