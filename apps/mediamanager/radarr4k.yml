@@ -14,8 +14,6 @@ services:
       - 'TP_ADDON=radarr-4k-logo'
     image: '${RADARR4KIMAGE}'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:7874:7878'
     networks:
       - proxy
     security_opt:
