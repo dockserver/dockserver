@@ -14,15 +14,15 @@ services:
     image: '${BAZARRIMAGE}'
     restart: '${RESTARTAPP}'
     networks:
-      - proxy
+      - '${DOCKERNETWORK}'
     security_opt:
-      - 'no-new-privileges:true'
+      - '${SECURITYOPS}:${SECURITYOPSSET}'
     volumes:
       - '${APPFOLDER}/bazarr:/config:rw'
       - 'unionfs:/mnt'
     labels:
       - 'traefik.enable=true'
-      - 'traefik.docker.network=proxy'
+      - 'traefik.docker.network=${DOCKERNETWORK}'
       - 'dockupdater.enable=true'
       - 'traefik.http.routers.bazarr-rtr.entrypoints=https'
       - 'traefik.http.routers.bazarr-rtr.rule=Host(`bazarr.${DOMAIN}`)'
@@ -32,7 +32,7 @@ services:
       - 'traefik.http.routers.bazarr-rtr.service=bazarr-svc'
       - 'traefik.http.services.bazarr-svc.loadbalancer.server.port=6767'
 networks:
-  proxy:
+  ${DOCKERNETWORK}:
     driver: bridge
     external: true
 volumes:
