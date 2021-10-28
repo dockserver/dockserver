@@ -12,8 +12,6 @@ services:
       - 'LOG_LEVEL=info'
     image: 'housewrecker/gaps:latest'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:8484:8484'
     networks:
       - proxy
     security_opt:
