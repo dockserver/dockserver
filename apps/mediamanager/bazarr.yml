@@ -13,8 +13,6 @@ services:
       - 'TP_THEME=${BAZARRTHEME}'
     image: '${BAZARRIMAGE}'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:6767:6767'
     networks:
       - proxy
     security_opt:
