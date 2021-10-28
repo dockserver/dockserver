@@ -11,8 +11,6 @@ services:
       - 'UMASK=${UMASK}'
     image: 'lscr.io/linuxserver/embystat:latest'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:6555:6555'
     networks:
       - proxy
     security_opt:
