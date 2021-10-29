@@ -11,8 +11,6 @@ services:
       - 'UMASK=${UMASK}'
     image: 'dgtlmoon/changedetection.io'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:4537:5000'
     networks:
       - proxy
     security_opt:

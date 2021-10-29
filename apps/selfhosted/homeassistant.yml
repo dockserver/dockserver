@@ -11,8 +11,6 @@ services:
       - 'UMASK=${UMASK}'
     image: 'homeassistant/home-assistant'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:8657:8123'
     networks:
       - proxy
     security_opt:

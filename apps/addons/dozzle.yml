@@ -11,8 +11,6 @@ services:
       - 'UMASK=${UMASK}'
     image: 'amir20/dozzle:latest'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:9999:8080'
     networks:
       - proxy
     security_opt:

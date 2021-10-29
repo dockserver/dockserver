@@ -13,8 +13,6 @@ services:
       - 'WEBPAGE_TITLE=${KRUSADER_WEBPAGE_TITLE}'
       - 'TEMP_FOLDER=/config/krusader/tmp'
     image: 'binhex/arch-krusader'
-    ports:
-      - '${PORTBLOCK}:5900:5900' # VNC port for direct vnc connection, otherwise you can directly connect via secure HTTPS | https://krusader.${DOMAIN}
     restart: '${RESTARTAPP}'
     networks:
       - proxy

@@ -13,8 +13,6 @@ services:
       - 'UMASK=${UMASK}'
     image: 'jlesage/handbrake'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:5800:5800'
     networks:
       - proxy
     security_opt:

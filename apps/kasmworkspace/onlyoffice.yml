@@ -15,8 +15,6 @@ services:
       - 'VNC_RESOLUTION=${VNC_RESOLUTION}'
     networks:
       - proxy
-    ports:
-      - '${PORTBLOCK}:6909:6901'  
     security_opt:
       - 'no-new-privileges:true'
     volumes:

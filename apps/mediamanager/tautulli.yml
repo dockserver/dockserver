@@ -13,8 +13,6 @@ services:
       - 'TP_THEME=${TAUTULLITHEME}'
     image: '${TAUTULLIIMAGE}'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:8180:8181'
     networks:
       - proxy
     security_opt:

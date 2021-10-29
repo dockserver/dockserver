@@ -15,8 +15,6 @@ services:
       - 'RCPASS=rclone'
     image: 'd2dyno/rclone-gui:latest'
     restart: '${RESTARTAPP}'
-    ports:
-      - '5572:5572'
     networks:
       - proxy
     security_opt:

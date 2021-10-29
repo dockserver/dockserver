@@ -10,8 +10,6 @@ services:
       - 'TZ=${TZ}'
     image: 'darkalfx/requestrr:latest'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:4545:4545'
     networks:
       - proxy
     security_opt:

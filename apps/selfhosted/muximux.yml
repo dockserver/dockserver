@@ -11,8 +11,6 @@ services:
       - 'UMASK=${UMASK}'
     image: 'lscr.io/linuxserver/muximux'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:8015:80'
     networks:
       - proxy
     volumes:

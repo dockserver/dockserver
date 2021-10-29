@@ -20,7 +20,6 @@ services:
       - 'no-new-privileges:true'
     ports:
       - '7889:7889'
-      - '${PORTBLOCK}:8083:8080'
     volumes:
       - '${APPFOLDER}/qbittorrent:/config:rw'
       - 'unionfs:/mnt'

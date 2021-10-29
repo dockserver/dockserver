@@ -15,8 +15,6 @@ services:
       - proxy
     security_opt:
       - 'no-new-privileges:true'
-    ports:
-      - '${PORTBLOCK}:8200:8200'
     volumes:
       - '${APPFOLDER}/duplicati:/config:rw'
       - '/opt/appdata:/source:rw'

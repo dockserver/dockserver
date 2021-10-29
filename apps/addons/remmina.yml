@@ -11,8 +11,6 @@ services:
       - 'UMASK=${UMASK}'
     image: 'lscr.io/linuxserver/remmina'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:3000:3000'
     networks:
       - proxy
     security_opt:

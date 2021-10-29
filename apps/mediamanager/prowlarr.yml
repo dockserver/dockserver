@@ -13,8 +13,6 @@ services:
       - 'TP_THEME=${PROWLARRTHEME}'
     image: '${PROWLARRIMAGE}'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:9696:9696'
     networks:
       - proxy
     security_opt:

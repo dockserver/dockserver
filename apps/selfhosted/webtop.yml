@@ -15,8 +15,6 @@ services:
     shm_size: '${WEBTOP_SHM_SIZE}'
     networks:
       - proxy
-    ports:
-      - '${PORTBLOCK}:3000:3000'
     volumes:
       - '${APPFOLDER}/webtop:/config'
       - '/var/run/docker.sock:/var/run/docker.sock:ro'

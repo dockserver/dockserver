@@ -11,8 +11,6 @@ services:
       - 'UMASK=${UMASK}'
     image: 'lscr.io/linuxserver/heimdall:latest'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:5555:80'
     networks:
       - proxy
     security_opt:

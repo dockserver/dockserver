@@ -13,8 +13,6 @@ services:
       - 'TP_THEME=${SABNZBDTHEME}'
     image: '${SABNZBDIMAGE}'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:8010:8080'
     networks:
       - proxy
     security_opt:

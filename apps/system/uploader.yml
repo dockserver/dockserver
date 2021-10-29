@@ -12,8 +12,6 @@ services:
       - 'TZ=${TZ}'
     image: 'ghcr.io/dockserver/docker-uploader:dockserver'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:7777:8080'
     networks:
       - proxy
     security_opt:

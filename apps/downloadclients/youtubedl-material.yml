@@ -12,8 +12,6 @@ services:
       - 'GID=${ID}'
     image: 'tzahi12345/youtubedl-material:latest'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:8998:17442'
     networks:
       - proxy
     security_opt:

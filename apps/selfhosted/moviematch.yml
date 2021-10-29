@@ -14,8 +14,6 @@ services:
       - 'PLEX_URL=https://plex.${DOMAIN}:443'
     image: 'lukechannings/moviematch'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:8001:8000'
     networks:
       - proxy
     security_opt:

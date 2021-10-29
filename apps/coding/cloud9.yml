@@ -12,8 +12,6 @@ services:
       - 'GITURL=https://github.com/linuxserver/docker-cloud9.git'
     image: 'lscr.io/linuxserver/cloud9'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:8000:8000'
     networks:
       - proxy
     security_opt:

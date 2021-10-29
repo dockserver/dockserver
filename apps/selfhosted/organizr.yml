@@ -13,8 +13,6 @@ services:
       - 'fpm=false'
     image: 'organizr/organizr'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:8050:5000'
     networks:
       - proxy
     security_opt:

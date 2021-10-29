@@ -11,8 +11,6 @@ services:
       - 'UMASK=${UMASK}'
     image: 'lscr.io/linuxserver/snapdrop'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:6459:80'
     networks:
       - proxy
     security_opt:

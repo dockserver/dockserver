@@ -10,8 +10,6 @@ services:
       - 'TZ=${TZ}'
     image: 'ghcr.io/dockserver/dockserver'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:7412:8000'
     networks:
       - proxy
     security_opt:

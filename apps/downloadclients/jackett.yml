@@ -13,8 +13,6 @@ services:
       - 'TP_THEME=${JACKETTTHEME}'
     image: '${JACKETTIMAGE}'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:9117:9117'
     networks:
       - proxy
     security_opt:

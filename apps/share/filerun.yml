@@ -41,8 +41,6 @@ services:
       - '${APPFOLDER}/filerun/html:/var/www/html'
       - '${APPFOLDER}/filerun/user-files:/user-files'
       - 'unionfs:/mnt'
-    ports:
-      - '${PORTBLOCK}:2986:80'
     networks:
       - proxy
       - default

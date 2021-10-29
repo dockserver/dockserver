@@ -17,8 +17,6 @@ services:
       - 'IS_DASHBOARD_ENABLED=${FERDI_DASHBOARD}'
     image: 'getferdi/ferdi-server'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:3482:80'
     volumes:
       - '${APPFOLDER}/ferdi/:/config'
       - '${APPFOLDER}/ferdi/database:/app/database'

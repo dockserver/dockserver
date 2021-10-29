@@ -19,7 +19,6 @@ services:
     cap_add:
       - 'SYS_NICE'
     ports:
-      - '${PORTBLOCK}:5800:5800'
       - '3219:3129'
     networks:
       - proxy

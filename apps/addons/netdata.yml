@@ -8,8 +8,6 @@ services:
     image: 'netdata/netdata:latest'
     networks:
       - proxy
-    ports:
-      - '${PORTBLOCK}:19999:19999'
     cap_add:
       - 'SYS_PTRACE'
     security_opt:

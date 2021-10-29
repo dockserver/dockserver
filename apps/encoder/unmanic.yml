@@ -11,8 +11,6 @@ services:
       - 'UMASK=${UMASK}'
     image: 'josh5/unmanic:latest'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:5785:8888'
     networks:
       - proxy
     security_opt:

@@ -11,8 +11,6 @@ services:
       - 'UMASK=${UMASK}'
     image: 'golift/notifiarr:latest'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:5454:80'
     networks:
       - proxy
     security_opt:

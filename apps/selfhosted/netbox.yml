@@ -54,8 +54,6 @@ services:
     restart: '${RESTARTAPP}'
     volumes:
       - '${APPFOLDER}/netbox/config:/config'
-    ports:
-      - '${PORTBLOCK}:8925:8000'
     networks:
       - proxy
       - default

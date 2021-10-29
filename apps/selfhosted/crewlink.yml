@@ -13,8 +13,6 @@ services:
       - 'ADDRESS=crewlink.${DOMAIN}'
     image: 'ottomated/crewlink-server'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:2394:9736'
     networks:
       - proxy
     security_opt:

@@ -20,7 +20,6 @@ services:
       - 'no-new-privileges:true'
     ports:
       - '7889:7889'
-      - '${PORTBLOCK}:8112:8112'
     volumes:
       - '${APPFOLDER}/deluge/config:/config:rw'
       - 'unionfs:/mnt'

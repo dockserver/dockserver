@@ -7,8 +7,6 @@ services:
     image: 'nicolargo/glances:alpine-latest-full'
     restart: '${RESTARTAPP}'
     pid: host
-    ports:
-      - '${PORTBLOCK}:61208:61208'  
     environment:
       - 'TZ=${TZ}'
       - 'GLANCES_OPT=-w'

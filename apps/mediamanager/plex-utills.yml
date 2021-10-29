@@ -17,8 +17,6 @@ services:
       - 'UMASK=${UMASK}'
     networks:
       - proxy
-    ports:
-      - '${PORTBLOCK}:5000:5000'
     security_opt:
       - 'no-new-privileges:true'
     labels:

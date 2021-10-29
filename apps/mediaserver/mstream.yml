@@ -12,7 +12,10 @@ services:
     image: 'lscr.io/linuxserver/mstream:latest'
     restart: '${RESTARTAPP}'
     ports:
-      - '3000:3000'
+      - target: 3000
+        published: 3000
+        protocol: tcp
+        mode: host
     networks:
       - proxy
     security_opt:

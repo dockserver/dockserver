@@ -13,8 +13,6 @@ services:
       - 'TP_THEME=${RADARRTHEME}'
     image: '${RADARRIMAGE}'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:7878:7878'
     networks:
       - proxy
     security_opt:

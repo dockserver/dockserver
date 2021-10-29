@@ -11,8 +11,6 @@ services:
       - 'UMASK=${UMASK}'
     image: 'ghcr.io/cyb3rgh05t/tauticord:latest'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:7770:80'
     networks:
       - proxy
     security_opt:

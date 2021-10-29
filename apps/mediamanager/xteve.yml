@@ -11,8 +11,6 @@ services:
       - 'UMASK=${UMASK}'
     image: 'alturismo/xteve'
     restart: '${RESTARTAPP}'
-    ports:
-      - '34400:34400'
     networks:
       - proxy
     security_opt:

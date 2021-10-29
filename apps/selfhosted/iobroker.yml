@@ -11,8 +11,6 @@ services:
       - 'UMASK=${UMASK}'
     image: 'buanet/iobroker'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:6456:8081'
     networks:
       - proxy
     security_opt:

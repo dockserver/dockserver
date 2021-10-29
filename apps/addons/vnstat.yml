@@ -12,8 +12,6 @@ services:
     networks:
       - proxy
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:8090:80'
     volumes:
       - '/usr/bin/vnstat:/usr/bin/vnstat'
       - '/var/lib/vnstat:/var/lib/vnstat'

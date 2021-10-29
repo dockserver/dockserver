@@ -12,8 +12,6 @@ services:
       - 'UMASK=${UMASK}'
     image: 'rudloff/alltube:latest'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:3489:80'
     networks:
       - proxy
     security_opt:

@@ -13,8 +13,6 @@ services:
     restart: '${RESTARTAPP}'
     depends_on:
       - 'mongo'
-    ports:
-      - '7444:7777'
     networks:
       - proxy
     security_opt:

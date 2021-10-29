@@ -14,8 +14,6 @@ services:
       - 'TP_ADDON=sonarr-4k-logo'
     image: '${SONARR4KIMAGE}'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:8984:8989'
     networks:
       - proxy
     security_opt:

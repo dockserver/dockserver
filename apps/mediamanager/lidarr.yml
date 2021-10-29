@@ -13,8 +13,6 @@ services:
       - 'TP_THEME=${LIDARRTHEME}'
     image: '${LIDARRIMAGE}'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:8686:8686'
     networks:
       - proxy
     security_opt:

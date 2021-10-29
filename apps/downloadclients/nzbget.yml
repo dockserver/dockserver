@@ -13,8 +13,6 @@ services:
       - 'TP_THEME=${NZBGETTHEME}'
     image: '${NZBGETIMAGE}'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:6789:6789'
     networks:
       - proxy
     security_opt:

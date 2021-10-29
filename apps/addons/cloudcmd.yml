@@ -11,8 +11,6 @@ services:
       - 'UMASK=${UMASK}'
     image: 'coderaiser/cloudcmd'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:7999:8000'
     networks:
       - proxy
     security_opt:

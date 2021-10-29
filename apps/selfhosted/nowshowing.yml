@@ -11,8 +11,6 @@ services:
       - 'UMASK=${UMASK}'
     image: 'ninthwalker/nowshowing:v2'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:6878:6878'
     networks:
       - proxy
     security_opt:

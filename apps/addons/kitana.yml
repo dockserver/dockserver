@@ -11,8 +11,6 @@ services:
       - 'UMASK=${UMASK}'
     image: 'pannal/kitana:latest'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:31337:31337'
     networks:
       - proxy
     security_opt:

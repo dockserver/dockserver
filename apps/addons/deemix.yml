@@ -11,8 +11,6 @@ services:
       - 'UMASK=${UMASK}'
     image: 'registry.gitlab.com/bockiii/deemix-docker:latest'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:6595:6595'
     networks:
       - proxy
     security_opt:

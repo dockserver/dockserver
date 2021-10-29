@@ -13,8 +13,6 @@ services:
       - 'DISPLAY_HEIGHT=1080'
     image: 'jlesage/filezilla'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:5800:5803'
     networks:
       - proxy
     security_opt:

@@ -35,8 +35,6 @@ services:
       - 'DB_HOST=db_koel'
     image: 'hyzual/koel'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:3486:80'
     volumes:
       - '${APPFOLDER}/koel/covers:/var/www/html/public/img/covers'
       - '${APPFOLDER}/koel/search:/var/www/html/storage/search-indexes'

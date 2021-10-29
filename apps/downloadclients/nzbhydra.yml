@@ -11,8 +11,6 @@ services:
       - 'UMASK=${UMASK}'
     image: 'lscr.io/linuxserver/nzbhydra2'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:5076:5076'
     networks:
       - 'proxy'
     security_opt:

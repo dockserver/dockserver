@@ -12,8 +12,6 @@ services:
       - 'PORT=5060'
     image: 'voidp/mellow'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:5061:5060'
     networks:
       - proxy
     security_opt:

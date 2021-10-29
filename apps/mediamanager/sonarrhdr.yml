@@ -13,8 +13,6 @@ services:
       - 'TP_THEME=${SONARRHDRTHEME}'
     image: '${SONARRHDRIMAGE}'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:8985:8989'
     networks:
       - proxy
     security_opt:

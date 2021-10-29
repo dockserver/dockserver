@@ -12,8 +12,6 @@ services:
       - 'UMASK=${UMASK}'
     image: 'comixed/comixed:latest'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:7834:7834'
     networks:
       - proxy
     security_opt:

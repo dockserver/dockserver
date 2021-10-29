@@ -19,8 +19,6 @@ services:
       - 'OPT_TOTP=N'
     image: 'jasonbean/guacamole:latest'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:6324:8080'
     networks:
       - proxy
     security_opt:

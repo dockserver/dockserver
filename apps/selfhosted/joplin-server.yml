@@ -36,8 +36,6 @@ services:
       - 'POSTGRES_HOST=db_joplin'
     image: 'joplin/server'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:22300:22300'
     networks:
       - proxy
       - default

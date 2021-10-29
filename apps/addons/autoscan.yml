@@ -11,8 +11,6 @@ services:
       - 'AUTOSCAN_VERBOSITY=0'
     image: 'cloudb0x/autoscan:master'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:3030:3030'
     networks:
       - proxy
     volumes:

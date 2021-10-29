@@ -13,8 +13,6 @@ services:
       - 'TP_THEME=${LAZYLIBRARIANTHEME}'
     image: '${LAZYLIBRARIANIMAGE}'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:5299:5299'
     networks:
       - proxy
     security_opt:

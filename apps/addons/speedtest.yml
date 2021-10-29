@@ -12,8 +12,6 @@ services:
       - 'OOKLA_EULA_GDPR=true'
     image: 'henrywhitaker3/speedtest-tracker'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:8765:80'
     networks:
       - proxy
     security_opt:

@@ -11,8 +11,6 @@ services:
       - 'UMASK=${UMASK}'
     image: 'benbusby/whoogle-search'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:5002:5000'
     networks:
       - proxy
     security_opt:

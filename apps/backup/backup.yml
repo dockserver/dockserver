@@ -17,8 +17,6 @@ services:
     image: 'ghcr.io/dockserver/docker-rsync-backup:latest'
     restart: '${RESTARTAPP}'
     labels:
-      - 'traefik.enable=true'
-      - 'traefik.docker.network=proxy'
       - 'dockupdater.enable=true'
     networks:
       - proxy

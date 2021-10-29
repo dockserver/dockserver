@@ -11,8 +11,6 @@ services:
       - 'UMASK=${UMASK}'
     image: 'lscr.io/linuxserver/freshrss'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:8678:80'
     networks:
       - proxy
     security_opt:

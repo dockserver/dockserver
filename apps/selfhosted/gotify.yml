@@ -11,8 +11,6 @@ services:
       - 'UMASK=${UMASK}'
     image: 'gotify/server'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:8649:80'
     networks:
       - proxy
     security_opt:

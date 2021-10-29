@@ -14,8 +14,6 @@ services:
       - 'TP_HOTIO=${TP_HOTIO}'
     image: '${READARRIMAGE}'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:8787:8787'
     networks:
       - proxy
     security_opt:

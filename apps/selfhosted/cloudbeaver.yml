@@ -12,8 +12,6 @@ services:
       - 'UMASK=${UMASK}'
     image: 'dbeaver/cloudbeaver'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:3985:8978'
     networks:
       - proxy
     security_opt:
