@@ -1,34 +1,34 @@
 ---
-version: '3'
+version: "3"
 services:
   mellow4k:
-    hostname: 'mellow4k'
-    container_name: 'mellow4k'
+    hostname: "mellow4k"
+    container_name: "mellow4k"
     environment:
-      - 'PGID=${ID}'
-      - 'PUID=${ID}'
-      - 'TZ=${TZ}'
-      - 'UMASK=${UMASK}'
-      - 'PORT=5060'
-    image: 'voidp/mellow'
-    restart: '${RESTARTAPP}'
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "PORT=5060"
+    image: "voidp/mellow"
+    restart: "${RESTARTAPP}"
     networks:
       - proxy
     security_opt:
-      - 'no-new-privileges:true'
+      - "no-new-privileges:true"
     volumes:
-      - '${APPFOLDER}/mellow4k:/usr/src/app/data/:rw'
+      - "${APPFOLDER}/mellow4k:/usr/src/app/data/:rw"
     labels:
-      - 'traefik.enable=true'
-      - 'traefik.docker.network=proxy'
-      - 'dockupdater.enable=true'
-      - 'traefik.http.routers.mellow4k-rtr.entrypoints=https'
-      - 'traefik.http.routers.mellow4k-rtr.rule=Host(`mellow4k.${DOMAIN}`)'
-      - 'traefik.http.routers.mellow4k-rtr.tls=true'
-      - 'traefik.http.routers.mellow4k-rtr.tls.certresolver=dns-cloudflare'
-      - 'traefik.http.routers.mellow4k-rtr.middlewares=chain-authelia@file'
-      - 'traefik.http.routers.mellow4k-rtr.service=mellow4k-svc'
-      - 'traefik.http.services.mellow4k-svc.loadbalancer.server.port=5060'
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.mellow4k-rtr.entrypoints=https"
+      - "traefik.http.routers.mellow4k-rtr.rule=Host(`mellow4k.${DOMAIN}`)"
+      - "traefik.http.routers.mellow4k-rtr.tls=true"
+      - "traefik.http.routers.mellow4k-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.mellow4k-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.mellow4k-rtr.service=mellow4k-svc"
+      - "traefik.http.services.mellow4k-svc.loadbalancer.server.port=5060"
 networks:
   proxy:
     driver: bridge

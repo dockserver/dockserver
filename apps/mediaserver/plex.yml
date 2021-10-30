@@ -1,56 +1,56 @@
 ---
-version: '3'
+version: "3"
 services:
   plex:
-    hostname: 'plex'
-    container_name: 'plex'
+    hostname: "plex"
+    container_name: "plex"
     environment:
-      - 'PGID=${ID}'
-      - 'PUID=${ID}'
-      - 'TZ=${TZ}'
-      - 'UMASK=${UMASK}'
-      - 'PLEX_CLAIM=PLEX_CLAIM_ID'
-      - 'VERSION=${PLEXVERSION}'
-      - 'ADVERTISE_IP=http://${SERVERIP}:32400,http://plex.${DOMAIN}:32400'
-      - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:plex'
-      - 'TP_THEME=${PLEXTHEME}'
-    image: '${PLEXIMAGE}'
-    restart: '${RESTARTAPP}'
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "PLEX_CLAIM=PLEX_CLAIM_ID"
+      - "VERSION=${PLEXVERSION}"
+      - "ADVERTISE_IP=http://${SERVERIP}:32400,http://plex.${DOMAIN}:32400"
+      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:plex"
+      - "TP_THEME=${PLEXTHEME}"
+    image: "${PLEXIMAGE}"
+    restart: "${RESTARTAPP}"
     networks:
       - proxy
     security_opt:
-      - 'no-new-privileges:true'
+      - "no-new-privileges:true"
     extra_hosts:
-      - 'analytics.plex.tv:127.0.0.1'
-      - 'metrics.plex.tv:127.0.0.1'
-      - 'metric.plex.tv:127.0.0.1'
-      - 'mf.svc.nhl.com:127.0.0.1'
-      - 'mlb-ws-mf.media.mlb.com:127.0.0.1'
-      - 'playback.svcs.mlb.com:127.0.0.1'
+      - "analytics.plex.tv:127.0.0.1"
+      - "metrics.plex.tv:127.0.0.1"
+      - "metric.plex.tv:127.0.0.1"
+      - "mf.svc.nhl.com:127.0.0.1"
+      - "mlb-ws-mf.media.mlb.com:127.0.0.1"
+      - "playback.svcs.mlb.com:127.0.0.1"
     ports:
       - target: 32400
         published: 32400
         protocol: tcp
         mode: host
     volumes:
-      - '/etc/localtime:/etc/localtime:ro'
-      - '${APPFOLDER}/plex/database:/config:rw'
-      - 'unionfs:/mnt:ro'
-      - '/dev/shm:/ram_transcode:rw'
+      - "/etc/localtime:/etc/localtime:ro"
+      - "${APPFOLDER}/plex/database:/config:rw"
+      - "unionfs:/mnt:ro"
+      - "/dev/shm:/ram_transcode:rw"
     tmpfs:
-      - '/transcode:rw'
+      - "/transcode:rw"
     labels:
-      - 'traefik.enable=true'
-      - 'traefik.docker.network=proxy'
-      - 'dockupdater.enable=true'
-      - 'traefik.http.routers.plex-rtr.entrypoints=https'
-      - 'traefik.http.routers.plex-rtr.rule=Host(`plex.${DOMAIN}`)'
-      - 'traefik.http.routers.plex-rtr.tls=true'
-      - 'traefik.http.routers.plex-rtr.tls.certresolver=dns-cloudflare'
-      - 'traefik.http.routers.plex-rtr.middlewares=chain-authelia@file'
-      - 'traefik.http.routers.plex-rtr.service=plex-svc'
-      - 'traefik.http.services.plex-svc.loadbalancer.server.scheme=https'
-      - 'traefik.http.services.plex-svc.loadbalancer.server.port=32400'
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.plex-rtr.entrypoints=https"
+      - "traefik.http.routers.plex-rtr.rule=Host(`plex.${DOMAIN}`)"
+      - "traefik.http.routers.plex-rtr.tls=true"
+      - "traefik.http.routers.plex-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.plex-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.plex-rtr.service=plex-svc"
+      - "traefik.http.services.plex-svc.loadbalancer.server.scheme=https"
+      - "traefik.http.services.plex-svc.loadbalancer.server.port=32400"
 networks:
   proxy:
     driver: bridge

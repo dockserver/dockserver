@@ -5,13 +5,11 @@
 [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa)
 [![License: GPL 3](https://img.shields.io/badge/License-GPL%203-blue.svg?style=for-the-badge&colorB=177DC1&label=license)](LICENSE)
 
-SABnzbd - The automated Usenet download tool
-============================================
+# SABnzbd - The automated Usenet download tool
 
 ![CI tests](https://github.com/sabnzbd/sabnzbd/workflows/CI%20Tests/badge.svg)
 ![Build binaries](https://github.com/sabnzbd/sabnzbd/workflows/Build%20binaries%20and%20source%20distribution/badge.svg)
 [![License](https://img.shields.io/badge/license-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
-
 
 SABnzbd is an Open Source Binary Newsreader written in Python.
 
@@ -25,4 +23,4 @@ If you want to know more you can head over to our website: https://sabnzbd.org.
 
 Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
 
-* Join our [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa) for Support
+- Join our [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa) for Support

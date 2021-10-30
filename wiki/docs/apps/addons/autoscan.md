@@ -13,7 +13,6 @@
     </a>
 </p>
 
-
 ## Autoscan
 
 Autoscan replaces the default Plex and Emby behaviour for picking up file changes on the file system.
@@ -34,10 +33,10 @@ Autoscan is split into three distinct modules:
 Let's take a look at the journey of the path `/tv/Westworld/Season 1/s01e01.mkv` coming from Sonarr.
 
 1. Sonarr's path is translated to a path local to Autoscan. \
-  `/mnt/unionfs/Media/TV/Westworld/Season 1/s01e01.mkv`
+   `/mnt/unionfs/Media/TV/Westworld/Season 1/s01e01.mkv`
 2. The path is accessed by Autoscan to check whether it exists and adds it to the datastore.
 3. Autoscan's path is translated to a path local to Plex. \
-  `/data/TV/Season 1/s01e01.mkv`
+   `/data/TV/Season 1/s01e01.mkv`
 
 This should be all that's needed to get you going. Good luck!
 
@@ -50,7 +49,7 @@ Autoscan supports two kinds of triggers:
 
 - Daemon processes.
   These triggers run in the background and fetch resources based on a cron schedule or in real-time. \
-  *Bugs may still exist.*
+  _Bugs may still exist._
 
 - Webhooks.
   These triggers expose HTTP handlers which can be added to the trigger's software.
@@ -58,13 +57,13 @@ Autoscan supports two kinds of triggers:
 Each trigger consists of at least:
 
 - A unique identifier: think of Drive IDs and HTTP routes. \
-  *Webhooks use /triggers/ + their name to uniquely identify themselves.*
+  _Webhooks use /triggers/ + their name to uniquely identify themselves._
 
 - Trigger-wide priority: higher priorities are processed sooner. \
-  *Defaults to 0.*
+  _Defaults to 0._
 
 - RegExp-based rewriting rules: translate a path given by the trigger to a path on the local file system. \
-  *If the paths are identical between the trigger and the local file system, then the `rewrite` field should be ignored.*
+  _If the paths are identical between the trigger and the local file system, then the `rewrite` field should be ignored._
 
 #### Daemons
 
@@ -161,8 +160,8 @@ triggers:
 
       # rewrite inotify path to unified filesystem
       rewrite:
-            - from: ^/mnt/local/Media/
-              to: /mnt/unionfs/Media/
+        - from: ^/mnt/local/Media/
+          to: /mnt/unionfs/Media/
 
       # local filesystem paths to monitor
       paths:
@@ -179,12 +178,12 @@ triggers:
           to: /mnt/unionfs/Media/TV/
 
   radarr:
-    - name: radarr   # /triggers/radarr
+    - name: radarr # /triggers/radarr
       priority: 2
     - name: radarr4k # /triggers/radarr4k
       priority: 5
   lidarr:
-    - name: lidarr   # /triggers/lidarr
+    - name: lidarr # /triggers/lidarr
       priority: 1
 ```
 
@@ -204,6 +203,7 @@ To add your webhook to Sonarr, Radarr or Lidarr, do:
 ##### Experimental support for more events
 
 Autoscan also supports the following events in the latest versions of Radarr and Sonarr:
+
 - `Rename`
 - `On Movie Delete` and `On Series Delete`
 - `On Movie File Delete` and `On Episode File Delete`
@@ -216,7 +216,7 @@ So for now, please do keep using Bernard or the Inotify trigger to fetch all sca
 Triggers pass the Scans they receive to the processor.
 The processor then saves the Scans to its datastore.
 
-*The processor uses SQLite as its datastore, feel free to hack around!*
+_The processor uses SQLite as its datastore, feel free to hack around!_
 
 In a separate process, the processor selects Scans from the datastore.
 It will always group files belonging to the same folder together and it waits until all the files in that folder are older than the `minimum-age`, which defaults to 10 minutes.
@@ -276,7 +276,7 @@ The `minimum-age`, `scan-delay` and `scan-stats` fields should be given a string
 - `1m30s` if the min-age should be set at 1 minute and 30 seconds.
 - `1h` if the min-age should be set at 1 hour.
 
-*Please do not forget the `s`, `m` or `h` suffix, otherwise the time unit defaults to nanoseconds.*
+_Please do not forget the `s`, `m` or `h` suffix, otherwise the time unit defaults to nanoseconds._
 
 Scan stats will print the following information at a configured interval:
 
@@ -336,7 +336,7 @@ targets:
 
 - URL. The URL can link to the docker container directly, the localhost or a reverse proxy sitting in front of Emby.
 - Token. We need an Emby API Token to make requests on your behalf. [This article](https://github.com/MediaBrowser/Emby/wiki/Api-Key-Authentication) should help you out. \
-  *It's a bit out of date, but I'm sure you will manage!*
+  _It's a bit out of date, but I'm sure you will manage!_
 - Rewrite. If Emby is not running on the host OS, but in a Docker container (or Autoscan is running in a Docker container), then you need to rewrite paths accordingly. Check out our [rewriting section](#rewriting-paths) for more info.
 
 #### Jellyfin
@@ -357,7 +357,7 @@ targets:
 
 - URL. The URL can link to the docker container directly, the localhost or a reverse proxy sitting in front of Jellyfin.
 - Token. We need a Jellyfin API Token to make requests on your behalf. [This article](https://github.com/MediaBrowser/Emby/wiki/Api-Key-Authentication) should help you out. \
-  *It's a bit out of date, but I'm sure you will manage!*
+  _It's a bit out of date, but I'm sure you will manage!_
 - Rewrite. If Jellyfin is not running on the host OS, but in a Docker container (or Autoscan is running in a Docker container), then you need to rewrite paths accordingly. Check out our [rewriting section](#rewriting-paths) for more info.
 
 #### Autoscan
@@ -377,7 +377,7 @@ targets:
 
 ### Full config file
 
-With the examples given in the [triggers](#triggers), [processor](#processor) and [targets](#targets) sections, here is what your full config file *could* look like:
+With the examples given in the [triggers](#triggers), [processor](#processor) and [targets](#targets) sections, here is what your full config file _could_ look like:
 
 ```yaml
 # <- processor ->
@@ -412,12 +412,12 @@ triggers:
           to: /mnt/unionfs/Media/TV/
 
   radarr:
-    - name: radarr   # /triggers/radarr
+    - name: radarr # /triggers/radarr
       priority: 2
     - name: radarr4k # /triggers/radarr4k
       priority: 5
   lidarr:
-    - name: lidarr   # /triggers/lidarr
+    - name: lidarr # /triggers/lidarr
       priority: 1
 
 # <- targets ->
@@ -438,11 +438,10 @@ targets:
           to: /data/ # path accessible by the Emby docker container (if applicable)
 ```
 
-
 ## Support
 
 Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
 
-* Join our <a href="https://discord.gg/FYSvu83caM">
-        <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
-    </a> for Support
+- Join our <a href="https://discord.gg/FYSvu83caM">
+  <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
+  </a> for Support

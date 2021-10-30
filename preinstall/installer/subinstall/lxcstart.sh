@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Title:      LXC Bypass the mount :shared 
+# Title:      LXC Bypass the mount :shared
 # OS Branch:  ubuntu,debian,rasbian
 # Author(s):  mrdoob
 # Coauthor:   DrAgOn141
@@ -8,4 +8,4 @@
 ################################################################################
 ## make / possible to add /mnt:shared
 mount --make-shared /
-#EOF
+#"

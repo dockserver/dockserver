@@ -1,33 +1,33 @@
 ---
-version: '3'
+version: "3"
 services:
   wiki:
-    container_name: 'wiki'
-    hostname: 'wiki'
+    container_name: "wiki"
+    hostname: "wiki"
     environment:
-      - 'PGID=${ID}'
-      - 'PUID=${ID}'
-      - 'TZ=${TZ}'
-    image: 'ghcr.io/dockserver/dockserver'
-    restart: '${RESTARTAPP}'
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+    image: "ghcr.io/dockserver/dockserver"
+    restart: "${RESTARTAPP}"
     networks:
       - proxy
     security_opt:
-      - 'apparmor:unconfined'
+      - "apparmor:unconfined"
     volumes:
-      - '/etc/localtime:/etc/localtime:ro'
-      - '/opt/dockserver/wiki:/docs:rw'
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/opt/dockserver/wiki:/docs:rw"
     labels:
-      - 'traefik.enable=true'
-      - 'traefik.docker.network=proxy'
-      - 'dockupdater.enable=true'
-      - 'traefik.http.routers.wiki-rtr.entrypoints=https'
-      - 'traefik.http.routers.wiki-rtr.rule=Host(`wiki.${DOMAIN}`)'
-      - 'traefik.http.routers.wiki-rtr.tls=true'
-      - 'traefik.http.routers.wiki-rtr.tls.certresolver=dns-cloudflare'
-      - 'traefik.http.routers.wiki-rtr.middlewares=chain-authelia@file'
-      - 'traefik.http.routers.wiki-rtr.service=wiki-svc'
-      - 'traefik.http.services.wiki-svc.loadbalancer.server.port=8000'
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.wiki-rtr.entrypoints=https"
+      - "traefik.http.routers.wiki-rtr.rule=Host(`wiki.${DOMAIN}`)"
+      - "traefik.http.routers.wiki-rtr.tls=true"
+      - "traefik.http.routers.wiki-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.wiki-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.wiki-rtr.service=wiki-svc"
+      - "traefik.http.services.wiki-svc.loadbalancer.server.port=8000"
 networks:
   proxy:
     driver: bridge

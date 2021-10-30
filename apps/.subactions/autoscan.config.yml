@@ -9,5 +9,5 @@ scan-stats: 1m
 authentication:
   username: <USERNAME>
   password: <PASSWORD>
-  
+
 port: 3030

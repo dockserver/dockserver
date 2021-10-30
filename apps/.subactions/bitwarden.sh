@@ -16,17 +16,17 @@ touch /opt/appdata/bitwarden/error.log \
       /etc/fail2ban/filter.d/bitwardenrs-admin.conf \
       /etc/fail2ban/jail.d/bitwardenrs-admin.local
 #Set BitWarden fail2ban filter conf File
-bitwardenfail2banfilter="$(cat << EOF
+bitwardenfail2banfilter="$(cat << "
 [INCLUDES]
 before = common.conf
 [Definition]
 failregex = ^.*Username or password is incorrect\. Try again\. IP: <HOST>\. Username:.*$
 ignoreregex =
-EOF
+"
 )"
 echo "${bitwardenfail2banfilter}" > /etc/fail2ban/filter.d/bitwardenrs.conf
 #Set BitWarden fail2ban jail conf File
-bitwardenfail2banjail="$(cat << EOF
+bitwardenfail2banjail="$(cat << "
 [bitwardenrs]
 enabled = true
 port = 80,443,8081
@@ -36,21 +36,21 @@ logpath = /opt/appdata/bitwarden/error.log
 maxretry = 3
 bantime = 14400
 findtime = 14400
-EOF
+"
 )"
 echo "${bitwardenfail2banjail}" > /etc/fail2ban/jail.d/bitwardenrs.local
 #Set BitWarden fail2ban admin filter conf File
-bitwardenfail2banadminfilter="$(cat << EOF
+bitwardenfail2banadminfilter="$(cat << "
 [INCLUDES]
 before = common.conf
 [Definition]
 failregex = ^.*Unauthorized Error: Invalid admin token\. IP: <HOST>.*$
 ignoreregex =
-EOF
+"
 )"
 echo "${bitwardenfail2banadminfilter}" > /etc/fail2ban/filter.d/bitwardenrs-admin.conf
 #Set BitWarden fail2ban admin jail conf File
-bitwardenfail2banadminjail="$(cat << EOF
+bitwardenfail2banadminjail="$(cat << "
 [bitwardenrs-admin]
 enabled = true
 port = 80,443
@@ -60,7 +60,7 @@ logpath = /opt/appdata/bitwarden/error.log
 maxretry = 5
 bantime = 14400
 findtime = 14400
-EOF
+"
 )"
 echo "${bitwardenfail2banadminjail}" > /etc/fail2ban/jail.d/bitwardenrs-admin.local
 systemctl restart-or-reload fail2ban
@@ -71,4 +71,4 @@ while [ true ] ; do
       read -t 3 -n 1
          if [ $? = 0 ];then exit;else echo "waiting for the keypress";fi
 done
-#EOF
+#"

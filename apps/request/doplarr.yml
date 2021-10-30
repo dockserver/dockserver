@@ -1,28 +1,28 @@
 ---
-version: '3'
+version: "3"
 services:
   doplarr:
-    hostname: 'doplarr'
-    container_name: 'doplarr'
+    hostname: "doplarr"
+    container_name: "doplarr"
     environment:
-      - 'PGID=${ID}'
-      - 'PUID=${ID}'
-      - 'TZ=${TZ}'
-      - 'UMASK=${UMASK}'
-      - 'SONARR_URL=${DROPLARR_SONARR_URL}'
-      - 'RADARR_URL=${DROPLARR_RADARR_URL}'
-      - 'SONARR_API=${DROPLARR_SONARR_API}'
-      - 'RADARR_API=${DROPLARR_RADARR_API}'
-      - 'BOT_TOKEN=${DROPLARR_BOT_TOKEN}'
-      - 'ROLE_ID=${DROPLARR_ROLE_ID}'
-    image: 'ghcr.io/kiranshila/doplarr:latest'
-    restart: '${RESTARTAPP}'
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "SONARR_URL=${DROPLARR_SONARR_URL}"
+      - "RADARR_URL=${DROPLARR_RADARR_URL}"
+      - "SONARR_API=${DROPLARR_SONARR_API}"
+      - "RADARR_API=${DROPLARR_RADARR_API}"
+      - "BOT_TOKEN=${DROPLARR_BOT_TOKEN}"
+      - "ROLE_ID=${DROPLARR_ROLE_ID}"
+    image: "ghcr.io/kiranshila/doplarr:latest"
+    restart: "${RESTARTAPP}"
     networks:
       - proxy
     security_opt:
-      - 'no-new-privileges:true'
+      - "no-new-privileges:true"
     labels:
-      - 'dockupdater.enable=true'
+      - "dockupdater.enable=true"
 networks:
   proxy:
     driver: bridge

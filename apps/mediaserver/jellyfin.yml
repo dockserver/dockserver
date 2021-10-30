@@ -1,23 +1,23 @@
 ---
-version: '3'
+version: "3"
 services:
   jellyfin:
-    hostname: 'jellyfin'
-    container_name: 'jellyfin'
+    hostname: "jellyfin"
+    container_name: "jellyfin"
     environment:
-      - 'PGID=${ID}'
-      - 'PUID=${ID}'
-      - 'TZ=${TZ}'
-      - 'UMASK=${UMASK}'
-      - 'DOCKER_MODS=linuxserver/mods:jellyfin-opencl-intel,ghcr.io/gilbn/theme.park:jellyfin'
-      - 'TP_THEME=${JELLYFINTHEME}'
-      - 'JELLYFIN_PublishedServerUrl=${SERVERIP_ID}'
-    image: '${JELLYFINIMAGE}'
-    restart: '${RESTARTAPP}'
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "DOCKER_MODS=linuxserver/mods:jellyfin-opencl-intel,ghcr.io/gilbn/theme.park:jellyfin"
+      - "TP_THEME=${JELLYFINTHEME}"
+      - "JELLYFIN_PublishedServerUrl=${SERVERIP_ID}"
+    image: "${JELLYFINIMAGE}"
+    restart: "${RESTARTAPP}"
     networks:
       - proxy
     security_opt:
-      - 'no-new-privileges:true'
+      - "no-new-privileges:true"
     ports:
       - target: 8096
         published: 8096
@@ -28,22 +28,22 @@ services:
         protocol: tcp
         mode: host
     volumes:
-      - '/etc/localtime:/etc/localtime:ro'
-      - '${APPFOLDER}/jellyfin:/config:rw'
-      - 'unionfs:/mnt:ro'
+      - "/etc/localtime:/etc/localtime:ro"
+      - "${APPFOLDER}/jellyfin:/config:rw"
+      - "unionfs:/mnt:ro"
     tmpfs:
-      - '/transcode:rw'
+      - "/transcode:rw"
     labels:
-      - 'traefik.enable=true'
-      - 'traefik.docker.network=proxy'
-      - 'dockupdater.enable=true'
-      - 'traefik.http.routers.jellyfin-rtr.entrypoints=https'
-      - 'traefik.http.routers.jellyfin-rtr.rule=Host(`jellyfin.${DOMAIN}`)'
-      - 'traefik.http.routers.jellyfin-rtr.tls=true'
-      - 'traefik.http.routers.jellyfin-rtr.tls.certresolver=dns-cloudflare'
-      - 'traefik.http.routers.jellyfin-rtr.middlewares=chain-authelia@file'
-      - 'traefik.http.routers.jellyfin-rtr.service=jellyfin-svc'
-      - 'traefik.http.services.jellyfin-svc.loadbalancer.server.port=8096'
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.jellyfin-rtr.entrypoints=https"
+      - "traefik.http.routers.jellyfin-rtr.rule=Host(`jellyfin.${DOMAIN}`)"
+      - "traefik.http.routers.jellyfin-rtr.tls=true"
+      - "traefik.http.routers.jellyfin-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.jellyfin-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.jellyfin-rtr.service=jellyfin-svc"
+      - "traefik.http.services.jellyfin-svc.loadbalancer.server.port=8096"
 networks:
   proxy:
     driver: bridge

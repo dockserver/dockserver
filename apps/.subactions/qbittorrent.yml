@@ -8,188 +8,188 @@
 - hosts: localhost
   gather_facts: false
   tasks:
-    - name: 'Set Known Facts'
+    - name: "Set Known Facts"
       set_fact:
-        app: 'qbittorrent'
-        path: '/mnt'
-    - name: 'Register Domain'
+        app: "qbittorrent"
+        path: "/mnt"
+    - name: "Register Domain"
       shell: cat /etc/hosts | grep 127.0.0.1 | tail -n 1 | awk '{print $2}'
       register: domain
-    - name: 'Waiting for {{app}} to initialize'
+    - name: "Waiting for {{app}} to initialize"
       wait_for:
-        path: '/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf'
+        path: "/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf"
         state: present
         timeout: 15
         delay: 5
-    - name: 'Stopping {{app}}'
-      shell: 'docker stop {{app}}'
-    - name: 'Checking for existing app data'
+    - name: "Stopping {{app}}"
+      shell: "docker stop {{app}}"
+    - name: "Checking for existing app data"
       stat:
-        path: '/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf'
+        path: "/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf"
       register: confcheck
-    - name: 'Set torrent port'
+    - name: "Set torrent port"
       ini_file:
-        path: '/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf'
+        path: "/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf"
         section: Preferences
         option: Connection\PortRangeMin
-        value: '7889'
+        value: "7889"
         state: present
-    - name: 'Set SavePath'
+    - name: "Set SavePath"
       ini_file:
-        path: '/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf'
+        path: "/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf"
         section: Preferences
         option: Downloads\SavePath
-        value: '{{path}}/downloads/torrent'
+        value: "{{path}}/downloads/torrent"
         state: present
-    - name: 'Set TempPath'
+    - name: "Set TempPath"
       ini_file:
-        path: '/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf'
+        path: "/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf"
         section: Preferences
         option: Downloads\TempPath
-        value: '{{path}}/incomplete/torrent'
+        value: "{{path}}/incomplete/torrent"
         state: present
-    - name: 'Set TempPathEnabled'
+    - name: "Set TempPathEnabled"
       ini_file:
-        path: '/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf'
+        path: "/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf"
         section: Preferences
         option: Downloads\TempPathEnabled
         value: True
         state: present
-    - name: 'Configuring {{app}} for first time use'
+    - name: "Configuring {{app}} for first time use"
       block:
-        - name: 'Enable AutoRun'
+        - name: "Enable AutoRun"
           ini_file:
-            path: '/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf'
+            path: "/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf"
             section: AutoRun
             option: enabled
             value: True
             state: present
-        - name: 'Enable Auto UnRar'
+        - name: "Enable Auto UnRar"
           ini_file:
-            path: '/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf'
+            path: "/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf"
             section: AutoRun
             option: program
             value: '/usr/bin/unrar x -r \"%F/.\" \"%F/\"'
             state: present
-        - name: 'Disable DHT'
+        - name: "Disable DHT"
           ini_file:
-            path: '/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf'
+            path: "/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf"
             section: Preferences
             option: Bittorrent\DHT
-            value: 'false'
+            value: "false"
             state: present
-        - name: 'Disable PeX'
+        - name: "Disable PeX"
           ini_file:
-            path: '/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf'
+            path: "/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf"
             section: Preferences
             option: Bittorrent\PeX
-            value: 'false'
+            value: "false"
             state: present
-        - name: 'Disable LSD'
+        - name: "Disable LSD"
           ini_file:
-            path: '/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf'
+            path: "/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf"
             section: Preferences
             option: Bittorrent\LSD
-            value: 'false'
+            value: "false"
             state: present
-        - name: 'Enable Encryption'
+        - name: "Enable Encryption"
           ini_file:
-            path: '/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf'
+            path: "/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf"
             section: Preferences
             option: Bittorrent\Encryption
             value: 1
             state: present
-        - name: 'Dont use incomplete extension'
+        - name: "Dont use incomplete extension"
           ini_file:
-            path: '/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf'
+            path: "/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf"
             section: Preferences
             option: Downloads\UseIncompleteExtension
-            value: 'false'
+            value: "false"
             state: present
-        - name: 'Ignore slow torrents'
+        - name: "Ignore slow torrents"
           ini_file:
-            path: '/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf'
+            path: "/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf"
             section: Preferences
             option: Queueing\IgnoreSlowTorrents
             value: True
             state: present
-        - name: 'Set MaxActiveDownloads'
+        - name: "Set MaxActiveDownloads"
           ini_file:
-            path: '/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf'
+            path: "/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf"
             section: Preferences
             option: Queueing\MaxActiveDownloads
-            value: '10'
+            value: "10"
             state: present
-        - name: 'Set MaxActiveTorrents'
+        - name: "Set MaxActiveTorrents"
           ini_file:
-            path: '/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf'
+            path: "/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf"
             section: Preferences
             option: Queueing\MaxActiveTorrents
-            value: '100'
+            value: "100"
             state: present
-        - name: 'Set MaxActiveUploads'
+        - name: "Set MaxActiveUploads"
           ini_file:
-            path: '/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf'
+            path: "/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf"
             section: Preferences
             option: Queueing\MaxActiveUploads
-            value: '100'
+            value: "100"
             state: present
-        - name: 'Set GlobalMaxSeedingMinutes'
+        - name: "Set GlobalMaxSeedingMinutes"
           ini_file:
-            path: '/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf'
+            path: "/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf"
             section: BitTorrent
             option: Session\GlobalMaxSeedingMinutes
-            value: '20160'
+            value: "20160"
             state: present
-        - name: 'Set MaxRatio'
+        - name: "Set MaxRatio"
           ini_file:
-            path: '/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf'
+            path: "/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf"
             section: Preferences
             option: Bittorrent\MaxRatio
-            value: '1'
+            value: "1"
             state: present
-        - name: 'pause on MaxRatioAction'
+        - name: "pause on MaxRatioAction"
           ini_file:
-            path: '/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf'
+            path: "/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf"
             section: Preferences
             option: Bittorrent\MaxRatioAction
-            value: '1'
+            value: "1"
             state: present
-        - name: 'Disable csrf'
+        - name: "Disable csrf"
           ini_file:
-            path: '/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf'
+            path: "/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf"
             section: Preferences
             option: WebUI\CSRFProtection
-            value: 'false'
+            value: "false"
             state: present
-        - name: 'Disable HostHeaderValidation'
+        - name: "Disable HostHeaderValidation"
           ini_file:
-            path: '/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf'
+            path: "/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf"
             section: Preferences
             option: WebUI\HostHeaderValidation
-            value: 'false'
+            value: "false"
             state: present
-        - name: 'Disable ClickjackingProtection'
+        - name: "Disable ClickjackingProtection"
           ini_file:
-            path: '/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf'
+            path: "/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf"
             section: Preferences
             option: WebUI\ClickjackingProtection
-            value: 'false'
+            value: "false"
             state: present
-        - name: 'Set ServerDomains'
+        - name: "Set ServerDomains"
           ini_file:
-            path: '/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf'
+            path: "/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf"
             section: Preferences
             option: WebUI\ServerDomains
-            value: '*'
+            value: "*"
             state: present
-        - name: 'Set Address'
+        - name: "Set Address"
           ini_file:
-            path: '/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf'
+            path: "/opt/appdata/{{app}}/qBittorrent/qBittorrent.conf"
             section: Preferences
             option: WebUI\Address
-            value: '*'
+            value: "*"
             state: present
       when: confcheck.stat.exists
-    - name: 'Restart {{app}}'
-      shell: 'docker start {{app}}'
+    - name: "Restart {{app}}"
+      shell: "docker start {{app}}"

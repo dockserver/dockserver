@@ -3,9 +3,9 @@
 # Copyright (c) 2020, MrDoob
 # All rights reserved.
 migrateenv() {
-basefolder="/opt/appdata"
-source $basefolder/compose/.env
-echo -e "##Environment for Docker-Compose
+    basefolder="/opt/appdata"
+    source $basefolder/compose/.env
+    echo -e "##Environment for Docker-Compose
 ##TRAEFIK
 CLOUDFLARE_EMAIL=${CLOUDFLARE_EMAIL:-CF-EMAIL}
 CLOUDFLARE_API_KEY=${CLOUDFLARE_API_KEY:-CF-API-KEY}
@@ -234,7 +234,7 @@ RU_SAVE_UPLOADED_TORRENTS=${RU_SAVE_UPLOADED_TORRENTS:-false}
 RU_OVERWRITE_UPLOADED_TORRENTS=${RU_OVERWRITE_UPLOADED_TORRENTS:-false}
 RU_FORBID_USER_SETTINGS=${RU_FORBID_USER_SETTINGS:-false}
 RU_LOCALE=${RU_LOCALE:-UTF8}
-#EOF" >$basefolder/compose/.env
+#"" >$basefolder/compose/.env
 }
 migrateenv
-#EOF
+#"

@@ -14,11 +14,11 @@
 #####################################
 appstartup() {
 if [[ $EUID -ne 0 ]];then
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔  You must execute as a SUDO user (with sudo) or as ROOT!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
 exit 0
 fi
 while true; do
@@ -26,11 +26,11 @@ basefolder="/opt/appdata"
   if [[ ! -x $(command -v docker) ]];then exit;fi
   if [[ ! -x $(command -v docker-compose) ]];then exit;fi
   if [[ -f "$basefolder/system/rclone/.env" ]];then $(command -v rm) -rf $basefolder/system/rclone/.env;fi
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      Please wait while we pull the needed dockers
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
   $(command -v docker) system prune -af 1>/dev/null 2>&1
   pulls="ghcr.io/dockserver/docker-rclone:latest gcr.io/google.com/cloudsdktool/cloud-sdk:alpine"
   for pull in ${pulls};do
@@ -68,28 +68,28 @@ fi
 }
 account() {
 basefolder="/opt/appdata"
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Account Name
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
    read -erp "Enter your Account Email: " ACCOUNTNAME </dev/tty
 if [[ $ACCOUNTNAME != "" ]];then
    if [[ $(uname) == "Darwin" ]];then
       sed -i '' "s/ACCOUNT=NOT-SET/ACCOUNT=$ACCOUNTNAME/g" $basefolder/system/rclone/.env
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Validate your Google Authentication
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
       $(command -v docker) run -ti --name gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk:alpine gcloud auth login --no-launch-browser --account=${ACCOUNTNAME}
    else
       sed -i "s/ACCOUNT=NOT-SET/ACCOUNT=$ACCOUNTNAME/g" $basefolder/system/rclone/.env
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Validate your Google Authentication
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
       $(command -v docker) run -ti --name gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk:alpine gcloud auth login --no-launch-browser --account=${ACCOUNTNAME}
    fi
 else
@@ -100,29 +100,29 @@ clear && interface
 }
 project() {
 basefolder="/opt/appdata"
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Please Create a New Project for this TDrive
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
          minimum is 6 chars | maximum is 16 chars
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
    read -erp "Enter your Projectname: " PROJECTNAME </dev/tty
    if [[ ${ACCOUNT} == "NOT-SET" ]];then
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   You forgot to set your Account
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
    sleep 5 && clear && interface
 fi
    if [[ $(echo $PROJECTNAME | wc -m) -le "6" || $(echo $PROJECTNAME | wc -m) -ge "16" ]];then
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Sorry the minimum of chars are 6 and maximum is 16
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
    sleep 5 && project
 fi
 if [[ $PROJECTNAME != "" ]];then
@@ -144,7 +144,7 @@ clear && interface
 }
 name() {
 basefolder="/opt/appdata"
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Name of your REMOTE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -152,7 +152,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
          Don't use tdrive ( standalone )
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
    read -erp "Enter the Name: " TDNAME </dev/tty
 if [[ $TDNAME != "" ]];then
    if [[ $(uname) == "Darwin" ]];then
@@ -168,11 +168,11 @@ clear && interface
 }
 clientid() {
 basefolder="/opt/appdata"
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Google Client ID
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
    read -erp "Enter your Google Client ID: " CID </dev/tty
 if [[ $CID != "" ]];then
    if [[ $(uname) == "Darwin" ]];then
@@ -188,11 +188,11 @@ clear && interface
 }
 clientsec() {
 basefolder="/opt/appdata"
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Google Client Secret
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
    read -erp "Enter your Google Client Secret: " CIDS </dev/tty
 if [[ $CIDS != "" ]];then
    if [[ $(uname) == "Darwin" ]];then
@@ -210,7 +210,7 @@ clear && interface
 }
 atoken() {
 source $basefolder/system/rclone/.env
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 System Message: Google Auth
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -220,7 +220,7 @@ NOTE: Copy & Paste Url into Browser | Use Correct Google Account!
 https://accounts.google.com/o/oauth2/auth?client_id=$CLIENT_ID_FROM_GOOGLE&redirect_uri=urn:ietf:wg:oauth:2.0:oob&scope=https://www.googleapis.com/auth/drive&response_type=code
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
   read -erp '↘️  Token | PRESS [ENTER]: ' token </dev/tty
   if [[ $token != "" ]];then
      if [[ -f "/tmp/rclone.info" ]];then $(command -v rm) -rf /tmp/rclone.info;fi
@@ -233,7 +233,7 @@ clear && interface
 }
 teamdriveid() {
 basefolder="/opt/appdata"
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
     🚀   Team Drive ID
@@ -248,7 +248,7 @@ tee <<-EOF
 
     Please dont use the name of the Shared Drive
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
    read -erp "Enter your Team Drive ID: " TDID </dev/tty
 if [[ $TDID != "" ]];then
    if [[ $(uname) == "Darwin" ]];then
@@ -269,28 +269,28 @@ CLIENT_ID_FROM_GOOGLE=${CLIENT_ID_FROM_GOOGLE}
 if [[ ${CLIENT_ID_FROM_GOOGLE} != "NOT-SET" ]];then
 $(command -v docker) run --rm -v $basefolder/system/rclone:/system/rclone:rw ghcr.io/dockserver/docker-rclone:latest 1>/dev/null 2>&1
 sleep 5 && clear
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   SYSTEM MESSAGE: TDrive is added
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
               Type confirm !
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
   read -erp "Confirm Info | PRESS [ENTER] " input </dev/tty
   if [[ "$input" = "confirm" ]];then sleep 2 && clear && checkfields && interface;fi
 else
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         ❌ ERROR - Not all parts are filled
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
 sleep 10 && clear && interface
 fi
 }
 interface() {
 basefolder="/opt/appdata"
 source $basefolder/system/rclone/.env
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Shared Drive  || UNENCRYPTED
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -311,7 +311,7 @@ tee <<-EOF
     [ EXIT or Z ] - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
   read -erp "↘️  Type Number and Press [ENTER]: " headsectionun </dev/tty
   case $headsectionun in
     1) clear && account ;;
@@ -327,4 +327,4 @@ EOF
 }
 ##
 appstartup
-#EOF
+#"

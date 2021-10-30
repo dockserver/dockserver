@@ -1,26 +1,26 @@
 ---
-version: '3'
+version: "3"
 services:
   instaloader:
-    container_name: 'instaloader'
-    hostname: 'instaloader'
-    image: 'didc/docker-instaloader:latest'
-    restart: '${RESTARTAPP}'
+    container_name: "instaloader"
+    hostname: "instaloader"
+    image: "didc/docker-instaloader:latest"
+    restart: "${RESTARTAPP}"
     environment:
-      - 'PGID=${ID}'
-      - 'PUID=${ID}'
-      - 'TZ=${TZ}'
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
     networks:
       - proxy
     security_opt:
-      - 'no-new-privileges:true'
+      - "no-new-privileges:true"
     volumes:
-      - '/etc/localtime:/etc/localtime:ro'
-      - '${APPFOLDER}/instaloader/il_args.txt:/il_args.txt:rw'
-      - '${APPFOLDER}/instaloader/il_targets.txt:/il_targets.txt:rw'
-      - '${APPFOLDER}/instaloader/session-username:/session-username:rw'
+      - "/etc/localtime:/etc/localtime:ro"
+      - "${APPFOLDER}/instaloader/il_args.txt:/il_args.txt:rw"
+      - "${APPFOLDER}/instaloader/il_targets.txt:/il_targets.txt:rw"
+      - "${APPFOLDER}/instaloader/session-username:/session-username:rw"
     labels:
-      - 'dockupdater.enable=true'
+      - "dockupdater.enable=true"
 networks:
   proxy:
     driver: bridge

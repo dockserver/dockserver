@@ -11,19 +11,20 @@ Lidarr is a music collection manager for Usenet and BitTorrent users. It can mon
 
 ## Major Features Include:
 
-* Support for major platforms: Windows, Linux, macOS, Raspberry Pi, etc.
-* Automatically detects new tracks.
-* Can scan your existing library and download any missing tracks.
-* Can watch for better quality of the tracks you already have and do an automatic upgrade.
-* Automatic failed download handling will try another release if one fails
-* Manual search so you can pick any release or to see why a release was not downloaded automatically
-* Fully configurable track renaming
-* Full integration with SABnzbd and NZBGet
-* Full integration with Kodi, Plex (notification, library update, metadata)
-* Full support for specials and multi-album releases
-* And a beautiful UI
+- Support for major platforms: Windows, Linux, macOS, Raspberry Pi, etc.
+- Automatically detects new tracks.
+- Can scan your existing library and download any missing tracks.
+- Can watch for better quality of the tracks you already have and do an automatic upgrade.
+- Automatic failed download handling will try another release if one fails
+- Manual search so you can pick any release or to see why a release was not downloaded automatically
+- Fully configurable track renaming
+- Full integration with SABnzbd and NZBGet
+- Full integration with Kodi, Plex (notification, library update, metadata)
+- Full support for specials and multi-album releases
+- And a beautiful UI
+
 ## Support
 
 Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
 
-* Join our [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa) for Support
+- Join our [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa) for Support

@@ -1,38 +1,38 @@
 ---
-version: '3'
+version: "3"
 services:
   davos:
-    hostname: 'davos'
-    container_name: 'davos'
+    hostname: "davos"
+    container_name: "davos"
     environment:
-      - 'PGID=${ID}'
-      - 'PUID=${ID}'
-      - 'TZ=${TZ}'
-      - 'UMASK=${UMASK}'
-      - 'PASSWORD=password'
-      - 'HASHED_PASSWORD=#fillthisself'
-      - 'SUDO_PASSWORD=sudopassword'
-      - 'SUDO_PASSWORD_HASH=#fillthisself' 
-    image: 'lscr.io/linuxserver/davos'
-    restart: '${RESTARTAPP}'
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "PASSWORD=password"
+      - "HASHED_PASSWORD=#fillthisself"
+      - "SUDO_PASSWORD=sudopassword"
+      - "SUDO_PASSWORD_HASH=#fillthisself"
+    image: "lscr.io/linuxserver/davos"
+    restart: "${RESTARTAPP}"
     networks:
       - proxy
     security_opt:
-      - 'no-new-privileges:true'
+      - "no-new-privileges:true"
     volumes:
-      - '${APPFOLDER}/davos:/config:rw'
-      - 'unionfs:/mnt'
+      - "${APPFOLDER}/davos:/config:rw"
+      - "unionfs:/mnt"
     labels:
-      - 'traefik.enable=true'
-      - 'traefik.docker.network=proxy'
-      - 'dockupdater.enable=true'
-      - 'traefik.http.routers.davos-rtr.entrypoints=https'
-      - 'traefik.http.routers.davos-rtr.rule=Host(`davos.${DOMAIN}`)'
-      - 'traefik.http.routers.davos-rtr.tls=true'
-      - 'traefik.http.routers.davos-rtr.tls.certresolver=dns-cloudflare'
-      - 'traefik.http.routers.davos-rtr.middlewares=chain-authelia@file'
-      - 'traefik.http.routers.davos-rtr.service=davos-svc'
-      - 'traefik.http.services.davos-svc.loadbalancer.server.port=8080'
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.davos-rtr.entrypoints=https"
+      - "traefik.http.routers.davos-rtr.rule=Host(`davos.${DOMAIN}`)"
+      - "traefik.http.routers.davos-rtr.tls=true"
+      - "traefik.http.routers.davos-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.davos-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.davos-rtr.service=davos-svc"
+      - "traefik.http.services.davos-svc.loadbalancer.server.port=8080"
 networks:
   proxy:
     driver: bridge

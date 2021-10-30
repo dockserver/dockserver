@@ -15,4 +15,4 @@ esac
 if [ -f ./.installer/$type.sh ]; then
     bash ./.installer/$type.sh
 fi
-#EOF
+#"

@@ -15,26 +15,27 @@
 
 # Introduction
 
-While many of us has enjoyed PGblitz over the years, the project is now scattered. Some simply ghosted the whole community, and the rest of the devs are working on other projects. 
+While many of us has enjoyed PGblitz over the years, the project is now scattered. Some simply ghosted the whole community, and the rest of the devs are working on other projects.
 Even though PGblitz still works, **there are numerous upsides in shifting to dockserver:**
 
-- Updated rclone/mount 
+- Updated rclone/mount
 - No file limits
 - Sonarr/Radarr can now analyze the media without hitting api bans
 - On-the-fly configuration of HW Transcoding
 - Intelligent uploader that will automatically start pushing your content to the cloud when disk space is getting low
-...to name a few...
+  ...to name a few...
 
-# Before you start: 
+# Before you start:
 
 We strongly recommend restoring your Server on a [VPS](https://www.hetzner.com/cloud "VPS") or something similar before making the final migration. This is to avoid data-loss and to harden your backups for your final dockserver migration. This guide will take you through a migration with Teamdrive deployed on your pg installation. Feel free to experiement with the gdsa builder in the CLI.
 
 ## Prerequisites:
+
 - PGblitz
 - Tdrive/Tcrypt mount deployed
-- CloudCMD deployed (Under Community Apps) 
+- CloudCMD deployed (Under Community Apps)
 
-Open CloudCMD, Navigate to: 
+Open CloudCMD, Navigate to:
 
 /appdata/plexguide/.blitzkeys
 
@@ -46,26 +47,25 @@ Now you are ready to backup your PG apps.
 
 `sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/backup.sh | sudo bash`
 
-This will create a folder named /appbackups on the root of your remote drive. When the backup is done, check that these files exist on your remote drive. Also, check them for file sizes to make sure it looks right. Plex can take a long time, be patient. 
+This will create a folder named /appbackups on the root of your remote drive. When the backup is done, check that these files exist on your remote drive. Also, check them for file sizes to make sure it looks right. Plex can take a long time, be patient.
 
 Now, please order a VPS with ubuntu 18/20 on it and follow the instructions on the [frontpage](http://dockserver.io "frontpage"). When dockserver is installed on your host, return here and follow instructions
 
-
 # Mount & Uploader
 
-Install CloudCMD (under addons) 
+Install CloudCMD (under addons)
 
-Navigate to 
+Navigate to
 /opt/appdata/system/rclone
 Upload the rclone.conf from your old server
 
-Navigate to 
+Navigate to
 /opt/appdata/system/servicekeys
 
 Upload the rclone.conf to this folder
 Rename rclone.conf to rclonegdsa.conf
 
-Navigate to 
+Navigate to
 /opt/appdata/system/servicekeys/keys
 Upload all service keys (GDSA01,02..)
 Rename all service keys to not containing a 0 so GDSA01 becomes GDSA1 and so forth..
@@ -83,7 +83,7 @@ Edit your rclone.conf
 `sudo nano /opt/appdata/system/rclone/rclone.conf`
 
 Remove all GDSA lines here, only the remotes(g/tdrive, g/tcrypt) are left in the file - PGUNION has to be deleted as well
-CTRX+X press y 
+CTRX+X press y
 
 Edit the rclone.conf to rclonegdsa.conf
 
@@ -91,27 +91,22 @@ Edit the rclone.conf to rclonegdsa.conf
 
 Again, remove all zeroes so that the values will be displayed like this:
 
-[GDSA1] 
+[GDSA1]
 service_account_file = /system/servicekeys/keys/GDSA1
 
-[GDSA2] 
+[GDSA2]
 service_account_file = /system/servicekeys/keys/GDSA2
 
-CTRL+X y 
+CTRL+X y
 
-Done. 
+Done.
 
 Now you can deploy mount & uploader under in the system section in the CLI
 
 After this you are ready to restore your PG apps on a brand new Dockserver installation
 
-
-
-
-
 ## Support
 
 Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
 
-* Join our <a href="https://discord.gg/FYSvu83caM">
-
+- Join our <a href="https://discord.gg/FYSvu83caM">

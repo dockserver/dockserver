@@ -1,35 +1,35 @@
 ---
-version: '3'
+version: "3"
 services:
   duplicati:
-    hostname: 'duplicati'
-    container_name: 'duplicati'
+    hostname: "duplicati"
+    container_name: "duplicati"
     environment:
-      - 'PGID=${ID}'
-      - 'PUID=${ID}'
-      - 'TZ=${TZ}'
-      - 'UMASK=${UMASK}'
-    image: 'lscr.io/linuxserver/duplicati'
-    restart: '${RESTARTAPP}'
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "lscr.io/linuxserver/duplicati"
+    restart: "${RESTARTAPP}"
     networks:
       - proxy
     security_opt:
-      - 'no-new-privileges:true'
+      - "no-new-privileges:true"
     volumes:
-      - '${APPFOLDER}/duplicati:/config:rw'
-      - '/opt/appdata:/source:rw'
-      - 'unionfs:/backups:rw'
+      - "${APPFOLDER}/duplicati:/config:rw"
+      - "/opt/appdata:/source:rw"
+      - "unionfs:/backups:rw"
     labels:
-      - 'traefik.enable=true'
-      - 'traefik.docker.network=proxy'
-      - 'dockupdater.enable=true'
-      - 'traefik.http.routers.duplicati-rtr.entrypoints=https'
-      - 'traefik.http.routers.duplicati-rtr.rule=Host(`duplicati.${DOMAIN}`)'
-      - 'traefik.http.routers.duplicati-rtr.tls=true'
-      - 'traefik.http.routers.duplicati-rtr.tls.certresolver=dns-cloudflare'
-      - 'traefik.http.routers.duplicati-rtr.middlewares=chain-authelia@file'
-      - 'traefik.http.routers.duplicati-rtr.service=duplicati-svc'
-      - 'traefik.http.services.duplicati-svc.loadbalancer.server.port=8200'
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.duplicati-rtr.entrypoints=https"
+      - "traefik.http.routers.duplicati-rtr.rule=Host(`duplicati.${DOMAIN}`)"
+      - "traefik.http.routers.duplicati-rtr.tls=true"
+      - "traefik.http.routers.duplicati-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.duplicati-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.duplicati-rtr.service=duplicati-svc"
+      - "traefik.http.services.duplicati-svc.loadbalancer.server.port=8200"
 networks:
   proxy:
     driver: bridge

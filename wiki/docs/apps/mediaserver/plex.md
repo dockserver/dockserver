@@ -13,8 +13,9 @@ Plex gives you one place to find and access all the media that matters to you. F
 
 And, it’s really simple to start using…
 First, if you are streaming only third-party content (Movies & Shows, live TV, podcasts, web shows, TIDAL music), then you are good to go as soon as you have an account, just install an app on your phone, Smart TV, computer, or simply open up our web app on your browser!
+
 ## Support
 
 Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
 
-* Join our [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa) for Support
+- Join our [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa) for Support

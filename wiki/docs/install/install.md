@@ -1,5 +1,5 @@
-# **DockServer**   
-      
+# **DockServer**
+
 <p align="left">
     <a href="https://discord.gg/FYSvu83caM">
         <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
@@ -15,22 +15,22 @@
     </a>
 </p>
 
-*Docker + Traefik with Authelia and Cloudflare Protection*
+_Docker + Traefik with Authelia and Cloudflare Protection_
 
 ## Minimum Specs
 
-* Ubuntu 18/20 or Debian 9/10
-* 2 Cores
-* 4GB Ram
-* 20GB Disk Space
+- Ubuntu 18/20 or Debian 9/10
+- 2 Cores
+- 4GB Ram
+- 20GB Disk Space
 
 ## Requirements
 
-* A VPS/VM or Dedicated Server
+- A VPS/VM or Dedicated Server
 
-* Domain
+- Domain
 
-* [Cloudflare](https://dash.cloudflare.com/sign-up) account free tier
+- [Cloudflare](https://dash.cloudflare.com/sign-up) account free tier
 
 ## Pre-Install
 
@@ -59,9 +59,9 @@ sudo wget -qO- https://git.io/J3GDc | sudo bash
   <summary>Long commmand if the short one doesn't work.</summary>
   <br />
 
-  ```sh
-  sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/wgetfile.sh | sudo bash
-  ```
+```sh
+sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/wgetfile.sh | sudo bash
+```
 
 </details>
 
@@ -69,9 +69,9 @@ sudo wget -qO- https://git.io/J3GDc | sudo bash
 
 Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
 
-* Join our <a href="https://discord.gg/FYSvu83caM">
-        <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
-    </a> for Support
+- Join our <a href="https://discord.gg/FYSvu83caM">
+  <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
+  </a> for Support
 
 ## Code and Permissions
 
@@ -82,10 +82,10 @@ Dev Code @dockserver
 Co-Dev -APPS- @CONTRIBUTORS-LIST
 ```
 
-----
-
+---
 
 <!--START_SECTION:activity-->
+
 1. 🗣 Commented on [#18](https://github.com/dockserver/dockserver/issues/18) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 2. 🎉 Merged PR [#19](https://github.com/dockserver/dockserver/pull/19) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 3. 🗣 Commented on [#19](https://github.com/dockserver/dockserver/issues/19) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
@@ -98,8 +98,7 @@ Co-Dev -APPS- @CONTRIBUTORS-LIST
 10. 🗣 Commented on [#15](https://github.com/dockserver/dockserver/issues/15) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 <!--END_SECTION:activity-->
 
-
-----
+---
 
 ## Contributors ✨
 

@@ -32,7 +32,6 @@ totp:
 #  integration_key: here-the-key
 #  secret_key: here-the-secret-key
 
-
 authentication_backend:
   disable_reset_password: false
   refresh_interval: 5m
@@ -112,7 +111,6 @@ storage:
 notifier:
   filesystem:
     filename: /config/notification.txt
-
 ###############################################################
 #                   Authelia configuration                    #
 ###############################################################

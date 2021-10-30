@@ -1,53 +1,53 @@
 ---
-version: '3'
+version: "3"
 services:
   jackett:
-    hostname: 'jackett'
-    container_name: 'jackett'
+    hostname: "jackett"
+    container_name: "jackett"
     environment:
-      - 'PGID=${ID}'
-      - 'PUID=${ID}'
-      - 'TZ=${TZ}'
-      - 'UMASK=${UMASK}'
-      - 'DOCKER_MODS=ghcr.io/gilbn/theme.park:jackett'
-      - 'TP_THEME=${JACKETTTHEME}'
-    image: '${JACKETTIMAGE}'
-    restart: '${RESTARTAPP}'
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:jackett"
+      - "TP_THEME=${JACKETTTHEME}"
+    image: "${JACKETTIMAGE}"
+    restart: "${RESTARTAPP}"
     networks:
       - proxy
     security_opt:
-      - 'no-new-privileges:true'
+      - "no-new-privileges:true"
     volumes:
-      - '${APPFOLDER}/jackett:/config:rw'
-      - 'unionfs:/mnt'
+      - "${APPFOLDER}/jackett:/config:rw"
+      - "unionfs:/mnt"
     labels:
-      - 'traefik.enable=true'
-      - 'traefik.docker.network=proxy'
-      - 'dockupdater.enable=true'
-      - 'traefik.http.routers.jackett-rtr.entrypoints=https'
-      - 'traefik.http.routers.jackett-rtr.rule=Host(`jackett.${DOMAIN}`)'
-      - 'traefik.http.routers.jackett-rtr.tls=true'
-      - 'traefik.http.routers.jackett-rtr.tls.certresolver=dns-cloudflare'
-      - 'traefik.http.routers.jackett-rtr.middlewares=chain-authelia@file'
-      - 'traefik.http.routers.jackett-rtr.service=jackett-svc'
-      - 'traefik.http.services.jackett-svc.loadbalancer.server.port=9117'
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.jackett-rtr.entrypoints=https"
+      - "traefik.http.routers.jackett-rtr.rule=Host(`jackett.${DOMAIN}`)"
+      - "traefik.http.routers.jackett-rtr.tls=true"
+      - "traefik.http.routers.jackett-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.jackett-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.jackett-rtr.service=jackett-svc"
+      - "traefik.http.services.jackett-svc.loadbalancer.server.port=9117"
   flaresolverr:
-    image: 'ghcr.io/flaresolverr/flaresolverr:latest'
-    container_name: 'flaresolverr'
-    hostname: 'flaresolverr'
+    image: "ghcr.io/flaresolverr/flaresolverr:latest"
+    container_name: "flaresolverr"
+    hostname: "flaresolverr"
     depends_on:
       - jackett
     environment:
-      - 'LOG_LEVEL=info'
-      - 'LOG_HTML=false'
-      - 'CAPTCHA_SOLVER=hcaptcha-solver'
+      - "LOG_LEVEL=info"
+      - "LOG_HTML=false"
+      - "CAPTCHA_SOLVER=hcaptcha-solver"
     networks:
       - proxy
     security_opt:
-      - 'no-new-privileges:true'
+      - "no-new-privileges:true"
     ports:
-      - '${PORTBLOCK}:8191:8191'
-    restart: '${RESTARTAPP}'
+      - "${PORTBLOCK}:8191:8191"
+    restart: "${RESTARTAPP}"
 networks:
   proxy:
     driver: bridge

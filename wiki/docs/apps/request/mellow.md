@@ -13,15 +13,15 @@
 
 ## Features
 
-* Search for Movies & TV Shows in Ombi or Sonarr / Radarr
-* Request Movies & TV Shows in Ombi or Sonarr / Radarr
-* Get a list of all Libraries on your Server in Tautulli
-* Additional Features following soon!
+- Search for Movies & TV Shows in Ombi or Sonarr / Radarr
+- Request Movies & TV Shows in Ombi or Sonarr / Radarr
+- Get a list of all Libraries on your Server in Tautulli
+- Additional Features following soon!
 
 ## Create Bot
 
-Go to this website: https://discordapp.com/developers/applications/ and press ``new Application``. Copy the Client ID first, you will need that later.
-After you have done that go to the Settings Tab to the left and select Bot and press ``Add Bot``. You can now copy the Token from the Bot which you will
+Go to this website: https://discordapp.com/developers/applications/ and press `new Application`. Copy the Client ID first, you will need that later.
+After you have done that go to the Settings Tab to the left and select Bot and press `Add Bot`. You can now copy the Token from the Bot which you will
 need for the Mellow Configuration later on.
 
 ## Invite Bot
@@ -30,18 +30,18 @@ Before your Bot actually listen to the channels on your server you will have to 
 Select the Permissions from below and paste the Client ID down there which you copied earlier. After that just click the link on the bottom and you will
 be redirect to a new page where you can select the server you want to invite the Bot too.
 
-* Read Messages
-* Embed Links
-* Read Message History
-* Use External Emojis
-* Send Messages
-* Manage Messages
-* Attach Files
-* Mention @everyone
-* Add Reactions
+- Read Messages
+- Embed Links
+- Read Message History
+- Use External Emojis
+- Send Messages
+- Manage Messages
+- Attach Files
+- Mention @everyone
+- Add Reactions
 
 ## Support
 
 Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
 
-* Join our [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa) for Support
+- Join our [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa) for Support
