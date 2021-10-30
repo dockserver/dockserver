@@ -19,6 +19,6 @@ jobs:
     - name: Prettify code
       uses: creyD/prettier_action@v4.0
       with:
-        prettier_options: --write **/*.{json,yaml,sh,md}
+        prettier_options: --write **/*.{json,yaml,md}
         only_changed: True
         github_token: ${{ secrets.CR_PAT }}
