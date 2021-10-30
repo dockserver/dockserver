@@ -17,7 +17,7 @@ services:
       - "WATCHTOWER_LABEL_ENABLE=${WATCHTOWER_LABEL_ENABLE}"
       - "WATCHTOWER_ROLLING_RESTART=${WATCHTOWER_ROLLING_RESTART}"
       - "WATCHTOWER_TIMEOUT=${WATCHTOWER_TIMEOUT}"
-      - "DOCKER_HOST=tcp://socket-proxy:2375"
+      - "DOCKER_HOST=${SOCKET}"
     restart: "${RESTARTAPP}"
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
