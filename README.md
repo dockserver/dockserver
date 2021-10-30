@@ -121,10 +121,6 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
 
-- Join our <a href="https://discord.gg/FYSvu83caM">
-  <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
-  </a> for Support
-
 ---
 
 ## Code and Permissions
