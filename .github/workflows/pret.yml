@@ -10,17 +10,19 @@ jobs:
       - name: editorconfig-checker
         run: |
           docker run --rm -v ${GITHUB_WORKSPACE}:/check mstruebing/editorconfig-checker
+
   markdownlint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: markdownlint
         run: |
-          find ~+ ${github_workspace} -name '*.md' | xargs docker run --rm -v ${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE} markdownlint/markdownlint -r ~MD013,~MD033,~MD034,~MD046,~MD002,~MD041
+          find ~+ ${github_workspace} -name '*.md' ! -path '**.github/**' | xargs docker run --rm -v ${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE} markdownlint/markdownlint -r ~MD013,~MD033,~MD034,~MD046,~MD002,~MD041
+
   yamllint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: yamllint
         run: |
-          find ~+ ${github_workspace} -name '*.yaml' -o -name '*.yml' | xargs docker run --rm -v ${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE} peterdavehello/yamllint yamllint -d '{extends: default, rules: {document-start: {present: false}, line-length: disable}}'
+          find ~+ ${github_workspace} -name '*.yaml' -o -name '*.yml' ! -path '**.github/**' | xargs docker run --rm -v ${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE} peterdavehello/yamllint yamllint -d '{extends: default, rules: {document-start: {present: false}, line-length: disable}}'
