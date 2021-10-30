@@ -22,3 +22,13 @@ jobs:
         prettier_options: --write **/*.{json,yaml,md}
         only_changed: True
         github_token: ${{ secrets.CR_PAT }}
+
+    - name: Commit changes
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Apply formatting changes
+        branch: ${{ github.head_ref }}
+        push_options: '--force'
+        skip_dirty_check: true
+        github_token: ${{ secrets.CR_PAT }}
+
