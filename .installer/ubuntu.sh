@@ -36,7 +36,6 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 }
-
 version() {
 GUTHUB=dockserver
 REPO=dockserver
@@ -72,7 +71,6 @@ printf "
     [ EXIT or Z ] - Exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 "
-
   read -erp "↘️  Type Number and Press [ENTER]: " headsection </dev/tty
   case $headsection in
     1) clear && LOCATION=traefik && selection ;;
@@ -82,4 +80,4 @@ printf "
   esac
 }
 appstartup
-#"
+#E-o-F#
