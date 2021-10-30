@@ -1,34 +1,26 @@
-name: Continuous Integration
+name: Lint
 
-on:
-  pull_request:
-    branches: [master]
+on: [push, pull_request]
 
 jobs:
-  prettier:
+  editorconfig-checker:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-        ref: ${{ github.head_ref }}
-        persist-credentials: false
-
-    - name: Prettify code
-      uses: creyD/prettier_action@v4.0
-      with:
-        prettier_options: --write **/*.{json,yaml,md}
-        only_changed: True
-        github_token: ${{ secrets.CR_PAT }}
-
-    - name: Commit changes
-      uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        commit_message: Apply formatting changes
-        branch: ${{ github.head_ref }}
-        push_options: '--force'
-        skip_dirty_check: true
-        github_token: ${{ secrets.CR_PAT }}
-
+      - uses: actions/checkout@v2
+      - name: editorconfig-checker
+        run: |
+          docker run --rm -v ${GITHUB_WORKSPACE}:/check mstruebing/editorconfig-checker
+  markdownlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: markdownlint
+        run: |
+          find ~+ ${github_workspace} -name '*.md' | xargs docker run --rm -v ${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE} markdownlint/markdownlint -r ~MD013,~MD033,~MD034,~MD046,~MD002,~MD041
+  yamllint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: yamllint
+        run: |
+          find ~+ ${github_workspace} -name '*.yaml' -o -name '*.yml' | xargs docker run --rm -v ${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE} peterdavehello/yamllint yamllint -d '{extends: default, rules: {document-start: {present: false}, line-length: disable}}'
