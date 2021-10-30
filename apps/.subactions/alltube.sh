@@ -7,7 +7,7 @@ typed=alltube
 
 if [[ ! -f "$basefolder/${typed}/config.json" ]];then
 
-cat <<'"' > $basefolder/${typed}/config.json
+cat <<'EOF' > $basefolder/${typed}/config.json
 #####################################
 # All rights reserved.              #
 # started from Zero                 #
@@ -60,7 +60,7 @@ stream: false
 
 # MP3 bitrate when converting (in kbit/s)
 audioBitrate: 128
-#"
-"
+#EOF
+EOF
 fi
 
