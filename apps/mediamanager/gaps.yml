@@ -13,9 +13,9 @@ services:
     image: "housewrecker/gaps:latest"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/gaps:/usr/data:rw"
       - "/etc/localtime:/etc/localtime:ro"

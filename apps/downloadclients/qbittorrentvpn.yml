@@ -14,9 +14,9 @@ services:
       - "6881:6881"
       - "6881:6881/udp"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/qbittorrentvpn/data:/data:rw"
       - "${APPFOLDER}/qbittorrentvpn/config:/config:rw"

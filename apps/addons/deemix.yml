@@ -12,9 +12,9 @@ services:
     image: "registry.gitlab.com/bockiii/deemix-docker:latest"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/deemix:/config"
       - "/mnt/downloads/music:/downloads:rw"

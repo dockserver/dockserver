@@ -14,7 +14,7 @@ services:
     restart: "${RESTARTAPP}"
     shm_size: "${WEBTOP_SHM_SIZE}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     volumes:
       - "${APPFOLDER}/webtop:/config"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"

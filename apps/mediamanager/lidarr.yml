@@ -14,9 +14,9 @@ services:
     image: "${LIDARRIMAGE}"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/lidarr:/config:rw"
       - "unionfs:/mnt"

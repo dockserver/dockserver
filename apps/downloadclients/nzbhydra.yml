@@ -14,7 +14,7 @@ services:
     networks:
       - "proxy"
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/nzbhydra:/config:rw"
       - "unionfs:/mnt"

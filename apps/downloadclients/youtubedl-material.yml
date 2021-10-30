@@ -13,9 +13,9 @@ services:
     image: "tzahi12345/youtubedl-material:latest"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/youtubedl-material/appdata:/app/appdata"
       - "${APPFOLDER}/youtubedl-material/audio:/app/audio"

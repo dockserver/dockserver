@@ -9,7 +9,7 @@ services:
       - "${PORTBLOCK}:5053:5053/udp" #Donot expose this publicly on a remote server, only use VPN
       - "${PORTBLOCK}:49312:49312/tcp"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     environment:
       - "PGID=${ID}"
       - "PUID=${ID}"

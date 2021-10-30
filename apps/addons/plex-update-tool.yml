@@ -13,7 +13,7 @@ services:
     image: 'mynttt/updatetool'
     restart: '${RESTARTAPP}'
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     volumes:
       - '${APPFOLDER}/plex-update-tool:/config:rw'
       - '${APPFOLDER}/plex/database/Library/Application Support/Plex Media Server:/plexdata'

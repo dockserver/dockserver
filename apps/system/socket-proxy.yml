@@ -43,7 +43,7 @@ services:
     networks:
       - socket-proxy
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     labels:
       - "dockupdater.enable=true"
     healthcheck:

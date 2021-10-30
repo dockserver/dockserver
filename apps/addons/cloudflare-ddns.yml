@@ -7,7 +7,7 @@ services:
     container_name: cloudflare-ddns
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     environment:
       - "PGID=${ID}"
       - "PUID=${ID}"

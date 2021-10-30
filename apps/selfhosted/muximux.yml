@@ -12,7 +12,7 @@ services:
     image: "lscr.io/linuxserver/muximux"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     volumes:
       - "${APPFOLDER}/maximux:/config:rw"
     labels:

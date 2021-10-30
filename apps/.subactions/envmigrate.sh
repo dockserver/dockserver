@@ -30,7 +30,7 @@ NS1=${NS1:-1.1.1.1}
 NS2=${NS2:-8.8.8.8}
 PORTBLOCK=${PORTBLOCK:-127.0.0.1}
 SOCKET=${SOCKET:-/var/run/docker.sock}
-SECURITYOPS=${SECURITYOPS:-no-new-privileges}
+SECURITYOPS=${SECURITYOPS:-no-new-privileges
 SECURITYOPSSET=${SECURITYOPSSET:-true}
 
 ## rutorrent

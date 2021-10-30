@@ -7,7 +7,7 @@ services:
     restart: "${RESTARTAPP}"
     image: "netdata/netdata:latest"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     cap_add:
       - "SYS_PTRACE"
     security_opt:

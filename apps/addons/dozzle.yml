@@ -12,9 +12,9 @@ services:
     image: "amir20/dozzle:latest"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     labels:

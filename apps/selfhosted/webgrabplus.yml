@@ -13,9 +13,9 @@ services:
     image: "lscr.io/linuxserver/webgrabplus"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/webgrabplus/config:/config:rw"
       - "${APPFOLDER}/webgrabplus/data:/data:rw"

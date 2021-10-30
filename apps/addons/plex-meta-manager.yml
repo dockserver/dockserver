@@ -15,9 +15,9 @@ services:
       - "PMM_LIBRARIES_ONLY=${PMM_LIBRARIES_ONLY}" # Process everything but collections during the run DEFAULT: false
       - "PMM_NO_MISSING=${PMM_NO_MISSING}" # Run without any of the missing movie/show functions DEFAULT: false
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - "${APPFOLDER}/plex-meta-manager:/config:rw"

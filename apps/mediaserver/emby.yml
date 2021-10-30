@@ -7,9 +7,9 @@ services:
     image: "${EMBYIMAGE}"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     environment:
       - "PUID=${ID}"
       - "PGID=${ID}"

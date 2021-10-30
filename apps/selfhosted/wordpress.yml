@@ -37,10 +37,10 @@ services:
     volumes:
       - "${APPFOLDER}/wordpress/data:/var/www/html"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
       - default
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"

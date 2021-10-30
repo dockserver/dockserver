@@ -12,9 +12,9 @@ services:
     image: "ninthwalker/nowshowing:v2"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/nowshowing:/config"
       - "/etc/localtime:/etc/localtime:ro"

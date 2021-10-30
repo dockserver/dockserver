@@ -12,9 +12,9 @@ services:
     image: "golift/notifiarr:latest"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/notifiarr/:/config/:rw"
       - "/var/run/utmp:/var/run/utmp"

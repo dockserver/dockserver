@@ -26,9 +26,9 @@ services:
         protocol: udp
         mode: host
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/wireguard:/config:rw"
       - "/lib/modules:/lib/modules"

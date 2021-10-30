@@ -16,9 +16,9 @@ services:
       - "TZ=${TZ}"
       - "UMASK=${UMASK}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"

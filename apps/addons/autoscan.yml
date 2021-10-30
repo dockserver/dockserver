@@ -12,7 +12,7 @@ services:
     image: "cloudb0x/autoscan:master"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     volumes:
       - "${APPFOLDER}/autoscan:/config:rw"
       - "${APPFOLDER}/plex:/data/plex:ro"

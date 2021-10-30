@@ -14,9 +14,9 @@ services:
     image: "ottomated/crewlink-server"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"

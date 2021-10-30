@@ -14,9 +14,9 @@ services:
     image: "${JACKETTIMAGE}"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/jackett:/config:rw"
       - "unionfs:/mnt"
@@ -42,9 +42,9 @@ services:
       - "LOG_HTML=false"
       - "CAPTCHA_SOLVER=hcaptcha-solver"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     ports:
       - "${PORTBLOCK}:8191:8191"
     restart: "${RESTARTAPP}"

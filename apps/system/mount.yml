@@ -16,10 +16,10 @@ services:
     image: "ghcr.io/dockserver/docker-mount:dockserver"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
       - "apparmor:unconfined"
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - "${APPFOLDER}/system:/system:rshared"

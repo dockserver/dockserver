@@ -13,9 +13,9 @@ services:
     image: "henrywhitaker3/speedtest-tracker"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/speedtest:/config"
     labels:

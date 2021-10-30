@@ -15,7 +15,7 @@ services:
     image: "binhex/arch-krusader"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     privileged: "true"
     volumes:
       - "${APPFOLDER}/krusader:/config"

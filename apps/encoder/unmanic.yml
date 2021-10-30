@@ -12,9 +12,9 @@ services:
     image: "josh5/unmanic:latest"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/unmanic:/config:rw"
       - "${APPFOLDER}/unmanic/tmp:/tmp/unmanic:rw"

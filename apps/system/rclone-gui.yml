@@ -16,9 +16,9 @@ services:
     image: "d2dyno/rclone-gui:latest"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/mount:/config:rw"
       - "unionfs:/mnt"

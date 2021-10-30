@@ -17,9 +17,9 @@ services:
     ports:
       - "8191:8191"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/flaresolverr/:/home/flaresolverr:rw"
       - "/etc/localtime:/etc/localtime:ro"

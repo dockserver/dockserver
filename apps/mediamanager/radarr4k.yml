@@ -15,9 +15,9 @@ services:
     image: "${RADARR4KIMAGE}"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/radarr4k:/config:rw"
       - "unionfs:/mnt"

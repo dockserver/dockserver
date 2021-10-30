@@ -16,9 +16,9 @@ services:
       - "8080:8080/tcp"
       - "10001:10001/udp"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/unifi-controller:/config:rw"
     labels:

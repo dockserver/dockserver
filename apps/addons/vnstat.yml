@@ -10,7 +10,7 @@ services:
       - "TZ=${TZ}"
     image: "ghcr.io/dockserver/docker-vnstat:latest"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     restart: "${RESTARTAPP}"
     volumes:
       - "/usr/bin/vnstat:/usr/bin/vnstat"

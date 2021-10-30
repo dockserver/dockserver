@@ -13,7 +13,7 @@ services:
     image: "ghcr.io/dockserver/docker-uploader:dockserver"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
       - "apparmor:unconfined"
     volumes:

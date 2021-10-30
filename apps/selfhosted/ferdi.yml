@@ -22,9 +22,9 @@ services:
       - "${APPFOLDER}/ferdi/database:/app/database"
       - "${APPFOLDER}/ferdi/recipes:/app/recipes"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"

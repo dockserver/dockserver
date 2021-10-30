@@ -55,10 +55,10 @@ services:
     volumes:
       - "${APPFOLDER}/netbox/config:/config"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
       - default
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"

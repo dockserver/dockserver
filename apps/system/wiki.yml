@@ -11,7 +11,7 @@ services:
     image: "ghcr.io/dockserver/dockserver"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
       - "apparmor:unconfined"
     volumes:

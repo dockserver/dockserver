@@ -14,7 +14,7 @@ services:
       - "${PORTBLOCK}:53:53/udp"
       - "${PORTBLOCK}:8008:80/tcp"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     dns:
       - ${NS1}
       - ${NS2}

@@ -12,9 +12,9 @@ services:
     image: "lscr.io/linuxserver/snapdrop"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/snapdrop:/config:rw"
     labels:

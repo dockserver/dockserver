@@ -15,9 +15,9 @@ services:
     restart: "${RESTARTAPP}"
     shm_size: "512m"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - "${APPFOLDER}/kasmdesktop:/share:rw"

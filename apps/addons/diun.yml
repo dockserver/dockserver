@@ -18,7 +18,7 @@ services:
       - "${APPFOLDER}/diun:/data"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     labels:
       - "diun.enable=true"
       - "diun.watch_repo=true"

@@ -13,9 +13,9 @@ services:
     image: "lscr.io/linuxserver/code-server"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/code-server:/config:rw"
     labels:

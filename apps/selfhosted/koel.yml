@@ -40,10 +40,10 @@ services:
       - "${APPFOLDER}/koel/search:/var/www/html/storage/search-indexes"
       - "unionfs:/mnt"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
       - default
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"

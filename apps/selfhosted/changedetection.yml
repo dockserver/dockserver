@@ -12,9 +12,9 @@ services:
     image: "dgtlmoon/changedetection.io"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/changedetection:/datastore:rw"
     labels:

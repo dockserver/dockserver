@@ -21,9 +21,9 @@ services:
     labels:
       - "dockupdater.enable=true"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/traktarrhdr:/config:rw"
 networks:

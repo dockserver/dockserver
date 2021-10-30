@@ -15,7 +15,7 @@ services:
     cap_add:
       - NET_ADMIN
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     dns:
       - ${PORTBLOCK}
       - ${NS1}

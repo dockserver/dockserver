@@ -14,9 +14,9 @@ services:
     image: "${PROWLARRIMAGE}"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/prowlarr:/config:rw"
       - "unionfs:/mnt"

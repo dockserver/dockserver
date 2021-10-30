@@ -13,9 +13,9 @@ services:
     image: "dbeaver/cloudbeaver"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/cloudbeaver:/opt/cloudbeaver/workspace:rw"
     labels:

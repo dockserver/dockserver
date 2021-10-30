@@ -15,9 +15,9 @@ services:
     image: "${QBITORRENTIMAGE}"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     ports:
       - "7889:7889"
     volumes:

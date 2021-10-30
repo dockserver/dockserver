@@ -43,9 +43,9 @@ services:
       - "ALBUM_TYPE_FILTER=COMPILE"
       - "POSTPROCESSTHREADS=1"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     labels:
       - "dockupdater.enable=true"
 

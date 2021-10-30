@@ -10,9 +10,9 @@ services:
     image: "psidex/crowsnest:latest"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "/opt/dockserver/dockserver/config.yaml:/app/config.yaml:ro"
       - "/opt/dockserver:/gitrepos/dockserver"

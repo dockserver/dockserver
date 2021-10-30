@@ -42,10 +42,10 @@ services:
       - "${APPFOLDER}/filerun/user-files:/user-files"
       - "unionfs:/mnt"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
       - default
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"

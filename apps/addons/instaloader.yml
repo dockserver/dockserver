@@ -11,9 +11,9 @@ services:
       - "PUID=${ID}"
       - "TZ=${TZ}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - "${APPFOLDER}/instaloader/il_args.txt:/il_args.txt:rw"

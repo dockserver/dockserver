@@ -14,9 +14,9 @@ services:
     image: "${TAUTULLIIMAGE}"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/tautulli:/config:rw"
       - "${APPFOLDER}/plex/database/Library/Application Support/Plex Media Server/Logs:/logs"

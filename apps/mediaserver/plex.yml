@@ -17,9 +17,9 @@ services:
     image: "${PLEXIMAGE}"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     extra_hosts:
       - "analytics.plex.tv:127.0.0.1"
       - "metrics.plex.tv:127.0.0.1"

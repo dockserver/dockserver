@@ -9,7 +9,7 @@ services:
       - NET_ADMIN
       - NET_RAW
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     environment:
       - "PGID=${ID}"
       - "PUID=${ID}"

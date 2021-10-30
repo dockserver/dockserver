@@ -74,9 +74,9 @@ services:
     image: "ghcr.io/hotio/unpackerr"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "unionfs:/mnt"
       - "/etc/localtime:/etc/localtime:ro"

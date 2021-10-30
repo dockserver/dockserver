@@ -12,9 +12,9 @@ services:
     image: "lscr.io/linuxserver/freshrss"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/freshrss:/config:rw"
     labels:

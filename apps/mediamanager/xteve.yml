@@ -12,9 +12,9 @@ services:
     image: "alturismo/xteve"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/xteve/:/root/.xteve:rw"
       - "${APPFOLDER}/xteve/_config:/config:rw"

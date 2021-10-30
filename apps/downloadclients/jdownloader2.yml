@@ -21,9 +21,9 @@ services:
     ports:
       - "3219:3129"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/jdownloader2:/config:rw"
       - "unionfs:/mnt"

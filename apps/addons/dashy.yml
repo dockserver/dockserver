@@ -13,9 +13,9 @@ services:
     image: "ghcr.io/lissy93/dashy:latest"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/dashy/conf.yml:/app/public/conf.yml:rw"
     labels:

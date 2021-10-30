@@ -12,9 +12,9 @@ services:
     image: "lscr.io/linuxserver/duplicati"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/duplicati:/config:rw"
       - "/opt/appdata:/source:rw"

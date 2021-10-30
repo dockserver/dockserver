@@ -14,9 +14,9 @@ services:
     image: "${RADARRIMAGE}"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/radarr:/config:rw"
       - "unionfs:/mnt"

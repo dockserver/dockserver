@@ -15,9 +15,9 @@ services:
     labels:
       - "dockupdater.enable=false"
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
 networks:

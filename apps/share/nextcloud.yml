@@ -13,9 +13,9 @@ services:
     image: "lscr.io/linuxserver/mariadb:alpine-version-10.5.11-r0"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/mariadb:/config:rw"
     labels:
@@ -35,9 +35,9 @@ services:
     ports:
       - "${PORTBLOCK}:4551:443"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/nextcloud/data:/data"
       - "${APPFOLDER}/nextcloud/cloud:/config:rw"

@@ -10,7 +10,7 @@ services:
       - "TZ=${TZ}"
     image: "vaultwarden/server"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     restart: "${RESTARTAPP}"
     volumes:
       - "${APPFOLDER}/bitwarden/data:/data"

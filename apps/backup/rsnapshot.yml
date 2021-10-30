@@ -11,7 +11,7 @@ services:
     image: "lscr.io/linuxserver/rsnapshot"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     volumes:
       - "${APPFOLDER}/rsnapshot:/config:rw"
       - "unionfs/snapshots:/data"

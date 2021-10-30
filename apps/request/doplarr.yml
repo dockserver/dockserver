@@ -18,9 +18,9 @@ services:
     image: "ghcr.io/kiranshila/doplarr:latest"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     labels:
       - "dockupdater.enable=true"
 networks:

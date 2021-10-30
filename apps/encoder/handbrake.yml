@@ -14,9 +14,9 @@ services:
     image: "jlesage/handbrake"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/handbrake:/config:rw"
       - "/mnt/handbrake/watch:/watch:rw"

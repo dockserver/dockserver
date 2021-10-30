@@ -14,10 +14,10 @@ services:
       - "TP_THEME=${DELUGETHEME}"
     image: "${DELUGEIMAGE}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     restart: "${RESTARTAPP}"
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     ports:
       - "7889:7889"
     volumes:

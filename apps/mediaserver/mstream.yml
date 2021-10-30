@@ -17,9 +17,9 @@ services:
         protocol: tcp
         mode: host
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/mstream:/config:rw"
       - "unionfs:/mnt:ro"

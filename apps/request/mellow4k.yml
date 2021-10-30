@@ -13,9 +13,9 @@ services:
     image: "voidp/mellow"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/mellow4k:/usr/src/app/data/:rw"
     labels:

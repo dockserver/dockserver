@@ -16,9 +16,9 @@ services:
     image: "lscr.io/linuxserver/davos"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/davos:/config:rw"
       - "unionfs:/mnt"

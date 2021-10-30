@@ -6,10 +6,10 @@ services:
     container_name: 'rutorrent'
     image: 'ghcr.io/dockserver/docker-rutorrent:latest'
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     restart: '${RESTARTAPP}'
     security_opt:
-      - 'no-new-privileges:true'
+      - '${SECURITYOPS}:${SECURITYOPSSET}'
     environment:
       - 'RT_DHT_PORT=${RT_DHT_PORT}'
       - 'XMLRPC_PORT=${XMLRPC_PORT}'

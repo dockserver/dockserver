@@ -60,7 +60,7 @@ services:
     depends_on:
       - web_recipes
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
       - default
     environment:
       - "POSTGRES_HOST_AUTH_METHOD=trust"

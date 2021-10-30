@@ -14,9 +14,9 @@ services:
     image: "jlesage/filezilla"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/filezilla:/config:rw"
       - "unionfs:/mnt"

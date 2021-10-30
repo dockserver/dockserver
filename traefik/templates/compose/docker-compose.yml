@@ -42,9 +42,9 @@ services:
       - --certificatesResolvers.dns-cloudflare.acme.dnsChallenge.resolvers=1.1.1.1:53,1.0.0.1:53
       - --certificatesResolvers.dns-cloudflare.acme.dnsChallenge.delayBeforeCheck=60
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - 'no-new-privileges:true'
+      - '${SECURITYOPS}:${SECURITYOPSSET}'
     ports:
       - target: 80
         published: 80
@@ -86,9 +86,9 @@ services:
     depends_on:
       - traefik
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - 'no-new-privileges:true'
+      - '${SECURITYOPS}:${SECURITYOPSSET}'
     restart: 'always'
     labels:
       - 'dockupdater.enable=true'
@@ -114,7 +114,7 @@ services:
     image: 'guillaumebriday/traefik-custom-error-pages'
     restart: 'unless-stopped'
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     environment:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
@@ -141,7 +141,7 @@ services:
     depends_on:
       - traefik
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     volumes:
       - '${APPFOLDER}/authelia:/config'
     environment:

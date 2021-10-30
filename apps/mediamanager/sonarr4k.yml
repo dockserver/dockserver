@@ -15,9 +15,9 @@ services:
     image: "${SONARR4KIMAGE}"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/sonarr4k:/config:rw"
       - "unionfs:/mnt"

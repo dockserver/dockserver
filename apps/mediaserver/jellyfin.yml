@@ -15,9 +15,9 @@ services:
     image: "${JELLYFINIMAGE}"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     ports:
       - target: 8096
         published: 8096

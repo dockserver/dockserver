@@ -15,9 +15,9 @@ services:
     image: "lukechannings/moviematch"
     restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - "no-new-privileges:true"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/moviematch:/storage"
       - "/etc/localtime:/etc/localtime:ro"
