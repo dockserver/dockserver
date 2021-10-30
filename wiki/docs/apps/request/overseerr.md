@@ -13,7 +13,7 @@
     </a>
 </p>
 
-----
+---
 
 <p align="center">
 <img src="https://i.imgur.com/TMoEG7g.png" alt="Overseerr">
@@ -43,13 +43,12 @@
 - You can ask questions in the Help category of our [GitHub Discussions](https://github.com/sct/overseerr/discussions).
 - Bug reports and feature requests can be submitted via [GitHub Issues](https://github.com/sct/overseerr/issues).
 
-
-----
+---
 
 ## Support by Dockserver
 
 Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
 
-* Join our <a href="https://discord.gg/FYSvu83caM">
-        <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
-    </a> for Support
+- Join our <a href="https://discord.gg/FYSvu83caM">
+  <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
+  </a> for Support

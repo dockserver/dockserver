@@ -1,35 +1,33 @@
 ---
-version: '3'
+version: "3"
 services:
   kitana:
-    hostname: 'kitana'
-    container_name: 'kitana'
+    hostname: "kitana"
+    container_name: "kitana"
     environment:
-      - 'PGID=${ID}'
-      - 'PUID=${ID}'
-      - 'TZ=${TZ}'
-      - 'UMASK=${UMASK}'
-    image: 'pannal/kitana:latest'
-    restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:31337:31337'
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "pannal/kitana:latest"
+    restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - 'no-new-privileges:true'
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
-      - '${APPFOLDER}/kitana:/app/data:rw'
+      - "${APPFOLDER}/kitana:/app/data:rw"
     labels:
-      - 'traefik.enable=true'
-      - 'traefik.docker.network=proxy'
-      - 'dockupdater.enable=true'
-      - 'traefik.http.routers.kitana-rtr.entrypoints=https'
-      - 'traefik.http.routers.kitana-rtr.rule=Host(`kitana.${DOMAIN}`)'
-      - 'traefik.http.routers.kitana-rtr.tls=true'
-      - 'traefik.http.routers.kitana-rtr.tls.certresolver=dns-cloudflare'
-      - 'traefik.http.routers.kitana-rtr.middlewares=chain-authelia@file'
-      - 'traefik.http.routers.kitana-rtr.service=kitana-svc'
-      - 'traefik.http.services.kitana-svc.loadbalancer.server.port=31337'
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.kitana-rtr.entrypoints=https"
+      - "traefik.http.routers.kitana-rtr.rule=Host(`kitana.${DOMAIN}`)"
+      - "traefik.http.routers.kitana-rtr.tls=true"
+      - "traefik.http.routers.kitana-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.kitana-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.kitana-rtr.service=kitana-svc"
+      - "traefik.http.services.kitana-svc.loadbalancer.server.port=31337"
 networks:
   proxy:
     driver: bridge

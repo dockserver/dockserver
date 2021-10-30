@@ -1,36 +1,34 @@
 ---
-version: '3'
+version: "3"
 services:
   conreq:
-    hostname: 'conreq'
-    container_name: 'conreq'
+    hostname: "conreq"
+    container_name: "conreq"
     environment:
-      - 'PGID=${ID}'
-      - 'PUID=${ID}'
-      - 'TZ=${TZ}'
-      - 'UMASK=${UMASK}'
-    image: 'ghcr.io/roxedus/conreq:latest'
-    restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:8071:8000'
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "ghcr.io/roxedus/conreq:latest"
+    restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - 'no-new-privileges:true'
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
-      - '${APPFOLDER}/conreq:/config:rw'
-      - 'unionfs:/mnt'
+      - "${APPFOLDER}/conreq:/config:rw"
+      - "unionfs:/mnt"
     labels:
-      - 'traefik.enable=true'
-      - 'traefik.docker.network=proxy'
-      - 'dockupdater.enable=true'
-      - 'traefik.http.routers.conreq-rtr.entrypoints=https'
-      - 'traefik.http.routers.conreq-rtr.rule=Host(`conreq.${DOMAIN}`)'
-      - 'traefik.http.routers.conreq-rtr.tls=true'
-      - 'traefik.http.routers.conreq-rtr.tls.certresolver=dns-cloudflare'
-      - 'traefik.http.routers.conreq-rtr.middlewares=chain-authelia@file'
-      - 'traefik.http.routers.conreq-rtr.service=conreq-svc'
-      - 'traefik.http.services.conreq-svc.loadbalancer.server.port=8000'
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.conreq-rtr.entrypoints=https"
+      - "traefik.http.routers.conreq-rtr.rule=Host(`conreq.${DOMAIN}`)"
+      - "traefik.http.routers.conreq-rtr.tls=true"
+      - "traefik.http.routers.conreq-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.conreq-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.conreq-rtr.service=conreq-svc"
+      - "traefik.http.services.conreq-svc.loadbalancer.server.port=8000"
 networks:
   proxy:
     driver: bridge

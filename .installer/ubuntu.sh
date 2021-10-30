@@ -16,11 +16,11 @@
 # shellcheck disable=SC2006
 appstartup() {
 if [[ $EUID -ne 0 ]];then
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔  You must execute as a SUDO user (with sudo) or as ROOT!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
 exit 0
 fi
 while true;do
@@ -36,7 +36,6 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 }
-
 version() {
 GUTHUB=dockserver
 REPO=dockserver
@@ -60,7 +59,7 @@ cd /opt/dockserver/${LOCATION} && $(command -v bash) install.sh
 }
 headinterface() {
 version
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀 DockServer    - Latest ${VERSION}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -71,8 +70,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     [ EXIT or Z ] - Exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-
+"
   read -erp "↘️  Type Number and Press [ENTER]: " headsection </dev/tty
   case $headsection in
     1) clear && LOCATION=traefik && selection ;;
@@ -82,4 +80,4 @@ EOF
   esac
 }
 appstartup
-#EOF
+#E-o-F#

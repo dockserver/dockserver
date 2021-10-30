@@ -1,11 +1,11 @@
 ---
-version: '3'
+version: "3"
 services:
   pihole:
     image: ${PIHOLEIMAGE}
     hostname: pihole
     container_name: pihole
-#TIP: Just replace ${PORTBLOCK} with your servers VPN IP to set this up.
+    #TIP: Just replace ${PORTBLOCK} with your servers VPN IP to set this up.
     ports:
       - ${PORTBLOCK}:446:443
       - ${PORTBLOCK}:8008:80
@@ -15,19 +15,19 @@ services:
     cap_add:
       - NET_ADMIN
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     dns:
       - ${PORTBLOCK}
       - ${NS1}
       - ${NS2}
     environment:
-      - 'PGID=${ID}'
-      - 'PUID=${ID}'
-      - 'PIHOLE_DNS_=${NS1};${NS2}' #Unbound DNS, Set this to Cloudflare or Google etc if not using Unbound.
-      - 'ServerIP=${PORTBLOCK}'
-      - 'TZ=${TZ}'
-      - 'WEBPASSWORD=${PIHOLEWEBPASSWORD}'
-      - 'DNSSEC=${PIHOLEDNSSEC}'
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "PIHOLE_DNS_=${NS1};${NS2}" #Unbound DNS, Set this to Cloudflare or Google etc if not using Unbound.
+      - "ServerIP=${PORTBLOCK}"
+      - "TZ=${TZ}"
+      - "WEBPASSWORD=${PIHOLEWEBPASSWORD}"
+      - "DNSSEC=${PIHOLEDNSSEC}"
     restart: ${RESTARTAPP}
     volumes:
       - /etc/localtime:/etc/localtime:ro
@@ -35,16 +35,16 @@ services:
       - ${APPFOLDER}/pihole:/etc/pihole
       - ${APPFOLDER}/pihole/pihole-updatelists:/etc/pihole-updatelists
     labels:
-      - 'traefik.enable=true'
-      - 'traefik.docker.network=proxy'
-      - 'dockupdater.enable=true'
-      - 'traefik.http.routers.pihole-rtr.entrypoints=https'
-      - 'traefik.http.routers.pihole-rtr.rule=Host(`pihole.${DOMAIN}`)'
-      - 'traefik.http.routers.pihole-rtr.tls=true'
-      - 'traefik.http.routers.pihole-rtr.tls.certresolver=dns-cloudflare'
-      - 'traefik.http.routers.pihole-rtr.middlewares=chain-authelia@file'
-      - 'traefik.http.routers.pihole-rtr.service=pihole-svc'
-      - 'traefik.http.services.pihole-svc.loadbalancer.server.port=80'
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.pihole-rtr.entrypoints=https"
+      - "traefik.http.routers.pihole-rtr.rule=Host(`pihole.${DOMAIN}`)"
+      - "traefik.http.routers.pihole-rtr.tls=true"
+      - "traefik.http.routers.pihole-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.pihole-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.pihole-rtr.service=pihole-svc"
+      - "traefik.http.services.pihole-svc.loadbalancer.server.port=80"
 networks:
   proxy:
     driver: bridge

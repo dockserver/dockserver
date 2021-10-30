@@ -6,37 +6,42 @@
 [![License: GPL 3](https://img.shields.io/badge/License-GPL%203-blue.svg?style=for-the-badge&colorB=177DC1&label=license)](LICENSE)
 
 # Tauticord
+
 A Discord bot that displays live data from Tautulli
 
 # Features
+
 Tauticord uses the Tautulli API to pull information from Tautulli and display them in a Discord channel, including:
 
 ### OVERVIEW:
-* Number of current streams
-* Number of transcoding streams
-* Total bandwidth
-* Total LAN bandwidth
+
+- Number of current streams
+- Number of transcoding streams
+- Total bandwidth
+- Total LAN bandwidth
 
 ### FOR EACH STREAM:
-* Stream state (playing, paused, stopped, loading)
-* Media type (tv show/movie/song/photo)
-* User
-* Media title
-* Product and player
-* Quality profile
-* Stream bandwidth
-* If stream is transcoding
-* Progress of stream
-* ETA of stream completion
+
+- Stream state (playing, paused, stopped, loading)
+- Media type (tv show/movie/song/photo)
+- User
+- Media title
+- Product and player
+- Quality profile
+- Stream bandwidth
+- If stream is transcoding
+- Progress of stream
+- ETA of stream completion
 
 Administrator (the bot owner) can react to Tauticord's messages to terminate a specific stream (if they have Plex Pass).
 
 Users can also indicate what libraries they would like monitored. Tauticord will create/update a voice channel for each library name with item counts every hour.
 
 # Requirements
-* A Plex Media Server
-* Tautulli
-* A Discord server
+
+- A Plex Media Server
+- Tautulli
+- A Discord server
 
 ---
 
@@ -55,25 +60,23 @@ Permissions required:
 - Read Message History
 - Add Reactions
 
-
 ## Setup Tauticord
 
-* Install Tauticord from Docksever Addons Menu.
+- Install Tauticord from Docksever Addons Menu.
 
-* Stop the container.
+- Stop the container.
 
-```sudo docker stop tauticord```
+`sudo docker stop tauticord`
 
-* Head over to the appdata folder.
+- Head over to the appdata folder.
 
-```cd /opt/appdata/tauticord/```
+`cd /opt/appdata/tauticord/`
 
-* Create a config file.
+- Create a config file.
 
-```sudo nano config.yaml```
+`sudo nano config.yaml`
 
-* Copy / Paste the following config into the created file from previous step.
-
+- Copy / Paste the following config into the created file from previous step.
 
 ```sh
 appName: Tauticord
@@ -116,19 +119,18 @@ Extras:
   Analytics: true
 ```
 
+- Edit the config file to your needs.
 
-* Edit the config file to your needs.
+- Start the container.
 
-
-* Start the container.
-
-```sudo docker start tauticord```
+`sudo docker start tauticord`
 
 Et voilà, your Bot should now be online in your Disord Server.
 
 ---
 
 ## Wiki Maintainer
+
 [@cyb3rgh05t](https://github.com/cyb3rgh05t)
 
 ---
@@ -137,4 +139,4 @@ Et voilà, your Bot should now be online in your Disord Server.
 
 Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
 
-* Join our [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa) for Support
+- Join our [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa) for Support

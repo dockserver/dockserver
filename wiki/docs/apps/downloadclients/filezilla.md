@@ -6,6 +6,7 @@
 [![License: GPL 3](https://img.shields.io/badge/License-GPL%203-blue.svg?style=for-the-badge&colorB=177DC1&label=license)](LICENSE)
 
 # Docker container for FileZilla
+
 [![Docker Image Size](https://img.shields.io/docker/image-size/jlesage/filezilla/latest)](https://hub.docker.com/r/jlesage/filezilla/tags) [![Build Status](https://drone.le-sage.com/api/badges/jlesage/docker-filezilla/status.svg)](https://drone.le-sage.com/jlesage/docker-filezilla) [![GitHub Release](https://img.shields.io/github/release/jlesage/docker-filezilla.svg)](https://github.com/jlesage/docker-filezilla/releases/latest) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/JocelynLeSage/0usd)
 
 This is a Docker container for [FileZilla](https://filezilla-project.org/).
@@ -22,4 +23,4 @@ FileZilla is a cross-platform graphical FTP, SFTP, and FTPS file management tool
 
 Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
 
-* Join our [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa) for Support
+- Join our [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa) for Support

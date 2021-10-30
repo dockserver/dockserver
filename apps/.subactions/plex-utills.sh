@@ -19,7 +19,7 @@ SERVERIP=$(curl -s http://whatismijnip.nl |cut -d " " -f 5)
 token=$(cat "/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Preferences.xml" | sed -e 's;^.* PlexOnlineToken=";;' | sed -e 's;".*$;;' | tail -1)
 source $basefolder/compose/.env
 
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 In Plex-Utils
@@ -43,7 +43,7 @@ In Plex-Utils
   Save Configuration and you are good to go. 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
   read -erp "Confirm Info | PRESS [ENTER]" typed </dev/tty
 fi
-#EOF
+#"

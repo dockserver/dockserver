@@ -17,9 +17,9 @@ services:
       - '${SCRUTINY_DEV1}:${SCRUTINY_DEV1}'
       - '${SCRUTINY_DEV2}:${SCRUTINY_DEV2}'	  
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - 'no-new-privileges:true'
+      - '${SECURITYOPS}:${SECURITYOPSSET}'
     volumes:
       - '/run/udev:/run/udev:ro'
     labels:

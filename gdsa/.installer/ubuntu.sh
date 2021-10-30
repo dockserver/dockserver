@@ -24,26 +24,26 @@
 # shellcheck disable=SC2046
 # shellcheck disable=SC1091
 appstartup() {
-if [[ $EUID -ne 0 ]];then
-tee <<-EOF
+  if [[ $EUID -ne 0 ]]; then
+    printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔  You must execute as a SUDO user (with sudo) or as ROOT!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-exit
-fi
-while true; do
-  if [[ ! -x $(command -v docker) ]];then exit;fi
-  clear && checkfields && interface
-done
+"
+    exit
+  fi
+  while true; do
+    if [[ ! -x $(command -v docker) ]]; then exit; fi
+    clear && checkfields && interface
+  done
 }
 checkfields() {
-basefolder="/opt/appdata"
-if [[ ! -d "$basefolder/GDSA/" ]];then $(command -v rm) -rf $basefolder/GDSA/;fi
-if [[ ! -d "$basefolder/system/servicekeys/" ]];then $(command -v mkdir) -p $basefolder/system/servicekeys/;fi
-if [[ ! -d "$basefolder/system/servicekeys/keys" ]];then $(command -v mkdir) -p $basefolder/system/servicekeys/keys;fi
-if [[ ! -f "$basefolder/system/servicekeys/.env" ]];then
-echo -n "\
+  basefolder="/opt/appdata"
+  if [[ ! -d "$basefolder/GDSA/" ]]; then $(command -v rm) -rf $basefolder/GDSA/; fi
+  if [[ ! -d "$basefolder/system/servicekeys/" ]]; then $(command -v mkdir) -p $basefolder/system/servicekeys/; fi
+  if [[ ! -d "$basefolder/system/servicekeys/keys" ]]; then $(command -v mkdir) -p $basefolder/system/servicekeys/keys; fi
+  if [[ ! -f "$basefolder/system/servicekeys/.env" ]]; then
+    echo -n "\
 #!/usr/bin/with-contenv bash
 # shellcheck shell=bash
 #####################################################################
@@ -70,10 +70,10 @@ TEAMDRIVEID=${TEAMDRIVEID:-NOT-SET}
 ENCRYPT=${ENCRYPT:-FALSE}
 PASSWORD=${PASSWORD:-FALSE}
 SALT=${SALTPASSWORD:-FALSE}" >$basefolder/system/servicekeys/.env
-fi
+  fi
 }
 forcereset() {
-tee <<-EOF
+  printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   ServiceKey.env force reset
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -83,18 +83,18 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     [ EXIT or Z ] - Exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
   read -erp "↘️  Type R|r and Press [ENTER]: " headsectionforce </dev/tty
   case $headsectionforce in
-    R|r|remove|y|Y) clear && remove ;;
-    Z|z|exit|EXIT|Exit|close) clear && interface ;;
-    *) appstartup ;;
+  R | r | remove | y | Y) clear && remove ;;
+  Z | z | exit | EXIT | Exit | close) clear && interface ;;
+  *) appstartup ;;
   esac
 }
 remove() {
-basefolder="/opt/appdata"
-if [[ -f "$basefolder/system/servicekeys/.env" ]];then
-tee <<-EOF
+  basefolder="/opt/appdata"
+  if [[ -f "$basefolder/system/servicekeys/.env" ]]; then
+    printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   ServiceKey.env force reset
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -102,14 +102,14 @@ tee <<-EOF
     ServiceKey.env File Removed! || Force Reset
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-$(command -v rm) -rf $basefolder/system/servicekeys/.env && sleep 5 && clear && checkfields && interface
-else
-   notfound
-fi
+"
+    $(command -v rm) -rf $basefolder/system/servicekeys/.env && sleep 5 && clear && checkfields && interface
+  else
+    notfound
+  fi
 }
 notfound() {
-tee <<-EOF
+  printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   servicekeys.env force reset
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -120,22 +120,22 @@ tee <<-EOF
     Type Confirm !
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
   read -erp "Confirm Info | PRESS [ENTER] " input </dev/tty
-  if [[ "$input" = "confirm" ]];then sleep 4 && clear && checkfields && interface; else notfound;fi
+  if [[ "$input" = "confirm" ]]; then sleep 4 && clear && checkfields && interface; else notfound; fi
 }
 selection() {
-LOCATION=${LOCATION}
-case $(. /etc/os-release && echo "$ID") in
-    ubuntu)     type="ubuntu" ;;
-    debian)     type="ubuntu" ;;
-    rasbian)    type="ubuntu" ;;
-    *)          type='' ;;
-esac
-if [[ -f ./.installer/.${LOCATION}/$type.${LOCATION}.sh ]];then bash ./.installer/.${LOCATION}/$type.${LOCATION}.sh;fi
+  LOCATION=${LOCATION}
+  case $(. /etc/os-release && echo "$ID") in
+  ubuntu) type="ubuntu" ;;
+  debian) type="ubuntu" ;;
+  rasbian) type="ubuntu" ;;
+  *) type='' ;;
+  esac
+  if [[ -f ./.installer/.${LOCATION}/$type.${LOCATION}.sh ]]; then bash ./.installer/.${LOCATION}/$type.${LOCATION}.sh; fi
 }
 interface() {
-tee <<-EOF
+  printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   ServiceKey Head Section Menu
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -147,15 +147,15 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     [ EXIT or Z ] - Exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
   read -erp "↘️  Type Number and Press [ENTER]: " headsection </dev/tty
   case $headsection in
-    1) clear && LOCATION=case1 && selection ;;
-    2) clear && LOCATION=case2 && selection;;
-    3) clear && forcereset ;;
-    Z|z|exit|EXIT|Exit|close) exit ;;
-    *) appstartup ;;
+  1) clear && LOCATION=case1 && selection ;;
+  2) clear && LOCATION=case2 && selection ;;
+  3) clear && forcereset ;;
+  Z | z | exit | EXIT | Exit | close) exit ;;
+  *) appstartup ;;
   esac
 }
 appstartup
-#EOF
+#"

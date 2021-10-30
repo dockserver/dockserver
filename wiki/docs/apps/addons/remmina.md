@@ -7,15 +7,14 @@
 
 ## Remmina remote desktop client
 
-*Use other desktops remotely, from a tiny screen or large monitors.*
+_Use other desktops remotely, from a tiny screen or large monitors._
 
-
-* RDP, VNC, SPICE, NX, XDMCP, SSH and EXEC network protocols are supported.
-* Written in GTK, with a port to Qt underway. 
-* Released as "remmina" (the main program) and "remmina-plugins".
+- RDP, VNC, SPICE, NX, XDMCP, SSH and EXEC network protocols are supported.
+- Written in GTK, with a port to Qt underway.
+- Released as "remmina" (the main program) and "remmina-plugins".
 
 ## Support
 
 Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
 
-* Join our [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa) for Support
+- Join our [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa) for Support

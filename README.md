@@ -1,5 +1,5 @@
-# **DockServer**   
-      
+# **DockServer**
+
 <p align="left">
     <a href="https://discord.gg/FYSvu83caM">
         <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
@@ -15,20 +15,20 @@
     </a>
 </p>
 
-*Docker + Traefik with Authelia and Cloudflare Protection*
+_Docker + Traefik with Authelia and Cloudflare Protection_
 
-----
+---
 
-## Minimum Specs and Requirements 
+## Minimum Specs and Requirements
 
-* Ubuntu 18/20 or Debian 9/10
-* 2 Cores
-* 4GB Ram
-* 20GB Disk Space
+- Ubuntu 18/20 or Debian 9/10
+- 2 Cores
+- 4GB Ram
+- 20GB Disk Space
 
-* A VPS/VM or Dedicated Server
-* Domain
-* [Cloudflare](https://dash.cloudflare.com/sign-up) account free tier
+- A VPS/VM or Dedicated Server
+- Domain
+- [Cloudflare](https://dash.cloudflare.com/sign-up) account free tier
 
 ---
 
@@ -38,7 +38,7 @@
 1. Add 1 **A-Record** pointed to your server's ip.
 1. Copy your [CloudFlare-Global-Key](https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys) and [CloudFlare-Zone-ID](https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys).
 
-----
+---
 
 ## Set the following on Cloudflare
 
@@ -49,7 +49,7 @@
 1. `TLS min = 1.2`
 1. `TLS = v1.3`
 
-----
+---
 
 ### Easy Mode install
 
@@ -63,20 +63,20 @@ sudo wget -qO- https://git.io/J3GDc | sudo bash
   <summary>Long commmand if the short one doesn't work.</summary>
   <br />
 
-  ```sh
-  sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/wgetfile.sh | sudo bash
-  ```
+```sh
+sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/wgetfile.sh | sudo bash
+```
 
 </details>
 
-----
+---
 
 <!--START_SECTION:activity-->
 
 1. 🎉 Merged PR [#4](https://github.com/dockserver/update/pull/4) in [dockserver/update](https://github.com/dockserver/update)
 <!--END_SECTION:activity-->
 
-----
+---
 
 ## Contributors ✨
 
@@ -115,17 +115,17 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-----
+---
 
 ## Support
 
 Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
 
-* Join our <a href="https://discord.gg/FYSvu83caM">
-        <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
-    </a> for Support
+- Join our <a href="https://discord.gg/FYSvu83caM">
+  <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
+  </a> for Support
 
-----
+---
 
 ## Code and Permissions
 

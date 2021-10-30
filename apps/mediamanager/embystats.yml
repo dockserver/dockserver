@@ -1,35 +1,33 @@
 ---
-version: '3'
+version: "3"
 services:
   embystat:
-    hostname: 'embystat'
-    container_name: 'embystat'
+    hostname: "embystat"
+    container_name: "embystat"
     environment:
-      - 'PGID=${ID}'
-      - 'PUID=${ID}'
-      - 'TZ=${TZ}'
-      - 'UMASK=${UMASK}'
-    image: 'lscr.io/linuxserver/embystat:latest'
-    restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:6555:6555'
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "lscr.io/linuxserver/embystat:latest"
+    restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - 'no-new-privileges:true'
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
-      - '${APPFOLDER}/embystat:/config:rw'
+      - "${APPFOLDER}/embystat:/config:rw"
     labels:
-      - 'traefik.enable=true'
-      - 'traefik.docker.network=proxy'
-      - 'dockupdater.enable=true'
-      - 'traefik.http.routers.embystat-rtr.entrypoints=https'
-      - 'traefik.http.routers.embystat-rtr.rule=Host(`embystat.${DOMAIN}`)'
-      - 'traefik.http.routers.embystat-rtr.tls=true'
-      - 'traefik.http.routers.embystat-rtr.tls.certresolver=dns-cloudflare'
-      - 'traefik.http.routers.embystat-rtr.middlewares=chain-authelia@file'
-      - 'traefik.http.routers.embystat-rtr.service=embystat-svc'
-      - 'traefik.http.services.embystat-svc.loadbalancer.server.port=6555'
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.embystat-rtr.entrypoints=https"
+      - "traefik.http.routers.embystat-rtr.rule=Host(`embystat.${DOMAIN}`)"
+      - "traefik.http.routers.embystat-rtr.tls=true"
+      - "traefik.http.routers.embystat-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.embystat-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.embystat-rtr.service=embystat-svc"
+      - "traefik.http.services.embystat-svc.loadbalancer.server.port=6555"
 networks:
   proxy:
     driver: bridge

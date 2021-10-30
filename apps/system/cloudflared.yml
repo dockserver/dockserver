@@ -1,22 +1,22 @@
 ---
-version: '3'
+version: "3"
 services:
   cloudflared:
-    image: 'cloudflare/cloudflared:2021.10.5-amd64'
-    hostname: 'cloudflared'
-    container_name: 'cloudflared'
+    image: "cloudflare/cloudflared:2021.10.5-amd64"
+    hostname: "cloudflared"
+    container_name: "cloudflared"
     command: "'tunnel' 'run' '${CLOUDFLARED_UUID}'"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     environment:
-      - 'PGID=${ID}'
-      - 'PUID=${ID}'
-      - 'TZ=${TZ}'
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
     volumes:
-      - '${APPFOLDER}/cloudflared:/home/nonroot/.cloudflared'
+      - "${APPFOLDER}/cloudflared:/home/nonroot/.cloudflared"
     restart: always
 networks:
   proxy:
     driver: bridge
     external: true
-#EOF
+#"

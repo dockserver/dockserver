@@ -7,15 +7,13 @@ services:
     image: 'nicolargo/glances:alpine-latest-full'
     restart: '${RESTARTAPP}'
     pid: host
-    ports:
-      - '${PORTBLOCK}:61208:61208'  
     environment:
       - 'TZ=${TZ}'
       - 'GLANCES_OPT=-w'
     volumes:
       - '/var/run/docker.sock:/var/run/docker.sock:ro'
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'

@@ -1,39 +1,37 @@
 ---
-version: '3'
+version: "3"
 services:
   filezilla:
-    hostname: 'filezilla'
-    container_name: 'filezilla'
+    hostname: "filezilla"
+    container_name: "filezilla"
     environment:
-      - 'PGID=${ID}'
-      - 'PUID=${ID}'
-      - 'TZ=${TZ}'
-      - 'UMASK=${UMASK}'
-      - 'DISPLAY_WIDTH=1920'
-      - 'DISPLAY_HEIGHT=1080'
-    image: 'jlesage/filezilla'
-    restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:5800:5803'
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "DISPLAY_WIDTH=1920"
+      - "DISPLAY_HEIGHT=1080"
+    image: "jlesage/filezilla"
+    restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - 'no-new-privileges:true'
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
-      - '${APPFOLDER}/filezilla:/config:rw'
-      - 'unionfs:/mnt'
-      - '/etc/localtime:/etc/localtime:ro'
+      - "${APPFOLDER}/filezilla:/config:rw"
+      - "unionfs:/mnt"
+      - "/etc/localtime:/etc/localtime:ro"
     labels:
-      - 'traefik.enable=true'
-      - 'traefik.docker.network=proxy'
-      - 'dockupdater.enable=true'
-      - 'traefik.http.routers.filezilla-rtr.entrypoints=https'
-      - 'traefik.http.routers.filezilla-rtr.rule=Host(`filezilla.${DOMAIN}`)'
-      - 'traefik.http.routers.filezilla-rtr.tls=true'
-      - 'traefik.http.routers.filezilla-rtr.tls.certresolver=dns-cloudflare'
-      - 'traefik.http.routers.filezilla-rtr.middlewares=chain-authelia@file'
-      - 'traefik.http.routers.filezilla-rtr.service=filezilla-svc'
-      - 'traefik.http.services.filezilla-svc.loadbalancer.server.port=5083'
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.filezilla-rtr.entrypoints=https"
+      - "traefik.http.routers.filezilla-rtr.rule=Host(`filezilla.${DOMAIN}`)"
+      - "traefik.http.routers.filezilla-rtr.tls=true"
+      - "traefik.http.routers.filezilla-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.filezilla-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.filezilla-rtr.service=filezilla-svc"
+      - "traefik.http.services.filezilla-svc.loadbalancer.server.port=5083"
 networks:
   proxy:
     driver: bridge

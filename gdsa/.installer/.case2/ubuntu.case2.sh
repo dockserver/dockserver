@@ -26,22 +26,22 @@
 #FUNCTIONS START
 appstartup() {
 if [[ $EUID -ne 0 ]];then
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔  You must execute as a SUDO user (with sudo) or as ROOT!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
 exit
 fi
 while true; do
 basefolder="/opt/appdata"
   if [[ ! -x $(command -v docker) ]];then exit;fi
   if [[ -f "$basefolder/system/servicekeys/.env" ]];then $(command -v rm) -rf $basefolder/system/servicekeys/.env;fi
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      Please wait while we pull the needed dockers
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
   $(command -v docker) system prune -af 1>/dev/null 2>&1
   pulls="ghcr.io/dockserver/docker-gdsa:latest  rclone/rclone gcr.io/google.com/cloudsdktool/cloud-sdk:alpine"
   for pull in ${pulls};do
@@ -85,20 +85,20 @@ fi
 }
 projectname() {
 basefolder="/opt/appdata"
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Project Name
 
          min is 6 chars
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
    read -erp "Enter your Projectname: " PROJECTNAME </dev/tty
    if [[ $(echo $PROJECTNAME | wc -m) -le "6" || $(echo $PROJECTNAME | wc -m) -ge "16" ]];then
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Sorry the minimum of chars are 6 and maximum is 16
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
    sleep 5 && projectname
 fi
 if [[ $PROJECTNAME != "" ]];then
@@ -115,20 +115,20 @@ clear && interface
 }
 sabasename() {
 basefolder="/opt/appdata"
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Service Account Name
 
          min is 6 chars
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
    read -erp "Enter your Service Account Name: " SABASENAME </dev/tty
    if [[ $(echo $SABASENAME | wc -m) -le "6" || $(echo $SABASENAME | wc -m) -ge "16" ]];then
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Sorry the minimum of chars are 6 and maximum is 16
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
    sleep 5 && sabasename
 fi
 if [[ $SABASENAME != "" ]];then
@@ -145,28 +145,28 @@ clear && interface
 }
 account() {
 basefolder="/opt/appdata"
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Account Name
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
    read -erp "Enter your Account Email: " ACCOUNTNAME </dev/tty
 if [[ $ACCOUNTNAME != "" ]];then
    if [[ $(uname) == "Darwin" ]];then
       sed -i '' "s/ACCOUNT=NOT-SET/ACCOUNT=$ACCOUNTNAME/g" $basefolder/system/servicekeys/.env
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Validate your Google Authentication
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
       $(command -v docker) run -ti --name gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk:alpine gcloud auth login --no-launch-browser --account=${ACCOUNTNAME}
    else
       sed -i "s/ACCOUNT=NOT-SET/ACCOUNT=$ACCOUNTNAME/g" $basefolder/system/servicekeys/.env
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Validate your Google Authentication
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
       $(command -v docker) run -ti --name gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk:alpine gcloud auth login --no-launch-browser --account=${ACCOUNTNAME}
    fi
 else
@@ -177,7 +177,7 @@ clear && interface
 }
 teamdriveid() {
 basefolder="/opt/appdata"
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Team Drive ID
 
@@ -191,7 +191,7 @@ tee <<-EOF
     Please dont use the name of the Shared Drive
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
    read -erp "Enter your Team Drive ID: " TEAMDRVEID </dev/tty
 if [[ $TEAMDRVEID != "" ]];then
    if [[ $(uname) == "Darwin" ]];then
@@ -207,18 +207,18 @@ clear && interface
 }
 servicekeysnumber() {
 basefolder="/opt/appdata"
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Google Service Keys
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
    read -erp '↘️  Type a Number [ 4 thru 60 ] | Press [ENTER]: ' KEYS </dev/tty
 if [[ $KEYS -le "3" || $KEYS -ge "60" ]];then
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Sorry $KEYS is more then 60 or less than 3
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
 sleep 5 && servicekeysnumber
 fi
 if [[ $KEYS -ge "3" || $KEYS -le "60" ]];then
@@ -232,11 +232,11 @@ clear && interface
 }
 rcpassword() {
 basefolder="/opt/appdata"
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   rclone Password
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
    read -erp "Enter your rclone Password: " PASSWORD </dev/tty
 if [[ $PASSWORD != "" ]];then
    if [[ $(uname) == "Darwin" ]];then
@@ -253,11 +253,11 @@ clear && interface
 }
 rcsalt() {
 basefolder="/opt/appdata"
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   rclone Salt Password
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
    read -erp "Enter your rclone Saltpassword: " SALT </dev/tty
 if [[ $SALT != "" ]];then
    if [[ $(uname) == "Darwin" ]];then
@@ -278,15 +278,15 @@ ACCOUNT=${ACCOUNT}
 if [[ ${ACCOUNT} != "NOT-SET" ]];then
 if [[ -d "$basefolder/system/servicekeys/keys" ]];then $(command -v rm) -rf $basefolder/system/servicekeys/keys;fi
 if [[ ! -d "$basefolder/system/servicekeys/keys" ]];then $(command -v mkdir) -p $basefolder/system/servicekeys/keys;fi
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         🚀   Google Service Key running now
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
 $(command -v docker) run --rm --volumes-from gcloud-config -v $basefolder/system/servicekeys:/system/servicekeys:rw ghcr.io/dockserver/docker-gdsa:latest
 sleep 5 && clear
 members=$(cat $basefolder/system/servicekeys/members.csv)
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   SYSTEM MESSAGE: Key Generation Complete!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -299,15 +299,15 @@ ${members}
 
     Type confirm ! when all is done !
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
   read -erp "Confirm Info | PRESS [ENTER] " input </dev/tty
   if [[ "$input" = "confirm" ]];then sleep 2 && clear && restupper && checkfields && interface;fi
 else
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ❌ ERROR ->  Account is ${ACCOUNT}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
 sleep 10 && clear && interface
 fi
 }
@@ -330,13 +330,13 @@ if [[ ${uploader} == ${typed} ]];then
        $(command -v docker-compose) config 1>/dev/null 2>&1
        errorcode=$?
        if [[ $errorcode -ne 0 ]];then
-  tee <<-EOF
+  printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ❌ ERROR
     Compose check of ${typed} has failed
     Return code is ${errorcode}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
   read -erp "Confirm Info | PRESS [ENTER]" typed </dev/tty
   clear && interface
      else
@@ -356,7 +356,7 @@ if [[ $(whoami) != "root" ]];then $(command -v chown) -hR $(whoami):$(whoami) $b
 }
 interface() {
 source $basefolder/system/servicekeys/.env
-tee <<-EOF
+printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   Google Service Key Builder  || ENCRYPTED
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -378,7 +378,7 @@ tee <<-EOF
     [ EXIT or Z ] - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+"
   read -erp "↘️  Type Number and Press [ENTER]: " headsectionen </dev/tty
   case $headsectionen in
     1) clear && account ;;

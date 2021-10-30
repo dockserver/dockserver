@@ -1,64 +1,58 @@
 {
-    "categories": [
-      {
-        "title": "## 🚀 Features",
-        "labels": ["feature"]
-      },
-      {
-        "title": "## 🐛 Fixes",
-        "labels": ["fix"]
-      },
-      {
-        "title": "## 🧪 Tests",
-        "labels": ["test"]
-      },
-      {
-        "title": "## 🚀 PiP-Update",
-        "labels": ["pip"]
-      },
-      {
-        "title": "## 🚀 GitHub updates",
-        "labels": ["GH"]
-      },
-      {
-        "title": "## 🚀 DockServer Update 🚀 ##",
-        "labels": ["Update"]
-      }
-    ],
-    "ignore_labels": [
-      "ignore"
-    ],
-    "sort": "ASC",
-    "template": "${{CHANGELOG}}\n\n<details>\n<summary>Uncategorized</summary>\n\n${{UNCATEGORIZED}}\n</details>",
-    "pr_template": "- ${{TITLE}}\n   - PR: #${{NUMBER}}",
-    "empty_template": "other changes",
-    "label_extractor": [
-      {
-        "pattern": "(.) (.+)",
-        "target": "$1"
-      },
-      {
-        "pattern": "(.) (.+)",
-        "target": "$1",
-        "on_property": "title"
-      }
-    ],
-    "transformers": [
-      {
-        "pattern": "[\\-\\*] (\\[(...|TEST|CI|SKIP)\\])( )?(.+?)\n(.+?[\\-\\*] )(.+)",
-        "target": "- $4\n  - $6"
-      }
-    ],
-    "max_tags_to_fetch": 500,
-    "max_pull_requests": 500,
-    "max_back_track_time_days": 720,
-    "exclude_merge_branches": [
-      "Owner/qa"
-    ],
-    "tag_resolver": {
-      "method": "semver"
+  "categories": [
+    {
+      "title": "## 🚀 Features",
+      "labels": ["feature"]
     },
-    "base_branches": [
-      "master"
-    ]
+    {
+      "title": "## 🐛 Fixes",
+      "labels": ["fix"]
+    },
+    {
+      "title": "## 🧪 Tests",
+      "labels": ["test"]
+    },
+    {
+      "title": "## 🚀 PiP-Update",
+      "labels": ["pip"]
+    },
+    {
+      "title": "## 🚀 GitHub updates",
+      "labels": ["GH"]
+    },
+    {
+      "title": "## 🚀 DockServer Update 🚀 ##",
+      "labels": ["Update"]
+    }
+  ],
+  "ignore_labels": ["ignore"],
+  "sort": "ASC",
+  "template": "${{CHANGELOG}}\n\n<details>\n<summary>Uncategorized</summary>\n\n${{UNCATEGORIZED}}\n</details>",
+  "pr_template": "- ${{TITLE}}\n   - PR: #${{NUMBER}}",
+  "empty_template": "other changes",
+  "label_extractor": [
+    {
+      "pattern": "(.) (.+)",
+      "target": "$1"
+    },
+    {
+      "pattern": "(.) (.+)",
+      "target": "$1",
+      "on_property": "title"
+    }
+  ],
+  "transformers": [
+    {
+      "pattern": "[\\-\\*] (\\[(...|TEST|CI|SKIP)\\])( )?(.+?)\n(.+?[\\-\\*] )(.+)",
+      "target": "- $4\n  - $6"
+    }
+  ],
+  "max_tags_to_fetch": 500,
+  "max_pull_requests": 500,
+  "max_back_track_time_days": 720,
+  "exclude_merge_branches": ["Owner/qa"],
+  "tag_resolver": {
+    "method": "semver"
+  },
+  "base_branches": ["master"]
 }

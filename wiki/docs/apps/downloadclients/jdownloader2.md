@@ -6,6 +6,7 @@
 [![License: GPL 3](https://img.shields.io/badge/License-GPL%203-blue.svg?style=for-the-badge&colorB=177DC1&label=license)](LICENSE)
 
 # Docker container for JDownloader 2
+
 [![Docker Image Size](https://img.shields.io/docker/image-size/jlesage/jdownloader-2/latest)](https://hub.docker.com/r/jlesage/jdownloader-2/tags) [![Build Status](https://drone.le-sage.com/api/badges/jlesage/docker-jdownloader-2/status.svg)](https://drone.le-sage.com/jlesage/docker-jdownloader-2) [![GitHub Release](https://img.shields.io/github/release/jlesage/docker-jdownloader-2.svg)](https://github.com/jlesage/docker-jdownloader-2/releases/latest) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/JocelynLeSage/0usd)
 
 This is a Docker container for [JDownloader 2](http://jdownloader.org/).
@@ -26,4 +27,4 @@ your valuable time every day!
 
 Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
 
-* Join our [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa) for Support
+- Join our [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa) for Support

@@ -1,29 +1,29 @@
 ---
-version: '3'
+version: "3"
 services:
   teamspeak:
-    hostname: 'teamspeak'
-    container_name: 'teamspeak'
+    hostname: "teamspeak"
+    container_name: "teamspeak"
     environment:
-      - 'PGID=${ID}'
-      - 'PUID=${ID}'
-      - 'TZ=${TZ}'
-      - 'UMASK=${UMASK}'
-      - 'TS3SERVER_LICENSE=accept'
-    image: 'teamspeak'
-    restart: '${RESTARTAPP}'
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "TS3SERVER_LICENSE=accept"
+    image: "teamspeak"
+    restart: "${RESTARTAPP}"
     ports:
-      - '9987:9987/udp'
-      - '10011:10011'
-      - '30033:30033'
+      - "9987:9987/udp"
+      - "10011:10011"
+      - "30033:30033"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - 'no-new-privileges:true'
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
-      - '${APPFOLDER}/teamspeak:/var/ts3server/:rw'
+      - "${APPFOLDER}/teamspeak:/var/ts3server/:rw"
     labels:
-      - 'dockupdater.enable=true'
+      - "dockupdater.enable=true"
 networks:
   proxy:
     driver: bridge

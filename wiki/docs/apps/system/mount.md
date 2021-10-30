@@ -1,5 +1,5 @@
-# **RAM rclone_cache**   
-     
+# **RAM rclone_cache**
+
 <p align="left">
     <a href="https://discord.gg/FYSvu83caM">
         <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
@@ -16,14 +16,16 @@
 </p>
 
 ## rclone_cache into ram
+
 Since our servers usually have a lot of ram that is not used at all, there is a possibility to save some ssd memory by putting the rclone_cache into the ram.
 
 # IMPORTANT! | Only for advanced Users
+
 You should give rclone at least 50GB cache!
 This tutorial is only recommended if you have at least 128GB RAM.
 
-
 # Setup
+
 For this we proceed as follows:
 
 1. how much ram is available? in my example 128GB
@@ -41,7 +43,6 @@ However, we can increase this.
 
 1. reboot machine `sudo reboot -n`
 1. check if /mnt/unionfs get still mounted, if not redeploy mount app ( `sudo mountpoint /mnt/unionfs/` & `sudo docker log mount` )
-
 
 ## Support
 

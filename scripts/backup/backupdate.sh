@@ -43,28 +43,28 @@ FOLDER="/opt/appdata"
 DESTINATION="/mnt/downloads/appbackups"
 dockers=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -v 'trae' | grep -v 'auth' | grep -v 'cf-companion' | grep -v 'mongo' | grep -v 'dockupdater' | grep -v 'sbox')
 
-for i in ${dockers};do
+for i in ${dockers}; do
    ARCHIVE=$i
    ARCHIVETAR=${ARCHIVE}.tar.gz
-   if [[ ! -d ${DESTINATION}/${STORAGE} ]];then $(command -v mkdir) -p ${DESTINATION}/${STORAGE};fi
+   if [[ ! -d ${DESTINATION}/${STORAGE} ]]; then $(command -v mkdir) -p ${DESTINATION}/${STORAGE}; fi
    forcepush="tar pigz pv"
-   for fc in ${forcepush};do
-       $(command -v apt) install $fc --reinstall -yqq 1>/dev/null 2>&1 && sleep 1
+   for fc in ${forcepush}; do
+      $(command -v apt) install $fc --reinstall -yqq 1>/dev/null 2>&1 && sleep 1
    done
    appfolder=/opt/dockserver/apps/
    IGNORE="! -path '**.subactions/**'"
    mapfile -t files < <(eval find ${appfolder} -type f -name $typed.yml ${IGNORE})
    for i in "${files[@]}"; do
-       section=$(dirname "${i}" | sed "s#${appfolder}##g" | sed 's/\/$//')
+      section=$(dirname "${i}" | sed "s#${appfolder}##g" | sed 's/\/$//')
    done
-   if [[ ${section} == "mediaserver" || ${section} == "mediamanager" ]];then
+   if [[ ${section} == "mediaserver" || ${section} == "mediamanager" ]]; then
       $(command -v docker) stop ${typed} 1>/dev/null 2>&1 && echo "We stopped now $typed"
       $(command -v tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${STORAGE}/${ARCHIVETAR} ./
-      $(command -v docker) start ${typed} 1>/dev/null 2>&1  && echo "We started now $typed"
+      $(command -v docker) start ${typed} 1>/dev/null 2>&1 && echo "We started now $typed"
    else
       $(command -v tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${STORAGE}/${ARCHIVETAR} ./
    fi
    $(command -v chown) -hR 1000:1000 ${DESTINATION}/${STORAGE}/${ARCHIVETAR}
 done
 
-#EOF
+#"

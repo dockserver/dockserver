@@ -128,4 +128,4 @@ case "$DOCK" in
  "-f" ) fork ;;
  "--fork" ) fork ;;
 esac
-#EOF
+#E-o-F#

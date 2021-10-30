@@ -8,27 +8,27 @@
 - hosts: localhost
   gather_facts: false
   tasks:
-    - name: 'Set Known Facts'
+    - name: "Set Known Facts"
       set_fact:
-        app: 'emby'
-    - name: 'XML Check'
+        app: "emby"
+    - name: "XML Check"
       stat:
         path: /opt/appdata/{{app}}/config/system.xml
       register: xmlcheck
-    - name: 'Configuring {{app}} for first time use'
+    - name: "Configuring {{app}} for first time use"
       block:
-        - name: 'Pending XML Generation'
+        - name: "Pending XML Generation"
           wait_for:
-            path: '/opt/appdata/{{app}}/config/system.xml'
+            path: "/opt/appdata/{{app}}/config/system.xml"
             state: present
-        - name: 'Wait 5 Seconds'
+        - name: "Wait 5 Seconds"
           wait_for:
             timeout: 5
-        - name: 'Stop {{app}}'
-          shell: 'docker stop {{app}}'
-        - name: 'Turn Off Reporting'
+        - name: "Stop {{app}}"
+          shell: "docker stop {{app}}"
+        - name: "Turn Off Reporting"
           xml:
-            path: '/opt/appdata/{{app}}/config/system.xml'
+            path: "/opt/appdata/{{app}}/config/system.xml"
             xpath: /ServerConfiguration/EnableAnonymousUsageReporting
-            value: 'false'
+            value: "false"
       when: xmlcheck.stat.exists

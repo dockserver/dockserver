@@ -1,35 +1,33 @@
 ---
-version: '3'
+version: "3"
 services:
   freshrss:
-    hostname: 'freshrss'
-    container_name: 'freshrss'
+    hostname: "freshrss"
+    container_name: "freshrss"
     environment:
-      - 'PGID=${ID}'
-      - 'PUID=${ID}'
-      - 'TZ=${TZ}'
-      - 'UMASK=${UMASK}'
-    image: 'lscr.io/linuxserver/freshrss'
-    restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:8678:80'
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "lscr.io/linuxserver/freshrss"
+    restart: "${RESTARTAPP}"
     networks:
-      - proxy
+      - ${DOCKERNETWORK}
     security_opt:
-      - 'no-new-privileges:true'
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
-      - '${APPFOLDER}/freshrss:/config:rw'
+      - "${APPFOLDER}/freshrss:/config:rw"
     labels:
-      - 'traefik.enable=true'
-      - 'traefik.docker.network=proxy'
-      - 'dockupdater.enable=true'
-      - 'traefik.http.routers.freshrss-rtr.entrypoints=https'
-      - 'traefik.http.routers.freshrss-rtr.rule=Host(`freshrss.${DOMAIN}`)'
-      - 'traefik.http.routers.freshrss-rtr.tls=true'
-      - 'traefik.http.routers.freshrss-rtr.tls.certresolver=dns-cloudflare'
-      - 'traefik.http.routers.freshrss-rtr.middlewares=chain-authelia@file'
-      - 'traefik.http.routers.freshrss-rtr.service=freshrss-svc'
-      - 'traefik.http.services.freshrss-svc.loadbalancer.server.port=80'
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.freshrss-rtr.entrypoints=https"
+      - "traefik.http.routers.freshrss-rtr.rule=Host(`freshrss.${DOMAIN}`)"
+      - "traefik.http.routers.freshrss-rtr.tls=true"
+      - "traefik.http.routers.freshrss-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.freshrss-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.freshrss-rtr.service=freshrss-svc"
+      - "traefik.http.services.freshrss-svc.loadbalancer.server.port=80"
 networks:
   proxy:
     driver: bridge

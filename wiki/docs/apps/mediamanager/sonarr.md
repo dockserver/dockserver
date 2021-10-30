@@ -5,12 +5,12 @@
 [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa)
 [![License: GPL 3](https://img.shields.io/badge/License-GPL%203-blue.svg?style=for-the-badge&colorB=177DC1&label=license)](LICENSE)
 
-## Sonarr 
+## Sonarr
 
 Sonarr is a PVR for Usenet and BitTorrent users. It can monitor multiple RSS feeds for new episodes of your favorite shows and will grab, sort and rename them. It can also be configured to automatically upgrade the quality of files already downloaded when a better quality format becomes available.
 
-
 ## Support
+
 Note: GitHub Issues are for Bugs and Feature Requests Only
 
 - [Forums](https://forums.sonarr.tv/)
@@ -20,7 +20,6 @@ Note: GitHub Issues are for Bugs and Feature Requests Only
 - [Reddit](https://www.reddit.com/r/sonarr)
 - [Wiki](https://wiki.servarr.com/Sonarr)
 
-
 ## Features
 
 ### Current Features
@@ -28,7 +27,7 @@ Note: GitHub Issues are for Bugs and Feature Requests Only
 - Support for major platforms: Windows, Linux, macOS, Raspberry Pi, etc.
 - Automatically detects new episodes
 - Can scan your existing library and download any missing episodes
-- Can watch for better quality of the episodes you already have and do an automatic upgrade. *eg. from DVD to Blu-Ray*
+- Can watch for better quality of the episodes you already have and do an automatic upgrade. _eg. from DVD to Blu-Ray_
 - Automatic failed download handling will try another release if one fails
 - Manual search so you can pick any release or to see why a release was not downloaded automatically
 - Fully configurable episode renaming
@@ -48,4 +47,4 @@ Note: GitHub Issues are for Bugs and Feature Requests Only
 
 Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
 
-* Join our [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa) for Support
+- Join our [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa) for Support

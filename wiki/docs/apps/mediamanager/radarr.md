@@ -11,24 +11,25 @@ Radarr is a movie collection manager for Usenet and BitTorrent users. It can mon
 
 ## Major Features Include:
 
-* Adding new movies with lots of information, such as trailers, ratings, etc.
-* Support for major platforms: Windows, Linux, macOS, Raspberry Pi, etc.
-* Can watch for better quality of the movies you have and do an automatic upgrade. *eg. from DVD to Blu-Ray*
-* Automatic failed download handling will try another release if one fails
-* Manual search so you can pick any release or to see why a release was not downloaded automatically
-* Full integration with SABnzbd and NZBGet
-* Automatically searching for releases as well as RSS Sync
-* Automatically importing downloaded movies
-* Recognizing Special Editions, Director's Cut, etc.
-* Identifying releases with hardcoded subs
-* QBittorrent, Deluge, rTorrent, Transmission, uTorrent, and other download clients are supported 
-* Full integration with Kodi, Plex (notification, library update)
-* A beautiful UI
-* Importing Metadata such as trailers or subtitles
-* Adding metadata such as posters and information for Kodi and others to use
-* Advanced customization for profiles, such that Radarr will always download the copy you want
+- Adding new movies with lots of information, such as trailers, ratings, etc.
+- Support for major platforms: Windows, Linux, macOS, Raspberry Pi, etc.
+- Can watch for better quality of the movies you have and do an automatic upgrade. _eg. from DVD to Blu-Ray_
+- Automatic failed download handling will try another release if one fails
+- Manual search so you can pick any release or to see why a release was not downloaded automatically
+- Full integration with SABnzbd and NZBGet
+- Automatically searching for releases as well as RSS Sync
+- Automatically importing downloaded movies
+- Recognizing Special Editions, Director's Cut, etc.
+- Identifying releases with hardcoded subs
+- QBittorrent, Deluge, rTorrent, Transmission, uTorrent, and other download clients are supported
+- Full integration with Kodi, Plex (notification, library update)
+- A beautiful UI
+- Importing Metadata such as trailers or subtitles
+- Adding metadata such as posters and information for Kodi and others to use
+- Advanced customization for profiles, such that Radarr will always download the copy you want
 
 ## Support
+
 Note: GitHub Issues are for Bugs and Feature Requests Only
 
 [![Discord](https://img.shields.io/badge/discord-chat-7289DA.svg?maxAge=60)](https://radarr.video/discord)
@@ -44,4 +45,4 @@ Note: GitHub Issues are for Bugs and Feature Requests Only
 
 Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
 
-* Join our [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa) for Support
+- Join our [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa) for Support
