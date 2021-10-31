@@ -7,7 +7,7 @@ services:
     environment:
       - "PGID=${ID}"
       - "PUID=${ID}"
-    image: "psidex/crowsnest:latest"
+    image: "dockserver/update:latest"
     restart: "${RESTARTAPP}"
     networks:
       - ${DOCKERNETWORK}
