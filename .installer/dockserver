@@ -32,15 +32,17 @@ clear
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "    🚀    DockServer [ UPDATE ] STARTED"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    basefolder="/opt/appdata"
-    compose="compose/docker-compose.yml"
-    $(command -v rsync) ${dockserver}/dockserver/docker.yml $basefolder/$compose -aqhv
-    if [[ -f $basefolder/$compose ]];then
-       $(command -v cd) $basefolder/compose/ && docker-compose config 1>/dev/null 2>&1
-       $(command -v cd) $basefolder/compose/ && docker-compose up -d --force-recreate 1>/dev/null 2>&1
-    fi
-    $(command -v chown) -cR 1000:1000 ${dockserver} 1>/dev/null 2>&1
-    envmigra && clear
+     basefolder="/opt/appdata"
+     compose="compose/docker-compose.yml"
+     $(command -v rsync) ${dockserver}/dockserver/docker.yml $basefolder/$compose -aqhv
+     if [[ -f $basefolder/$compose ]];then
+        $(command -v cd) $basefolder/compose/ && docker-compose config 1>/dev/null 2>&1
+        $(command -v cd) $basefolder/compose/ && docker-compose down 1>/dev/null 2>&1
+        $(command -v docker) system prune -af 1>/dev/null 2>&1
+        $(command -v cd) $basefolder/compose/ && docker-compose up -d --force-recreate 1>/dev/null 2>&1
+     fi
+     $(command -v chown) -cR 1000:1000 ${dockserver} 1>/dev/null 2>&1
+     envmigra && clear
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "    🚀    DockServer [ UPDATE ] DONE"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -128,4 +130,5 @@ case "$DOCK" in
  "-f" ) fork ;;
  "--fork" ) fork ;;
 esac
+
 #E-o-F#
