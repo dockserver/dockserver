@@ -14,8 +14,10 @@ services:
     security_opt:
       - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
-      - "/opt/dockserver/dockserver/config.yaml:/app/config.yaml:ro"
-      - "/opt/dockserver:/gitrepos/dockserver"
+      - "/opt/dockserver:/opt/dockserver"
+    labels:
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
 networks:
   proxy:
     driver: bridge
