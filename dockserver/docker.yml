@@ -7,7 +7,7 @@ services:
     environment:
       - "PGID=${ID}"
       - "PUID=${ID}"
-    image: "dockserver/update:latest"
+    image: "ghcr.io/dockserver/update:master"
     restart: "${RESTARTAPP}"
     networks:
       - ${DOCKERNETWORK}
