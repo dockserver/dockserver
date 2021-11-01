@@ -563,7 +563,7 @@ runinstall() {
      $($(command -v docker) ps -aq --format '{{.Names}}{{.State}}' | grep -qE ${typed}running 1>/dev/null 2>&1)
      errorcode=$?
   if [[ $errorcode -eq 0 ]];then
-  if [[ ${typed} == "mount" || ${typed} == "dockupdater" || ${typed} == "endlessh" ]];then
+  if [[ ${typed} == "mount" || ${typed} == "dockupdater" || ${typed} == "endlessh" || ${typed} == "uploader" ]];then
   printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ${typed} has successfully deployed and is now working     
