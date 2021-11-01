@@ -21,16 +21,9 @@ services:
       - "${APPFOLDER}/system:/system:rshared"
       - "unionfs:/mnt"
     labels:
-      - "traefik.enable=true"
       - "traefik.docker.network=proxy"
       - "dockupdater.enable=true"
-      - "traefik.http.routers.uploader-rtr.entrypoints=https"
-      - "traefik.http.routers.uploader-rtr.rule=Host(`uploader.${DOMAIN}`)"
-      - "traefik.http.routers.uploader-rtr.tls=true"
-      - "traefik.http.routers.uploader-rtr.tls.certresolver=dns-cloudflare"
-      - "traefik.http.routers.uploader-rtr.middlewares=chain-authelia@file"
-      - "traefik.http.routers.uploader-rtr.service=uploader-svc"
-      - "traefik.http.services.uploader-svc.loadbalancer.server.port=8080"
+ 
 networks:
   proxy:
     driver: bridge
