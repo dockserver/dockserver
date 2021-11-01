@@ -21,8 +21,8 @@ services:
     networks:
       - ${DOCKERNETWORK}
     volumes:
-      - "${APPFOLDER}/backup:/config:rw"
-      - "${APPFOLDER}/:/home"
+      - "${APPFOLDER}:${APPFOLDER}:ro"
+      - "${APPFOLDER}:/home"
       - "/opt/backup:/backup"
       - "/etc/locatime:/etc/localtime:ro"
 networks:
