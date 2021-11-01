@@ -21,7 +21,6 @@ services:
       - "${APPFOLDER}/system:/system:rshared"
       - "unionfs:/mnt"
     labels:
-      - "traefik.docker.network=proxy"
       - "dockupdater.enable=true"
  
 networks:
