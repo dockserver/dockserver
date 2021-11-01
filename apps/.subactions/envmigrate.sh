@@ -50,58 +50,60 @@ VNC_RESOLUTION=${VNC_RESOLUTION:-1920x1080}
 
 ## MediaServer
 PLEXIMAGE=${PLEXIMAGE:-ghcr.io/linuxserver/plex:latest}
-PLEXTHEME=${PLEXTHEME:-organizr-dark}
+PLEXTHEME=${PLEXTHEME:-organizr}
+PLEXADDON=${PLEXADDON:-overseerr-side-menu}
+PLEXCUSTOMLOGO=${PLEXCUSTOMLOGO:-https://dockserver.io/img/favicon.png}
 PLEXVERSION=${PLEXVERSION:-latest}
 EMBYIMAGE=${EMBYIMAGE:-ghcr.io/linuxserver/emby:latest}
-EMBYTHEME=${EMBYTHEME:-organizr-dark}
+EMBYTHEME=${EMBYTHEME:-organizr}
 JELLYFINIMAGE=${JELLYFINIMAGE:-ghcr.io/linuxserver/jellyfin:latest}
-JELLYFINTHEME=${JELLYFINTHEME:-organizr-dark}
+JELLYFINTHEME=${JELLYFINTHEME:-organizr}
 
 ## MediaManager
 BAZARRIMAGE=${BAZARRIMAGE:-ghcr.io/linuxserver/bazarr:latest}
-BAZARRTHEME=${BAZARRTHEME:-organizr-dark}
+BAZARRTHEME=${BAZARRTHEME:-organizr}
 BAZARR4KIMAGE=${BAZARR4KIMAGE:-ghcr.io/linuxserver/bazarr}
-BAZARR4KTHEME=${BAZARR4KTHEME:-organizr-dark}
+BAZARR4KTHEME=${BAZARR4KTHEME:-organizr}
 CALIBREIMAGE=${CALIBREIMAGE:-ghcr.io/linuxserver/calibre-web}
-CALIBRETHEME=${CALIBRETHEME:-organizr-dark}
+CALIBRETHEME=${CALIBRETHEME:-organizr}
 RADARRIMAGE=${RADARRIMAGE:-ghcr.io/linuxserver/radarr:nightly}
-RADARRTHEME=${RADARRTHEME:-organizr-dark}
+RADARRTHEME=${RADARRTHEME:-organizr}
 RADARR4KIMAGE=${RADARR4KIMAGE:-ghcr.io/linuxserver/radarr:nightly}
-RADARR4KTHEME=${RADARR4KTHEME:-organizr-dark}
+RADARR4KTHEME=${RADARR4KTHEME:-organizr}
 RADARRHDRIMAGE=${RADARRHDRIMAGE:-ghcr.io/linuxserver/radarr:nightly}
-RADARRHDRTHEME=${RADARRHDRTHEME:-organizr-dark}
+RADARRHDRTHEME=${RADARRHDRTHEME:-organizr}
 READARRIMAGE=${READARRIMAGE:-ghcr.io/hotio/readarr:nightly}
-READARRTHEME=${READARRTHEME:-organizr-dark}
+READARRTHEME=${READARRTHEME:-organizr}
 PROWLARRIMAGE=${PROWLARRIMAGE:-ghcr.io/linuxserver/prowlarr:develop}
-PROWLARRTHEME=${PROWLARRTHEME:-organizr-dark}
+PROWLARRTHEME=${PROWLARRTHEME:-organizr}
 PROWLARR4KIMAGE=${PROWLARR4KIMAGE:-ghcr.io/linuxserver/prowlarr:develop}
-PROWLARR4KTHEME=${PROWLARR4KTHEME:-organizr-dark}
+PROWLARR4KTHEME=${PROWLARR4KTHEME:-organizr}
 PROWLARRHDRIMAGE=${PROWLARRHDRIMAGE:-ghcr.io/linuxserver/prowlarr:develop}
-PROWLARRHDRTHEME=${PROWLARRHDRTHEME:-organizr-dark}
+PROWLARRHDRTHEME=${PROWLARRHDRTHEME:-organizr}
 SONARRIMAGE=${SONARRIMAGE:-ghcr.io/linuxserver/sonarr:develop}
-SONARRTHEME=${SONARRTHEME:-organizr-dark}
+SONARRTHEME=${SONARRTHEME:-organizr}
 SONARR4KIMAGE=${SONARR4KIMAGE:-ghcr.io/linuxserver/sonarr:develop}
-SONARR4KTHEME=${SONARR4KTHEME:-organizr-dark}
+SONARR4KTHEME=${SONARR4KTHEME:-organizr}
 SONARRHDRIMAGE=${SONARRHDRIMAGE:-ghcr.io/linuxserver/sonarr:develop}
-SONARRHDRTHEME=${SONARRHDRTHEME:-organizr-dark}
+SONARRHDRTHEME=${SONARRHDRTHEME:-organizr}
 TAUTULLIIMAGE=${TAUTULLIIMAGE:-ghcr.io/linuxserver/tautulli:latest}
-TAUTULLITHEME=${TAUTULLITHEME:-organizr-dark}
+TAUTULLITHEME=${TAUTULLITHEME:-organizr}
 LIDARRIMAGE=${LIDARRIMAGE:-ghcr.io/linuxserver/lidarr:nightly}
-LIDARRTHEME=${LIDARRTHEME:-organizr-dark}
+LIDARRTHEME=${LIDARRTHEME:-organizr}
 LAZYLIBRARIANIMAGE=${LAZYLIBRARIANIMAGE:-ghcr.io/linuxserver/lazylibrarian:latest}
-LAZYLIBRARIANTHEME=${LAZYLIBRARIANTHEME:-organizr-dark}
+LAZYLIBRARIANTHEME=${LAZYLIBRARIANTHEME:-organizr}
 
 ##DownloadClients
 DELUGEIMAGE=${DELUGEIMAGE:-ghcr.io/linuxserver/deluge:latest}
-DELUGETHEME=${DELUGETHEME:-organizr-dark}
+DELUGETHEME=${DELUGETHEME:-organizr}
 JACKETTIMAGE=${JACKETTIMAGE:-ghcr.io/hotio/jackett:latest}
-JACKETTTHEME=${JACKETTTHEME:-organizr-dark}
+JACKETTTHEME=${JACKETTTHEME:-organizr}
 NZBGETIMAGE=${NZBGETIMAGE:-ghcr.io/linuxserver/nzbget:latest}
-NZBGETTHEME=${NZBGETTHEME:-organizr-dark}
+NZBGETTHEME=${NZBGETTHEME:-organizr}
 SABNZBDIMAGE=${SABNZBDIMAGE:-ghcr.io/linuxserver/sabnzbd:latest}
-SABNZBDTHEME=${SABNZBDTHEME:-organizr-dark}
+SABNZBDTHEME=${SABNZBDTHEME:-organizr}
 QBITORRENTIMAGE=${QBITORRENTIMAGE:-ghcr.io/linuxserver/qbittorrent:latest}
-QBITORRENTTHEME=${QBITORRENTTHEME:-organizr-dark}
+QBITORRENTTHEME=${QBITORRENTTHEME:-organizr}
 
 ### APP CUSTOMEVARIABLES
 
