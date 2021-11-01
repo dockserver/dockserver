@@ -14,6 +14,7 @@ services:
       - "ADVERTISE_IP=http://${SERVERIP}:32400,http://plex.${DOMAIN}:32400"
       - "DOCKER_MODS=ghcr.io/gilbn/theme.park:plex"
       - "TP_THEME=${PLEXTHEME}"
+      - "TP_ADDON=${PLEXADDON}|${PLEXCUSTOMLOGO}"
     image: "${PLEXIMAGE}"
     restart: "${RESTARTAPP}"
     networks:
