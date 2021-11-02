@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [v1.2.31](https://github.com/dockserver/dockserver/releases/tag/v1.2.31) - 2021-11-02 07:57:53
+
+## 🚀 PiP-Update
+
+- pip (deps): bump mkdocs-material from 7.3.5 to 7.3.6 in /wiki
+   - PR: #268
+
 ## [v1.2.30](https://github.com/dockserver/dockserver/releases/tag/v1.2.30) - 2021-11-01 03:45:13
 
 - Create LICENSE
