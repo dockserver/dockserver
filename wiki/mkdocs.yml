@@ -163,7 +163,6 @@ nav:
           - Heimdall: apps/addons/heimdall.md
           - Librespeed: apps/addons/librespeed.md
           - NetData: apps/addons/netdata.md
-          - Portainer: apps/addons/portainer.md
           - Remmina: apps/addons/remmina.md
           - Tauticord: apps/addons/tauticord.md
           - Speedtest: apps/addons/speedtest.md
