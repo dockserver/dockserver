@@ -15,12 +15,12 @@ LABEL maintainer=dockserver
 LABEL org.opencontainers.image.source https://github.com/dockserver/dockserver/
 
 COPY ./wiki/requirements.txt /tmp/install.txt
-RUN python3 -m pip install --upgrade pip \
-    && python3 -m pip install --no-warn-script-location --upgrade --force-reinstall --no-deps --user -r /tmp/install.txt \
-    && rm -rf /tmp/* && rm -rf /var/cache/apk/* && rm -rf /tmp/* /root/.cache /root/.lib  /root/.local
+RUN python3 -m pip install --upgrade pip
+RUN python3 -m pip install --no-warn-script-location --upgrade --force-reinstall --no-deps --user -r /tmp/install.txt
+RUN rm -rf /tmp/* && rm -rf /var/cache/apk/* && rm -rf /root/.cache
 
 WORKDIR /docs
 
 EXPOSE 8000
 ENTRYPOINT ["mkdocs"]
-CMD ["serve", "--dev-addr=0.0.0.0:8000" ]
+CMD [ "serve" , "--dev-addr=0.0.0.0:8000" ]
