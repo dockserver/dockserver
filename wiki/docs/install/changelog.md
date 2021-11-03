@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [v1.2.32](https://github.com/dockserver/dockserver/releases/tag/v1.2.32) - 2021-11-03 10:18:10
+
+## 🐛 Fixes
+
+- fix : remove  portainer
+   - PR: #270
+
 ## [v1.2.31](https://github.com/dockserver/dockserver/releases/tag/v1.2.31) - 2021-11-02 07:57:53
 
 ## 🚀 PiP-Update
