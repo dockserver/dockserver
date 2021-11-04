@@ -1,11 +1,24 @@
 # CHANGELOG
 
+## [v1.2.33](https://github.com/dockserver/dockserver/releases/tag/v1.2.33) - 2021-11-04 17:51:56
+
+## 🚀 PiP-Update
+
+- pip (deps): bump mkdocs-git-revision-date-localized-plugin from 0.10.0 to 0.10.1 in /wiki
+   - PR: #271
+
 ## [v1.2.32](https://github.com/dockserver/dockserver/releases/tag/v1.2.32) - 2021-11-03 10:18:10
 
 ## 🐛 Fixes
 
 - fix : remove  portainer
    - PR: #270
+
+## What's Changed
+* fix : remove  portainer by @doob187 in https://github.com/dockserver/dockserver/pull/270
+
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.31...v1.2.32
 
 ## [v1.2.31](https://github.com/dockserver/dockserver/releases/tag/v1.2.31) - 2021-11-02 07:57:53
 
@@ -391,13 +404,15 @@ other changes
 
 ## [v1.1.13](https://github.com/dockserver/dockserver/releases/tag/v1.1.13) - 2021-08-12 21:42:11
 
-<details>
-<summary>Uncategorized</summary>
-
 - pip-update(deps): bump mkdocs-material from 7.2.3 to 7.2.4 in /wiki
    - PR: #177
 
-</details>
+## What's Changed
+* pip-update(deps): bump mkdocs-material from 7.2.3 to 7.2.4 in /wiki by @dependabot in https://github.com/dockserver/dockserver/pull/177
+* update depends by @doob187 in https://github.com/dockserver/dockserver/pull/178
+
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.1.12...v1.1.13
 
 ## [v1.1.12](https://github.com/dockserver/dockserver/releases/tag/v1.1.12) - 2021-08-10 18:47:53
 
@@ -422,9 +437,6 @@ other changes
 </details>
 
 ## [v1.1.8](https://github.com/dockserver/dockserver/releases/tag/v1.1.8) - 2021-08-05 15:13:20
-
-<details>
-<summary>Uncategorized</summary>
 
 - Dev
    - PR: #74
@@ -549,11 +561,114 @@ other changes
 - #patch Update code-server.yml
    - PR: #165
 
-</details>
+## What's Changed
+* Dev by @Nossersvinet in https://github.com/dockserver/dockserver/pull/74
+* Dev (#74) by @doob187 in https://github.com/dockserver/dockserver/pull/75
+* GH updates(deps): Bump mikepenz/release-changelog-builder-action from 1 to 2 by @dependabot in https://github.com/dockserver/dockserver/pull/77
+* GH updates(deps): Bump docker/login-action from 1.9.0 to 1.10.0 by @dependabot in https://github.com/dockserver/dockserver/pull/78
+* Dev by @doob187 in https://github.com/dockserver/dockserver/pull/76
+* Update portainer.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/80
+* Update dozzle.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/79
+* Update lidarr.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/82
+* Update heimdall.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/81
+* #patch WIKI by @doob187 in https://github.com/dockserver/dockserver/pull/83
+* mariadb container for e.g. nextcloud by @brtbach in https://github.com/dockserver/dockserver/pull/84
+* Create instaloader.yml by @brtbach in https://github.com/dockserver/dockserver/pull/85
+* Composer addons by @doob187 in https://github.com/dockserver/dockserver/pull/88
+* docs: add brtbach as a contributor for code by @allcontributors in https://github.com/dockserver/dockserver/pull/89
+* Update netdata.yml by @brtbach in https://github.com/dockserver/dockserver/pull/87
+* Dev by @dan3805 in https://github.com/dockserver/dockserver/pull/94
+* Revert "Dev" by @dan3805 in https://github.com/dockserver/dockserver/pull/95
+* Revert "Revert "Dev"" by @dan3805 in https://github.com/dockserver/dockserver/pull/96
+* Update joplin-server.yml by @drag0n141 in https://github.com/dockserver/dockserver/pull/97
+* Update joplin-server.yml by @drag0n141 in https://github.com/dockserver/dockserver/pull/98
+* Update mellow.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/92
+* Update conreq.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/93
+* pip-update(deps): bump mkdocs-material from 7.1.8 to 7.1.9 in /wiki by @dependabot in https://github.com/dockserver/dockserver/pull/100
+* Update instaloader.yml by @brtbach in https://github.com/dockserver/dockserver/pull/99
+* Update jackett.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/101
+* Update tdarr.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/127
+* Update handbrake.yml by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/126
+* Update youtubedl-material.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/125
+* Update qbittorrent.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/124
+* Update sabnzbd.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/123
+* Update rutorrent.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/122
+* Update nzbhydra.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/121
+* Update nzbget.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/120
+* Update jdownloader2.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/118
+* Update filezilla.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/117
+* Update deluge.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/116
+* Update davos.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/115
+* Update code-server.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/114
+* Update cloud9.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/113
+* Update rsnapshot.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/112
+* Update duplicati.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/111
+* Update backup.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/110
+* Update vnstat.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/109
+* Update speedtest.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/108
+* Update remmina.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/107
+* Update netdata.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/106
+* Update librespeed.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/105
+* Update flaresolverr.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/104
+* Update cloudcmd.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/103
+* Update mount.md by @brtbach in https://github.com/dockserver/dockserver/pull/90
+* Update instaloader.yml by @brtbach in https://github.com/dockserver/dockserver/pull/102
+* Update jackett.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/119
+* #patch wiki by @doob187 in https://github.com/dockserver/dockserver/pull/128
+* GH updates(deps): Bump docker/setup-buildx-action from 1.3.0 to 1.4.1 by @dependabot in https://github.com/dockserver/dockserver/pull/129
+* Patch 11 by @brtbach in https://github.com/dockserver/dockserver/pull/133
+* Create kitana.yml by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/131
+* Create kitana.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/130
+* Dev to Master by @drag0n141 in https://github.com/dockserver/dockserver/pull/134
+* GH updates(deps): Bump docker/build-push-action from 2.5.0 to 2.6.1 by @dependabot in https://github.com/dockserver/dockserver/pull/135
+* Patch 12 by @brtbach in https://github.com/dockserver/dockserver/pull/136
+* #patch by @doob187 in https://github.com/dockserver/dockserver/pull/137
+* GH updates(deps): Bump docker/setup-buildx-action from 1.4.1 to 1.5.0 by @dependabot in https://github.com/dockserver/dockserver/pull/138
+* #patch by @doob187 in https://github.com/dockserver/dockserver/pull/139
+* pip-update(deps): bump mkdocs-material from 7.1.9 to 7.1.10 in /wiki by @dependabot in https://github.com/dockserver/dockserver/pull/146
+* GH updates(deps): Bump docker/setup-buildx-action from 1.5.0 to 1.5.1 by @dependabot in https://github.com/dockserver/dockserver/pull/145
+* GH updates(deps): Bump actions/stale from 3.0.19 to 4 by @dependabot in https://github.com/dockserver/dockserver/pull/147
+* Updated Qbittorrent VPN by @justinglock40 in https://github.com/dockserver/dockserver/pull/148
+* Create disk_cleanup.sh by @brtbach in https://github.com/dockserver/dockserver/pull/140
+* Add WG-Manager by @drag0n141 in https://github.com/dockserver/dockserver/pull/151
+* pip-update(deps): bump mkdocs-material from 7.1.10 to 7.1.11 in /wiki by @dependabot in https://github.com/dockserver/dockserver/pull/149
+* pip-update(deps): bump mkdocs from 1.2.1 to 1.2.2 in /wiki by @dependabot in https://github.com/dockserver/dockserver/pull/150
+* pip-update(deps): bump mkdocs-material from 7.1.11 to 7.2.0 in /wiki by @dependabot in https://github.com/dockserver/dockserver/pull/152
+* Dev by @drag0n141 in https://github.com/dockserver/dockserver/pull/153
+* Update pihole.yml by @aelfa in https://github.com/dockserver/dockserver/pull/154
+* pip-update(deps): bump mkdocs-material from 7.2.0 to 7.2.1 in /wiki by @dependabot in https://github.com/dockserver/dockserver/pull/155
+* Create fail2ban.yml by @aelfa in https://github.com/dockserver/dockserver/pull/156
+* pip-update(deps): bump mkdocs-material from 7.2.1 to 7.2.2 in /wiki by @dependabot in https://github.com/dockserver/dockserver/pull/161
+* Pihole + Unbound (two containers) | Pihole + Unbound (one container) by @aelfa in https://github.com/dockserver/dockserver/pull/160
+* Upstream by @doob187 in https://github.com/dockserver/dockserver/pull/162
+* Add TCP BBR by @aelfa in https://github.com/dockserver/dockserver/pull/164
+* #patch Add tcp add unmount part by @doob187 in https://github.com/dockserver/dockserver/pull/166
+* #patch Update code-server.yml by @aelfa in https://github.com/dockserver/dockserver/pull/165
+* #patch by @doob187 in https://github.com/dockserver/dockserver/pull/167
+* #patch by @doob187 in https://github.com/dockserver/dockserver/pull/168
+
+## New Contributors
+* @dan3805 made their first contribution in https://github.com/dockserver/dockserver/pull/94
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.1.7...v1.1.8
 
 ## [v1.1.7](https://github.com/dockserver/dockserver/releases/tag/v1.1.7) - 2021-06-23 11:40:42
 
 - no changes
+
+## What's Changed
+* update some parts by @doob187 in https://github.com/dockserver/dockserver/pull/52
+* Dev by @doob187 in https://github.com/dockserver/dockserver/pull/56
+* [ add Instructions ] by @doob187 in https://github.com/dockserver/dockserver/pull/57
+* Dev by @doob187 in https://github.com/dockserver/dockserver/pull/58
+* Dev by @doob187 in https://github.com/dockserver/dockserver/pull/60
+* Ferdi Update by @drag0n141 in https://github.com/dockserver/dockserver/pull/61
+* Dev by @doob187 in https://github.com/dockserver/dockserver/pull/70
+* Update koel.yml by @drag0n141 in https://github.com/dockserver/dockserver/pull/71
+* #patch  wiki by @doob187 in https://github.com/dockserver/dockserver/pull/73
+
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.1.6...v1.1.7
 
 ## [v1.1.6](https://github.com/dockserver/dockserver/releases/tag/v1.1.6) - 2021-06-13 15:57:10
 
