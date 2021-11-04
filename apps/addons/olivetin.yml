@@ -17,6 +17,7 @@ services:
       - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/olivetin:/config:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
