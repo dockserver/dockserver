@@ -4,6 +4,8 @@
 
 other changes
 
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.33...v1.2.34
+
 ## [v1.2.33](https://github.com/dockserver/dockserver/releases/tag/v1.2.33) - 2021-11-04 17:51:56
 
 ## 🚀 PiP-Update
