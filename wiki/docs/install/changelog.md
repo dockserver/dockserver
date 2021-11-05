@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [v1.2.34](https://github.com/dockserver/dockserver/releases/tag/v1.2.34) - 2021-11-05 10:34:31
+
+other changes
+
 ## [v1.2.33](https://github.com/dockserver/dockserver/releases/tag/v1.2.33) - 2021-11-04 17:51:56
 
 ## 🚀 PiP-Update
