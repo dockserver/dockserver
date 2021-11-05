@@ -17,6 +17,10 @@
       "labels": ["pip"]
     },
     {
+      "title": "## 🚀 Added",
+      "labels": ["add"]
+    },
+    {
       "title": "## 🚀 GitHub updates",
       "labels": ["GH"]
     },
@@ -29,7 +33,7 @@
   "sort": "ASC",
   "template": "${{CHANGELOG}}\n\n\n${{UNCATEGORIZED}}\n",
   "pr_template": "- ${{TITLE}}\n   - PR: #${{NUMBER}}",
-  "empty_template": "other changes",
+  "empty_template": "repository changes",
   "label_extractor": [
     {
       "pattern": "(.) (.+)",
