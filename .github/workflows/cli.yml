@@ -6,7 +6,7 @@ on:
       - 'dependabot/**'
       - 'dev'
       - 'all-contributors/**'
-      - 'mergify/***'
+      - 'mergify/**'
     tags-ignore:
       - 'v*.*.*'
   workflow_dispatch:
