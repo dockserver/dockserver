@@ -33,6 +33,7 @@ jobs:
           REPO=$CI_REPOSITORY_NAME
           DOCKER_IMAGE=${{ github.repository_owner }}/${REPO}
           if [ "$CI_REF_NAME" == "master" ];then VERSION=latest;fi
+          VERSION=$CI_REF_NAME
           RUNNERNR=$CI_RUN_NUMBER
           CREATED=$(date +'%Y-%m-%dT%H:%M:%SZ')
           TAGS="${DOCKER_IMAGE}:${VERSION}"
