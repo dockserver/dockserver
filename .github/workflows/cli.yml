@@ -31,9 +31,9 @@ jobs:
         id: prep
         run: |
           REPO=$CI_REPOSITORY_NAME
+          VERSION=$CI_REF_NAME
           DOCKER_IMAGE=${{ github.repository_owner }}/${REPO}
           if [ "$CI_REF_NAME" == "master" ];then VERSION=latest;fi
-          VERSION=$CI_REF_NAME
           RUNNERNR=$CI_RUN_NUMBER
           CREATED=$(date +'%Y-%m-%dT%H:%M:%SZ')
           TAGS="${DOCKER_IMAGE}:${VERSION}"
@@ -117,7 +117,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.4.0
         with:
           fetch-depth: '0'
       - name: Bump version and push tag
