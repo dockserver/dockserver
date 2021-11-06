@@ -1,7 +1,7 @@
 {
   "categories": [
     {
-      "title": "## 🚀 Features",
+      "title": "## 🔣 Features",
       "labels": ["feature"]
     },
     {
@@ -13,19 +13,27 @@
       "labels": ["test"]
     },
     {
-      "title": "## 🚀 PiP-Update",
+      "title": "## 💻 PiP-Update",
       "labels": ["pip"]
     },
     {
-      "title": "## 🚀 Added",
+      "title": "## 🚇 Added",
       "labels": ["add"]
     },
     {
-      "title": "## 🚀 GitHub updates",
+      "title": "## 💻 GitHub updates",
       "labels": ["GH"]
     },
     {
-      "title": "## 🚀 DockServer Update 🚀 ##",
+      "title": "## 📦 Composer",
+      "labels": ["composer"]
+    },
+    {
+      "title": "## 📖 Documentation",
+      "labels": ["docs"]
+    },
+    {
+      "title": "## 🎨 DockServer Update",
       "labels": ["Update"]
     }
   ],
