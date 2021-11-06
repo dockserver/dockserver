@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [v1.2.35](https://github.com/dockserver/dockserver/releases/tag/v1.2.35) - 2021-11-06 07:16:12
+
+repository changes
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.34...v1.2.35
+
 ## [v1.2.34](https://github.com/dockserver/dockserver/releases/tag/v1.2.34) - 2021-11-05 10:34:31
 
 other changes
