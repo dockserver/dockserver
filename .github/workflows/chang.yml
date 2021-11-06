@@ -17,6 +17,7 @@ jobs:
         PATH: '/CHANGELOG.md'
         COMMIT_MESSAGE: 'docs(CHANGELOG): update release notes'
         TYPE: 'feat:Feature,fix:Bug Fixes,add:ADD,docs:Documentation,refactor:Refactor,perf:Performance Improvements'
+        COMMITTER: 'DockServer-Bot'
 
   generate-changelog-wiki:
     runs-on: ubuntu-latest
@@ -31,3 +32,5 @@ jobs:
         PATH: '/wiki/docs/install/changelog.md'
         COMMIT_MESSAGE: 'docs(CHANGELOG): update release notes'
         TYPE: 'feat:Feature,fix:Bug Fixes,add:ADD,docs:Documentation,refactor:Refactor,perf:Performance Improvements'
+        COMMITTER: 'DockServer-Bot'
+
