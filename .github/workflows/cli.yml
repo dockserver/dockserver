@@ -20,8 +20,10 @@ jobs:
         uses: actions/checkout@v2.4.0
         with:
           fetch-depth: 0
+
       - name: Get Repository Info
         uses: FranzDiebold/github-env-vars-action@v2.3.0
+
       - name: Print environment variables
         run: |
           echo "CI_REPOSITORY_NAME=$CI_REPOSITORY_NAME"
@@ -70,7 +72,7 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.CR_PAT }}
 
-      - name: Build and push GHRC.io
+      - name: Build and push Image ${VERSION}
         id: docker_build
         uses: docker/build-push-action@v2.7.0
         with:
@@ -87,7 +89,7 @@ jobs:
             org.opencontainers.image.version=${{ steps.prep.outputs.version }}
             org.opencontainers.image.created=${{ steps.prep.outputs.created }}
 
-      - name: Build and push GHRC.io
+      - name: Build and push version ${RUNNERNR}
         id: docker_build_day
         uses: docker/build-push-action@v2.7.0
         with:
@@ -121,6 +123,7 @@ jobs:
         uses: actions/checkout@v2.4.0
         with:
           fetch-depth: '0'
+
       - name: Bump version and push tag
         uses: ChloePlanet/github-tag-action@2.0.3
         with:
@@ -129,38 +132,67 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.CR_PAT }}
           WITH_V: true
 
-  deploy:
+  addcon:
     needs: [ GHRC , build ]
-    name: Deploy Dockserver Wiki on GitHub Pages
-    if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/master' }}
+    name: Add all Contributors
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
         uses: actions/checkout@v2.4.0
-      - name: Set up Python
-        uses: actions/setup-python@v2.2.2
         with:
-          python-version: 3.x
-      - run: python3 -m pip install --upgrade pip
-      - run: python3 -m pip install --upgrade --force-reinstall -r wiki/requirements.txt
-      - run: mkdocs gh-deploy --force --config-file wiki/mkdocs.yml --remote-branch wiki
+          fetch-depth: '0'
 
-  add-contributors:
-    needs: [ GHRC , build , deploy ]
-    name: Add all Contributors
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
     - uses: BobAnkh/add-contributors@master
       with:
         CONTRIBUTOR: '### Contributors'
-        COLUMN_PER_ROW: '6'
+        COLUMN_PER_ROW: '4'
         ACCESS_TOKEN: ${{secrets.CR_PAT}}
         IMG_WIDTH: '50'
         FONT_SIZE: '14'
         PATH: '/README.md'
         COMMIT_MESSAGE: 'docs(README): update contributors'
         AVATAR_SHAPE: 'round'
+
+  addwiki:
+    needs: [ GHRC , build , deploy , addcon ]
+    name: Add all Contributors
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2.4.0
+        with:
+          fetch-depth: '0'
+
+    - uses: BobAnkh/add-contributors@master
+      with:
+        CONTRIBUTOR: '### Contributors'
+        COLUMN_PER_ROW: '4'
+        ACCESS_TOKEN: ${{secrets.CR_PAT}}
+        IMG_WIDTH: '50'
+        FONT_SIZE: '14'
+        PATH: '/wiki/docs/index.md'
+        COMMIT_MESSAGE: 'docs(README): update contributors'
+        AVATAR_SHAPE: 'round'
+
+  deploy:
+    needs: [ GHRC , build , deploy , addcon , addwiki ]
+    name: Deploy Dockserver Wiki on GitHub Pages
+    if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/master' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2.4.0
+        with:
+          fetch-depth: '0'
+
+      - name: Set up Python
+        uses: actions/setup-python@v2.2.2
+        with:
+          python-version: 3.x
+
+      - run: python3 -m pip install --upgrade pip
+      - run: python3 -m pip install --upgrade --force-reinstall -r wiki/requirements.txt
+      - run: mkdocs gh-deploy --force --config-file wiki/mkdocs.yml --remote-branch wiki
 
   discord:
     name: Discord Notification
@@ -169,6 +201,8 @@ jobs:
       - GHRC
       - deploy
       - build
+      - addcon
+      - addwiki
     if: ${{ success() }}
     steps:
       - name: Notify
