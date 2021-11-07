@@ -154,7 +154,7 @@ jobs:
           AVATAR_SHAPE: 'round'
 
   addwiki:
-    needs: [ GHRC , build , deploy , addcon ]
+    needs: [ GHRC , build , addcon ]
     name: Add all Contributors
     runs-on: ubuntu-latest
     steps:
@@ -175,7 +175,7 @@ jobs:
           AVATAR_SHAPE: 'round'
 
   deploy:
-    needs: [ GHRC , build , deploy , addcon , addwiki ]
+    needs: [ GHRC , build , addcon , addwiki ]
     name: Deploy Dockserver Wiki on GitHub Pages
     if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/master' }}
     runs-on: ubuntu-latest
