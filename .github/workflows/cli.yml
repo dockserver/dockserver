@@ -134,7 +134,7 @@ jobs:
 
   addcon:
     needs: [ GHRC , build ]
-    name: Add all Contributors
+    name: Add all Contributors to ReadME
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -155,7 +155,7 @@ jobs:
 
   addwiki:
     needs: [ GHRC , build , addcon ]
-    name: Add all Contributors
+    name: Add all Contributors to wiki
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
