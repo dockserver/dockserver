@@ -1,0 +1,24 @@
+name: Add contributors
+on:
+  schedule:
+    - cron: '* */30 * * *'
+  push:
+    branches: 
+      - master
+  workflow_dispatch:
+
+jobs:
+  add-contributors:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: BobAnkh/add-contributors@master
+      with:
+        CONTRIBUTOR: '### Contributors'
+        COLUMN_PER_ROW: '6'
+        ACCESS_TOKEN: ${{secrets.CR_PAT}}
+        IMG_WIDTH: '50'
+        FONT_SIZE: '14'
+        PATH: '/README.md'
+        COMMIT_MESSAGE: 'docs(README): update contributors'
+        AVATAR_SHAPE: 'round'
