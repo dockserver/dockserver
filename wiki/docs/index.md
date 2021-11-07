@@ -4,9 +4,6 @@
     <a href="https://discord.gg/FYSvu83caM">
         <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
     </a>
-        <a href="https://github.com/dockserver/dockserver/releases">
-        <img src="https://img.shields.io/github/downloads/dockserver/dockserver/total?label=Total%20Downloads&logo=github" alt="Total Releases Downloaded from GitHub">
-    </a>
     <a href="https://github.com/dockserver/dockserver/releases/latest">
         <img src="https://img.shields.io/github/v/release/dockserver/dockserver?include_prereleases&label=Latest%20Release&logo=github" alt="Latest Official Release on GitHub">
     </a>
@@ -96,7 +93,7 @@ Co-Dev -APPS- @CONTRIBUTORS-LIST
 
 ## Contributors ✨
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+Thanks goes to these wonderful people
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
