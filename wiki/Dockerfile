@@ -10,13 +10,13 @@
 # NO REBRANDING IS ALLOWED          #
 # NO CODE MIRRORING IS ALLOWED      #
 #####################################
-FROM ghcr.io/squidfunk/mkdocs-material:latest
+FROM ghcr.io/squidfunk/mkdocs-material:7.3.6
 LABEL maintainer=dockserver
 LABEL org.opencontainers.image.source https://github.com/dockserver/dockserver/
 
 COPY ./wiki/requirements.txt /tmp/install.txt
-RUN python3 -m pip install --upgrade pip
-RUN python3 -m pip install --no-warn-script-location --upgrade --force-reinstall --no-deps --user -r /tmp/install.txt
+RUN python3 -m pip install --upgrade pip && \
+    python3 -m pip install --no-warn-script-location --upgrade --force-reinstall --no-deps --user -r /tmp/install.txt
 RUN rm -rf /tmp/* && rm -rf /var/cache/apk/* && rm -rf /root/.cache
 
 WORKDIR /docs
