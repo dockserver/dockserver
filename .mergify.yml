@@ -55,15 +55,16 @@ pull_request_rules:
   - name: message check comment
     conditions:
       - author!=dependabot[bot]
+      - author!=doob187
+      - author!=drag0n141
       - "-closed"
       - "-merged"
     actions:
       comment:
         message: |
           @{{author}}
-          Contribution Message Convention Tests failed with GitMagic.
-          Please check details and [Contributing Guidelines](https://github.com/dockserver/dockserver/blob/master/CONTRIBUTING.md) for more information.
-          If you don't want to correct it yourself, just tell the maintainers. They will do it when merging.
+          Please follow the [Contributing Guidelines](https://github.com/dockserver/dockserver/blob/master/CONTRIBUTING.md).
+          Before we can merg the PR , we will check the PR.
   - name: conflict comment
     conditions:
       - "-closed"
