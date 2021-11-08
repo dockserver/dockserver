@@ -1,5 +1,41 @@
 # CHANGELOG
 
+## [v1.2.37](https://github.com/dockserver/dockserver/releases/tag/v1.2.37) - 2021-11-08 13:39:41
+
+repository changes
+
+### Documentation
+
+- README:
+  - update contributors ([0b38588](https://github.com/dockserver/dockserver/commit/0b38588b2ca7842fcbe6e79d408dc30fa454a202))
+  - update contributors ([e621e04](https://github.com/dockserver/dockserver/commit/e621e0433c4556dc49b2cbeea781899948b12acb))
+  - update contributors ([415174b](https://github.com/dockserver/dockserver/commit/415174b3ac4fa78ba165f4b6be569f1af02bbc6b))
+
+## [v1.2.36](https://github.com/dockserver/dockserver/releases/tag/v1.2.36) - 2021-11-07 04:42:42
+
+- ci(Mergify): configuration update
+   - PR: #274
+- Configure Renovate
+   - PR: #276
+- chore(deps): update actions/checkout action to v2.4.0
+   - PR: #277
+
+## What's Changed
+* ci(Mergify): configuration update by @doob187 in https://github.com/dockserver/dockserver/pull/274
+* Configure Renovate by @renovate in https://github.com/dockserver/dockserver/pull/276
+* chore(deps): update actions/checkout action to v2.4.0 by @renovate in https://github.com/dockserver/dockserver/pull/277
+
+## New Contributors
+* @renovate made their first contribution in https://github.com/dockserver/dockserver/pull/276
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.35...v1.2.36
+
+## [v1.2.35](https://github.com/dockserver/dockserver/releases/tag/v1.2.35) - 2021-11-06 07:16:12
+
+repository changes
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.34...v1.2.35
+
 ## [v1.2.34](https://github.com/dockserver/dockserver/releases/tag/v1.2.34) - 2021-11-05 10:34:31
 
 other changes
@@ -173,13 +209,11 @@ other changes
 - pip (deps): bump mkdocs-awesome-pages-plugin from 2.5.0 to 2.5.1 in /wiki
    - PR: #251
 
+## What's Changed
+* pip (deps): bump mkdocs-awesome-pages-plugin from 2.5.0 to 2.5.1 in /wiki by @dependabot in https://github.com/dockserver/dockserver/pull/251
 
 
-<details>
-<summary>Uncategorized</summary>
-
-
-</details>
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.15...v1.2.16
 
 ## [v1.2.15](https://github.com/dockserver/dockserver/releases/tag/v1.2.15) - 2021-10-13 06:13:16
 
@@ -193,13 +227,12 @@ other changes
 - pip (deps): bump mkdocs from 1.2.2 to 1.2.3 in /wiki
    - PR: #250
 
+## What's Changed
+* fix : sabnzbd api access | lunasea & nzb360 by @FSCorrupt in https://github.com/dockserver/dockserver/pull/249
+* pip (deps): bump mkdocs from 1.2.2 to 1.2.3 in /wiki by @dependabot in https://github.com/dockserver/dockserver/pull/250
 
 
-<details>
-<summary>Uncategorized</summary>
-
-
-</details>
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.14...v1.2.15
 
 ## [v1.2.14](https://github.com/dockserver/dockserver/releases/tag/v1.2.14) - 2021-10-12 03:54:43
 
@@ -426,7 +459,7 @@ other changes
 
 ## [v1.1.11](https://github.com/dockserver/dockserver/releases/tag/v1.1.11) - 2021-08-10 18:03:43
 
-- no changes
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.1.10...v1.1.11
 
 ## [v1.1.10](https://github.com/dockserver/dockserver/releases/tag/v1.1.10) - 2021-08-10 00:45:43
 
@@ -678,34 +711,102 @@ other changes
 
 ## [v1.1.6](https://github.com/dockserver/dockserver/releases/tag/v1.1.6) - 2021-06-13 15:57:10
 
-*No description*
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.1.5...v1.1.6
 
 ## [v1.1.5](https://github.com/dockserver/dockserver/releases/tag/v1.1.5) - 2021-06-12 16:54:42
 
-*No description*
+## What's Changed
+* #patch rtorrent by @doob187 in https://github.com/dockserver/dockserver/pull/51
+
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.1.4...v1.1.5
 
 ## [v1.1.4](https://github.com/dockserver/dockserver/releases/tag/v1.1.4) - 2021-06-12 10:23:47
 
-*No description*
+## What's Changed
+* #patch by @doob187 in https://github.com/dockserver/dockserver/pull/36
+* Update requirements.txt by @doob187 in https://github.com/dockserver/dockserver/pull/37
+* #patch [[ UPDATES ]] Update Dependabot.yml by @doob187 in https://github.com/dockserver/dockserver/pull/38
+* Dev by @doob187 in https://github.com/dockserver/dockserver/pull/39
+* pip-update(deps): bump mkdocs-git-revision-date-localized-plugin from 0.7.3 to 0.9.2 in /wiki by @dependabot in https://github.com/dockserver/dockserver/pull/43
+* pip-update(deps): bump mkdocs-macros-plugin from 0.4.18 to 0.5.5 in /wiki by @dependabot in https://github.com/dockserver/dockserver/pull/44
+* pip-update(deps): bump markdown from 3.2 to 3.3.4 in /wiki by @dependabot in https://github.com/dockserver/dockserver/pull/42
+* pip-update(deps): bump mkdocs from 1.1.2 to 1.2.1 in /wiki by @dependabot in https://github.com/dockserver/dockserver/pull/41
+* pip-update(deps): bump mkdocs-redirects from 1.0.1 to 1.0.3 in /wiki by @dependabot in https://github.com/dockserver/dockserver/pull/40
+* Dev by @doob187 in https://github.com/dockserver/dockserver/pull/49
+* #patch [[ update ]] requirements.txt by @doob187 in https://github.com/dockserver/dockserver/pull/50
+
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.1.3...v1.1.4
 
 ## [v1.1.3](https://github.com/dockserver/dockserver/releases/tag/v1.1.3) - 2021-06-11 20:57:46
 
-*No description*
+## What's Changed
+* Update cli.yml by @doob187 in https://github.com/dockserver/dockserver/pull/34
+* #fix rutorrent  by @doob187 in https://github.com/dockserver/dockserver/pull/35
+
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.1.2...v1.1.3
 
 ## [v1.1.2](https://github.com/dockserver/dockserver/releases/tag/v1.1.2) - 2021-06-09 21:28:14
 
-*No description*
+## What's Changed
+* add notify to worflows #patch by @doob187 in https://github.com/dockserver/dockserver/pull/32
+* #patch [[ workflow runs ]] by @doob187 in https://github.com/dockserver/dockserver/pull/33
+
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.1.1...v1.1.2
 
 ## [v1.1.1](https://github.com/dockserver/dockserver/releases/tag/v1.1.1) - 2021-06-09 18:27:31
 
-*No description*
+## What's Changed
+* docs: add RedDaut as a contributor for code, bug by @allcontributors in https://github.com/dockserver/dockserver/pull/31
+
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.1.0...v1.1.1
 
 ## [v1.1.0](https://github.com/dockserver/dockserver/releases/tag/v1.1.0) - 2021-06-09 17:08:59
 
-*No description*
+## What's Changed
+* Update authelia.md (2FA) by @ramsaytc in https://github.com/dockserver/dockserver/pull/21
+* docs: add ramsaytc as a contributor by @allcontributors in https://github.com/dockserver/dockserver/pull/22
+* Update lxc.md by @townsmcp in https://github.com/dockserver/dockserver/pull/23
+* Update plex.yml by @doob187 in https://github.com/dockserver/dockserver/pull/24
+* [ImgBot] Optimize images by @imgbot in https://github.com/dockserver/dockserver/pull/25
+* [WIP] Add Multiple Features | clean up repo by @doob187 in https://github.com/dockserver/dockserver/pull/18
+* [ImgBot] Optimize images by @imgbot in https://github.com/dockserver/dockserver/pull/28
+* minor fixes by @RedDaut in https://github.com/dockserver/dockserver/pull/29
+* build one step workflow by @doob187 in https://github.com/dockserver/dockserver/pull/30
+
+## New Contributors
+* @ramsaytc made their first contribution in https://github.com/dockserver/dockserver/pull/21
+* @townsmcp made their first contribution in https://github.com/dockserver/dockserver/pull/23
+* @imgbot made their first contribution in https://github.com/dockserver/dockserver/pull/25
+* @RedDaut made their first contribution in https://github.com/dockserver/dockserver/pull/29
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.0.2...v1.1.0
 
 ## [v1.0.0](https://github.com/dockserver/dockserver/releases/tag/v1.0.0) - 2021-06-02 18:03:21
 
-#patch
+## What's Changed
+* Bump actions/stale from 3.0.14 to 3.0.19 by @dependabot in https://github.com/dockserver/dockserver/pull/2
+* rclone token to separate file by @doob187 in https://github.com/dockserver/dockserver/pull/3
+* Update tauticord.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/6
+* docs: add cyb3rgh05t as a contributor by @allcontributors in https://github.com/dockserver/dockserver/pull/7
+* Create tls.yml by @doob187 in https://github.com/dockserver/dockserver/pull/8
+* Add Unmanic by @drag0n141 in https://github.com/dockserver/dockserver/pull/5
+* Update tauticord.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/9
+* Update tauticord.md by @cyb3rgh05t in https://github.com/dockserver/dockserver/pull/10
+* [wip] by @doob187 in https://github.com/dockserver/dockserver/pull/11
+* add yes mode / folder create by @doob187 in https://github.com/dockserver/dockserver/pull/13
+* Update ubuntu.sh by @doob187 in https://github.com/dockserver/dockserver/pull/14
+* add nvidia runtime by @doob187 in https://github.com/dockserver/dockserver/pull/15
+* docs: add SilverSix311 as a contributor by @allcontributors in https://github.com/dockserver/dockserver/pull/16
+* docs: add dan3805 as a contributor by @allcontributors in https://github.com/dockserver/dockserver/pull/17
+* Update dependabot.yml by @doob187 in https://github.com/dockserver/dockserver/pull/20
+* Bump actions/create-release from 1.1.1 to 1.1.4 by @dependabot in https://github.com/dockserver/dockserver/pull/19
+
+
+**Full Changelog**: https://github.com/dockserver/dockserver/commits/v1.0.0
 
 \* *This CHANGELOG was automatically generated by [auto-generate-changelog](https://github.com/BobAnkh/auto-generate-changelog)*
