@@ -21,7 +21,7 @@ jobs:
         TYPE: 'feat:Feature,fix:Bug Fixes,docs:Documentation,refactor:Refactor,perf:Performance Improvements'
 
 
-generate-changelog:
+  generate-changelog-wiki:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
