@@ -41,3 +41,4 @@ updates:
       prefix: "GH updates "
       prefix-development: "Dockfile dev"
       include: "scope"
+
