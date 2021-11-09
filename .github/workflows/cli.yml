@@ -2,14 +2,17 @@
 name: Run CLI
 on:
   push:
-    branches-ignore:
-      - 'dependabot/**'
-      - 'dev'
-      - 'all-contributors/**'
-      - 'mergify/**'
-    tags-ignore:
-      - 'v*.*.*'
+    branches: [master]
   workflow_dispatch:
+
+#    branches-ignore:
+#      - 'dependabot/**'
+#      - 'dev'
+#      - 'all-contributors/**'
+#      - 'mergify/**'
+#    tags-ignore:
+#      - 'v*.*.*'
+#  workflow_dispatch:
 
 jobs:
   GHRC:
