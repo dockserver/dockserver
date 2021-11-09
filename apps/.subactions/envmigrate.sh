@@ -50,7 +50,7 @@ VNC_PW=${VNC_PW:-passwordbasic}
 VNC_RESOLUTION=${VNC_RESOLUTION:-1920x1080}
 
 ## MediaServer
-PLEXIMAGE=${PLEXIMAGE:-ghcr.io/dockserver/docker-plex:master}
+PLEXIMAGE=ghcr.io/dockserver/docker-plex:master
 PLEXTHEME=${PLEXTHEME:-organizr}
 PLEXADDON=${PLEXADDON:-overseerr-side-menu}
 PLEXCUSTOMLOGO=${PLEXCUSTOMLOGO:-https://dockserver.io/img/favicon.png}
