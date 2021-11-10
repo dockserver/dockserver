@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## Unreleased
+
+Changes unreleased.
+
+### Documentation
+
+- README:
+  - update contributors ([5aec1f7](https://github.com/dockserver/dockserver/commit/5aec1f740daf2d082f1614fb7c486d148b25edcb))
+  - update contributors ([21bc3a6](https://github.com/dockserver/dockserver/commit/21bc3a60ed7410aa786e3f1b167c59434eb955c3))
+
+## [v1.2.39](https://github.com/dockserver/dockserver/releases/tag/v1.2.39) - 2021-11-10 17:16:53
+
+- chore(deps): update dependency mkdocs-git-revision-date-localized-plugin to v0.10.2
+   - PR: #282
+
+## What's Changed
+* chore(deps): update dependency mkdocs-git-revision-date-localized-plugin to v0.10.2 by @renovate in https://github.com/dockserver/dockserver/pull/282
+
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.38...v1.2.39
+
 ## [v1.2.38](https://github.com/dockserver/dockserver/releases/tag/v1.2.38) - 2021-11-09 06:22:34
 
 ## 🚇 Added
