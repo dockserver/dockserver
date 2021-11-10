@@ -2,9 +2,6 @@ name: Generate changelog
 on:
   release:
     types: [created, edited]
-  push:
-    branches: 
-      - master
 
 jobs:
   changelog-wiki:
