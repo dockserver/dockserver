@@ -1,8 +1,24 @@
 # CHANGELOG
 
+## [v1.2.38](https://github.com/dockserver/dockserver/releases/tag/v1.2.38) - 2021-11-09 06:22:34
+
+## 🚇 Added
+
+- add : own plex docker image
+   - PR: #281
+
+## What's Changed
+* add : own plex docker image by @doob187 in https://github.com/dockserver/dockserver/pull/281
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.37...v1.2.38
+
+
+
 ## [v1.2.37](https://github.com/dockserver/dockserver/releases/tag/v1.2.37) - 2021-11-08 13:39:41
 
 repository changes
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.36...v1.2.37
 
 ### Documentation
 
