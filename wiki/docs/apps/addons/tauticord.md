@@ -84,7 +84,7 @@ logLevel: WARN
 
 Tautulli:
   Connection:
-    URL: "http://tatulli:8181" # change this if tautulli is not installed from Dockserver.
+    URL: "http://tautulli:8181" # change this if tautulli is not installed from Dockserver.
     APIKey: ""
   Customization:
     TerminateMessage: "Your stream has been terminated. Please contact the admin in the Discord."
