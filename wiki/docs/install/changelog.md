@@ -7,8 +7,24 @@ Changes unreleased.
 ### Documentation
 
 - README:
+  - update contributors ([fc9d0c4](https://github.com/dockserver/dockserver/commit/fc9d0c4e57840fbbf781563c16668865976b1f00))
+  - update contributors ([84c42a8](https://github.com/dockserver/dockserver/commit/84c42a81355f1632fdd09cd498717207dbd23042))
+
+## [v1.2.40](https://github.com/dockserver/dockserver/releases/tag/v1.2.40) - 2021-11-13 10:23:36
+
+- docs(wiki): update tauticord
+   - PR: #283
+
+### Documentation
+
+- README:
+  - update contributors ([f7e3062](https://github.com/dockserver/dockserver/commit/f7e30626a5b3835521d5ce9aad31bf841933a17d))
+  - update contributors ([326b690](https://github.com/dockserver/dockserver/commit/326b6903b6cce0aa1d766757a9bd328f4b38a8e8))
   - update contributors ([5aec1f7](https://github.com/dockserver/dockserver/commit/5aec1f740daf2d082f1614fb7c486d148b25edcb))
   - update contributors ([21bc3a6](https://github.com/dockserver/dockserver/commit/21bc3a60ed7410aa786e3f1b167c59434eb955c3))
+
+- wiki:
+  - update tauticord ([a1dbb71](https://github.com/dockserver/dockserver/commit/a1dbb7141785355878a2bd80ee0a696997a7a9e3)) ([#283](https://github.com/dockserver/dockserver/pull/283))
 
 ## [v1.2.39](https://github.com/dockserver/dockserver/releases/tag/v1.2.39) - 2021-11-10 17:16:53
 
