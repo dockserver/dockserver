@@ -36,11 +36,6 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 }
-version() {
-GUTHUB=dockserver
-REPO=dockserver
-VERSION=$(curl -sX GET https://api.github.com/repos/${GUTHUB}/${REPO}/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')
-}
 updatebin() {
 file=/opt/dockserver/.installer/dockserver
 store=/bin/dockserver
@@ -58,10 +53,10 @@ LOCATION=${LOCATION}
 cd /opt/dockserver/${LOCATION} && $(command -v bash) install.sh
 }
 headinterface() {
-version
+
 printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀 DockServer    - Latest ${VERSION}
+    🚀 DockServer
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     
     [ 1 ] DockServer - Traefik + Authelia
