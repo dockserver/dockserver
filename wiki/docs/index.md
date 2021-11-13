@@ -85,10 +85,6 @@ Dev Code @dockserver
 Co-Dev -APPS- @CONTRIBUTORS-LIST
 ```
 
-<a href="https://bit.ly/3DXQq82">
-   <img src="https://c.tenor.com/YMGm8MrML_kAAAAC/dark-side-awesome.gif" alt="Join">
-</a>
-
 ---
 
 ## Contributors ✨
