@@ -1,8 +1,8 @@
 # CHANGELOG
 
-## Unreleased
+## [v1.2.41](https://github.com/dockserver/dockserver/releases/tag/v1.2.41) - 2021-11-13 17:47:58
 
-Changes unreleased.
+repository changes
 
 ### Documentation
 
