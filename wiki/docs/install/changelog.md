@@ -15,6 +15,12 @@ Changes unreleased.
 - docs(wiki): update tauticord
    - PR: #283
 
+## What's Changed
+* docs(wiki): update tauticord by @fscorrupt in https://github.com/dockserver/dockserver/pull/283
+
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.39...v1.2.40
+
 ### Documentation
 
 - README:
