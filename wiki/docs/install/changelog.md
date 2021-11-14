@@ -4,6 +4,8 @@
 
 repository changes
 
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.40...v1.2.41
+
 ### Documentation
 
 - README:
