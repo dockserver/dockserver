@@ -19,7 +19,7 @@ services:
     cap_add:
       - "SYS_NICE"
     ports:
-      - "3219:3129"
+      - "5800:5800"
     networks:
       - ${DOCKERNETWORK}
     security_opt:
