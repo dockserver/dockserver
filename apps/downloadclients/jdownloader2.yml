@@ -18,9 +18,6 @@ services:
     restart: "${RESTARTAPP}"
     cap_add:
       - "SYS_NICE"
-    ports:
-      - "5800:5800"
-      - "3129:3129"
     networks:
       - ${DOCKERNETWORK}
     security_opt:
