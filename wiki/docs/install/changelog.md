@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## [v1.2.42](https://github.com/dockserver/dockserver/releases/tag/v1.2.42) - 2021-11-17 12:36:27
+
+## 🐛 Fixes
+
+- fix port : jdownloader2
+   - PR: #286
+
+
+
+
+- chore(deps): update dependency pymdown-extensions to v9.1
+   - PR: #284
+
+### Documentation
+
+- README:
+  - update contributors ([a158154](https://github.com/dockserver/dockserver/commit/a1581540cf4dc70fd91f44c94e173b1a9a2b2a60))
+  - update contributors ([7b48221](https://github.com/dockserver/dockserver/commit/7b48221b2f6d65a6c2e1ce7464dacd26fd82d4e3))
+
 ## [v1.2.41](https://github.com/dockserver/dockserver/releases/tag/v1.2.41) - 2021-11-13 17:47:58
 
 repository changes
@@ -91,11 +110,21 @@ repository changes
 
 **Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.35...v1.2.36
 
+### Bug Fixes
+
+- general:
+  - use version  latest  + runner number ([9833aaa](https://github.com/dockserver/dockserver/commit/9833aaa4a24b496a335d874f1f4ec071fc28fe25))
+
 ## [v1.2.35](https://github.com/dockserver/dockserver/releases/tag/v1.2.35) - 2021-11-06 07:16:12
 
 repository changes
 
 **Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.34...v1.2.35
+
+### Bug Fixes
+
+- general:
+  - use version numbers for images  ([82dec0b](https://github.com/dockserver/dockserver/commit/82dec0bd9c968f32993b2d17859ba41a1df5b40b))
 
 ## [v1.2.34](https://github.com/dockserver/dockserver/releases/tag/v1.2.34) - 2021-11-05 10:34:31
 
@@ -123,12 +152,22 @@ other changes
 
 **Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.31...v1.2.32
 
+### Bug Fixes
+
+- general:
+  - remove  portainer ([0818e83](https://github.com/dockserver/dockserver/commit/0818e8359825b07b8843236ac828be9ab65b6119)) ([#270](https://github.com/dockserver/dockserver/pull/270))
+
 ## [v1.2.31](https://github.com/dockserver/dockserver/releases/tag/v1.2.31) - 2021-11-02 07:57:53
 
 ## 🚀 PiP-Update
 
 - pip (deps): bump mkdocs-material from 7.3.5 to 7.3.6 in /wiki
    - PR: #268
+
+### Bug Fixes
+
+- general:
+  - shows correct ending ([efe13c0](https://github.com/dockserver/dockserver/commit/efe13c0208516397b5675f02e4cbafe7efb697ce))
 
 ## [v1.2.30](https://github.com/dockserver/dockserver/releases/tag/v1.2.30) - 2021-11-01 03:45:13
 
@@ -159,6 +198,11 @@ other changes
 
 **Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.27...v1.2.28
 
+### Feature
+
+- general:
+  - feature : Redesign YMLS ([661da57](https://github.com/dockserver/dockserver/commit/661da57bdb697d33d6dd1d8a09f645979f8e44f5)) ([#262](https://github.com/dockserver/dockserver/pull/262))
+
 ## [v1.2.27](https://github.com/dockserver/dockserver/releases/tag/v1.2.27) - 2021-10-29 04:03:47
 
 **Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.26...v1.2.27
@@ -169,6 +213,11 @@ other changes
 other changes
 
 **Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.25...v1.2.26
+
+### Bug Fixes
+
+- general:
+  - nzb/torrent folder  ([fe896e6](https://github.com/dockserver/dockserver/commit/fe896e63e92daed81fed1180aac29cbd3b45e0da))
 
 ## [v1.2.25](https://github.com/dockserver/dockserver/releases/tag/v1.2.25) - 2021-10-26 05:34:11
 
@@ -185,6 +234,16 @@ other changes
 
 
 **Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.24...v1.2.25
+
+### Bug Fixes
+
+- general:
+  - fix details  env / migration of env ([9c61dd3](https://github.com/dockserver/dockserver/commit/9c61dd33cd815b8f793e6e636ef105f8f50fc0e3)) ([#261](https://github.com/dockserver/dockserver/pull/261))
+  - remove migrateenv from appa global  part  ([539d4b9](https://github.com/dockserver/dockserver/commit/539d4b9e1e5a896302dc2a5fd129aa2442dfb846)) ([#261](https://github.com/dockserver/dockserver/pull/261))
+  - add more  to environmental  ([846aa87](https://github.com/dockserver/dockserver/commit/846aa872c5670d6c60aeef4524bba72eb7b2a843)) ([#261](https://github.com/dockserver/dockserver/pull/261))
+  - syntax ([1bc363c](https://github.com/dockserver/dockserver/commit/1bc363c0dcf1f27de9165eab5d75d8c61c3c2c77))
+  - fail-safe traefik not deployed ([43a8d02](https://github.com/dockserver/dockserver/commit/43a8d02cf3310af15767e333f26428eb58849d15))
+  - env file bad syntax pre start ([4941fb0](https://github.com/dockserver/dockserver/commit/4941fb0d5890b5d1c30f6a932b1b5fac0cee19c2)) ([#260](https://github.com/dockserver/dockserver/pull/260))
 
 ## [v1.2.24](https://github.com/dockserver/dockserver/releases/tag/v1.2.24) - 2021-10-25 09:26:59
 
@@ -230,6 +289,11 @@ other changes
 - Delete unused md
    - PR: #257
 
+### Bug Fixes
+
+- general:
+  - remove unused md3 files ([21638f9](https://github.com/dockserver/dockserver/commit/21638f9cd4b61373b38bd373cfe007ab9ee2422a)) ([#257](https://github.com/dockserver/dockserver/pull/257))
+
 ## [v1.2.20](https://github.com/dockserver/dockserver/releases/tag/v1.2.20) - 2021-10-19 10:26:26
 
 ## 🚀 PiP-Update
@@ -245,6 +309,11 @@ other changes
 
 **Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.19...v1.2.20
 
+### Feature
+
+- general:
+  - feature : Add (composer) plex-utills ([1802e28](https://github.com/dockserver/dockserver/commit/1802e28fcf6d26d25e57e3ef43df1be09cdbb412)) ([#252](https://github.com/dockserver/dockserver/pull/252))
+
 ## [v1.2.19](https://github.com/dockserver/dockserver/releases/tag/v1.2.19) - 2021-10-18 08:12:31
 
 other changes
@@ -256,6 +325,11 @@ other changes
 other changes
 
 **Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.17...v1.2.18
+
+### Bug Fixes
+
+- general:
+  - faster backups ([46891f6](https://github.com/dockserver/dockserver/commit/46891f6f5ce9f89d01232e8a62b9d69d70d83640))
 
 ## [v1.2.17](https://github.com/dockserver/dockserver/releases/tag/v1.2.17) - 2021-10-15 07:08:41
 
@@ -276,6 +350,11 @@ other changes
 
 **Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.15...v1.2.16
 
+### Bug Fixes
+
+- general:
+  - fix ghrc.io zu lscr.io ([ed5472f](https://github.com/dockserver/dockserver/commit/ed5472fc5c95d8fcd2cf2ff44b549c5f20cc02ee))
+
 ## [v1.2.15](https://github.com/dockserver/dockserver/releases/tag/v1.2.15) - 2021-10-13 06:13:16
 
 ## 🐛 Fixes
@@ -294,6 +373,12 @@ other changes
 
 
 **Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.14...v1.2.15
+
+### Bug Fixes
+
+- general:
+  - sabnzbd api access | lunasea & nzb360 ([4d99c25](https://github.com/dockserver/dockserver/commit/4d99c25a66baeb4ecc32f075c238295a913f6cd9)) ([#249](https://github.com/dockserver/dockserver/pull/249))
+  - autoscan ([020c504](https://github.com/dockserver/dockserver/commit/020c504f8f48cd73de3399536fd91483c64995b2))
 
 ## [v1.2.14](https://github.com/dockserver/dockserver/releases/tag/v1.2.14) - 2021-10-12 03:54:43
 
@@ -752,6 +837,17 @@ other changes
 
 **Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.1.7...v1.1.8
 
+### Bug Fixes
+
+- general:
+  - fix db_joplin variable ([8f676a9](https://github.com/dockserver/dockserver/commit/8f676a9491abdf51c6395bb3a0fabee834910e3f)) ([#94](https://github.com/dockserver/dockserver/pull/94))
+
+### Documentation
+
+- general:
+  - update .all-contributorsrc [skip ci] ([34f3113](https://github.com/dockserver/dockserver/commit/34f311309b5636527cb5b93386a3f32a4861b4e4)) ([#89](https://github.com/dockserver/dockserver/pull/89))
+  - update README.md [skip ci] ([b792cee](https://github.com/dockserver/dockserver/commit/b792ceeeaa67d5281e73c3841b65f87a1abcf90b)) ([#89](https://github.com/dockserver/dockserver/pull/89))
+
 ## [v1.1.7](https://github.com/dockserver/dockserver/releases/tag/v1.1.7) - 2021-06-23 11:40:42
 
 - no changes
@@ -826,6 +922,12 @@ other changes
 
 **Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.1.0...v1.1.1
 
+### Documentation
+
+- general:
+  - update .all-contributorsrc [skip ci] ([99a580b](https://github.com/dockserver/dockserver/commit/99a580b3cced399dbb2b009c8db584f586dc1045)) ([#31](https://github.com/dockserver/dockserver/pull/31))
+  - update README.md [skip ci] ([9c953d3](https://github.com/dockserver/dockserver/commit/9c953d33274e2524b1bc635766ec155fa298c09b)) ([#31](https://github.com/dockserver/dockserver/pull/31))
+
 ## [v1.1.0](https://github.com/dockserver/dockserver/releases/tag/v1.1.0) - 2021-06-09 17:08:59
 
 ## What's Changed
@@ -846,6 +948,17 @@ other changes
 * @RedDaut made their first contribution in https://github.com/dockserver/dockserver/pull/29
 
 **Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.0.2...v1.1.0
+
+### Bug Fixes
+
+- general:
+  - fix environment variable `TZ` ([72ae6ba](https://github.com/dockserver/dockserver/commit/72ae6ba65326b308b68f64a31e60de29264bacbf)) ([#18](https://github.com/dockserver/dockserver/pull/18))
+
+### Documentation
+
+- general:
+  - update .all-contributorsrc [skip ci] ([fbeee1e](https://github.com/dockserver/dockserver/commit/fbeee1e6558b7329a9d979251d8a1554958a6a3e)) ([#22](https://github.com/dockserver/dockserver/pull/22))
+  - update README.md [skip ci] ([d0103e4](https://github.com/dockserver/dockserver/commit/d0103e4dcd719520ad530bd7977e92549dccb1f1)) ([#22](https://github.com/dockserver/dockserver/pull/22))
 
 ## [v1.0.0](https://github.com/dockserver/dockserver/releases/tag/v1.0.0) - 2021-06-02 18:03:21
 
@@ -869,5 +982,15 @@ other changes
 
 
 **Full Changelog**: https://github.com/dockserver/dockserver/commits/v1.0.0
+
+### Documentation
+
+- general:
+  - update .all-contributorsrc [skip ci] ([8266a74](https://github.com/dockserver/dockserver/commit/8266a74d6213bd56d6902330e13150d1adc7c003)) ([#17](https://github.com/dockserver/dockserver/pull/17))
+  - update README.md [skip ci] ([a64e010](https://github.com/dockserver/dockserver/commit/a64e0102e9530d35183d8b51141d97e9711164cb)) ([#17](https://github.com/dockserver/dockserver/pull/17))
+  - update .all-contributorsrc [skip ci] ([c7418da](https://github.com/dockserver/dockserver/commit/c7418da98fa28ba7ef0c61690284cec7ed44ee5d)) ([#16](https://github.com/dockserver/dockserver/pull/16))
+  - update README.md [skip ci] ([acc7698](https://github.com/dockserver/dockserver/commit/acc7698a1709ad9b4db7dc04c5945727246af890)) ([#16](https://github.com/dockserver/dockserver/pull/16))
+  - update .all-contributorsrc [skip ci] ([e1cae6f](https://github.com/dockserver/dockserver/commit/e1cae6f5e45f5323a43b012fa084eaa331a10b08)) ([#7](https://github.com/dockserver/dockserver/pull/7))
+  - update README.md [skip ci] ([e54c0ef](https://github.com/dockserver/dockserver/commit/e54c0ef766753908e99c2f98f40a82dfaa3a0034)) ([#7](https://github.com/dockserver/dockserver/pull/7))
 
 \* *This CHANGELOG was automatically generated by [auto-generate-changelog](https://github.com/BobAnkh/auto-generate-changelog)*
