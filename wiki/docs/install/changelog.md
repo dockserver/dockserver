@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [v1.2.43](https://github.com/dockserver/dockserver/releases/tag/v1.2.43) - 2021-11-18 22:47:45
+
+## 💻 PiP-Update
+
+- pip (deps): bump markdown from 3.3.4 to 3.3.6 in /wiki
+   - PR: #292
+
 ## [v1.2.42](https://github.com/dockserver/dockserver/releases/tag/v1.2.42) - 2021-11-17 12:36:27
 
 ## 🐛 Fixes
