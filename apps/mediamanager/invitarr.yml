@@ -31,6 +31,6 @@ services:
       - "traefik.http.routers.invitarr-rtr.service=invitarr-svc"
       - "traefik.http.services.invitarr-svc.loadbalancer.server.port=5001"
 networks:
-  ${DOCKERNETWORK}:
+  proxy:
     driver: bridge
     external: true
