@@ -195,6 +195,13 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 </tr>
 <tr>
     <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
+        <a href=https://github.com/ookla-ariel-ride>
+            <img src=https://avatars.githubusercontent.com/u/42082417?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Ookla, Ariel, Ride!/>
+            <br />
+            <sub style="font-size:14px"><b>Ookla, Ariel, Ride!</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
         <a href=https://github.com/ImgBotApp>
             <img src=https://avatars.githubusercontent.com/u/31427850?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Imgbot/>
             <br />
