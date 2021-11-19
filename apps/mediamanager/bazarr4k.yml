@@ -33,7 +33,7 @@ services:
       - "traefik.http.routers.bazarr4k-rtr.service=bazarr-svc"
       - "traefik.http.services.bazarr4k-svc.loadbalancer.server.port=6767"
 networks:
-  ${DOCKERNETWORK}:
+  proxy:
     driver: bridge
     external: true
 volumes:
