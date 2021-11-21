@@ -1,5 +1,42 @@
 # CHANGELOG
 
+## Unreleased
+
+Changes unreleased.
+
+### Documentation
+
+- README:
+  - update contributors ([e2949f1](https://github.com/dockserver/dockserver/commit/e2949f16014f69f1a6f057042135008f78a5f98d))
+
+## [v1.2.44](https://github.com/dockserver/dockserver/releases/tag/v1.2.44) - 2021-11-21 22:53:42
+
+## 💻 GitHub updates
+
+- GH updates (deps): Bump actions/setup-python from 2.2.2 to 2.3.0
+   - PR: #291
+
+## 🎨 DockServer Update
+
+- Update bazarr4k.yml network name
+   - PR: #295
+- Update bazarr.yml network name
+   - PR: #293
+- Update invitarr.yml network name
+   - PR: #294
+
+
+
+
+- chore(deps): update dependency mkdocs-git-revision-date-localized-plugin to v0.10.3
+   - PR: #296
+
+### Documentation
+
+- README:
+  - update contributors ([4d3122d](https://github.com/dockserver/dockserver/commit/4d3122d3bd2b4085e5ff8ce5858e30a441b22a67))
+  - update contributors ([927cc80](https://github.com/dockserver/dockserver/commit/927cc80334d54e51ba6d39cb4fcc59ef5ddd0961))
+
 ## [v1.2.43](https://github.com/dockserver/dockserver/releases/tag/v1.2.43) - 2021-11-18 22:47:45
 
 ## 💻 PiP-Update
