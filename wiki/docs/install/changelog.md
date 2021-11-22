@@ -1,12 +1,14 @@
 # CHANGELOG
 
-## Unreleased
+## [v1.2.45](https://github.com/dockserver/dockserver/releases/tag/v1.2.45) - 2021-11-22 19:15:59
 
-Changes unreleased.
+- chore(deps): update dependency mkdocs-awesome-pages-plugin to v2.6.1
+   - PR: #297
 
 ### Documentation
 
 - README:
+  - update contributors ([a012850](https://github.com/dockserver/dockserver/commit/a012850872b66178fcc46e79d2544e3764c65723))
   - update contributors ([e2949f1](https://github.com/dockserver/dockserver/commit/e2949f16014f69f1a6f057042135008f78a5f98d))
 
 ## [v1.2.44](https://github.com/dockserver/dockserver/releases/tag/v1.2.44) - 2021-11-21 22:53:42
