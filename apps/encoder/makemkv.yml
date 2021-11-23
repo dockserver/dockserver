@@ -1,0 +1,40 @@
+---
+version: "3"
+services:
+  makemkv:
+    hostname: "makemkv"
+    container_name: "makemkv"
+    image: "jlesage/makemkv:latest"
+    restart: "${RESTARTAPP}"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/makemkv:/config:rw"
+      - "unionfs:/mnt:rw"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.makemkv-rtr.entrypoints=https"
+      - "traefik.http.routers.makemkv-rtr.rule=Host(`makemkv.${DOMAIN}`)"
+      - "traefik.http.routers.makemkv-rtr.tls=true"
+      - "traefik.http.routers.makemkv-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.makemkv-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.makemkv-rtr.service=makemkv-svc"
+      - "traefik.http.services.makemkv-svc.loadbalancer.server.port=5800"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt
