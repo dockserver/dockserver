@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## Unreleased
+
+Changes unreleased.
+
+### Documentation
+
+- README:
+  - update contributors ([85d257d](https://github.com/dockserver/dockserver/commit/85d257dde9dfe76a0c07b90ed588e3ec5b0814c6))
+  - update contributors ([4f35156](https://github.com/dockserver/dockserver/commit/4f351564c40aa79388d18ba9b4438da72bedd123))
+
+## [v1.2.46](https://github.com/dockserver/dockserver/releases/tag/v1.2.46) - 2021-11-23 13:47:46
+
+- chore(deps): update actions/cache action to v2.1.7
+   - PR: #298
+
+### Documentation
+
+- README:
+  - update contributors ([f8654ef](https://github.com/dockserver/dockserver/commit/f8654ef6b1575e7b87ddb1d5c4084dc4fe8cd590))
+  - update contributors ([43c3183](https://github.com/dockserver/dockserver/commit/43c3183287d3ecc702fbe95c5762695f5ac27f31))
+
 ## [v1.2.45](https://github.com/dockserver/dockserver/releases/tag/v1.2.45) - 2021-11-22 19:15:59
 
 - chore(deps): update dependency mkdocs-awesome-pages-plugin to v2.6.1
