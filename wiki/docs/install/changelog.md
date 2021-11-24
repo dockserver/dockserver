@@ -1,8 +1,16 @@
 # CHANGELOG
 
-## Unreleased
+## [v1.2.47](https://github.com/dockserver/dockserver/releases/tag/v1.2.47) - 2021-11-24 18:34:59
 
-Changes unreleased.
+- chore(deps): update dependency mkdocs-macros-plugin to v0.6.2
+   - PR: #299
+- chore(deps): update dependency mkdocs-macros-plugin to v0.6.3
+   - PR: #301
+
+### Feature
+
+- general:
+  - ( add ) WebUI back to Uploader ([e851a0c](https://github.com/dockserver/dockserver/commit/e851a0c41bffbcdcc53a4e5824b0eed4d74da49c))
 
 ### Documentation
 
