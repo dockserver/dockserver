@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [v1.2.48](https://github.com/dockserver/dockserver/releases/tag/v1.2.48) - 2021-11-27 07:01:54
+
+repository changes
+
 ## [v1.2.47](https://github.com/dockserver/dockserver/releases/tag/v1.2.47) - 2021-11-24 18:34:59
 
 - chore(deps): update dependency mkdocs-macros-plugin to v0.6.2
