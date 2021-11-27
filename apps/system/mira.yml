@@ -12,8 +12,6 @@ services:
       - 'UMASK=${UMASK}'
     image: 'jams246/mira'
     restart: '${RESTARTAPP}'
-    ports:
-      - '${PORTBLOCK}:44356:44356'
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     networks:
