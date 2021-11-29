@@ -161,8 +161,10 @@ nav:
           - diun: apps/addons/diun.md
           - Dozzle: apps/addons/dozzle.md
           - Heimdall: apps/addons/heimdall.md
+          - Kintana: apps/addons/kitana.md
           - Librespeed: apps/addons/librespeed.md
           - NetData: apps/addons/netdata.md
+          - NotiFiarr: apps/addons/notifiarr.md
           - Remmina: apps/addons/remmina.md
           - Tauticord: apps/addons/tauticord.md
           - Speedtest: apps/addons/speedtest.md
@@ -188,6 +190,7 @@ nav:
           - Youtubedl-Material: apps/downloadclients/youtubedl-material.md
       - Encoder:
           - Tdarr: apps/encoder/tdarr.md
+          - HandBrake: apps/encoder/handbrake.md
       - KASM Workspace:
           - Kasmdesktop: apps/kasmworkspace/kasmdesktop.md
       - MediaManager:
@@ -198,6 +201,7 @@ nav:
           - Invitarr: apps/mediamanager/invitarr.md
           - Lazylibrarian: apps/mediamanager/lazylibrarian.md
           - Lidarr: apps/mediamanager/lidarr.md
+          - Plex-Utills: apps/mediamanager/plex-utills.md
           - Prowlarr: apps/mediamanager/prowlarr.md
           - Radarr: apps/mediamanager/radarr.md
           - Readarr: apps/mediamanager/readarr.md
@@ -255,4 +259,5 @@ nav:
           - DockServerWiki: apps/system/wiki.md
   - Scripts:
       - Scripts: scripts/scripts.md
-#"
+
+#E-O-F#
