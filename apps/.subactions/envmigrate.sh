@@ -50,20 +50,20 @@ VNC_PW=${VNC_PW:-passwordbasic}
 VNC_RESOLUTION=${VNC_RESOLUTION:-1920x1080}
 
 ## MediaServer
-PLEXIMAGE=${PLEXIMAGE:-ghcr.io/dockserver/docker-plex:master}
+PLEXIMAGE=${PLEXIMAGE:-ghcr.io/dockserver/docker-plex:latest}
 PLEXTHEME=${PLEXTHEME:-organizr}
 PLEXADDON=${PLEXADDON:-overseerr-side-menu}
 PLEXCUSTOMLOGO=${PLEXCUSTOMLOGO:-https://dockserver.io/img/favicon.png}
 PLEXVERSION=${PLEXVERSION:-latest}
-EMBYIMAGE=${EMBYIMAGE:-ghcr.io/linuxserver/emby:latest}
+EMBYIMAGE=${EMBYIMAGE:-ghcr.io/dockserver/docker-emby:latest}
 EMBYTHEME=${EMBYTHEME:-organizr}
-JELLYFINIMAGE=${JELLYFINIMAGE:-ghcr.io/linuxserver/jellyfin:latest}
+JELLYFINIMAGE=${JELLYFINIMAGE:-ghcr.io/dockserver/docker-jellyfin:latest}
 JELLYFINTHEME=${JELLYFINTHEME:-organizr}
 
 ## MediaManager
-BAZARRIMAGE=${BAZARRIMAGE:-ghcr.io/linuxserver/bazarr:latest}
+BAZARRIMAGE=${BAZARRIMAGE:-ghcr.io/dockserver/docker-bazarr:latest}
 BAZARRTHEME=${BAZARRTHEME:-organizr}
-BAZARR4KIMAGE=${BAZARR4KIMAGE:-ghcr.io/linuxserver/bazarr}
+BAZARR4KIMAGE=${BAZARR4KIMAGE:-ghcr.io/dockserver/docker-bazarr:latest}
 BAZARR4KTHEME=${BAZARR4KTHEME:-organizr}
 CALIBREIMAGE=${CALIBREIMAGE:-ghcr.io/linuxserver/calibre-web}
 CALIBRETHEME=${CALIBRETHEME:-organizr}
@@ -73,13 +73,13 @@ RADARR4KIMAGE=${RADARR4KIMAGE:-ghcr.io/linuxserver/radarr:nightly}
 RADARR4KTHEME=${RADARR4KTHEME:-organizr}
 RADARRHDRIMAGE=${RADARRHDRIMAGE:-ghcr.io/linuxserver/radarr:nightly}
 RADARRHDRTHEME=${RADARRHDRTHEME:-organizr}
-READARRIMAGE=${READARRIMAGE:-ghcr.io/hotio/readarr:nightly}
+READARRIMAGE=${READARRIMAGE:-ghcr.io/dockserver/docker-readarr:latest}
 READARRTHEME=${READARRTHEME:-organizr}
-PROWLARRIMAGE=${PROWLARRIMAGE:-ghcr.io/linuxserver/prowlarr:develop}
+PROWLARRIMAGE=${PROWLARRIMAGE:-ghcr.io/dockserver/docker-prowlarr:latest>
 PROWLARRTHEME=${PROWLARRTHEME:-organizr}
-PROWLARR4KIMAGE=${PROWLARR4KIMAGE:-ghcr.io/linuxserver/prowlarr:develop}
+PROWLARR4KIMAGE=${PROWLARR4KIMAGE:-ghcr.io/dockserver/docker-prowlarr:latest}
 PROWLARR4KTHEME=${PROWLARR4KTHEME:-organizr}
-PROWLARRHDRIMAGE=${PROWLARRHDRIMAGE:-ghcr.io/linuxserver/prowlarr:develop}
+PROWLARRHDRIMAGE=${PROWLARRHDRIMAGE:-ghcr.io/dockserver/docker-prowlarr:latest}
 PROWLARRHDRTHEME=${PROWLARRHDRTHEME:-organizr}
 SONARRIMAGE=${SONARRIMAGE:-ghcr.io/linuxserver/sonarr:develop}
 SONARRTHEME=${SONARRTHEME:-organizr}
@@ -87,23 +87,23 @@ SONARR4KIMAGE=${SONARR4KIMAGE:-ghcr.io/linuxserver/sonarr:develop}
 SONARR4KTHEME=${SONARR4KTHEME:-organizr}
 SONARRHDRIMAGE=${SONARRHDRIMAGE:-ghcr.io/linuxserver/sonarr:develop}
 SONARRHDRTHEME=${SONARRHDRTHEME:-organizr}
-TAUTULLIIMAGE=${TAUTULLIIMAGE:-ghcr.io/linuxserver/tautulli:latest}
+TAUTULLIIMAGE=${TAUTULLIIMAGE:-ghcr.io/dockserver/docker-tautulli:latest}
 TAUTULLITHEME=${TAUTULLITHEME:-organizr}
-LIDARRIMAGE=${LIDARRIMAGE:-ghcr.io/linuxserver/lidarr:nightly}
+LIDARRIMAGE=${LIDARRIMAGE:-ghcr.io/dockserver/docker-lidarr:latest}
 LIDARRTHEME=${LIDARRTHEME:-organizr}
 LAZYLIBRARIANIMAGE=${LAZYLIBRARIANIMAGE:-ghcr.io/linuxserver/lazylibrarian:latest}
 LAZYLIBRARIANTHEME=${LAZYLIBRARIANTHEME:-organizr}
 
 ## DownloadClients
-DELUGEIMAGE=${DELUGEIMAGE:-ghcr.io/linuxserver/deluge:latest}
+DELUGEIMAGE=${DELUGEIMAGE:-ghcr.io/dockserver/docker-deluge:latest}
 DELUGETHEME=${DELUGETHEME:-organizr}
-JACKETTIMAGE=${JACKETTIMAGE:-ghcr.io/hotio/jackett:latest}
+JACKETTIMAGE=${JACKETTIMAGE:-ghcr.io/dockserver/docker-jackett:latest}
 JACKETTTHEME=${JACKETTTHEME:-organizr}
-NZBGETIMAGE=${NZBGETIMAGE:-ghcr.io/linuxserver/nzbget:latest}
+NZBGETIMAGE=${NZBGETIMAGE:-ghcr.io/dockserver/docker-nzbget:latest}
 NZBGETTHEME=${NZBGETTHEME:-organizr}
-SABNZBDIMAGE=${SABNZBDIMAGE:-ghcr.io/linuxserver/sabnzbd:latest}
+SABNZBDIMAGE=${SABNZBDIMAGE:-ghcr.io/dockserver/docker-sabnzbd:latest}
 SABNZBDTHEME=${SABNZBDTHEME:-organizr}
-QBITORRENTIMAGE=${QBITORRENTIMAGE:-ghcr.io/linuxserver/qbittorrent:latest}
+QBITORRENTIMAGE=${QBITORRENTIMAGE:-ghcr.io/dockserver/docker-qbittorrent:latest}
 QBITORRENTTHEME=${QBITORRENTTHEME:-organizr}
 
 ### APP CUSTOMEVARIABLES
