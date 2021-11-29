@@ -10,7 +10,7 @@ services:
       - "PGID=${ID}"
       - "PUID=${ID}"
       - "TZ=${TZ}"
-    image: "ghcr.io/dockserver/docker-uploader:dockserver"
+    image: "ghcr.io/dockserver/docker-uploader:latest"
     restart: "${RESTARTAPP}"
     networks:
       - ${DOCKERNETWORK}
