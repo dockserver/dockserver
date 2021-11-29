@@ -8,15 +8,12 @@ services:
       - "PGID=${ID}"
       - "PUID=${ID}"
       - "TZ=${TZ}"
-    image: "ghcr.io/dockserver/dockserver"
+    image: "ghcr.io/dockserver/docker-wiki"
     restart: "${RESTARTAPP}"
     networks:
       - ${DOCKERNETWORK}
     security_opt:
       - "apparmor:unconfined"
-    volumes:
-      - "/etc/localtime:/etc/localtime:ro"
-      - "/opt/dockserver/wiki:/docs:rw"
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
