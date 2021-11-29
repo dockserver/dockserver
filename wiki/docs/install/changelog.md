@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [v1.2.49](https://github.com/dockserver/dockserver/releases/tag/v1.2.49) - 2021-11-29 00:58:16
+
+repository changes
+
+### Documentation
+
+- README:
+  - update contributors ([24bff1a](https://github.com/dockserver/dockserver/commit/24bff1abbfa144e81e7211e38f327bb1f0ba7d9d))
+  - update contributors ([e055da1](https://github.com/dockserver/dockserver/commit/e055da119f76a5860a4bf8720e7fe984fd8381c2))
+
 ## [v1.2.48](https://github.com/dockserver/dockserver/releases/tag/v1.2.48) - 2021-11-27 07:01:54
 
 repository changes
