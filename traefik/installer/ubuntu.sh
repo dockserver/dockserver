@@ -95,7 +95,7 @@ domain() {
       if [[ $MODIFIED == "false" ]]; then
          echo "\
 127.0.0.1  *.$DOMAIN
-127.0.0.1  $DOMAIN" >>/etc/hosts
+127.0.0.1  $DOMAIN" | tee -a /etc/hosts > /dev/null
       fi
       if [[ $DOMAIN != "example.com" ]]; then
          if [[ $(uname) == "Darwin" ]]; then
@@ -242,7 +242,7 @@ Compress=yes
 SystemMaxUse=100M
 SystemMaxFileSize=10M
 SystemMaxFiles=10
-MaxLevelStore=crit" >>/etc/systemd/journald.conf
+MaxLevelStore=crit" | tee -a /etc/systemd/journald.conf > /dev/null
    fi
 }
 serverip() {
@@ -294,10 +294,27 @@ envcreate() {
       echo 'ID=1000' >>$basefolder/compose/.env
    fi
 }
+certs() {
+   basefolder="/opt/appdata"
+   source $basefolder/compose/.env
+   folder="$basefolder/traefik/cert"
+   if [[ ! -d $folder ]]; then
+      $(command -b mkdir) -p $folder && \
+      echo "Generating SSL certificate for *.$DOMAIN"  && \
+      $(command -v docker) pull authelia/authelia && \
+      $(command -v docker) run -a stdout -v $folder:/tmp/certs authelia/authelia authelia certificates generate --host *.$DOMAIN --dir /tmp/certs/ > /dev/null
+   else
+      $(command -v rm) $folder && $(command -b mkdir) -p $folder && \
+      echo "Regenerating SSL certificate for *.$DOMAIN"  && \
+      $(command -v docker) pull authelia/authelia && \
+      $(command -v docker) run -a stdout -v $folder:/tmp/certs authelia/authelia authelia certificates generate --host *.$DOMAIN --dir /tmp/certs/ > /dev/null
+   fi
+}
 deploynow() {
    basefolder="/opt/appdata"
    source $basefolder/compose/.env
    compose="compose/docker-compose.yml"
+   certs
    envcreate
    timezone
    cleanup
