@@ -299,15 +299,15 @@ certs() {
    source $basefolder/compose/.env
    folder="$basefolder/traefik/cert"
    if [[ ! -d $folder ]]; then
-      $(command -b mkdir) -p $folder && \
-      echo "Generating SSL certificate for *.$DOMAIN"  && \
-      $(command -v docker) pull authelia/authelia && \
-      $(command -v docker) run -a stdout -v $folder:/tmp/certs authelia/authelia authelia certificates generate --host *.$DOMAIN --dir /tmp/certs/ > /dev/null
+      $(command -v mkdir) -p $folder && \
+         echo "Generating SSL certificate for *.$DOMAIN"  && \
+           $(command -v docker) pull authelia/authelia && \
+           $(command -v docker) run -a stdout -v $folder:/tmp/certs authelia/authelia authelia certificates generate --host *.$DOMAIN --dir /tmp/certs/ > /dev/null
    else
       $(command -v rm) $folder && $(command -b mkdir) -p $folder && \
-      echo "Regenerating SSL certificate for *.$DOMAIN"  && \
-      $(command -v docker) pull authelia/authelia && \
-      $(command -v docker) run -a stdout -v $folder:/tmp/certs authelia/authelia authelia certificates generate --host *.$DOMAIN --dir /tmp/certs/ > /dev/null
+         echo "Regenerating SSL certificate for *.$DOMAIN"  && \
+           $(command -v docker) pull authelia/authelia && \
+           $(command -v docker) run -a stdout -v $folder:/tmp/certs authelia/authelia authelia certificates generate --host *.$DOMAIN --dir /tmp/certs/ > /dev/null
    fi
 }
 deploynow() {
