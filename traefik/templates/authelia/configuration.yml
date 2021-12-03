@@ -56,10 +56,9 @@ access_control:
     - domain: "*.example.com"
       policy: bypass
       resources:
-        - "^/api/.*$"
-        - "^/api?.*$"
-        - "^/identity/.*$"
-        - "^/triggers/.*$"
+        - "^/api([/?].*)?$"
+        - "^/identity.*$"
+        - "^/triggers.*$"
         - "^/rss/*$"
         - "^/xmltv/*$"
         - "^/liverel.*$"
@@ -81,7 +80,7 @@ access_control:
     - domain: "bitwarden.example.com"
       policy: one_factor
       resources:
-        - "^/admin.*$"
+        - "^*/admin.*$"
     ## one factor login
     - domain: "*.example.com"
       policy: one_factor
@@ -94,6 +93,7 @@ access_control:
 session:
   name: authelia_session
   secret: unsecure_session_secret
+  same_site: lax
   expiration: 1h
   inactivity: 10m
   remember_me_duration: 1M
@@ -101,10 +101,11 @@ session:
 
 regulation:
   max_retries: 3
-  find_time: 60m
-  ban_time: 48h
+  find_time: 10m
+  ban_time: 12h
 
 storage:
+  encryption_key: encryption_key_secret
   local:
     path: /config/db.sqlite3
 
