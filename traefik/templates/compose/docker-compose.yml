@@ -60,6 +60,7 @@ services:
         mode: host
     volumes:
       - '${APPFOLDER}/traefik/rules:/rules'
+      - '${APPFOLDER}/traefik/certs:/tmp/certs'
       - '/var/run/docker.sock:/var/run/docker.sock:ro'
       - '${APPFOLDER}/traefik/acme/acme.json:/acme.json'
       - '${APPFOLDER}/traefik/traefik.log:/traefik.log'
