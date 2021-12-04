@@ -11,7 +11,7 @@ services:
       - "UMASK=${UMASK}"
       - "DOCKER_MODS=ghcr.io/gilbn/theme.park:tautulli"
       - "TP_THEME=${TAUTULLIMULTITHEME}"
-    image: "${TAUTULLMULTIIIMAGE}"
+    image: "${TAUTULLMULTIIMAGE}"
     restart: "${RESTARTAPP}"
     networks:
       - ${DOCKERNETWORK}
