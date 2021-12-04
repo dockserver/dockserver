@@ -1,0 +1,39 @@
+---
+version: "3"
+services:
+  tautulli:
+    hostname: "tautulli"
+    container_name: "tautulli"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:tautulli"
+      - "TP_THEME=${TAUTULLIMULTITHEME}"
+    image: "${TAUTULLMULTIIMAGE}"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/tautulli:/config:rw"
+      - "${APPFOLDER}/plex/database/Library/Application Support/Plex Media Server/Logs:/logs"
+      - "${APPFOLDER}/tautulli/scripts:/scripts"
+      - "/etc/localtime:/etc/localtime"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.tautulli-rtr.entrypoints=https"
+      - "traefik.http.routers.tautulli-rtr.rule=Host(`tautulli.${DOMAIN}`)"
+      - "traefik.http.routers.tautulli-rtr.tls=true"
+      - "traefik.http.routers.tautulli-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.tautulli-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.tautulli-rtr.service=tautulli-svc"
+      - "traefik.http.services.tautulli-svc.loadbalancer.server.port=8181"
+networks:
+  proxy:
+    driver: bridge
+    external: true
