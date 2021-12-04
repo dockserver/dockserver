@@ -2,7 +2,7 @@ name: Update README
 
 on:
   schedule:
-    - cron: '* 12 * * *'
+    - cron: '0 */6 * * * '
   workflow_dispatch:
 
 jobs:
@@ -12,9 +12,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: jamesgeorge007/github-activity-readme@v0.3.5
+      - uses: jamesgeorge007/github-activity-readme@master
         env:
           GITHUB_TOKEN: ${{ secrets.CR_PAT }}
         with:
           COMMIT_MSG: '#patch ## Changelog ##'
-          MAX_LINES: 50
+          MAX_LINES: 10
