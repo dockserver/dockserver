@@ -783,16 +783,19 @@ deleteapp() {
      fi
      source $basefolder/compose/.env 
      if [ ${DOMAIN1_ZONE_ID} != "" ] && [ ${DOMAIN} != "" ] && [ ${CLOUDFLARE_EMAIL} != "" ] ; then
-        if [[ (command -v curl) == "" ]] ; then $(command -v apt) install curl -yqq 1>/dev/null 2>&1; fi
+        if [[ $(command -v curl) == "" ]] ; then $(command -v apt) install curl -yqq 1>/dev/null 2>&1; fi
         dnsrecordid=$(curl -s -X GET "https://api.cloudflare.com/client/v4/zones/$DOMAIN1_ZONE_ID/dns_records?name=${typed}.${DOMAIN}" -H "X-Auth-Email: $CLOUDFLARE_EMAIL" -H "X-Auth-Key: $CLOUDFLARE_API_KEY" -H "Content-Type: application/json" \
                     | grep -Po '(?<="id":")[^"]*' | head -1 )
+
         if [[ $dnsrecordid != "" ]] ; then
            result=$(curl -s -X DELETE "https://api.cloudflare.com/client/v4/zones/$DOMAIN1_ZONE_ID/dns_records/$dnsrecordid" -H "X-Auth-Email: $CLOUDFLARE_EMAIL" -H "X-Auth-Key: $CLOUDFLARE_API_KEY" -H "Content-Type: application/json")
+           if [[ $result != "" ]]; then
     printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ${typed} CNAME record removed from Cloudflare 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 "          
+           fi
         fi
     fi
     printf "
