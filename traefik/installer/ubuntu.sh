@@ -304,7 +304,7 @@ certs() {
            $(command -v docker) pull authelia/authelia && \
            $(command -v docker) run -a stdout -v $folder:/tmp/certs authelia/authelia authelia certificates generate --host *.$DOMAIN --dir /tmp/certs/ > /dev/null
    else
-      $(command -v rm -R) $folder && $(command -b mkdir) -p $folder && \
+      $(command -v rm) -R $folder && $(command -b mkdir) -p $folder && \
          echo "Regenerating SSL certificate for *.$DOMAIN"  && \
            $(command -v docker) pull authelia/authelia && \
            $(command -v docker) run -a stdout -v $folder:/tmp/certs authelia/authelia authelia certificates generate --host *.$DOMAIN --dir /tmp/certs/ > /dev/null
