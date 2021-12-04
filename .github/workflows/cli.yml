@@ -50,7 +50,7 @@ jobs:
           IMG_WIDTH: '50'
           FONT_SIZE: '14'
           PATH: '/README.md'
-          COMMIT_MESSAGE: 'docs(README): update contributors'
+          COMMIT_MESSAGE: '#patch docs(README): update contributors'
           AVATAR_SHAPE: 'round'
 
   addwiki:
@@ -71,7 +71,7 @@ jobs:
           IMG_WIDTH: '50'
           FONT_SIZE: '14'
           PATH: '/wiki/docs/index.md'
-          COMMIT_MESSAGE: 'docs(README): update contributors'
+          COMMIT_MESSAGE: '#patch docs(README): update contributors'
           AVATAR_SHAPE: 'round'
 
   deploy:
