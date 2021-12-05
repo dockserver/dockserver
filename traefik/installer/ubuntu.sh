@@ -21,14 +21,6 @@
 # shellcheck disable=SC2046
 #FUNCTIONS
 updatesystem() {
-   if [[ $EUID -ne 0 ]]; then
-      printf "
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔  You must execute as a SUDO user (with sudo) or as ROOT!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-"
-      exit 0
-   fi
    while true; do
       installed=$($(command -v docker) ps -aq --format '{{.Names}}' | grep -x 'traefik')
       if [[ $installed == "" ]]; then overwrite; else useraction; fi
@@ -144,19 +136,10 @@ password() {
    if [[ $PASSWORD != "" ]]; then
       $(command -v docker) pull authelia/authelia -q >/dev/null
       PASSWORD=$($(command -v docker) run authelia/authelia authelia hash-password $PASSWORD -i 2 -k 32 -m 128 -p 8 -l 32 | sed 's/Password hash: //g')
-      JWTTOKEN=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
-      SECTOKEN=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
-      ENCTOKEN=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
       if [[ $(uname) == "Darwin" ]]; then
          sed -i '' "s/<PASSWORD>/$(echo $PASSWORD | sed -e 's/[\/&]/\\&/g')/g" $basefolder/authelia/users_database.yml
-         sed -i '' "s/JWTTOKENID/$(echo $JWTTOKEN | sed -e 's/[\/&]/\\&/g')/g" $basefolder/authelia/configuration.yml
-         sed -i '' "s/unsecure_session_secret/$(echo $SECTOKEN | sed -e 's/[\/&]/\\&/g')/g" $basefolder/authelia/configuration.yml
-         sed -i '' "s/encryption_key_secret/$(echo $ENCTOKEN | sed -e 's/[\/&]/\\&/g')/g" $basefolder/authelia/configuration.yml
       else
          sed -i "s/<PASSWORD>/$(echo $PASSWORD | sed -e 's/[\/&]/\\&/g')/g" $basefolder/authelia/users_database.yml
-         sed -i "s/JWTTOKENID/$(echo $JWTTOKEN | sed -e 's/[\/&]/\\&/g')/g" $basefolder/authelia/configuration.yml
-         sed -i "s/unsecure_session_secret/$(echo $SECTOKEN | sed -e 's/[\/&]/\\&/g')/g" $basefolder/authelia/configuration.yml
-         sed -i "s/encryption_key_secret/$(echo $ENCTOKEN | sed -e 's/[\/&]/\\&/g')/g" $basefolder/authelia/configuration.yml
       fi
    else
       echo "Password cannot be empty"
@@ -241,7 +224,7 @@ Storage=volatile
 Compress=yes
 SystemMaxUse=100M
 SystemMaxFileSize=10M
-SystemMaxFiles=10
+SystemMaxFiles=1
 MaxLevelStore=crit" | tee -a /etc/systemd/journald.conf > /dev/null
    fi
 }
@@ -294,28 +277,41 @@ envcreate() {
       echo 'ID=1000' >>$basefolder/compose/.env
    fi
 }
+secrets() {
+   basefolder="/opt/appdata"
+   JWTTOKEN=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 64 | head -n 1)
+   if [[ $(uname) == "Darwin" ]]; then
+      sed -i '' "s/JWTTOKENID/$(echo $JWTTOKEN | sed -e 's/[\/&]/\\&/g')/g" $basefolder/authelia/configuration.yml
+    else
+      sed -i "s/JWTTOKENID/$(echo $JWTTOKEN | sed -e 's/[\/&]/\\&/g')/g" $basefolder/authelia/configuration.yml
+   fi
+   SECTOKEN=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 64 | head -n 1)
+   if [[ $(uname) == "Darwin" ]]; then
+      sed -i '' "s/unsecure_session_secret/$(echo $SECTOKEN | sed -e 's/[\/&]/\\&/g')/g" $basefolder/authelia/configuration.yml
+   else
+      sed -i "s/unsecure_session_secret/$(echo $SECTOKEN | sed -e 's/[\/&]/\\&/g')/g" $basefolder/authelia/configuration.yml
+   fi
+   ENCTOKEN=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 64 | head -n 1)
+   if [[ $(uname) == "Darwin" ]]; then
+      sed -i '' "s/encryption_key_secret/$(echo $ENCTOKEN | sed -e 's/[\/&]/\\&/g')/g" $basefolder/authelia/configuration.yml
+   else
+      sed -i "s/encryption_key_secret/$(echo $ENCTOKEN | sed -e 's/[\/&]/\\&/g')/g" $basefolder/authelia/configuration.yml
+   fi
+}
 certs() {
    basefolder="/opt/appdata"
    source $basefolder/compose/.env
-   folder="$basefolder/traefik/cert"
-   if [[ ! -d $folder ]]; then
-      $(command -v mkdir) -p $folder && \
-         echo "Generating SSL certificate for *.$DOMAIN"  && \
-           $(command -v docker) pull authelia/authelia && \
-           $(command -v docker) run -a stdout -v $folder:/tmp/certs authelia/authelia authelia certificates generate --host *.$DOMAIN --dir /tmp/certs/ > /dev/null
-   else
-      $(command -v rm) -R $folder && $(command -b mkdir) -p $folder && \
-         echo "Regenerating SSL certificate for *.$DOMAIN"  && \
-           $(command -v docker) pull authelia/authelia && \
-           $(command -v docker) run -a stdout -v $folder:/tmp/certs authelia/authelia authelia certificates generate --host *.$DOMAIN --dir /tmp/certs/ > /dev/null
-   fi
+   echo "Generating SSL certificate for *.$DOMAIN" && \
+      $(command -v docker) pull authelia/authelia && \
+      $(command -v docker) run -a stdout -v $basefolder/traefik/cert:/tmp/certs authelia/authelia authelia certificates generate --host *.${DOMAIN} --dir /tmp/certs/ > /dev/null
 }
 deploynow() {
    basefolder="/opt/appdata"
    source $basefolder/compose/.env
    compose="compose/docker-compose.yml"
-   certs
    envcreate
+   certs
+   secrets
    timezone
    cleanup
    jounanctlpatch
