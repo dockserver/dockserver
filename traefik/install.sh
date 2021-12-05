@@ -7,9 +7,9 @@
 # Idea from poppabear8883 from UNIT3D
 ###########################№####################
 case $(. /etc/os-release && echo "$ID") in
-ubuntu) type="ubuntu" ;;
-debian) type="ubuntu" ;;
-rasbian) type="ubuntu" ;;
+   ubuntu) type="ubuntu" ;;
+   debian) type="ubuntu" ;;
+   rasbian) type="ubuntu" ;;
 *) type='' ;;
 esac
 
