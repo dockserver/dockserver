@@ -1,6 +1,6 @@
-###############################################################
-#                   Authelia configuration                    #
-###############################################################
+########################################
+#  example.com Authelia configuration  #
+########################################
 
 theme: dark
 jwt_secret: JWTTOKENID
@@ -15,6 +15,7 @@ server:
   enable_pprof: false
   enable_expvars: false
   disable_healthcheck: false
+  asset_path: /config/assets/
 
 log:
   level: debug
@@ -112,6 +113,7 @@ storage:
 notifier:
   filesystem:
     filename: /config/notification.txt
-###############################################################
-#                   Authelia configuration                    #
-###############################################################
+
+#######################################
+# example.com Authelia configuration  #
+#######################################
