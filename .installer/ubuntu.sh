@@ -15,14 +15,15 @@
 # shellcheck disable=SC2086
 # shellcheck disable=SC2006
 appstartup() {
-if [[ $EUID -ne 0 ]];then
+user_id=`id -u` 
+   if [[ $$user_id -ne 0 ]]; then
 printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔  You must execute as a SUDO user (with sudo) or as ROOT!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 "
-exit 0
-fi
+   exit 0
+   fi
 while true;do
   $(command -v apt) update -yqq && $(command -v apt) upgrade -yqq
   if [[ ! -x $(command -v docker) ]] && [[ ! -x $(command -v docker-compose) ]];then clear && LOCATION=preinstall && selection;fi
@@ -31,17 +32,17 @@ while true;do
 done
 }
 revertcommand() {
-sudo apt install curl -y
-sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
-sudo chmod +x /usr/local/bin/docker-compose
-sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+$(command -v apt) install curl -y && \
+   $(command -v curl) -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
+   $(command -v chmod) +x /usr/local/bin/docker-compose && \
+   ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 }
 updatebin() {
 file=/opt/dockserver/.installer/dockserver
 store=/bin/dockserver
 store2=/usr/bin/dockserver
 if [[ -f "/bin/dockserver" ]];then
-   $(command -v rm) $store
+   $(command -v rm) $store && \
    $(command -v rsync) $file $store -aqhv
    $(command -v rsync) $file $store2 -aqhv
    $(command -v chown) -R 1000:1000 $store $store2
@@ -50,7 +51,7 @@ fi
 }
 selection() {
 LOCATION=${LOCATION}
-cd /opt/dockserver/${LOCATION} && $(command -v bash) install.sh
+   cd /opt/dockserver/${LOCATION} && $(command -v bash) install.sh
 }
 headinterface() {
 
