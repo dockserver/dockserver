@@ -15,15 +15,6 @@
 # shellcheck disable=SC2086
 # shellcheck disable=SC2006
 appstartup() {
-user_id=`id -u` 
-   if [[ $$user_id -ne 0 ]]; then
-printf "
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔  You must execute as a SUDO user (with sudo) or as ROOT!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-"
-   exit 0
-   fi
 while true;do
   $(command -v apt) update -yqq && $(command -v apt) upgrade -yqq
   if [[ ! -x $(command -v docker) ]] && [[ ! -x $(command -v docker-compose) ]];then clear && LOCATION=preinstall && selection;fi
