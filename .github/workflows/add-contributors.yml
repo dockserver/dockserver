@@ -1,0 +1,27 @@
+name: Add contributors
+on:
+  workflow_dispatch:
+  push:
+    branches:
+     - master
+
+jobs:
+  addcon:
+    name: Add all Contributors to ReadME
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2.4.0
+        with:
+          fetch-depth: '5'
+
+      - uses: BobAnkh/add-contributors@master
+        with:
+          CONTRIBUTOR: '### Contributors'
+          COLUMN_PER_ROW: '4'
+          ACCESS_TOKEN: ${{secrets.CR_PAT}}
+          IMG_WIDTH: '50'
+          FONT_SIZE: '14'
+          PATH: '/README.md'
+          COMMIT_MESSAGE: 'docs(README): update contributors'
+          AVATAR_SHAPE: 'round'
