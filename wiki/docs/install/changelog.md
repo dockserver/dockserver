@@ -1,12 +1,67 @@
 # CHANGELOG
 
+## [v1.2.51](https://github.com/dockserver/dockserver/releases/tag/v1.2.51) - 2021-12-07 15:01:11
+
+## 🐛 Fixes
+
+- fix : overserr  ( latest changes  )
+   - PR: #311
+
+## 💻 PiP-Update
+
+- pip (deps): bump mkdocs-material from 8.0.1 to 8.0.2 in /wiki
+   - PR: #304
+- pip (deps): bump mkdocs-material from 8.0.2 to 8.0.3 in /wiki
+   - PR: #305
+- pip (deps): bump mkdocs-material from 8.0.3 to 8.0.4 in /wiki
+   - PR: #313
+- pip (deps): bump mkdocs-git-revision-date-localized-plugin from 0.10.3 to 0.11 in /wiki
+   - PR: #312
+
+## 💻 GitHub updates
+
+- GH updates (deps): Bump actions/setup-python from 2.3.0 to 2.3.1
+   - PR: #303
+
+## 🎨 DockServer Update
+
+- Update ubuntu.sh
+   - PR: #306
+
+
+
+
+- feat (add) remove CNAME record 
+   - PR: #308
+- fix: Update ubuntu.sh
+   - PR: #307
+- #patch  feat ( add ) multitautulli ( own building docker
+   - PR: #309
+- feat: add authelia assets overwrite option
+   - PR: #310
+
+### Feature
+
+- general:
+  - add authelia assets overwrite option ([29dd7b4](https://github.com/dockserver/dockserver/commit/29dd7b416a91bbdbd1ca5c7fe1ce00ce13812d9e)) ([#310](https://github.com/dockserver/dockserver/pull/310))
+  - feat ( add ) multitautulli ( own building docker ([cda0170](https://github.com/dockserver/dockserver/commit/cda01703b8a14d26c240126a98b7363545d87c78)) ([#309](https://github.com/dockserver/dockserver/pull/309))
+
+### Documentation
+
+- README:
+  - update contributors ([b436e35](https://github.com/dockserver/dockserver/commit/b436e35e3d7e26bc2573ef6456244d5e4802c60d))
+
 ## [v1.2.50](https://github.com/dockserver/dockserver/releases/tag/v1.2.50) - 2021-11-29 15:49:55
 
 repository changes
 
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.49...v1.2.50
+
 ## [v1.2.49](https://github.com/dockserver/dockserver/releases/tag/v1.2.49) - 2021-11-29 00:58:16
 
 repository changes
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.48...v1.2.49
 
 ### Documentation
 
@@ -17,6 +72,8 @@ repository changes
 ## [v1.2.48](https://github.com/dockserver/dockserver/releases/tag/v1.2.48) - 2021-11-27 07:01:54
 
 repository changes
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.47...v1.2.48
 
 ## [v1.2.47](https://github.com/dockserver/dockserver/releases/tag/v1.2.47) - 2021-11-24 18:34:59
 
