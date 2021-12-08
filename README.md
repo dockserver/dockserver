@@ -10,6 +10,7 @@
     <a href="https://github.com/dockserver/dockserver/blob/master/LICENSE">
         <img src="https://img.shields.io/github/license/dockserver/dockserver?label=License&logo=mit" alt="MIT License">
     </a>
+    <noscript><a href="https://liberapay.com/dockserver/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
 </p>
 
 _Docker + Traefik with Authelia and Cloudflare Protection_
@@ -78,6 +79,8 @@ sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/wg
 ## Support
 
 Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
+
+<noscript><a href="https://liberapay.com/dockserver/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
 
 ---
 
