@@ -49,7 +49,7 @@ services:
       - "SECRET_KEY=radnomkey"
       - "SHOPPING_MIN_AUTOSYNC_INTERVAL=5"
       - "TIMEZONE=${TZ}"
-    image: "vabene1111/recipes:latest"
+    image: "vabene1111/recipes"
     restart: "always"
     volumes:
       - "staticfiles:/opt/recipes/staticfiles"
@@ -79,7 +79,7 @@ services:
       - "SECRET_KEY=radnomkey"
       - "SHOPPING_MIN_AUTOSYNC_INTERVAL=5"
       - "TIMEZONE=${TZ}"
-    image: "nginx:mainline-alpine:latest"
+    image: "nginx:mainline-alpine"
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
