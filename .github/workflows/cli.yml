@@ -5,15 +5,6 @@ on:
     branches: [master]
   workflow_dispatch:
 
-#    branches-ignore:
-#      - 'dependabot/**'
-#      - 'dev'
-#      - 'all-contributors/**'
-#      - 'mergify/**'
-#    tags-ignore:
-#      - 'v*.*.*'
-#  workflow_dispatch:
-
 jobs:
   build:
     name: Generate new tag
@@ -25,12 +16,15 @@ jobs:
           fetch-depth: '0'
 
       - name: Bump version and push tag
-        uses: ChloePlanet/github-tag-action@2.0.3
+        uses: anothrNick/github-tag-action@1.36.0
         with:
           body: ${{steps.github_release.outputs.changelog}}
         env:
           GITHUB_TOKEN: ${{ secrets.CR_PAT }}
           WITH_V: true
+          RELEASE_BRANCHES: master
+          DEFAULT_BUMP: fix
+          VERBOSE: true
 
   addcon:
     needs: build
