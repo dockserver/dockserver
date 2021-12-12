@@ -38,23 +38,42 @@ theme:
     - 404.html
   include_search_page: false
   search_index_only: true
+  icon:
+    admonition:
+      note: fontawesome/solid/sticky-note
+      abstract: fontawesome/solid/book
+      info: fontawesome/solid/info-circle
+      tip: fontawesome/solid/bullhorn
+      success: fontawesome/solid/check
+      question: fontawesome/solid/question-circle
+      warning: fontawesome/solid/exclamation-triangle
+      failure: fontawesome/solid/bomb
+      danger: fontawesome/solid/skull
+      bug: fontawesome/solid/robot
+      example: fontawesome/solid/flask
+      quote: fontawesome/solid/quote-left
+
   language: en
   features:
-    # - navigation.instant
-    - navigation.sections
     - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - search.suggest
+    - search.highligh
+    - search.share
+    - navigation.top
+    - toc.integrate
   palette:
-    - media: "(prefers-color-scheme: dark)"
-      primary: indigio
-      accent: blue
-      scheme: default
+    - media: "(prefers-color-scheme: dark)" 
+      scheme: slate
+      primary: black
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
-    - media: "(prefers-color-scheme: light)"
-      primary: indigo
-      accent: blue
-      scheme: slate
+    - media: "(prefers-color-scheme: light)" 
+      scheme: default
+      primary: indigio
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to dark mode
@@ -68,17 +87,21 @@ theme:
 # Plugins
 plugins:
   - search
+  - mermaid2
   - redirects:
       redirect_maps:
         #changelog/insiders.md: insiders/changelog.md
   - minify:
       minify_html: true
 
+extra_javascript:
+  - https://unpkg.com/mermaid/dist/mermaid.min.js
+
 # Customization
 extra:
   analytics:
     provider: google
-    property: G-ZZKM4MPQXL
+    property: 'G-00QEDJW2TS'
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/dockserver/dockserver
