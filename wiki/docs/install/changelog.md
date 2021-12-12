@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [v1.3.1](https://github.com/dockserver/dockserver/releases/tag/v1.3.1) - 2021-12-12 11:24:43
+
+repository changes
+
 ## [v1.3.0](https://github.com/dockserver/dockserver/releases/tag/v1.3.0) - 2021-12-12 10:14:31
 
 repository changes
