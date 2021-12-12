@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [v1.3.5](https://github.com/dockserver/dockserver/releases/tag/v1.3.5) - 2021-12-12 17:11:27
+
+## 🚇 Added
+
+- add : Komga YAML
+   - PR: #318
+
+## [v1.3.4](https://github.com/dockserver/dockserver/releases/tag/v1.3.4) - 2021-12-12 16:06:50
+
+repository changes
+
 ## [v1.3.3](https://github.com/dockserver/dockserver/releases/tag/v1.3.3) - 2021-12-12 15:56:41
 
 repository changes
