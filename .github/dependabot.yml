@@ -28,17 +28,3 @@ updates:
       prefix-development: "pip dev"
       include: "scope"
 
-  - package-ecosystem: "docker"
-    directory: "/wiki/"
-    schedule:
-      interval: "daily"
-    rebase-strategy: "auto"
-    open-pull-requests-limit: 10
-    target-branch: "master"
-    labels:
-      - "dependabot"
-    commit-message:
-      prefix: "GH updates "
-      prefix-development: "Dockfile dev"
-      include: "scope"
-
