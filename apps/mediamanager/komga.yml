@@ -7,13 +7,13 @@ services:
     environment:
       - "PGID=${ID}"
       - "PUID=${ID}"
-      - "TZ=America/New_York"
+      - "TZ=${TZ}"
       - "UMASK=${UMASK}"
-      - "SERVER_PORT=8088"
+      - "SERVER_PORT=${KOMGA_SERVER_PORT}"
       - "KOMGA_DELETE_EMPTY_COLLECTIONS=true"
       - "KOMGA_FILE_HASHING=true"
       - "KOMGA_DELETE_EMPTY_READ_LISTS=true"
-    image: gotson/komga
+    image: ${KOMGAIMAGE}
     restart: "${RESTARTAPP}"
     networks:
       - "${DOCKERNETWORK}"
