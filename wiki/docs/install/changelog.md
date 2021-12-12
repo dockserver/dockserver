@@ -1,11 +1,53 @@
 # CHANGELOG
 
+## [v1.3.0](https://github.com/dockserver/dockserver/releases/tag/v1.3.0) - 2021-12-12 10:14:31
+
+repository changes
+
+## [v1.2.52](https://github.com/dockserver/dockserver/releases/tag/v1.2.52) - 2021-12-12 10:03:21
+
+## 🐛 Fixes
+
+- fix : recipes ( image tags )
+   - PR: #316
+
+## 💻 PiP-Update
+
+- pip (deps): bump mkdocs-material from 8.0.4 to 8.0.5 in /wiki
+   - PR: #314
+- pip (deps): bump mkdocs-material from 8.0.5 to 8.1.0 in /wiki
+   - PR: #317
+
+## 🚇 Added
+
+- add `gluetun`
+   - PR: #315
+
+
+
+## What's Changed
+* pip (deps): bump mkdocs-material from 8.0.4 to 8.0.5 in /wiki by @dependabot in https://github.com/dockserver/dockserver/pull/314
+* add `gluetun` by @aelfa in https://github.com/dockserver/dockserver/pull/315
+* fix : recipes ( image tags ) by @fscorrupt in https://github.com/dockserver/dockserver/pull/316
+* pip (deps): bump mkdocs-material from 8.0.5 to 8.1.0 in /wiki by @dependabot in https://github.com/dockserver/dockserver/pull/317
+
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.51...v1.2.52
+
+### Bug Fixes
+
+- general:
+  - use correct name of file ([2b4b026](https://github.com/dockserver/dockserver/commit/2b4b02676bb7a5175fd96f44941aa7bdc0f8027f))
+  - recipes ( image tags ) (#316) ([c861eb0](https://github.com/dockserver/dockserver/commit/c861eb0390ebcbfc93801f63bf5b055ba698c549)) ([#316](https://github.com/dockserver/dockserver/pull/316))
+
 ## [v1.2.51](https://github.com/dockserver/dockserver/releases/tag/v1.2.51) - 2021-12-07 15:01:11
 
 ## 🐛 Fixes
 
 - fix : overserr  ( latest changes  )
    - PR: #311
+- fix: Update ubuntu.sh
+   - PR: #307
 
 ## 💻 PiP-Update
 
@@ -28,17 +70,33 @@
 - Update ubuntu.sh
    - PR: #306
 
+## Feat
 
-
-
-- feat (add) remove CNAME record 
-   - PR: #308
-- fix: Update ubuntu.sh
-   - PR: #307
-- #patch  feat ( add ) multitautulli ( own building docker
-   - PR: #309
 - feat: add authelia assets overwrite option
    - PR: #310
+- feat (add) remove CNAME record 
+   - PR: #308
+
+## Patch
+
+- #patch  feat ( add ) multitautulli ( own building docker
+   - PR: #309
+
+## What's Changed
+* GH updates (deps): Bump actions/setup-python from 2.3.0 to 2.3.1 by @dependabot in https://github.com/dockserver/dockserver/pull/303
+* pip (deps): bump mkdocs-material from 8.0.1 to 8.0.2 in /wiki by @dependabot in https://github.com/dockserver/dockserver/pull/304
+* pip (deps): bump mkdocs-material from 8.0.2 to 8.0.3 in /wiki by @dependabot in https://github.com/dockserver/dockserver/pull/305
+* Update ubuntu.sh by @doob187 in https://github.com/dockserver/dockserver/pull/306
+* feat (add) remove CNAME record  by @doob187 in https://github.com/dockserver/dockserver/pull/308
+* fix: Update ubuntu.sh by @fscorrupt in https://github.com/dockserver/dockserver/pull/307
+* #patch  feat ( add ) multitautulli ( own building docker by @doob187 in https://github.com/dockserver/dockserver/pull/309
+* feat: add authelia assets overwrite option by @doob187 in https://github.com/dockserver/dockserver/pull/310
+* pip (deps): bump mkdocs-material from 8.0.3 to 8.0.4 in /wiki by @dependabot in https://github.com/dockserver/dockserver/pull/313
+* pip (deps): bump mkdocs-git-revision-date-localized-plugin from 0.10.3 to 0.11 in /wiki by @dependabot in https://github.com/dockserver/dockserver/pull/312
+* fix : overserr  ( latest changes  ) by @fscorrupt in https://github.com/dockserver/dockserver/pull/311
+
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.2.50...v1.2.51
 
 ### Feature
 
