@@ -95,6 +95,7 @@ LIDARRIMAGE=${LIDARRIMAGE:-ghcr.io/dockserver/docker-lidarr:latest}
 LIDARRTHEME=${LIDARRTHEME:-organizr}
 LAZYLIBRARIANIMAGE=${LAZYLIBRARIANIMAGE:-ghcr.io/linuxserver/lazylibrarian:latest}
 LAZYLIBRARIANTHEME=${LAZYLIBRARIANTHEME:-organizr}
+KOMGAIMAGE=${KOMGAIMAGE:-gotson/komga}
 
 ## DownloadClients
 DELUGEIMAGE=${DELUGEIMAGE:-ghcr.io/dockserver/docker-deluge:latest}
@@ -108,7 +109,12 @@ SABNZBDTHEME=${SABNZBDTHEME:-organizr}
 QBITORRENTIMAGE=${QBITORRENTIMAGE:-ghcr.io/dockserver/docker-qbittorrent:latest}
 QBITORRENTTHEME=${QBITORRENTTHEME:-organizr}
 
+
 ### APP CUSTOMEVARIABLES
+
+## Komga
+KOMGA_SERVER_PORT=${KOMGA_SERVER_PORT:-8088}
+
 ## gluetun
 GLUETUN_VPN_SERVICE_PROVIDER=${GLUETUN_VPN_SERVICE_PROVIDER:-VPNSP}
 GLUETUN_VPN_TYPE=${GLUETUN_VPN_TYPE:-openvpn}
