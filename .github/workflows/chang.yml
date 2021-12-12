@@ -9,7 +9,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        fetch-depth: 0
+        fetch-depth: '500'
+    - run: git checkout HEAD^
+        
     - uses: BobAnkh/auto-generate-changelog@master
       with:
         ACCESS_TOKEN: ${{secrets.CR_PAT}}
