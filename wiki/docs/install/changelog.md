@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [v1.3.7](https://github.com/dockserver/dockserver/releases/tag/v1.3.7) - 2021-12-13 22:00:15
+
+## 💻 PiP-Update
+
+- pip (deps): bump mkdocs-material from 8.1.0 to 8.1.1 in /wiki
+   - PR: #319
+
+## [v1.3.6](https://github.com/dockserver/dockserver/releases/tag/v1.3.6) - 2021-12-12 17:22:36
+
+repository changes
+
 ## [v1.3.5](https://github.com/dockserver/dockserver/releases/tag/v1.3.5) - 2021-12-12 17:11:27
 
 ## 🚇 Added
