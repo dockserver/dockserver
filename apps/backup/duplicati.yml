@@ -9,7 +9,7 @@ services:
       - "PUID=${ID}"
       - "TZ=${TZ}"
       - "UMASK=${UMASK}"
-    image: "lscr.io/linuxserver/duplicati"
+    image: "ghcr.io/dockserver/docker-duplicati:latest"
     restart: "${RESTARTAPP}"
     networks:
       - ${DOCKERNETWORK}
@@ -17,7 +17,7 @@ services:
       - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "${APPFOLDER}/duplicati:/config:rw"
-      - "/opt/appdata:/source:rw"
+      - "${APPFOLDER}:${APPFOLDER}:rw"
       - "unionfs:/backups:rw"
     labels:
       - "traefik.enable=true"
