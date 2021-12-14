@@ -7,8 +7,9 @@ services:
     environment:
       - "PGID=${ID}"
       - "PUID=${ID}"
-      - "FOLDER=/opt/dockserver"
-    image: "ghcr.io/dockserver/docker-dockserverupdate:latest"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "ghcr.io/dockserver/docker-dockserver:latest"
     restart: "${RESTARTAPP}"
     networks:
       - ${DOCKERNETWORK}
