@@ -1,3 +1,5 @@
+#!/usr/bin/with-contenv bash
+
   cat > /opt/appdata/traefik/bann.sh << EOF; $(echo)
 #!/usr/bin/with-contenv bash
 # shellcheck shell=bash
