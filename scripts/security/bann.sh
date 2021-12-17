@@ -56,7 +56,9 @@ maxretry = 1
 enabled = true
 port = 80,443
 logpath = /opt/appdata/traefik/traefik.log
+EOF
 
+cat > /etc/fail2ban/filter.d/authelia.conf << EOF; $(echo)
 [authelia]
 enabled = true
 port = http,https,9091
