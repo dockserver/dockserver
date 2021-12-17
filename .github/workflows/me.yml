@@ -16,5 +16,47 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.CR_PAT }}
         with:
-          COMMIT_MSG: '#patch ## Changelog ##'
+          COMMIT_MSG: '## Changelog ##'
           MAX_LINES: 10
+
+  addcon:
+    needs: build
+    name: Add all Contributors to ReadME
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2.4.0
+        with:
+          fetch-depth: '0'
+
+      - uses: BobAnkh/add-contributors@master
+        with:
+          CONTRIBUTOR: '### Contributors'
+          COLUMN_PER_ROW: '4'
+          ACCESS_TOKEN: ${{secrets.CR_PAT}}
+          IMG_WIDTH: '50'
+          FONT_SIZE: '14'
+          PATH: '/README.md'
+          COMMIT_MESSAGE: 'docs(README): update contributors'
+          AVATAR_SHAPE: 'round'
+
+  addwiki:
+    needs: [ build , addcon ]
+    name: Add all Contributors to wiki
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2.4.0
+        with:
+          fetch-depth: '0'
+
+      - uses: BobAnkh/add-contributors@master
+        with:
+          CONTRIBUTOR: '### Contributors'
+          COLUMN_PER_ROW: '4'
+          ACCESS_TOKEN: ${{secrets.CR_PAT}}
+          IMG_WIDTH: '50'
+          FONT_SIZE: '14'
+          PATH: '/wiki/docs/index.md'
+          COMMIT_MESSAGE: 'docs(README): update contributors'
+          AVATAR_SHAPE: 'round'
