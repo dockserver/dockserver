@@ -9,7 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        fetch-depth: '500'
+        fetch-depth: '0'
     - run: git checkout HEAD^
         
     - uses: BobAnkh/auto-generate-changelog@master
