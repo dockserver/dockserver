@@ -1,5 +1,35 @@
 # CHANGELOG
 
+## [v1.3.13](https://github.com/dockserver/dockserver/releases/tag/v1.3.13) - 2021-12-17 04:45:27
+
+## 💻 PiP-Update
+
+- pip (deps): bump mkdocs-material from 8.1.1 to 8.1.2 in /wiki
+   - PR: #321
+
+## [v1.3.12](https://github.com/dockserver/dockserver/releases/tag/v1.3.12) - 2021-12-15 17:18:19
+
+## 💻 PiP-Update
+
+- pip (deps): bump mkdocs-git-revision-date-localized-plugin from 0.11 to 0.11.1 in /wiki
+   - PR: #320
+
+## [v1.3.11](https://github.com/dockserver/dockserver/releases/tag/v1.3.11) - 2021-12-14 07:23:55
+
+repository changes
+
+## [v1.3.10](https://github.com/dockserver/dockserver/releases/tag/v1.3.10) - 2021-12-14 07:22:44
+
+repository changes
+
+## [v1.3.9](https://github.com/dockserver/dockserver/releases/tag/v1.3.9) - 2021-12-14 07:18:49
+
+repository changes
+
+## [v1.3.8](https://github.com/dockserver/dockserver/releases/tag/v1.3.8) - 2021-12-13 22:11:57
+
+repository changes
+
 ## [v1.3.7](https://github.com/dockserver/dockserver/releases/tag/v1.3.7) - 2021-12-13 22:00:15
 
 ## 💻 PiP-Update
@@ -10,6 +40,8 @@
 ## [v1.3.6](https://github.com/dockserver/dockserver/releases/tag/v1.3.6) - 2021-12-12 17:22:36
 
 repository changes
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.5...v1.3.6
 
 ## [v1.3.5](https://github.com/dockserver/dockserver/releases/tag/v1.3.5) - 2021-12-12 17:11:27
 
