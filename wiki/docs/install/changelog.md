@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [v1.3.14](https://github.com/dockserver/dockserver/releases/tag/v1.3.14) - 2021-12-17 04:56:53
+
+repository changes
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.13...v1.3.14
+
 ## [v1.3.13](https://github.com/dockserver/dockserver/releases/tag/v1.3.13) - 2021-12-17 04:45:27
 
 ## 💻 PiP-Update
