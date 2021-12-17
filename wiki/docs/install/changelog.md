@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## [v1.3.18](https://github.com/dockserver/dockserver/releases/tag/v1.3.18) - 2021-12-17 07:25:11
+
+repository changes
+
+## [v1.3.16](https://github.com/dockserver/dockserver/releases/tag/v1.3.16) - 2021-12-17 06:26:21
+
+repository changes
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.15...v1.3.16
+
+## [v1.3.15](https://github.com/dockserver/dockserver/releases/tag/v1.3.15) - 2021-12-17 06:19:19
+
+repository changes
+
 ## [v1.3.14](https://github.com/dockserver/dockserver/releases/tag/v1.3.14) - 2021-12-17 04:56:53
 
 repository changes
