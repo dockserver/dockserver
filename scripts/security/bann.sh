@@ -1,38 +1,7 @@
 #!/usr/bin/with-contenv bash
 
-  cat > /opt/appdata/traefik/bann.sh << EOF; $(echo)
-#!/usr/bin/with-contenv bash
-# shellcheck shell=bash
-#####################################
-# All rights reserved.              #
-# started from Zero                 #
-# Docker owned dockserver           #
-# Docker Maintainer dockserver      #
-#####################################
-#####################################
-# THIS DOCKER IS UNDER LICENSE      #
-# NO CUSTOMIZING IS ALLOWED         #
-# NO REBRANDING IS ALLOWED          #
-# NO CODE MIRRORING IS ALLOWED      #
-#####################################
-
 sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/scripts/security/badips.sh | sudo bash -v
-
-export logfile=/opt/appdata/traefik/traefik.log
-while true;do
-  tail -n 15 "${logfile}" | grep --line-buffered '/_ignition/execute-solution' | sed '/banned/d' | awk '{print $1}'  | while read line; do
-     iptables -A INPUT -s $line -j DROP
-     sed -i "s#$line#banned#g" "${logfile}"
-     sleep 5
-  done
-  tail -n 50 "${logfile}" | grep --line-buffered '/?x=${jndi:' | sed '/banned/d' | awk '{print $1}'  | while read line; do
-     iptables -A INPUT -s $line -j DROP
-     sed -i "s#$line#banned#g" "${logfile}"
-     sleep 5
-  done
- sleep 5
-done
-EOF
+sudo wget 
 
 if [[ ! $(which screen) ]]; then
    $(command -v apt) install screen -yqq && \
