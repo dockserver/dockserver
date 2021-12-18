@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [v1.3.26](https://github.com/dockserver/dockserver/releases/tag/v1.3.26) - 2021-12-18 04:12:55
+
+## 🎨 DockServer Update
+
+- Update bann.sh
+   - PR: #322
+
+## [v1.3.25](https://github.com/dockserver/dockserver/releases/tag/v1.3.25) - 2021-12-17 21:51:16
+
+repository changes
+
 ## [v1.3.24](https://github.com/dockserver/dockserver/releases/tag/v1.3.24) - 2021-12-17 21:39:49
 
 repository changes
