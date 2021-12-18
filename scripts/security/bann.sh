@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv bash
 
 sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/scripts/security/badips.sh | sudo bash -v
-sudo wget 
+sudo wget -O /opt/appdata/traefik/bann.sh https://raw.githubusercontent.com/dockserver/dockserver/master/scripts/security/traefik-bann.sh
 
 if [[ ! $(which screen) ]]; then
    $(command -v apt) install screen -yqq && \
