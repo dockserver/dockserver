@@ -16,7 +16,7 @@
 # NO CODE MIRRORING IS ALLOWED      #
 #####################################
 
-sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/scripts/security/badips.sh | sudo bash
+sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/scripts/security/badips.sh | sudo bash -v
 
 export logfile=/opt/appdata/traefik/traefik.log
 while true;do
