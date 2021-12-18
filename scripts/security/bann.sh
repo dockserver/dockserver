@@ -15,13 +15,6 @@
 # NO REBRANDING IS ALLOWED          #
 # NO CODE MIRRORING IS ALLOWED      #
 #####################################
-apt -qq install iptables ipset
-ipset -q flush ips
-ipset -q create ips hash:net
-for ip in $(curl --compressed https://raw.githubusercontent.com/scriptzteam/IP-BlockList-v4/master/ips.txt 2>/dev/null | grep -v "#" | grep -v -E "\s[1-2]$" | cut -f 1); do ipset add ips $ip; done
-iptables -I INPUT -m set --match-set ips src -j DROP
-
-sleep 5
 
 export logfile=/opt/appdata/traefik/traefik.log
 while true;do
