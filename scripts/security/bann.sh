@@ -16,6 +16,8 @@
 # NO CODE MIRRORING IS ALLOWED      #
 #####################################
 
+sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/scripts/security/badips.sh | sudo bash
+
 export logfile=/opt/appdata/traefik/traefik.log
 while true;do
   tail -n 15 "${logfile}" | grep --line-buffered '/_ignition/execute-solution' | sed '/banned/d' | awk '{print $1}'  | while read line; do
