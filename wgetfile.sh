@@ -17,26 +17,37 @@ updates="update upgrade autoremove autoclean"
 for upp in ${updates}; do
     sudo $(command -v apt) $upp -yqq 1>/dev/null 2>&1 && clear
 done
-##
-sudo $(command -v apt) install lsb-release -yqq 1>/dev/null && clear
-if [[ "$(lsb_release -cs)" == "xenial" ]]; then
-    printf "
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔ Sorry this OS is not supported ⛔
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-"
-    exit
+unset updates
+
+packages=(curl bc tar git jq pv pigz tzdata rsync)
+log "**** install build packages ****" && \
+sudo $(command -v apt) install $packages -yqq 1>/dev/null 2>&1 && clear
+unset install
+
+remove=(/bin/dockserver /usr/bin/dockserver)
+log "**** install build packages ****" && \
+sudo $(command -v rm) -rf $packages 1>/dev/null 2>&1 && clear
+unset remove
+
+if ! docker --version; then
+   curl -fsSL https://get.docker.com -o /tmp/docker.sh && bash /tmp/docker.sh
 fi
-if [[ -f "/bin/dockserver" ]]; then $(command -v rm) -rf /bin/dockserver; fi
-if [[ -f "/usr/bin/dockserver" ]]; then $(command -v rm) -rf /usr/bin/dockserver; fi
-if [[ ! -x $(command -v git) ]]; then sudo $(command -v apt) install git -yqq; fi
+if ! docker-compose; then
+   curl -L --fail https://raw.githubusercontent.com/linuxserver/docker-docker-compose/master/run.sh -o /usr/local/bin/docker-compose
+   ln -sf /usr/local/bin/docker-compose /usr/bin/docker-compose
+   chmod +x /usr/local/bin/docker-compose /usr/bin/docker-compose
+fi
 dockserver=/opt/dockserver
-if [[ -d ${dockserver} ]]; then
-    $(command -v rm) -rf ${dockserver}
-    git clone --quiet https://github.com/dockserver/dockserver.git ${dockserver}
-else
-    git clone --quiet https://github.com/dockserver/dockserver.git ${dockserver}
+if ! -d /opt/dockserver; then
+docker run -d \
+  --name=dockserver \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e TZ=Europe/London \
+  -v /opt/dockserver:/opt/dockserver \
+  ghcr.io/dockserver/docker-dockserver:latest
 fi
+
 file=/opt/dockserver/.installer/dockserver
 store=/bin/dockserver
 if [[ ! -x $(command -v rsync) ]]; then $(command -v apt) install rsync -yqq; fi
