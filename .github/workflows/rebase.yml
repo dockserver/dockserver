@@ -1,10 +1,15 @@
-name: Rebase
+name: Add contributors
+
 on:
-  push:
-    branches: [master]
+  workflow_run:
+    workflows: [" Run CLI , Add contributors"]
+    types:
+      - completed
+
 jobs:
   rebase:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: peter-evans/rebase@v1
         with:
