@@ -38,7 +38,6 @@ if ! docker-compose; then
    chmod +x /usr/local/bin/docker-compose /usr/bin/docker-compose
 fi
 dockserver=/opt/dockserver
-if ! -d /opt/dockserver; then
 docker run -d \
   --name=dockserver \
   -e PUID=1000 \
@@ -46,7 +45,6 @@ docker run -d \
   -e TZ=Europe/London \
   -v /opt/dockserver:/opt/dockserver \
   ghcr.io/dockserver/docker-dockserver:latest
-fi
 
 file=/opt/dockserver/.installer/dockserver
 store=/bin/dockserver
