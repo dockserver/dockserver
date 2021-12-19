@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## [v1.3.33](https://github.com/dockserver/dockserver/releases/tag/v1.3.33) - 2021-12-19 12:09:52
+
+repository changes
+
+### Feature
+
+- general:
+  - feat ( switch ) move away from.git clone ([d92d6c1](https://github.com/dockserver/dockserver/commit/d92d6c1f332747c08dd47f1d42b3d63132986008))
+
+### Bug Fixes
+
+- general:
+  - fix ( add ) log command ([1b7c3d4](https://github.com/dockserver/dockserver/commit/1b7c3d41848a34e455b0153d94045123d0ac843c))
+
+## [v1.3.32](https://github.com/dockserver/dockserver/releases/tag/v1.3.32) - 2021-12-19 02:35:50
+
+repository changes
+
 ## [v1.3.31](https://github.com/dockserver/dockserver/releases/tag/v1.3.31) - 2021-12-19 02:28:00
 
 repository changes
