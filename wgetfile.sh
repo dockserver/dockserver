@@ -38,7 +38,8 @@ if ! docker --version > /dev/null; then
    curl -fsSL https://get.docker.com -o /tmp/docker.sh && bash /tmp/docker.sh
 fi
 if ! docker-compose --version > /dev/null; then
-   curl -L --fail https://raw.githubusercontent.com/linuxserver/docker-docker-compose/master/run.sh -o /usr/local/bin/docker-compose
+   apt install curl -yqq && \
+   curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
    ln -sf /usr/local/bin/docker-compose /usr/bin/docker-compose
    chmod +x /usr/local/bin/docker-compose /usr/bin/docker-compose
 fi
@@ -46,12 +47,18 @@ fi
 if [[ ! -d "/opt/dockserver" ]]; then
    mkdir -p /opt/dockserver
 fi
+
+dockers=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d')
+docker stop $dockers > /dev/null
+docker rm $dockers > /dev/null
+docker system prune -af > /dev/null
+
 docker run -d \
   --name=dockserver \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=Europe/London \
-  -v /opt/dockserver:/opt/dockserver \
+  -v /opt/dockserver:/opt/dockserver:rw \
   ghcr.io/dockserver/docker-dockserver:latest
 
 file=/opt/dockserver/.installer/dockserver
@@ -59,7 +66,7 @@ store=/bin/dockserver
 dockserver=/opt/dockserver
 while true; do
 if [ "$(ls -A $dockserver)" ]; then
-    echo "$dockserver is pulled " && sleep 3 && break
+    sleep 3 && break
 else
     echo "$dockserver is not pulled yet" && sleep 60 && continue
 fi
