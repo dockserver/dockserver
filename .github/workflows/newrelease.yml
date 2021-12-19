@@ -1,0 +1,26 @@
+name: New Release
+
+on:
+  schedule:
+    - cron: '0 */12 * * * '
+  workflow_dispatch:
+
+  build:
+    name: Generate new tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2.4.0
+        with:
+          fetch-depth: '0'
+
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.36.0
+        with:
+          body: ${{steps.github_release.outputs.changelog}}
+        env:
+          GITHUB_TOKEN: ${{ secrets.CR_PAT }}
+          WITH_V: true
+          RELEASE_BRANCHES: master
+          DEFAULT_BUMP: fix
+          VERBOSE: true
