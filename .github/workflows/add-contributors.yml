@@ -1,9 +1,10 @@
 name: Add contributors
+
 on:
-  workflow_dispatch:
-  push:
-    branches:
-     - master
+  workflow_run:
+    workflows: ["Run CLI"]
+    types:
+      - completed
 
 jobs:
   addcon:
@@ -12,8 +13,6 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v2.4.0
-        with:
-          fetch-depth: '0'
 
       - uses: BobAnkh/add-contributors@master
         with:
