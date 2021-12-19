@@ -18,6 +18,24 @@ function log() {
    echo "[INSTALL] DockServer ${1}"
 }
 
+function rmdocker() {
+   dockers=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d')
+   docker stop $dockers > /dev/null
+   docker rm $dockers > /dev/null
+   docker system prune -af > /dev/null
+   unset $dockers
+}
+
+function pulldockserver() {
+docker run -d \
+  --name=dockserver \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e TZ=Europe/London \
+  -v /opt/dockserver:/opt/dockserver:rw \
+  ghcr.io/dockserver/docker-dockserver:latest
+}
+
 updates="update upgrade autoremove autoclean"
 for upp in ${updates}; do
     sudo $(command -v apt) $upp -yqq 1>/dev/null 2>&1 && clear
@@ -48,18 +66,9 @@ if [[ ! -d "/opt/dockserver" ]]; then
    mkdir -p /opt/dockserver
 fi
 
-dockers=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d')
-docker stop $dockers > /dev/null
-docker rm $dockers > /dev/null
-docker system prune -af > /dev/null
-
-docker run -d \
-  --name=dockserver \
-  -e PUID=1000 \
-  -e PGID=1000 \
-  -e TZ=Europe/London \
-  -v /opt/dockserver:/opt/dockserver:rw \
-  ghcr.io/dockserver/docker-dockserver:latest
+rmdocker
+pulldockserver
+rmdocker
 
 file=/opt/dockserver/.installer/dockserver
 store=/bin/dockserver
@@ -68,7 +77,8 @@ while true; do
 if [ "$(ls -A $dockserver)" ]; then
     sleep 3 && break
 else
-    echo "$dockserver is not pulled yet" && sleep 60 && continue
+    echo "$dockserver is not pulled yet" 
+    sleep 5 && continue
 fi
 done
 
@@ -80,7 +90,7 @@ if [[ $EUID != 0 ]]; then
 fi
 if [[ $EUID == 0 ]]; then $(command -v chown) -R 1000:1000 ${dockserver} && $(command -v chown) 1000:1000 /bin/dockserver; fi
 $(command -v chmod) 0775 /bin/dockserver
-##
+
 printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀    DockServer [ EASY MODE ]
