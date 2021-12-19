@@ -13,6 +13,11 @@
 #####################################
 # shellcheck disable=SC2086
 # shellcheck disable=SC2046
+
+function log() {
+   echo "[INSTALL] DockServer ${1}"
+}
+
 updates="update upgrade autoremove autoclean"
 for upp in ${updates}; do
     sudo $(command -v apt) $upp -yqq 1>/dev/null 2>&1 && clear
