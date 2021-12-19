@@ -16,18 +16,18 @@
 # shellcheck disable=SC2006
 appstartup() {
 while true;do
-  $(command -v apt) update -yqq && $(command -v apt) upgrade -yqq
-  if [[ ! -x $(command -v docker) ]] && [[ ! -x $(command -v docker-compose) ]];then clear && LOCATION=preinstall && selection;fi
-  if [[ -x $(command -v docker) ]] && [[ ! -x $(command -v docker-compose) ]];then revertcommand;fi
-  if [[ -x $(command -v docker) ]] && [[ -x $(command -v docker-compose) ]];then clear && headinterface;fi
+     dockertraefik=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -E 'traefik')
+     ntdocker=$(docker network ls | grep -E 'proxy')
+  if [[ $ntdocker == "" && $dockertraefik == "" ]]; then
+     unset ntdocker && unset dockertraefik
+     clear && LOCATION=preinstall && selection
+  else
+     unset ntdocker && unset dockertraefik
+     clear && headinterface
+  fi
 done
 }
-revertcommand() {
-$(command -v apt) install curl -y && \
-   $(command -v curl) -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
-   $(command -v chmod) +x /usr/local/bin/docker-compose && \
-   ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-}
+
 updatebin() {
 file=/opt/dockserver/.installer/dockserver
 store=/bin/dockserver
@@ -40,6 +40,7 @@ if [[ -f "/bin/dockserver" ]];then
    $(command -v chmod) -R 755 $store $store2
 fi
 }
+
 selection() {
 LOCATION=${LOCATION}
    cd /opt/dockserver/${LOCATION} && $(command -v bash) install.sh
