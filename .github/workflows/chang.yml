@@ -1,8 +1,7 @@
 name: Generate changelog
 on:
   release:
-    types: [created, edited]
-
+    types: [ created ]
 jobs:
   changelog-wiki:
     runs-on: ubuntu-latest
