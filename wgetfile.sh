@@ -34,15 +34,18 @@ log "**** install build packages ****" && \
 sudo $(command -v rm) -rf $packages 1>/dev/null 2>&1 && clear
 unset remove
 
-if ! docker --version; then
+if ! docker --version > /dev/null; then
    curl -fsSL https://get.docker.com -o /tmp/docker.sh && bash /tmp/docker.sh
 fi
-if ! docker-compose; then
+if ! docker-compose --version > /dev/null; then
    curl -L --fail https://raw.githubusercontent.com/linuxserver/docker-docker-compose/master/run.sh -o /usr/local/bin/docker-compose
    ln -sf /usr/local/bin/docker-compose /usr/bin/docker-compose
    chmod +x /usr/local/bin/docker-compose /usr/bin/docker-compose
 fi
-dockserver=/opt/dockserver
+
+if [[ ! -d "/opt/dockserver" ]]; then
+   mkdir -p /opt/dockserver
+fi
 docker run -d \
   --name=dockserver \
   -e PUID=1000 \
@@ -53,7 +56,15 @@ docker run -d \
 
 file=/opt/dockserver/.installer/dockserver
 store=/bin/dockserver
-if [[ ! -x $(command -v rsync) ]]; then $(command -v apt) install rsync -yqq; fi
+dockserver=/opt/dockserver
+while true; do
+if [ "$(ls -A $dockserver)" ]; then
+    echo "$dockserver is pulled " && sleep 3 && break
+else
+    echo "$dockserver is not pulled yet" && sleep 60 && continue
+fi
+done
+
 if [[ -f "/bin/dockserver" ]]; then $(command -v rm) $store && $(command -v rsync) $file $store -aqhv; else $(command -v rsync) $file $store -aqhv; fi
 if [[ $EUID != 0 ]]; then
     $(command -v chown) -R $(whoami):$(whoami) ${dockserver}
