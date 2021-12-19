@@ -28,7 +28,7 @@ jobs:
           AVATAR_SHAPE: 'round'
 
   addwiki:
-    needs: build
+    needs: addcon
     name: Add all Contributors to wiki
     runs-on: ubuntu-latest
     steps:
@@ -47,6 +47,4 @@ jobs:
           PATH: '/wiki/docs/index.md'
           COMMIT_MESSAGE: 'docs(README): update contributors'
           AVATAR_SHAPE: 'round'
-
-
 
