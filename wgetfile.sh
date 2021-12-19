@@ -27,6 +27,7 @@ function rmdocker() {
 }
 
 function pulldockserver() {
+docker pull -q ghcr.io/dockserver/docker-dockserver:latest
 docker run -d \
   --name=dockserver \
   -e PUID=1000 \
@@ -66,17 +67,14 @@ if [[ ! -d "/opt/dockserver" ]]; then
    mkdir -p /opt/dockserver
 fi
 
-rmdocker
-pulldockserver
-rmdocker
-
 file=/opt/dockserver/.installer/dockserver
 store=/bin/dockserver
 dockserver=/opt/dockserver
 while true; do
 if [ "$(ls -A $dockserver)" ]; then
-    sleep 3 && break
+   rmdocker && sleep 3 && break
 else
+    pulldockserver
     echo "$dockserver is not pulled yet" 
     sleep 5 && continue
 fi
