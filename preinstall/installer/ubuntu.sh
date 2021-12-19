@@ -21,9 +21,6 @@
 # shellcheck disable=SC2046
 #FUNCTIONS
 updatesystem() {
-   if [[ $EUID -ne 0 ]]; then
-      exit 0
-   fi
    while true; do
       # shellcheck disable=SC2046
       printf "
@@ -36,96 +33,71 @@ updatesystem() {
       oldsinstall && proxydel
       package_list="update upgrade dist-upgrade autoremove autoclean"
       for i in ${package_list}; do
-         echo "running now $i" && $(command -v apt) $i -yqq 1>/dev/null 2>&1
+         echo "running now $i" && apt $i -yqq 1>/dev/null 2>&1
       done
       folder="/mnt"
       for fo in ${folder}; do
-         $(command -v mkdir) -p $fo/{unionfs,downloads,incomplete,torrent,nzb} \
+         mkdir -p $fo/{unionfs,downloads,incomplete,torrent,nzb} \
          $fo/{incomplete,downloads}/{nzb,torrent}/{complete,temp,movies,tv,tv4k,movies4k,movieshdr,tvhdr,remux} \
          $fo/downloads/torrent/{temp,complete}/{movies,tv,tv4k,movies4k,movieshdr,tvhdr,remux} \
          $fo/{torrent,nzb}/watch
-         $(command -v find) $fo -exec $(command -v chmod) a=rx,u+w {} \;
-         $(command -v find) $fo -exec $(command -v chown) -hR 1000:1000 {} \;
+         find $fo -exec $(command -v chmod) a=rx,u+w {} \;
+         find $fo -exec $(command -v chown) -hR 1000:1000 {} \;
       done
       appfolder="/opt/appdata"
       for app in ${appfolder}; do
-         $(command -v mkdir) -p $app/{compose,system}
-         $(command -v find) $app -exec $(command -v chmod) a=rx,u+w {} \;
-         $(command -v find) $app -exec $(command -v chown) -hR 1000:1000 {} \;
+        mkdir -p $app/{compose,system}
+        find $app -exec $(command -v chmod) a=rx,u+w {} \;
+        find $app -exec $(command -v chown) -hR 1000:1000 {} \;
       done
-      config="/etc/sysctl.d/99-sysctl.conf"
-      ipv6=$(cat $config | grep -qE 'ipv6' && echo true || false)
-      if [[ -f $config ]]; then
-         if [ $ipv6 != 'true' ] || [ $ipv6 == 'true' ]; then
-            grep -qE 'net.ipv6.conf.all.disable_ipv6 = 1' $config || \
-            echo 'net.ipv6.conf.all.disable_ipv6 = 1' >>$config
-            grep -qE 'net.ipv6.conf.default.disable_ipv6 = 1' $config || \
-            echo 'net.ipv6.conf.default.disable_ipv6 = 1' >>$config
-            grep -qE 'net.ipv6.conf.lo.disable_ipv6 = 1' $config || \
-            echo 'net.ipv6.conf.lo.disable_ipv6 = 1' >>$config
-            grep -qE 'net.core.default_qdisc=fq' $config || \
-            echo 'net.core.default_qdisc=fq' >>$config
-            grep -qE 'net.ipv4.tcp_congestion_control=bbr' $config || \
-            echo 'net.ipv4.tcp_congestion_control=bbr' >>$config
-            sysctl -p -q
-         fi
+      if test -f /etc/sysctl.d/99-sysctl.conf; then
+         config="/etc/sysctl.d/99-sysctl.conf"
+         ipv6=$(cat $config | grep -qE 'ipv6' && echo true || false)
+           if [ $ipv6 != 'true' ] || [ $ipv6 == 'true' ]; then
+              grep -qE 'net.ipv6.conf.all.disable_ipv6 = 1' $config || \
+              echo 'net.ipv6.conf.all.disable_ipv6 = 1' >>$config
+              grep -qE 'net.ipv6.conf.default.disable_ipv6 = 1' $config || \
+              echo 'net.ipv6.conf.default.disable_ipv6 = 1' >>$config
+              grep -qE 'net.ipv6.conf.lo.disable_ipv6 = 1' $config || \
+              echo 'net.ipv6.conf.lo.disable_ipv6 = 1' >>$config
+              grep -qE 'net.core.default_qdisc=fq' $config || \
+              echo 'net.core.default_qdisc=fq' >>$config
+              grep -qE 'net.ipv4.tcp_congestion_control=bbr' $config || \
+              echo 'net.ipv4.tcp_congestion_control=bbr' >>$config
+              sysctl -p -q
+           fi
       fi
-      if [[ ! -x $(command -v docker) ]]; then
-         if [[ -r /etc/os-release ]]; then lsb_dist="$(. /etc/os-release && echo "$ID")"; fi
-         package_listubuntu="apt-transport-https ca-certificates gnupg-agent"
-         package_listdebian="apt-transport-https ca-certificates gnupg-agent gnupg2"
-         package_basic="software-properties-common language-pack-en-base pciutils lshw nano rsync fuse curl wget tar pigz pv"
-         if [[ $lsb_dist == 'ubuntu' ]] || [[ $lsb_dist == 'rasbian' ]]; then
-            for i in ${package_listubuntu}; do
-               echo "Now installing $i" && $(command -v apt) install $i --reinstall -yqq 1>/dev/null 2>&1 && sleep 1
-            done
-         else
-            for i in ${package_listdebian}; do
-               echo "Now installing $i" && $(command -v apt) install $i --reinstall -yqq 1>/dev/null 2>&1 && sleep 1
-            done
-         fi
+      if [[ -r /etc/os-release ]]; then lsb_dist="$(. /etc/os-release && echo "$ID")"; fi
+         package_basic="software-properties-common language-pack-en-base pciutils lshw nano rsync fuse curl wget tar pigz pv iptables ipset"
          for i in ${package_basic}; do
-            echo "Now installing $i" && $(command -v apt) install $i --reinstall -yqq 1>/dev/null 2>&1 && sleep 1
+            echo "Now installing $i" && command_exists apt install $i --reinstall -yqq 1>/dev/null 2>&1 && sleep 1
          done
+      if ! docker --version > /dev/null; then
+         curl --silent -fsSL https://raw.githubusercontent.com/docker/docker-install/master/install.sh | sudo bash >/dev/null 2>&1
       fi
-      $(command -v curl) --silent -fsSL https://raw.githubusercontent.com/docker/docker-install/master/install.sh | sudo bash >/dev/null 2>&1
-      $(command -v rsync) -aqhv ${source}/daemon.j2 /etc/docker/daemon.json 1>/dev/null 2>&1
-      dockergroup=$(grep -qE docker /etc/group && echo true || echo false)
-      if [[ $dockergroup == "false" ]]; then $(command -v usermod) -aG docker $(whoami); fi
-      dockertest=$($(command -v systemctl) is-active docker | grep -qE 'active' && echo true || echo false)
-      if [[ $dockertest != "false" ]]; then $(command -v systemctl) reload-or-restart docker.service 1>/dev/null 2>&1 && $(command -v systemctl) enable docker.service >/dev/null 2>&1; fi
-      mntcheck=$($(command -v docker) volume ls | grep -qE 'unionfs' && echo true || echo false)
-      if [[ $mntcheck == "false" ]]; then
-         $(command -v curl) --silent -fsSL https://raw.githubusercontent.com/MatchbookLab/local-persist/master/scripts/install.sh | sudo bash 1>/dev/null 2>&1
-         $(command -v docker) volume create -d local-persist -o mountpoint=/mnt --name=unionfs
-      fi
-      networkcheck=$($(command -v docker) network ls | grep -qE 'proxy' && echo true || echo false)
-      if [[ $networkcheck == "false" ]]; then $(command -v docker) network create --driver=bridge proxy 1>/dev/null 2>&1; fi
-      if [[ ! -x $(command -v rsync) ]]; then $(command -v apt) install --reinstall rsync -yqq 1>/dev/null 2>&1; fi
-      if [[ ! -x $(command -v docker-compose) ]]; then
-         if [[ -f /usr/bin/docker-compose ]]; then rm -rf /usr/bin/docker-compose /usr/local/bin/docker-compose; fi
-         curl -L --fail https://raw.githubusercontent.com/linuxserver/docker-docker-compose/master/run.sh -o /usr/bin/docker-compose
+      if ! rsync --version > /dev/null ; then apt install --reinstall rsync -yqq 1>/dev/null 2>&1; fi
+         rsync -aqhv ${source}/daemon.j2 /etc/docker/daemon.json 1>/dev/null 2>&1
+         usermod -aG docker $(whoami)
+         systemctl reload-or-restart docker.service 1>/dev/null 2>&1
+         systemctl enable docker.service >/dev/null 2>&1
+         curl --silent -fsSL https://raw.githubusercontent.com/MatchbookLab/local-persist/master/scripts/install.sh | sudo bash 1>/dev/null 2>&1
+         docker volume create -d local-persist -o mountpoint=/mnt --name=unionfs
+         docker network create --driver=bridge proxy 1>/dev/null 2>&1
+      if ! docker-compose > /dev/null; then
          curl -L --fail https://raw.githubusercontent.com/linuxserver/docker-docker-compose/master/run.sh -o /usr/local/bin/docker-compose
-         $(command -v chmod) +x /usr/local/bin/docker-compose
-         $(command -v chmod) a=rx,u+w /usr/local/bin/docker-compose >/dev/null 2>&1
-         $(command -v chmod) a=rx,u+w /usr/bin/docker-compose >/dev/null 2>&1
+         ln -sf /usr/local/bin/docker-compose /usr/bin/docker-compose
+         chmod +x /usr/local/bin/docker-compose /usr/bin/docker-compose
       fi
-      dailyapt=$($(command -v systemctl) is-active apt-daily | grep -qE 'active' && echo true || echo false)
-      dailyupg=$($(command -v systemctl) is-active apt-daily-upgrade | grep -qE 'active' && echo true || echo false)
-      if [[ $dailyapt == "true" || $dailyupg == "true" ]]; then
-         disable="apt-daily.service apt-daily.timer apt-daily-upgrade.timer apt-daily-upgrade.service"
+      disable="apt-daily.service apt-daily.timer apt-daily-upgrade.timer apt-daily-upgrade.service"
          for i in ${disable}; do
             systemctl disable $i >/dev/null 2>&1
-         done
-      fi
-      if [[ -x $(command -v lshw) ]]; then
-         gpu="ntel NVIDIA"
-         for i in ${gpu}; do
+      done
+      gpu="ntel NVIDIA"
+      for i in ${gpu}; do
             TDV=$(lspci | grep -i --color 'vga\|display\|3d\|2d' | grep -E $i 1>/dev/null 2>&1 && echo true || echo false)
             if [[ $TDV == "true" ]]; then $(command -v bash) ${source}/gpu.sh; fi
-         done
-      fi
-      if [[ ! -x $(command -v ansible) ]]; then
+      done
+      if ! ansible --version > /dev/null; then
          if [[ -r /etc/os-release ]]; then lsb_dist="$(. /etc/os-release && echo "$ID")"; fi
          package_list="ansible dialog python3-lxml"
          package_listdebian="apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367"
@@ -141,24 +113,34 @@ updatesystem() {
       loc="local"
       if [[ ! -d $invet ]]; then $(command -v mkdir) -p $invet 1>/dev/null 2>&1; fi
       if [[ ! -f $invet/$loc ]]; then
-         echo "\
+cat > $invet/$loc << EOF; $(echo)
 [local]
-127.0.0.1 ansible_connection=local" >$invet/$loc
+127.0.0.1 ansible_connection=local
+EOF
       fi
       grep -qE "inventory      = /etc/ansible/inventories/local" $conf || \
       echo "inventory      = /etc/ansible/inventories/local" >>$conf
       if [[ "$(systemd-detect-virt)" == "lxc" ]]; then $(command -v bash) /opt/dockserver/preinstall/installer/subinstall/lxc.sh; fi
-      if [[ ! -x $(command -v fail2ban-client) ]]; then $(command -v apt) install fail2ban -yqq 1>/dev/null 2>&1; fi
+      if ! fail2ban-client --version > /dev/null ; then $(command -v apt) install fail2ban -yqq 1>/dev/null 2>&1; fi
       while true; do
          f2ban=$($(command -v systemctl) is-active fail2ban | grep -qE 'active' && echo true || echo false)
          if [[ $f2ban != 'true' ]]; then echo "Waiting for fail2ban to start" && sleep 1 && continue; else break; fi
       done
       ORGFILE="/etc/fail2ban/jail.conf"
       LOCALMOD="/etc/fail2ban/jail.local"
-      if [[ ! -f $LOCALMOD ]]; then $(command -v rsync) -aqhv $ORGFILE $LOCALMOD; fi
-      MOD=$(cat $LOCALMOD | grep -qE '\[authelia\]' && echo true || echo false)
-      if [[ $MOD == "false" ]]; then
-         echo "\
+cat > /etc/fail2ban/filter.d/log4j-jndi.conf << EOF; $(echo)
+# jay@gooby.org
+# https://jay.gooby.org/2021/12/13/a-fail2ban-filter-for-the-log4j-cve-2021-44228
+# https://gist.github.com/jaygooby/3502143639e09bb694e9c0f3c6203949
+# Thanks to https://gist.github.com/kocour for a better regex
+[log4j-jndi]
+maxretry = 1
+enabled = true
+port = 80,443
+logpath = /opt/appdata/traefik/traefik.log
+EOF
+
+cat > /etc/fail2ban/filter.d/authelia.conf << EOF; $(echo)
 [authelia]
 enabled = true
 port = http,https,9091
@@ -167,18 +149,31 @@ logpath = /opt/appdata/authelia/authelia.log
 maxretry = 2
 bantime = 90d
 findtime = 7d
-chain = DOCKER-USER" >>/etc/fail2ban/jail.local
-         sed -i "s#/var/log/traefik/access.log#/opt/appdata/traefik/traefik.log#g" /etc/fail2ban/jail.local
+chain = DOCKER-USER
+EOF
+grep -qE '#log4j
+[Definition]
+failregex   = (?i)^<HOST> .* ".*\$.*(7B|\{).*(lower:)?.*j.*n.*d.*i.*:.*".*?$' /etc/fail2ban/jail.local || \
+ echo '#log4j
+[Definition]
+failregex   = (?i)^<HOST> .* ".*\$.*(7B|\{).*(lower:)?.*j.*n.*d.*i.*:.*".*?$' > /etc/fail2ban/jail.local
          sed -i "s#rotate 4#rotate 1#g" /etc/logrotate.conf
          sed -i "s#weekly#daily#g" /etc/logrotate.conf
-      fi
+
       f2ban=$($(command -v systemctl) is-active fail2ban | grep -qE 'active' && echo true || echo false)
       if [[ $f2ban != "false" ]]; then
          $(command -v systemctl) reload-or-restart fail2ban.service 1>/dev/null 2>&1
          $(command -v systemctl) enable fail2ban.service 1>/dev/null 2>&1
       fi
+
+      #bad ips mod
+      ipset -q flush ips
+      ipset -q create ips hash:net
+      for ip in $(curl --compressed https://raw.githubusercontent.com/scriptzteam/IP-BlockList-v4/master/ips.txt 2>/dev/null | grep -v "#" | grep -v -E "\s[1-2]$" | cut -f 1); do ipset add ips $ip; done
+      iptables -I INPUT -m set --match-set ips src -j DROP
       update-locale LANG=LANG=LC_ALL=en_US.UTF-8 LANGUAGE 1>/dev/null 2>&1
       localectl set-locale LANG=LC_ALL=en_US.UTF-8 1>/dev/null 2>&1
+
       ## raiselimits
       sed -i '/hard nofile/ d' /etc/security/limits.conf
       sed -i '/soft nofile/ d' /etc/security/limits.conf
@@ -220,4 +215,4 @@ sorry, you need a freshly installed server. We can not install on top of $i\033[
 }
 # FUNCTIONS END ##############################################################
 updatesystem
-#"
+#E-O-F#
