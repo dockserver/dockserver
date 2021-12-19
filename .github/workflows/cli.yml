@@ -2,7 +2,15 @@
 name: Run CLI
 on:
   push:
-    branches: [master]
+    branches:
+      - master
+    paths:
+      - '.installer/**'
+      - 'apps/**'
+      - 'preinstall/**'
+      - 'traefik/**'
+      - 'scripts/**'
+      - 'wiki/**'
   workflow_dispatch:
 
 jobs:
