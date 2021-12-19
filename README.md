@@ -20,14 +20,24 @@ _Docker + Traefik with Authelia and Cloudflare Protection_
 
 ## Minimum Specs and Requirements
 
-- Ubuntu 18/20 or Debian 9/10
-- 2 Cores
+- Stable: Ubuntu 18/20.04/20.10 or Debian 9/10
+- unstable: Ubuntu 21.10 or Debian 11
+
+- CPU 2 Cores or 2 VCores
 - 4GB Ram
 - 20GB Disk Space
 
 - A VPS/VM or Dedicated Server
-- Domain
+- your Domain or buy a new [namecheap](https://www.namecheap.com/)
 - [Cloudflare](https://dash.cloudflare.com/sign-up) account free tier
+
+---
+
+## For Testing
+
+- [Hetzner Cloud](https://www.hetzner.com/de/cloud)
+- [Digital Ocean](https://www.digitalocean.com/)
+- [Vault](https://www.vultr.com/)
 
 ---
 
