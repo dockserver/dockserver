@@ -1,3 +1,4 @@
+
 # **DockServer**
 
 <p align="left">
@@ -20,14 +21,24 @@ _Docker + Traefik with Authelia and Cloudflare Protection_
 
 ## Minimum Specs and Requirements
 
-- Ubuntu 18/20 or Debian 9/10
-- 2 Cores
+- Stable: Ubuntu 18/20.04/20.10 or Debian 9/10
+- unstable: Ubuntu 21.10 or Debian 11
+
+- CPU 2 Cores or 2 VCores
 - 4GB Ram
 - 20GB Disk Space
 
 - A VPS/VM or Dedicated Server
-- Domain
+- your Domain or buy a new [namecheap](https://www.namecheap.com/)
 - [Cloudflare](https://dash.cloudflare.com/sign-up) account free tier
+
+---
+
+## For Testing
+
+- [Hetzner Cloud](https://www.hetzner.com/de/cloud)
+- [Digital Ocean](https://www.digitalocean.com/)
+- [Vault](https://www.vultr.com/)
 
 ---
 
@@ -68,13 +79,13 @@ sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/wg
 
 </details>
 
+---
+
 ## Support
 
 Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
 
-- Join our <a href="https://discord.gg/FYSvu83caM">
-  <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
-  </a> for Support
+<noscript><a href="https://liberapay.com/dockserver/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
 
 ---
 
@@ -91,7 +102,7 @@ Co-Dev -APPS- @CONTRIBUTORS-LIST
 
 ## Contributors ✨
 
-Thanks goes to these wonderful people
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -221,9 +232,9 @@ Thanks goes to these wonderful people
     </td>
 </tr>
 </table>
-
-
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+
+
