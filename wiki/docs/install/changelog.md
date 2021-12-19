@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [v1.3.30](https://github.com/dockserver/dockserver/releases/tag/v1.3.30) - 2021-12-19 02:16:44
+
+repository changes
+
 ## [v1.3.29](https://github.com/dockserver/dockserver/releases/tag/v1.3.29) - 2021-12-19 02:08:45
 
 ## 🎨 DockServer Update
