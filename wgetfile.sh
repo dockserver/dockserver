@@ -46,7 +46,7 @@ unset updates
 packages=(curl bc tar git jq pv pigz tzdata rsync)
 log "**** install build packages ****" && \
 sudo $(command -v apt) install $packages -yqq 1>/dev/null 2>&1 && clear
-unset install
+unset packages
 
 remove=(/bin/dockserver /usr/bin/dockserver)
 log "**** install build packages ****" && \
