@@ -1,8 +1,14 @@
 # CHANGELOG
 
+## [v1.3.34](https://github.com/dockserver/dockserver/releases/tag/v1.3.34) - 2021-12-20 08:02:00
+
+repository changes
+
 ## [v1.3.33](https://github.com/dockserver/dockserver/releases/tag/v1.3.33) - 2021-12-19 12:09:52
 
 repository changes
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.32...v1.3.33
 
 ### Feature
 
@@ -18,13 +24,19 @@ repository changes
 
 repository changes
 
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.31...v1.3.32
+
 ## [v1.3.31](https://github.com/dockserver/dockserver/releases/tag/v1.3.31) - 2021-12-19 02:28:00
 
 repository changes
 
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.30...v1.3.31
+
 ## [v1.3.30](https://github.com/dockserver/dockserver/releases/tag/v1.3.30) - 2021-12-19 02:16:44
 
 repository changes
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.29...v1.3.30
 
 ## [v1.3.29](https://github.com/dockserver/dockserver/releases/tag/v1.3.29) - 2021-12-19 02:08:45
 
@@ -33,13 +45,23 @@ repository changes
 - Update bann.sh
    - PR: #323
 
+## What's Changed
+* Update bann.sh by @doob187 in https://github.com/dockserver/dockserver/pull/323
+
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.28...v1.3.29
+
 ## [v1.3.28](https://github.com/dockserver/dockserver/releases/tag/v1.3.28) - 2021-12-18 04:24:28
 
 repository changes
 
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.27...v1.3.28
+
 ## [v1.3.27](https://github.com/dockserver/dockserver/releases/tag/v1.3.27) - 2021-12-18 04:24:10
 
 repository changes
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.26...v1.3.27
 
 ## [v1.3.26](https://github.com/dockserver/dockserver/releases/tag/v1.3.26) - 2021-12-18 04:12:55
 
@@ -48,37 +70,59 @@ repository changes
 - Update bann.sh
    - PR: #322
 
+## What's Changed
+* Update bann.sh by @doob187 in https://github.com/dockserver/dockserver/pull/322
+
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.25...v1.3.26
+
 ## [v1.3.25](https://github.com/dockserver/dockserver/releases/tag/v1.3.25) - 2021-12-17 21:51:16
 
 repository changes
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.24...v1.3.25
 
 ## [v1.3.24](https://github.com/dockserver/dockserver/releases/tag/v1.3.24) - 2021-12-17 21:39:49
 
 repository changes
 
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.23...v1.3.24
+
 ## [v1.3.23](https://github.com/dockserver/dockserver/releases/tag/v1.3.23) - 2021-12-17 21:23:17
 
 repository changes
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.22...v1.3.23
 
 ## [v1.3.22](https://github.com/dockserver/dockserver/releases/tag/v1.3.22) - 2021-12-17 21:22:28
 
 repository changes
 
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.21...v1.3.22
+
 ## [v1.3.21](https://github.com/dockserver/dockserver/releases/tag/v1.3.21) - 2021-12-17 21:19:31
 
 repository changes
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.20...v1.3.21
 
 ## [v1.3.20](https://github.com/dockserver/dockserver/releases/tag/v1.3.20) - 2021-12-17 21:13:56
 
 repository changes
 
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.19...v1.3.20
+
 ## [v1.3.19](https://github.com/dockserver/dockserver/releases/tag/v1.3.19) - 2021-12-17 07:36:37
 
 repository changes
 
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.18...v1.3.19
+
 ## [v1.3.18](https://github.com/dockserver/dockserver/releases/tag/v1.3.18) - 2021-12-17 07:25:11
 
 repository changes
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.17...v1.3.18
 
 ## [v1.3.16](https://github.com/dockserver/dockserver/releases/tag/v1.3.16) - 2021-12-17 06:26:21
 
@@ -89,6 +133,8 @@ repository changes
 ## [v1.3.15](https://github.com/dockserver/dockserver/releases/tag/v1.3.15) - 2021-12-17 06:19:19
 
 repository changes
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.14...v1.3.15
 
 ## [v1.3.14](https://github.com/dockserver/dockserver/releases/tag/v1.3.14) - 2021-12-17 04:56:53
 
@@ -102,6 +148,12 @@ repository changes
 
 - pip (deps): bump mkdocs-material from 8.1.1 to 8.1.2 in /wiki
    - PR: #321
+
+## What's Changed
+* pip (deps): bump mkdocs-material from 8.1.1 to 8.1.2 in /wiki by @dependabot in https://github.com/dockserver/dockserver/pull/321
+
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.12...v1.3.13
 
 ## [v1.3.12](https://github.com/dockserver/dockserver/releases/tag/v1.3.12) - 2021-12-15 17:18:19
 
