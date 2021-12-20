@@ -69,7 +69,7 @@ if [[ ! -d "/opt/dockserver" ]]; then
 fi
 
 file=/opt/dockserver/.installer/dockserver
-store=/bin/dockserver
+store=/usr/bin/dockserver
 dockserver=/opt/dockserver
 
 while true; do
@@ -77,31 +77,35 @@ if [ "$(ls -A $dockserver)" ]; then
    rmdocker && sleep 3 && break
 else
    pulldockserver
-   echo "$dockserver is not pulled yet" 
+   echo "dockserver is not pulled yet" 
    sleep 5 && continue
 fi
 done
 
-if [[ -f "/bin/dockserver" ]]; then $(command -v rm) $store && $(command -v rsync) $file $store -aqhv; else $(command -v rsync) $file $store -aqhv; fi
+if [[ -f $store ]]; then
+   $(command -v rm) $store
+fi
 if [[ $EUID != 0 ]]; then
     $(command -v chown) -R $(whoami):$(whoami) ${dockserver}
     $(command -v usermod) -aG sudo $(whoami)
-    $(command -v chown) $(whoami):$(whoami) /bin/dockserver
+    $(command -v chown) $(whoami):$(whoami) $store $file
+    ln -sf $file $store && chmod +x $store $file
+else 
+    $(command -v chown) -R 1000:1000 ${dockserver}
+    $(command -v chown) -R 1000:1000 $store $file
+    ln -sf $file $store && chmod +x $store $file
 fi
-if [[ $EUID == 0 ]]; then $(command -v chown) -R 1000:1000 ${dockserver} && $(command -v chown) 1000:1000 /bin/dockserver; fi
-$(command -v chmod) 0775 /bin/dockserver
 
 printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀    DockServer [ EASY MODE ]
+    🚀    DockServer
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-     to install dockserver
+     install dockserver
      [ sudo ] dockserver -i
 
-     You want to see all Commands
-     [ sudo ] dockserver -h
-     [ sudo ] dockserver --help
+     all commands
+     [ sudo ] dockserver -h / --help
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 " 
