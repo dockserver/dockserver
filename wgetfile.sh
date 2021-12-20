@@ -27,14 +27,14 @@ function rmdocker() {
 }
 
 function pulldockserver() {
-docker pull -q ghcr.io/dockserver/docker-dockserver:latest
+docker pull -q docker.dockserver.io/dockserver/docker-dockserver
 docker run -d \
   --name=dockserver \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=Europe/London \
   -v /opt/dockserver:/opt/dockserver:rw \
-  ghcr.io/dockserver/docker-dockserver:latest
+  docker.dockserver.io/dockserver/docker-dockserver
 }
 
 updates="update upgrade autoremove autoclean"
@@ -53,11 +53,12 @@ log "**** install build packages ****" && \
 sudo $(command -v rm) -rf $packages 1>/dev/null 2>&1 && clear
 unset remove
 
-if ! docker --version > /dev/null; then
+if [ -z `command -v docker` ]; then
    curl -fsSL https://get.docker.com -o /tmp/docker.sh && bash /tmp/docker.sh
+   systemctl reload-or-restart docker.service
 fi
-if ! docker-compose --version > /dev/null; then
-   apt install curl -yqq && \
+
+if [ -z `command -v docker-compose` ]; then
    curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
    ln -sf /usr/local/bin/docker-compose /usr/bin/docker-compose
    chmod +x /usr/local/bin/docker-compose /usr/bin/docker-compose
@@ -68,38 +69,43 @@ if [[ ! -d "/opt/dockserver" ]]; then
 fi
 
 file=/opt/dockserver/.installer/dockserver
-store=/bin/dockserver
+store=/usr/bin/dockserver
 dockserver=/opt/dockserver
+
 while true; do
 if [ "$(ls -A $dockserver)" ]; then
    rmdocker && sleep 3 && break
 else
-    pulldockserver
-    echo "$dockserver is not pulled yet" 
-    sleep 5 && continue
+   pulldockserver
+   echo "dockserver is not pulled yet" 
+   sleep 5 && continue
 fi
 done
 
-if [[ -f "/bin/dockserver" ]]; then $(command -v rm) $store && $(command -v rsync) $file $store -aqhv; else $(command -v rsync) $file $store -aqhv; fi
+if [[ -f $store ]]; then
+   $(command -v rm) $store
+fi
 if [[ $EUID != 0 ]]; then
     $(command -v chown) -R $(whoami):$(whoami) ${dockserver}
     $(command -v usermod) -aG sudo $(whoami)
-    $(command -v chown) $(whoami):$(whoami) /bin/dockserver
+    $(command -v chown) $(whoami):$(whoami) $store $file
+    ln -sf $file $store && chmod +x $store $file
+else 
+    $(command -v chown) -R 1000:1000 ${dockserver}
+    $(command -v chown) -R 1000:1000 $store $file
+    ln -sf $file $store && chmod +x $store $file
 fi
-if [[ $EUID == 0 ]]; then $(command -v chown) -R 1000:1000 ${dockserver} && $(command -v chown) 1000:1000 /bin/dockserver; fi
-$(command -v chmod) 0775 /bin/dockserver
 
 printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀    DockServer [ EASY MODE ]
+    🚀    DockServer
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-     to install dockserver
+     install dockserver
      [ sudo ] dockserver -i
 
-     You want to see all Commands
-     [ sudo ] dockserver -h
-     [ sudo ] dockserver --help
+     all commands
+     [ sudo ] dockserver -h / --help
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 " 

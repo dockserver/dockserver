@@ -51,7 +51,8 @@ updatesystem() {
         find $app -exec $(command -v chmod) a=rx,u+w {} \;
         find $app -exec $(command -v chown) -hR 1000:1000 {} \;
       done
-      if test -f /etc/sysctl.d/99-sysctl.conf; then
+ 
+     if test -f /etc/sysctl.d/99-sysctl.conf; then
          config="/etc/sysctl.d/99-sysctl.conf"
          ipv6=$(cat $config | grep -qE 'ipv6' && echo true || false)
            if [ $ipv6 != 'true' ] || [ $ipv6 == 'true' ]; then
@@ -72,7 +73,7 @@ updatesystem() {
       package_basic=(software-properties-common rsync language-pack-en-base pciutils lshw nano rsync fuse curl wget tar pigz pv iptables ipset fail2ban)
       apt install ${package_basic[@]} --reinstall -yqq 1>/dev/null 2>&1 && sleep 1
 
-      if ! docker --version > /dev/null; then
+      if [ -z `command -v docker` ]; then
          curl --silent -fsSL https://raw.githubusercontent.com/docker/docker-install/master/install.sh | sudo bash >/dev/null 2>&1
       fi
          rsync -aqhv ${source}/daemon.j2 /etc/docker/daemon.json 1>/dev/null 2>&1
@@ -82,7 +83,7 @@ updatesystem() {
          curl --silent -fsSL https://raw.githubusercontent.com/MatchbookLab/local-persist/master/scripts/install.sh | sudo bash 1>/dev/null 2>&1
          docker volume create -d local-persist -o mountpoint=/mnt --name=unionfs
          docker network create --driver=bridge proxy 1>/dev/null 2>&1
-      if ! docker-compose > /dev/null; then
+      if [ -z `command -v docker-compose` ]; then
          curl -L --fail https://raw.githubusercontent.com/linuxserver/docker-docker-compose/master/run.sh -o /usr/local/bin/docker-compose
          ln -sf /usr/local/bin/docker-compose /usr/bin/docker-compose
          chmod +x /usr/local/bin/docker-compose /usr/bin/docker-compose
@@ -96,7 +97,8 @@ updatesystem() {
             TDV=$(lspci | grep -i --color 'vga\|display\|3d\|2d' | grep -E $i 1>/dev/null 2>&1 && echo true || echo false)
             if [[ $TDV == "true" ]]; then $(command -v bash) ${source}/gpu.sh; fi
       done
-      if ! ansible --version > /dev/null; then
+
+      if [ -z `command -v ansible` ]; then
          if [[ -r /etc/os-release ]]; then lsb_dist="$(. /etc/os-release && echo "$ID")"; fi
          package_list="ansible dialog python3-lxml"
          package_listdebian="apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367"
@@ -107,6 +109,7 @@ updatesystem() {
          done
          if [[ $lsb_dist == 'ubuntu' ]]; then add-apt-repository --yes --remove ppa:ansible/ansible; fi
       fi
+
       invet="/etc/ansible/inventories"
       conf="/etc/ansible/ansible.cfg"
       loc="local"
