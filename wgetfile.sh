@@ -53,10 +53,10 @@ log "**** install build packages ****" && \
 sudo $(command -v rm) -rf $packages 1>/dev/null 2>&1 && clear
 unset remove
 
-if ! docker --version > /dev/null; then
+if ! [ -x "$(command -v docker)" ]; then
    curl -fsSL https://get.docker.com -o /tmp/docker.sh && bash /tmp/docker.sh
 fi
-if ! docker-compose --version > /dev/null; then
+if ! [ -x "$(command -v docker-compose)" ]; then
    apt install curl -yqq && \
    curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
    ln -sf /usr/local/bin/docker-compose /usr/bin/docker-compose
