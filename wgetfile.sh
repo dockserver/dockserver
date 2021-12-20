@@ -27,14 +27,14 @@ function rmdocker() {
 }
 
 function pulldockserver() {
-docker pull -q ghcr.io/dockserver/docker-dockserver:latest
+docker pull -q docker.dockserver.io/dockserver/docker-dockserver
 docker run -d \
   --name=dockserver \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=Europe/London \
   -v /opt/dockserver:/opt/dockserver:rw \
-  ghcr.io/dockserver/docker-dockserver:latest
+  docker.dockserver.io/dockserver/docker-dockserver
 }
 
 updates="update upgrade autoremove autoclean"
