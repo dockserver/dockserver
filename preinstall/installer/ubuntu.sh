@@ -20,6 +20,7 @@
 # shellcheck disable=SC2196
 # shellcheck disable=SC2046
 #FUNCTIONS
+
 updatesystem() {
    while true; do
       # shellcheck disable=SC2046
@@ -110,6 +111,7 @@ updatesystem() {
       conf="/etc/ansible/ansible.cfg"
       loc="local"
       if [[ ! -d $invet ]]; then $(command -v mkdir) -p $invet 1>/dev/null 2>&1; fi
+
       if [[ ! -f $invet/$loc ]]; then
 cat > $invet/$loc << EOF; $(echo)
 [local]
@@ -118,11 +120,14 @@ EOF
       fi
       grep -qE "inventory      = /etc/ansible/inventories/local" $conf || \
       echo "inventory      = /etc/ansible/inventories/local" >>$conf
+
       if [[ "$(systemd-detect-virt)" == "lxc" ]]; then $(command -v bash) /opt/dockserver/preinstall/installer/subinstall/lxc.sh; fi
+
       while true; do
          f2ban=$($(command -v systemctl) is-active fail2ban | grep -qE 'active' && echo true || echo false)
          if [[ $f2ban != 'true' ]]; then echo "Waiting for fail2ban to start" && sleep 1 && continue; else break; fi
       done
+
       ORGFILE="/etc/fail2ban/jail.conf"
       LOCALMOD="/etc/fail2ban/jail.local"
 cat > /etc/fail2ban/filter.d/log4j-jndi.conf << EOF; $(echo)
