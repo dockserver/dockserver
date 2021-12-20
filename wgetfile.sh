@@ -55,7 +55,9 @@ unset remove
 
 if [ -z `command -v docker` ]; then
    curl -fsSL https://get.docker.com -o /tmp/docker.sh && bash /tmp/docker.sh
+   systemctl reload-or-restart docker.service
 fi
+
 if [ -z `command -v docker-compose` ]; then
    curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
    ln -sf /usr/local/bin/docker-compose /usr/bin/docker-compose
@@ -69,13 +71,14 @@ fi
 file=/opt/dockserver/.installer/dockserver
 store=/bin/dockserver
 dockserver=/opt/dockserver
+
 while true; do
 if [ "$(ls -A $dockserver)" ]; then
    rmdocker && sleep 3 && break
 else
-    pulldockserver
-    echo "$dockserver is not pulled yet" 
-    sleep 5 && continue
+   pulldockserver
+   echo "$dockserver is not pulled yet" 
+   sleep 5 && continue
 fi
 done
 
