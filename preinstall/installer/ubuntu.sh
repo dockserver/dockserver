@@ -67,15 +67,13 @@ updatesystem() {
               sysctl -p -q
            fi
       fi
-      if [[ -r /etc/os-release ]]; then lsb_dist="$(. /etc/os-release && echo "$ID")"; fi
-         package_basic="software-properties-common language-pack-en-base pciutils lshw nano rsync fuse curl wget tar pigz pv iptables ipset"
-         for i in ${package_basic}; do
-            echo "Now installing $i" && command_exists apt install $i --reinstall -yqq 1>/dev/null 2>&1 && sleep 1
-         done
+
+      package_basic=(software-properties-common rsync language-pack-en-base pciutils lshw nano rsync fuse curl wget tar pigz pv iptables ipset fail2ban)
+      apt install ${package_basic[@]} --reinstall -yqq 1>/dev/null 2>&1 && sleep 1
+
       if ! docker --version > /dev/null; then
          curl --silent -fsSL https://raw.githubusercontent.com/docker/docker-install/master/install.sh | sudo bash >/dev/null 2>&1
       fi
-      if ! rsync --version > /dev/null ; then apt install --reinstall rsync -yqq 1>/dev/null 2>&1; fi
          rsync -aqhv ${source}/daemon.j2 /etc/docker/daemon.json 1>/dev/null 2>&1
          usermod -aG docker $(whoami)
          systemctl reload-or-restart docker.service 1>/dev/null 2>&1
@@ -88,10 +86,10 @@ updatesystem() {
          ln -sf /usr/local/bin/docker-compose /usr/bin/docker-compose
          chmod +x /usr/local/bin/docker-compose /usr/bin/docker-compose
       fi
-      disable="apt-daily.service apt-daily.timer apt-daily-upgrade.timer apt-daily-upgrade.service"
-         for i in ${disable}; do
-            systemctl disable $i >/dev/null 2>&1
-      done
+
+      disable=(apt-daily.service apt-daily.timer apt-daily-upgrade.timer apt-daily-upgrade.service)
+      systemctl disable ${disable[@]} >/dev/null 2>&1
+       
       gpu="ntel NVIDIA"
       for i in ${gpu}; do
             TDV=$(lspci | grep -i --color 'vga\|display\|3d\|2d' | grep -E $i 1>/dev/null 2>&1 && echo true || echo false)
@@ -121,7 +119,6 @@ EOF
       grep -qE "inventory      = /etc/ansible/inventories/local" $conf || \
       echo "inventory      = /etc/ansible/inventories/local" >>$conf
       if [[ "$(systemd-detect-virt)" == "lxc" ]]; then $(command -v bash) /opt/dockserver/preinstall/installer/subinstall/lxc.sh; fi
-      if ! fail2ban-client --version > /dev/null ; then $(command -v apt) install fail2ban -yqq 1>/dev/null 2>&1; fi
       while true; do
          f2ban=$($(command -v systemctl) is-active fail2ban | grep -qE 'active' && echo true || echo false)
          if [[ $f2ban != 'true' ]]; then echo "Waiting for fail2ban to start" && sleep 1 && continue; else break; fi
