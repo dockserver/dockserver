@@ -220,7 +220,6 @@ nav:
           - Bazarr: apps/mediamanager/bazarr.md
           - Calibre-WEB: apps/mediamanager/calibre-web.md
           - Embystats: apps/mediamanager/embystats.md
-          - GAPS: apps/mediamanager/gaps.md
           - Lazylibrarian: apps/mediamanager/lazylibrarian.md
           - Lidarr: apps/mediamanager/lidarr.md
           - Plex-Utills: apps/mediamanager/plex-utills.md
