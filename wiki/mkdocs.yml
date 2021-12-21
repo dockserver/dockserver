@@ -221,7 +221,6 @@ nav:
           - Calibre-WEB: apps/mediamanager/calibre-web.md
           - Embystats: apps/mediamanager/embystats.md
           - GAPS: apps/mediamanager/gaps.md
-          - Invitarr: apps/mediamanager/invitarr.md
           - Lazylibrarian: apps/mediamanager/lazylibrarian.md
           - Lidarr: apps/mediamanager/lidarr.md
           - Plex-Utills: apps/mediamanager/plex-utills.md
@@ -240,10 +239,8 @@ nav:
           - MStream: apps/mediaserver/mstream.md
       - Request:
           - Conreq: apps/request/conreq.md
-          - Mellow: apps/request/mellow.md
           - Overseerr: apps/request/overseerr.md
           - Petio: apps/request/petio.md
-          - Requestrr: apps/request/requestrr.md
       - Selfhosted:
           - Alltube: apps/selfhosted/alltube.md
           - Bitwarden: apps/selfhosted/bitwarden.md
