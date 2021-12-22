@@ -19,7 +19,7 @@ function log() {
 }
 
 function rmdocker() {
-if [ ! -z `command -v docker` ]; then
+if [ -z `command -v docker` ]; then
    dockers=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -E 'dockserver')
    docker stop $dockers > /dev/null
    docker rm $dockers > /dev/null
