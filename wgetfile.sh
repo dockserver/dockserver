@@ -49,8 +49,8 @@ sudo $(command -v apt) install $packages -yqq 1>/dev/null 2>&1 && clear
 unset packages
 
 remove=(/bin/dockserver /usr/bin/dockserver)
-log "**** install build packages ****" && \
-sudo $(command -v rm) -rf $packages 1>/dev/null 2>&1 && clear
+log "**** remove old dockserver bins ****" && \
+sudo $(command -v rm) -rf $remove 1>/dev/null 2>&1 && clear
 unset remove
 
 if [ -z `command -v docker` ]; then
@@ -88,12 +88,12 @@ fi
 if [[ $EUID != 0 ]]; then
     $(command -v chown) -R $(whoami):$(whoami) ${dockserver}
     $(command -v usermod) -aG sudo $(whoami)
-    $(command -v chown) $(whoami):$(whoami) $store $file
     ln -sf $file $store && chmod +x $store $file
+    $(command -v chown) $(whoami):$(whoami) $store $file
 else 
     $(command -v chown) -R 1000:1000 ${dockserver}
-    $(command -v chown) -R 1000:1000 $store $file
     ln -sf $file $store && chmod +x $store $file
+    $(command -v chown) -R 1000:1000 $store $file
 fi
 
 printf "
