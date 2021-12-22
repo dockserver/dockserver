@@ -19,22 +19,26 @@ function log() {
 }
 
 function rmdocker() {
-   dockers=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d')
+if [ ! -z `command -v docker` ]; then
+   dockers=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -E 'dockserver')
    docker stop $dockers > /dev/null
    docker rm $dockers > /dev/null
    docker system prune -af > /dev/null
    unset $dockers
+fi
 }
 
 function pulldockserver() {
-docker pull -q docker.dockserver.io/dockserver/docker-dockserver
-docker run -d \
+if [ -z `command -v docker` ]; then
+   docker pull -q docker.dockserver.io/dockserver/docker-dockserver
+   docker run -d \
   --name=dockserver \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=Europe/London \
   -v /opt/dockserver:/opt/dockserver:rw \
   docker.dockserver.io/dockserver/docker-dockserver
+fi
 }
 
 updates="update upgrade autoremove autoclean"
