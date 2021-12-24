@@ -414,16 +414,19 @@ runinstall() {
   if [[ ! -f $basefolder/$compose ]];then $(command -v rsync) $appfolder/${section}/${typed}.yml $basefolder/$compose -aqhv;fi
   if [[ ! -x $(command -v lshw) ]];then $(command -v apt) install lshw -yqq >/dev/null 2>&1;fi
   if [[ ${section} == "mediaserver" || ${section} == "encoder" ]];then
-     gpu="Intel NVIDIA"
-     for i in ${gpu};do
-        TDV=$(lspci | grep -i --color 'vga\|display\|3d\|2d' | grep -E $i 1>/dev/null 2>&1 && echo true || echo false)
-        if [[ $TDV == "true" ]];then $(command -v rsync) $appfolder/${section}/.gpu/$i.yml $basefolder/$composeoverwrite -aqhv;fi
-     done
-     if [[ -f $basefolder/$composeoverwrite ]];then
-        if [[ $(uname) == "Darwin" ]];then
-           $(command -v sed) -i '' "s/<APP>/${typed}/g" $basefolder/$composeoverwrite
-        else
-           $(command -v sed) -i "s/<APP>/${typed}/g" $basefolder/$composeoverwrite
+     if [[ -x "/dev/dri" ]]; then
+        gpu="Intel NVIDIA"
+        for i in ${gpu};do
+            lspci | grep -i --color 'vga\|display\|3d\|2d' | grep -E $i | while read -r -a $i; do
+              $(command -v rsync) $appfolder/${section}/.gpu/$i.yml $basefolder/$composeoverwrite -aqhv
+            done
+        done
+        if [[ -f $basefolder/$composeoverwrite ]];then
+           if [[ $(uname) == "Darwin" ]];then
+              $(command -v sed) -i '' "s/<APP>/${typed}/g" $basefolder/$composeoverwrite
+           else
+              $(command -v sed) -i "s/<APP>/${typed}/g" $basefolder/$composeoverwrite
+           fi
         fi
      fi
   fi
