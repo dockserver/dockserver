@@ -90,12 +90,12 @@ if [[ -f $store ]]; then
    $(command -v rm) $store
 fi
 if [[ $EUID != 0 ]]; then
-    $(command -v chown) -R $(whoami):$(whoami) ${dockserver}
+    $(command -v chown) -R $(whoami):$(whoami) $dockserver
     $(command -v usermod) -aG sudo $(whoami)
     ln -sf $file $store && chmod +x $store $file
     $(command -v chown) $(whoami):$(whoami) $store $file
 else 
-    $(command -v chown) -R 1000:1000 ${dockserver}
+    $(command -v chown) -R 1000:1000 $dockserver
     ln -sf $file $store && chmod +x $store $file
     $(command -v chown) -R 1000:1000 $store $file
 fi
