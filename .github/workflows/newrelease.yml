@@ -2,7 +2,7 @@ name: New Release
 
 on:
   schedule:
-    - cron: '0 */12 * * * '
+    - cron: '* 1 * * 0'
   workflow_dispatch:
 
 jobs:
@@ -15,7 +15,7 @@ jobs:
         with:
           fetch-depth: '0'
 
-      - name: Run Test & Get New Versions
+      - name: Run Test
         run: |
           API=$(curl -H "Authorization: token ${{ secrets.CR_PAT }}" -X GET https://api.github.com/rate_limit \
                | jq --raw-output '.rate.limit')

@@ -1,27 +1,24 @@
 #!/usr/bin/env bash
 
-if [[ ! -f "./dockserver/VERSION" ]]; then
-   touch "./dockserver/VERSION"
-fi
+version="0"
 
-if test -f "./dockserver/VERSION"; then
-      version=$(curl -s "https://registry.hub.docker.com/v1/repositories/library/alpine/tags" | jq --raw-output '.[] | select(.name | contains(".")) | .name' | sort -t "." -k1,1n -k2,2n -k3,3n | tail -n1)
-      version="${version#*v}"
-      version="${version#*release-}"
-      printf "%s" "${version}"
-      if [[ ! -z "${version}" || "${version}" != "null" ]]; then
-         echo "${version}" | tee "./dockserver/VERSION" > /dev/null
-         echo "previous ${version}"
-      fi
+URL="https://api.github.com/repos/dockserver/dockserver/releases/latest"
+if test -f "./VERSION"; then
+   echo "${version}" | tee "./VERSION" > /dev/null
+   version="$(curl -sX GET "${URL}" | jq -r '.tag_name')"
+   version="${version#*v}"
+   version="${version#*release-}"
+   printf "%s" "${version}"
+   if [[ ! -z "${version}" || "${version}" != "null" ]]; then
+       echo "${version}" | tee "./VERSION" > /dev/null
+       echo "previous ${version}"
    fi
-done
-
+fi
 if [[ -n $(git status --porcelain) ]]; then
    git config --global user.name 'github-actions[bot]' 
    git config --global user.email 'github-actions[bot]@users.noreply.github.com' 
-   git repack -a -d --depth=500 --window=500
+   git repack -a -d --depth=750 --window=750
    git add -A
    git commit -sam "#fix publish new version" || exit 0
    git push
 fi
-
