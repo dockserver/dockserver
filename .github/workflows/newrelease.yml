@@ -15,6 +15,26 @@ jobs:
         with:
           fetch-depth: '0'
 
+      - name: Run Test & Get New Versions
+        run: |
+          API=$(curl -H "Authorization: token ${{ secrets.CR_PAT }}" -X GET https://api.github.com/rate_limit \
+               | jq --raw-output '.rate.limit')
+          if [[ $API -gt 101 ]]; then
+              echo "Fetch new Versions"
+              if test -f "./.github/update.sh"; then
+                 bash "./.github/update.sh"
+              fi
+          elif [[ $API -lt 100 ]]; then
+               echo " GitHube API busted " && exit 0
+          else
+               echo " no reponse from Github API ? Maybe down or busted " && exit 0
+          fi
+
+      - name: Check out code
+        uses: actions/checkout@v2.4.0
+        with:
+          fetch-depth: '0'
+
       - name: Bump version and push tag
         uses: anothrNick/github-tag-action@1.36.0
         with:
