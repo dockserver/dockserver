@@ -13,9 +13,7 @@ if test -f "./dockserver/VERSION"; then
          echo "${version}" | tee "./dockserver/VERSION" > /dev/null
          echo "previous ${version}"
       fi
-   fi
-done
-
+fi
 if [[ -n $(git status --porcelain) ]]; then
    git config --global user.name 'github-actions[bot]' 
    git config --global user.email 'github-actions[bot]@users.noreply.github.com' 
