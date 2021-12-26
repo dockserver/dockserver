@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
+
+version="0"
+
 URL="https://api.github.com/repos/dockserver/dockserver/releases/latest"
 if test -f "./VERSION"; then
+   echo "${version}" | tee "./VERSION" > /dev/null
    version="$(curl -sX GET "${URL}" | jq -r '.tag_name')"
    version="${version#*v}"
    version="${version#*release-}"
