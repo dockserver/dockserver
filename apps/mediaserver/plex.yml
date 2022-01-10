@@ -14,7 +14,7 @@ services:
       - "ADVERTISE_IP=http://${SERVERIP}:32400,http://plex.${DOMAIN}:32400"
       - "DOCKER_MODS=ghcr.io/gilbn/theme.park:plex"
       - "TP_THEME=${PLEXTHEME}"
-      - "TP_ADDON=${PLEXADDON}|${PLEXCUSTOMLOGO}"
+      - "TP_ADDON=${PLEXADDON}"
     image: "${PLEXIMAGE}"
     restart: "${RESTARTAPP}"
     networks:
@@ -38,8 +38,6 @@ services:
       - "${APPFOLDER}/plex/database:/config:rw"
       - "unionfs:/mnt:ro"
       - "/dev/shm:/ram_transcode:rw"
-    tmpfs:
-      - "/transcode:rw"
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
