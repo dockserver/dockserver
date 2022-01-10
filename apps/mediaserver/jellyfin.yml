@@ -31,9 +31,7 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
       - "${APPFOLDER}/jellyfin:/config:rw"
       - "unionfs:/mnt:ro"
-    tmpfs:
-      - "/transcode:rw"
-    labels:
+     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
       - "dockupdater.enable=true"
@@ -53,4 +51,3 @@ volumes:
     driver: local-persist
     driver_opts:
       mountpoint: /mnt
-  tmpfs:
