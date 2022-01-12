@@ -92,7 +92,7 @@ sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/wg
 
 <!--START_SECTION:activity-->
 
-1. 💪 Opened PR [#341](https://github.com/dockserver/dockserver/pull/341) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+1. ❌ Closed PR [#341](https://github.com/dockserver/dockserver/pull/341) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 <!--END_SECTION:activity-->
 
 ---
