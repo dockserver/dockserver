@@ -34,7 +34,7 @@ Install via DockServer Menu
 
 Default User: _kasm_user_
 <br />
-Default Pass: _password_
+Default Pass: _passwordbasic_
 <br />
 <br />
 **_Note: If kasmdesktop hangs for a really long time. Stop the install and run the following command for dependencies, then deploy the app again: `pip3 install dockerpty && pip3 install texttable`_**
