@@ -1,5 +1,67 @@
 # CHANGELOG
 
+## [v1.4.0](https://github.com/dockserver/dockserver/releases/tag/v1.4.0) - 2022-01-17 12:22:31
+
+## 🐛 Fixes
+
+- fix ( syntax ) ${} to $
+   - PR: #328
+- fix (update)  update.sh to use previous tag
+   - PR: #331
+- fix : kasmdesktop.md ( default password )
+   - PR: #344
+
+## 💻 PiP-Update
+
+- pip (deps): bump mkdocs-material from 8.1.2 to 8.1.3 in /wiki
+   - PR: #324
+- pip (deps): bump pygments from 2.10.0 to 2.11.2 in /wiki
+   - PR: #339
+- pip (deps): bump mkdocs-material from 8.1.3 to 8.1.4 in /wiki
+   - PR: #336
+- pip (deps): bump mkdocs-material from 8.1.4 to 8.1.6 in /wiki
+   - PR: #342
+
+## 🎨 DockServer Update
+
+- Update newrelease.yml
+   - PR: #348
+
+
+
+
+- Delete discord bots
+   - PR: #325
+- #fix ( gpu ) add additional check for GPU
+   - PR: #326
+- #fix (change) logic z to x
+   - PR: #327
+- Create update.sh
+   - PR: #329
+- feat update plex transcode folder
+   - PR: #340
+- #fix newrelease.yml
+   - PR: #346
+- #fix
+   - PR: #347
+
+### Feature
+
+- general:
+  - feat update plex transcode folder (#340) ([7429ba0](https://github.com/dockserver/dockserver/commit/7429ba0233c74a1f8617b1cb76364b8a0bc39b7d)) ([#340](https://github.com/dockserver/dockserver/pull/340))
+
+### Bug Fixes
+
+- general:
+  - kasmdesktop.md ( default password ) (#344) ([4a86af8](https://github.com/dockserver/dockserver/commit/4a86af87b9146382232b4f159ab55fb4c65edff7)) ([#344](https://github.com/dockserver/dockserver/pull/344))
+  - fix - Delete Backup Docker ([ac2d4a1](https://github.com/dockserver/dockserver/commit/ac2d4a1b44fee86e2d42045fa0fcaf492f95dac1))
+  - fix (update)  update.sh to use previous tag (#331) ([7bb4f75](https://github.com/dockserver/dockserver/commit/7bb4f75cec68b49e3512ba567f5ccdcfa58f168b)) ([#331](https://github.com/dockserver/dockserver/pull/331))
+  - fix ( syntax ) ${} to $ (#328) ([b277953](https://github.com/dockserver/dockserver/commit/b27795349c94c84a93004d663837a0589a572551)) ([#328](https://github.com/dockserver/dockserver/pull/328))
+  - fix ( gpu ) add additional check for GPU (#326) ([c360b46](https://github.com/dockserver/dockserver/commit/c360b46ccc56ff47e31102a96ffbc16ab6c56eca)) ([#326](https://github.com/dockserver/dockserver/pull/326))
+  - fix ( order ) order correction for ln  ([0d26afe](https://github.com/dockserver/dockserver/commit/0d26afe4a60e7b1d5f1a52c20f0b4eb13ee8baae))
+  - fix (remove) cleanup discord bots from dockserver ([2759a87](https://github.com/dockserver/dockserver/commit/2759a87cb1f6a5a1f8c00f97302a67f24148bb45)) ([#325](https://github.com/dockserver/dockserver/pull/325))
+  - wgetfile.sh ( suppress error ) ([9d3ab49](https://github.com/dockserver/dockserver/commit/9d3ab499e032ecbd3bafe50b1f90dad10b0cb75d))
+
 ## [v1.3.34](https://github.com/dockserver/dockserver/releases/tag/v1.3.34) - 2021-12-20 08:02:00
 
 repository changes
