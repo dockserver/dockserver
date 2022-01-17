@@ -6,22 +6,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  wiki:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: '0'
-    - run: git checkout HEAD^
-        
-    - uses: BobAnkh/auto-generate-changelog@master
-      with:
-        ACCESS_TOKEN: ${{secrets.CR_PAT}}
-        PATH: '/wiki/docs/install/changelog.md'
-        COMMIT_MESSAGE: '#fix docs(CHANGELOG): update release notes'
-        TYPE: 'feat:Feature,fix:Bug Fixes,docs:Documentation,refactor:Refactor,perf:Performance Improvements'
-
-
   build:
     name: Generate new tag
     needs: wiki
