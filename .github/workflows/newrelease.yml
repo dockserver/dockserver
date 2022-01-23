@@ -1,9 +1,10 @@
 name: New Release
 
 on:
-  schedule:
-    - cron: '* 1 * * 0'
-  workflow_dispatch:
+  workflow_run:
+    workflows: ["upstream"]
+    types:
+      - completed
 
 jobs:
   build:
@@ -12,7 +13,6 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v2.4.0
-
       - name: Bump version and push tag
         uses: anothrNick/github-tag-action@1.36.0
         with:
@@ -20,5 +20,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.CR_PAT }}
           WITH_V: true
+          DEFAULT_BUMP: fix
           RELEASE_BRANCHES: master
           VERBOSE: true
