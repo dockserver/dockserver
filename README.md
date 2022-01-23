@@ -104,6 +104,9 @@ Dev Code @dockserver
 Co-Dev -APPS- @CONTRIBUTORS-LIST
 ```
 
+![metrics](./github-metrics.svg)
+
+
 ---
 
 ## Contributors ✨
