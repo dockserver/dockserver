@@ -18,6 +18,13 @@ _Docker + Traefik with Authelia and Cloudflare Protection_
 
 ---
 
+Some stats of [DOCKSERVER](https://dockserver.io)
+
+![metrics](./github-metrics.svg)
+
+
+--- 
+
 ## Minimum Specs and Requirements
 
 - Stable: Ubuntu 18/20.04/20.10 or Debian 9/10
@@ -103,9 +110,6 @@ Code owner @dockserver
 Dev Code @dockserver
 Co-Dev -APPS- @CONTRIBUTORS-LIST
 ```
-
-![metrics](./github-metrics.svg)
-
 
 ---
 
