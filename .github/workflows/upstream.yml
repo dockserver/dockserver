@@ -1,4 +1,4 @@
-name: Upstreams
+name: upstreams
 
 on:
   schedule:
