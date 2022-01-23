@@ -15,6 +15,8 @@ jobs:
           plugin_habits: 'yes'
           plugin_habits_facts: 'yes'
           plugin_habits_charts: 'yes'
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: full-year
           plugin_achievements: 'yes'
           plugin_achievements_limit: 0
           plugin_achievements_secrets: 'yes'
@@ -25,9 +27,15 @@ jobs:
           plugin_followup_indepth: 'yes'
           plugin_languages: 'yes'
           plugin_languages_details: bytes-size, percentage
-          plugin_notable: 'yes'
-          plugin_notable_filter: stars:>1000
-          plugin_notable_repositories: 'yes'
+          plugin_sponsors: yes
+          plugin_sponsors_sections: goal
+
+          plugin_reactions: yes
+          plugin_reactions_limit: 10000
+          plugin_reactions_details: percentage
+          plugin_notable: yes
+          plugin_notable_indepth: yes
+          plugin_notable_repositories: yes
           plugin_stargazers: 'yes'
           plugin_pagespeed: 'yes'
           plugin_pagespeed_screenshot: 'yes'
