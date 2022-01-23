@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## [v1.4.1](https://github.com/dockserver/dockserver/releases/tag/v1.4.1) - 2022-01-23 15:49:41
+
+## 💻 PiP-Update
+
+- pip (deps): bump mkdocs-material from 8.1.6 to 8.1.7 in /wiki
+   - PR: #349
+
+
+
+
+- [ImgBot] Optimize images
+   - PR: #355
+
+### Documentation
+
+- README:
+  - update contributors ([015841d](https://github.com/dockserver/dockserver/commit/015841d0999ef0b44d49986622d8e240f3c00ea4))
+  - update contributors ([93f73dc](https://github.com/dockserver/dockserver/commit/93f73dc8c42dd474dfb05ac186a2bf1348f21bf5))
+
 ## [v1.4.0](https://github.com/dockserver/dockserver/releases/tag/v1.4.0) - 2022-01-17 12:22:31
 
 ## 🐛 Fixes
@@ -44,6 +63,26 @@
    - PR: #346
 - #fix
    - PR: #347
+
+## What's Changed
+* pip (deps): bump mkdocs-material from 8.1.2 to 8.1.3 in /wiki by @dependabot in https://github.com/dockserver/dockserver/pull/324
+* Delete discord bots by @doob187 in https://github.com/dockserver/dockserver/pull/325
+* #fix ( gpu ) add additional check for GPU by @doob187 in https://github.com/dockserver/dockserver/pull/326
+* #fix (change) logic z to x by @doob187 in https://github.com/dockserver/dockserver/pull/327
+* fix ( syntax ) ${} to $ by @doob187 in https://github.com/dockserver/dockserver/pull/328
+* Create update.sh by @doob187 in https://github.com/dockserver/dockserver/pull/329
+* fix (update)  update.sh to use previous tag by @doob187 in https://github.com/dockserver/dockserver/pull/331
+* pip (deps): bump pygments from 2.10.0 to 2.11.2 in /wiki by @dependabot in https://github.com/dockserver/dockserver/pull/339
+* pip (deps): bump mkdocs-material from 8.1.3 to 8.1.4 in /wiki by @dependabot in https://github.com/dockserver/dockserver/pull/336
+* feat update plex transcode folder by @doob187 in https://github.com/dockserver/dockserver/pull/340
+* pip (deps): bump mkdocs-material from 8.1.4 to 8.1.6 in /wiki by @dependabot in https://github.com/dockserver/dockserver/pull/342
+* fix : kasmdesktop.md ( default password ) by @fscorrupt in https://github.com/dockserver/dockserver/pull/344
+* #fix newrelease.yml by @doob187 in https://github.com/dockserver/dockserver/pull/346
+* #fix by @doob187 in https://github.com/dockserver/dockserver/pull/347
+* Update newrelease.yml by @doob187 in https://github.com/dockserver/dockserver/pull/348
+
+
+**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.34...v1.4.0
 
 ### Feature
 
