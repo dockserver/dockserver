@@ -33,16 +33,6 @@ _Docker + Traefik with Authelia and Cloudflare Protection_
 
 ---
 
-## End of the year is END of development
-
-```
-System will work in the future.
-But no addons anymore
-```
-
----
-
-
 ## For Testing
 
 - [Hetzner Cloud](https://www.hetzner.com/de/cloud)
