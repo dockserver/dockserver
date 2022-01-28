@@ -45,7 +45,7 @@ jobs:
           github-token: ${{ secrets.CR_PAT }}
           discord-webhook: ${{ secrets.DISCORD_WEBHOOK }}
           username: 'DockServer-Bot'
-          avatar-url: 'https://octodex.github.com/images/Terracottocat_Single.png'
+          avatar-url: 'https://raw.githubusercontent.com/dockserver/container/master/images/Logo.png'
           title: 'DockServer-Bot: {{STATUS}}'
           description: 'DockServer-Bot trigged this {{STATUS}}!'
           include-details: 'true'
