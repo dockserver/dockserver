@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## [v1.4.2](https://github.com/dockserver/dockserver/releases/tag/v1.4.2) - 2022-01-28 14:01:44
+
+## 💻 PiP-Update
+
+- pip (deps): bump mkdocs-material from 8.1.7 to 8.1.8 in /wiki
+   - PR: #360
+
+
+
+
+- [ImgBot] Optimize images
+   - PR: #361
+
 ## [v1.4.1](https://github.com/dockserver/dockserver/releases/tag/v1.4.1) - 2022-01-23 15:49:41
 
 ## 💻 PiP-Update
