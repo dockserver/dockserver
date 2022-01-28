@@ -47,7 +47,7 @@ jobs:
           github-token: ${{ secrets.CR_PAT }}
           discord-webhook: ${{ secrets.DISCORD_RLS }}
           username: 'DockServerRelease-Bot'
-          avatar-url: 'https://octodex.github.com/images/Terracottocat_Single.png'
+          avatar-url: 'https://raw.githubusercontent.com/dockserver/container/master/images/Logo.png'
           title: 'DockServerRelease-Bot: {{STATUS}}'
           description: 'DockServerRelease-Bot create new Release for ${{ github.repository }}'
           include-details: 'true'
