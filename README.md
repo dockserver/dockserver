@@ -89,7 +89,7 @@ sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/wg
 
 <!--START_SECTION:activity-->
 
-1. ❗️ Closed issue [#61](https://github.com/dockserver/container/issues/61) in [dockserver/container](https://github.com/dockserver/container)
+1. ❗️ Opened issue [#67](https://github.com/dockserver/container/issues/67) in [dockserver/container](https://github.com/dockserver/container)
 <!--END_SECTION:activity-->
 
 ---
