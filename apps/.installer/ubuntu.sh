@@ -487,7 +487,6 @@ runinstall() {
   if [[ ${section} == "system" && ${typed} == "mount" ]];then
      checkmnt=$($(command -v mountpoint) -q /mnt/unionfs && echo true || echo false)
      checkrcc=$($(command -v mountpoint) -q /mnt/rclone_cache && echo true || echo false)
-     checkrmt=$($(command -v mountpoint) -q /mnt/remotes && echo true || echo false)
      mount=$($(command -v docker) ps -aq --format={{.Names}} | grep -x 'mount')
      if [[ ${checkmnt} == "true" && ${mount} == "mount" ]];then $(command -v docker) stop mount 1>/dev/null 2>&1 && $(command -v fusermount) -uzq /mnt/unionfs 1>/dev/null 2>&1;fi
      if [[ ${checkmnt} == "false" && ${mount} == "mount" ]];then $(command -v docker) stop mount 1>/dev/null 2>&1 && $(command -v fusermount) -uzq /mnt/unionfs 1>/dev/null 2>&1;fi
@@ -495,9 +494,6 @@ runinstall() {
      if [[ ${checkrcc} == "true" && ${mount} == "mount" ]];then $(command -v docker) stop mount 1>/dev/null 2>&1 && $(command -v fusermount) -uzq /mnt/rclone_cache 1>/dev/null 2>&1;fi
      if [[ ${checkrcc} == "false" && ${mount} == "mount" ]];then $(command -v docker) stop mount 1>/dev/null 2>&1 && $(command -v fusermount) -uzq /mnt/rclone_cache 1>/dev/null 2>&1;fi
      if [[ ${checkrcc} == "false" && ${mount} == "" ]];then $(command -v fusermount) -uzq /mnt/rclone_cache 1>/dev/null 2>&1;fi
-     if [[ ${checkrmt} == "true" && ${mount} == "mount" ]];then $(command -v docker) stop mount 1>/dev/null 2>&1 && $(command -v fusermount) -uzq /mnt/remotes 1>/dev/null 2>&1;fi
-     if [[ ${checkrmt} == "false" && ${mount} == "mount" ]];then $(command -v docker) stop mount 1>/dev/null 2>&1 && $(command -v fusermount) -uzq /mnt/remotes 1>/dev/null 2>&1;fi
-     if [[ ${checkrmt} == "false" && ${mount} == "" ]];then $(command -v fusermount) -uzq /mnt/remotes 1>/dev/null 2>&1;fi
   fi
   if [[ ${section} == "downloadclients" && ${typed} == "youtubedl-material" ]];then
      folder="appdata audio video subscriptions"
@@ -611,11 +607,11 @@ fi
 overserrf2ban() {
 OV2BAN="/etc/fail2ban/filter.d/overseerr.local"
 if [[ ! -f $OV2BAN ]];then
-cat <<'"' > $OV2BAN
+   cat > $OV2BAN << EOF; $(echo)
 ## overseerr fail2ban filter ##
 [Definition]
 failregex = .*\[info\]\[Auth\]\: Failed sign-in attempt.*"ip":"<HOST>"
-"
+EOF
 fi
 f2ban=$($(command -v systemctl) is-active fail2ban | grep -qE 'active' && echo true || echo false)
 if [[ $f2ban != "false" ]];then $(command -v systemctl) reload-or-restart fail2ban.service 1>/dev/null 2>&1;fi
@@ -787,11 +783,9 @@ deleteapp() {
      source $basefolder/compose/.env 
      if [ ${DOMAIN1_ZONE_ID} != "" ] && [ ${DOMAIN} != "" ] && [ ${CLOUDFLARE_EMAIL} != "" ] ; then
         if [[ $(command -v curl) == "" ]] ; then $(command -v apt) install curl -yqq 1>/dev/null 2>&1; fi
-        dnsrecordid=$(curl -s -X GET "https://api.cloudflare.com/client/v4/zones/$DOMAIN1_ZONE_ID/dns_records?name=${typed}.${DOMAIN}" -H "X-Auth-Email: $CLOUDFLARE_EMAIL" -H "X-Auth-Key: $CLOUDFLARE_API_KEY" -H "Content-Type: application/json" \
-                    | grep -Po '(?<="id":")[^"]*' | head -1 )
-
+        dnsrecordid=$(curl -sX GET "https://api.cloudflare.com/client/v4/zones/$DOMAIN1_ZONE_ID/dns_records?name=${typed}.${DOMAIN}" -H "X-Auth-Email: $CLOUDFLARE_EMAIL" -H "X-Auth-Key: $CLOUDFLARE_API_KEY" -H "Content-Type: application/json" | grep -Po '(?<="id":")[^"]*' | head -1 )
         if [[ $dnsrecordid != "" ]] ; then
-           result=$(curl -s -X DELETE "https://api.cloudflare.com/client/v4/zones/$DOMAIN1_ZONE_ID/dns_records/$dnsrecordid" -H "X-Auth-Email: $CLOUDFLARE_EMAIL" -H "X-Auth-Key: $CLOUDFLARE_API_KEY" -H "Content-Type: application/json")
+           result=$(curl -sX DELETE "https://api.cloudflare.com/client/v4/zones/$DOMAIN1_ZONE_ID/dns_records/$dnsrecordid" -H "X-Auth-Email: $CLOUDFLARE_EMAIL" -H "X-Auth-Key: $CLOUDFLARE_API_KEY" -H "Content-Type: application/json")
            if [[ $result != "" ]]; then
     printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -824,4 +818,5 @@ fi
 ##########
 lubox
 appstartup
-#"
+
+##E-o-F##
