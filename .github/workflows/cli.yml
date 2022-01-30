@@ -40,6 +40,7 @@ jobs:
           COLOR: 3066993
         shell: bash
         run: |
+          curl -fsSL --retry 5 "https://raw.githubusercontent.com/dockserver/container/master/images/Logo.png" > image.png
           export DOCKER_CLI_EXPERIMENTAL=enabled
           json='{
             "username": "dockserver Events",
@@ -67,14 +68,17 @@ jobs:
                 "icon_url": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
                },
                "timestamp": "'$(date -u +'%FT%T.%3NZ')'",
+               "image": {
+                 "url": "attachment://image.png"
                }
              }
             ]
           }'
-          curl -fsSL --retry 5 -H "Content-Type: multipart/form-data" -F "payload_json=${json}" "${DISCORD_WEBHOOK}" > /dev/null
+          curl -fsSL --retry 5 -H "Content-Type: multipart/form-data" -F "file=@image.png" -F "payload_json=${json}" "${DISCORD_WEBHOOK}" > /dev/null
 
   crlf:
     name: Check Mixed Line Endings action
+    if: ${{ success() }}
     needs: deploy
     runs-on: ubuntu-latest
     steps:
