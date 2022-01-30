@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [v1.4.3](https://github.com/dockserver/dockserver/releases/tag/v1.4.3) - 2022-01-30 02:00:01
+
+repository changes
+
 ## [v1.4.2](https://github.com/dockserver/dockserver/releases/tag/v1.4.2) - 2022-01-28 14:01:44
 
 ## 💻 PiP-Update
