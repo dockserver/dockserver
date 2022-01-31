@@ -110,19 +110,26 @@ updatesystem() {
          if [[ $lsb_dist == 'ubuntu' ]]; then add-apt-repository --yes --remove ppa:ansible/ansible; fi
       fi
 
-      invet="/etc/ansible/inventories"
-      conf="/etc/ansible/ansible.cfg"
-      loc="local"
-      if [[ ! -d $invet ]]; then $(command -v mkdir) -p $invet 1>/dev/null 2>&1; fi
-
-      if [[ ! -f $invet/$loc ]]; then
-cat > $invet/$loc << EOF; $(echo)
+      if [[ ! -d "/etc/ansible/inventories "]]; then
+         $(command -v mkdir) -p $invet 
+      fi
+      cat > /etc/ansible/inventories/local << EOF; $(echo)
+## CUSTOM local inventories
 [local]
 127.0.0.1 ansible_connection=local
 EOF
+      if [[ -f /etc/ansible/ansible.cfg ]]; then
+        $(command -v mv) /etc/ansible/ansible.cfg /etc/ansible/ansible.cfg.bak
       fi
-      grep -qE "inventory      = /etc/ansible/inventories/local" $conf || \
-      echo "inventory      = /etc/ansible/inventories/local" >>$conf
+cat > /etc/ansible/ansible.cfg << EOF; $(echo)
+## CUSTOM Ansible.cfg
+[defaults]
+deprecation_warnings = False
+command_warnings = False
+force_color = True
+inventory = /etc/ansible/inventories/loca
+retry_files_enabled = False
+EOF
 
       if [[ "$(systemd-detect-virt)" == "lxc" ]]; then $(command -v bash) /opt/dockserver/preinstall/installer/subinstall/lxc.sh; fi
 
@@ -202,7 +209,7 @@ proxydel() {
    done
 }
 oldsinstall() {
-   oldsolutions="plexguide cloudbox gooby sudobox sbox pandaura"
+   oldsolutions="plexguide cloudbox gooby sudobox sbox pandaura salty"
    for i in ${oldsolutions}; do
       folders="/var/ /opt/ /home/ /srv/"
       for ii in ${folders}; do
