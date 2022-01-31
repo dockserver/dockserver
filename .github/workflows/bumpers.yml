@@ -50,7 +50,7 @@ jobs:
               "name": "'${{ github.repository_owner }}'"
             },
             "title": " New Release is Public !",
-            "url": "https://github.com/dockserver/dockserver/releases/tag/v'${VERSION}'",
+            "url": "https://github.com/dockserver/dockserver/releases/tag/'${VERSION}'",
             "color": '${COLOR}',
             "fields": [
               {
