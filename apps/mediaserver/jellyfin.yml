@@ -31,7 +31,7 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
       - "${APPFOLDER}/jellyfin:/config:rw"
       - "unionfs:/mnt:ro"
-     labels:
+    labels:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
       - "dockupdater.enable=true"
