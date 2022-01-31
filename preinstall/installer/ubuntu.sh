@@ -127,7 +127,7 @@ cat > /etc/ansible/ansible.cfg << EOF; $(echo)
 deprecation_warnings = False
 command_warnings = False
 force_color = True
-inventory = /etc/ansible/inventories/loca
+inventory = /etc/ansible/inventories/local
 retry_files_enabled = False
 EOF
 
