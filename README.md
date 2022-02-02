@@ -89,7 +89,7 @@ sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/wg
 
 <!--START_SECTION:activity-->
 
-1. 🎉 Merged PR [#367](https://github.com/dockserver/dockserver/pull/367) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+1. 🗣 Commented on [#368](https://github.com/dockserver/dockserver/issues/368) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 <!--END_SECTION:activity-->
 
 ---
