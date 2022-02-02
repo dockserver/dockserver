@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## [v1.4.5](https://github.com/dockserver/dockserver/releases/tag/v1.4.5) - 2022-02-02 12:08:04
+
+## 💻 PiP-Update
+
+- pip (deps): bump mkdocs-material from 8.1.8 to 8.1.9 in /wiki
+   - PR: #364
+
+## 💻 GitHub updates
+
+- GH updates (deps): Bump actions/stale from 3 to 4.1.0
+   - PR: #367
+
+## 🎨 DockServer Update
+
+- Update jellyfin.md
+   - PR: #366
+
 ## [v1.4.4](https://github.com/dockserver/dockserver/releases/tag/v1.4.4) - 2022-01-31 06:41:42
 
 repository changes
