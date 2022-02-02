@@ -38,7 +38,7 @@ while true;do
   killport && headinterface
 done
 }
-killport() 
+killport() {
 port=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -x 'portainer')
 if [[ ${port} != "" ]]; then
    $(command -v docker) stop ${port}
