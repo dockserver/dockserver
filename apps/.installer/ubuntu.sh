@@ -31,11 +31,20 @@ printf "
 "
 exit 0
 fi
+
 while true;do
   if [[ ! -x $(command -v docker) ]];then exit;fi
   if [[ ! -x $(command -v docker-compose) ]];then exit;fi
-  headinterface
+  killport && headinterface
 done
+}
+killport() 
+port=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -x 'portainer')
+if [[ ${port} != "" ]]; then
+   $(command -v docker) stop ${port}
+   $(command -v docker) rm ${port}
+   $(command -v rm) -rf /opt/appdata/${port}
+fi
 }
 headinterface() {
 printf "
