@@ -110,7 +110,7 @@ updatesystem() {
          if [[ $lsb_dist == 'ubuntu' ]]; then add-apt-repository --yes --remove ppa:ansible/ansible; fi
       fi
 
-      if [[ ! -d "/etc/ansible/inventories "]]; then
+      if [[ ! -d "/etc/ansible/inventories" ]]; then
          $(command -v mkdir) -p $invet 
       fi
       cat > /etc/ansible/inventories/local << EOF; $(echo)
