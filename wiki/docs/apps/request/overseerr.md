@@ -1,3 +1,16 @@
+<br />
+![Image of DockServer](/img/logo.png)
+
+[![Website: https://dockserver.io](https://img.shields.io/badge/Website-https%3A%2F%2Fdockserver.io-blue.svg?style=for-the-badge&colorB=177DC1&label=website)](https://dockserver.io)
+[![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa)
+[![License: GPL 3](https://img.shields.io/badge/License-GPL%203-blue.svg?style=for-the-badge&colorB=177DC1&label=license)](LICENSE)
+
+---
+
+<p align="center">
+<img src="https://i.imgur.com/TMoEG7g.png" alt="Overseerr">
+</p>
+
 <p align="left">
     <a href="https://discord.gg/FYSvu83caM">
         <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
@@ -11,12 +24,6 @@
     <a href="https://github.com/dockserver/dockserver/blob/master/LICENSE">
         <img src="https://img.shields.io/github/license/dockserver/dockserver?label=License&logo=gnu" alt="GNU General Public License">
     </a>
-</p>
-
----
-
-<p align="center">
-<img src="https://i.imgur.com/TMoEG7g.png" alt="Overseerr">
 </p>
 
 **Overseerr** is a free and open source software application for managing requests for your media library. It integrates with your existing services, such as **[Sonarr](https://sonarr.tv/)**, **[Radarr](https://radarr.video/)**, and **[Plex](https://www.plex.tv/)**!
