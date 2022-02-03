@@ -1,3 +1,13 @@
+<br />
+![Image of DockServer](/img/logo.png)
+
+[![Website: https://dockserver.io](https://img.shields.io/badge/Website-https%3A%2F%2Fdockserver.io-blue.svg?style=for-the-badge&colorB=177DC1&label=website)](https://dockserver.io)
+[![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa)
+[![License: GPL 3](https://img.shields.io/badge/License-GPL%203-blue.svg?style=for-the-badge&colorB=177DC1&label=license)](LICENSE)
+
+---
+
+## Autoscan
 <p align="left">
     <a href="https://discord.gg/FYSvu83caM">
         <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
@@ -12,8 +22,6 @@
         <img src="https://img.shields.io/github/license/dockserver/dockserver?label=License&logo=gnu" alt="GNU General Public License">
     </a>
 </p>
-
-## Autoscan
 
 Autoscan replaces the default Plex and Emby behaviour for picking up file changes on the file system.
 Autoscan integrates with Sonarr, Radarr, Lidarr and Google Drive to fetch changes in near real-time without relying on the file system.
