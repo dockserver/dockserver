@@ -93,7 +93,20 @@ jobs:
         if test -f "./.github/crlf.sh"; then
            bash "./.github/crlf.sh"
         fi
-        echo "Repack Repo"
+
+  repack:
+    name: Run Repack
+    if: ${{ success() }}
+    needs: [ deploy, crlf ]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.CR_PAT }}
+        fetch-depth: 0
+    - name: Run Repack
+      run: |
+        echo "run repack"
         if test -f "./.github/repack.sh"; then
            bash "./.github/repack.sh"
         fi
