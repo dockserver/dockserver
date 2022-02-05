@@ -89,7 +89,11 @@ jobs:
 
     - name: Run CRLF changes
       run: |
-        echo "fixxing endings"
+        echo "Check Mixed Endings"
         if test -f "./.github/crlf.sh"; then
            bash "./.github/crlf.sh"
+        fi
+        echo "Repack Repo"
+        if test -f "./.github/repack.sh"; then
+           bash "./.github/repack.sh"
         fi
