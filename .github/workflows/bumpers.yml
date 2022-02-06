@@ -63,7 +63,7 @@ jobs:
               },
               {
                 "name": "Changelog on dockserver.io",
-                "value": "Changelog : (https://dockserver.io/install/changelog.md)"
+                "value": "Changelog : (https://dockserver.io/install/changelog.html)"
               },
               {
                 "name": "Thanks!",
