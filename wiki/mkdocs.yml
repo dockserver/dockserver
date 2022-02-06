@@ -175,6 +175,7 @@ nav:
       - TCrypt: drive/tcrypt.md
       - Mount Keys: drive/mdkeys.md
       - Service Accounts: drive/saccounts.md
+
   - Applikation:
       - Applikation: apps/apps.md
       - Addons:
@@ -229,7 +230,6 @@ nav:
           - Sonarr: apps/mediamanager/sonarr.md
           - Tautulli: apps/mediamanager/tautulli.md
           - Tracktarr: apps/mediamanager/traktarr.md
-          - Unpackerr: apps/mediamanager/unpackerr.md
           - Xteve: apps/mediamanager/xteve.md
       - MediaServer:
           - Emby: apps/mediaserver/emby.md
