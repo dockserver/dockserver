@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## [v1.4.8](https://github.com/dockserver/dockserver/releases/tag/v1.4.8) - 2022-02-06 00:25:14
+
+## 💻 PiP-Update
+
+- pip (deps): bump mkdocs-macros-plugin from 0.6.3 to 0.6.4 in /wiki
+   - PR: #369
+- pip (deps): bump mkdocs-git-revision-date-localized-plugin from 0.11.1 to 0.12 in /wiki
+   - PR: #386
+
+## 💻 GitHub updates
+
+- GH updates (deps): Bump actions/setup-python from 2.3.1 to 2.3.2
+   - PR: #389
+- GH updates (deps): Bump anothrNick/github-tag-action from 1.36.0 to 1.37.0
+   - PR: #388
+- GH updates (deps): Bump lowlighter/metrics from 3.18 to 3.19
+   - PR: #387
+
+## [v1.4.7](https://github.com/dockserver/dockserver/releases/tag/v1.4.7) - 2022-02-02 15:19:53
+
+repository changes
+
 ## [v1.4.6](https://github.com/dockserver/dockserver/releases/tag/v1.4.6) - 2022-02-02 13:43:22
 
 repository changes
