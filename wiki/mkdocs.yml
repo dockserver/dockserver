@@ -160,6 +160,7 @@ nav:
       - Cloudflare: install/cloudflare.md
       - cf-companion: install/cf-companion.md
       - Traefik: install/traefik.md
+  - Special:
       - LXC-Container: lxc/lxc.md
       - Migration: install/migration.md
       - Changelog: install/changelog.md
@@ -193,7 +194,6 @@ nav:
           - Speedtest: apps/addons/speedtest.md
           - vnstat: apps/addons/vnstat.md
       - Backup:
-          - Rsync-Backup: apps/backup/backup.md
           - Duplicati: apps/backup/duplicati.md
           - Rsnapshot: apps/backup/rsnapshot.md
       - Coding:
