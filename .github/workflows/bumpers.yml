@@ -62,8 +62,8 @@ jobs:
                 "value": "new Version public : `'${VERSION}'`"
               },
               {
-                "name": "Changelog : ",
-                "value": "'${CHANGES}'"
+                "name": "Changelog on dockserver.io",
+                "value": "Changelog : (https://dockserver.io/install/changelog.md)"
               },
               {
                 "name": "Thanks!",
