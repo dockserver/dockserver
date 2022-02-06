@@ -1,5 +1,5 @@
 
-![Image of DockServer](/docs/img/dockserver_logo_github.png)
+![Image of DockServer](/img/dockserver_logo_github.png)
 
 <p align="left">
     <a href="https://discord.gg/FYSvu83caM">
