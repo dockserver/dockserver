@@ -11,24 +11,29 @@ on:
       - 'traefik/**'
       - 'scripts/**'
   workflow_dispatch:
+  workflow_run:
+    workflows: ["COPY index"]
+    types:
+      - completed
 
 jobs:
   deploy:
     name: Deploy Dockserver Wiki on GitHub Pages
     if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/master' }}
     runs-on: ubuntu-latest
+    needs: copy
     steps:
       - name: Check out code
         uses: actions/checkout@v2.4.0
         with:
           fetch-depth: '0'
+          token: ${{ secrets.CR_PAT }}
 
       - name: Set up Python
         uses: actions/setup-python@v2.3.2
         with:
           python-version: 3.x
 
-      - run: cp -r README.md "./wiki/docs/index.md"
       - run: python3 -m pip install --upgrade pip
       - run: python3 -m pip install --upgrade --force-reinstall -r wiki/requirements.txt
       - run: mkdocs gh-deploy --force --config-file wiki/mkdocs.yml --remote-branch wiki
