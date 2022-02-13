@@ -20,13 +20,13 @@ site_name: DockServer Wiki
 use_directory_urls: false
 site_url: ""
 site_author: DockServer
-site_description: >-
-  Use your self hosted Docker as Wiki
+site_description: Use your self hosted docker as wiki
 
 # Repository
 repo_name: DockServer Wiki
 repo_url: https://github.com/dockserver/dockserver
-copyright: Copyright &copy; 2021 DockServer.io
+edit_uri: /edit/master/wiki/docs/
+copyright: Copyright &copy; 2022 DockServer.io
 
 # Configuration
 theme:
@@ -81,8 +81,8 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
-  favicon: img/favicon.png
-  logo: img/favicon.png
+  favicon: img/dockserver_logo_github.png
+  logo: img/dockserver_logo_github.png
 
 # Plugins
 plugins:
