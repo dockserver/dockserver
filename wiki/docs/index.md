@@ -1,5 +1,6 @@
-
 # **DockServer**
+
+![Image of DockServer](https://raw.githubusercontent.com/dockserver/dockserver/master/wiki/docs/img/dockservee_animated.gif)
 
 <p align="left">
     <a href="https://discord.gg/FYSvu83caM">
@@ -18,6 +19,10 @@
 _Docker + Traefik with Authelia and Cloudflare Protection_
 
 ---
+
+Some stats of [DOCKSERVER](https://dockserver.io)![metrics](https://raw.githubusercontent.com/dockserver/dockserver/master/github-metrics.svg)
+
+--- 
 
 ## Minimum Specs and Requirements
 
@@ -78,6 +83,13 @@ sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/wg
 ```
 
 </details>
+
+---
+
+<!--START_SECTION:activity-->
+
+1. 🎉 Merged PR [#396](https://github.com/dockserver/dockserver/pull/396) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+<!--END_SECTION:activity-->
 
 ---
 
