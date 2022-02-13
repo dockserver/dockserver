@@ -1,0 +1,27 @@
+name: COPY index
+
+on:
+  workflow_dispatch:
+  schedule:
+  - cron: "0 */12 * * *"
+
+jobs:
+  copy:
+    name: COPY index for Dockserver Wiki
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2.4.0
+        with:
+          token: ${{ secrets.CR_PAT }}
+          fetch-depth: '0'
+
+    - name: COPY File 
+      run: |
+        echo "Overwrite Index.md"
+        if test -f "./.github/readme.sh"; then
+           bash "./.github/readme.sh"
+        fi
+      env:
+        username: ${{ github.actor }}
+        token: ${{ secrets.CR_PAT }}
