@@ -29,7 +29,7 @@ jobs:
   crlf:
     name: Check Mixed Line Endings action
     if: ${{ success() }}
-    needs: deploy
+    needs: copymd
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
