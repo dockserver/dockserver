@@ -34,7 +34,7 @@ jobs:
 
       - run: python3 -m pip install --upgrade pip
       - run: python3 -m pip install --upgrade --force-reinstall -r wiki/requirements.txt
-      - run: mkdocs gh-deploy --force --config-file wiki/mkdocs.yml --remote-branch wiki
+      - run: mkdocs gh-deploy --config-file wiki/mkdocs.yml --remote-branch wiki
 
       - name: Send notification
         if: ${{ success() }}
