@@ -19,7 +19,6 @@ on:
 jobs:
   deploy:
     name: Deploy Dockserver Wiki on GitHub Pages
-    if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/master' }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
