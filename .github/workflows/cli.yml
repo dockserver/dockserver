@@ -1,15 +1,6 @@
 ---
 name: Run CLI
 on:
-  push:
-    branches:
-      - master
-    paths:
-      - '.installer/**'
-      - 'apps/**'
-      - 'preinstall/**'
-      - 'traefik/**'
-      - 'scripts/**'
   workflow_dispatch:
   workflow_run:
     workflows: ["COPY index"]
@@ -22,12 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: copy
     steps:
-      - name: Check out code
-        uses: actions/checkout@v2.4.0
-        with:
-          fetch-depth: '0'
-          token: ${{ secrets.CR_PAT }}
-
       - name: Set up Python
         uses: actions/setup-python@v2.3.2
         with:
