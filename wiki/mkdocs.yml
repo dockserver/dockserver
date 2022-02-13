@@ -90,10 +90,12 @@ plugins:
   - mermaid2
   - redirects:
       redirect_maps:
-        #changelog/insiders.md: insiders/changelog.md
+        404.html: index.md
   - minify:
       minify_html: true
 
+extra_css:
+  - https://unpkg.com/mermaid/dist/mermaid.css
 extra_javascript:
   - https://unpkg.com/mermaid/dist/mermaid.min.js
 
