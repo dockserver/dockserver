@@ -38,12 +38,12 @@ jobs:
         COLOR: 3066993
       shell: bash
       run: |
-        curl -fsSL --retry 5 "https://raw.githubusercontent.com/dockserver/container/master/images/Logo.png" > image.png
+        cp -r "./wiki/overrides/img/profile.png" image.png
         VERSION=$(curl -sX GET "https://api.github.com/repos/dockserver/dockserver/releases/latest" | jq --raw-output '.tag_name')
         export DOCKER_CLI_EXPERIMENTAL=enabled
         json='{
           "username": "dockserver Release-Bot",
-          "avatar_url": "https://raw.githubusercontent.com/dockserver/container/master/images/Logo.png",
+          "avatar_url": "https://raw.githubusercontent.com/dockserver/dockserver/master/wiki/overrides/img/profile.png",
           "embeds": [
             {
             "author": {

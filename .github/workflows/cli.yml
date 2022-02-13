@@ -10,24 +10,27 @@ on:
       - 'preinstall/**'
       - 'traefik/**'
       - 'scripts/**'
-      - 'wiki/**'
   workflow_dispatch:
+  workflow_run:
+    workflows: ["COPY index"]
+    types:
+      - completed
 
 jobs:
   deploy:
     name: Deploy Dockserver Wiki on GitHub Pages
-    if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/master' }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
         uses: actions/checkout@v2.4.0
         with:
           fetch-depth: '0'
+          token: ${{ secrets.CR_PAT }}
 
       - name: Set up Python
         uses: actions/setup-python@v2.3.2
         with:
-          python-version: 3.x
+          python-version: 3.
 
       - run: python3 -m pip install --upgrade pip
       - run: python3 -m pip install --upgrade --force-reinstall -r wiki/requirements.txt
@@ -40,12 +43,11 @@ jobs:
           COLOR: 3066993
         shell: bash
         run: |
-          curl -fsSL --retry 5 "https://github.com/dockserver/dockserver/blob/master/wiki/overrides/img/favicon.png" > image.png
+          cp -r "./wiki/overrides/img/profile.png" image.png
           export DOCKER_CLI_EXPERIMENTAL=enabled
           json='{
             "username": "dockserver Events",
-            "avatar_url": "https://raw.githubusercontent.com/dockserver/container/master/images/Logo.png",
-            "embeds": [
+            "avatar_url": "https://raw.githubusercontent.com/dockserver/dockserver/master/wiki/overrides/img/profile.png",            "embeds": [
               {
               "author": {
                 "name": "'${{ github.repository_owner }}'"

@@ -20,13 +20,13 @@ site_name: DockServer Wiki
 use_directory_urls: false
 site_url: ""
 site_author: DockServer
-site_description: >-
-  Use your self hosted Docker as Wiki
+site_description: Use your self hosted docker as wiki
 
 # Repository
 repo_name: DockServer Wiki
 repo_url: https://github.com/dockserver/dockserver
-copyright: Copyright &copy; 2021 DockServer.io
+edit_uri: https://github.com/dockserver/dockserver/edit/master/wiki/docs/
+copyright: Copyright &copy; 2022 DockServer.io
 
 # Configuration
 theme:
@@ -81,8 +81,8 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
-  favicon: img/favicon.png
-  logo: img/favicon.png
+  favicon: img/dockserver_logo_github.png
+  logo: img/dockserver_logo_github.png
 
 # Plugins
 plugins:
@@ -90,10 +90,12 @@ plugins:
   - mermaid2
   - redirects:
       redirect_maps:
-        #changelog/insiders.md: insiders/changelog.md
+        404.html: index.md
   - minify:
       minify_html: true
 
+extra_css:
+  - https://unpkg.com/mermaid/dist/mermaid.css
 extra_javascript:
   - https://unpkg.com/mermaid/dist/mermaid.min.js
 

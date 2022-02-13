@@ -1,29 +1,35 @@
 # **DockServer**
 
-![Image of DockServer](/wiki/docs/img/dockservee_animated.gif)
-
-<p align="left">
+<p align="center">
+    <a href="https://dockserver.io">
+      <img src="https://raw.githubusercontent.com/dockserver/dockserver/master/wiki/docs/img/dockservee_animated.gif" alt="Join DockServer community">
+    </a>
+    </br>
     <a href="https://discord.gg/FYSvu83caM">
         <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
     </a>
+    </br>
     <img src="https://img.shields.io/liberapay/receives/dockserver.svg?logo=liberapay">
+    </br>
     <a href="https://github.com/dockserver/dockserver/releases/latest">
         <img src="https://img.shields.io/github/v/release/dockserver/dockserver?include_prereleases&label=Latest%20Release&logo=github" alt="Latest Official Release on GitHub">
     </a>
+    </br>
     <a href="https://github.com/dockserver/dockserver/blob/master/LICENSE">
         <img src="https://img.shields.io/github/license/dockserver/dockserver?label=License&logo=mit" alt="MIT License">
     </a>
-    <noscript><a href="https://liberapay.com/dockserver/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
+    </br>
+    <noscript>
+      <a href="https://liberapay.com/dockserver/donate">
+      <img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a>
+    </noscript>
 </p>
 
 _Docker + Traefik with Authelia and Cloudflare Protection_
 
 ---
 
-Some stats of [DOCKSERVER](https://dockserver.io)
-
-![metrics](./github-metrics.svg)
-
+Some stats of [DOCKSERVER](https://dockserver.io)![metrics](https://raw.githubusercontent.com/dockserver/dockserver/master/github-metrics.svg)
 
 --- 
 
@@ -91,7 +97,7 @@ sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/wg
 
 <!--START_SECTION:activity-->
 
-1. 🎉 Merged PR [#395](https://github.com/dockserver/dockserver/pull/395) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+1. 🎉 Merged PR [#396](https://github.com/dockserver/dockserver/pull/396) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 <!--END_SECTION:activity-->
 
 ---
@@ -202,17 +208,17 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
-        <a href=https://github.com/Nossersvinet>
-            <img src=https://avatars.githubusercontent.com/u/83166809?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Nossersvinet/>
-            <br />
-            <sub style="font-size:14px"><b>Nossersvinet</b></sub>
-        </a>
-    </td>
-    <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
         <a href=https://github.com/mrfret>
             <img src=https://avatars.githubusercontent.com/u/72273384?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=mrfret/>
             <br />
             <sub style="font-size:14px"><b>mrfret</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
+        <a href=https://github.com/Nossersvinet>
+            <img src=https://avatars.githubusercontent.com/u/83166809?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Nossersvinet/>
+            <br />
+            <sub style="font-size:14px"><b>Nossersvinet</b></sub>
         </a>
     </td>
 </tr>
