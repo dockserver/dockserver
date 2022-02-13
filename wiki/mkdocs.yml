@@ -25,7 +25,7 @@ site_description: Use your self hosted docker as wiki
 # Repository
 repo_name: DockServer Wiki
 repo_url: https://github.com/dockserver/dockserver
-edit_uri: /edit/master/wiki/docs/
+edit_uri: https://github.com/dockserver/dockserver/edit/master/wiki/docs/
 copyright: Copyright &copy; 2022 DockServer.io
 
 # Configuration
