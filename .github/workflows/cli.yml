@@ -28,7 +28,7 @@ jobs:
         with:
           python-version: 3.x
 
-      - run: cp -r README.MD "./wiki/docs/index.md"
+      - run: cp -r README.md "./wiki/docs/index.md"
       - run: python3 -m pip install --upgrade pip
       - run: python3 -m pip install --upgrade --force-reinstall -r wiki/requirements.txt
       - run: mkdocs gh-deploy --force --config-file wiki/mkdocs.yml --remote-branch wiki
