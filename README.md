@@ -1,6 +1,6 @@
 # **DockServer**
 
-![Image of DockServer](/wiki/docs/img/dockservee_animated.gif)
+![Image of DockServer](https://raw.githubusercontent.com/dockserver/dockserver/master/wiki/docs/img/dockservee_animated.gif)
 
 <p align="left">
     <a href="https://discord.gg/FYSvu83caM">
