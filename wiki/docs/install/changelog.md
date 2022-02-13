@@ -1,5 +1,36 @@
 # CHANGELOG
 
+## [v1.4.10](https://github.com/dockserver/dockserver/releases/tag/v1.4.10) - 2022-02-13 00:01:28
+
+## 💻 PiP-Update
+
+- pip (deps): bump mkdocs-git-revision-date-localized-plugin from 0.12 to 0.12.1 in /wiki
+   - PR: #391
+- pip (deps): bump mkdocs-material from 8.1.9 to 8.1.10 in /wiki
+   - PR: #392
+- pip (deps): bump pymdown-extensions from 9.1 to 9.2 in /wiki
+   - PR: #394
+- pip (deps): bump mkdocs-material from 8.1.10 to 8.1.11 in /wiki
+   - PR: #395
+
+## 💻 GitHub updates
+
+- GH updates (deps): Bump anothrNick/github-tag-action from 1.37.0 to 1.38.0
+   - PR: #390
+- GH updates (deps): Bump lowlighter/metrics from 3.19 to 3.20
+   - PR: #393
+
+## 🎨 DockServer Update
+
+- Update saccounts.md
+   - PR: #396
+
+### Documentation
+
+- README:
+  - update contributors ([10426ba](https://github.com/dockserver/dockserver/commit/10426ba5c25f99dbfc759a0f9295175ba18b01bf))
+  - update contributors ([def6d6f](https://github.com/dockserver/dockserver/commit/def6d6f313de14077ab9f3f12b1ba9f087c5461a))
+
 ## [v1.4.9](https://github.com/dockserver/dockserver/releases/tag/v1.4.9) - 2022-02-06 07:51:59
 
 repository changes
