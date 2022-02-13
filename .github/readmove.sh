@@ -21,6 +21,6 @@ if [[ -n $(git status --porcelain) ]]; then
    git config --global user.name 'github-actions[bot]'
    git config --global user.email 'github-actions[bot]@users.noreply.github.com'
    git repack -a -d --depth=5000 --window=5000
-   git add -A && git commit -sam "[Auto Generation] Adding new release version" || exit 0
+   git add -A && git commit -sam "[Aut] Adding new index version" || exit 0
    git push --force
 fi
