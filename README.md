@@ -20,10 +20,7 @@ _Docker + Traefik with Authelia and Cloudflare Protection_
 
 ---
 
-Some stats of [DOCKSERVER](https://dockserver.io)
-
-![metrics](./github-metrics.svg)
-
+Some stats of [DOCKSERVER](https://dockserver.io)![metrics](https://raw.githubusercontent.com/dockserver/dockserver/master/github-metrics.svg)
 
 --- 
 
