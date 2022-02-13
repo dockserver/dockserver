@@ -40,11 +40,11 @@ jobs:
           COLOR: 3066993
         shell: bash
         run: |
-          curl -fsSL --retry 5 "https://github.com/dockserver/dockserver/blob/master/wiki/overrides/img/favicon.png" > image.png
+          cp -r "./wiki/overrides/img/profile.png" image.png
           export DOCKER_CLI_EXPERIMENTAL=enabled
           json='{
             "username": "dockserver Events",
-            "avatar_url": "https://raw.githubusercontent.com/dockserver/container/master/images/Logo.png",
+            "avatar_url": "https://raw.githubusercontent.com/dockserver/wiki/overrides/img/profile.png",
             "embeds": [
               {
               "author": {
