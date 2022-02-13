@@ -4,6 +4,11 @@
     <a href="https://dockserver.io">
       <img src="https://raw.githubusercontent.com/dockserver/dockserver/master/wiki/docs/img/dockservee_animated.gif" alt="Join DockServer community">
     </a>
+</p>
+
+----- 
+
+<p align="center">
     </br>
     <a href="https://discord.gg/FYSvu83caM">
         <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
