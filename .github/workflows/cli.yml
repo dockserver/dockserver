@@ -44,8 +44,7 @@ jobs:
           export DOCKER_CLI_EXPERIMENTAL=enabled
           json='{
             "username": "dockserver Events",
-            "avatar_url": "https://raw.githubusercontent.com/dockserver/wiki/overrides/img/profile.png",
-            "embeds": [
+            "avatar_url": "https://raw.githubusercontent.com/dockserver/dockserver/master/wiki/overrides/img/profile.png",            "embeds": [
               {
               "author": {
                 "name": "'${{ github.repository_owner }}'"
