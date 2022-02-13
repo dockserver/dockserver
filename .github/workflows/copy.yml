@@ -19,8 +19,8 @@ jobs:
     - name: COPY File 
       run: |
         echo "Overwrite Index.md"
-        if test -f "./.github/readme.sh"; then
-           bash "./.github/readme.sh"
+        if test -f "./.github/readmove.sh"; then
+           bash "./.github/readmove.sh"
         fi
       env:
         username: ${{ github.actor }}
