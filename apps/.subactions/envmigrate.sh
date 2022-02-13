@@ -241,7 +241,7 @@ RU_OVERWRITE_UPLOADED_TORRENTS=${RU_OVERWRITE_UPLOADED_TORRENTS:-false}
 RU_FORBID_USER_SETTINGS=${RU_FORBID_USER_SETTINGS:-false}
 RU_LOCALE=${RU_LOCALE:-UTF8}" >$basefolder/compose/.env
 }
-
+basefolder="/opt/appdata"
 #bypass the dark them bug
 sed -i "s/organizr-dark/organizr/g" $basefolder/compose/.env
 
