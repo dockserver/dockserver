@@ -4,6 +4,11 @@
     <a href="https://dockserver.io">
       <img src="https://raw.githubusercontent.com/dockserver/dockserver/master/wiki/docs/img/dockservee_animated.gif" alt="Join DockServer community">
     </a>
+</p>
+
+----- 
+
+<p align="center">
     </br>
     <a href="https://discord.gg/FYSvu83caM">
         <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
@@ -25,13 +30,17 @@
     </noscript>
 </p>
 
+
 _Docker + Traefik with Authelia and Cloudflare Protection_
+
 
 ---
 
 Some stats of [DOCKSERVER](https://dockserver.io)![metrics](https://raw.githubusercontent.com/dockserver/dockserver/master/github-metrics.svg)
 
+
 --- 
+
 
 ## Minimum Specs and Requirements
 
@@ -48,13 +57,16 @@ Some stats of [DOCKSERVER](https://dockserver.io)![metrics](https://raw.githubus
 
 ---
 
+
 ## For Testing
 
 - [Hetzner Cloud](https://www.hetzner.com/de/cloud)
 - [Digital Ocean](https://www.digitalocean.com/)
 - [Vault](https://www.vultr.com/)
 
+
 ---
+
 
 ## Pre-Install
 
@@ -62,7 +74,9 @@ Some stats of [DOCKSERVER](https://dockserver.io)![metrics](https://raw.githubus
 1. Add 1 **A-Record** pointed to your server's ip.
 1. Copy your [CloudFlare-Global-Key](https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys) and [CloudFlare-Zone-ID](https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys).
 
+
 ---
+
 
 ## Set the following on Cloudflare
 
@@ -73,7 +87,9 @@ Some stats of [DOCKSERVER](https://dockserver.io)![metrics](https://raw.githubus
 1. `TLS min = 1.2`
 1. `TLS = v1.3`
 
+
 ---
+
 
 ### Easy Mode install
 
@@ -93,12 +109,14 @@ sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/wg
 
 </details>
 
+
 ---
 
 <!--START_SECTION:activity-->
 
-1. 🎉 Merged PR [#396](https://github.com/dockserver/dockserver/pull/396) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+1. 🎉 Merged PR [#397](https://github.com/dockserver/dockserver/pull/397) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 <!--END_SECTION:activity-->
+
 
 ---
 

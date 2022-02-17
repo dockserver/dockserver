@@ -14,13 +14,10 @@
 # shellcheck disable=SC2086
 # shellcheck disable=SC2046
 
-cp -r README.md "./wiki/docs/index.md"
-
-sleep 5
-if [[ -n $(git status --porcelain) ]]; then
+   curl -o "./wiki/docs/index.md" -L "https://raw.githubusercontent.com/dockserver/dockserver/master/README.md"
    git config --global user.name 'github-actions[bot]'
    git config --global user.email 'github-actions[bot]@users.noreply.github.com'
    git repack -a -d --depth=5000 --window=5000
    git add -A && git commit -sam "[Aut] Adding new index version" || exit 0
    git push --force
-fi
+
