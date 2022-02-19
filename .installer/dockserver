@@ -20,7 +20,8 @@ fi
 dockserver=/opt/dockserver
 run() {
 if [[ -d ${dockserver} ]];then
-   envmigra && $(command -v cd) ${dockserver} && $(command -v bash) install.sh
+   envmigra && fastapt && cleanup && clear
+   $(command -v cd) ${dockserver} && $(command -v bash) install.sh
 else
    usage
 fi
@@ -30,7 +31,7 @@ update() {
 dockserver=/opt/dockserver
 clear
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "    🚀    DockServer [ UPDATE ] STARTED"
+echo "    🚀    DockServer [ UPDATE CONTAINER ] STARTED"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
      basefolder="/opt/appdata"
      compose="compose/docker-compose.yml"
@@ -42,9 +43,9 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
         $(command -v cd) $basefolder/compose/ && docker-compose up -d --force-recreate 1>/dev/null 2>&1
      fi
      $(command -v chown) -cR 1000:1000 ${dockserver} 1>/dev/null 2>&1
-     envmigra && clear
+     envmigra && fastapt && cleanup && clear
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "    🚀    DockServer [ UPDATE ] DONE"
+echo "    🚀    DockServer [ UPDATE CONTAINER ] DONE"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 }
@@ -58,7 +59,7 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
      $(command -v rm) -rf ${dockserver}
      git clone --quiet -b dev https://github.com/dockserver/dockserver.git ${dockserver}
      $(command -v chown) -cR 1000:1000 ${dockserver} 1>/dev/null 2>&1
-     envmigra && clear
+     envmigra && fastapt && cleanup && clear
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "    🚀    DockServer [ DEV - CLONING ] DONE"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -98,21 +99,41 @@ echo "   Commands :"
 echo ""
 echo "   dockserver -i / --install     =   open the dockserver setup"
 echo "   dockserver -h / --help        =   help/usage"
-echo "   dockserver -u / --update      =   update the local dockserver edition"
+echo "   dockserver -u / --update      =   deployed the update container"
 echo ""
 echo "   dockserver -d / --dev         =   clone the dev branch of dockserver"
-echo "   dockserver -f / --fork <link> =   run you own repo"
+echo "   dockserver -f / --fork <link> =   run your own repo"
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "    🚀    DockServer [ USAGE COMMANDS ]"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
 }
+
 envmigra() {
 basefolder="/opt/appdata"
 dockserver="/opt/dockserver"
 envmigrate="$dockserver/apps/.subactions/envmigrate.sh"
-if [[ -f "$basefolder/compose/.env" ]];then $(command -v bash) $envmigrate;fi 
+if [[ -f "$basefolder/compose/.env" ]];then
+   $(command -v bash) $envmigrate
+fi 
+}
+fastapt() {
+if ! type aria2c >/dev/null 2>&1; then
+   apt-get update -y && apt-get install --force-yes -y -qq aria2
+fi
+wget https://raw.githubusercontent.com/ilikenwf/apt-fast/master/apt-fast -O /usr/local/sbin/apt-fast
+chmod +x /usr/local/sbin/apt-fast
+if ! [[ -f /etc/apt-fast.conf ]]; then
+   wget https://raw.githubusercontent.com/ilikenwf/apt-fast/master/apt-fast.conf -O /etc/apt-fast.conf
+   echo debconf apt-fast/maxdownloads string 16 | debconf-set-selections
+   echo debconf apt-fast/dlflag boolean true | debconf-set-selections
+   echo debconf apt-fast/aptmanager string apt | debconf-set-selections
+fi
+}
+cleanup() {
+find /var/log -type f -regex ".*\.gz$" -delete
+find /var/log -type f -regex ".*\.[0-9]$" -delete
 }
 
 DOCK=$1
