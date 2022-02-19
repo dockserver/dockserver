@@ -122,13 +122,11 @@ fastapt() {
 if ! type aria2c >/dev/null 2>&1; then
    apt-get update -y && apt-get install --force-yes -y -qq aria2
 fi
-wget https://raw.githubusercontent.com/ilikenwf/apt-fast/master/apt-fast -O /usr/local/sbin/apt-fast
-chmod +x /usr/local/sbin/apt-fast
 if ! [[ -f /etc/apt-fast.conf ]]; then
-   wget https://raw.githubusercontent.com/ilikenwf/apt-fast/master/apt-fast.conf -O /etc/apt-fast.conf
-   echo debconf apt-fast/maxdownloads string 16 | debconf-set-selections
-   echo debconf apt-fast/dlflag boolean true | debconf-set-selections
-   echo debconf apt-fast/aptmanager string apt | debconf-set-selections
+      bash -c "$(curl -sL https://raw.githubusercontent.com/ilikenwf/apt-fast/master/quick-install.sh)"
+      echo debconf apt-fast/maxdownloads string 16 | debconf-set-selections
+      echo debconf apt-fast/dlflag boolean true | debconf-set-selections
+      echo debconf apt-fast/aptmanager string apt | debconf-set-selections
 fi
 }
 cleanup() {
