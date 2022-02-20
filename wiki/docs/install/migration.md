@@ -53,6 +53,14 @@ Now, please order a VPS with ubuntu 18/20 on it and follow the instructions on t
 
 # Mount & Uploader
 
+Open a terminal
+
+Create the folders
+
+`sudo mkdir -p /opt/appdata/system/{rclone,servicekeys}`
+
+`sudo chown -cR 1000:1000 /opt/appdata`
+
 Install CloudCMD (under addons)
 
 Navigate to
@@ -62,7 +70,7 @@ Upload the rclone.conf from your old server
 Navigate to
 /opt/appdata/system/servicekeys
 
-Upload the rclone.conf to this folder
+Upload the the same rclone.conf to this folder
 Rename rclone.conf to rclonegdsa.conf
 
 Navigate to
@@ -70,19 +78,37 @@ Navigate to
 Upload all service keys (GDSA01,02..)
 Rename all service keys to not containing a 0 so GDSA01 becomes GDSA1 and so forth..
 
-Open a terminal
-
-Create the folders
-
-`sudo mkdir -p /opt/appdata/system/{rclone,servicekeys}`
-
-`sudo chown -cR 1000:1000 /opt/appdata`
 
 Edit your rclone.conf
 
 `sudo nano /opt/appdata/system/rclone/rclone.conf`
 
 Remove all GDSA lines here, only the remotes(g/tdrive, g/tcrypt) are left in the file - PGUNION has to be deleted as well
+Like this:
+
+[gdrive]
+client_id = XOXOYOURID
+client_secret = XOXOYOURSECRET
+type = drive
+server_side_across_configs = true
+token = XOXOYOURTOKEN
+
+[tdrive]
+client_id = XOXOYOURID
+client_secret = XOXOYOURSECRET
+type = drive
+server_side_across_configs = true
+token = XOXOYOURTOKEN
+team_drive = XXXXXXXXXXXXXXXXXXX
+
+[tdrive2]
+client_id = XOXOYOURID
+client_secret = XOXOYOURSECRET
+type = drive
+server_side_across_configs = true
+token = XOXOYOURTOKEN
+team_drive = XXXXXXXXXXXXXXXXXXX
+
 CTRX+X press y
 
 Edit the rclone.conf to rclonegdsa.conf
@@ -92,10 +118,16 @@ Edit the rclone.conf to rclonegdsa.conf
 Again, remove all zeroes so that the values will be displayed like this:
 
 [GDSA1]
+type = drive
+scope = drive
 service_account_file = /system/servicekeys/keys/GDSA1
+team_drive = XXXXXXXXXXXXXXXXXXX
 
 [GDSA2]
+type = drive
+scope = drive
 service_account_file = /system/servicekeys/keys/GDSA2
+team_drive = XXXXXXXXXXXXXXXXXXX
 
 CTRL+X y
 
