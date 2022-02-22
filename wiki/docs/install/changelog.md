@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [v1.4.13](https://github.com/dockserver/dockserver/releases/tag/v1.4.13) - 2022-02-20 00:14:13
+
+## 💻 PiP-Update
+
+- pip (deps): bump mkdocs-awesome-pages-plugin from 2.6.1 to 2.7.0 in /wiki
+   - PR: #397
+- pip (deps): bump mkdocs-material from 8.1.11 to 8.2.1 in /wiki
+   - PR: #398
+
 ## [v1.4.12](https://github.com/dockserver/dockserver/releases/tag/v1.4.12) - 2022-02-13 16:16:14
 
 repository changes

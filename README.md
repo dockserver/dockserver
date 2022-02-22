@@ -44,8 +44,7 @@ Some stats of [DOCKSERVER](https://dockserver.io)![metrics](https://raw.githubus
 
 ## Minimum Specs and Requirements
 
-- Stable: Ubuntu 18/20.04/20.10 or Debian 9/10
-- unstable: Ubuntu 21.10 or Debian 11
+- Stable: Ubuntu 18/20/21 or Debian 9/10/11
 
 - CPU 2 Cores or 2 VCores
 - 4GB Ram
@@ -114,7 +113,7 @@ sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/wg
 
 <!--START_SECTION:activity-->
 
-1. 🎉 Merged PR [#397](https://github.com/dockserver/dockserver/pull/397) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+1. ❗️ Closed issue [#401](https://github.com/dockserver/dockserver/issues/401) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 <!--END_SECTION:activity-->
 
 
