@@ -65,13 +65,14 @@ Install CloudCMD (under addons)
 
 Navigate to
 /opt/appdata/system/rclone
-Upload the rclone.conf from your old server
+Upload the rclone.conf from your old server.
+Do not rename this one.
 
 Navigate to
 /opt/appdata/system/servicekeys
 
-Upload the the same rclone.conf to this folder
-Rename rclone.conf to rclonegdsa.conf
+Upload the the same rclone.conf to this folder.
+Rename this rclone.conf to rclonegdsa.conf
 
 Navigate to
 /opt/appdata/system/servicekeys/keys
@@ -111,7 +112,7 @@ team_drive = XXXXXXXXXXXXXXXXXXX
 
 CTRX+X press y
 
-Edit the rclone.conf to rclonegdsa.conf
+Edit rclonegdsa.conf
 
 `sudo nano /opt/appdata/system/servicekeys/rclonegdsa.conf`
 
@@ -136,6 +137,49 @@ Done.
 Now you can deploy mount & uploader under in the system section in the CLI
 
 After this you are ready to restore your PG apps on a brand new Dockserver installation
+
+## Note:
+Google Token Expire
+
+it may possible that your Google token expires after a server reboot/migration or other things
+
+logs can be checked with this:
+```
+tail -f /opt/appdata/system/mount/logs/rclone-union.log
+```
+And you can also check if remotes are displaying something:
+```
+sudo docker exec mount ls -1p /mnt/remotes
+```
+if you see something like: 
+Token Expired or could not authenticate with google
+
+then this is your solution (only do a token refresh):
+```
+sudo docker stop mount
+```
+```
+cd /opt/appdata/system/rclone
+```
+You can install rclone using the following command:
+```
+sudo curl https://rclone.org/install.sh | sudo bash
+```
+After installing Rclone, verify the Rclone version with the following command:
+```
+rclone --version
+```
+Then reconnect:
+```
+rclone config reconnect tdrive: --config=rclone.conf
+
+rclone config reconnect gdrive: --config=rclone.conf
+```
+Then start mount again:
+```
+sudo docker start mount
+```
+
 
 ## Support
 
