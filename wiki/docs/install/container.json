@@ -1,6 +1,3 @@
-
-apps docker-jackett
-
 {
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
@@ -12,10 +9,6 @@ apps docker-jackett
    "body": "Upgrading docker-jackett to 0.20.636",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-dockupdate
-
 {
    "appname": "docker-dockupdate",
    "apppic": "./images/docker-dockupdate.png",
@@ -26,10 +19,6 @@ apps docker-dockupdate
    "body": "Upgrading docker-dockupdate to 3.15.0-rc.4",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-mount
-
 {
    "appname": "docker-mount",
    "apppic": "./images/docker-mount.png",
@@ -40,10 +29,6 @@ apps docker-mount
    "body": "Upgrading docker-mount to 3.15.0-rc.4",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-traktarr
-
 {
    "appname": "docker-traktarr",
    "apppic": "./images/docker-traktarr.png",
@@ -55,10 +40,6 @@ apps docker-traktarr
    "body": "Upgrading docker-traktarr to latest-fb87f253",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-uploader
-
 {
    "appname": "docker-uploader",
    "apppic": "./images/docker-uploader.png",
@@ -69,10 +50,6 @@ apps docker-uploader
    "body": "Upgrading docker-uploader to 3.15.0-rc.4",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-gdsa
-
 {
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
@@ -83,10 +60,6 @@ apps docker-gdsa
    "body": "Upgrading docker-gdsa to 374.0.0-alpine",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-nzbget
-
 {
    "appname": "docker-nzbget",
    "apppic": "./images/docker-nzbget.png",
@@ -98,10 +71,6 @@ apps docker-nzbget
    "body": "Upgrading docker-nzbget to 21.1",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-dockserverupdate
-
 {
    "appname": "docker-dockserverupdate",
    "apppic": "./images/docker-dockserverupdate.png",
@@ -114,10 +83,6 @@ apps docker-dockserverupdate
    "body": "Upgrading docker-dockserverupdate to 3.15.0-rc.4",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-librespeed
-
 {
    "appname": "docker-librespeed",
    "apppic": "./images/docker-librespeed.png",
@@ -129,10 +94,6 @@ apps docker-librespeed
    "body": "Upgrading docker-librespeed to 5.2.5",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-readarr
-
 {
    "appname": "docker-readarr",
    "apppic": "./images/docker-readarr.png",
@@ -144,10 +105,6 @@ apps docker-readarr
    "body": "Upgrading docker-readarr to 0.1.1.1259",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-embystat
-
 {
    "appname": "docker-embystat",
    "apppic": "./images/docker-embystat.png",
@@ -159,10 +116,6 @@ apps docker-embystat
    "body": "Upgrading docker-embystat to 0.2.0-beta.27",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-auto-replyarr
-
 {
    "appname": "docker-auto-replyarr",
    "apppic": "",
@@ -173,10 +126,6 @@ apps docker-auto-replyarr
    "body": "Upgrading docker-auto-replyarr to 3.15.0-rc.4",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-tautulli
-
 {
    "appname": "docker-tautulli",
    "apppic": "./images/docker-tautulli.png",
@@ -187,10 +136,6 @@ apps docker-tautulli
    "body": "Upgrading docker-tautulli to 2.9.4",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-nzbhydra2
-
 {
    "appname": "docker-nzbhydra2",
    "apppic": "./images/docker-nzbhydra2.png",
@@ -202,10 +147,6 @@ apps docker-nzbhydra2
    "body": "Upgrading docker-nzbhydra2 to 4.0.2",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-multitautulli
-
 {
    "appname": "docker-multitautulli",
    "apppic": "./images/docker-multitautulli.png",
@@ -216,10 +157,6 @@ apps docker-multitautulli
    "body": "Upgrading docker-multitautulli to 4.1.07",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-prowlarr
-
 {
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
@@ -231,10 +168,6 @@ apps docker-prowlarr
    "body": "Upgrading docker-prowlarr to 0.2.0.1543",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-sonarr
-
 {
    "appname": "docker-sonarr",
    "apppic": "./images/docker-sonarr.png",
@@ -245,10 +178,6 @@ apps docker-sonarr
    "body": "Upgrading docker-sonarr to 3.0.6.1342",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-overseerr
-
 {
    "appname": "docker-overseerr",
    "apppic": "./images/docker-overseerr.png",
@@ -260,10 +189,6 @@ apps docker-overseerr
    "body": "Upgrading docker-overseerr to 1.28.0",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-deluge
-
 {
    "appname": "docker-deluge",
    "apppic": "./images/docker-deluge.png",
@@ -275,10 +200,6 @@ apps docker-deluge
    "body": "Upgrading docker-deluge to 2.0.5-0",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-sabnzbd
-
 {
    "appname": "docker-sabnzbd",
    "apppic": "./images/docker-sabnzbd.png",
@@ -289,10 +210,6 @@ apps docker-sabnzbd
    "body": "Upgrading docker-sabnzbd to 3.5.1",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-emby
-
 {
    "appname": "docker-emby",
    "apppic": "./images/docker-emby.png",
@@ -304,10 +221,6 @@ apps docker-emby
    "body": "Upgrading docker-emby to 4.6.7.0",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-bazarr
-
 {
    "appname": "docker-bazarr",
    "apppic": "./images/docker-bazarr.png",
@@ -319,10 +232,6 @@ apps docker-bazarr
    "body": "Upgrading docker-bazarr to 1.0.3",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-lidarr
-
 {
    "appname": "docker-lidarr",
    "apppic": "./images/docker-lidarr.png",
@@ -334,10 +243,6 @@ apps docker-lidarr
    "body": "Upgrading docker-lidarr to 0.8.1.2135",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-rclone
-
 {
    "appname": "docker-rclone",
    "apppic": "./images/docker-rclone.png",
@@ -348,10 +253,6 @@ apps docker-rclone
    "body": "Upgrading docker-rclone to 3.15.0-rc.4",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-backup
-
 {
    "appname": "docker-backup",
    "apppic": "./images/docker-backup.png",
@@ -362,10 +263,6 @@ apps docker-backup
    "body": "Upgrading docker-backup to 3.15.0-rc.4",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-jellyfin
-
 {
    "appname": "docker-jellyfin",
    "apppic": "./images/docker-jellyfin.png",
@@ -377,10 +274,6 @@ apps docker-jellyfin
    "body": "Upgrading docker-jellyfin to 10.7.7-1",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-jdownloader
-
 {
    "appname": "docker-jdownloader",
    "apppic": "./images/docker-jdownloader.png",
@@ -392,10 +285,6 @@ apps docker-jdownloader
    "body": "Upgrading docker-jdownloader to 3.15.0-rc.4",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-cloudflared
-
 {
    "appname": "docker-cloudflared",
    "apppic": "./images/docker-cloudflared.png",
@@ -406,10 +295,6 @@ apps docker-cloudflared
    "body": "Upgrading docker-cloudflared to 2022.2.2",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-duplicati
-
 {
    "appname": "docker-duplicati",
    "apppic": "./images/docker-duplicati.png",
@@ -421,10 +306,6 @@ apps docker-duplicati
    "body": "Upgrading docker-duplicati to 2.0.6.100",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-wiki
-
 {
    "appname": "docker-wiki",
    "apppic": "./images/docker-wiki.png",
@@ -438,10 +319,6 @@ apps docker-wiki
    "body": "Upgrading docker-wiki to 3.15.0-rc.4",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-plex
-
 {
    "appname": "docker-plex",
    "apppic": "./images/docker-plex.png",
@@ -453,10 +330,6 @@ apps docker-plex
    "body": "Upgrading docker-plex to 1.25.6.5577-c8bd13540",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-radarr
-
 {
    "appname": "docker-radarr",
    "apppic": "./images/docker-radarr.png",
@@ -468,10 +341,6 @@ apps docker-radarr
    "body": "Upgrading docker-radarr to 4.0.4.5922",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-wireguard
-
 {
    "appname": "docker-wireguard",
    "apppic": "./images/docker-wireguard.png",
@@ -483,10 +352,6 @@ apps docker-wireguard
    "body": "Upgrading docker-wireguard to 1.0.20210914",
    "user": "github-actions[bot]"
 }
-
-
-apps docker-qbittorrent
-
 {
    "appname": "docker-qbittorrent",
    "apppic": "./images/docker-qbittorrent.png",
@@ -498,10 +363,6 @@ apps docker-qbittorrent
    "body": "Upgrading docker-qbittorrent to 4.4.0-r0",
    "user": "github-actions[bot]"
 }
-
-
-base alpine
-
 {
    "appname": "alpine",
    "apppic": "",
@@ -512,10 +373,6 @@ base alpine
    "body": "Upgrading alpine to 3.15.0-rc.4",
    "user": "github-actions[bot]"
 }
-
-
-base ubuntu
-
 {
    "appname": "ubuntu",
    "apppic": "./images/ubuntu.png",
@@ -527,10 +384,6 @@ base ubuntu
    "body": "Upgrading ubuntu to focal-20220113",
    "user": "github-actions[bot]"
 }
-
-
-base docker-ubuntu-focal
-
 {
    "appname": "docker-ubuntu-focal",
    "apppic": "./images/docker-ubuntu-focal.png",
@@ -542,10 +395,6 @@ base docker-ubuntu-focal
    "body": "Upgrading docker-ubuntu-focal to 3.15.0-rc.4",
    "user": "github-actions[bot]"
 }
-
-
-base docker-alpine-v3
-
 {
    "appname": "docker-alpine-v3",
    "apppic": "./images/docker-alpine.png",
@@ -557,10 +406,6 @@ base docker-alpine-v3
    "body": "Upgrading docker-alpine to 3.15.0-rc.4",
    "user": "github-actions[bot]"
 }
-
-
-base docker-dockserver
-
 {
    "appname": "docker-dockserver",
    "apppic": "",
@@ -572,10 +417,6 @@ base docker-dockserver
    "body": "Upgrading docker-dockserver to 3.15.0-rc.4",
    "user": "github-actions[bot]"
 }
-
-
-base docker-haproxy
-
 {
    "appname": "docker-haproxy",
    "apppic": "./images/docker-haproxy.png",
@@ -586,10 +427,6 @@ base docker-haproxy
    "body": "Upgrading docker-haproxy to 2.5.3-alpine3.15",
    "user": "github-actions[bot]"
 }
-
-
-base docker-alpine
-
 {
    "appname": "docker-alpine",
    "apppic": "./images/docker-alpine.png",
@@ -601,10 +438,6 @@ base docker-alpine
    "body": "Upgrading docker-alpine to 3.15.0-rc.4",
    "user": "github-actions[bot]"
 }
-
-
-nightly docker-overseerr-nightly
-
 {
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
@@ -616,10 +449,6 @@ nightly docker-overseerr-nightly
    "body": "Upgrading docker-overseerr-nightly to 54b32ebfd6b2eb6aeeea98c25939166eda8cc17f",
    "user": "github-actions[bot]"
 }
-
-
-nightly docker-sabnzbd-nightly
-
 {
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
@@ -630,10 +459,6 @@ nightly docker-sabnzbd-nightly
    "body": "Upgrading docker-sabnzbd-nightly to d6b601968de2e00d76e368483b680d1d49856bd0",
    "user": "github-actions[bot]"
 }
-
-
-nightly docker-radarr-nightly
-
 {
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
@@ -645,10 +470,6 @@ nightly docker-radarr-nightly
    "body": "Upgrading docker-radarr-nightly to 4.0.5.5972",
    "user": "github-actions[bot]"
 }
-
-
-nightly docker-sonarr-nightly
-
 {
    "appname": "docker-sonarr-nightly",
    "apppic": "./images/docker-sonarr-nightly.png",
@@ -659,4 +480,3 @@ nightly docker-sonarr-nightly
    "body": "Upgrading docker-sonarr-nightly to 3.0.6.1471",
    "user": "github-actions[bot]"
 }
-
