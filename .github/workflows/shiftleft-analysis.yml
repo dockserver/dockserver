@@ -4,6 +4,7 @@ on:
   push:
     branches:
     - "*"
+  page_build:
   pull_request:
     branches:
     - "*"
