@@ -19,7 +19,7 @@
    curl -u $USERNAME:$TOKEN -o "./wiki/docs/install/github-metrics.svg" -L "https://raw.githubusercontent.com/dockserver/container/master/github-metrics.svg"
    curl -u $USERNAME:$TOKEN -o "./wiki/docs/install/container.md" -L "https://raw.githubusercontent.com/dockserver/container/master/wiki/docs/install/container.md"
    curl -u $USERNAME:$TOKEN -o "./wiki/docs/install/changes.json" -L "https://raw.githubusercontent.com/dockserver/container/master/CHANGES"
-   curl -u $USERNAME:$TOKEN -o "./wiki/docs/install/container.json" -L "https://raw.githubusercontent.com/dockserver/container/master/container.json"
+   curl -u $USERNAME:$TOKEN -o "./wiki/docs/install/container.json" -L "https://raw.githubusercontent.com/dockserver/container/master/wiki/docs/install/container.json"
 
    unset TOKEN USERNAME
    git config --global user.name 'github-actions[bot]'
