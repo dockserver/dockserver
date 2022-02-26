@@ -33,9 +33,16 @@ jobs:
         with:
           python-version: 3.
 
-      - run: python3 -m pip install --upgrade pip
-      - run: python3 -m pip install --upgrade --force-reinstall -r wiki/requirements.txt
-      - run: mkdocs gh-deploy --force --config-file wiki/mkdocs.yml --remote-branch wiki
+      - uses: actions/cache@v2
+        with:
+          key: ${{ github.ref }}
+          path: .cache
+
+      - name: Set up Wiki
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install --upgrade --force-reinstall -r wiki/requirements.txt
+          mkdocs gh-deploy --force --config-file wiki/mkdocs.yml --remote-branch wiki
 
       - name: Send notification
         if: ${{ success() }}
