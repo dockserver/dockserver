@@ -3,6 +3,201 @@
   "verification_flag": "N",
   "author": {
     "name": "doob187",
+    "date": "2022-02-27 17:00:47 +0100"
+  },
+  "commiter": {
+    "name": "doob187",
+    "date": "2022-02-27 17:00:47 +0100"
+  }
+}
+
+{
+  "message": "Remove duplicate  export value",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-02-27 16:57:42 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-02-27 16:57:42 +0100"
+  }
+}
+
+{
+  "message": "Update github-metrics.svg - [Skip GitHub Action]",
+  "verification_flag": "N",
+  "author": {
+    "name": "doob187",
+    "date": "2022-02-27 16:44:01 +0100"
+  },
+  "commiter": {
+    "name": "doob187",
+    "date": "2022-02-27 16:44:01 +0100"
+  }
+}
+
+{
+  "message": "Re-Add rclone policy",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-02-27 16:40:57 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-02-27 16:40:57 +0100"
+  }
+}
+
+{
+  "message": "Update github-metrics.svg - [Skip GitHub Action]",
+  "verification_flag": "N",
+  "author": {
+    "name": "doob187",
+    "date": "2022-02-27 16:40:32 +0100"
+  },
+  "commiter": {
+    "name": "doob187",
+    "date": "2022-02-27 16:40:32 +0100"
+  }
+}
+
+{
+  "message": "Merge pull request #4 from dockserver/Add-mergerfs-back\n\nAdd mergerfs back",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-02-27 16:37:47 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-02-27 16:37:47 +0100"
+  }
+}
+
+{
+  "message": "Merge branch 'master' into Add-mergerfs-back",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-02-27 16:37:40 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-02-27 16:37:40 +0100"
+  }
+}
+
+{
+  "message": "Update 50-mount",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-02-27 16:37:26 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-02-27 16:37:26 +0100"
+  }
+}
+
+{
+  "message": "Update function.sh",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-02-27 16:35:59 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-02-27 16:35:59 +0100"
+  }
+}
+
+{
+  "message": "Update function.sh",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-02-27 16:30:50 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-02-27 16:30:50 +0100"
+  }
+}
+
+{
+  "message": "Update github-metrics.svg - [Skip GitHub Action]",
+  "verification_flag": "N",
+  "author": {
+    "name": "doob187",
+    "date": "2022-02-27 15:23:03 +0100"
+  },
+  "commiter": {
+    "name": "doob187",
+    "date": "2022-02-27 15:23:03 +0100"
+  }
+}
+
+{
+  "message": "Update startup.sh",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-02-27 15:16:24 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-02-27 15:16:24 +0100"
+  }
+}
+
+{
+  "message": "[Auto Generation] Adding new release version || packages\n\nSigned-off-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com>\n",
+  "verification_flag": "N",
+  "author": {
+    "name": "github-actions[bot]",
+    "date": "2022-02-27 14:15:45 +0000"
+  },
+  "commiter": {
+    "name": "github-actions[bot]",
+    "date": "2022-02-27 14:15:45 +0000"
+  }
+}
+
+{
+  "message": "Update 50-mount",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-02-27 15:14:29 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-02-27 15:14:29 +0100"
+  }
+}
+
+{
+  "message": "Add mergerfs back",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-02-27 14:54:44 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-02-27 14:54:44 +0100"
+  }
+}
+
+{
+  "message": "Update github-metrics.svg - [Skip GitHub Action]",
+  "verification_flag": "N",
+  "author": {
+    "name": "doob187",
     "date": "2022-02-27 12:36:42 +0100"
   },
   "commiter": {
