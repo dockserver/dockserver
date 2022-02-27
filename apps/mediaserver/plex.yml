@@ -11,7 +11,7 @@ services:
       - "UMASK=${UMASK}"
       - "PLEX_CLAIM=PLEX_CLAIM_ID"
       - "VERSION=${PLEXVERSION}"
-      - "ADVERTISE_IP=http://${SERVERIP}:32400,http://plex.${DOMAIN}:32400"
+      - "ADVERTISE_IP=http://plex.${DOMAIN}:443"
       - "DOCKER_MODS=ghcr.io/gilbn/theme.park:plex"
       - "TP_THEME=${PLEXTHEME}"
       - "TP_ADDON=${PLEXADDON}"
