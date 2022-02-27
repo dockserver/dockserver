@@ -1,4 +1,43 @@
 {
+  "message": "Update version.sh",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-02-27 18:52:54 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-02-27 18:52:54 +0100"
+  }
+}
+
+{
+  "message": "Update github-metrics.svg - [Skip GitHub Action]",
+  "verification_flag": "N",
+  "author": {
+    "name": "doob187",
+    "date": "2022-02-27 17:20:16 +0100"
+  },
+  "commiter": {
+    "name": "doob187",
+    "date": "2022-02-27 17:20:16 +0100"
+  }
+}
+
+{
+  "message": "[Auto Generation] Adding new release version || packages\n\nSigned-off-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com>\n",
+  "verification_flag": "N",
+  "author": {
+    "name": "github-actions[bot]",
+    "date": "2022-02-27 16:15:10 +0000"
+  },
+  "commiter": {
+    "name": "github-actions[bot]",
+    "date": "2022-02-27 16:15:10 +0000"
+  }
+}
+
+{
   "message": "Update github-metrics.svg - [Skip GitHub Action]",
   "verification_flag": "N",
   "author": {
