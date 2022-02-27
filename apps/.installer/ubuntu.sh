@@ -460,7 +460,7 @@ runinstall() {
   fi
   if [[ ${section} == "addons" && ${typed} == "vnstat" ]];then vnstatcheck;fi
   if [[ ${section} == "addons" && ${typed} == "autoscan" ]];then autoscancheck;fi
-  if [[ ${section} == "mediaserver" && ${typed} == "plex" ]];then plexclaim;fi
+  if [[ ${section} == "mediaserver" && ${typed} == "plex" ]];then plexclaim && plex443;fi
   if [[ ${section} == "downloadclients" && ${typed} == "jdownloader2" ]];then
      folder=$storage/${typed}
      for jdl in ${folder};do
@@ -494,15 +494,8 @@ runinstall() {
      done
   fi
   if [[ ${section} == "system" && ${typed} == "mount" ]];then
-     checkmnt=$($(command -v mountpoint) -q /mnt/unionfs && echo true || echo false)
-     checkrcc=$($(command -v mountpoint) -q /mnt/rclone_cache && echo true || echo false)
-     mount=$($(command -v docker) ps -aq --format={{.Names}} | grep -x 'mount')
-     if [[ ${checkmnt} == "true" && ${mount} == "mount" ]];then $(command -v docker) stop mount 1>/dev/null 2>&1 && $(command -v fusermount) -uzq /mnt/unionfs 1>/dev/null 2>&1;fi
-     if [[ ${checkmnt} == "false" && ${mount} == "mount" ]];then $(command -v docker) stop mount 1>/dev/null 2>&1 && $(command -v fusermount) -uzq /mnt/unionfs 1>/dev/null 2>&1;fi
-     if [[ ${checkmnt} == "false" && ${mount} == "" ]];then $(command -v fusermount) -uzq /mnt/unionfs 1>/dev/null 2>&1;fi
-     if [[ ${checkrcc} == "true" && ${mount} == "mount" ]];then $(command -v docker) stop mount 1>/dev/null 2>&1 && $(command -v fusermount) -uzq /mnt/rclone_cache 1>/dev/null 2>&1;fi
-     if [[ ${checkrcc} == "false" && ${mount} == "mount" ]];then $(command -v docker) stop mount 1>/dev/null 2>&1 && $(command -v fusermount) -uzq /mnt/rclone_cache 1>/dev/null 2>&1;fi
-     if [[ ${checkrcc} == "false" && ${mount} == "" ]];then $(command -v fusermount) -uzq /mnt/rclone_cache 1>/dev/null 2>&1;fi
+     $(command -v docker) stop mount &>/dev/null && $(command -v docker) rm mount &>/dev/null
+     $(command -v fusermount) -uzq /mnt/unionfs /mnt/rclone_cache /mnt/unionfs
   fi
   if [[ ${section} == "downloadclients" && ${typed} == "youtubedl-material" ]];then
      folder="appdata audio video subscriptions"
@@ -571,7 +564,8 @@ runinstall() {
      $($(command -v docker) ps -aq --format '{{.Names}}{{.State}}' | grep -qE ${typed}running 1>/dev/null 2>&1)
      errorcode=$?
   if [[ $errorcode -eq 0 ]];then
-  if [[ ${typed} == "mount" || ${typed} == "dockupdater" || ${typed} == "endlessh" || ${typed} == "uploader" ]];then
+     TRAEFIK=$(cat $basefolder/$compose | grep "traefik.enable" | wc -l)
+  if [[ ${TRAEFIK} == "0" ]];then
   printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ${typed} has successfully deployed and is now working     
@@ -674,6 +668,39 @@ printf "
      echo "Plex Claim cannot be empty"
      plexclaim
   fi
+}
+plex443() {
+basefolder="/opt/appdata"
+source $basefolder/compose/.env
+printf "
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    🚀  PLEX 443 Options
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    You need to add a Cloudflare Page Rule
+    https://dash.cloudflare.com/
+    > Domain
+      > Rules
+        > add new rule
+          > Domain : plex.${DOMAIN}/*
+          > cache-level: bypass
+        > save
+    __________________
+
+    > in plex settings
+      > settings
+        > remote access
+          > remote access = enabled
+          > manual port 32400
+          > save
+        > network
+          > Strict TLS configuration [ X ]
+          > allowed networks = 172.18.0.0
+          > save 
+      > have fun !
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+"
+read -erp "Confirm Info | PRESS [ENTER]" typed </dev/tty
+
 }
 subtasks() {
 typed=${typed}
