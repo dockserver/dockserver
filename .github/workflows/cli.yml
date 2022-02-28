@@ -30,11 +30,10 @@ jobs:
 
       - name: Set up Python
         uses: actions/setup-python@v3.0.0
-
         with:
           python-version: 3.
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v2.1.7
         with:
           key: ${{ github.ref }}
           path: .cache
