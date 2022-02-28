@@ -1,4 +1,69 @@
 {
+  "message": "Update release.yaml",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-02-28 20:56:47 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-02-28 20:56:47 +0100"
+  }
+}
+
+{
+  "message": "Update docker-qbittorrent.sh",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-02-28 20:52:49 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-02-28 20:52:49 +0100"
+  }
+}
+
+{
+  "message": "Update github-metrics.svg - [Skip GitHub Action]",
+  "verification_flag": "N",
+  "author": {
+    "name": "doob187",
+    "date": "2022-02-28 20:51:04 +0100"
+  },
+  "commiter": {
+    "name": "doob187",
+    "date": "2022-02-28 20:51:04 +0100"
+  }
+}
+
+{
+  "message": "Update version.sh",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-02-28 20:47:26 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-02-28 20:47:26 +0100"
+  }
+}
+
+{
+  "message": "[Auto Generation] Adding new release version || packages\n\nSigned-off-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com>\n",
+  "verification_flag": "N",
+  "author": {
+    "name": "github-actions[bot]",
+    "date": "2022-02-28 19:46:31 +0000"
+  },
+  "commiter": {
+    "name": "github-actions[bot]",
+    "date": "2022-02-28 19:46:31 +0000"
+  }
+}
+
+{
   "message": "Update github-metrics.svg - [Skip GitHub Action]",
   "verification_flag": "N",
   "author": {
