@@ -116,6 +116,7 @@ Edit rclonegdsa.conf
 
 `sudo nano /opt/appdata/system/servicekeys/rclonegdsa.conf`
 
+Remove all the remotes (g/tdrive, g/tcrypt) - PGUNION has to be deleted as well
 Again, remove all zeroes so that the values will be displayed like this:
 
 [GDSA1]
@@ -145,11 +146,11 @@ it may possible that your Google token expires after a server reboot/migration o
 
 logs can be checked with this:
 ```
-tail -f /opt/appdata/system/mount/logs/rclone-union.log
+sudo tail -n 50 -f /opt/appdata/system/mount/logs/rclone-union.log
 ```
 And you can also check if remotes are displaying something:
 ```
-sudo docker exec mount ls -1p /mnt/remotes
+sudo docker exec mount ls -1p /mnt/unionfs
 ```
 if you see something like: 
 Token Expired or could not authenticate with google
@@ -157,17 +158,18 @@ Token Expired or could not authenticate with google
 then this is your solution (only do a token refresh):
 ```
 sudo docker stop mount
+sudo fusermount -uzq /mnt/unionfs 
 ```
 ```
 cd /opt/appdata/system/rclone
 ```
 You can install rclone using the following command:
 ```
-sudo curl https://rclone.org/install.sh | sudo bash
+sudo apt install curl jq && sudo curl https://rclone.org/install.sh | sudo bash
 ```
 After installing Rclone, verify the Rclone version with the following command:
 ```
-rclone --version
+sudo rclone --version
 ```
 Then reconnect:
 ```
@@ -177,7 +179,10 @@ rclone config reconnect gdrive: --config=rclone.conf
 ```
 Then start mount again:
 ```
+sudo fusermount -uzq /mnt/unionfs
 sudo docker start mount
+sudo docker logs -f mount
+( or use dozzle for the logs reading )
 ```
 
 

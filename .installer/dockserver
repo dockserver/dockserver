@@ -65,30 +65,26 @@ echo "    🚀    DockServer [ DEV - CLONING ] DONE"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 }
-####
-fork() {
-dockserver=/opt/dockserver
-DOCK=${DOCK}
-FORK=${FORK}
-if [[ ${DOCK} == "-f" || ${DOCK} == "--fork" ]];then
-   if [[ ${FORK} != "" ]];then
-       if [[ -d ${dockserver} ]];then
-clear
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "    🚀    DockServer FORK Version Pull started"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-     $(command -v rm) -rf ${dockserver}
-     git clone --quiet ${FORK} ${dockserver}
-     $(command -v chown) -cR 1000:1000 ${dockserver} 1>/dev/null 2>&1
-     envmigra
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "    🚀    DockServer FORK Version Pull finished"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-       fi
-   fi
-fi
-clear
+
+fastapp() {
+APP=${APP}
+  cd /opt/dockserver/
+  APP=$(find apps/ -type f -name "${APP}.*" )
+  compose="compose/docker-compose.yml"
+  appfolder="/opt/dockserver"
+  basefolder="/opt/appdata"
+
+     rm -rf $basefolder/$compose
+     rsync $appfolder/${APP} $basefolder/$compose -aqhv && true || exit 0
+     cd $basefolder/compose
+     docker-compose config && echo Good || exit
+     docker-compose up -d --force-recreate && echo Good || exit 
+
+  exit
+
 }
+
+####
 usage() {
 clear
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -101,8 +97,7 @@ echo "   dockserver -i / --install     =   open the dockserver setup"
 echo "   dockserver -h / --help        =   help/usage"
 echo "   dockserver -u / --update      =   deployed the update container"
 echo ""
-echo "   dockserver -d / --dev         =   clone the dev branch of dockserver"
-echo "   dockserver -f / --fork <link> =   run your own repo"
+echo "   dockserver -q / --app         =   fast app installation"
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "    🚀    DockServer [ USAGE COMMANDS ]"
@@ -130,24 +125,24 @@ if ! [[ -f /etc/apt-fast.conf ]]; then
 fi
 }
 cleanup() {
-find /var/log -type f -regex ".*\.gz$" -delete
-find /var/log -type f -regex ".*\.[0-9]$" -delete
+   find /var/log -type f -regex ".*\.gz$" -delete
+   find /var/log -type f -regex ".*\.[0-9]$" -delete
 }
 
 DOCK=$1
-FORK=$2
+APP=$2
+
 case "$DOCK" in
  "" ) run ;;
  "-i" ) run ;;
  "--install" ) run ;;
  "-u" ) update ;;
  "--update" ) update ;;
+ "-a" ) fastapp ;;
+ "--app" ) fastapp ;;
  "-h" ) usage ;;
  "--help" ) usage ;;
- "-d" ) dev ;;
- "--dev" ) dev ;;
- "-f" ) fork ;;
- "--fork" ) fork ;;
+
 esac
 
 #E-o-F#

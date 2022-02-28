@@ -1,5 +1,39 @@
 # CHANGELOG
 
+## [v1.4.17](https://github.com/dockserver/dockserver/releases/tag/v1.4.17) - 2022-02-27 02:12:34
+
+repository changes
+
+## [v1.4.16](https://github.com/dockserver/dockserver/releases/tag/v1.4.16) - 2022-02-27 01:41:36
+
+repository changes
+
+## [v1.4.15](https://github.com/dockserver/dockserver/releases/tag/v1.4.15) - 2022-02-27 00:44:37
+
+## 💻 PiP-Update
+
+- pip (deps): bump mkdocs-git-revision-date-localized-plugin from 0.12.1 to 1.0.0 in /wiki
+   - PR: #400
+- pip (deps): bump mkdocs-material from 8.2.1 to 8.2.2 in /wiki
+   - PR: #403
+
+## 🎨 DockServer Update
+
+- update migration
+   - PR: #399
+- update migration
+   - PR: #402
+
+### Documentation
+
+- README:
+  - update contributors ([ba97305](https://github.com/dockserver/dockserver/commit/ba97305ffd0eaa19a0b8b09d9810125d08e8e5d8))
+  - update contributors ([b306efa](https://github.com/dockserver/dockserver/commit/b306efaea28d6e8f0db338853ec4358f4668f653))
+
+## [v1.4.14](https://github.com/dockserver/dockserver/releases/tag/v1.4.14) - 2022-02-20 01:39:13
+
+repository changes
+
 ## [v1.4.13](https://github.com/dockserver/dockserver/releases/tag/v1.4.13) - 2022-02-20 00:14:13
 
 ## 💻 PiP-Update

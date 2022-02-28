@@ -4,6 +4,7 @@ on:
   push:
     branches:
     - "*"
+  page_build:
   pull_request:
     branches:
     - "*"
@@ -14,6 +15,14 @@ jobs:
   Scan-Build:
     runs-on: ubuntu-latest
     steps:
+    - uses: step-security/harden-runner@bdb12b622a910dfdc99a31fdfe6f45a16bc287a4 # v1
+      with:
+        egress-policy: block
+        disable-telemetry: true
+        allowed-endpoints: >
+          api.github.com:443
+          github.com:443
+
     - uses: actions/checkout@v2
 
     - name: Perform Scan

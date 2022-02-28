@@ -29,52 +29,17 @@ jobs:
           token: ${{ secrets.CR_PAT }}
 
       - name: Set up Python
-        uses: actions/setup-python@v2.3.2
+        uses: actions/setup-python@v3.0.0
         with:
           python-version: 3.
 
-      - run: python3 -m pip install --upgrade pip
-      - run: python3 -m pip install --upgrade --force-reinstall -r wiki/requirements.txt
-      - run: mkdocs gh-deploy --force --config-file wiki/mkdocs.yml --remote-branch wiki
+      - uses: actions/cache@v2.1.7
+        with:
+          key: ${{ github.ref }}
+          path: .cache
 
-      - name: Send notification
-        if: ${{ success() }}
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-          COLOR: 3066993
-        shell: bash
+      - name: Set up Wiki
         run: |
-          cp -r "./wiki/overrides/img/profile.png" image.png
-          export DOCKER_CLI_EXPERIMENTAL=enabled
-          json='{
-            "username": "dockserver Events",
-            "avatar_url": "https://raw.githubusercontent.com/dockserver/dockserver/master/wiki/overrides/img/profile.png",            "embeds": [
-              {
-              "author": {
-                "name": "'${{ github.repository_owner }}'"
-              },
-              "title": " Some changes are pushed !",
-              "url": "https://github.com/dockserver/dockserver/commits/master",
-              "color": '${COLOR}',
-              "fields": [
-                {
-                  "name": "Release Info",
-                  "value": "some new Comment are pushed"
-                },
-                {
-                  "name": "Thanks!",
-                  "value": "Thanks! to all Contributors"
-                }
-              ],
-              "footer": {
-                "text": "Powered by GitHub Actions",
-                "icon_url": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-               },
-               "timestamp": "'$(date -u +'%FT%T.%3NZ')'",
-               "image": {
-                 "url": "attachment://image.png"
-               }
-             }
-            ]
-          }'
-          curl -fsSL --retry 5 -H "Content-Type: multipart/form-data" -F "file=@image.png" -F "payload_json=${json}" "${DISCORD_WEBHOOK}" > /dev/null
+          python3 -m pip install --upgrade pip
+          python3 -m pip install --upgrade --force-reinstall -r wiki/requirements.txt
+          mkdocs gh-deploy --force --config-file wiki/mkdocs.yml --remote-branch wiki
