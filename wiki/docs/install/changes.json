@@ -1,4 +1,134 @@
 {
+  "message": "Merge pull request #6 from dockserver/dependabot/github_actions/master/docker/login-action-1.14.0\n\nGH updates (deps): Bump docker/login-action from 1.13.0 to 1.14.0",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-02-28 22:27:43 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-02-28 22:27:43 +0100"
+  }
+}
+
+{
+  "message": "Merge branch 'master' into dependabot/github_actions/master/docker/login-action-1.14.0",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-02-28 22:27:36 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-02-28 22:27:36 +0100"
+  }
+}
+
+{
+  "message": "Merge pull request #5 from dockserver/dependabot/github_actions/master/lowlighter/metrics-3.21\n\nGH updates (deps): Bump lowlighter/metrics from 3.20 to 3.21",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-02-28 22:27:23 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-02-28 22:27:23 +0100"
+  }
+}
+
+{
+  "message": "GH updates (deps): Bump docker/login-action from 1.13.0 to 1.14.0\n\nBumps [docker/login-action](https://github.com/docker/login-action) from 1.13.0 to 1.14.0.\n- [Release notes](https://github.com/docker/login-action/releases)\n- [Commits](https://github.com/docker/login-action/compare/v1.13.0...v1.14.0)\n\n---\nupdated-dependencies:\n- dependency-name: docker/login-action\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+  "verification_flag": "E",
+  "author": {
+    "name": "dependabot[bot]",
+    "date": "2022-02-28 21:26:59 +0000"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-02-28 21:26:59 +0000"
+  }
+}
+
+{
+  "message": "GH updates (deps): Bump lowlighter/metrics from 3.20 to 3.21\n\nBumps [lowlighter/metrics](https://github.com/lowlighter/metrics) from 3.20 to 3.21.\n- [Release notes](https://github.com/lowlighter/metrics/releases)\n- [Commits](https://github.com/lowlighter/metrics/compare/v3.20...v3.21)\n\n---\nupdated-dependencies:\n- dependency-name: lowlighter/metrics\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+  "verification_flag": "E",
+  "author": {
+    "name": "dependabot[bot]",
+    "date": "2022-02-28 21:26:56 +0000"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-02-28 21:26:56 +0000"
+  }
+}
+
+{
+  "message": "Update github-metrics.svg - [Skip GitHub Action]",
+  "verification_flag": "N",
+  "author": {
+    "name": "doob187",
+    "date": "2022-02-28 22:11:19 +0100"
+  },
+  "commiter": {
+    "name": "doob187",
+    "date": "2022-02-28 22:11:19 +0100"
+  }
+}
+
+{
+  "message": "Update Dockerfile",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-02-28 22:07:41 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-02-28 22:07:41 +0100"
+  }
+}
+
+{
+  "message": "Update docker-qbittorrent.sh",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-02-28 22:07:08 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-02-28 22:07:08 +0100"
+  }
+}
+
+{
+  "message": "Update github-metrics.svg - [Skip GitHub Action]",
+  "verification_flag": "N",
+  "author": {
+    "name": "doob187",
+    "date": "2022-02-28 22:01:06 +0100"
+  },
+  "commiter": {
+    "name": "doob187",
+    "date": "2022-02-28 22:01:06 +0100"
+  }
+}
+
+{
+  "message": "[Auto Generation] Adding new release version || packages\n\nSigned-off-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com>\n",
+  "verification_flag": "N",
+  "author": {
+    "name": "github-actions[bot]",
+    "date": "2022-02-28 20:58:37 +0000"
+  },
+  "commiter": {
+    "name": "github-actions[bot]",
+    "date": "2022-02-28 20:58:37 +0000"
+  }
+}
+
+{
   "message": "Update docker-qbittorrent.sh",
   "verification_flag": "E",
   "author": {
