@@ -1,4 +1,17 @@
 {
+  "message": "[Auto Generation] Adding new release version || packages\n\nSigned-off-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com>\n",
+  "verification_flag": "N",
+  "author": {
+    "name": "github-actions[bot]",
+    "date": "2022-02-28 08:12:31 +0000"
+  },
+  "commiter": {
+    "name": "github-actions[bot]",
+    "date": "2022-02-28 08:12:31 +0000"
+  }
+}
+
+{
   "message": "Update github-metrics.svg - [Skip GitHub Action]",
   "verification_flag": "N",
   "author": {
