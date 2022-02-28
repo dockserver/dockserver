@@ -11,6 +11,14 @@ jobs:
     name: Update README with recent activity
 
     steps:
+      - uses: step-security/harden-runner@bdb12b622a910dfdc99a31fdfe6f45a16bc287a4 # v1
+        with:
+          egress-policy: block
+          disable-telemetry: true
+          allowed-endpoints: >
+            api.github.com:443
+            github.com:443
+
       - uses: actions/checkout@v2
       - uses: jamesgeorge007/github-activity-readme@master
         env:
