@@ -3,6 +3,71 @@
   "verification_flag": "N",
   "author": {
     "name": "doob187",
+    "date": "2022-03-02 17:18:26 +0100"
+  },
+  "commiter": {
+    "name": "doob187",
+    "date": "2022-03-02 17:18:26 +0100"
+  }
+}
+
+{
+  "message": "Merge pull request #8 from dockserver/dependabot/github_actions/master/actions/stale-5\n\nGH updates (deps): Bump actions/stale from 4.1.0 to 5",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-03-02 17:18:04 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-03-02 17:18:04 +0100"
+  }
+}
+
+{
+  "message": "Merge pull request #7 from dockserver/dependabot/github_actions/master/actions/checkout-3\n\nGH updates (deps): Bump actions/checkout from 2.4.0 to 3",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-03-02 17:17:31 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-03-02 17:17:31 +0100"
+  }
+}
+
+{
+  "message": "Merge pull request #9 from dockserver/dependabot/github_actions/master/docker/login-action-1.14.1\n\nGH updates (deps): Bump docker/login-action from 1.14.0 to 1.14.1",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-03-02 17:16:58 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-03-02 17:16:58 +0100"
+  }
+}
+
+{
+  "message": "[Auto Generation] Adding new release version || packages\n\nSigned-off-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com>\n",
+  "verification_flag": "N",
+  "author": {
+    "name": "github-actions[bot]",
+    "date": "2022-03-02 16:13:12 +0000"
+  },
+  "commiter": {
+    "name": "github-actions[bot]",
+    "date": "2022-03-02 16:13:12 +0000"
+  }
+}
+
+{
+  "message": "Update github-metrics.svg - [Skip GitHub Action]",
+  "verification_flag": "N",
+  "author": {
+    "name": "doob187",
     "date": "2022-03-02 15:17:46 +0100"
   },
   "commiter": {
@@ -138,6 +203,45 @@
   "commiter": {
     "name": "github-actions[bot]",
     "date": "2022-03-02 00:24:48 +0000"
+  }
+}
+
+{
+  "message": "GH updates (deps): Bump docker/login-action from 1.14.0 to 1.14.1\n\nBumps [docker/login-action](https://github.com/docker/login-action) from 1.14.0 to 1.14.1.\n- [Release notes](https://github.com/docker/login-action/releases)\n- [Commits](https://github.com/docker/login-action/compare/v1.14.0...v1.14.1)\n\n---\nupdated-dependencies:\n- dependency-name: docker/login-action\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+  "verification_flag": "E",
+  "author": {
+    "name": "dependabot[bot]",
+    "date": "2022-03-01 22:41:53 +0000"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-03-01 22:41:53 +0000"
+  }
+}
+
+{
+  "message": "GH updates (deps): Bump actions/stale from 4.1.0 to 5\n\nBumps [actions/stale](https://github.com/actions/stale) from 4.1.0 to 5.\n- [Release notes](https://github.com/actions/stale/releases)\n- [Changelog](https://github.com/actions/stale/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/actions/stale/compare/v4.1.0...v5)\n\n---\nupdated-dependencies:\n- dependency-name: actions/stale\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+  "verification_flag": "E",
+  "author": {
+    "name": "dependabot[bot]",
+    "date": "2022-03-01 22:41:50 +0000"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-03-01 22:41:50 +0000"
+  }
+}
+
+{
+  "message": "GH updates (deps): Bump actions/checkout from 2.4.0 to 3\n\nBumps [actions/checkout](https://github.com/actions/checkout) from 2.4.0 to 3.\n- [Release notes](https://github.com/actions/checkout/releases)\n- [Changelog](https://github.com/actions/checkout/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/actions/checkout/compare/v2.4.0...v3)\n\n---\nupdated-dependencies:\n- dependency-name: actions/checkout\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+  "verification_flag": "E",
+  "author": {
+    "name": "dependabot[bot]",
+    "date": "2022-03-01 22:41:46 +0000"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-03-01 22:41:46 +0000"
   }
 }
 
