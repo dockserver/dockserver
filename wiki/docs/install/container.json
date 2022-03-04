@@ -300,10 +300,10 @@
    "appname": "docker-cloudflared",
    "apppic": "./images/docker-cloudflared.png",
    "appfolder": "./apps/docker-cloudflared",
-   "newversion": "2022.2.2",
+   "newversion": "2022.3.0",
    "baseimage": "alpine",
    "description": "Cloudflare Tunnel client (formerly Argo Tunnel)",
-   "body": "Upgrading docker-cloudflared to 2022.2.2",
+   "body": "Upgrading docker-cloudflared to 2022.3.0",
    "user": "github-actions[bot]"
 }
 {
@@ -465,21 +465,21 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "f4247e03617f0891d37fc4b53dd72a306a336f66",
+   "newversion": "9e95736b487a2fd818a44ff60d791b2f807c7786",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to f4247e03617f0891d37fc4b53dd72a306a336f66",
+   "body": "Upgrading docker-sabnzbd-nightly to 9e95736b487a2fd818a44ff60d791b2f807c7786",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "4.0.5.5977",
+   "newversion": "4.0.5.5990",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to 4.0.5.5977",
+   "body": "Upgrading docker-radarr-nightly to 4.0.5.5990",
    "user": "github-actions[bot]"
 }
 {
