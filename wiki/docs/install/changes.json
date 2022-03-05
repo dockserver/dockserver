@@ -1,4 +1,95 @@
 {
+  "message": "[Auto Generation] Adding new container changes\n\nSigned-off-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com>\n",
+  "verification_flag": "N",
+  "author": {
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 11:32:42 +0000"
+  },
+  "commiter": {
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 11:32:42 +0000"
+  }
+}
+
+{
+  "message": "Update github-metrics.svg - [Skip GitHub Action]",
+  "verification_flag": "N",
+  "author": {
+    "name": "doob187",
+    "date": "2022-03-05 12:26:55 +0100"
+  },
+  "commiter": {
+    "name": "doob187",
+    "date": "2022-03-05 12:26:55 +0100"
+  }
+}
+
+{
+  "message": "Update gitlog.sh",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-03-05 12:13:43 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-03-05 12:13:43 +0100"
+  }
+}
+
+{
+  "message": "Update gitlog.sh",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-03-05 11:53:11 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-03-05 11:53:11 +0100"
+  }
+}
+
+{
+  "message": "Create changes.yml",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-03-05 11:49:44 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-03-05 11:49:44 +0100"
+  }
+}
+
+{
+  "message": "Create gitlog.sh",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-03-05 11:47:34 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-03-05 11:47:34 +0100"
+  }
+}
+
+{
+  "message": "[Auto Generation] Adding new release version || packages\n\nSigned-off-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com>\n",
+  "verification_flag": "N",
+  "author": {
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 10:15:33 +0000"
+  },
+  "commiter": {
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 10:15:33 +0000"
+  }
+}
+
+{
   "message": "[Auto Generation] Adding new release version || packages\n\nSigned-off-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com>\n",
   "verification_flag": "N",
   "author": {
