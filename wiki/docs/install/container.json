@@ -357,11 +357,11 @@
    "appname": "docker-radarr",
    "apppic": "./images/docker-radarr.png",
    "appfolder": "./apps/docker-radarr",
-   "newversion": "4.0.5.5981",
+   "newversion": "",
    "appbranch": "master",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr to 4.0.5.5981",
+   "body": "Upgrading docker-radarr to ",
    "user": "github-actions[bot]"
 }
 {

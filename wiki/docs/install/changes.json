@@ -1,14 +1,52 @@
 {
-<<<<<<< HEAD
   "message": "Update container-gitlog.md",
   "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-03-05 22:03:07 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-03-05 22:03:07 +0100"
+  }
+}
+
+{
+  "message": "[UPSTREAM]\n\nSigned-off-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com>\n",
+  "verification_flag": "N",
+  "author": {
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 21:35:35 +0100"
+  },
+  "commiter": {
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 21:38:50 +0100"
+  }
+}
+
+{
+  "message": "[Auto Generation] Changes : wiki/docs/install/container-gitlog.md\n\nSigned-off-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com>\n",
+  "verification_flag": "N",
+  "author": {
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 20:14:42 +0000"
+  },
+  "commiter": {
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 21:38:50 +0100"
+  }
+}
+
+{
+  "message": "Update container-gitlog.md",
+  "verification_flag": "N",
   "author": {
     "name": "doob187",
     "date": "2022-03-05 20:56:03 +0100"
   },
   "commiter": {
-    "name": "GitHub",
-    "date": "2022-03-05 20:56:03 +0100"
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 21:38:50 +0100"
   }
 }
 
@@ -20,8 +58,8 @@
     "date": "2022-03-05 20:52:15 +0100"
   },
   "commiter": {
-    "name": "doob187",
-    "date": "2022-03-05 20:52:15 +0100"
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 21:38:50 +0100"
   }
 }
 
@@ -34,33 +72,33 @@
   },
   "commiter": {
     "name": "github-actions[bot]",
-    "date": "2022-03-05 19:35:48 +0000"
+    "date": "2022-03-05 21:38:50 +0100"
   }
 }
 
 {
   "message": "Update docker-fenrus.sh",
-  "verification_flag": "E",
+  "verification_flag": "N",
   "author": {
     "name": "doob187",
     "date": "2022-03-05 20:23:00 +0100"
   },
   "commiter": {
-    "name": "GitHub",
-    "date": "2022-03-05 20:23:00 +0100"
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 21:38:50 +0100"
   }
 }
 
 {
   "message": "Update docker-fenrus.sh",
-  "verification_flag": "E",
+  "verification_flag": "N",
   "author": {
     "name": "doob187",
     "date": "2022-03-05 20:13:06 +0100"
   },
   "commiter": {
-    "name": "GitHub",
-    "date": "2022-03-05 20:13:06 +0100"
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 21:38:50 +0100"
   }
 }
 
@@ -72,21 +110,21 @@
     "date": "2022-03-05 19:52:47 +0100"
   },
   "commiter": {
-    "name": "doob187",
-    "date": "2022-03-05 19:52:47 +0100"
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 21:38:50 +0100"
   }
 }
 
 {
   "message": "Update docker-auto-replyarr.sh",
-  "verification_flag": "E",
+  "verification_flag": "N",
   "author": {
     "name": "doob187",
     "date": "2022-03-05 19:47:19 +0100"
   },
   "commiter": {
-    "name": "GitHub",
-    "date": "2022-03-05 19:47:19 +0100"
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 21:38:50 +0100"
   }
 }
 
@@ -99,20 +137,20 @@
   },
   "commiter": {
     "name": "github-actions[bot]",
-    "date": "2022-03-05 18:35:47 +0000"
+    "date": "2022-03-05 21:38:50 +0100"
   }
 }
 
 {
   "message": "Update docker-fenrus.sh",
-  "verification_flag": "E",
+  "verification_flag": "N",
   "author": {
     "name": "doob187",
     "date": "2022-03-05 19:23:43 +0100"
   },
   "commiter": {
-    "name": "GitHub",
-    "date": "2022-03-05 19:23:43 +0100"
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 21:38:50 +0100"
   }
 }
 
@@ -124,21 +162,21 @@
     "date": "2022-03-05 19:21:03 +0100"
   },
   "commiter": {
-    "name": "doob187",
-    "date": "2022-03-05 19:21:03 +0100"
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 21:38:50 +0100"
   }
 }
 
 {
   "message": "Add files via upload",
-  "verification_flag": "E",
+  "verification_flag": "N",
   "author": {
     "name": "FSCorrupt",
     "date": "2022-03-05 19:19:06 +0100"
   },
   "commiter": {
-    "name": "GitHub",
-    "date": "2022-03-05 19:19:06 +0100"
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 21:38:50 +0100"
   }
 }
 
@@ -151,7 +189,7 @@
   },
   "commiter": {
     "name": "github-actions[bot]",
-    "date": "2022-03-05 18:16:30 +0000"
+    "date": "2022-03-05 21:38:50 +0100"
   }
 }
 
@@ -163,34 +201,34 @@
     "date": "2022-03-05 18:39:41 +0100"
   },
   "commiter": {
-    "name": "doob187",
-    "date": "2022-03-05 18:39:41 +0100"
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 21:38:50 +0100"
   }
 }
 
 {
   "message": "Create .keep",
-  "verification_flag": "E",
+  "verification_flag": "N",
   "author": {
     "name": "doob187",
     "date": "2022-03-05 18:37:40 +0100"
   },
   "commiter": {
-    "name": "GitHub",
-    "date": "2022-03-05 18:37:40 +0100"
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 21:38:50 +0100"
   }
 }
 
 {
   "message": "Create docker-fenrus.sh",
-  "verification_flag": "E",
+  "verification_flag": "N",
   "author": {
     "name": "doob187",
     "date": "2022-03-05 18:37:06 +0100"
   },
   "commiter": {
-    "name": "GitHub",
-    "date": "2022-03-05 18:37:06 +0100"
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 21:38:50 +0100"
   }
 }
 
@@ -203,7 +241,7 @@
   },
   "commiter": {
     "name": "github-actions[bot]",
-    "date": "2022-03-05 16:15:05 +0000"
+    "date": "2022-03-05 21:38:50 +0100"
   }
 }
 
@@ -216,59 +254,59 @@
   },
   "commiter": {
     "name": "github-actions[bot]",
-    "date": "2022-03-05 15:33:56 +0000"
+    "date": "2022-03-05 21:38:50 +0100"
   }
 }
 
 {
   "message": "Delete changes.yml",
-  "verification_flag": "E",
+  "verification_flag": "N",
   "author": {
     "name": "doob187",
     "date": "2022-03-05 16:19:46 +0100"
   },
   "commiter": {
-    "name": "GitHub",
-    "date": "2022-03-05 16:19:46 +0100"
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 21:38:50 +0100"
   }
 }
 
 {
   "message": "Create headline.md",
-  "verification_flag": "E",
+  "verification_flag": "N",
   "author": {
     "name": "doob187",
     "date": "2022-03-05 16:19:20 +0100"
   },
   "commiter": {
-    "name": "GitHub",
-    "date": "2022-03-05 16:19:20 +0100"
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 21:38:50 +0100"
   }
 }
 
 {
   "message": "Update gitlog.sh",
-  "verification_flag": "E",
+  "verification_flag": "N",
   "author": {
     "name": "doob187",
     "date": "2022-03-05 16:18:20 +0100"
   },
   "commiter": {
-    "name": "GitHub",
-    "date": "2022-03-05 16:18:20 +0100"
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 21:38:50 +0100"
   }
 }
 
 {
   "message": "Update version.sh",
-  "verification_flag": "E",
+  "verification_flag": "N",
   "author": {
     "name": "doob187",
     "date": "2022-03-05 16:14:11 +0100"
   },
   "commiter": {
-    "name": "GitHub",
-    "date": "2022-03-05 16:14:11 +0100"
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 21:38:50 +0100"
   }
 }
 
@@ -280,8 +318,8 @@
     "date": "2022-03-05 16:11:54 +0100"
   },
   "commiter": {
-    "name": "doob187",
-    "date": "2022-03-05 16:11:54 +0100"
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 21:38:50 +0100"
   }
 }
 
@@ -294,51 +332,51 @@
   },
   "commiter": {
     "name": "github-actions[bot]",
-    "date": "2022-03-05 15:06:36 +0000"
+    "date": "2022-03-05 21:38:50 +0100"
   }
 }
 
 {
   "message": "Update pipeline.sh",
-  "verification_flag": "E",
+  "verification_flag": "N",
   "author": {
     "name": "doob187",
     "date": "2022-03-05 15:53:13 +0100"
   },
   "commiter": {
-    "name": "GitHub",
-    "date": "2022-03-05 15:53:13 +0100"
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 21:38:50 +0100"
   }
 }
 
 {
   "message": "Update version.sh",
-  "verification_flag": "E",
+  "verification_flag": "N",
   "author": {
     "name": "doob187",
     "date": "2022-03-05 15:48:14 +0100"
   },
   "commiter": {
-    "name": "GitHub",
-    "date": "2022-03-05 15:48:14 +0100"
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 21:38:50 +0100"
   }
 }
 
 {
   "message": "Update .gitignore",
-  "verification_flag": "E",
+  "verification_flag": "N",
   "author": {
     "name": "doob187",
     "date": "2022-03-05 15:46:08 +0100"
   },
   "commiter": {
-    "name": "GitHub",
-    "date": "2022-03-05 15:46:08 +0100"
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 21:38:50 +0100"
   }
 }
 
 {
-  "message": "[Auto Generation] Changes : CHANGES\napps/docker-auto-replyarr/npm_package.txt\napps/docker-auto-replyarr/v8-compile-cache-0/9.4.146.24-node.20/zSoptzSyarn-v1.22.17zSbinzSyarn.js.BLOB\napps/docker-auto-replyarr/v8-compile-cache-0/9.4.146.24-node.20/zSoptzSyarn-v1.22.17zSbinzSyarn.js.MAP\napps/docker-auto-replyarr/yarn_package.txt\napps/docker-overseerr/v8-compile-cache-0/9.4.146.24-node.20/zSusrzSsharezSnode_moduleszSyarnzSbinzSyarn.js.BLOB\napps/docker-overseerr/v8-compile-cache-0/9.4.146.24-node.20/zSusrzSsharezSnode_moduleszSyarnzSbinzSyarn.js.MAP\napps/docker-overseerr/yarn_package.txt\nnightly/docker-overseerr-nightly/v8-compile-cache-0/9.4.146.24-node.20/zSusrzSsharezSnode_moduleszSyarnzSbinzSyarn.js.BLOB\nnightly/docker-overseerr-nightly/v8-compile-cache-0/9.4.146.24-node.20/zSusrzSsharezSnode_moduleszSyarnzSbinzSyarn.js.MAP\nnightly/docker-overseerr-nightly/yarn_package.txt\nwiki/docs/install/container-gitlog.md\n\nSigned-off-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com>\n",
+  "message": "[Auto Generation] Changes : CHANGESx\nSigned-off-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com>\n",
   "verification_flag": "N",
   "author": {
     "name": "github-actions[bot]",
@@ -346,7 +384,7 @@
   },
   "commiter": {
     "name": "github-actions[bot]",
-    "date": "2022-03-05 14:15:27 +0000"
+    "date": "2022-03-05 21:38:32 +0100"
   }
 }
 
@@ -468,8 +506,6 @@
 }
 
 {
-=======
->>>>>>> cce3398 ([Auto Generation] Adding new release version || packages\n\n Changes : M	.templates)
   "message": "Update version.sh",
   "verification_flag": "E",
   "author": {
