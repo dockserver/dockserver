@@ -20,7 +20,9 @@
    curl -u $USERNAME:$TOKEN -o "./wiki/docs/install/container.md" -L "https://raw.githubusercontent.com/dockserver/container/master/wiki/docs/install/container.md"
    curl -u $USERNAME:$TOKEN -o "./wiki/docs/install/changes.json" -L "https://raw.githubusercontent.com/dockserver/container/master/CHANGES"
    curl -u $USERNAME:$TOKEN -o "./wiki/docs/install/container.json" -L "https://raw.githubusercontent.com/dockserver/container/master/wiki/docs/install/container.json"
+   curl -u $USERNAME:$TOKEN -o "./wiki/docs/install/container-gitlog.md" -L "https://raw.githubusercontent.com/dockserver/container/master/wiki/docs/install/container-gitlog.md"
 
+   #### 
    unset TOKEN USERNAME
    git config --global user.name 'github-actions[bot]'
    git config --global user.email 'github-actions[bot]@users.noreply.github.com'
