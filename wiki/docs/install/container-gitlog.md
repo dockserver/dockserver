@@ -802,9 +802,7 @@
  * Update gitlog.sh (doob187)
  * Update version.sh (doob187)
  * Update version.sh (doob187)
- * [Auto Generation] Adding new release version || packages
-
- Changes : M	.templates (github-actions[bot])
+ * [Auto Generation] Adding new release version || packages Changes : .templates (github-actions[bot])
  * Update version.sh (doob187)
  * Update gitlog.sh (doob187)
  * Update gitlog.sh (doob187)
