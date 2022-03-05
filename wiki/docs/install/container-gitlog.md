@@ -832,3 +832,8 @@
  * Add files via upload (FSCorrupt)
  * Update github-metrics.svg - [Skip GitHub Action] (doob187)
  * Update docker-fenrus.sh (doob187)
+ * [Auto Generation] Changes : .templates/apps/docker-fenrus.sh (github-actions[bot])
+ * Update docker-auto-replyarr.sh (doob187)
+ * Update github-metrics.svg - [Skip GitHub Action] (doob187)
+ * Update docker-fenrus.sh (doob187)
+ * Update docker-fenrus.sh (doob187)
