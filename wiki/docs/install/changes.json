@@ -1,4 +1,82 @@
 {
+  "message": "Delete changes.yml",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-03-05 16:19:46 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-03-05 16:19:46 +0100"
+  }
+}
+
+{
+  "message": "Create headline.md",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-03-05 16:19:20 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-03-05 16:19:20 +0100"
+  }
+}
+
+{
+  "message": "Update gitlog.sh",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-03-05 16:18:20 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-03-05 16:18:20 +0100"
+  }
+}
+
+{
+  "message": "Update version.sh",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-03-05 16:14:11 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-03-05 16:14:11 +0100"
+  }
+}
+
+{
+  "message": "Update github-metrics.svg - [Skip GitHub Action]",
+  "verification_flag": "N",
+  "author": {
+    "name": "doob187",
+    "date": "2022-03-05 16:11:54 +0100"
+  },
+  "commiter": {
+    "name": "doob187",
+    "date": "2022-03-05 16:11:54 +0100"
+  }
+}
+
+{
+  "message": "[Auto Generation] Changes : .templates/ci/pipeline.sh\n\nSigned-off-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com>\n",
+  "verification_flag": "N",
+  "author": {
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 15:06:36 +0000"
+  },
+  "commiter": {
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 15:06:36 +0000"
+  }
+}
+
+{
   "message": "Update pipeline.sh",
   "verification_flag": "E",
   "author": {
