@@ -172,6 +172,7 @@ nav:
       - Changelog: install/changelog.md
   - Container:
       - Container: install/container.md
+      - Changelog: install/container-gitlog.md
   - Commands:
       - Commands: commands/commands.md
       - Backup: commands/backup.md

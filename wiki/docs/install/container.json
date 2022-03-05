@@ -2,11 +2,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.662",
+   "newversion": "0.20.663",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.662",
+   "body": "Upgrading docker-jackett to 0.20.663",
    "user": "github-actions[bot]"
 }
 {
@@ -98,11 +98,11 @@
    "appname": "docker-readarr",
    "apppic": "./images/docker-readarr.png",
    "appfolder": "./apps/docker-readarr",
-   "newversion": "0.1.1.1259",
+   "newversion": "0.1.1.1268",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-readarr to 0.1.1.1259",
+   "body": "Upgrading docker-readarr to 0.1.1.1268",
    "user": "github-actions[bot]"
 }
 {
@@ -172,10 +172,10 @@
    "appname": "docker-sonarr",
    "apppic": "./images/docker-sonarr.png",
    "appfolder": "./apps/docker-sonarr",
-   "newversion": "3.0.6.1342",
+   "newversion": "3.0.7.1477",
    "appbranch": "main",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr to 3.0.6.1342",
+   "body": "Upgrading docker-sonarr to 3.0.7.1477",
    "user": "github-actions[bot]"
 }
 {
@@ -345,11 +345,11 @@
    "appname": "docker-radarr",
    "apppic": "./images/docker-radarr.png",
    "appfolder": "./apps/docker-radarr",
-   "newversion": "4.0.4.5922",
+   "newversion": "4.0.5.5981",
    "appbranch": "master",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr to 4.0.4.5922",
+   "body": "Upgrading docker-radarr to 4.0.5.5981",
    "user": "github-actions[bot]"
 }
 {
@@ -454,11 +454,11 @@
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "54b32ebfd6b2eb6aeeea98c25939166eda8cc17f",
+   "newversion": "aa062d921c425d4b64bfdb28a5f102b0c92f7d87",
    "appbranch": "develop",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to 54b32ebfd6b2eb6aeeea98c25939166eda8cc17f",
+   "body": "Upgrading docker-overseerr-nightly to aa062d921c425d4b64bfdb28a5f102b0c92f7d87",
    "user": "github-actions[bot]"
 }
 {
@@ -475,20 +475,20 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "4.0.5.5990",
+   "newversion": "4.1.0.5991",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to 4.0.5.5990",
+   "body": "Upgrading docker-radarr-nightly to 4.1.0.5991",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-sonarr-nightly",
    "apppic": "./images/docker-sonarr-nightly.png",
    "appfolder": "./nightly/docker-sonarr-nightly",
-   "newversion": "3.0.6.1475",
+   "newversion": "3.0.6.1476",
    "appbranch": "develop",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr-nightly to 3.0.6.1475",
+   "body": "Upgrading docker-sonarr-nightly to 3.0.6.1476",
    "user": "github-actions[bot]"
 }
