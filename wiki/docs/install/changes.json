@@ -1,4 +1,56 @@
 {
+  "message": "Update version.sh",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-03-05 13:40:50 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-03-05 13:40:50 +0100"
+  }
+}
+
+{
+  "message": "Update version.sh",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-03-05 13:33:32 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-03-05 13:33:32 +0100"
+  }
+}
+
+{
+  "message": "Update gitlog.sh",
+  "verification_flag": "E",
+  "author": {
+    "name": "doob187",
+    "date": "2022-03-05 13:26:14 +0100"
+  },
+  "commiter": {
+    "name": "GitHub",
+    "date": "2022-03-05 13:26:14 +0100"
+  }
+}
+
+{
+  "message": "[Auto Generation] Adding new release version || packages\n\nSigned-off-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com>\n",
+  "verification_flag": "N",
+  "author": {
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 12:14:02 +0000"
+  },
+  "commiter": {
+    "name": "github-actions[bot]",
+    "date": "2022-03-05 12:14:02 +0000"
+  }
+}
+
+{
   "message": "[Auto Generation] Adding new container changes\n\nSigned-off-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com>\n",
   "verification_flag": "N",
   "author": {
