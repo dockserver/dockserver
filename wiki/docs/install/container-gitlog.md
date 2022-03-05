@@ -802,9 +802,7 @@
  * Update gitlog.sh (doob187)
  * Update version.sh (doob187)
  * Update version.sh (doob187)
- * [Auto Generation] Adding new release version || packages
-
- Changes : M	.templates (github-actions[bot])
+ * [Auto Generation] Adding new release version || packages (github-actions[bot])
  * Update version.sh (doob187)
  * Update gitlog.sh (doob187)
  * Update gitlog.sh (doob187)
@@ -843,3 +841,7 @@
  * [Auto Generation] Changes : wiki/docs/install/container-gitlog.md (github-actions[bot])
  * [UPSTREAM] (github-actions[bot])
  * Update container-gitlog.md (doob187)
+ * [Auto Generation] Changes : wiki/docs/install/container-gitlog.md (github-actions[bot])
+ * Update github-metrics.svg - [Skip GitHub Action] (doob187)
+ * Delete CHANGES (doob187)
+ * Update version.sh (doob187)
