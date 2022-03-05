@@ -802,6 +802,7 @@
  * Update gitlog.sh (doob187)
  * Update version.sh (doob187)
  * Update version.sh (doob187)
+<<<<<<< HEAD
  * [Auto Generation] Adding new release version || packages
 
  Changes : M	.templates (github-actions[bot])
@@ -840,3 +841,5 @@
  * [Auto Generation] Changes : .templates/apps/docker-fenrus.sh (github-actions[bot])
  * Update github-metrics.svg - [Skip GitHub Action] (doob187)
  * Update container-gitlog.md (doob187)
+=======
+>>>>>>> cce3398 ([Auto Generation] Adding new release version || packages\n\n Changes : M	.templates)

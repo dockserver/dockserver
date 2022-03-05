@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "message": "Update container-gitlog.md",
   "verification_flag": "E",
   "author": {
@@ -467,6 +468,8 @@
 }
 
 {
+=======
+>>>>>>> cce3398 ([Auto Generation] Adding new release version || packages\n\n Changes : M	.templates)
   "message": "Update version.sh",
   "verification_flag": "E",
   "author": {
