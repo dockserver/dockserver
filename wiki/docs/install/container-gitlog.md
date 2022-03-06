@@ -874,3 +874,5 @@
  * Rename docker-radarr-nightly.sh to docker-radarr.sh (doob187)
  * [Auto Generation] Changes : .templates/nightly/docker-radarr-nightly.sh .templates/nightly/docker-radarr.sh (github-actions[bot])
  * Update docker-sonarr-nightly.sh (doob187)
+ * [Auto Generation] Changes : .templates/nightly/docker-sonarr-nightly.sh (github-actions[bot])
+ * Update github-metrics.svg - [Skip GitHub Action] (doob187)
