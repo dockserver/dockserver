@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## [v1.4.18](https://github.com/dockserver/dockserver/releases/tag/v1.4.18) - 2022-03-06 00:51:05
+
+## 💻 PiP-Update
+
+- pip (deps): bump mkdocs-material from 8.2.2 to 8.2.3 in /wiki
+   - PR: #406
+- pip (deps): bump mkdocs-material from 8.2.3 to 8.2.4 in /wiki
+   - PR: #409
+
+## 💻 GitHub updates
+
+- GH updates (deps): Bump lowlighter/metrics from 3.20 to 3.21
+   - PR: #404
+- GH updates (deps): Bump actions/setup-python from 2.3.2 to 3
+   - PR: #405
+- GH updates (deps): Bump actions/checkout from 2.4.0 to 3
+   - PR: #407
+- GH updates (deps): Bump actions/stale from 4.1.0 to 5
+   - PR: #408
+
 ## [v1.4.17](https://github.com/dockserver/dockserver/releases/tag/v1.4.17) - 2022-02-27 02:12:34
 
 repository changes
