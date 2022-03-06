@@ -463,6 +463,38 @@
    "user": "github-actions[bot]"
 }
 {
+   "appname": "docker-overseerr-nightly",
+   "apppic": "./images/docker-overseerr-nightly.png",
+   "appfolder": "./nightly/docker-overseerr-nightly",
+   "newversion": "aa062d921c425d4b64bfdb28a5f102b0c92f7d87",
+   "appbranch": "develop",
+   "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
+   "description": "Request management and media discovery tool for the Plex ecosystem",
+   "body": "Upgrading docker-overseerr-nightly to aa062d921c425d4b64bfdb28a5f102b0c92f7d87",
+   "user": "github-actions[bot]"
+}
+{
+   "appname": "docker-sabnzbd-nightly",
+   "apppic": "./images/docker-sabnzbd-nightly.png",
+   "appfolder": "./nightly/docker-sabnzbd-nightly",
+   "newversion": "9e95736b487a2fd818a44ff60d791b2f807c7786",
+   "appbranch": "develop",
+   "description": "SABnzbd - The automated Usenet download tool",
+   "body": "Upgrading docker-sabnzbd-nightly to 9e95736b487a2fd818a44ff60d791b2f807c7786",
+   "user": "github-actions[bot]"
+}
+{
+   "appname": "docker-radarr-nightly",
+   "apppic": "./images/docker-radarr-nightly.png",
+   "appfolder": "./nightly/docker-radarr-nightly",
+   "newversion": "4.1.0.5996",
+   "appbranch": "nightly",
+   "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
+   "description": "A fork of Sonarr to work with movies à la Couchpotato.",
+   "body": "Upgrading docker-radarr-nightly to 4.1.0.5996",
+   "user": "github-actions[bot]"
+}
+{
    "appname": "docker-sonarr-nightly",
    "apppic": "./images/docker-sonarr-nightly.png",
    "appfolder": "./nightly/docker-sonarr-nightly",
@@ -470,37 +502,5 @@
    "appbranch": "develop",
    "description": "Smart PVR for newsgroup and bittorrent users.",
    "body": "Upgrading docker-sonarr-nightly to 3.0.6.1476",
-   "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-overseerr",
-   "apppic": "./images/docker-overseerr.png",
-   "appfolder": "./nightly/docker-overseerr",
-   "newversion": "aa062d921c425d4b64bfdb28a5f102b0c92f7d87",
-   "appbranch": "develop",
-   "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
-   "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr to aa062d921c425d4b64bfdb28a5f102b0c92f7d87",
-   "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-sabnzbd",
-   "apppic": "./images/docker-sabnzbd.png",
-   "appfolder": "./nightly/docker-sabnzbd",
-   "newversion": "9e95736b487a2fd818a44ff60d791b2f807c7786",
-   "appbranch": "develop",
-   "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd to 9e95736b487a2fd818a44ff60d791b2f807c7786",
-   "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-radarr",
-   "apppic": "./images/docker-radarr.png",
-   "appfolder": "./nightly/docker-radarr",
-   "newversion": "4.1.0.5996",
-   "appbranch": "nightly",
-   "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
-   "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr to 4.1.0.5996",
    "user": "github-actions[bot]"
 }
