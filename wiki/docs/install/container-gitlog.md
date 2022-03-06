@@ -845,3 +845,5 @@
  * Update github-metrics.svg - [Skip GitHub Action] (doob187)
  * Delete CHANGES (doob187)
  * Update version.sh (doob187)
+ * [Auto Generation] Changes : .templates/ci/version.sh (github-actions[bot])
+ * Update github-metrics.svg - [Skip GitHub Action] (doob187)
