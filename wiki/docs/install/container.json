@@ -22,11 +22,11 @@
    "appname": "docker-lidarr",
    "apppic": "./images/docker-lidarr.png",
    "appfolder": "./apps/docker-lidarr",
-   "newversion": "",
+   "newversion": "0.8.1.2135",
    "appbranch": "master",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Looks and smells like Sonarr but made for music.",
-   "body": "Upgrading docker-lidarr to ",
+   "body": "Upgrading docker-lidarr to 0.8.1.2135",
    "user": "github-actions[bot]"
 }
 {
@@ -242,9 +242,9 @@
    "newversion": "3.15.0-rc.4",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "587d8c54553289d4ca2604e790ebfb9958d0ffab",
+   "appversion": "225658341ad46cd29feb304581e4386109b89064",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to 587d8c54553289d4ca2604e790ebfb9958d0ffab",
+   "body": "Upgrading docker-fenrus to 225658341ad46cd29feb304581e4386109b89064",
    "user": "github-actions[bot]"
 }
 {
