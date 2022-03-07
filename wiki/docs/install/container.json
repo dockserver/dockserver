@@ -242,9 +242,9 @@
    "newversion": "3.15.0-rc.4",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "a310aaeefb46e7a7bf28390a961ca0247e75114f",
+   "appversion": "d837b2c0a0a1bbdfdc0f5be56eedf7b903c0bece",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to a310aaeefb46e7a7bf28390a961ca0247e75114f",
+   "body": "Upgrading docker-fenrus to d837b2c0a0a1bbdfdc0f5be56eedf7b903c0bece",
    "user": "github-actions[bot]"
 }
 {
@@ -487,11 +487,11 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "4.1.0.6005",
+   "newversion": "4.1.0.6012",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to 4.1.0.6005",
+   "body": "Upgrading docker-radarr-nightly to 4.1.0.6012",
    "user": "github-actions[bot]"
 }
 {
