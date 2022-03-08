@@ -229,10 +229,10 @@
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "375.0.0-alpine",
+   "newversion": "376.0.0-alpine",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to 375.0.0-alpine",
+   "body": "Upgrading docker-gdsa to 376.0.0-alpine",
    "user": "github-actions[bot]"
 }
 {
@@ -242,9 +242,9 @@
    "newversion": "3.15.0-rc.4",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "ac82d9d9eeb64373e581ebedf82611c28190f91f",
+   "appversion": "1bdec0598b987ffe2eff0011f2335870cadc7d61",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to ac82d9d9eeb64373e581ebedf82611c28190f91f",
+   "body": "Upgrading docker-fenrus to 1bdec0598b987ffe2eff0011f2335870cadc7d61",
    "user": "github-actions[bot]"
 }
 {
