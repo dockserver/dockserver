@@ -242,9 +242,9 @@
    "newversion": "3.15.0-rc.4",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "93216240caa7583bef50d4098e8d5891f29fe397",
+   "appversion": "1bb6b40898e9395d8842b3ed9ff5054f8ceabe77",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to 93216240caa7583bef50d4098e8d5891f29fe397",
+   "body": "Upgrading docker-fenrus to 1bb6b40898e9395d8842b3ed9ff5054f8ceabe77",
    "user": "github-actions[bot]"
 }
 {
@@ -282,11 +282,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.671",
+   "newversion": "0.20.674",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.671",
+   "body": "Upgrading docker-jackett to 0.20.674",
    "user": "github-actions[bot]"
 }
 {
@@ -477,10 +477,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "9e95736b487a2fd818a44ff60d791b2f807c7786",
+   "newversion": "807b1c64dd690510925eeed19fcf6e2deaef8623",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 9e95736b487a2fd818a44ff60d791b2f807c7786",
+   "body": "Upgrading docker-sabnzbd-nightly to 807b1c64dd690510925eeed19fcf6e2deaef8623",
    "user": "github-actions[bot]"
 }
 {
