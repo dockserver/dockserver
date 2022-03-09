@@ -33,11 +33,11 @@
    "appname": "docker-readarr",
    "apppic": "./images/docker-readarr.png",
    "appfolder": "./apps/docker-readarr",
-   "newversion": "0.1.1.1273",
+   "newversion": "0.1.1.1277",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-readarr to 0.1.1.1273",
+   "body": "Upgrading docker-readarr to 0.1.1.1277",
    "user": "github-actions[bot]"
 }
 {
@@ -242,9 +242,9 @@
    "newversion": "3.15.0-rc.4",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "1bdec0598b987ffe2eff0011f2335870cadc7d61",
+   "appversion": "d164b7b436cdc905ecdc7513a9b17543ea0368ed",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to 1bdec0598b987ffe2eff0011f2335870cadc7d61",
+   "body": "Upgrading docker-fenrus to d164b7b436cdc905ecdc7513a9b17543ea0368ed",
    "user": "github-actions[bot]"
 }
 {
