@@ -1047,3 +1047,7 @@
  * [Auto Generation] Changes : github-metrics.svg (github-actions[bot])
  * Update github-metrics.svg - [Skip GitHub Action] (doob187)
  * Update docker-sabnzbd-nightly.sh (doob187)
+ * [Auto Generation] Changes : .templates/nightly/docker-sabnzbd-nightly.sh (github-actions[bot])
+ * Update docker-sabnzbd-nightly.sh (doob187)
+ * Update github-metrics.svg - [Skip GitHub Action] (doob187)
+ * Update docker-sabnzbd-nightly.sh (doob187)
