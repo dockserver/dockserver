@@ -14,8 +14,8 @@ on:
 
 jobs:
   screpo:
-    name: Build
-    runs-on: self-hosted 
+    name: Scan Repository
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
