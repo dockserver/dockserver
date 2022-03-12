@@ -1096,3 +1096,4 @@
  * [Auto Generation] Changes : github-metrics.svg (github-actions[bot])
  * Create scanrepo.yml (doob187)
  * Create SECURITY.md (doob187)
+ * [Auto Generation] Changes : SECURITY.md (github-actions[bot])
