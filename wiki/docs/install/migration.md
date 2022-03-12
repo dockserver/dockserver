@@ -86,7 +86,7 @@ Edit your rclone.conf
 
 Remove all GDSA lines here, only the remotes(g/tdrive, g/tcrypt) are left in the file - PGUNION has to be deleted as well
 Like this:
-`
+```
 [gdrive]
 client_id = XOXOYOURID
 client_secret = XOXOYOURSECRET
@@ -109,7 +109,7 @@ type = drive
 server_side_across_configs = true
 token = XOXOYOURTOKEN
 team_drive = XXXXXXXXXXXXXXXXXXX
-`
+```
 
 CTRX+X press y
 
@@ -120,7 +120,7 @@ Edit rclonegdsa.conf
 Remove all the remotes (g/tdrive, g/tcrypt) - PGUNION has to be deleted as well
 Again, remove all zeroes so that the values will be displayed like this:
 
-`
+```
 [GDSA1]
 type = drive
 scope = drive
@@ -132,7 +132,7 @@ type = drive
 scope = drive
 service_account_file = /system/servicekeys/keys/GDSA2
 team_drive = XXXXXXXXXXXXXXXXXXX
-`
+```
 
 CTRL+X y
 
