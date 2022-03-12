@@ -252,7 +252,7 @@
    "apppic": "./images/docker-uploader.png",
    "appfolder": "./apps/docker-uploader",
    "newversion": "3.15.0-rc.4",
-   "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
+   "baseimage": "ghcr.io/dockserver/docker-alpine-v3:latest",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
    "body": "Upgrading docker-uploader to 3.15.0-rc.4",
    "user": "github-actions[bot]"
