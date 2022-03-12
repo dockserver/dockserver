@@ -24,17 +24,18 @@ This guide assumes you have already
 
 Go to: https://console.cloud.google.com/projectselector2/iam-admin/serviceaccounts
 
-Choose your project
-Click "+create service account"
-name = your choice
-Click "Create and continue"
-Click "Done"
-To the right click actions>manage keys
-Add key
-key type = JSON
-Save JSON file to directory of your choice for later use
-repeat for as many as you wish to create
-rename all JSON files to: GDSA1, GDSA2, GDSA3, etc. with no file extension
+    Choose your project
+    Click "+create service account"
+    name = your choice
+    Click "Create and continue"
+    Click "Done"
+    To the right click actions>manage keys
+    Add key
+    key type = JSON
+    Save JSON file to directory of your choice for later use
+    repeat for as many as you wish to create
+    rename all JSON files to: GDSA1, GDSA2, GDSA3, etc. with no file extension
+
 
 Now you can proceed to this portion of the migration instruction:
 https://dockserver.io/install/migration.html#mount-uploader
