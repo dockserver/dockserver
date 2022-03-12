@@ -15,6 +15,11 @@ on:
 jobs:
   screpo:
     name: Scan Repository
+
+    permissions:
+      contents: read
+      security-events: write
+
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
