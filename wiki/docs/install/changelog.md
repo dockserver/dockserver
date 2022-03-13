@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## [v1.4.20](https://github.com/dockserver/dockserver/releases/tag/v1.4.20) - 2022-03-13 00:50:52
+
+## 💻 PiP-Update
+
+- pip (deps): bump mkdocs-material from 8.2.4 to 8.2.5 in /wiki
+   - PR: #410
+
+## 🎨 DockServer Update
+
+- update migration
+   - PR: #411
+
+## [v1.4.19](https://github.com/dockserver/dockserver/releases/tag/v1.4.19) - 2022-03-06 01:43:18
+
+repository changes
+
 ## [v1.4.18](https://github.com/dockserver/dockserver/releases/tag/v1.4.18) - 2022-03-06 00:51:05
 
 ## 💻 PiP-Update
@@ -1073,7 +1089,6 @@ other changes
 
 - general:
   - sabnzbd api access | lunasea & nzb360 ([4d99c25](https://github.com/dockserver/dockserver/commit/4d99c25a66baeb4ecc32f075c238295a913f6cd9)) ([#249](https://github.com/dockserver/dockserver/pull/249))
-  - autoscan ([020c504](https://github.com/dockserver/dockserver/commit/020c504f8f48cd73de3399536fd91483c64995b2))
 
 ## [v1.2.14](https://github.com/dockserver/dockserver/releases/tag/v1.2.14) - 2021-10-12 03:54:43
 
