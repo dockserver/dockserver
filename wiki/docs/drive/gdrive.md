@@ -96,4 +96,4 @@ The rclone.conf file will be save in /.config/rclone
 
 Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
 
-- Join our <a href="https://discord.gg/FYSvu83caM">
+- Join our [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa) for Support
