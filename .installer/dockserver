@@ -69,19 +69,17 @@ echo ""
 fastapp() {
 APP=${APP}
   cd /opt/dockserver/
-  APP=$(find apps/ -type f -name "${APP}.*" )
   compose="compose/docker-compose.yml"
   appfolder="/opt/dockserver"
   basefolder="/opt/appdata"
 
      rm -rf $basefolder/$compose
-     rsync $appfolder/${APP} $basefolder/$compose -aqhv && true || exit 0
+     find /opt/dockserver/apps/ -type f -name '*${APP}*' -exec cp "{}" $basefolder/$compose \;
      cd $basefolder/compose
      docker-compose config && echo Good || exit
      docker-compose up -d --force-recreate && echo Good || exit 
 
   exit
-
 }
 
 ####
@@ -97,7 +95,7 @@ echo "   dockserver -i / --install     =   open the dockserver setup"
 echo "   dockserver -h / --help        =   help/usage"
 echo "   dockserver -u / --update      =   deployed the update container"
 echo ""
-echo "   dockserver -q / --app         =   fast app installation"
+echo "   dockserver -a / --app <{NAMEOFAPP}>  =   fast app installation"
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "    🚀    DockServer [ USAGE COMMANDS ]"
