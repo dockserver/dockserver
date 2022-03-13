@@ -69,16 +69,15 @@ echo ""
 fastapp() {
 APP=${APP}
   cd /opt/dockserver/
-  compose="compose/docker-compose.yml"
+  compose="compose/docker-compose.yaml"
   appfolder="/opt/dockserver"
   basefolder="/opt/appdata"
-
-     rm -rf $basefolder/$compose
-     find /opt/dockserver/apps/ -type f -name '*${APP}*' -exec cp "{}" $basefolder/$compose \;
-     cd $basefolder/compose
-     docker-compose config && echo Good || exit
-     docker-compose up -d --force-recreate && echo Good || exit 
-
+  find /opt/dockserver/apps/ -type f -name '*${APP}*' -exec cp "{}" $basefolder/$compose \;
+  cd $basefolder/compose
+     docker-compose config > /dev/null
+     docker-compose pull > /dev/null
+     docker-compose up -d --force-recreate > /dev/null
+     rm -rf $basefolder/compose/docker-compo**
   exit
 }
 
