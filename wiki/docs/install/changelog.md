@@ -1,5 +1,40 @@
 # CHANGELOG
 
+## [v1.4.23](https://github.com/dockserver/dockserver/releases/tag/v1.4.23) - 2022-03-13 18:47:10
+
+## 🐛 Fixes
+
+- fix saccounts
+   - PR: #412
+
+## 🎨 DockServer Update
+
+- update
+   - PR: #414
+- update gdrive and tdrive docs
+   - PR: #413
+
+### Bug Fixes
+
+- general:
+  - fix saccounts (#412) ([9911967](https://github.com/dockserver/dockserver/commit/99119670962076e85be25e8e93fd565c7ba1373b)) ([#412](https://github.com/dockserver/dockserver/pull/412))
+
+### Documentation
+
+- README:
+  - update contributors ([76eaf2e](https://github.com/dockserver/dockserver/commit/76eaf2ef334cb686797999fff284cfdc37c0136c))
+  - update contributors ([defc605](https://github.com/dockserver/dockserver/commit/defc6051e1fdaa8ac4a6e8cd5f84fee824b5ecdb))
+  - update contributors ([f4cd0cb](https://github.com/dockserver/dockserver/commit/f4cd0cb35f39a4e7fd2e7327d730a10250251a3b))
+  - update contributors ([6658e58](https://github.com/dockserver/dockserver/commit/6658e5803a690aaddaeb2c58381bbe8d5362c754))
+  - update contributors ([965e7f9](https://github.com/dockserver/dockserver/commit/965e7f9e5836f4bfc563adafc908157773661722))
+  - update contributors ([976d069](https://github.com/dockserver/dockserver/commit/976d0695df581d873b0b0ba691fab11ebfe5cad3))
+  - update contributors ([8d63439](https://github.com/dockserver/dockserver/commit/8d63439da0834c03b17a7b1307d52b8ef9489ced))
+  - update contributors ([5f54f9a](https://github.com/dockserver/dockserver/commit/5f54f9a779e27848a336df270b90a0c0fd7d47f8))
+  - update contributors ([17e9545](https://github.com/dockserver/dockserver/commit/17e954557282dc856dc6685f265e338ffac3f6dc))
+  - update contributors ([6f7499b](https://github.com/dockserver/dockserver/commit/6f7499ba759e92f1a050d4250bff2d0b0c8144a0))
+  - update contributors ([0b09500](https://github.com/dockserver/dockserver/commit/0b0950072a1c7335a91f7d0e5f3ee0b4cd36c501))
+  - update contributors ([929eb84](https://github.com/dockserver/dockserver/commit/929eb849eed63e254db34ebdaa235b587dbdcfda))
+
 ## [v1.4.22](https://github.com/dockserver/dockserver/releases/tag/v1.4.22) - 2022-03-13 01:58:55
 
 repository changes

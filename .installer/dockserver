@@ -37,10 +37,10 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
      compose="compose/docker-compose.yml"
      $(command -v rsync) ${dockserver}/dockserver/docker.yml $basefolder/$compose -aqhv
      if [[ -f $basefolder/$compose ]];then
-        $(command -v cd) $basefolder/compose/ && docker-compose config 1>/dev/null 2>&1
-        $(command -v cd) $basefolder/compose/ && docker-compose down 1>/dev/null 2>&1
-        $(command -v docker) system prune -af 1>/dev/null 2>&1
-        $(command -v cd) $basefolder/compose/ && docker-compose up -d --force-recreate 1>/dev/null 2>&1
+        $(command -v cd) $basefolder/compose/ && \
+          docker-compose config 1>/dev/null 2>&1 && \
+            docker-compose down 1>/dev/null 2>&1 && \
+            docker-compose up -d --force-recreate 1>/dev/null 2>&1
      fi
      $(command -v chown) -cR 1000:1000 ${dockserver} 1>/dev/null 2>&1
      envmigra && fastapt && cleanup && clear
@@ -50,38 +50,19 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo ""
 }
 ####
-dev() {
-dockserver=/opt/dockserver
-clear
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "    🚀    DockServer [ DEV - CLONING ] STARTED"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-     $(command -v rm) -rf ${dockserver}
-     git clone --quiet -b dev https://github.com/dockserver/dockserver.git ${dockserver}
-     $(command -v chown) -cR 1000:1000 ${dockserver} 1>/dev/null 2>&1
-     envmigra && fastapt && cleanup && clear
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "    🚀    DockServer [ DEV - CLONING ] DONE"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo ""
-}
-
 fastapp() {
 APP=${APP}
   cd /opt/dockserver/
-  APP=$(find apps/ -type f -name "${APP}.*" )
-  compose="compose/docker-compose.yml"
+  compose="compose/docker-compose.yaml"
   appfolder="/opt/dockserver"
   basefolder="/opt/appdata"
-
-     rm -rf $basefolder/$compose
-     rsync $appfolder/${APP} $basefolder/$compose -aqhv && true || exit 0
-     cd $basefolder/compose
-     docker-compose config && echo Good || exit
-     docker-compose up -d --force-recreate && echo Good || exit 
-
+  find /opt/dockserver/apps/ -type f -name '*${APP}*' -exec cp "{}" $basefolder/$compose \;
+  cd $basefolder/compose
+     docker-compose config > /dev/null
+     docker-compose pull > /dev/null
+     docker-compose up -d --force-recreate > /dev/null
+     rm -rf $basefolder/compose/docker-compo**
   exit
-
 }
 
 ####
@@ -97,7 +78,7 @@ echo "   dockserver -i / --install     =   open the dockserver setup"
 echo "   dockserver -h / --help        =   help/usage"
 echo "   dockserver -u / --update      =   deployed the update container"
 echo ""
-echo "   dockserver -q / --app         =   fast app installation"
+echo "   dockserver -a / --app <{NAMEOFAPP}>  =   fast app installation"
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "    🚀    DockServer [ USAGE COMMANDS ]"
@@ -113,6 +94,7 @@ if [[ -f "$basefolder/compose/.env" ]];then
    $(command -v bash) $envmigrate
 fi 
 }
+
 fastapt() {
 if ! type aria2c >/dev/null 2>&1; then
    apt-get update -y && apt-get install --force-yes -y -qq aria2
@@ -124,10 +106,13 @@ if ! [[ -f /etc/apt-fast.conf ]]; then
       echo debconf apt-fast/aptmanager string apt | debconf-set-selections
 fi
 }
+
 cleanup() {
    find /var/log -type f -regex ".*\.gz$" -delete
    find /var/log -type f -regex ".*\.[0-9]$" -delete
 }
+
+###
 
 DOCK=$1
 APP=$2
