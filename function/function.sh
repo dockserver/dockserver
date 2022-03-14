@@ -12,25 +12,63 @@
 # NO REBRANDING IS ALLOWED          #
 # NO CODE MIRRORING IS ALLOWED      #
 #####################################
-function appstartup() {
-ds=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -x 'traefik')
-if [[ ${ds} == "" ]];then
-printf "
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔  You deploy Traefik before you can deploy any Apps
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-"
-sleep 30 && exit
-fi
 
+function appstartup() {
 while true;do
-  if [[ ! -x $(command -v docker) ]];then exit;fi
-  if [[ ! -x $(command -v docker-compose) ]];then exit;fi
-      headinterface
+     dockertraefik=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -E 'traefik')
+     ntdocker=$(docker network ls | grep -E 'proxy')
+  if [[ $ntdocker == "" && $dockertraefik == "" ]]; then
+     unset ntdocker && unset dockertraefik
+     clear && LOCATION=preinstall && selection
+  else
+     unset ntdocker && unset dockertraefik
+     clear && headinterface
+  fi
 done
 }
 
+function updatebin() {
+file=/opt/dockserver/.installer/dockserver
+store=/bin/dockserver
+store2=/usr/bin/dockserver
+if [[ -f "/bin/dockserver" ]];then
+   $(command -v rm) $store && \
+   $(command -v rsync) $file $store -aqhv
+   $(command -v rsync) $file $store2 -aqhv
+   $(command -v chown) -R 1000:1000 $store $store2
+   $(command -v chmod) -R 755 $store $store2
+fi
+}
+
+function selection() {
+LOCATION=${LOCATION}
+   cd /opt/dockserver/${LOCATION} && $(command -v bash) install.sh
+}
+
 function headinterface() {
+
+printf "
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    🚀 DockServer
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    
+    [ 1 ] DockServer - Traefik + Authelia
+    [ 2 ] DockServer - Applications
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    [ EXIT or Z ] - Exit
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+"
+  read -erp "↘️  Type Number and Press [ENTER]: " headsection </dev/tty
+  case $headsection in
+    1|traefik) clear && LOCATION=traefik && selection ;;
+    2|apps|app) clear && headapps ;;
+    Z|z|exit|EXIT|Exit|close) updatebin && exit ;;
+    *) clear && headapps ;;
+  esac
+}
+
+function headapps() {
 printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀  DockServer Applications Section Menu
@@ -47,16 +85,16 @@ printf "
 "
   read -erp "↘️  Type Number and Press [ENTER]: " headsection </dev/tty
   case $headsection in
-    1) clear && interface ;;
-    2) clear && removeapp ;;
-    3) clear && backupstorage ;;
-    4) clear && restorestorage ;;
-    Z|z|exit|EXIT|Exit|close) exit ;;
-    *) appstartup ;;
+    1|install|insta) clear && interface ;;
+    2|remove|delete) clear && removeapp ;;
+    3|backup|back) clear && backupstorage ;;
+    4|restore|rest) clear && restorestorage ;;
+    Z|z|exit|EXIT|Exit|close) headinterface ;;
+    *) headapps ;;
   esac
 }
 
-function interface() {
+function appinterface() {
 buildshow=$(ls -1p /opt/dockserver/apps/ | grep '/$' | $(command -v sed) 's/\/$//')
 printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -70,11 +108,14 @@ $buildshow
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 "
   read -erp "↘️  Type Section Name and Press [ENTER]: " section </dev/tty
-  if [[ $section == "exit" || $section == "Exit" || $section == "EXIT" || $section  == "z" || $section == "Z" ]];then clear && headinterface;fi
-  if [[ $section == "" ]];then clear && interface;fi
-     checksection=$(ls -1p /opt/dockserver/apps/ | grep '/$' | $(command -v sed) 's/\/$//' | grep -x $section)
-  if [[ $checksection == "" ]];then clear && interface;fi
-  if [[ $checksection == $section ]];then clear && install;fi
+  case $section in
+     *) \
+     checksection=$(ls -1p /opt/dockserver/apps/ | grep '/$' | $(command -v sed) 's/\/$//' | grep -x $section) && \
+     if [[ $checksection == $section ]];then clear && install ; else appinterface; fi
+     ;; \
+    Z|z|exit|EXIT|Exit|close) headapps ;;
+  esac
+
 }
 
 function install() {
@@ -93,11 +134,14 @@ $buildshow
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 "
   read -erp "↪️ Type App-Name to install and Press [ENTER]: " typed </dev/tty
-  if [[ $typed == "exit" || $typed == "Exit" || $typed == "EXIT" || $typed  == "z" || $typed == "Z" ]];then clear && interface;fi
-  if [[ $typed == "" ]];then clear && install;fi
-     buildapp=$(ls -1p /opt/dockserver/apps/${section}/ | $(command -v sed) -e 's/.yml//g' | grep -x $typed)
-  if [[ $buildapp == "" ]];then clear && install;fi
-  if [[ $buildapp == $typed ]];then clear && runinstall && install;fi
+  case $typed in
+     *) \
+       buildapp=$(ls -1p /opt/dockserver/apps/${section}/ | $(command -v sed) -e 's/.yml//g' | grep -x $typed) && \
+       if [[ $buildapp == $typed ]];then clear && runinstall && install; else install; fi
+     ;; \
+    Z|z|exit|EXIT|Exit|close) headapps ;;
+  esac
+
 }
 
 ### backup docker ###
@@ -116,11 +160,14 @@ printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 "
   read -erp "↪️ Type Name to set the Backup-Folder and Press [ENTER]: " storage </dev/tty
-  if [[ $storage == "exit" || $storage == "Exit" || $storage == "EXIT" || $storage  == "z" || $storage == "Z" ]];then clear && interface;fi
-  if [[ $storage == "" ]];then clear && backupstorage;fi
-  if [[ $storage != "" ]];then $(command -v mkdir) -p /mnt/unionfs/appbackups/${storage};fi
-     teststorage=$(ls -1p /mnt/unionfs/appbackups/ | grep '/$' | $(command -v sed) 's/\/$//' | grep -x $storage)
-  if [[ $teststorage == $storage ]];then backupdocker;fi
+  case $storage in
+     *) \
+       if [[ $storage != "" ]];then $(command -v mkdir) -p /mnt/unionfs/appbackups/${storage};fi && \
+          teststorage=$(ls -1p /mnt/unionfs/appbackups/ | grep '/$' | $(command -v sed) 's/\/$//' | grep -x $storage) && \
+       if [[ $teststorage == $storage ]];then backupdocker;fi
+     ;; \
+    Z|z|exit|EXIT|Exit|close) headapps ;;
+  esac
 else
 printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -134,21 +181,30 @@ $storagefolder
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 "
   read -erp "↪️ Type Name to set the Backup-Folder and Press [ENTER]: " storage </dev/tty
-  if [[ $storage == "exit" || $storage == "Exit" || $storage == "EXIT" || $storage  == "z" || $storage == "Z" ]];then clear && interface;fi
-  if [[ $storage == "" ]];then clear && backupstorage;fi
-     teststorage=$(ls -1p /mnt/unionfs/appbackups/ | grep '/$' | $(command -v sed) 's/\/$//' | grep -x $storage)
-  if [[ $teststorage == $storage ]];then backupdocker;fi
-  if [[ $storage != "" ]];then 
-     $(command -v mkdir) -p /mnt/unionfs/appbackups/${storage}
+
+  case $storage in
+     *) \
+       if [[ $storage != "" ]];then $(command -v mkdir) -p /mnt/unionfs/appbackups/${storage};fi && \
+          teststorage=$(ls -1p /mnt/unionfs/appbackups/ | grep '/$' | $(command -v sed) 's/\/$//' | grep -x $storage) && \
+       if [[ $teststorage == $storage ]];then
+          backupstorage
+       else
+         $(command -v mkdir) -p /mnt/unionfs/appbackups/${storage} && newbackupfolder && backupdocker
+       fi
+     ;; \
+    Z|z|exit|EXIT|Exit|close) headapps ;;
+  esac
+fi
+
+}
+function newbackupfolder() {
 printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀  New Backup folder set to $storage
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 "
 sleep 3
-backupdocker
-  fi
-fi
+
 }
 
 function backupdocker() {
@@ -168,13 +224,14 @@ $rundockers
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 "
   read -erp "↪️ Type App-Name to Backup and Press [ENTER]: " typed </dev/tty
-  if [[ $typed == "exit" || $typed == "Exit" || $typed == "EXIT" || $typed  == "z" || $typed == "Z" ]];then clear && interface;fi
-  if [[ $typed == "" ]];then clear && backupdocker;fi
-  if [[ $typed == "help" || $typed == "HELP" ]];then clear && helplayout;fi
-  if [[ $typed == "all" || $typed == "All" || $typed == "ALL" ]];then clear && backupall;fi
-     builddockers=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -x ${typed})
-  if [[ $builddockers == "" ]];then clear && backupdocker;fi
-  if [[ $builddockers == $typed ]];then clear && runbackup;fi
+  case $typed in
+     *) \
+     builddockers=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -x ${typed}) && \
+     if [[ $builddockers == $typed ]]; then clear && runbackup ; else backupdocker; fi
+     ;; \
+     all|All|ALL) clear && backupall ;;
+     Z|z|exit|EXIT|Exit|close) clear && headapps ;;
+  esac
 }
 
 function backupall() {
@@ -289,10 +346,15 @@ $storage
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 "
   read -erp "↪️ Type Name to set the Backup-Folder and Press [ENTER]: " storage </dev/tty
-  if [[ $storage == "exit" || $storage == "Exit" || $storage == "EXIT" || $storage  == "z" || $storage == "Z" ]];then clear && interface;fi
-  if [[ $storage == "" ]];then clear && backupstorage;fi
-     teststorage=$(ls -1p /mnt/unionfs/appbackups/ | grep '/$' | $(command -v sed) 's/\/$//' | grep -x $storage)
-  if [[ $teststorage == $storage ]];then clear && restoredocker;fi
+
+  case $typed in
+     *) \
+     teststorage=$(ls -1p /mnt/unionfs/appbackups/ | grep '/$' | $(command -v sed) 's/\/$//' | grep -x $storage) && \
+     if [[ $teststorage == $storage ]];then clear && restorestorage; else backupstorage; fi
+     ;; \
+     Z|z|exit|EXIT|Exit|close) clear && headapps ;;
+  esac
+
 }
 
 function restoredocker() {
@@ -310,13 +372,16 @@ $runrestore
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 "
   read -erp "↪️ Type App-Name to Restore and Press [ENTER]: " typed </dev/tty
-  if [[ $typed == "exit" || $typed == "Exit" || $typed == "EXIT" || $typed  == "z" || $typed == "Z" ]];then clear && interface;fi
-  if [[ $typed == "" ]];then clear && restoredocker;fi
-  if [[ $typed == "help" || $typed == "HELP" ]];then clear && helplayout;fi
-  if [[ $typed == "all" || $typed == "All" || $typed == "ALL" ]];then clear && restoreall;fi
-     builddockers=$(ls -1p /mnt/unionfs/appbackups/${storage} | $(command -v sed) -e 's/.tar.gz//g' | grep -x $typed)
-  if [[ $builddockers == "" ]];then clear && restoredocker;fi
-  if [[ $builddockers == $typed ]];then clear && runrestore;fi
+
+  case $typed in
+     *) \
+     builddockers=$(ls -1p /mnt/unionfs/appbackups/${storage} | $(command -v sed) -e 's/.tar.gz//g' | grep -x $typed) && \
+     if [[ $builddockers == $typed ]]; then clear && runrestore ; else restoredocker; fi
+     ;; \
+     all|All|ALL) clear && restoreall ;;
+     Z|z|exit|EXIT|Exit|close) clear && headapps ;;
+  esac
+
 }
 
 function restoreall() {
@@ -348,7 +413,7 @@ printf "
 "
    $(command -v unpigz) -dcqp 8 ${DESTINATION}/${STORAGE}/${ARCHIVETAR} | $(command -v pv) -pterb | $(command -v tar) pxf - -C ${FOLDER}/${ARCHIVE} --strip-components=1
 done
-clear && headinterface
+clear && headapps
 }
 
 function runrestore() {
@@ -373,6 +438,7 @@ if [[ ! -d $basefolder/${typed} ]];then
        $(command -v find) $i -exec $(command -v chown) -hR 1000:1000 {} \;
    done
 fi
+
 builddockers=$(ls -1p /mnt/unionfs/appbackups/${storage} | $(command -v sed) -e 's/.tar.gz//g' | grep -x $typed)
 if [[ $builddockers == $typed ]];then
 printf "
@@ -764,10 +830,15 @@ $list
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 "
   read -erp "↪️ Type App-Name to remove and Press [ENTER]: " typed </dev/tty
-  if [[ $typed == "exit" || $typed == "Exit" || $typed == "EXIT" || $typed  == "z" || $typed == "Z" ]];then interface;fi
-  if [[ $typed == "" ]];then clear && removeapp;fi
+
+  case $typed in
+     *) \
      checktyped=$($(command -v docker) ps -aq --format={{.Names}} | grep -x $typed)
-  if [[ $checktyped == $typed ]];then clear && deleteapp;fi
+     if [[ $checktyped == $typed ]];then clear && deleteapp; else removeapp; fi
+     ;; \
+     Z|z|exit|EXIT|Exit|close) clear && headapps ;;
+  esac
+
 }
 
 function deleteapp() {
