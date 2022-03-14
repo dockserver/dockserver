@@ -66,10 +66,6 @@ for i in ${APP[@]} ; do
 done
 }
 
-
-APP=${@:2}
-fastapp
-
 ####
 usage() {
 clear
