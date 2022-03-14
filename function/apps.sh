@@ -12,7 +12,7 @@
 # NO REBRANDING IS ALLOWED          #
 # NO CODE MIRRORING IS ALLOWED      #
 #####################################
-appstartup() {
+function appstartup() {
 ds=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -x 'traefik')
 if [[ ${ds} == "" ]];then
 printf "
@@ -23,30 +23,14 @@ printf "
 sleep 30 && exit
 fi
 
-if [[ $EUID -ne 0 ]];then
-printf "
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔  You must execute as a SUDO user (with sudo) or as ROOT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-"
-exit 0
-fi
-
 while true;do
   if [[ ! -x $(command -v docker) ]];then exit;fi
   if [[ ! -x $(command -v docker-compose) ]];then exit;fi
-  killport && headinterface
+      headinterface
 done
 }
-killport() {
-port=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -x 'portainer')
-if [[ ${port} != "" ]]; then
-   $(command -v docker) stop ${port}
-   $(command -v docker) rm ${port}
-   $(command -v rm) -rf /opt/appdata/${port}
-fi
-}
-headinterface() {
+
+function headinterface() {
 printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀  DockServer Applications Section Menu
@@ -71,7 +55,8 @@ printf "
     *) appstartup ;;
   esac
 }
-interface() {
+
+function interface() {
 buildshow=$(ls -1p /opt/dockserver/apps/ | grep '/$' | $(command -v sed) 's/\/$//')
 printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -91,7 +76,8 @@ $buildshow
   if [[ $checksection == "" ]];then clear && interface;fi
   if [[ $checksection == $section ]];then clear && install;fi
 }
-install() {
+
+function install() {
 restorebackup=null
 section=${section}
 buildshow=$(ls -1p /opt/dockserver/apps/${section}/ | sed -e 's/.yml//g' )
@@ -111,10 +97,11 @@ $buildshow
   if [[ $typed == "" ]];then clear && install;fi
      buildapp=$(ls -1p /opt/dockserver/apps/${section}/ | $(command -v sed) -e 's/.yml//g' | grep -x $typed)
   if [[ $buildapp == "" ]];then clear && install;fi
-  if [[ $buildapp == $typed ]];then clear && runinstall;fi
+  if [[ $buildapp == $typed ]];then clear && runinstall && install;fi
 }
+
 ### backup docker ###
-backupstorage() {
+function backupstorage() {
 storagefolder=$(ls -1p /mnt/unionfs/appbackups/ | grep '/$' | $(command -v sed) 's/\/$//')
 if [[ $storagefolder == "" ]];then 
 printf "
@@ -163,7 +150,8 @@ backupdocker
   fi
 fi
 }
-backupdocker() {
+
+function backupdocker() {
 storage=${storage}
 rundockers=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -v 'trae' | grep -v 'auth' | grep -v 'cf-companion' | grep -v 'mongo' | grep -v 'dockupdater' | grep -v 'sudobox')
 printf "
@@ -188,7 +176,8 @@ $rundockers
   if [[ $builddockers == "" ]];then clear && backupdocker;fi
   if [[ $builddockers == $typed ]];then clear && runbackup;fi
 }
-backupall() {
+
+function backupall() {
 OPTIONSTAR="--warning=no-file-changed \
   --ignore-failed-read \
   --absolute-names \
@@ -235,7 +224,8 @@ printf "
 done
 clear && backupdocker
 }
-runbackup() {
+
+function runbackup() {
 OPTIONSTAR="--warning=no-file-changed \
   --ignore-failed-read \
   --absolute-names \
@@ -284,7 +274,8 @@ else
    clear && backupdocker
 fi
 }
-restorestorage() {
+
+function restorestorage() {
 storage=$(ls -1p /mnt/unionfs/appbackups/ | grep '/$' | $(command -v sed) 's/\/$//' | grep -v 'sudobox')
 printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -303,7 +294,8 @@ $storage
      teststorage=$(ls -1p /mnt/unionfs/appbackups/ | grep '/$' | $(command -v sed) 's/\/$//' | grep -x $storage)
   if [[ $teststorage == $storage ]];then clear && restoredocker;fi
 }
-restoredocker() {
+
+function restoredocker() {
 storage=${storage}
 runrestore=$(ls -1p /mnt/unionfs/appbackups/${storage} | $(command -v sed) -e 's/.tar.gz//g' | grep -v 'trae' | grep -v 'auth' | grep -v 'sudobox')
 printf "
@@ -326,7 +318,8 @@ $runrestore
   if [[ $builddockers == "" ]];then clear && restoredocker;fi
   if [[ $builddockers == $typed ]];then clear && runrestore;fi
 }
-restoreall() {
+
+function restoreall() {
 STORAGE=${storage}
 FOLDER="/opt/appdata"
 DESTINATION="/mnt/unionfs/appbackups"
@@ -357,7 +350,8 @@ printf "
 done
 clear && headinterface
 }
-runrestore() {
+
+function runrestore() {
 typed=${typed}
 STORAGE=${storage}
 FOLDER="/opt/appdata"
@@ -401,7 +395,8 @@ else
    clear && restoredocker
 fi
 }
-runinstall() {
+
+function runinstall() {
   restorebackup=${restorebackup:-null}
   section=${section}
   typed=${typed}
@@ -585,9 +580,10 @@ else
   if [[ -f $basefolder/$compose ]];then $(command -v rm) -rf $basefolder/$compose;fi
   if [[ -f $basefolder/$composeoverwrite ]];then $(command -v rm) -rf $basefolder/$composeoverwrite;fi
   if [[ ${restorebackup} == "restoredocker" ]];then clear && restorestorage;fi
-  clear && install
+  clear
 }
-setpermission() {
+
+function setpermission() {
 approot=$($(command -v ls) -l $basefolder/${typed} | awk '{if($3=="root") print $0}' | wc -l)
 if [[ $approot -gt 0 ]];then
 IFS=$'\n'
@@ -607,7 +603,8 @@ mapfile -t setowndl < <(eval $(command -v ls) -l $storage/ | awk '{if($3=="root"
   done
 fi
 }
-overserrf2ban() {
+
+function overserrf2ban() {
 OV2BAN="/etc/fail2ban/filter.d/overseerr.local"
 if [[ ! -f $OV2BAN ]];then
    cat > $OV2BAN << EOF; $(echo)
@@ -616,13 +613,16 @@ if [[ ! -f $OV2BAN ]];then
 failregex = .*\[info\]\[Auth\]\: Failed sign-in attempt.*"ip":"<HOST>"
 EOF
 fi
-f2ban=$($(command -v systemctl) is-active fail2ban | grep -qE 'active' && echo true || echo false)
+
+function f2ban=$($(command -v systemctl) is-active fail2ban | grep -qE 'active' && echo true || echo false)
 if [[ $f2ban != "false" ]];then $(command -v systemctl) reload-or-restart fail2ban.service 1>/dev/null 2>&1;fi
 }
-vnstatcheck() {
+
+function vnstatcheck() {
 if [[ ! -x $(command -v vnstat) ]];then $(command -v apt) install vnstat -yqq;fi
 }
-autoscancheck() {
+
+function autoscancheck() {
 $(docker ps -aq --format={{.Names}} | grep -E 'arr|ple|emb|jelly' 1>/dev/null 2>&1)
 code=$?
 if [[ $code -eq 0 ]];then
@@ -630,7 +630,8 @@ if [[ $code -eq 0 ]];then
    $(command -v bash) $appfolder/.subactions/${typed}.sh
 fi
 }
-lubox() {
+
+function lubox() {
 basefolder="/opt/appdata"
 kbox=$($(command -v docker) ps --format '{{.Image}}' | grep -E 'box' | grep -v 'cloudb0x')
 lbox=$($(command -v find) $basefolder/ -maxdepth 2 -name '*box' -type d)
@@ -646,7 +647,8 @@ if [[ $kbox != "" || $lbox != "" ]];then
    done
 fi
 }
-plexclaim() {
+
+function plexclaim() {
 compose="compose/docker-compose.yml"
 basefolder="/opt/appdata"
 printf "
@@ -669,7 +671,8 @@ printf "
      plexclaim
   fi
 }
-plex443() {
+
+function plex443() {
 basefolder="/opt/appdata"
 source $basefolder/compose/.env
 printf "
@@ -702,7 +705,8 @@ printf "
 read -erp "Confirm Info | PRESS [ENTER]" typed </dev/tty
 
 }
-subtasks() {
+
+function subtasks() {
 typed=${typed}
 section=${section}
 basefolder="/opt/appdata"
@@ -745,7 +749,8 @@ authadd=$(cat $conf | grep -E ${typed})
   if [[ ${section} == "mediaserver" || ${section} == "request" || ${section} == "downloadclients" ]];then $(command -v docker) restart ${typed} 1>/dev/null 2>&1;fi
   if [[ ${section} == "request" ]];then $(command -v chown) -R 1000:1000 $basefolder/${typed} 1>/dev/null 2>&1;fi
 }
-removeapp() {
+
+function removeapp() {
 list=$($(command -v docker) ps -aq --format '{{.Names}}' | grep -vE 'auth|trae|cf-companion')
 printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -764,7 +769,8 @@ $list
      checktyped=$($(command -v docker) ps -aq --format={{.Names}} | grep -x $typed)
   if [[ $checktyped == $typed ]];then clear && deleteapp;fi
 }
-deleteapp() {
+
+function deleteapp() {
   typed=${typed}
   basefolder="/opt/appdata"
   storage="/mnt/downloads"
@@ -841,7 +847,8 @@ deleteapp() {
      removeapp
   fi
 }
-updatecompose() {
+
+function updatecompose() {
 if [[ ! -x $(command -v docker-compose) ]];then 
    if [[ -f /usr/bin/docker-compose ]];then rm -rf /usr/bin/docker-compose /usr/local/bin/docker-compose;fi
    curl -L --fail https://raw.githubusercontent.com/linuxserver/docker-docker-compose/master/run.sh -o /usr/bin/docker-compose
@@ -851,8 +858,4 @@ if [[ ! -x $(command -v docker-compose) ]];then
    $(command -v chmod) a=rx,u+w /usr/bin/docker-compose >/dev/null 2>&1
 fi
 }
-##########
-lubox
-appstartup
-
-##E-o-F##
+# ENDSTAGE
