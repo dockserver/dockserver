@@ -282,11 +282,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.703",
+   "newversion": "0.20.708",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.703",
+   "body": "Upgrading docker-jackett to 0.20.708",
    "user": "github-actions[bot]"
 }
 {
@@ -467,32 +467,32 @@
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "a229b15e7a605a8cb28b498f5c63d891474e444c",
+   "newversion": "72c825d2a5109688bcc1991a30249284bf281500",
    "appbranch": "develop",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to a229b15e7a605a8cb28b498f5c63d891474e444c",
+   "body": "Upgrading docker-overseerr-nightly to 72c825d2a5109688bcc1991a30249284bf281500",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "73a3ce98894e855837111b0a9a14c7b283312889",
+   "newversion": "a48d8b8f6a821c6857f19360b0f2d34c82879764",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 73a3ce98894e855837111b0a9a14c7b283312889",
+   "body": "Upgrading docker-sabnzbd-nightly to a48d8b8f6a821c6857f19360b0f2d34c82879764",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "4.1.0.6012",
+   "newversion": "4.1.0.6026",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to 4.1.0.6012",
+   "body": "Upgrading docker-radarr-nightly to 4.1.0.6026",
    "user": "github-actions[bot]"
 }
 {

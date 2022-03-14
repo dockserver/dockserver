@@ -1,0 +1,62 @@
+---
+version: "3"
+services:
+  gluetun:
+    hostname: "gluetun"
+    container_name: "gluetun"
+    image: qmcgaw/gluetun
+    cap_add:
+      - NET_ADMIN
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    environment:
+      - "GID=${ID}"
+      - "UID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "VPN_SERVICE_PROVIDER=${GLUETUN_VPN_SERVICE_PROVIDER}"
+      - "VPN_TYPE=${GLUETUN_VPN_TYPE}"
+      - "OPENVPN_USER=${GLUETUN_OPEN_VPN_USER}"
+      - "OPENVPN_PASSWORD=${GLUETUN_OPEN_VPN_PASSWORD}"
+      - "REGION=${GLUETUN_VPN_REGION}"
+    volumes:
+      - "${APPFOLDER}/gluetun/:/gluetun"
+  qbittorrent:
+    container_name: "qbittorrent"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "WEBUI_PORT=8080"
+      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:qbittorrent"
+      - "TP_THEME=${QBITORRENTTHEME}"
+    image: "${QBITORRENTIMAGE}"
+    restart: "${RESTARTAPP}"
+    network_mode: "service:gluetun"
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/qbittorrent:/config:rw"
+      - "unionfs:/mnt"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.qbittorrent-rtr.entrypoints=https"
+      - "traefik.http.routers.qbittorrent-rtr.rule=Host(`qbittorrent.${DOMAIN}`)"
+      - "traefik.http.routers.qbittorrent-rtr.tls=true"
+      - "traefik.http.routers.qbittorrent-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.qbittorrent-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.qbittorrent-rtr.service=qbittorrent-svc"
+      - "traefik.http.services.qbittorrent-svc.loadbalancer.server.port=8080"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt
