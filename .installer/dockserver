@@ -52,18 +52,23 @@ echo ""
 ####
 fastapp() {
 APP=${APP}
-  cd /opt/dockserver/
-  compose="compose/docker-compose.yaml"
-  appfolder="/opt/dockserver"
-  basefolder="/opt/appdata"
-  find /opt/dockserver/apps/ -type f -name '*${APP}*' -exec cp "{}" $basefolder/$compose \;
-  cd $basefolder/compose
-     docker-compose config > /dev/null
-     docker-compose pull > /dev/null
-     docker-compose up -d --force-recreate > /dev/null
-     rm -rf $basefolder/compose/docker-compo**
-  exit
+for i in ${APP[@]} ; do
+    find /opt/dockserver/apps/ -mindepth 1 -type f -name "${i}*" -exec dirname {} \; | while read rename; do
+      section="${rename#*/opt/dockserver/apps/}"                                  
+      typed=$i
+      if test -f /opt/dockserver/apps/$section/$i.yml; then
+         source /opt/dockserver/apps/.installer/ubuntu.sh
+         typed=${typed}
+         section=${section}
+         runinstall
+      fi
+    done
+done
 }
+
+
+APP=${@:2}
+fastapp
 
 ####
 usage() {
@@ -105,6 +110,7 @@ if ! [[ -f /etc/apt-fast.conf ]]; then
       echo debconf apt-fast/dlflag boolean true | debconf-set-selections
       echo debconf apt-fast/aptmanager string apt | debconf-set-selections
 fi
+
 }
 
 cleanup() {
@@ -115,7 +121,7 @@ cleanup() {
 ###
 
 DOCK=$1
-APP=$2
+APP=${@:2}
 
 case "$DOCK" in
  "" ) run ;;
