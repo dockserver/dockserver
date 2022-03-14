@@ -13,7 +13,7 @@
 # NO CODE MIRRORING IS ALLOWED      #
 #####################################
 ## bin part 
-run() {
+function run() {
 if [[ -d ${dockserver} ]];then
    envmigra && fastapt && cleanup && clear
    $(command -v cd) ${dockserver} && $(command -v bash) install.sh
@@ -22,7 +22,7 @@ else
 fi
 }
 ####
-update() {
+function update() {
 dockserver=/opt/dockserver
 clear
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -45,7 +45,7 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo ""
 }
 ####
-fastapp() {
+function fastapp() {
 APP=${APP}
 for i in ${APP[@]} ; do
     find /opt/dockserver/apps/ -mindepth 1 -type f -name "${i}*" -exec dirname {} \; | while read rename; do
@@ -62,7 +62,7 @@ done
 }
 
 ####
-usage() {
+function usage() {
 clear
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "    🚀    DockServer [ USAGE COMMANDS ]"
@@ -82,7 +82,7 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 
 }
 
-envmigra() {
+function envmigra() {
 basefolder="/opt/appdata"
 dockserver="/opt/dockserver"
 envmigrate="$dockserver/apps/.subactions/envmigrate.sh"
@@ -91,7 +91,7 @@ if [[ -f "$basefolder/compose/.env" ]];then
 fi 
 }
 
-fastapt() {
+function fastapt() {
 if ! type aria2c >/dev/null 2>&1; then
    apt-get update -y && apt-get install --force-yes -y -qq aria2
 fi
@@ -104,7 +104,7 @@ fi
 
 }
 
-cleanup() {
+function cleanup() {
    find /var/log -type f -regex ".*\.gz$" -delete
    find /var/log -type f -regex ".*\.[0-9]$" -delete
 }
