@@ -22,9 +22,6 @@ services:
       - "REGION=${GLUETUN_VPN_REGION}"
     volumes:
       - "${APPFOLDER}/gluetun/:/gluetun"
----
-version: "3"
-services:
   xteve:
     container_name: "xteve"
     environment:
