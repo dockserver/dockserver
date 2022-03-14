@@ -1,0 +1,61 @@
+---
+version: "3"
+services:
+  gluetun:
+    hostname: "gluetun"
+    container_name: "gluetun"
+    image: qmcgaw/gluetun
+    cap_add:
+      - NET_ADMIN
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    environment:
+      - "GID=${ID}"
+      - "UID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "VPN_SERVICE_PROVIDER=${GLUETUN_VPN_SERVICE_PROVIDER}"
+      - "VPN_TYPE=${GLUETUN_VPN_TYPE}"
+      - "OPENVPN_USER=${GLUETUN_OPEN_VPN_USER}"
+      - "OPENVPN_PASSWORD=${GLUETUN_OPEN_VPN_PASSWORD}"
+      - "REGION=${GLUETUN_VPN_REGION}"
+    volumes:
+      - "${APPFOLDER}/gluetun/:/gluetun"
+  xteve:
+    container_name: "xteve"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "alturismo/xteve"
+    restart: "${RESTARTAPP}"
+    network_mode: "service:gluetun"
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/xteve/:/root/.xteve:rw"
+      - "${APPFOLDER}/xteve/_config:/config:rw"
+      - "${APPFOLDER}/xteve/temp/:/tmp/xteve:rw"
+      - "/etc/localtime:/etc/localtime:ro"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.xteve-rtr.entrypoints=https"
+      - "traefik.http.routers.xteve-rtr.rule=Host(`xteve.${DOMAIN}`)"
+      - "traefik.http.routers.xteve-rtr.tls=true"
+      - "traefik.http.routers.xteve-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.xteve-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.xteve-rtr.service=xteve-svc"
+      - "traefik.http.services.xteve-svc.loadbalancer.server.port=34400"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt
