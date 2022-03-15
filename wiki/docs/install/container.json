@@ -79,7 +79,7 @@
    "appfolder": "./apps/docker-wiki",
    "appbranch": "master",
    "newversion": "3.15.0-rc.4",
-   "appversion": "1.4.23",
+   "appversion": "1.4.24",
    "wikiversion": "8.2.5",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
@@ -467,21 +467,21 @@
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "0c7373c7e89a4ff717efaa7d6a5854f7ccd6a8d3",
+   "newversion": "19cdedd2a6656b1a852e1cc653bbdb140e978b51",
    "appbranch": "develop",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to 0c7373c7e89a4ff717efaa7d6a5854f7ccd6a8d3",
+   "body": "Upgrading docker-overseerr-nightly to 19cdedd2a6656b1a852e1cc653bbdb140e978b51",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "879af8744dbfafcb9d9bb6b0cac40e3f1b0f4ff0",
+   "newversion": "7719513c72fe625b1e72cab01bfad9aa2a7a6a83",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 879af8744dbfafcb9d9bb6b0cac40e3f1b0f4ff0",
+   "body": "Upgrading docker-sabnzbd-nightly to 7719513c72fe625b1e72cab01bfad9aa2a7a6a83",
    "user": "github-actions[bot]"
 }
 {
