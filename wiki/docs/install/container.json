@@ -33,11 +33,11 @@
    "appname": "docker-readarr",
    "apppic": "./images/docker-readarr.png",
    "appfolder": "./apps/docker-readarr",
-   "newversion": "0.1.1.1278",
+   "newversion": "0.1.1.1281",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-readarr to 0.1.1.1278",
+   "body": "Upgrading docker-readarr to 0.1.1.1281",
    "user": "github-actions[bot]"
 }
 {
@@ -229,10 +229,10 @@
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "376.0.0-alpine",
+   "newversion": "377.0.0-alpine",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to 376.0.0-alpine",
+   "body": "Upgrading docker-gdsa to 377.0.0-alpine",
    "user": "github-actions[bot]"
 }
 {
