@@ -242,9 +242,9 @@
    "newversion": "3.15.0-rc.4",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "4c1739dbc6acf7748f98b06183ee6625eb3698f5",
+   "appversion": "f254c7d58f4e1b43f8a4ed3d1c10890f0c4e9eda",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to 4c1739dbc6acf7748f98b06183ee6625eb3698f5",
+   "body": "Upgrading docker-fenrus to f254c7d58f4e1b43f8a4ed3d1c10890f0c4e9eda",
    "user": "github-actions[bot]"
 }
 {
@@ -457,10 +457,10 @@
    "appname": "docker-haproxy",
    "apppic": "./images/docker-haproxy.png",
    "appfolder": "./base/docker-haproxy",
-   "newversion": "2.5.4-alpine3.15",
+   "newversion": "2.5.5-alpine3.15",
    "baseimage": "haproxy",
    "description": "HAProxy Load Balancer's development branch (mirror of git.haproxy.org)",
-   "body": "Upgrading docker-haproxy to 2.5.4-alpine3.15",
+   "body": "Upgrading docker-haproxy to 2.5.5-alpine3.15",
    "user": "github-actions[bot]"
 }
 {
