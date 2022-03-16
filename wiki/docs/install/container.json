@@ -242,9 +242,9 @@
    "newversion": "3.15.0-rc.4",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "f254c7d58f4e1b43f8a4ed3d1c10890f0c4e9eda",
+   "appversion": "1be2f7f552023f6f88879b195801e9edd6ac2d37",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to f254c7d58f4e1b43f8a4ed3d1c10890f0c4e9eda",
+   "body": "Upgrading docker-fenrus to 1be2f7f552023f6f88879b195801e9edd6ac2d37",
    "user": "github-actions[bot]"
 }
 {
@@ -478,10 +478,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "7719513c72fe625b1e72cab01bfad9aa2a7a6a83",
+   "newversion": "100018d6bfe742d50e4def576d39656c516962d7",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 7719513c72fe625b1e72cab01bfad9aa2a7a6a83",
+   "body": "Upgrading docker-sabnzbd-nightly to 100018d6bfe742d50e4def576d39656c516962d7",
    "user": "github-actions[bot]"
 }
 {
