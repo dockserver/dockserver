@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## [v1.4.24](https://github.com/dockserver/dockserver/releases/tag/v1.4.24) - 2022-03-15 21:24:00
+
+## 💻 GitHub updates
+
+- GH updates (deps): Bump aquasecurity/trivy-action from 0.1.0 to 0.2.2
+   - PR: #419
+
+## 🎨 DockServer Update
+
+- update
+   - PR: #416
+
+
+
+
+- `gluetun` + `qbittorrent`
+   - PR: #418
+
 ## [v1.4.23](https://github.com/dockserver/dockserver/releases/tag/v1.4.23) - 2022-03-13 18:47:10
 
 ## 🐛 Fixes
