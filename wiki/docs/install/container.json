@@ -44,11 +44,11 @@
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "0.2.0.1588",
+   "newversion": "0.2.0.1594",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 0.2.0.1588",
+   "body": "Upgrading docker-prowlarr to 0.2.0.1594",
    "user": "github-actions[bot]"
 }
 {
@@ -359,10 +359,10 @@
    "appname": "docker-cloudflared",
    "apppic": "./images/docker-cloudflared.png",
    "appfolder": "./apps/docker-cloudflared",
-   "newversion": "2022.3.2",
+   "newversion": "2022.3.3",
    "baseimage": "alpine",
    "description": "Cloudflare Tunnel client (formerly Argo Tunnel)",
-   "body": "Upgrading docker-cloudflared to 2022.3.2",
+   "body": "Upgrading docker-cloudflared to 2022.3.3",
    "user": "github-actions[bot]"
 }
 {
