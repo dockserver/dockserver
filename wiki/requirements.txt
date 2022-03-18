@@ -28,7 +28,6 @@ mkdocs-awesome-pages-plugin==2.7.0
 mkdocs-git-revision-date-localized-plugin==1.0.0
 markdown==3.3.6
 pygments==2.11.2
-git+https://github.com/g-provost/lightgallery-markdown@v0.5#egg=lightgallerypymdown-extensions==9.2
 mkdocs-render-swagger-plugin
 mkdocs-mermaid2-plugin
 MkDocsJsonSchemaPlugin
