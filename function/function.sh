@@ -72,7 +72,7 @@ function preinstall() {
          $(which docker) volume create -d local-persist -o mountpoint=/mnt --name=unionfs
          $(which docker) network create --driver=bridge proxy 1>/dev/null 2>&1
 
-      updatecompose
+      updatecompose && gpupart
 
       disable=(apt-daily.service apt-daily.timer apt-daily-upgrade.timer apt-daily-upgrade.service)
       $(which systemctl) disable ${disable[@]} >/dev/null 2>&1
@@ -191,7 +191,7 @@ function badips() {
    localectl set-locale LANG=LC_ALL=en_US.UTF-8 1>/dev/null 2>&1
 }
 
-proxydel() {
+function proxydel() {
    delproxy="apache2 nginx"
    for i in ${delproxy}; do
       $(which systemctl) stop $i 1>/dev/null 2>&1
@@ -263,21 +263,105 @@ mount --make-shared /
 EOF
 }
 
+function gpupart() {
+GVID=$(id $(whoami) | grep -qE 'video' && echo true || echo false)
+GCHK=$(grep -qE video /etc/group && echo true || echo false)
+DEVT=$(ls /dev/dri 1>/dev/null 2>&1 && echo true || echo false)
+IGPU=$(ls /etc/modprobe.d/ | grep -qE 'hetzner*' && echo true || echo false)
+NGPU=$(lspci | grep -i --color 'vga\|display\|3d\|2d' | grep -E 'NVIDIA' 1>/dev/null 2>&1 && echo true || echo false)
+OSVE=$(./etc/os-release | echo $ID)
+DIST=$(./etc/os-release | echo $ID$VERSION_ID)
+VERS=$(./etc/os-release | echo $UBUNTU_CODENAME)
+
+if [[ $IGPU == "true" && $NGPU == "false" ]]; then
+   igpuhetzner
+elif [[ $NGPU == "true" && $IGPU == "true" ]]; then
+     nvidiagpu
+elif [[ $NGPU == "true" && $IGPU == "false" ]]; then
+     nvidiagpu
+else 
+    echo ""
+fi
+
+}
+
+function endcommand() {
+    if [[ $DEVT != "false" ]]; then
+        $(which chmod) -R 750 /dev/dri
+    else
+        echo ""
+        printf "\033[0;31m You need to restart the server to get access to /dev/dri
+after restarting execute the install again\033[0m\n"
+        echo ""
+        read -p "Type confirm to reboot: " input
+        if [[ "$input" = "confirm" ]]; then reboot -n; else endcommand; fi
+    fi
+}
+
+function subos() {
+    NSO=$(curl -s -L https://nvidia.github.io/nvidia-docker/$DIST/nvidia-docker.list)
+    NSOE=$(echo ${NSO} | grep -E 'Unsupported')
+    if [[ $NSOE != "" ]]; then
+        printf "
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      NVIDIA ❌ ERROR
+      NVIDIA don't support your running Distribution
+      Installed Distribution = ${DIST}
+      Please visit the link below to see all supported Distributionen
+      NVIDIA ❌ ERROR
+      ${NSO}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+"
+        read -erp "Confirm Info | Type confirm & PRESS [ENTER]" input </dev/tty
+        if [[ "$input" = "confirm" ]]; then clear; else subos; fi
+    fi
+}
+
+function igpuhetzner() {
+    HMOD=$(ls /etc/modprobe.d/ | grep -qE 'hetzner' && echo true || echo false)
+    ITEL=$(cat /etc/modprobe.d/blacklist-hetzner.conf | grep -qE '#blacklist i915' && echo true || echo false)
+    IMOL1=$(cat /etc/default/grub | grep -qE '#GRUB_CMDLINE_LINUX_DEFAULT' && echo true || echo false)
+    IMOL2=$(cat /etc/default/grub.d/hetzner.cfg | grep -qE '#GRUB_CMDLINE_LINUX_DEFAULT' && echo true || echo false)
+    INTE=$(ls /usr/bin/intel_gpu_* 1>/dev/null 2>&1 && echo true || echo false)
+    VIFO=$(which vainfo 1>/dev/null 2>&1 && echo true || echo false)
+
+    if [[ $HMOD == "false" ]]; then exit; fi
+    if [[ $ITEL == "false" ]]; then sed -i "s/blacklist i915/#blacklist i915/g" /etc/modprobe.d/blacklist-hetzner.conf; fi
+    if [[ $IMOL1 == "false" ]]; then sed -i "s/GRUB_CMDLINE_LINUX_DEFAUL/#GRUB_CMDLINE_LINUX_DEFAUL/g" /etc/default/grub; fi
+    if [[ $IMOL2 == "false" ]]; then sed -i "s/GRUB_CMDLINE_LINUX_DEFAUL/#GRUB_CMDLINE_LINUX_DEFAUL/g" /etc/default/grub.d/hetzner.cfg; fi
+    if [[ $OSVE == "ubuntu" && $VERS == "focal" ]]; then
+        if [[ $IMOL1 == "true" && $IMOL2 == "true" && $ITEL == "true" ]]; then sudo update-grub; fi
+    else
+        if [[ $IMOL1 == "true" && $IMOL2 == "true" && $ITEL == "true" ]]; then sudo grub-mkconfig -o /boot/grub/grub.cfg; fi
+    fi
+    if [[ $GCHK == "false" ]]; then groupadd -f video; fi
+    if [[ $GVID == "false" ]]; then usermod -aG video $(whoami); fi
+    endcommand
+    if [[ $VIFO == "false" ]]; then $(command -v apt) install vainfo -yqq; fi
+    if [[ $INTE == "false" && $IGPU == "true" ]]; then $(command -v apt) update -yqq && $(command -v apt) install intel-gpu-tools -yqq; fi
+    if [[ $IMOL1 == "true" && $IMOL2 == "true" && $ITEL == "true" && $GVID == "true" && $DEVT == "true" ]]; then echo "Intel IGPU is working"; else echo "Intel IGPU is not working"; fi
+}
+
+
+function  nvidiagpu() {
+
+echo "hold and keep command need rework"
+
+}
+
 ## bin part 
 function run() {
-if [[ $(which docker) && $(which docker-compose) && $(docker --version) ]]; then
-   echo "" 
-else
+if [ ! $(which docker) ] && [ ! $(which docker-compose) ] && [ ! $(docker --version) ]; then
    preinstall
 fi
 
 if [[ -d ${dockserver} ]];then
-   envmigra && fastapt && cleanup && clear
-   $(which cd) ${dockserver} && $(command -v bash) install.sh
+   envmigra && fastapt && cleanup && clear && appstartup
 else
    usage
 fi
 }
+
 ####
 function update() {
 dockserver=/opt/dockserver
@@ -811,18 +895,17 @@ function runinstall() {
   $(which rsync) $appfolder/${section}/${typed}.yml $basefolder/$compose -aqhv
   if [[ ${section} == "mediaserver" || ${section} == "encoder" ]]; then
      if [[ -x "/dev/dri" ]]; then
-        gpu="Intel NVIDIA"
-        for i in ${gpu};do
-            $(which lspci) | grep -i --color 'vga\|display\|3d\|2d' | grep -E $i | while read -r -a $i; do
-              $(which rsync) $appfolder/${section}/.gpu/$i.yml $basefolder/$composeoverwrite -aqhv
-            done
-        done
-        if [[ -f $basefolder/$composeoverwrite ]];then
-           if [[ $(uname) == "Darwin" ]];then
-              $(which sed) -i '' "s/<APP>/${typed}/g" $basefolder/$composeoverwrite
-           else
-              $(which sed) -i "s/<APP>/${typed}/g" $basefolder/$composeoverwrite
-           fi
+        if test -f /etc/modprobe.d/blacklist-hetzner.conf; then
+           $(which rsync) $appfolder/${section}/.gpu/INTEL.yml $basefolder/$composeoverwrite -aqhv
+        else
+           $(which rsync) $appfolder/${section}/.gpu/NVIDIA.yml $basefolder/$composeoverwrite -aqhv
+        fi
+     fi
+     if [[ -f $basefolder/$composeoverwrite ]];then
+        if [[ $(uname) == "Darwin" ]];then
+           $(which sed) -i '' "s/<APP>/${typed}/g" $basefolder/$composeoverwrite
+        else
+           $(which sed) -i "s/<APP>/${typed}/g" $basefolder/$composeoverwrite
         fi
      fi
   fi
