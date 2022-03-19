@@ -13,27 +13,21 @@
 #####################################
 # shellcheck disable=SC2086
 # shellcheck disable=SC2006
+
 if [[ $EUID != 0 ]]; then
-    sudo "$0" "$@"
-    exit $?
+    sudo "$0" "$@" && exit $?
 fi
 
 source /opt/dockserver/function/function.sh
 
-DOCK=$1
 APP=${@:2}
-
-case "$DOCK" in
- "" ) run ;;
- "-i" ) run ;;
- "--install" ) run ;;
- "-u" ) update ;;
- "--update" ) update ;;
- "-a" ) fastapp ;;
- "--app" ) fastapp ;;
- "-h" ) usage ;;
- "--help" ) usage ;;
-
+case "$1" in
+  -i|--install ) clear && run ;;
+  -u|--update ) clear && update ;;
+  -a|--app ) clear && fastapp ;;
+  -h|--help ) clear && usage ;;
+  -p|--preinstall ) clear && preinstall ;;
+  *) clear && updatebin && run ;;
 esac
 
 #E-o-F#
