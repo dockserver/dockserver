@@ -21,13 +21,13 @@ function preinstall() {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 "
       basefolder="/opt/appdata"
-      source="/opt/dockserver/preinstall/templates/local"
       proxydel
-      package_list="update upgrade dist-upgrade autoremove autoclean"
-      for i in ${package_list}; do
-         echo "running now $i" && $(which apt) $i -yqq 1>/dev/null 2>&1
-      done
+      packageupdate="update upgrade dist-upgrade autoremove autoclean"
+      for i in ${packageupdate}; do $(which apt) $i -yqq ; done
 
+      package_basic=(software-properties-common rsync language-pack-en-base pciutils lshw nano rsync fuse curl wget tar pigz pv iptables ipset fail2ban jq unzip)
+      apt install ${package_basic[@]} --reinstall -yqq
+      fastapp
       folder="/mnt"
       for fo in ${folder}; do
          $(which mkdir) -p $fo/{unionfs,downloads,incomplete,torrent,nzb} \
@@ -62,20 +62,13 @@ function preinstall() {
               sysctl -p -q
            fi
       fi
-
-      fastapp
-
-      package_basic=(software-properties-common rsync language-pack-en-base pciutils lshw nano rsync fuse curl wget tar pigz pv iptables ipset fail2ban)
-      apt install ${package_basic[@]} --reinstall -yqq 1>/dev/null 2>&1 && sleep 1
-
-      if [ -z `command -v docker` ]; then
-         curl --silent -fsSL https://raw.githubusercontent.com/docker/docker-install/master/install.sh | sudo bash >/dev/null 2>&1
-      fi
-         $(which rsync) -aqhv ${source}/daemon.j2 /etc/docker/daemon.json 1>/dev/null 2>&1
+      ## USE OFFICIAL DOCKER INSTALL PART
+      if [[ ! $(which docker) ]]; then wget -qO- https://get.docker.com/ | sh >/dev/null 2>&1 ; fi
+         daemonjson
          $(which usermod) -aG docker $(whoami)
          $(which systemctl) reload-or-restart docker.service 1>/dev/null 2>&1
          $(which systemctl) enable docker.service >/dev/null 2>&1
-         $(which curl) --silent -fsSL https://raw.githubusercontent.com/MatchbookLab/local-persist/master/scripts/install.sh | sudo bash 1>/dev/null 2>&1
+         $(which curl) --silent -fsSL https://raw.githubusercontent.com/MatchbookLab/local-persist/master/scripts/install.sh | bash 1>/dev/null 2>&1
          $(which docker) volume create -d local-persist -o mountpoint=/mnt --name=unionfs
          $(which docker) network create --driver=bridge proxy 1>/dev/null 2>&1
 
@@ -84,7 +77,7 @@ function preinstall() {
       disable=(apt-daily.service apt-daily.timer apt-daily-upgrade.timer apt-daily-upgrade.service)
       $(which systemctl) disable ${disable[@]} >/dev/null 2>&1
 
-      if [ -z `command -v ansible` ]; then
+      if [[ ! $(which ansible) ]]; then
          if [[ -r /etc/os-release ]]; then lsb_dist="$(. /etc/os-release && echo "$ID")"; fi
          package_list="ansible dialog python3-lxml"
          package_listdebian="apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367"
@@ -96,15 +89,13 @@ function preinstall() {
          if [[ $lsb_dist == 'ubuntu' ]]; then add-apt-repository --yes --remove ppa:ansible/ansible; fi
       fi
 
-      if [[ ! -d "/etc/ansible/inventories" ]]; then
-         $(which mkdir) -p $invet 
-      fi
+      if [[ ! -d "/etc/ansible/inventories" ]]; then $(which mkdir) -p $invet ; fi
       cat > /etc/ansible/inventories/local << EOF; $(echo)
 ## CUSTOM local inventories
 [local]
 127.0.0.1 ansible_connection=local
 EOF
-      if [[ -f /etc/ansible/ansible.cfg ]]; then
+      if test -f /etc/ansible/ansible.cfg; then
         $(which mv) /etc/ansible/ansible.cfg /etc/ansible/ansible.cfg.bak
       fi
 cat > /etc/ansible/ansible.cfg << EOF; $(echo)
@@ -173,6 +164,21 @@ failregex   = (?i)^<HOST> .* ".*\$.*(7B|\{).*(lower:)?.*j.*n.*d.*i.*:.*".*?$' > 
     🚀 DockServer PRE-Install is done
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 "
+clear
+}
+
+function daemonjson() {
+
+echo '{
+    "storage-driver": "overlay2",
+    "userland-proxy": false,
+    "dns": ["8.8.8.8", "1.1.1.1"],
+    "ipv6": false,
+    "log-driver": "json-file",
+    "live-restore": true,
+    "log-opts": {"max-size": "8m", "max-file": "2"}
+}' >/etc/docker/daemon.json
+
 }
 
 function badips() {
