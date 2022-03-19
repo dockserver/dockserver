@@ -15,18 +15,15 @@
 
 function preinstall() {
 # shellcheck disable=SC2046
-      printf "
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀 DockServer PRE-Install Runs
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
       basefolder="/opt/appdata"
       proxydel
       packageupdate="update upgrade dist-upgrade autoremove autoclean"
       for i in ${packageupdate}; do $(which apt) $i -yqq ; done
-
       package_basic=(software-properties-common rsync language-pack-en-base pciutils lshw nano rsync fuse curl wget tar pigz pv iptables ipset fail2ban jq unzip)
-      apt install ${package_basic[@]} --reinstall -yqq
+      $(which apt) install ${package_basic[@]} --reinstall -yqq
       fastapp
       folder="/mnt"
       for fo in ${folder}; do
@@ -38,8 +35,7 @@ function preinstall() {
          $(which find) $fo -exec $(which chown) -hR 1000:1000 {} \;
       done
 
-      appfolder="/opt/appdata"
-      for app in ${appfolder}; do
+      for app in ${basefolder}; do
         $(which mkdir) -p $app/{compose,system}
         $(which find) $app -exec $(command -v chmod) a=rx,u+w {} \;
         $(which find) $app -exec $(command -v chown) -hR 1000:1000 {} \;
@@ -159,11 +155,9 @@ failregex   = (?i)^<HOST> .* ".*\$.*(7B|\{).*(lower:)?.*j.*n.*d.*i.*:.*".*?$' > 
       sed -i '/hard nofile/ d' /etc/security/limits.conf
       sed -i '/soft nofile/ d' /etc/security/limits.conf
       sed -i '$ i\* hard nofile 32768\n* soft nofile 16384' /etc/security/limits.conf
-      printf "
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      printf "%1s\n" "${blue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀 DockServer PRE-Install is done
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
 clear
 }
 
@@ -217,16 +211,14 @@ EOF
 }
 
 function lxcending() {
-  printf "
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+printf "%1s\n" "${blue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ❌ INFO
     Please be sure that you have add the following features
     keyctl, nesting and fuse under LXC Options > Features,
     this is only available when Unprivileged container=Yes
     The mount-docker takes round about 2 minutes to start
     after the installation, please be patient
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
   read -erp "Confirm Info | Type confirm & PRESS [ENTER]" input </dev/tty
 }
 
@@ -289,10 +281,12 @@ function endcommand() {
     if [[ $DEVT != "false" ]]; then
         $(which chmod) -R 750 /dev/dri
     else
-        echo ""
-        printf "\033[0;31m You need to restart the server to get access to /dev/dri
-after restarting execute the install again\033[0m\n"
-        echo ""
+printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+You need to restart the server to get access to /dev/dri
+after restarting execute the install again
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
         read -p "Type confirm to reboot: " input
         if [[ "$input" = "confirm" ]]; then reboot -n; else endcommand; fi
     fi
@@ -302,50 +296,119 @@ function subos() {
     NSO=$(curl -s -L https://nvidia.github.io/nvidia-docker/$DIST/nvidia-docker.list)
     NSOE=$(echo ${NSO} | grep -E 'Unsupported')
     if [[ $NSOE != "" ]]; then
-        printf "
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
       NVIDIA ❌ ERROR
       NVIDIA don't support your running Distribution
       Installed Distribution = ${DIST}
       Please visit the link below to see all supported Distributionen
       NVIDIA ❌ ERROR
       ${NSO}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
         read -erp "Confirm Info | Type confirm & PRESS [ENTER]" input </dev/tty
         if [[ "$input" = "confirm" ]]; then clear; else subos; fi
     fi
 }
 
 function igpuhetzner() {
-    HMOD=$(ls /etc/modprobe.d/ | grep -qE 'hetzner' && echo true || echo false)
-    ITEL=$(cat /etc/modprobe.d/blacklist-hetzner.conf | grep -qE '#blacklist i915' && echo true || echo false)
-    IMOL1=$(cat /etc/default/grub | grep -qE '#GRUB_CMDLINE_LINUX_DEFAULT' && echo true || echo false)
-    IMOL2=$(cat /etc/default/grub.d/hetzner.cfg | grep -qE '#GRUB_CMDLINE_LINUX_DEFAULT' && echo true || echo false)
-    INTE=$(ls /usr/bin/intel_gpu_* 1>/dev/null 2>&1 && echo true || echo false)
-    VIFO=$(which vainfo 1>/dev/null 2>&1 && echo true || echo false)
+HMOD=$(ls /etc/modprobe.d/ | grep -qE 'hetzner' && echo true || echo false)
+ITEL=$(cat /etc/modprobe.d/blacklist-hetzner.conf | grep -qE '#blacklist i915' && echo true || echo false)
+IMOL1=$(cat /etc/default/grub | grep -qE '#GRUB_CMDLINE_LINUX_DEFAULT' && echo true || echo false)
+IMOL2=$(cat /etc/default/grub.d/hetzner.cfg | grep -qE '#GRUB_CMDLINE_LINUX_DEFAULT' && echo true || echo false)
+INTE=$(ls /usr/bin/intel_gpu_* 1>/dev/null 2>&1 && echo true || echo false)
+VIFO=$(which vainfo 1>/dev/null 2>&1 && echo true || echo false)
 
-    if [[ $HMOD == "false" ]]; then exit; fi
-    if [[ $ITEL == "false" ]]; then sed -i "s/blacklist i915/#blacklist i915/g" /etc/modprobe.d/blacklist-hetzner.conf; fi
-    if [[ $IMOL1 == "false" ]]; then sed -i "s/GRUB_CMDLINE_LINUX_DEFAUL/#GRUB_CMDLINE_LINUX_DEFAUL/g" /etc/default/grub; fi
-    if [[ $IMOL2 == "false" ]]; then sed -i "s/GRUB_CMDLINE_LINUX_DEFAUL/#GRUB_CMDLINE_LINUX_DEFAUL/g" /etc/default/grub.d/hetzner.cfg; fi
-    if [[ $OSVE == "ubuntu" && $VERS == "focal" ]]; then
-        if [[ $IMOL1 == "true" && $IMOL2 == "true" && $ITEL == "true" ]]; then sudo update-grub; fi
-    else
-        if [[ $IMOL1 == "true" && $IMOL2 == "true" && $ITEL == "true" ]]; then sudo grub-mkconfig -o /boot/grub/grub.cfg; fi
-    fi
-    if [[ $GCHK == "false" ]]; then groupadd -f video; fi
-    if [[ $GVID == "false" ]]; then usermod -aG video $(whoami); fi
-    endcommand
-    if [[ $VIFO == "false" ]]; then $(command -v apt) install vainfo -yqq; fi
-    if [[ $INTE == "false" && $IGPU == "true" ]]; then $(command -v apt) update -yqq && $(command -v apt) install intel-gpu-tools -yqq; fi
-    if [[ $IMOL1 == "true" && $IMOL2 == "true" && $ITEL == "true" && $GVID == "true" && $DEVT == "true" ]]; then echo "Intel IGPU is working"; else echo "Intel IGPU is not working"; fi
+if [[ $HMOD == "false" ]]; then exit; fi
+if [[ $ITEL == "false" ]]; then sed -i "s/blacklist i915/#blacklist i915/g" /etc/modprobe.d/blacklist-hetzner.conf; fi
+if [[ $IMOL1 == "false" ]]; then sed -i "s/GRUB_CMDLINE_LINUX_DEFAUL/#GRUB_CMDLINE_LINUX_DEFAUL/g" /etc/default/grub; fi
+if [[ $IMOL2 == "false" ]]; then sed -i "s/GRUB_CMDLINE_LINUX_DEFAUL/#GRUB_CMDLINE_LINUX_DEFAUL/g" /etc/default/grub.d/hetzner.cfg; fi
+if [[ $OSVE == "ubuntu" && $VERS == "focal" ]]; then
+   if [[ $IMOL1 == "true" && $IMOL2 == "true" && $ITEL == "true" ]]; then sudo update-grub; fi
+else
+   if [[ $IMOL1 == "true" && $IMOL2 == "true" && $ITEL == "true" ]]; then sudo grub-mkconfig -o /boot/grub/grub.cfg; fi
+fi
+if [[ $GCHK == "false" ]]; then groupadd -f video; fi
+if [[ $GVID == "false" ]]; then usermod -aG video $(whoami); fi
+   endcommand
+if [[ $VIFO == "false" ]]; then $(command -v apt) install vainfo -yqq; fi
+if [[ $INTE == "false" && $IGPU == "true" ]]; then $(command -v apt) update -yqq && $(command -v apt) install intel-gpu-tools -yqq; fi
+if [[ $IMOL1 == "true" && $IMOL2 == "true" && $ITEL == "true" && $GVID == "true" && $DEVT == "true" ]]; then echo "Intel IGPU is working"; else echo "Intel IGPU is not working"; fi
 }
 
 
-function  nvidiagpu() {
+function nvidiagpu() {
 
-echo "hold and keep command need rework"
+VERSION=510.54
+RCHK=$(ls /etc/apt/sources.list.d/ 1>/dev/null 2>&1 | grep -qE 'nvidia' && echo true || echo false)
+DREA=$(pidof dockerd 1>/dev/null 2>&1 && echo true || echo false)
+CHKN=$(which nvidia-smi 1>/dev/null 2>&1 && echo true || echo false)
+DCHK=$(cat /etc/docker/daemon.json | grep -qE 'nvidia' && echo true || echo false)
+
+subos
+
+if [[ ! -f "/opt/nvidia/nvidia.run" ]]; then
+   $(which mkdir) /opt/nvidia && \
+   $(which cd) /opt/nvidia && \
+   $(which wget) -O nvidia.run https://international.download.nvidia.com/XFree86/Linux-x86_64/$VERSION/NVIDIA-Linux-x86_64-$VERSION.run && \
+   $(which chmod) +x ./nvidia.run && \
+   ./nvidia.run --dkms --silent
+   if test -f "/opt/nvidia/nvidia.run"; then
+      $(which rm) -rf /opt/nvidia/nvidia.run
+   fi
+fi
+
+if [[ $RCHK == "false" ]]; then
+   $(which apt) install $(apt-cache search 'nvidia-driver-' | grep '^nvidia-driver-[[:digit:]]*' | tail -n1 | awk '{print $1}') -y
+   $(which curl) -s -L https://nvidia.github.io/nvidia-container-runtime/gpgkey | \
+     apt-key add -
+   distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+   $(which curl) -s -L https://nvidia.github.io/nvidia-container-runtime/$distribution/nvidia-container-runtime.list | \
+      tee /etc/apt/sources.list.d/nvidia-container-runtime.list
+   $(which apt) update -y && \
+   $(which apt) install nvidia-container-runtime nvidia-container-toolkit -y
+fi
+
+if [[ $DCHK == "false" ]]; then
+$(which mkdir) -p /etc/systemd/system/docker.service.d
+$(which tee) /etc/systemd/system/docker.service.d/override.conf <<EOF
+[Service]
+ExecStart=
+ExecStart=/usr/bin/dockerd --host=fd:// --add-runtime=nvidia=/usr/bin/nvidia-container-runtime
+EOF
+$(which systemctl) daemon-reload && $(which systemctl) restart docker
+$(which tee) /etc/docker/daemon.json <<EOF
+{
+    "runtimes": {
+        "nvidia": {
+            "path": "/usr/bin/nvidia-container-runtime",
+            "runtimeArgs": []
+        }
+    }
+}
+EOF
+$(which pkill) -SIGHUP dockerd
+fi
+
+if [[ ! -d "/opt/nvidia/libnvidia-encode-backup" ]];then
+   $(which wget) -O /opt/nvidia/nvidia-patch.sh https://raw.githubusercontent.com/keylase/nvidia-patch/master/patch.sh && \
+   chmod +x /opt/nvidia/nvidia-patch.sh && |
+   ./opt/nvidia/nvidia-patch.sh
+   if test -f "/opt/nvidia/nvidia-patch.sh"; then
+      $(which rm) -rf /opt/nvidia/nvidia-patch.sh
+   fi
+fi
+
+if [[ $(which nvidia-smi) ]];then
+   SHOW=$(nvidia-smi)
+printf "%1s\n" "${blue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      NVIDIA OUTPUT
+   ${SHOW}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
+fi
+
+if [[ $GVID == "false" ]]; then usermod -aG video $(whoami); fi
+if [[ $DREA == "true" ]]; then pkill -SIGHUP dockerd; fi
+    endcommand
+if [[ $DREA == "true" && $DCHK == "true" && $CHKN == "true" && $DEVT != "false" ]]; then echo "nvidia-container-runtime is working"; else echo "nvidia-container-runtime is not working"; fi
 
 }
 
@@ -366,9 +429,11 @@ fi
 function update() {
 dockserver=/opt/dockserver
 clear
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "    🚀    DockServer [ UPDATE CONTAINER ] STARTED"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+color
+
+printf "%1s\n" "${yellow}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    🚀    DockServer [ UPDATE CONTAINER ] STARTED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
      basefolder="/opt/appdata"
      compose="compose/docker-compose.yml"
      $(which rsync) ${dockserver}/dockserver/docker.yml $basefolder/$compose -aqhv
@@ -380,10 +445,10 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
      fi
      $(which chown) -cR 1000:1000 ${dockserver} 1>/dev/null 2>&1
      envmigra && fastapt && cleanup && clear
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "    🚀    DockServer [ UPDATE CONTAINER ] DONE"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo ""
+printf "%1s\n" "${yellow}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    🚀    DockServer [ UPDATE CONTAINER ] DONE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
+
 }
 ####
 function fastapp() {
@@ -405,7 +470,7 @@ done
 ####
 function usage() {
 clear
-printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀    DockServer [ USAGE COMMANDS ]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -421,8 +486,7 @@ printf "━━━━━━━━━━━━━━━━━━━━━━━━
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀    DockServer [ USAGE COMMANDS ]
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-clear
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
 
 }
 
@@ -482,7 +546,7 @@ fi
 
 function headinterface() {
 
-printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀 DockServer
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     
@@ -491,7 +555,7 @@ printf "━━━━━━━━━━━━━━━━━━━━━━━━
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     [ EXIT or Z ] - Exit
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
 
   read -erp "↘️  Type Number and Press [ENTER]: " headsection </dev/tty
   case $headsection in
@@ -503,7 +567,7 @@ printf "━━━━━━━━━━━━━━━━━━━━━━━━
 }
 
 function headapps() {
-printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀  DockServer Applications Section Menu
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -514,7 +578,7 @@ printf "━━━━━━━━━━━━━━━━━━━━━━━━
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     [ EXIT or Z ] - Exit
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
 
   read -erp "↘️  Type Number and Press [ENTER]: " headsection </dev/tty
   case $headsection in
@@ -529,7 +593,7 @@ printf "━━━━━━━━━━━━━━━━━━━━━━━━
 
 function appinterface() {
 buildshow=$(ls -1p /opt/dockserver/apps/ | grep '/$' | $(command -v sed) 's/\/$//')
-printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀  Applications Category Menu
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -537,7 +601,7 @@ $buildshow
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     [ EXIT or Z ] - Exit
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
 
   read -erp "↘️  Type Section Name and Press [ENTER]: " section </dev/tty
   case $section in
@@ -551,8 +615,7 @@ function install() {
 restorebackup=null
 section=${section}
 buildshow=$(ls -1p /opt/dockserver/apps/${section}/ | sed -e 's/.yml//g' )
-printf "
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀  Applications to install under ${section} category
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -560,8 +623,7 @@ $buildshow
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     [ EXIT or Z ] - Exit
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
   read -erp "↪️ Type App-Name to install and Press [ENTER]: " typed </dev/tty
   case $typed in
     Z|z|exit|EXIT|Exit|close) headapps ;;
@@ -685,11 +747,9 @@ printf "━━━━━━━━━━━━━━━━━━━━━━━━
    done
    if [[ ${section} == "mediaserver" || ${section} == "mediamanager" ]];then
       $(which docker) stop ${typed} 1>/dev/null 2>&1 && echo "We stopped now $typed"
-printf "
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀  Please Wait it cant take some minutes
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-"
+printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    🚀  Please Wait it can take some minutes
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal"
       $(which tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${STORAGE}/${ARCHIVETAR} ./
       $(which docker) start ${typed} 1>/dev/null 2>&1  && echo "We started now $typed"
    else
@@ -714,9 +774,9 @@ DESTINATION="/mnt/downloads/appbackups"
 if [[ -d ${FOLDER}/${typed} ]];then
    ARCHIVE=${typed}
    ARCHIVETAR=${ARCHIVE}.tar.gz
-printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀  Backup is running for ${typed}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
    if [[ ! -d ${DESTINATION} ]];then
       $(which mkdir) -p ${DESTINATION}
    fi
@@ -733,9 +793,9 @@ printf "━━━━━━━━━━━━━━━━━━━━━━━━
    done
    if [[ ${section} == "mediaserver" || ${section} == "mediamanager" ]];then
       $(which docker) stop ${typed} 1>/dev/null 2>&1 && echo "We stopped now $typed"
-printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀  Please Wait it can take some minutes
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
       $(which tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${STORAGE}/${ARCHIVETAR} ./
       $(which docker) start ${typed} 1>/dev/null 2>&1  && echo "We started now $typed"
    else
@@ -759,7 +819,6 @@ $storage
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    [ EXIT or Z ] - Exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-
   read -erp "↪️ Type Name to set the Backup-Folder and Press [ENTER]: " storage </dev/tty
   case $typed in
      Z|z|exit|EXIT|Exit|close) clear && headapps ;;
@@ -868,18 +927,20 @@ function runinstall() {
   storage="/mnt/downloads"
   appfolder="/opt/dockserver/apps"
   basefolder="/opt/appdata"
-printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     Please Wait, We are installing ${typed} for you
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
   $(which mkdir) -p $basefolder/compose/
   $(which find) $basefolder/compose/ -type f -name "docker*" -exec rm -f {} \;
   $(which rsync) $appfolder/${section}/${typed}.yml $basefolder/$compose -aqhv
   if [[ ${section} == "mediaserver" || ${section} == "encoder" ]]; then
      if [[ -x "/dev/dri" ]]; then
-        if test -f /etc/modprobe.d/blacklist-hetzner.conf; then
+        if test -f "/etc/modprobe.d/blacklist-hetzner.conf"; then
            $(which rsync) $appfolder/${section}/.gpu/INTEL.yml $basefolder/$composeoverwrite -aqhv
-        else
+        elif $(which nvidia-smi --version) ]]; then
            $(which rsync) $appfolder/${section}/.gpu/NVIDIA.yml $basefolder/$composeoverwrite -aqhv
+        else
+           echo "You are using an unsupported graphic system."
         fi
      fi
      if [[ -f $basefolder/$composeoverwrite ]];then
@@ -994,16 +1055,16 @@ printf "━━━━━━━━━━━━━━━━━━━━━━━━
      errorcode=$?
      if [[ $errorcode -ne 0 ]];then
      erroline=$($(which docker-compose) config)
-printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ❌ ERROR
     Compose check of ${typed} has failed
     Return code is ${errorcode}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
 sleep 5
-printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ❌ OUTPUT OF COMPOSER ERROR
     ${erroline}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
   read -erp "Confirm Info | PRESS [ENTER]" typed </dev/tty
   clear && interface
      else
@@ -1020,14 +1081,14 @@ printf "━━━━━━━━━━━━━━━━━━━━━━━━
   if [[ $errorcode -eq 0 ]];then
      TRAEFIK=$(cat $basefolder/$compose | grep "traefik.enable" | wc -l)
   if [[ ${TRAEFIK} == "0" ]];then
-  printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ${typed} has successfully deployed and is now working     
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
 else
   source $basefolder/compose/.env
-printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ${typed} has successfully deployed = > https://${typed}.${DOMAIN}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
   sleep 10
   clear
   fi
@@ -1087,12 +1148,12 @@ fi
 function plexclaim() {
 compose="compose/docker-compose.yml"
 basefolder="/opt/appdata"
-printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀  PLEX CLAIM
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     Please claim your Plex server
     https://www.plex.tv/claim/
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
   read -erp "Enter your PLEX CLAIM CODE : " PLEXCLAIM </dev/tty
   if [[ $PLEXCLAIM != "" ]];then
      if [[ $(uname) == "Darwin" ]];then
@@ -1109,7 +1170,7 @@ printf "━━━━━━━━━━━━━━━━━━━━━━━━
 function plex443() {
 basefolder="/opt/appdata"
 source $basefolder/compose/.env
-printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀  PLEX 443 Options
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     You need to add a Cloudflare Page Rule
@@ -1133,7 +1194,7 @@ printf "━━━━━━━━━━━━━━━━━━━━━━━━
           > allowed networks = 172.18.0.0
           > save 
       > have fun !
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
 read -erp "Confirm Info | PRESS [ENTER]" typed </dev/tty
 
 }
@@ -1210,9 +1271,9 @@ function deleteapp() {
   checktyped=$($(command -v docker) ps -aq --format={{.Names}} | grep -x $typed)
   auth=$(cat -An $conf | grep -x ${typed}.${DOMAIN} | awk '{print $1}')
   if [[ $checktyped == $typed ]];then
-printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ${typed} removal started    
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
      app=${typed}
      for i in ${app};do
          $(which docker) stop $i 1>/dev/null 2>&1
@@ -1221,18 +1282,18 @@ printf "━━━━━━━━━━━━━━━━━━━━━━━━
      done
      if [[ -d $basefolder/${typed} ]];then 
         folder=$basefolder/${typed}
-printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    App ${typed} folder removal started
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
         for i in ${folder};do
             $(which rm) -rf $i 1>/dev/null 2>&1
         done
      fi
      if [[ -d $storage/${typed} ]];then 
         folder=$storage/${typed}
-printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    Storage ${typed} folder removal started
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
         for i in ${folder};do
             $(which rm) -rf $i 1>/dev/null 2>&1
         done
@@ -1254,15 +1315,15 @@ printf "━━━━━━━━━━━━━━━━━━━━━━━━
         if [[ $dnsrecordid != "" ]] ; then
            result=$(curl -sX DELETE "https://api.cloudflare.com/client/v4/zones/$DOMAIN1_ZONE_ID/dns_records/$dnsrecordid" -H "X-Auth-Email: $CLOUDFLARE_EMAIL" -H "X-Auth-Key: $CLOUDFLARE_API_KEY" -H "Content-Type: application/json")
            if [[ $result != "" ]]; then
-printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ${typed} CNAME record removed from Cloudflare 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"          
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
            fi
         fi
     fi
-printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ${typed} removal finished
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
     sleep 2 && removeapp
   else
      removeapp
@@ -1273,5 +1334,19 @@ function updatecompose() {
     $(which curl) -L --fail https://raw.githubusercontent.com/linuxserver/docker-docker-compose/master/run.sh -o /usr/local/bin/docker-compose
     $(which ln) -sf /usr/local/bin/docker-compose /usr/bin/docker-compose
     $(which chmod) +x /usr/local/bin/docker-compose /usr/bin/docker-compose
+}
+
+function color() {
+
+black=$(tput setaf 0)
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+yellow=$(tput setaf 3)
+blue=$(tput setaf 4)
+magenta=$(tput setaf 5)
+cyan=$(tput setaf 6)
+white=$(tput setaf 7)
+normal=$(tput sgr0)
+
 }
 # ENDSTAGE
