@@ -1358,3 +1358,5 @@
  * Update s6-overlay (doob187)
  * Update docker-mount.sh (doob187)
  * [Auto Generation] Changes : .templates/apps/docker-mount.sh (dockserver-bot[bot])
+ * [Auto Generation] Changes : apps/docker-mount/Dockerfile apps/docker-mount/release.json apps/docker-uploader/Dockerfile base/docker-alpine-v3/Dockerfile container.json wiki/docs/install/container-gitlog.md wiki/docs/install/container.json (dockserver-bot[bot])
+ * Update s6-overlay (doob187)
