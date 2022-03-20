@@ -202,8 +202,9 @@
    "rclone": "v1.58.0",
    "baseimage": "alpine",
    "buildimage": "alpine",
+   "finalimage": "ghcr.io/dockserver/docker-alpine-v3:latest",
    "baseversion": "3.15.1",
-   "s6_stage": "v3.1.0.1",
+   "s6stage": "v3.1.0.1",
    "description": "Docker docker-mount with mergerfs version 2.33.3 and rclone version v1.58.0 include s6-overlay: v3.1.0.1",
    "body": "Upgrading docker-mount to baseimage: alpine:3.15.1 with mergerfs: 2.33.3 and rclone: v1.58.0 include s6-overlay: v3.1.0.1",
    "user": "dockserver image update[bot]"
