@@ -45,7 +45,9 @@ On some forks of PG these files are placed under /uploader and /mount.
 
 Now you are ready to backup your PG apps.
 
-`sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/backup.sh | sudo bash`
+```
+sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/backup.sh | sudo bash
+```
 
 This will create a folder named /appbackups on the root of your remote drive. When the backup is done, check that these files exist on your remote drive. Also, check them for file sizes to make sure it looks right. Plex can take a long time, be patient.
 
@@ -57,9 +59,13 @@ Open a terminal
 
 Create the folders
 
-`sudo mkdir -p /opt/appdata/system/{rclone,servicekeys}`
+```
+sudo mkdir -p /opt/appdata/system/{rclone,servicekeys}
+```
 
-`sudo chown -cR 1000:1000 /opt/appdata`
+```
+sudo chown -cR 1000:1000 /opt/appdata
+```
 
 Install CloudCMD (under addons)
 
@@ -82,7 +88,9 @@ Rename all service keys to not containing a 0 so GDSA01 becomes GDSA1 and so for
 
 Edit your rclone.conf
 
-`sudo nano /opt/appdata/system/rclone/rclone.conf`
+```sh
+sudo nano /opt/appdata/system/rclone/rclone.conf
+```
 
 Remove all GDSA lines here, only the remotes(g/tdrive, g/tcrypt) are left in the file - PGUNION has to be deleted as well
 Like this:
@@ -115,7 +123,9 @@ CTRX+X press y
 
 Edit rclonegdsa.conf
 
-`sudo nano /opt/appdata/system/servicekeys/rclonegdsa.conf`
+```
+sudo nano /opt/appdata/system/servicekeys/rclonegdsa.conf
+```
 
 Remove all the remotes (g/tdrive, g/tcrypt) - PGUNION has to be deleted as well
 Again, remove all zeroes so that the values will be displayed like this:
@@ -162,6 +172,7 @@ then this is your solution (only do a token refresh):
 ```
 sudo docker stop mount
 sudo fusermount -uzq /mnt/unionfs 
+sudo fusermount -uzq /mnt/remotes
 ```
 ```
 cd /opt/appdata/system/rclone
