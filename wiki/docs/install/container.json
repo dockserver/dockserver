@@ -201,7 +201,7 @@
    "mergerfs": "2.33.3",
    "rclone": "v1.58.0",
    "baseimage": "alpine",
-   "buildimage:" "alpine",
+   "buildimage": "alpine",
    "baseversion": "3.15",
    "s6_stage": "v3.1.0.1",
    "description": "Docker docker-mount with mergerfs version 2.33.3 and rclone version v1.58.0 include s6-overlay: v3.1.0.1",
