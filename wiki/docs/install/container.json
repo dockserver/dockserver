@@ -267,11 +267,11 @@
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "0.2.0.1594",
+   "newversion": "0.2.0.1596",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 0.2.0.1594",
+   "body": "Upgrading docker-prowlarr to 0.2.0.1596",
    "user": "github-actions[bot]"
 }
 {
@@ -497,10 +497,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "1a71265354bd2a584f07fa0cef24557a84765a6a",
+   "newversion": "5806f816b882f8aa748cecd8b0eaa2deb3ddf3c0",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 1a71265354bd2a584f07fa0cef24557a84765a6a",
+   "body": "Upgrading docker-sabnzbd-nightly to 5806f816b882f8aa748cecd8b0eaa2deb3ddf3c0",
    "user": "github-actions[bot]"
 }
 {
