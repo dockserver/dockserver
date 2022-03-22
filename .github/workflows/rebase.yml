@@ -9,7 +9,6 @@ on:
 jobs:
   rebase:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: peter-evans/rebase@v2
         with:
