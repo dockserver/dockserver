@@ -495,7 +495,10 @@ runinstall() {
   fi
   if [[ ${section} == "system" && ${typed} == "mount" ]];then
      $(command -v docker) stop mount &>/dev/null && $(command -v docker) rm mount &>/dev/null
-     $(command -v fusermount) -uzq /mnt/remotes /mnt/rclone_cache /mnt/unionfs
+     folder="/mnt/remotes /mnt/rclone_cache /mnt/unionfs "
+     for fus in ${folder};do
+     $(command -v fusermount) -uzq "$fus"
+     done
   fi
   if [[ ${section} == "downloadclients" && ${typed} == "youtubedl-material" ]];then
      folder="appdata audio video subscriptions"
