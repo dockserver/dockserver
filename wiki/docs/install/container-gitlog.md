@@ -1407,3 +1407,18 @@
  * [Auto Generation] Changes : wiki/docs/install/container-gitlog.md (dockserver-bot[bot])
  * Update github-metrics.svg - [Skip GitHub Action] (doob187)
  * [Auto Generation] Changes : github-metrics.svg (dockserver-bot[bot])
+
+## 2022-03-22
+ * [Auto Generation] Changes : wiki/docs/install/container-gitlog.md (dockserver-bot[bot])
+ * Update release.yaml (doob187)
+ * Update schedule.yaml (doob187)
+ * Update schedule.yaml (doob187)
+ * Update release.yaml (doob187)
+ * Update schedule.yaml (doob187)
+ * GH updates (deps): Bump peter-evans/rebase from 1 to 2 (#14) (dependabot[bot])
+ * GH updates (deps): Bump actions/cache from 2.1.7 to 3 (#15) (dependabot[bot])
+ * Update docker-jackett.sh (doob187)
+ * Update docker-prowlarr.sh (doob187)
+ * Update docker-radarr-nightly.sh (doob187)
+ * Update docker-sonarr-nightly.sh (doob187)
+ * Update docker-radarr-nightly.sh (doob187)
