@@ -530,6 +530,19 @@ if [[ -f "/bin/dockserver" ]];then
 fi
 }
 
+function folderunmount {
+
+for fod in /mnt/* ;do
+  basename "$fod" >/dev/null
+  FOLDER="$(basename -- $fod)"
+  IFS=- read -r <<< "$ACT"
+  if ! ls "/mnt/$ACT"; then
+     $(which fusermount) -uzq /mnt/$ACT
+  fi
+done
+
+}
+
 function headinterface() {
 printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀 DockServer
@@ -1362,7 +1375,7 @@ printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━�
   fi
   if [[ ${typed} == "mount" ]];then
      $(which docker) stop mount &>/dev/null && $(command -v docker) rm mount &>/dev/null
-     $(which fusermount) -uzq /mnt/remotes /mnt/rclone_cache /mnt/unionfs
+     folderunmount
   fi
   if [[ ${typed} == "youtubedl-material" ]];then
      folder="appdata audio video subscriptions"
