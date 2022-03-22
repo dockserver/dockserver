@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check out code
-      uses: actions/checkout@master
+      uses: actions/checkout@v3
       with:
         fetch-depth: '0'
     - name: Build Changelog
@@ -38,12 +38,12 @@ jobs:
         COLOR: 3066993
       shell: bash
       run: |
-        curl -fsSL --retry 5 "https://raw.githubusercontent.com/dockserver/container/master/images/Logo.png" > image.png
+        cp -r "./wiki/overrides/img/profile.png" image.png
         VERSION=$(curl -sX GET "https://api.github.com/repos/dockserver/dockserver/releases/latest" | jq --raw-output '.tag_name')
         export DOCKER_CLI_EXPERIMENTAL=enabled
         json='{
           "username": "dockserver Release-Bot",
-          "avatar_url": "https://raw.githubusercontent.com/dockserver/container/master/images/Logo.png",
+          "avatar_url": "https://raw.githubusercontent.com/dockserver/dockserver/master/wiki/overrides/img/profile.png",
           "embeds": [
             {
             "author": {
@@ -62,8 +62,8 @@ jobs:
                 "value": "new Version public : `'${VERSION}'`"
               },
               {
-                "name": "Changelog : ",
-                "value": "'${CHANGES}'"
+                "name": "Changelog on dockserver.io",
+                "value": "Changelog : (https://dockserver.io/install/changelog.html)"
               },
               {
                 "name": "Thanks!",

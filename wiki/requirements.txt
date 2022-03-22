@@ -19,18 +19,16 @@
 # IN THE SOFTWARE.
  
 mkdocs==1.2.3
-mkdocs-material==8.1.9
+mkdocs-material==8.2.5
 mkdocs-material-extensions==1.0.3
 mkdocs-minify-plugin==0.5.0
 mkdocs-redirects==1.0.3
 mkdocs-macros-plugin==0.6.4
-mkdocs-awesome-pages-plugin==2.6.1
-mkdocs-git-revision-date-localized-plugin==0.11.1
+mkdocs-awesome-pages-plugin==2.7.0
+mkdocs-git-revision-date-localized-plugin==1.0.0
 markdown==3.3.6
 pygments==2.11.2
-pymdown-extensions==9.1
-git+git://github.com/g-provost/lightgallery-markdown#egg=lightgallery
 mkdocs-render-swagger-plugin
 mkdocs-mermaid2-plugin
-
+MkDocsJsonSchemaPlugin
 

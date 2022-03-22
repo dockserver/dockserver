@@ -70,6 +70,11 @@ updatesystem() {
            fi
       fi
 
+      bash -c "$(curl -sL https://raw.githubusercontent.com/ilikenwf/apt-fast/master/quick-install.sh)"
+      echo debconf apt-fast/maxdownloads string 16 | debconf-set-selections
+      echo debconf apt-fast/dlflag boolean true | debconf-set-selections
+      echo debconf apt-fast/aptmanager string apt | debconf-set-selections
+
       package_basic=(software-properties-common rsync language-pack-en-base pciutils lshw nano rsync fuse curl wget tar pigz pv iptables ipset fail2ban)
       apt install ${package_basic[@]} --reinstall -yqq 1>/dev/null 2>&1 && sleep 1
 

@@ -1,0 +1,46 @@
+---
+version: "3"
+services:
+  dim:
+    hostname: "dim"
+    container_name: "dim"
+    image: "ghcr.io/dockserver/docker-dim:latest"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    environment:
+      - "PUID=${ID}"
+      - "PGID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    ports:
+      - target: 8000
+        published: 8234
+        protocol: tcp
+        mode: host
+    volumes:
+      - "${APPFOLDER}/dim:/opt/dim/config"
+      - "unionfs:/mnt:ro"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.dim-rtr.entrypoints=https"
+      - "traefik.http.routers.dim-rtr.rule=Host(`dim.${DOMAIN}`)"
+      - "traefik.http.routers.dim-rtr.tls=true"
+      - "traefik.http.routers.dim-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.dim-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.dim-rtr.service=dim-svc"
+      - "traefik.http.services.dim-svc.loadbalancer.server.port=8000"
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt
