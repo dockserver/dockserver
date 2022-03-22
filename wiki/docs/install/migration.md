@@ -45,7 +45,9 @@ On some forks of PG these files are placed under /uploader and /mount.
 
 Now you are ready to backup your PG apps.
 
-`sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/backup.sh | sudo bash`
+```
+sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/backup.sh | sudo bash
+```
 
 This will create a folder named /appbackups on the root of your remote drive. When the backup is done, check that these files exist on your remote drive. Also, check them for file sizes to make sure it looks right. Plex can take a long time, be patient.
 
@@ -53,49 +55,94 @@ Now, please order a VPS with ubuntu 18/20 on it and follow the instructions on t
 
 # Mount & Uploader
 
+Open a terminal
+
+Create the folders
+
+```
+sudo mkdir -p /opt/appdata/system/{rclone,servicekeys}
+```
+
+```
+sudo chown -cR 1000:1000 /opt/appdata
+```
+
 Install CloudCMD (under addons)
 
 Navigate to
 /opt/appdata/system/rclone
-Upload the rclone.conf from your old server
+Upload the rclone.conf from your old server.
+Do not rename this one.
 
 Navigate to
 /opt/appdata/system/servicekeys
 
-Upload the rclone.conf to this folder
-Rename rclone.conf to rclonegdsa.conf
+Upload the the same rclone.conf to this folder.
+Rename this rclone.conf to rclonegdsa.conf
 
 Navigate to
 /opt/appdata/system/servicekeys/keys
 Upload all service keys (GDSA01,02..)
 Rename all service keys to not containing a 0 so GDSA01 becomes GDSA1 and so forth..
 
-Open a terminal
-
-Create the folders
-
-`sudo mkdir -p /opt/appdata/system/{rclone,servicekeys}`
-
-`sudo chown -cR 1000:1000 /opt/appdata`
 
 Edit your rclone.conf
 
-`sudo nano /opt/appdata/system/rclone/rclone.conf`
+```sh
+sudo nano /opt/appdata/system/rclone/rclone.conf
+```
 
 Remove all GDSA lines here, only the remotes(g/tdrive, g/tcrypt) are left in the file - PGUNION has to be deleted as well
+Like this:
+```
+[gdrive]
+client_id = XOXOYOURID
+client_secret = XOXOYOURSECRET
+type = drive
+server_side_across_configs = true
+token = XOXOYOURTOKEN
+
+[tdrive]
+client_id = XOXOYOURID
+client_secret = XOXOYOURSECRET
+type = drive
+server_side_across_configs = true
+token = XOXOYOURTOKEN
+team_drive = XXXXXXXXXXXXXXXXXXX
+
+[tdrive2]
+client_id = XOXOYOURID
+client_secret = XOXOYOURSECRET
+type = drive
+server_side_across_configs = true
+token = XOXOYOURTOKEN
+team_drive = XXXXXXXXXXXXXXXXXXX
+```
+
 CTRX+X press y
 
-Edit the rclone.conf to rclonegdsa.conf
+Edit rclonegdsa.conf
 
-`sudo nano /opt/appdata/system/servicekeys/rclonegdsa.conf`
+```
+sudo nano /opt/appdata/system/servicekeys/rclonegdsa.conf
+```
 
+Remove all the remotes (g/tdrive, g/tcrypt) - PGUNION has to be deleted as well
 Again, remove all zeroes so that the values will be displayed like this:
 
+```
 [GDSA1]
+type = drive
+scope = drive
 service_account_file = /system/servicekeys/keys/GDSA1
+team_drive = XXXXXXXXXXXXXXXXXXX
 
 [GDSA2]
+type = drive
+scope = drive
 service_account_file = /system/servicekeys/keys/GDSA2
+team_drive = XXXXXXXXXXXXXXXXXXX
+```
 
 CTRL+X y
 
@@ -104,6 +151,54 @@ Done.
 Now you can deploy mount & uploader under in the system section in the CLI
 
 After this you are ready to restore your PG apps on a brand new Dockserver installation
+
+## Note:
+Google Token Expire
+
+it may possible that your Google token expires after a server reboot/migration or other things
+
+logs can be checked with this:
+```
+sudo tail -n 50 -f /opt/appdata/system/mount/logs/rclone-union.log
+```
+And you can also check if remotes are displaying something:
+```
+sudo docker exec mount ls -1p /mnt/unionfs
+```
+if you see something like: 
+Token Expired or could not authenticate with google
+
+then this is your solution (only do a token refresh):
+```
+sudo docker stop mount
+sudo fusermount -uzq /mnt/unionfs 
+sudo fusermount -uzq /mnt/remotes
+```
+```
+cd /opt/appdata/system/rclone
+```
+You can install rclone using the following command:
+```
+sudo apt install curl jq && sudo curl https://rclone.org/install.sh | sudo bash
+```
+After installing Rclone, verify the Rclone version with the following command:
+```
+sudo rclone --version
+```
+Then reconnect:
+```
+rclone config reconnect tdrive: --config=rclone.conf
+
+rclone config reconnect gdrive: --config=rclone.conf
+```
+Then start mount again:
+```
+sudo fusermount -uzq /mnt/unionfs
+sudo docker start mount
+sudo docker logs -f mount
+( or use dozzle for the logs reading )
+```
+
 
 ## Support
 

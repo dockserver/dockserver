@@ -4,6 +4,9 @@
 # All rights reserved.
 migrateenv() {
     basefolder="/opt/appdata"
+    #bypass the dark them bug
+    sed -i "s/organizr-dark/organizr/g" $basefolder/compose/.env
+
     source $basefolder/compose/.env
     echo -e "##Environment for Docker-Compose
 
@@ -13,6 +16,9 @@ CLOUDFLARE_API_KEY=${CLOUDFLARE_API_KEY:-CF-API-KEY}
 DOMAIN1_ZONE_ID=${DOMAIN1_ZONE_ID:-CF-ZONE_ID}
 DOMAIN=${DOMAIN:-example.com}
 CLOUDFLARED_UUID=${CLOUDFLARED_UUID:-TUNNEL_UUID_HERE}
+
+## TRAEFIK-ERROR-PAGES
+TEMPLATE_NAME=${TEMPLATE_NAME:-l7-dark}
 
 ## APPPART
 TZ=${TZ}
@@ -53,7 +59,6 @@ VNC_RESOLUTION=${VNC_RESOLUTION:-1920x1080}
 PLEXIMAGE=${PLEXIMAGE:-ghcr.io/dockserver/docker-plex:latest}
 PLEXTHEME=${PLEXTHEME:-organizr}
 PLEXADDON=${PLEXADDON:-overseerr-side-menu}
-PLEXCUSTOMLOGO=${PLEXCUSTOMLOGO:-https://dockserver.io/img/favicon.png}
 PLEXVERSION=${PLEXVERSION:-latest}
 EMBYIMAGE=${EMBYIMAGE:-ghcr.io/dockserver/docker-emby:latest}
 EMBYTHEME=${EMBYTHEME:-organizr}
@@ -61,17 +66,18 @@ JELLYFINIMAGE=${JELLYFINIMAGE:-ghcr.io/dockserver/docker-jellyfin:latest}
 JELLYFINTHEME=${JELLYFINTHEME:-organizr}
 
 ## MediaManager
+FENRUSIMAGE=${FENRUSIMAGE:-ghcr.io/dockserver/docker-fenrus:latest}
 BAZARRIMAGE=${BAZARRIMAGE:-ghcr.io/dockserver/docker-bazarr:latest}
 BAZARRTHEME=${BAZARRTHEME:-organizr}
 BAZARR4KIMAGE=${BAZARR4KIMAGE:-ghcr.io/dockserver/docker-bazarr:latest}
 BAZARR4KTHEME=${BAZARR4KTHEME:-organizr}
 CALIBREIMAGE=${CALIBREIMAGE:-ghcr.io/linuxserver/calibre-web}
 CALIBRETHEME=${CALIBRETHEME:-organizr}
-RADARRIMAGE=${RADARRIMAGE:-ghcr.io/linuxserver/radarr:nightly}
+RADARRIMAGE=${RADARRIMAGE:-ghcr.io/dockserver/docker-radarr:latest}
 RADARRTHEME=${RADARRTHEME:-organizr}
-RADARR4KIMAGE=${RADARR4KIMAGE:-ghcr.io/linuxserver/radarr:nightly}
+RADARR4KIMAGE=${RADARR4KIMAGE:-ghcr.io/dockserver/docker-radarr:latest}
 RADARR4KTHEME=${RADARR4KTHEME:-organizr}
-RADARRHDRIMAGE=${RADARRHDRIMAGE:-ghcr.io/linuxserver/radarr:nightly}
+RADARRHDRIMAGE=${RADARRHDRIMAGE:-ghcr.io/dockserver/docker-radarr:latest}
 RADARRHDRTHEME=${RADARRHDRTHEME:-organizr}
 READARRIMAGE=${READARRIMAGE:-ghcr.io/dockserver/docker-readarr:latest}
 READARRTHEME=${READARRTHEME:-organizr}
@@ -81,11 +87,11 @@ PROWLARR4KIMAGE=${PROWLARR4KIMAGE:-ghcr.io/dockserver/docker-prowlarr:latest}
 PROWLARR4KTHEME=${PROWLARR4KTHEME:-organizr}
 PROWLARRHDRIMAGE=${PROWLARRHDRIMAGE:-ghcr.io/dockserver/docker-prowlarr:latest}
 PROWLARRHDRTHEME=${PROWLARRHDRTHEME:-organizr}
-SONARRIMAGE=${SONARRIMAGE:-ghcr.io/linuxserver/sonarr:develop}
+SONARRIMAGE=${SONARRIMAGE:-ghcr.io/dockserver/docker-sonarr:latest}
 SONARRTHEME=${SONARRTHEME:-organizr}
-SONARR4KIMAGE=${SONARR4KIMAGE:-ghcr.io/linuxserver/sonarr:develop}
+SONARR4KIMAGE=${SONARR4KIMAGE:-ghcr.io/dockserver/docker-sonarr:latest}
 SONARR4KTHEME=${SONARR4KTHEME:-organizr}
-SONARRHDRIMAGE=${SONARRHDRIMAGE:-ghcr.io/linuxserver/sonarr:develop}
+SONARRHDRIMAGE=${SONARRHDRIMAGE:-ghcr.io/dockserver/docker-sonarr:latest}
 SONARRHDRTHEME=${SONARRHDRTHEME:-organizr}
 TAUTULLIIMAGE=${TAUTULLIIMAGE:-ghcr.io/dockserver/docker-tautulli:latest}
 TAUTULLITHEME=${TAUTULLITHEME:-organizr}
@@ -241,5 +247,6 @@ RU_OVERWRITE_UPLOADED_TORRENTS=${RU_OVERWRITE_UPLOADED_TORRENTS:-false}
 RU_FORBID_USER_SETTINGS=${RU_FORBID_USER_SETTINGS:-false}
 RU_LOCALE=${RU_LOCALE:-UTF8}" >$basefolder/compose/.env
 }
+
 migrateenv
 #E-o-F#

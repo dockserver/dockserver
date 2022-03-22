@@ -19,19 +19,19 @@ function log() {
 }
 
 function rmdocker() {
-if [ -x `command -v docker` ]; then
+if [ $(which docker) ]; then
    dockers=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -E 'dockserver')
-   docker stop $dockers > /dev/null
-   docker rm $dockers > /dev/null
-   docker system prune -af > /dev/null
+   $(which docker) stop $dockers > /dev/null
+   $(which docker) rm $dockers > /dev/null
+   $(which docker) system prune -af > /dev/null
    unset $dockers
 fi
 }
 
 function pulldockserver() {
-if [ -x `command -v docker` ]; then
-   docker pull -q docker.dockserver.io/dockserver/docker-dockserver
-   docker run -d \
+if [ $(which docker) ]; then
+   $(which docker) pull -q docker.dockserver.io/dockserver/docker-dockserver && \
+   $(which docker) run -d \
   --name=dockserver \
   -e PUID=1000 \
   -e PGID=1000 \
@@ -57,20 +57,18 @@ log "**** remove old dockserver bins ****" && \
 sudo $(command -v rm) -rf $remove 1>/dev/null 2>&1 && clear
 unset remove
 
-if [ -z `command -v docker` ]; then
-   curl -fsSL https://get.docker.com -o /tmp/docker.sh && bash /tmp/docker.sh
-   systemctl reload-or-restart docker.service
+if [ ! $(which docker) ]; then
+   $(which curl) -fsSL https://get.docker.com -o /tmp/docker.sh && bash /tmp/docker.sh
+   $(which systemctl) reload-or-restart docker.service
 fi
 
-if [ -z `command -v docker-compose` ]; then
-   curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
-   ln -sf /usr/local/bin/docker-compose /usr/bin/docker-compose
-   chmod +x /usr/local/bin/docker-compose /usr/bin/docker-compose
+if [ ! $(which docker-compose) ]; then
+    $(which curl) -L --fail https://raw.githubusercontent.com/linuxserver/docker-docker-compose/master/run.sh -o /usr/local/bin/docker-compose
+    $(which ln) -sf /usr/local/bin/docker-compose /usr/bin/docker-compose
+    $(which chmod) +x /usr/local/bin/docker-compose /usr/bin/docker-compose
 fi
 
-if [[ ! -d "/opt/dockserver" ]]; then
-   mkdir -p /opt/dockserver
-fi
+[[ ! -d "/opt/dockserver" ]] && mkdir -p /opt/dockserver
 
 file=/opt/dockserver/.installer/dockserver
 store=/usr/bin/dockserver
@@ -86,18 +84,20 @@ else
 fi
 done
 
-if [[ -f $store ]]; then
-   $(command -v rm) $store
-fi
+if test -f "/usr/bin/dockserver"; then $(which rm) /usr/bin/dockserver ; fi
 if [[ $EUID != 0 ]]; then
-    $(command -v chown) -R $(whoami):$(whoami) $dockserver
-    $(command -v usermod) -aG sudo $(whoami)
-    ln -sf $file $store && chmod +x $store $file
-    $(command -v chown) $(whoami):$(whoami) $store $file
+    $(which chown) -R $(whoami):$(whoami) /opt/dockserver
+    $(which usermod) -aG sudo $(whoami)
+    cp /opt/dockserver/.installer/dockserver /usr/bin/dockserver
+    ln -sf /usr/bin/dockserver /bin/dockserver
+    chmod +x /usr/bin/dockserver
+    $(which chown) $(whoami):$(whoami) /usr/bin/dockserver 
 else 
-    $(command -v chown) -R 1000:1000 $dockserver
-    ln -sf $file $store && chmod +x $store $file
-    $(command -v chown) -R 1000:1000 $store $file
+    $(which chown) -R 1000:1000 /opt/dockserver
+    cp /opt/dockserver/.installer/dockserver /usr/bin/dockserver
+    ln -sf /usr/bin/dockserver /bin/dockserver
+    chmod +x /usr/bin/dockserver
+    $(which chown) -R 1000:1000 /usr/bin/dockserver
 fi
 
 printf "

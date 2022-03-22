@@ -1,5 +1,210 @@
 # CHANGELOG
 
+## [v1.4.24](https://github.com/dockserver/dockserver/releases/tag/v1.4.24) - 2022-03-15 21:24:00
+
+## 💻 GitHub updates
+
+- GH updates (deps): Bump aquasecurity/trivy-action from 0.1.0 to 0.2.2
+   - PR: #419
+
+## 🎨 DockServer Update
+
+- update
+   - PR: #416
+
+
+
+
+- `gluetun` + `qbittorrent`
+   - PR: #418
+
+## [v1.4.23](https://github.com/dockserver/dockserver/releases/tag/v1.4.23) - 2022-03-13 18:47:10
+
+## 🐛 Fixes
+
+- fix saccounts
+   - PR: #412
+
+## 🎨 DockServer Update
+
+- update
+   - PR: #414
+- update gdrive and tdrive docs
+   - PR: #413
+
+### Bug Fixes
+
+- general:
+  - fix saccounts (#412) ([9911967](https://github.com/dockserver/dockserver/commit/99119670962076e85be25e8e93fd565c7ba1373b)) ([#412](https://github.com/dockserver/dockserver/pull/412))
+
+### Documentation
+
+- README:
+  - update contributors ([76eaf2e](https://github.com/dockserver/dockserver/commit/76eaf2ef334cb686797999fff284cfdc37c0136c))
+  - update contributors ([defc605](https://github.com/dockserver/dockserver/commit/defc6051e1fdaa8ac4a6e8cd5f84fee824b5ecdb))
+  - update contributors ([f4cd0cb](https://github.com/dockserver/dockserver/commit/f4cd0cb35f39a4e7fd2e7327d730a10250251a3b))
+  - update contributors ([6658e58](https://github.com/dockserver/dockserver/commit/6658e5803a690aaddaeb2c58381bbe8d5362c754))
+  - update contributors ([965e7f9](https://github.com/dockserver/dockserver/commit/965e7f9e5836f4bfc563adafc908157773661722))
+  - update contributors ([976d069](https://github.com/dockserver/dockserver/commit/976d0695df581d873b0b0ba691fab11ebfe5cad3))
+  - update contributors ([8d63439](https://github.com/dockserver/dockserver/commit/8d63439da0834c03b17a7b1307d52b8ef9489ced))
+  - update contributors ([5f54f9a](https://github.com/dockserver/dockserver/commit/5f54f9a779e27848a336df270b90a0c0fd7d47f8))
+  - update contributors ([17e9545](https://github.com/dockserver/dockserver/commit/17e954557282dc856dc6685f265e338ffac3f6dc))
+  - update contributors ([6f7499b](https://github.com/dockserver/dockserver/commit/6f7499ba759e92f1a050d4250bff2d0b0c8144a0))
+  - update contributors ([0b09500](https://github.com/dockserver/dockserver/commit/0b0950072a1c7335a91f7d0e5f3ee0b4cd36c501))
+  - update contributors ([929eb84](https://github.com/dockserver/dockserver/commit/929eb849eed63e254db34ebdaa235b587dbdcfda))
+
+## [v1.4.22](https://github.com/dockserver/dockserver/releases/tag/v1.4.22) - 2022-03-13 01:58:55
+
+repository changes
+
+## [v1.4.21](https://github.com/dockserver/dockserver/releases/tag/v1.4.21) - 2022-03-13 01:50:21
+
+repository changes
+
+## [v1.4.20](https://github.com/dockserver/dockserver/releases/tag/v1.4.20) - 2022-03-13 00:50:52
+
+## 💻 PiP-Update
+
+- pip (deps): bump mkdocs-material from 8.2.4 to 8.2.5 in /wiki
+   - PR: #410
+
+## 🎨 DockServer Update
+
+- update migration
+   - PR: #411
+
+## [v1.4.19](https://github.com/dockserver/dockserver/releases/tag/v1.4.19) - 2022-03-06 01:43:18
+
+repository changes
+
+## [v1.4.18](https://github.com/dockserver/dockserver/releases/tag/v1.4.18) - 2022-03-06 00:51:05
+
+## 💻 PiP-Update
+
+- pip (deps): bump mkdocs-material from 8.2.2 to 8.2.3 in /wiki
+   - PR: #406
+- pip (deps): bump mkdocs-material from 8.2.3 to 8.2.4 in /wiki
+   - PR: #409
+
+## 💻 GitHub updates
+
+- GH updates (deps): Bump lowlighter/metrics from 3.20 to 3.21
+   - PR: #404
+- GH updates (deps): Bump actions/setup-python from 2.3.2 to 3
+   - PR: #405
+- GH updates (deps): Bump actions/checkout from 2.4.0 to 3
+   - PR: #407
+- GH updates (deps): Bump actions/stale from 4.1.0 to 5
+   - PR: #408
+
+## [v1.4.17](https://github.com/dockserver/dockserver/releases/tag/v1.4.17) - 2022-02-27 02:12:34
+
+repository changes
+
+## [v1.4.16](https://github.com/dockserver/dockserver/releases/tag/v1.4.16) - 2022-02-27 01:41:36
+
+repository changes
+
+## [v1.4.15](https://github.com/dockserver/dockserver/releases/tag/v1.4.15) - 2022-02-27 00:44:37
+
+## 💻 PiP-Update
+
+- pip (deps): bump mkdocs-git-revision-date-localized-plugin from 0.12.1 to 1.0.0 in /wiki
+   - PR: #400
+- pip (deps): bump mkdocs-material from 8.2.1 to 8.2.2 in /wiki
+   - PR: #403
+
+## 🎨 DockServer Update
+
+- update migration
+   - PR: #399
+- update migration
+   - PR: #402
+
+### Documentation
+
+- README:
+  - update contributors ([ba97305](https://github.com/dockserver/dockserver/commit/ba97305ffd0eaa19a0b8b09d9810125d08e8e5d8))
+  - update contributors ([b306efa](https://github.com/dockserver/dockserver/commit/b306efaea28d6e8f0db338853ec4358f4668f653))
+
+## [v1.4.14](https://github.com/dockserver/dockserver/releases/tag/v1.4.14) - 2022-02-20 01:39:13
+
+repository changes
+
+## [v1.4.13](https://github.com/dockserver/dockserver/releases/tag/v1.4.13) - 2022-02-20 00:14:13
+
+## 💻 PiP-Update
+
+- pip (deps): bump mkdocs-awesome-pages-plugin from 2.6.1 to 2.7.0 in /wiki
+   - PR: #397
+- pip (deps): bump mkdocs-material from 8.1.11 to 8.2.1 in /wiki
+   - PR: #398
+
+## [v1.4.12](https://github.com/dockserver/dockserver/releases/tag/v1.4.12) - 2022-02-13 16:16:14
+
+repository changes
+
+## [v1.4.11](https://github.com/dockserver/dockserver/releases/tag/v1.4.11) - 2022-02-13 05:22:57
+
+repository changes
+
+## [v1.4.10](https://github.com/dockserver/dockserver/releases/tag/v1.4.10) - 2022-02-13 00:01:28
+
+## 💻 PiP-Update
+
+- pip (deps): bump mkdocs-git-revision-date-localized-plugin from 0.12 to 0.12.1 in /wiki
+   - PR: #391
+- pip (deps): bump mkdocs-material from 8.1.9 to 8.1.10 in /wiki
+   - PR: #392
+- pip (deps): bump pymdown-extensions from 9.1 to 9.2 in /wiki
+   - PR: #394
+- pip (deps): bump mkdocs-material from 8.1.10 to 8.1.11 in /wiki
+   - PR: #395
+
+## 💻 GitHub updates
+
+- GH updates (deps): Bump anothrNick/github-tag-action from 1.37.0 to 1.38.0
+   - PR: #390
+- GH updates (deps): Bump lowlighter/metrics from 3.19 to 3.20
+   - PR: #393
+
+## 🎨 DockServer Update
+
+- Update saccounts.md
+   - PR: #396
+
+### Documentation
+
+- README:
+  - update contributors ([10426ba](https://github.com/dockserver/dockserver/commit/10426ba5c25f99dbfc759a0f9295175ba18b01bf))
+  - update contributors ([def6d6f](https://github.com/dockserver/dockserver/commit/def6d6f313de14077ab9f3f12b1ba9f087c5461a))
+
+## [v1.4.9](https://github.com/dockserver/dockserver/releases/tag/v1.4.9) - 2022-02-06 07:51:59
+
+repository changes
+
+## [v1.4.8](https://github.com/dockserver/dockserver/releases/tag/v1.4.8) - 2022-02-06 00:25:14
+
+## 💻 PiP-Update
+
+- pip (deps): bump mkdocs-macros-plugin from 0.6.3 to 0.6.4 in /wiki
+   - PR: #369
+- pip (deps): bump mkdocs-git-revision-date-localized-plugin from 0.11.1 to 0.12 in /wiki
+   - PR: #386
+
+## 💻 GitHub updates
+
+- GH updates (deps): Bump actions/setup-python from 2.3.1 to 2.3.2
+   - PR: #389
+- GH updates (deps): Bump anothrNick/github-tag-action from 1.36.0 to 1.37.0
+   - PR: #388
+- GH updates (deps): Bump lowlighter/metrics from 3.18 to 3.19
+   - PR: #387
+
+## [v1.4.7](https://github.com/dockserver/dockserver/releases/tag/v1.4.7) - 2022-02-02 15:19:53
+
+repository changes
+
 ## [v1.4.6](https://github.com/dockserver/dockserver/releases/tag/v1.4.6) - 2022-02-02 13:43:22
 
 repository changes

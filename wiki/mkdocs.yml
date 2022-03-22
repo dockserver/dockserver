@@ -20,13 +20,13 @@ site_name: DockServer Wiki
 use_directory_urls: false
 site_url: ""
 site_author: DockServer
-site_description: >-
-  Use your self hosted Docker as Wiki
+site_description: Use your self hosted docker as wiki
 
 # Repository
 repo_name: DockServer Wiki
 repo_url: https://github.com/dockserver/dockserver
-copyright: Copyright &copy; 2021 DockServer.io
+edit_uri: https://github.com/dockserver/dockserver/edit/master/wiki/docs/
+copyright: Copyright &copy; 2022 DockServer.io
 
 # Configuration
 theme:
@@ -81,8 +81,8 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
-  favicon: img/favicon.png
-  logo: img/favicon.png
+  favicon: img/dockserver_logo_github.png
+  logo: img/dockserver_logo_github.png
 
 # Plugins
 plugins:
@@ -90,10 +90,16 @@ plugins:
   - mermaid2
   - redirects:
       redirect_maps:
-        #changelog/insiders.md: insiders/changelog.md
+        404.html: index.md
   - minify:
       minify_html: true
+  - json-schema:
+      json_schema: install/container.json
+      markdown_tag: #JsonSchema#
 
+
+extra_css:
+  - https://unpkg.com/mermaid/dist/mermaid.css
 extra_javascript:
   - https://unpkg.com/mermaid/dist/mermaid.min.js
 
@@ -160,9 +166,13 @@ nav:
       - Cloudflare: install/cloudflare.md
       - cf-companion: install/cf-companion.md
       - Traefik: install/traefik.md
+  - Special:
       - LXC-Container: lxc/lxc.md
       - Migration: install/migration.md
       - Changelog: install/changelog.md
+  - Container:
+      - Container: install/container.md
+      - Changelog: install/container-gitlog.md
   - Commands:
       - Commands: commands/commands.md
       - Backup: commands/backup.md
@@ -174,6 +184,7 @@ nav:
       - TCrypt: drive/tcrypt.md
       - Mount Keys: drive/mdkeys.md
       - Service Accounts: drive/saccounts.md
+
   - Applikation:
       - Applikation: apps/apps.md
       - Addons:
@@ -193,7 +204,6 @@ nav:
           - Speedtest: apps/addons/speedtest.md
           - vnstat: apps/addons/vnstat.md
       - Backup:
-          - Rsync-Backup: apps/backup/backup.md
           - Duplicati: apps/backup/duplicati.md
           - Rsnapshot: apps/backup/rsnapshot.md
       - Coding:
@@ -229,7 +239,6 @@ nav:
           - Sonarr: apps/mediamanager/sonarr.md
           - Tautulli: apps/mediamanager/tautulli.md
           - Tracktarr: apps/mediamanager/traktarr.md
-          - Unpackerr: apps/mediamanager/unpackerr.md
           - Xteve: apps/mediamanager/xteve.md
       - MediaServer:
           - Emby: apps/mediaserver/emby.md
