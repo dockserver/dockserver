@@ -1,10 +1,10 @@
-name: Add contributors
+name: revase
+
 
 on:
-  workflow_run:
-    workflows: [" Run CLI , Add contributors"]
-    types:
-      - completed
+  workflow_dispatch:
+  schedule:
+  - cron: "0 */2 * * *"
 
 jobs:
   rebase:
