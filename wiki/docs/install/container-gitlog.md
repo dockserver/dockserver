@@ -1482,3 +1482,8 @@
  * Update github-metrics.svg - [Skip GitHub Action] (doob187)
  * Update docker-mount.sh (doob187)
  * Update docker-uploader.sh (doob187)
+ * [Auto Generation] Changes : .templates/apps/docker-uploader.sh (dockserver-bot[bot])
+ * Update release.yaml (doob187)
+ * Update github-metrics.svg - [Skip GitHub Action] (doob187)
+ * Update s6-overlay (doob187)
+ * Update docker-alpine-v3.sh (doob187)
