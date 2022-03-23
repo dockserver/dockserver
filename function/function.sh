@@ -530,7 +530,7 @@ if [[ -f "/bin/dockserver" ]];then
 fi
 }
 
-function folderunmount {
+function folderunmount() {
 
 for fod in /mnt/* ;do
   basename "$fod" >/dev/null
