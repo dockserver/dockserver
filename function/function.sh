@@ -536,8 +536,8 @@ for fod in /mnt/* ;do
   basename "$fod" >/dev/null
   FOLDER="$(basename -- $fod)"
   IFS=- read -r <<< "$ACT"
-  if ! ls "/mnt/$ACT"; then
-     $(which fusermount) -uzq /mnt/$ACT
+  if ! ls -1p "$fod/" >/dev/null ; then
+     $(which fusermount) -uzq /mnt/$FOLDER
   fi
 done
 
