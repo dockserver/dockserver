@@ -1581,3 +1581,5 @@
  * Update github-metrics.svg - [Skip GitHub Action] (doob187)
  * Create docker-rutorrent.sh (doob187)
  * Update Dockerfile (doob187)
+ * [Auto Generation] Changes : apps/docker-rutorrent/Dockerfile (dockserver-bot[bot])
+ * Update github-metrics.svg - [Skip GitHub Action] (doob187)
