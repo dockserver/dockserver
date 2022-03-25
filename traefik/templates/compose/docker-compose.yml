@@ -132,7 +132,7 @@ services:
       - 'traefik.http.routers.traefik-error-pages-rtr.middlewares=chain-no-auth@file'
       - 'traefik.http.routers.traefik-error-pages-rtr.service=traefik-error-pages-svc'
       - 'traefik.http.middlewares.traefik-error-pages.errors.service=traefik-error-pages-svc'
-      - 'traefik.http.middlewares.traefik-error-pages.errors.status=400,402-599'
+      - 'traefik.http.middlewares.traefik-error-pages.errors.status=400,402,404-599'
       - 'traefik.http.middlewares.traefik-error-pages.errors.query=/{status}.html'
       - 'traefik.http.services.traefik-error-pages-svc.loadbalancer.server.port=8080'
   authelia:
