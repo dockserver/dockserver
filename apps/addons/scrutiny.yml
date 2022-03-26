@@ -6,6 +6,7 @@ services:
     container_name: 'scrutiny'
     cap_add:
       - 'SYS_RAWIO'
+      - 'SYS_ADMIN' #needed for nvme drives
     environment:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
