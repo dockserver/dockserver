@@ -463,30 +463,38 @@ done
 function recon(){
 
 APP=${APP}
-docker stop ${APP}
-docker network disconnect proxy ${APP}
-docker network connect proxy ${APP}
-docker start ${APP}
-
+for rec in ${APP[@]} ; do
+printf "%1s\n" "${blue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    Reconnect $rec to the docker network 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
+    docker stop $rec &>/dev/null
+    docker network disconnect proxy $rec &>/dev/null
+    docker network connect proxy $rec &>/dev/null
+    docker start $rec &>/dev/null
+printf "%1s\n" "${green}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    Starting now $rec
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
+done
 }
 
 ####
 function usage() {
 clear
 printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀    DockServer [ USAGE COMMANDS ]
+    Dockserver  [ USAGE COMMANDS ]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
    Commands :
 
    dockserver -i / --install     =   open the dockserver setup
-   dockserver -h / --help        =   help/usage
    dockserver -u / --update      =   deployed the update container
 
+   dockserver -a / --app <{NAMEOFAPP}>  =   fast app installation
+ 
+   dockserver -r / --reconnect   =   reconnect docker to the network
    dockserver -p / --preinstall  =   run preinstall parts for dockserver
 
-   dockserver -a / --app <{NAMEOFAPP}>  =   fast app installation
-   dockserver -r / --reconnect   =   reconnect docker to the network
+   dockserver -h / --help        =   help/usage
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀    DockServer [ USAGE COMMANDS ]
