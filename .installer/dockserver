@@ -26,6 +26,7 @@ case "$1" in
   -u|--update ) clear && update ;;
   -a|--app ) clear && fastapp ;;
   -h|--help ) clear && usage ;;
+  -r|--reconnect ) clear && recon ;;
   -p|--preinstall ) clear && preinstall ;;
   *) clear && updatebin && run ;;
 esac
