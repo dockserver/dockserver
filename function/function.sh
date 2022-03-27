@@ -460,6 +460,16 @@ for i in ${APP[@]} ; do
 done
 }
 
+function recon(){
+
+APP=${APP}
+docker stop ${APP}
+docker network disconnect proxy ${APP}
+docker network connect proxy ${APP}
+docker start ${APP}
+
+}
+
 ####
 function usage() {
 clear
@@ -476,6 +486,7 @@ printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━�
    dockserver -p / --preinstall  =   run preinstall parts for dockserver
 
    dockserver -a / --app <{NAMEOFAPP}>  =   fast app installation
+   dockserver -r / --reconnect   =   reconnect docker to the network
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀    DockServer [ USAGE COMMANDS ]
