@@ -13,121 +13,22 @@
 #####################################
 # shellcheck disable=SC2086
 # shellcheck disable=SC2006
+
 if [[ $EUID != 0 ]]; then
-    sudo "$0" "$@"
-    exit $?
+    sudo "$0" "$@" && exit $?
 fi
-dockserver=/opt/dockserver
-run() {
-if [[ -d ${dockserver} ]];then
-   envmigra && fastapt && cleanup && clear
-   $(command -v cd) ${dockserver} && $(command -v bash) install.sh
-else
-   usage
-fi
-}
-####
-update() {
-dockserver=/opt/dockserver
-clear
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "    🚀    DockServer [ UPDATE CONTAINER ] STARTED"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-     basefolder="/opt/appdata"
-     compose="compose/docker-compose.yml"
-     $(command -v rsync) ${dockserver}/dockserver/docker.yml $basefolder/$compose -aqhv
-     if [[ -f $basefolder/$compose ]];then
-        $(command -v cd) $basefolder/compose/ && \
-          docker-compose config 1>/dev/null 2>&1 && \
-            docker-compose down 1>/dev/null 2>&1 && \
-            docker-compose up -d --force-recreate 1>/dev/null 2>&1
-     fi
-     $(command -v chown) -cR 1000:1000 ${dockserver} 1>/dev/null 2>&1
-     envmigra && fastapt && cleanup && clear
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "    🚀    DockServer [ UPDATE CONTAINER ] DONE"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo ""
-}
-####
-fastapp() {
-APP=${APP}
-  cd /opt/dockserver/
-  compose="compose/docker-compose.yaml"
-  appfolder="/opt/dockserver"
-  basefolder="/opt/appdata"
-  find /opt/dockserver/apps/ -type f -name '*${APP}*' -exec cp "{}" $basefolder/$compose \;
-  cd $basefolder/compose
-     docker-compose config > /dev/null
-     docker-compose pull > /dev/null
-     docker-compose up -d --force-recreate > /dev/null
-     rm -rf $basefolder/compose/docker-compo**
-  exit
-}
 
-####
-usage() {
-clear
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "    🚀    DockServer [ USAGE COMMANDS ]"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo ""
-echo "   Commands :"
-echo ""
-echo "   dockserver -i / --install     =   open the dockserver setup"
-echo "   dockserver -h / --help        =   help/usage"
-echo "   dockserver -u / --update      =   deployed the update container"
-echo ""
-echo "   dockserver -a / --app <{NAMEOFAPP}>  =   fast app installation"
-echo ""
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "    🚀    DockServer [ USAGE COMMANDS ]"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+source /opt/dockserver/function/function.sh
 
-}
-
-envmigra() {
-basefolder="/opt/appdata"
-dockserver="/opt/dockserver"
-envmigrate="$dockserver/apps/.subactions/envmigrate.sh"
-if [[ -f "$basefolder/compose/.env" ]];then
-   $(command -v bash) $envmigrate
-fi 
-}
-
-fastapt() {
-if ! type aria2c >/dev/null 2>&1; then
-   apt-get update -y && apt-get install --force-yes -y -qq aria2
-fi
-if ! [[ -f /etc/apt-fast.conf ]]; then
-      bash -c "$(curl -sL https://raw.githubusercontent.com/ilikenwf/apt-fast/master/quick-install.sh)"
-      echo debconf apt-fast/maxdownloads string 16 | debconf-set-selections
-      echo debconf apt-fast/dlflag boolean true | debconf-set-selections
-      echo debconf apt-fast/aptmanager string apt | debconf-set-selections
-fi
-}
-
-cleanup() {
-   find /var/log -type f -regex ".*\.gz$" -delete
-   find /var/log -type f -regex ".*\.[0-9]$" -delete
-}
-
-###
-
-DOCK=$1
-APP=$2
-
-case "$DOCK" in
- "" ) run ;;
- "-i" ) run ;;
- "--install" ) run ;;
- "-u" ) update ;;
- "--update" ) update ;;
- "-a" ) fastapp ;;
- "--app" ) fastapp ;;
- "-h" ) usage ;;
- "--help" ) usage ;;
-
+APP=${@:2}
+case "$1" in
+  -i|--install ) clear && run ;;
+  -u|--update ) clear && update ;;
+  -a|--app ) clear && fastapp ;;
+  -h|--help ) clear && usage ;;
+  -r|--reconnect ) clear && recon ;;
+  -p|--preinstall ) clear && preinstall ;;
+  *) clear && updatebin && run ;;
 esac
 
 #E-o-F#
