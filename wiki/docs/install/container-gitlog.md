@@ -43,3 +43,4 @@
 
 ## 2022-03-28
  * [Auto Generation] Changes : github-metrics.svg (dockserver-bot[bot])
+ * [Auto Generation] Changes : wiki/docs/install/container-gitlog.md (dockserver-bot[bot])
