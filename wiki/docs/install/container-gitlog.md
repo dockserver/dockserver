@@ -64,3 +64,6 @@
  * Update docker-radarr.sh (doob187)
  * Update docker-sonarr.sh (doob187)
  * Update docker-sonarr-nightly.sh (doob187)
+ * [Auto Generation] Changes : .templates/nightly/docker-sonarr-nightly.sh (dockserver-bot[bot])
+ * Update github-metrics.svg - [Skip GitHub Action] (doob187)
+ * Update docker-radarr.sh (doob187)
