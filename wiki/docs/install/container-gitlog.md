@@ -48,3 +48,5 @@
  * [Auto Generation] Changes : wiki/docs/install/container-gitlog.md (dockserver-bot[bot])
  * Update github-metrics.svg - [Skip GitHub Action] (doob187)
  * Update headline.txt (doob187)
+ * [Auto Generation] Changes : .templates/headline.txt (dockserver-bot[bot])
+ * Update github-metrics.svg - [Skip GitHub Action] (doob187)
