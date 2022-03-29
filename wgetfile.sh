@@ -73,7 +73,7 @@ fi
 }
 
 function dockcomp() {
-if [ ! $(which docker) ] && [ $(docker --version) ]; then
+if [ ! $(which docker) ]; then
    log "**** installing now docker ****" && \
    $(which wget) -qO- https://get.docker.com/ | sh >/dev/null 2>&1 && \
    $(which systemctl) reload-or-restart docker.service
