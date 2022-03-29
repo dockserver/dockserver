@@ -41,28 +41,29 @@ fi
 }
 
 function upsys() {
+log "**** update system ****"
 updates="update upgrade autoremove autoclean"
 for upp in ${updates}; do
-    log "**** update system ****" && \
     sudo $(command -v apt) $upp -yqq 1>/dev/null 2>&1 && clear
 done
 unset updates
 
+log "**** install build packages ****"
 packages="curl bc sudo wget tar git jq pv pigz tzdata rsync"
 for pack in ${packages}; do
-    log "**** install build packages ****" && \
     sudo $(command -v apt) $pack -yqq 1>/dev/null 2>&1
 done
 unset packages
 
+log "**** remove old links  ****"
 remove="/bin/dockserver /usr/bin/dockserver"
 for rmold in ${packages}; do
-    log "**** remove old links  ****" && \
     sudo $(command -v rm) -rf $rmold 1>/dev/null 2>&1
 done
 unset remove
 
 if [ $(which snapd) ]; then
+   log "**** snapd  ****" && \
    if [[ -d "/var/cache/snapd/" ]];then
       sudo $(which rm) -rf /var/cache/snapd/
    fi
@@ -72,7 +73,7 @@ fi
 }
 
 function dockcomp() {
-if [ ! $(which docker) ]; then
+if [ ! $(which docker) ] && [ $(docker --version) ]; then
    log "**** installing now docker ****" && \
    $(which wget) -qO- https://get.docker.com/ | sh >/dev/null 2>&1 && \
    $(which systemctl) reload-or-restart docker.service
@@ -132,8 +133,9 @@ while true; do
    if [ "$(ls -A $dockserver)" ]; then
       rmdocker && sleep 3 && break
    else
-      pulldockserver
-      echo "dockserver is not pulled yet" 
+      pulldockserver && \
+      log "**** dockserver is not pulled yet ****" && \
+      log "**** this could take some time ****" && \
       sleep 5 && continue
    fi
 done
