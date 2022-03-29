@@ -150,3 +150,4 @@
  * [Auto Changes Packages] Changes : wiki/docs/install/container-gitlog.md (github-actions[bot])
  * Update github-metrics.svg - [Skip GitHub Action] (doob187)
  * Create automerg.yml (doob187)
+ * [Auto Generation] Changes : .github/workflows/automerg.yml (dockserver-bot[bot])
