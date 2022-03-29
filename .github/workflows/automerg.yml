@@ -18,7 +18,7 @@ jobs:
       - name: automerge
         uses: "pascalgn/automerge-action@v0.15.2"
         env:
-          GITHUB_TOKEN: "${{ secrets.CR_PAT }}"
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           MERGE_LABELS: "dependabot"          
-          MERGE_COMMIT_MESSAGE: "pull_request_title"
+          MERGE_COMMIT_MESSAGE: "pull-request-title"
           MERGE_FORKS: "false"
