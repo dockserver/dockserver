@@ -193,3 +193,6 @@
  * [Auto Generation] Changes : .templates/apps/docker-bazarr.sh (dockserver-bot[bot])
  * Update github-metrics.svg - [Skip GitHub Action] (doob187)
  * Update docker-bazarr.sh (doob187)
+ * [Auto Generation] Changes : .templates/apps/docker-bazarr.sh (dockserver-bot[bot])
+ * Update github-metrics.svg - [Skip GitHub Action] (doob187)
+ * Update docker-bazarr.sh (doob187)
