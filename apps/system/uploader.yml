@@ -2,8 +2,6 @@
 version: "3"
 services:
   uploader:
-    cap_add:
-      - "SYS_ADMIN"
     container_name: "uploader"
     hostname: "uploader"
     environment:
