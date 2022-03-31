@@ -188,3 +188,5 @@
  * Update github-metrics.svg - [Skip GitHub Action] (doob187)
  * Update github-metrics.svg - [Skip GitHub Action] (doob187)
  * Delete automerg.yml (doob187)
+ * [Auto Generation] Changes : .github/workflows/automerg.yml (dockserver-bot[bot])
+ * Update docker-bazarr.sh (doob187)
