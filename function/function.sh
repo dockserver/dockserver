@@ -30,14 +30,20 @@ printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━�
 
      basefolder="/opt/appdata"
      proxydel      
-     packageupdate="update upgrade dist-upgrade autoremove autoclean"
-     for i in ${packageupdate}; do $(which apt) $i -yqq ; done
-     package_basic=(software-properties-common rsync language-pack-en-base pciutils lshw nano rsync fuse curl wget tar pigz pv iptables ipset fail2ban jq unzip)
-     $(which ${aptcommand}) install ${package_basic[@]} --reinstall -yqq
 
-     fastapp
+     case $(. /etc/os-release && echo "$ID") in
+        ubuntu|debian|raspian) fastapt ;;
+     esac
 
-     docker-create
+     $(which docker) pull -q docker.dockserver.io/dockserver/docker-create
+     $(which docker) run -d \
+        --name=dockserver \
+        -e PUID=1000 \
+        -e PGID=1000 \
+        -e TZ=Europe/London \
+        -v /opt/dockserver:/opt/dockserver:rw \
+        docker.dockserver.io/dockserver/docker-docker-create $type folder
+        $(which chown) -R 1000:1000 /opt/dockserver
  
      if test -f /etc/sysctl.d/99-sysctl.conf; then
          config="/etc/sysctl.d/99-sysctl.conf"
