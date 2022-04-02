@@ -20,7 +20,7 @@ services:
       - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
-      - "${APPFOLDER}/plex-meta-manager:/config:rw"
+      - "${APPFOLDER}/plex-meta-manager/:/config:rw"
     labels:
       - "dockupdater.enable=true"
 networks:

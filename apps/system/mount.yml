@@ -2,13 +2,9 @@
 version: "3"
 services:
   mount:
-    cap_add:
-      - "SYS_ADMIN"
     container_name: "mount"
     hostname: "mount"
     privileged: true
-    devices:
-      - "/dev/fuse:/dev/fuse"
     environment:
       - "PGID=${ID}"
       - "PUID=${ID}"

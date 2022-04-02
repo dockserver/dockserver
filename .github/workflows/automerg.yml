@@ -1,0 +1,24 @@
+name: automerge
+on:
+  pull_request_target:
+    types:
+      - labeled
+  pull_request_review:
+    types:
+      - submitted
+  check_suite:
+    types:
+      - completed
+  status: {}
+
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: automerge
+        uses: "pascalgn/automerge-action@v0.15.2"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          MERGE_LABELS: "dependabot"          
+          MERGE_COMMIT_MESSAGE: "pull-request-title"
+          MERGE_FORKS: "false"
