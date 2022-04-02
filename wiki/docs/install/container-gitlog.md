@@ -242,3 +242,7 @@
  * Update version.sh (doob187)
  * Update gitlog.sh (doob187)
  * Update schedule.yaml (doob187)
+ * [Auto Generation] Changelog : .github/workflows/schedule.yaml (dockserver-bot[bot])
+ * Create docker-create.sh (doob187)
+ * Update docker-create.sh (doob187)
+ * Create docker-config.sh (doob187)
