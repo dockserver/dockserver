@@ -18,28 +18,33 @@ function preinstall() {
 printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀 DockServer PRE-Install Runs
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-      basefolder="/opt/appdata"
-      proxydel
-      packageupdate="update upgrade dist-upgrade autoremove autoclean"
-      for i in ${packageupdate}; do $(which apt) $i -yqq ; done
-      package_basic=(software-properties-common rsync language-pack-en-base pciutils lshw nano rsync fuse curl wget tar pigz pv iptables ipset fail2ban jq unzip)
-      $(which apt) install ${package_basic[@]} --reinstall -yqq
-      fastapp
-      folder="/mnt"
-      for fo in ${folder}; do
-         $(which mkdir) -p $fo/{unionfs,downloads,incomplete,torrent,nzb} \
-         $fo/{incomplete,downloads}/{nzb,torrent}/{complete,temp,movies,tv,tv4k,movies4k,movieshdr,tvhdr,remux} \
-         $fo/downloads/torrent/{temp,complete}/{movies,tv,tv4k,movies4k,movieshdr,tvhdr,remux} \
-         $fo/{torrent,nzb}/watch
-         $(which find) $fo -exec $(which chmod) a=rx,u+w {} \;
-         $(which find) $fo -exec $(which chown) -hR 1000:1000 {} \;
-      done
+     case $(. /etc/os-release && echo "$ID") in
+        ubuntu|debian|raspian) \
+           type="ubuntu" \
+           aptcommand="apt" \
+           aptupdate="update" \
+           aptupgrade="upgrade" ;; 
+        *) type='' && exit 0 ;
+     esac
 
-      for app in ${basefolder}; do
-        $(which mkdir) -p $app/{compose,system}
-        $(which find) $app -exec $(command -v chmod) a=rx,u+w {} \;
-        $(which find) $app -exec $(command -v chown) -hR 1000:1000 {} \;
-      done
+
+     basefolder="/opt/appdata"
+     proxydel      
+
+     case $(. /etc/os-release && echo "$ID") in
+        ubuntu|debian|raspian) fastapt ;;
+     esac
+
+     $(which docker) pull -q docker.dockserver.io/dockserver/docker-create
+     $(which docker) run -d \
+        --name=dockserver \
+        -e PUID=1000 \
+        -e PGID=1000 \
+        -e TZ=Europe/London \
+        -v /opt:/opt:rw \
+        -v /mnt:/mnt:rw \
+        docker.dockserver.io/dockserver/docker-docker-create $type folder
+        $(which chown) -R 1000:1000 /opt/dockserver
  
      if test -f /etc/sysctl.d/99-sysctl.conf; then
          config="/etc/sysctl.d/99-sysctl.conf"
