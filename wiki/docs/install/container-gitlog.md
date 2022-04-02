@@ -246,3 +246,6 @@
  * Create docker-create.sh (doob187)
  * Update docker-create.sh (doob187)
  * Create docker-config.sh (doob187)
+ * [Auto Generation] Changelog : .templates/base/docker-config.sh (dockserver-bot[bot])
+ * Update start.sh (doob187)
+ * Update github-metrics.svg - [Skip GitHub Action] (doob187)
