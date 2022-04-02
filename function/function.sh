@@ -19,7 +19,8 @@ printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━�
     🚀 DockServer PRE-Install Runs
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
      case $(. /etc/os-release && echo "$ID") in
-        ubuntu|debian|raspian) type="ubuntu"
+        ubuntu|debian|raspian) \
+           type="ubuntu" \
            aptcommand="apt" \
            aptupdate="update" \
            aptupgrade="upgrade" ;; 
