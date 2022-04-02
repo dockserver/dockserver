@@ -255,3 +255,6 @@
  * Update start.sh (doob187)
  * Update github-metrics.svg - [Skip GitHub Action] (doob187)
  * Update start.sh (doob187)
+ * [Auto Generation] Changelog : base/docker-dockserver/root/start.sh (dockserver-bot[bot])
+ * Update start.sh (doob187)
+ * Update github-metrics.svg - [Skip GitHub Action] (doob187)
