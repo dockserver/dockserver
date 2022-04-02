@@ -226,3 +226,11 @@
  * [Auto Generation] Changes : wiki/docs/install/container-gitlog.md (dockserver-bot[bot])
  * [Auto Changes Packages] Changes : apps/docker-overseerr/Dockerfile apps/docker-overseerr/release.json container.json wiki/docs/install/container-gitlog.md wiki/docs/install/container.json (github-actions[bot])
  * Update github-metrics.svg - [Skip GitHub Action] (doob187)
+ * [Auto Generation] Changes : github-metrics.svg (dockserver-bot[bot])
+
+## 2022-04-02
+ * Update schedule.yaml (doob187)
+ * Update scanrepo.yml (doob187)
+ * Update release.yaml (doob187)
+ * Update rebase.yml (doob187)
+ * Update update-packages.yml (doob187)
