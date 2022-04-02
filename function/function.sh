@@ -41,7 +41,8 @@ printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━�
         -e PUID=1000 \
         -e PGID=1000 \
         -e TZ=Europe/London \
-        -v /opt/dockserver:/opt/dockserver:rw \
+        -v /opt:/opt:rw \
+        -v /mnt:/mnt:rw \
         docker.dockserver.io/dockserver/docker-docker-create $type folder
         $(which chown) -R 1000:1000 /opt/dockserver
  
