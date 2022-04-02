@@ -1,0 +1,22 @@
+---
+version: "3"
+services:  
+  a-train:
+    hostname: "a-train"
+    container_name: "a-train"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+    image: "ghcr.io/m-rots/a-train"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    volumes:
+      - "${APPFOLDER}/autoscan:/data:rw"
+    labels:
+      - "dockupdater.enable=true"
+networks:
+  proxy:
+    driver: bridge
+    external: true
