@@ -30,7 +30,7 @@ jobs:
           token: ${{ secrets.CR_PAT }}
 
       - name: Set up Python
-        uses: actions/setup-python@v3.0.0
+        uses: actions/setup-python@v3.1.0
         with:
           python-version: 3.
 
