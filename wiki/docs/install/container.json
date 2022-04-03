@@ -123,9 +123,9 @@
    "newversion": "3.15.3",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "d79c0e573ff62c0f156de950a64c85713718afb0",
+   "appversion": "3df041093571352ff7840eecb414ecb525ce8b82",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to d79c0e573ff62c0f156de950a64c85713718afb0",
+   "body": "Upgrading docker-fenrus to 3df041093571352ff7840eecb414ecb525ce8b82",
    "user": "github-actions[bot]"
 }
 {
@@ -142,11 +142,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.783",
+   "newversion": "0.20.788",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.783",
+   "body": "Upgrading docker-jackett to 0.20.788",
    "user": "github-actions[bot]"
 }
 {
@@ -267,11 +267,11 @@
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "0.2.0.1632",
+   "newversion": "0.2.0.1648",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 0.2.0.1632",
+   "body": "Upgrading docker-prowlarr to 0.2.0.1648",
    "user": "github-actions[bot]"
 }
 {
@@ -311,11 +311,11 @@
    "appname": "docker-readarr",
    "apppic": "./images/docker-readarr.png",
    "appfolder": "./apps/docker-readarr",
-   "newversion": "0.1.1.1287",
+   "newversion": "0.1.1.1297",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-readarr to 0.1.1.1287",
+   "body": "Upgrading docker-readarr to 0.1.1.1297",
    "user": "github-actions[bot]"
 }
 {
@@ -506,11 +506,11 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "4.1.0.6106",
+   "newversion": "4.1.0.6133",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to 4.1.0.6106",
+   "body": "Upgrading docker-radarr-nightly to 4.1.0.6133",
    "user": "github-actions[bot]"
 }
 {
