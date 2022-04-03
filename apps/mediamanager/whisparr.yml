@@ -1,0 +1,42 @@
+---
+version: "3"
+services:
+  whisparr:
+    hostname: "whisparr"
+    container_name: "whisparr"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:whisparr"
+      - "TP_THEME=${WHISPARRTHEME}"
+    image: "${WHISPARRIMAGE}"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/whisparr:/config:rw"
+      - "unionfs:/mnt"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.whisparr.entrypoints=https"
+      - "traefik.http.routers.whisparr.rule=Host(`whisparr.${DOMAIN}`)"
+      - "traefik.http.routers.whisparr-rtr.tls=true"
+      - "traefik.http.routers.whisarr-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.whisarr-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.whisarr-rtr.service=prowlarr-svc"
+      - "traefik.http.services.whisarr-svc.loadbalancer.server.port=6969"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt
