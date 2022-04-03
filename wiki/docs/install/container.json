@@ -544,3 +544,14 @@
    "body": "Upgrading docker-sonarr-nightly to 3.0.7.1487",
    "user": "github-actions[bot]"
 }
+{
+   "appname": "docker-whisparr-nightly",
+   "apppic": "./images/docker-whisparr-nightly.png",
+   "appfolder": "./nightly/docker-whisparr-nightly",
+   "newversion": "null",
+   "appbranch": "develop",
+   "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
+   "description": "null",
+   "body": "Upgrading docker-whisparr-nightly to null",
+   "user": "github-actions[bot]"
+}

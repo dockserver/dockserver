@@ -1,3 +1,3 @@
 
 ## 2022-04-03
- * Update github-metrics.svg - [Skip GitHub Action] (FSCorrupt)
+ * [Auto Generation] Changes : .templates/nightly/docker-whisparr-nightly.sh (dockserver-bot[bot])
