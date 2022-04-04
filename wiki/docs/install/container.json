@@ -279,11 +279,11 @@
    "apppic": "./images/docker-qbittorrent.png",
    "appfolder": "./apps/docker-qbittorrent",
    "newversion": "4.4.2-r1",
-   "appversion": "0.16.0",
+   "appversion": "1.7",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-alpine:edge",
    "description": "Cli to manage qBittorrent",
-   "body": "Upgrading docker-qbittorrent to 4.4.2-r1 with 0.16.0",
+   "body": "Upgrading docker-qbittorrent to 4.4.2-r1 with 1.7",
    "user": "github-actions[bot]"
 }
 {
