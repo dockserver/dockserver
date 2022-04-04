@@ -1,3 +1,3 @@
 
-## 2022-04-03
- * [Auto Generation] Changes : .templates/nightly/docker-whisparr-nightly.sh (dockserver-bot[bot])
+## 2022-04-04
+ * Add files via upload (FSCorrupt)
