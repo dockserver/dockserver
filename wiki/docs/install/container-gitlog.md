@@ -1,3 +1,3 @@
 
 ## 2022-04-04
- * Add files via upload (FSCorrupt)
+ * [Auto Generation] Changelog : (dockserver-bot[bot])
