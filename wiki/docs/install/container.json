@@ -2,20 +2,20 @@
    "appname": "docker-auto-replyarr",
    "apppic": "",
    "appfolder": "./apps/docker-auto-replyarr",
-   "newversion": "3.15.3",
+   "newversion": "3.15.4",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading docker-auto-replyarr to 3.15.3",
+   "body": "Upgrading docker-auto-replyarr to 3.15.4",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-backup",
    "apppic": "./images/docker-backup.png",
    "appfolder": "./apps/docker-backup",
-   "newversion": "3.15.3",
+   "newversion": "3.15.4",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading docker-backup to 3.15.3",
+   "body": "Upgrading docker-backup to 3.15.4",
    "user": "github-actions[bot]"
 }
 {
@@ -66,21 +66,21 @@
    "apppic": "./images/docker-dockserverupdate.png",
    "appfolder": "./apps/docker-dockserverupdate",
    "appbranch": "master",
-   "newversion": "3.15.3",
-   "appversion": "3.15.3",
+   "newversion": "3.15.4",
+   "appversion": "3.15.4",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
-   "body": "Upgrading docker-dockserverupdate to 3.15.3",
+   "body": "Upgrading docker-dockserverupdate to 3.15.4",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-dockupdate",
    "apppic": "./images/docker-dockupdate.png",
    "appfolder": "./apps/docker-dockupdate",
-   "newversion": "3.15.3",
+   "newversion": "3.15.4",
    "baseimage": "alpine",
    "description": "Automatically keep your docker services and your docker containers up-to-date with the latest version",
-   "body": "Upgrading docker-dockupdate to 3.15.3",
+   "body": "Upgrading docker-dockupdate to 3.15.4",
    "user": "github-actions[bot]"
 }
 {
@@ -120,7 +120,7 @@
    "appname": "docker-fenrus",
    "apppic": "./images/docker-fenrus.png",
    "appfolder": "./apps/docker-fenrus",
-   "newversion": "3.15.3",
+   "newversion": "3.15.4",
    "appbranch": "master",
    "baseimage": "alpine",
    "appversion": "3df041093571352ff7840eecb414ecb525ce8b82",
@@ -197,16 +197,16 @@
    "appname": "docker-mount",
    "apppic": "./images/docker-mount.png",
    "appfolder": "./apps/docker-mount",
-   "newversion": "3.15.3",
+   "newversion": "3.15.4",
    "mergerfs": "2.33.4",
    "rclone": "v1.58.0",
    "baseimage": "alpine",
    "buildimage": "alpine",
    "finalimage": "ghcr.io/dockserver/docker-alpine-v3",
-   "baseversion": "3.15.3",
+   "baseversion": "3.15.4",
    "s6stage": "v3.1.0.1",
    "description": "Docker docker-mount with mergerfs version 2.33.4 and rclone version v1.58.0 include s6-overlay: v3.1.0.1",
-   "body": "Upgrading docker-mount to baseimage: alpine:3.15.3 with mergerfs: 2.33.4 and rclone: v1.58.0 include s6-overlay: v3.1.0.1",
+   "body": "Upgrading docker-mount to baseimage: alpine:3.15.4 with mergerfs: 2.33.4 and rclone: v1.58.0 include s6-overlay: v3.1.0.1",
    "user": "dockserver image update[bot]"
 }
 {
@@ -301,10 +301,10 @@
    "appname": "docker-rclone",
    "apppic": "./images/docker-rclone.png",
    "appfolder": "./apps/docker-rclone",
-   "newversion": "3.15.3",
+   "newversion": "3.15.4",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
-   "body": "Upgrading docker-rclone to 3.15.3",
+   "body": "Upgrading docker-rclone to 3.15.4",
    "user": "github-actions[bot]"
 }
 {
@@ -383,9 +383,9 @@
    "appname": "docker-uploader",
    "apppic": "./images/docker-uploader.png",
    "appfolder": "./apps/docker-uploader",
-   "newversion": "3.15.3",
+   "newversion": "3.15.4",
    "baseimage": "ghcr.io/dockserver/docker-alpine-v3",
-   "baseversion": "3.15.3",
+   "baseversion": "3.15.4",
    "s6_stage": "",
    "description": "",
    "body": "Upgrading docker-uploader to ",
@@ -396,12 +396,12 @@
    "apppic": "./images/docker-wiki.png",
    "appfolder": "./apps/docker-wiki",
    "appbranch": "master",
-   "newversion": "3.15.3",
+   "newversion": "3.15.4",
    "appversion": "1.4.25",
    "wikiversion": "8.2.8",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
-   "body": "Upgrading docker-wiki to 3.15.3",
+   "body": "Upgrading docker-wiki to 3.15.4",
    "user": "github-actions[bot]"
 }
 {
@@ -419,10 +419,10 @@
    "appname": "alpine",
    "apppic": "",
    "appfolder": "./base/alpine",
-   "newversion": "3.15.3",
+   "newversion": "3.15.4",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading alpine to 3.15.3",
+   "body": "Upgrading alpine to 3.15.4",
    "user": "github-actions[bot]"
 }
 {
@@ -440,23 +440,23 @@
    "appname": "docker-alpine-v3",
    "apppic": "./images/docker-alpine-v3.png",
    "appfolder": "./base/docker-alpine-v3",
-   "newversion": "3.15.3",
+   "newversion": "3.15.4",
    "baseimage": "alpine",
-   "baseversion": "3.15.3",
+   "baseversion": "3.15.4",
    "s6stage": "v3.1.0.1",
    "description": "Docker docker-alpine-v3 with include s6-overlay: v3.1.0.1",
-   "body": "Upgrading docker-alpine-v3 to baseimage: alpine:3.15.3  with include s6-overlay: v3.1.0.1",
+   "body": "Upgrading docker-alpine-v3 to baseimage: alpine:3.15.4  with include s6-overlay: v3.1.0.1",
    "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-dockserver",
    "apppic": "",
    "appfolder": "./base/docker-dockserver",
-   "newversion": "3.15.3",
-   "appversion": "3.15.3",
+   "newversion": "3.15.4",
+   "appversion": "3.15.4",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
-   "body": "Upgrading docker-dockserver to 3.15.3",
+   "body": "Upgrading docker-dockserver to 3.15.4",
    "user": "github-actions[bot]"
 }
 {
