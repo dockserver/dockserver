@@ -123,19 +123,19 @@
    "newversion": "3.15.4",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "3df041093571352ff7840eecb414ecb525ce8b82",
+   "appversion": "22ddea975982c38c8e2a1ec010d9491c6e286288",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to 3df041093571352ff7840eecb414ecb525ce8b82",
+   "body": "Upgrading docker-fenrus to 22ddea975982c38c8e2a1ec010d9491c6e286288",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "379.0.0-alpine",
+   "newversion": "380.0.0-alpine",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to 379.0.0-alpine",
+   "body": "Upgrading docker-gdsa to 380.0.0-alpine",
    "user": "github-actions[bot]"
 }
 {
@@ -517,11 +517,11 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "4.1.0.6142",
+   "newversion": "4.1.0.6148",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to 4.1.0.6142",
+   "body": "Upgrading docker-radarr-nightly to 4.1.0.6148",
    "user": "github-actions[bot]"
 }
 {
