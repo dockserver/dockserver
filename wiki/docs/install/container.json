@@ -87,11 +87,11 @@
    "appname": "docker-duplicati",
    "apppic": "./images/docker-duplicati.png",
    "appfolder": "./apps/docker-duplicati",
-   "newversion": "2.0.6.101",
+   "newversion": "2.0.6.102",
    "appbranch": "master",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-duplicati to 2.0.6.101",
+   "body": "Upgrading docker-duplicati to 2.0.6.102",
    "user": "github-actions[bot]"
 }
 {
@@ -517,11 +517,11 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "4.1.0.6154",
+   "newversion": "4.1.0.6157",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to 4.1.0.6154",
+   "body": "Upgrading docker-radarr-nightly to 4.1.0.6157",
    "user": "github-actions[bot]"
 }
 {
