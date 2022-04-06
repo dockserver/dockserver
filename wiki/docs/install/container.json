@@ -256,11 +256,11 @@
    "appname": "docker-plex",
    "apppic": "./images/docker-plex.png",
    "appfolder": "./apps/docker-plex",
-   "newversion": "1.25.8.5663-e071c3d62",
+   "newversion": "1.25.9.5721-965587f64",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:focal",
    "description": "Docker Container for Plex Media Server",
-   "body": "Upgrading docker-plex to 1.25.8.5663-e071c3d62",
+   "body": "Upgrading docker-plex to 1.25.9.5721-965587f64",
    "user": "github-actions[bot]"
 }
 {
@@ -517,11 +517,11 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "4.1.0.6152",
+   "newversion": "4.1.0.6154",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to 4.1.0.6152",
+   "body": "Upgrading docker-radarr-nightly to 4.1.0.6154",
    "user": "github-actions[bot]"
 }
 {
