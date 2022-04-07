@@ -245,11 +245,11 @@
    "appname": "docker-overseerr",
    "apppic": "./images/docker-overseerr.png",
    "appfolder": "./apps/docker-overseerr",
-   "newversion": "1.29.0",
+   "newversion": "1.29.1",
    "appbranch": "",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr to 1.29.0",
+   "body": "Upgrading docker-overseerr to 1.29.1",
    "user": "github-actions[bot]"
 }
 {
@@ -538,10 +538,10 @@
    "appname": "docker-sonarr-nightly",
    "apppic": "./images/docker-sonarr-nightly.png",
    "appfolder": "./nightly/docker-sonarr-nightly",
-   "newversion": "3.0.7.1493",
+   "newversion": "3.0.7.1494",
    "appbranch": "develop",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr-nightly to 3.0.7.1493",
+   "body": "Upgrading docker-sonarr-nightly to 3.0.7.1494",
    "user": "github-actions[bot]"
 }
 {
