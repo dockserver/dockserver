@@ -548,10 +548,10 @@
    "appname": "docker-whisparr-nightly",
    "apppic": "./images/docker-whisparr-nightly.png",
    "appfolder": "./nightly/docker-whisparr-nightly",
-   "newversion": "0.1.0.21",
+   "newversion": "0.1.0.22",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Whisparr is an adult movie collection manager for Usenet and BitTorrent users.",
-   "body": "Upgrading docker-whisparr-nightly to 0.1.0.21",
+   "body": "Upgrading docker-whisparr-nightly to 0.1.0.22",
    "user": "github-actions[bot]"
 }
