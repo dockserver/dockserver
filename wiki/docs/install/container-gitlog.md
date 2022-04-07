@@ -1,3 +1,3 @@
 
 ## 2022-04-07
- * Update github-metrics.svg - [Skip GitHub Action] (FSCorrupt)
+ * Merge pull request #5 from dockserver/dependabot/github_actions/master/docker/metadata-action-3.7.0 (doob187)
