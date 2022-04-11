@@ -279,7 +279,7 @@ function igpuhetzner() {
 }
 
 function nvidiagpu() {
-   runcreate $(. /etc/os-release && echo "$ID")
+   runcreate
    $(which bash) /opt/nvidia/nvidia.sh
    killruncreate
 }
