@@ -65,7 +65,7 @@ $(which docker) run -d \
  docker.dockserver.io/dockserver/docker-config $TYPE $PART
 }
 
-function runconfig() {
+function killrunconfig() {
   $(which docker) stop dockserver-config
   $(which docker) rm dockserver-config
 }
