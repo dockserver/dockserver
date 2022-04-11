@@ -13,6 +13,68 @@
 # NO CODE MIRRORING IS ALLOWED      #
 #####################################
 
+### DOCKER CREATE + CONFIG LOGIC || FUNCTION
+function runcreate() {
+$(which docker) pull -q docker.dockserver.io/dockserver/docker-create
+
+TYPE=$1
+PART=$2
+
+if [[ ! "$(grep '1000' /etc/passwd | cut -d: -f1 | awk '{print $1}')" ]];then
+   USER=1000
+   USERID=1000
+else
+   USER=$(grep "1000" /etc/passwd | cut -d: -f1 | awk '{print $1}')
+   USERID=$(grep "1000" /etc/passwd | cut -d: -f1 | awk '{print $2}')
+fi
+
+$(which docker) run -d \
+ --name=dockserver-create \
+ -e PUID=$USER \
+ -e PGID=$USERID \
+ -e TZ=Europe/London \
+ -v /opt:/opt:rw \
+ -v /mnt:/mnt:rw \
+ docker.dockserver.io/dockserver/docker-create $TYPE $PART
+}
+
+function killruncreate() {
+  $(which docker) stop dockserver-create
+  $(which docker) rm dockserver-create
+}  
+
+function runconfig() {
+$(which docker) pull -q docker.dockserver.io/dockserver/docker-config
+
+TYPE=$1
+PART=$2
+if [[ ! "$(grep '1000' /etc/passwd | cut -d: -f1 | awk '{print $1}')" ]];then
+   USER=1000
+   USERID=1000
+else
+   USER=$(grep "1000" /etc/passwd | cut -d: -f1 | awk '{print $1}')
+   USERID=$(grep "1000" /etc/passwd | cut -d: -f1 | awk '{print $2}')
+fi
+
+$(which docker) run -d \
+ --name=dockserver-config \
+ -e PUID=$USER \
+ -e PGID=$USERID \
+ -e TZ=Europe/London \
+ -v /opt:/opt:rw \
+ docker.dockserver.io/dockserver/docker-config $TYPE $PART
+}
+
+function runconfig() {
+  $(which docker) stop dockserver-config
+  $(which docker) rm dockserver-config
+}
+
+### DOCKER CREATE + CONFIG LOGIC || FUNCTION
+#####################################
+
+### GLOBAL CONFIG
+
 function preinstall() {
 # shellcheck disable=SC2046
 printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -27,24 +89,16 @@ printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━�
         *) type='' && exit 0 ;
      esac
 
-
      basefolder="/opt/appdata"
+
      proxydel      
 
      case $(. /etc/os-release && echo "$ID") in
         ubuntu|debian|raspian) fastapt ;;
      esac
 
-     $(which docker) pull -q docker.dockserver.io/dockserver/docker-create
-     $(which docker) run -d \
-        --name=dockserver \
-        -e PUID=1000 \
-        -e PGID=1000 \
-        -e TZ=Europe/London \
-        -v /opt:/opt:rw \
-        -v /mnt:/mnt:rw \
-        docker.dockserver.io/dockserver/docker-docker-create $type folder
-        $(which chown) -R 1000:1000 /opt/dockserver
+     runcreate
+     $(which chown) -R 1000:1000 /opt/dockserver
  
      if test -f /etc/sysctl.d/99-sysctl.conf; then
          config="/etc/sysctl.d/99-sysctl.conf"
@@ -63,51 +117,20 @@ printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━�
               sysctl -p -q
            fi
       fi
-      ## USE OFFICIAL DOCKER INSTALL PART
-      if [[ ! $(which docker) ]]; then wget -qO- https://get.docker.com/ | sh >/dev/null 2>&1 ; fi
-         daemonjson
-         $(which usermod) -aG docker $(whoami)
-         $(which systemctl) reload-or-restart docker.service 1>/dev/null 2>&1
-         $(which systemctl) enable docker.service >/dev/null 2>&1
-         $(which curl) --silent -fsSL https://raw.githubusercontent.com/MatchbookLab/local-persist/master/scripts/install.sh | bash 1>/dev/null 2>&1
-         $(which docker) volume create -d local-persist -o mountpoint=/mnt --name=unionfs
-         $(which docker) network create --driver=bridge proxy 1>/dev/null 2>&1
+
+      daemonjson
+
+      $(which usermod) -aG docker $(whoami)
+      $(which systemctl) reload-or-restart docker.service 1>/dev/null 2>&1
+      $(which systemctl) enable docker.service >/dev/null 2>&1
+      $(which curl) --silent -fsSL https://raw.githubusercontent.com/MatchbookLab/local-persist/master/scripts/install.sh | bash 1>/dev/null 2>&1
+      $(which docker) volume create -d local-persist -o mountpoint=/mnt --name=unionfs
+      $(which docker) network create --driver=bridge proxy 1>/dev/null 2>&1
 
       updatecompose && gpupart
 
       disable=(apt-daily.service apt-daily.timer apt-daily-upgrade.timer apt-daily-upgrade.service)
       $(which systemctl) disable ${disable[@]} >/dev/null 2>&1
-
-      if [[ ! $(which ansible) ]]; then
-         if [[ -r /etc/os-release ]]; then lsb_dist="$(. /etc/os-release && echo "$ID")"; fi
-         package_list="ansible dialog python3-lxml"
-         package_listdebian="apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367"
-         package_listubuntu="apt-add-repository --yes --update ppa:ansible/ansible"
-         if [[ $lsb_dist == 'ubuntu' ]] || [[ $lsb_dist == 'rasbian' ]]; then ${package_listubuntu} 1>/dev/null 2>&1; else ${package_listdebian} 1>/dev/null 2>&1; fi
-         for i in ${package_list}; do
-            $(which apt) install $i --reinstall -yqq 1>/dev/null 2>&1
-         done
-         if [[ $lsb_dist == 'ubuntu' ]]; then add-apt-repository --yes --remove ppa:ansible/ansible; fi
-      fi
-
-      if [[ ! -d "/etc/ansible/inventories" ]]; then $(which mkdir) -p $invet ; fi
-      cat > /etc/ansible/inventories/local << EOF; $(echo)
-## CUSTOM local inventories
-[local]
-127.0.0.1 ansible_connection=local
-EOF
-      if test -f /etc/ansible/ansible.cfg; then
-        $(which mv) /etc/ansible/ansible.cfg /etc/ansible/ansible.cfg.bak
-      fi
-cat > /etc/ansible/ansible.cfg << EOF; $(echo)
-## CUSTOM Ansible.cfg
-[defaults]
-deprecation_warnings = False
-command_warnings = False
-force_color = True
-inventory = /etc/ansible/inventories/local
-retry_files_enabled = False
-EOF
 
       if [[ "$(systemd-detect-virt)" == "lxc" ]]; then lxc ; fi
 
@@ -116,8 +139,8 @@ EOF
          if [[ $f2ban != 'true' ]]; then echo "Waiting for fail2ban to start" && sleep 1 && continue; else break; fi
       done
 
-      ORGFILE="/etc/fail2ban/jail.conf"
-      LOCALMOD="/etc/fail2ban/jail.local"
+ORGFILE="/etc/fail2ban/jail.conf"
+LOCALMOD="/etc/fail2ban/jail.local"
 cat > /etc/fail2ban/filter.d/log4j-jndi.conf << EOF; $(echo)
 # jay@gooby.org
 # https://jay.gooby.org/2021/12/13/a-fail2ban-filter-for-the-log4j-cve-2021-44228
@@ -147,6 +170,8 @@ failregex   = (?i)^<HOST> .* ".*\$.*(7B|\{).*(lower:)?.*j.*n.*d.*i.*:.*".*?$' /e
  echo '#log4j
 [Definition]
 failregex   = (?i)^<HOST> .* ".*\$.*(7B|\{).*(lower:)?.*j.*n.*d.*i.*:.*".*?$' > /etc/fail2ban/jail.local
+
+
          sed -i "s#rotate 4#rotate 1#g" /etc/logrotate.conf
          sed -i "s#weekly#daily#g" /etc/logrotate.conf
 
@@ -202,16 +227,14 @@ function proxydel() {
 }
 
 function lxc() {
-    lxcstart
-    $(which chmod) a=rx,u+w /home/.lxcstart.sh
-    $(which  bash) /home/.lxcstart.sh
-    lxcansible
-    $(which ansible-playbook) /home/.lxcplaybook.yml 1>/dev/null 2>&1
-cat > /etc/cron.d/lxcstart << EOF; $(echo)
-SHELL=/bin/bash
-@reboot root /bin/bash /home/.lxcstart.sh 1>/dev/null 2>&1
-EOF
-    $(command -v chmod) a=rx,u+w /etc/cron.d/lxcstart
+    runcreate
+    $(which chmod) a=rx,u+w /opt/lxc/.lxcstart.sh
+    $(which bash) /opt/lxc/.lxcstart.sh
+    $(which crontab) -l > cron_bkp
+    $(which echo) "@reboot root /bin/bash /opt/lxc/.lxcstart.sh 1>/dev/null 2>&1" >> cron_bkp
+    $(which crontab) cron_bkp
+    $(which rm) cron_bkp
+    killruncreate
     lxcending && clear
 }
 
@@ -227,38 +250,6 @@ printf "%1s\n" "${blue}━━━━━━━━━━━━━━━━━━━
   read -erp "Confirm Info | Type confirm & PRESS [ENTER]" input </dev/tty
 }
 
-function lxcansible() {
-cat > /home/.lxcplaybook.yml << EOF; $(echo)
----
-- hosts: localhost
-  gather_facts: false
-  name: LXC Playbook
-  tasks:
-    - cron:
-        name: LXC Bypass the mount :shared
-        special_time: 'reboot'
-        user: root
-        job: '/bin/bash /home/.lxcstart.sh 1>/dev/null 2>&1'
-        state: present
-      become_user: root
-      ignore_errors: yes
-EOF
-}
-
-function lxcstart() {
-cat > /home/.lxcstart.sh << EOF; $(echo)
-#!/bin/bash
-#
-# Title:      LXC Bypass the mount :shared
-# OS Branch:  ubuntu,debian,rasbian
-# Author(s):  mrdoob
-# Coauthor:   DrAgOn141
-# GNU:        General Public License v3.0
-################################################################################
-## make / possible to add /mnt:shared
-mount --make-shared /
-EOF
-}
 
 function gpupart() {
 GVID=$(id $(whoami) | grep -qE 'video' && echo true || echo false)
@@ -281,137 +272,16 @@ else
 fi
 }
 
-function endcommand() {
-    if [[ $DEVT != "false" ]]; then
-        $(which chmod) -R 750 /dev/dri
-    else
-printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-You need to restart the server to get access to /dev/dri
-after restarting execute the install again
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-        read -p "Type confirm to reboot: " input
-        if [[ "$input" = "confirm" ]]; then reboot -n; else endcommand; fi
-    fi
-}
-
-function subos() {
-    NSO=$(curl -s -L https://nvidia.github.io/nvidia-docker/$DIST/nvidia-docker.list)
-    NSOE=$(echo ${NSO} | grep -E 'Unsupported')
-    if [[ $NSOE != "" ]]; then
-printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-      NVIDIA ❌ ERROR
-      NVIDIA don't support your running Distribution
-      Installed Distribution = ${DIST}
-      Please visit the link below to see all supported Distributionen
-      NVIDIA ❌ ERROR
-      ${NSO}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-        read -erp "Confirm Info | Type confirm & PRESS [ENTER]" input </dev/tty
-        if [[ "$input" = "confirm" ]]; then clear; else subos; fi
-    fi
-}
-
 function igpuhetzner() {
-HMOD=$(ls /etc/modprobe.d/ | grep -qE 'hetzner' && echo true || echo false)
-ITEL=$(cat /etc/modprobe.d/blacklist-hetzner.conf | grep -qE '#blacklist i915' && echo true || echo false)
-IMOL1=$(cat /etc/default/grub | grep -qE '#GRUB_CMDLINE_LINUX_DEFAULT' && echo true || echo false)
-IMOL2=$(cat /etc/default/grub.d/hetzner.cfg | grep -qE '#GRUB_CMDLINE_LINUX_DEFAULT' && echo true || echo false)
-INTE=$(ls /usr/bin/intel_gpu_* 1>/dev/null 2>&1 && echo true || echo false)
-VIFO=$(which vainfo 1>/dev/null 2>&1 && echo true || echo false)
-
-if [[ $HMOD == "false" ]]; then exit; fi
-if [[ $ITEL == "false" ]]; then sed -i "s/blacklist i915/#blacklist i915/g" /etc/modprobe.d/blacklist-hetzner.conf; fi
-if [[ $IMOL1 == "false" ]]; then sed -i "s/GRUB_CMDLINE_LINUX_DEFAUL/#GRUB_CMDLINE_LINUX_DEFAUL/g" /etc/default/grub; fi
-if [[ $IMOL2 == "false" ]]; then sed -i "s/GRUB_CMDLINE_LINUX_DEFAUL/#GRUB_CMDLINE_LINUX_DEFAUL/g" /etc/default/grub.d/hetzner.cfg; fi
-if [[ $OSVE == "ubuntu" && $VERS == "focal" ]]; then
-   if [[ $IMOL1 == "true" && $IMOL2 == "true" && $ITEL == "true" ]]; then sudo update-grub; fi
-else
-   if [[ $IMOL1 == "true" && $IMOL2 == "true" && $ITEL == "true" ]]; then sudo grub-mkconfig -o /boot/grub/grub.cfg; fi
-fi
-if [[ $GCHK == "false" ]]; then groupadd -f video; fi
-if [[ $GVID == "false" ]]; then usermod -aG video $(whoami); fi
-   endcommand
-if [[ $VIFO == "false" ]]; then $(command -v apt) install vainfo -yqq; fi
-if [[ $INTE == "false" && $IGPU == "true" ]]; then $(command -v apt) update -yqq && $(command -v apt) install intel-gpu-tools -yqq; fi
-if [[ $IMOL1 == "true" && $IMOL2 == "true" && $ITEL == "true" && $GVID == "true" && $DEVT == "true" ]]; then echo "Intel IGPU is working"; else echo "Intel IGPU is not working"; fi
+   runcreate
+   $(which bash) /opt/hetzner/hetzner.sh
+   killruncreate
 }
-
 
 function nvidiagpu() {
-
-VERSION=510.54
-RCHK=$(ls /etc/apt/sources.list.d/ 1>/dev/null 2>&1 | grep -qE 'nvidia' && echo true || echo false)
-DREA=$(pidof dockerd 1>/dev/null 2>&1 && echo true || echo false)
-CHKN=$(which nvidia-smi 1>/dev/null 2>&1 && echo true || echo false)
-DCHK=$(cat /etc/docker/daemon.json | grep -qE 'nvidia' && echo true || echo false)
-
-subos
-
-if [[ ! -f "/opt/nvidia/nvidia.run" ]]; then
-   $(which mkdir) /opt/nvidia && \
-   $(which wget) -O /opt/nvidia/nvidia.run https://international.download.nvidia.com/XFree86/Linux-x86_64/$VERSION/NVIDIA-Linux-x86_64-$VERSION.run && \
-   $(which chmod) +x ./nvidia.run && \
-   ./opt/nvidia/nvidia.run --dkms --silent
-   if test -f "/opt/nvidia/nvidia.run"; then
-      $(which rm) -rf /opt/nvidia/nvidia.run
-   fi
-fi
-
-if [[ $RCHK == "false" ]]; then
-   $(which apt) install $(apt-cache search 'nvidia-driver-' | grep '^nvidia-driver-[[:digit:]]*' | tail -n1 | awk '{print $1}') -y
-   $(which curl) -s -L https://nvidia.github.io/nvidia-container-runtime/gpgkey | \
-     apt-key add -
-   distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
-   $(which curl) -s -L https://nvidia.github.io/nvidia-container-runtime/$distribution/nvidia-container-runtime.list | \
-     tee /etc/apt/sources.list.d/nvidia-container-runtime.list
-   $(which apt) update -y && \
-   $(which apt) install nvidia-container-runtime nvidia-container-toolkit -y
-fi
-
-if [[ $DCHK == "false" ]]; then
-$(which mkdir) -p /etc/systemd/system/docker.service.d
-$(which tee) /etc/systemd/system/docker.service.d/override.conf <<EOF
-[Service]
-ExecStart=
-ExecStart=/usr/bin/dockerd --host=fd:// --add-runtime=nvidia=/usr/bin/nvidia-container-runtime
-EOF
-$(which systemctl) daemon-reload && $(which systemctl) restart docker
-$(which tee) /etc/docker/daemon.json <<EOF
-{
-    "runtimes": {
-        "nvidia": {
-            "path": "/usr/bin/nvidia-container-runtime",
-            "runtimeArgs": []
-        }
-    }
-}
-EOF
-$(which pkill) -SIGHUP dockerd
-fi
-
-if [[ ! -d "/opt/nvidia/libnvidia-encode-backup" ]];then
-   $(which wget) -O /opt/nvidia/nvidia-patch.sh https://raw.githubusercontent.com/keylase/nvidia-patch/master/patch.sh && \
-   chmod +x /opt/nvidia/nvidia-patch.sh && |
-   ./opt/nvidia/nvidia-patch.sh
-   if test -f "/opt/nvidia/nvidia-patch.sh"; then
-      $(which rm) -rf /opt/nvidia/nvidia-patch.sh
-   fi
-fi
-
-if [[ $(which nvidia-smi) ]];then
-   SHOW=$(nvidia-smi)
-printf "%1s\n" "${blue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-      NVIDIA OUTPUT
-   ${SHOW}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-fi
-
-if [[ $GVID == "false" ]]; then usermod -aG video $(whoami); fi
-if [[ $DREA == "true" ]]; then pkill -SIGHUP dockerd; fi
-    endcommand
-if [[ $DREA == "true" && $DCHK == "true" && $CHKN == "true" && $DEVT != "false" ]]; then echo "nvidia-container-runtime is working"; else echo "nvidia-container-runtime is not working"; fi
+   runcreate $(. /etc/os-release && echo "$ID")
+   $(which bash) /opt/nvidia/nvidia.sh
+   killruncreate
 }
 
 function run() {
@@ -420,7 +290,7 @@ if [ ! $(which docker) ] && [ ! $(which docker-compose) ] && [ ! $(docker --vers
 fi
 
 if [[ -d ${dockserver} ]];then
-   envmigra && fastapt && cleanup && clear && appstartup
+   envmigra && cleanup && clear && appstartup
 else
    usage
 fi
@@ -472,10 +342,12 @@ for rec in ${APP[@]} ; do
 printf "%1s\n" "${blue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     Reconnect $rec to the docker network 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-    docker stop $rec &>/dev/null
-    docker network disconnect proxy $rec &>/dev/null
-    docker network connect proxy $rec &>/dev/null
-    docker start $rec &>/dev/null
+
+    $(which docker) stop $rec &>/dev/null
+    $(which docker) network disconnect proxy $rec &>/dev/null
+    $(which docker) network connect proxy $rec &>/dev/null
+    $(which docker) start $rec &>/dev/null
+
 printf "%1s\n" "${green}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     Starting now $rec
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
@@ -517,21 +389,24 @@ fi
 }
 
 function fastapt() {
-if ! type aria2c >/dev/null 2>&1; then
-   $(which apt) update -yqq && \
-   $(which apt) install --force-yes -yqq aria2
-fi
-if [[ ! -f /etc/apt-fast.conf ]]; then
-   $(which bash) -c "$(curl -sL https://raw.githubusercontent.com/ilikenwf/apt-fast/master/quick-install.sh)"
-   echo debconf apt-fast/maxdownloads string 16 | debconf-set-selections
-   echo debconf apt-fast/dlflag boolean true | debconf-set-selections
-   echo debconf apt-fast/aptmanager string apt | debconf-set-selections
-fi
+    case $(. /etc/os-release && echo "$ID") in
+        ubuntu|debian|raspian) \
+        if ! type aria2c >/dev/null 2>&1; then
+           $(which apt) update -yqq && \
+           $(which apt) install --force-yes -yqq aria2
+        fi && \
+        if ! test -f "/etc/apt-fast.conf"; then
+           $(which bash) -c "$(curl -sL https://raw.githubusercontent.com/ilikenwf/apt-fast/master/quick-install.sh)"
+           echo debconf apt-fast/maxdownloads string 16 | debconf-set-selections
+           echo debconf apt-fast/dlflag boolean true | debconf-set-selections
+          echo debconf apt-fast/aptmanager string apt | debconf-set-selections
+        fi
+    esac
 }
 
 function appstartup() {
-     dockertraefik=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -E 'traefik')
-     ntdocker=$(docker network ls | grep -E 'proxy')
+     dockertraefik=$($(which docker) ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -E 'traefik')
+     ntdocker=$($(which docker)docker network ls | grep -E 'proxy')
   if [[ $ntdocker == "" && $dockertraefik == "" ]]; then
      unset ntdocker && unset dockertraefik
      preinstall
