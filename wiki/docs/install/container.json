@@ -483,22 +483,31 @@
    "appname": "docker-ubuntu-focal",
    "apppic": "./images/docker-ubuntu-focal.png",
    "appfolder": "./base/docker-ubuntu-focal",
-   "newversion": "3.15.0-rc.4",
-   "baseimage": "null",
-   "packages": "null",
-   "description": "Dockerbase Image with Ubuntu focal",
-   "body": "Upgrading docker-ubuntu-focal to 3.15.0-rc.4",
-   "user": "github-actions[bot]"
+   "newversion": "3.15.4",
+   "baseimage": "alpine",
+   "description": "Docker image  for docker-ubuntu-focal",
+   "body": "Upgrading docker-ubuntu-focal to baseimage: alpine:3.15.4",
+   "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-ubuntu-jammy",
-   "apppic": "./imagesdocker-ubuntu-jammy.png",
+   "apppic": "./images/docker-ubuntu-jammy.png",
    "appfolder": "./base/docker-ubuntu-jammy",
-   "newversion": "3.15.2",
+   "newversion": "3.15.4",
    "baseimage": "alpine",
-   "packages": "null",
-   "description": "Dockerbase Image with Ubuntu 22.04",
-   "body": "Upgrading docker-ubuntu-jammy to 3.15.2",
+   "description": "Docker image  for docker-ubuntu-jammy",
+   "body": "Upgrading docker-ubuntu-jammy to baseimage: alpine:3.15.4",
+   "user": "dockserver image update[bot]"
+}
+{
+   "appname": "docker-ui",
+   "apppic": "",
+   "appfolder": "./base/docker-ui",
+   "newversion": "3.15.4",
+   "appversion": "3.15.4",
+   "baseimage": "alpine",
+   "description": "Docker + Traefik with Authelia and Cloudflare Protection",
+   "body": "Upgrading docker-ui to 3.15.4",
    "user": "github-actions[bot]"
 }
 {
