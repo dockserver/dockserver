@@ -705,7 +705,6 @@ function cleanup() {
    $(command -v docker) image prune -af 1>/dev/null 2>&1
    $(which find) /var/log -type f -regex ".*\.gz$" -delete
    $(which find) /var/log -type f -regex ".*\.[0-9]$" -delete
-
 }
 
 function envcreate() {
@@ -751,11 +750,10 @@ function certs() {
 function deploynow() {
    basefolder="/opt/appdata"
    source $basefolder/compose/.env
-   compose="compose/docker-compose.yml"
+
    envcreate && certs && secrets
    timezone && cleanup
    jounanctlpatch && serverip
-   $(command -v cd) $basefolder/compose/
    if [[ -f $basefolder/$compose ]]; then
       $(which docker-compose) config 1>/dev/null 2>&1
       code=$?
@@ -856,7 +854,7 @@ printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━�
   esac
 }
 
-function appinterface() {
+function install() {
 buildshow=$(ls -1p /opt/dockserver/apps/ | grep '/$' | $(command -v sed) 's/\/$//')
 printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀  Applications Category Menu
@@ -874,28 +872,6 @@ $buildshow
      *) checksection=$(ls -1p /opt/dockserver/apps/ | grep '/$' | $(command -v sed) 's/\/$//' | grep -x $section) && \
      if [[ $checksection == $section ]];then clear && install ; else appinterface; fi ;;
   esac
-}
-
-function install() {
-restorebackup=null
-section=${section}
-buildshow=$(ls -1p /opt/dockserver/apps/${section}/ | sed -e 's/.yml//g' )
-printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀  Applications to install under ${section} category
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-$buildshow
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    [ EXIT or Z ] - Exit
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-  read -erp "↪️ Type App-Name to install and Press [ENTER]: " typed </dev/tty
-  case $typed in
-    Z|z|exit|EXIT|Exit|close) headapps ;;
-    *) buildapp=$(ls -1p /opt/dockserver/apps/${section}/ | $(command -v sed) -e 's/.yml//g' | grep -x $typed) && \
-       if [[ $buildapp == $typed ]];then clear && runinstall && install; else install; fi ;;
-  esac
-
 }
 
 ### backup docker ###
@@ -949,7 +925,6 @@ function newbackupfolder() {
 printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀  New Backup folder set to $storage
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 "
 sleep 3
 
@@ -1010,16 +985,12 @@ printf "━━━━━━━━━━━━━━━━━━━━━━━━
    for i in "${files[@]}";do
        section=$(dirname "${i}" | sed "s#${appfolder}##g" | sed 's/\/$//')
    done
-   if [[ ${section} == "mediaserver" || ${section} == "mediamanager" ]];then
-      $(which docker) stop ${typed} 1>/dev/null 2>&1 && echo "We stopped now $typed"
+   $(which docker) stop ${typed} 1>/dev/null 2>&1 && echo "We stopped now $typed"
 printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀  Please Wait it can take some minutes
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-      $(which tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${STORAGE}/${ARCHIVETAR} ./
-      $(which docker) start ${typed} 1>/dev/null 2>&1  && echo "We started now $typed"
-   else
-      $(which tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${STORAGE}/${ARCHIVETAR} ./
-   fi
+   $(which tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${STORAGE}/${ARCHIVETAR} ./
+   $(which docker) start ${typed} 1>/dev/null 2>&1  && echo "We started now $typed"
    $(which chown) -hR 1000:1000 ${DESTINATION}/${STORAGE}/${ARCHIVETAR}
 done
 clear && backupdocker
@@ -1125,7 +1096,7 @@ for app in ${apps};do
    if [[ ! -d $basefolder/$app ]];then
    ARCHIVE=$app
    ARCHIVETAR=${ARCHIVE}.tar.gz
-      echo "Create folder for $i is running"  
+      echo "Create folder for $app is running"  
       folder=$basefolder/$app
       for appset in ${folder};do
           $(which mkdir) -p $appset
@@ -1134,9 +1105,11 @@ for app in ${apps};do
       done
    fi
 printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀  Restore is running for $i
+    🚀  Restore is running for $app
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
    $(which unpigz) -dcqp 8 ${DESTINATION}/${STORAGE}/${ARCHIVETAR} | $(command -v pv) -pterb | $(command -v tar) pxf - -C ${FOLDER}/${ARCHIVE} --strip-components=1
+   $(which docker-compose) --env-file $basefolder/compose/.env -f $appfolder/$app/docker-compose.yml up -d --force-recreate 1>/dev/null 2>&1
+
 done
 clear && headapps
 }
@@ -1147,10 +1120,8 @@ STORAGE=${storage}
 FOLDER="/opt/appdata"
 ARCHIVE=${typed}
 ARCHIVETAR=${ARCHIVE}.tar.gz
-restorebackup=restoredocker
 DESTINATION="/mnt/unionfs/appbackups"
 basefolder="/opt/appdata"
-compose="compose/docker-compose.yml"
 forcepush=(tar pigz pv)
 $(which apt) install ${forcepush[@]} -yqq 1>/dev/null 2>&1
 
@@ -1167,16 +1138,7 @@ printf "━━━━━━━━━━━━━━━━━━━━━━━━
     🚀  Restore is running for ${typed}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
    $(which unpigz) -dcqp 8 ${DESTINATION}/${STORAGE}/${ARCHIVETAR} | $(command -v pv) -pterb | $(command -v tar) pxf - -C ${FOLDER}/${ARCHIVE} --strip-components=1
-   appfolder=/opt/dockserver/apps/
-   IGNORE="! -path '**.subactions/**'"
-   mapfile -t files < <(eval find ${appfolder} -type f -name $typed.yml ${IGNORE})
-   for i in "${files[@]}";do
-       section=$(dirname "${i}" | sed "s#${appfolder}##g" | sed 's/\/$//')
-   done
-   section=${section}
-   typed=${typed}
-   restorebackup=${restorebackup}
-   runinstall && clear
+   $(which docker-compose) --env-file $basefolder/compose/.env -f $appfolder/${typed}/docker-compose.yml up -d --force-recreate 1>/dev/null 2>&1
 else
    clear && restoredocker
 fi
@@ -1184,26 +1146,23 @@ fi
 
 function runinstall() {
   restorebackup=${restorebackup:-null}
-  section=${section}
   typed=${typed}
   updatecompose
-  compose="compose/docker-compose.yml"
-  composeoverwrite="compose/docker-compose.override.yml"
   storage="/mnt/downloads"
   appfolder="/opt/dockserver/apps"
   basefolder="/opt/appdata"
+  composeoverwrite="$basefolder/compose/docker-compose.override.yml"
+
 printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     Please Wait, We are installing ${typed} for you
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-  $(which mkdir) -p $basefolder/compose/
-  $(which find) $basefolder/compose/ -type f -name "docker*" -exec rm -f {} \;
-  $(which rsync) $appfolder/${section}/${typed}.yml $basefolder/$compose -aqhv
+
   if [[ ${section} == "mediaserver" || ${section} == "encoder" ]]; then
      if [[ -x "/dev/dri" ]]; then
         if test -f "/etc/modprobe.d/blacklist-hetzner.conf"; then
-           $(which rsync) $appfolder/${section}/.gpu/INTEL.yml $basefolder/$composeoverwrite -aqhv
+           $(which rsync) $appfolder/.gpu/INTEL.yml $basefolder/$composeoverwrite -aqhv
         elif $(which nvidia-smi --version) ]]; then
-           $(which rsync) $appfolder/${section}/.gpu/NVIDIA.yml $basefolder/$composeoverwrite -aqhv
+           $(which rsync) $appfolder/.gpu/NVIDIA.yml $basefolder/$composeoverwrite -aqhv
         else
            echo "You are using an unsupported graphic system."
         fi
@@ -1216,135 +1175,36 @@ printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━�
         fi
      fi
   fi
-  if [[ -f $appfolder/${section}/.overwrite/${typed}.overwrite.yml ]];then
-     $(command -v rsync) $appfolder/${section}/.overwrite/${typed}.overwrite.yml $basefolder/$composeoverwrite -aqhv
-  fi
-  if [[ ! -d $basefolder/${typed} ]];then
-     folder=$basefolder/${typed}
-     for fol in ${folder};do
-         $(which mkdir) -p $fol
-         $(which find) $fol -exec $(which chmod) a=rx,u+w {} \;
-         $(which find) $fol -exec $(which chown) -hR 1000:1000 {} \;
-     done
-  fi
-  container=$($(which docker) ps -aq --format '{{.Names}}' | grep -x ${typed})
-  if [[ $container == ${typed} ]];then
-     docker="stop rm"
-     for con in ${docker};do
-         $(which docker) $con ${typed} 1>/dev/null 2>&1
-     done
-     $(which docker) image prune -af 1>/dev/null 2>&1
-  else
-     $(which docker) image prune -af 1>/dev/null 2>&1
-  fi
-  if [[ ${typed} == "vnstat" ]];then vnstatcheck;fi
-  if [[ ${typed} == "autoscan" ]];then autoscancheck;fi
-  if [[ ${typed} == "plex" ]];then plexclaim && plex443;fi
-  if [[ ${typed} == "jdownloader2" ]];then
-     folder=$storage/${typed}
-     for jdl in ${folder};do
-         $(which mkdir) -p $jdl
-         $(which find) $jdl -exec $(command -v chmod) a=rx,u+w {} \;
-         $(which find) $jdl -exec $(command -v chown) -hR 1000:1000 {} \;
-     done
-  fi
-  if [[ ${typed} == "rutorrent" ]];then
-     folder=$storage/torrent
-     for rto in ${folder};do
-         $(which mkdir) -p $rto/{temp,complete}/{movies,tv,tv4k,movies4k,movieshdr,tvhdr,remux}
-         $(which find) $rto -exec $(command -v chmod) a=rx,u+w {} \;
-         $(which find) $rto -exec $(command -v chown) -hR 1000:1000 {} \;
-     done
-  fi
-  if [[ ${typed} == "lidarr" ]];then
-     folder=$storage/amd
-     for lid in ${folder};do
-         $(which mkdir) -p $lid
-         $(which find) $lid -exec $(command -v chmod) a=rx,u+w {} \;
-         $(which find) $lid -exec $(command -v chown) -hR 1000:1000 {} \;
-     done
-  fi
-  if [[ && ${typed} == "readarr" ]];then
-     folder=$storage/books
-     for rea in ${folder};do
-         $(which mkdir) -p $rea
-         $(which find) $rea -exec $(command -v chmod) a=rx,u+w {} \;
-         $(which find) $rea -exec $(command -v chown) -hR 1000:1000 {} \;
-     done
-  fi
-  if [[ ${typed} == "mount" ]];then
-     $(which docker) stop mount &>/dev/null && $(command -v docker) rm mount &>/dev/null
-     folderunmount
-  fi
-  if [[ ${typed} == "youtubedl-material" ]];then
-     folder="appdata audio video subscriptions"
-     for ytf in ${folder};do
-         $(which mkdir) -p $basefolder/${typed}/$ytf
-         $(which find) $basefolder/${typed}/$ytf -exec $(command -v chmod) a=rx,u+w {} \;
-         $(which find) $basefolder/${typed}/$ytf -exec $(command -v chown) -hR 1000:1000 {} \;
-     done
-     folder=$storage/youtubedl
-     for ytdl in ${folder};do
-         $(which mkdir) -p $ytdl
-         $(which find) $ytdl -exec $(command -v chmod) a=rx,u+w {} \;
-         $(which find) $ytdl -exec $(command -v chown) -hR 1000:1000 {} \;
-     done
-  fi
-  if [[ ${typed} == "handbrake" ]];then
-     folder=$storage/${typed}
-     for hbrake in ${folder};do
-         $(which mkdir) -p $hbrake/{watch,storage,output}
-         $(which find) $hbrake -exec $(command -v chmod) a=rx,u+w {} \;
-         $(which find) $hbrake -exec $(command -v chown) -hR 1000:1000 {} \;
-     done
-  fi
-  if [[ ${typed} == "bitwarden" ]];then
-     if [[ -f $appfolder/.subactions/${typed}.sh ]];then $(which bash) $appfolder/.subactions/${typed}.sh;fi
-  fi
-  if [[ ${typed} == "dashy" ]];then
-     if [[ -f $appfolder/.subactions/${typed}.sh ]];then $(which bash) $appfolder/.subactions/${typed}.sh;fi
-  fi
-  if [[ ${typed} == "invitarr" ]];then
-      $(which nano) $basefolder/$compose      
-      $(which rsync) $appfolder/.subactions/${typed}.js $basefolder/${typed}/config.ini -aqhv
-      $(which nano) $basefolder/${typed}/config.ini
-  fi
-  if [[ ${typed} == "plex-utills" ]];then
-     if [[ -f $appfolder/.subactions/${typed}.sh ]];then $(command -v bash) $appfolder/.subactions/${typed}.sh;fi
-  fi
-  if [[ ${typed} == "petio" ]];then $(command -v mkdir) -p $basefolder/${typed}/{db,config,logs} && $(which chown) -hR 1000:1000 $basefolder/${typed}/{db,config,logs} 1>/dev/null 2>&1;fi
-  if [[ ${typed} == "tdarr" ]];then $(command -v mkdir) -p $basefolder/${typed}/{server,configs,logs,encoders} && $(which chown) -hR 1000:1000 $basefolder/${typed}/{server,configs,logs} 1>/dev/null 2>&1;fi
-  if [[ -f $basefolder/$compose ]];then
-     $(which cd) $basefolder/compose/
-     $(which docker-compose) config 1>/dev/null 2>&1
-     errorcode=$?
-     if [[ $errorcode -ne 0 ]];then
-     erroline=$($(which docker-compose) config)
+  $(which docker-compose) --env-file $basefolder/compose/.env -f $appfolder/${typed}/docker-compose.yml stop 1>/dev/null 2>&1
+  $(which docker-compose) --env-file $basefolder/compose/.env -f $appfolder/${typed}/docker-compose.yml rm 1>/dev/null 2>&1
+  $(which docker-compose) --env-file $basefolder/compose/.env -f $appfolder/${typed}/docker-compose.yml config 1>/dev/null 2>&1
+    errorcode=$?
+  if [[ $errorcode -ne 0 ]];then
+     erroline=$($(which docker-compose) --env-file $basefolder/compose/.env -f $appfolder/${typed}/docker-compose.yml config)
+
 printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ❌ ERROR
     Compose check of ${typed} has failed
     Return code is ${errorcode}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
+
 sleep 5
+
 printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ❌ OUTPUT OF COMPOSER ERROR
     ${erroline}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
+
   read -erp "Confirm Info | PRESS [ENTER]" typed </dev/tty
   clear && interface
-     else
-        $(which docker-compose) up -d --force-recreate 1>/dev/null 2>&1
-     fi
-  fi
-  if [[ ${section} == "mediaserver" || ${section} == "request" ]];then subtasks;fi
-  if [[ ${typed} == "xteve" || ${typed} == "heimdall" || ${typed} == "librespeed" || ${typed} == "tautulli" || ${typed} == "nextcloud" ]];then subtasks;fi
-  if [[ ${section} == "downloadclients" ]];then subtasks;fi
-  if [[ ${typed} == "overseerr" ]];then overserrf2ban;fi
-     setpermission
+  else
+      $(which docker-compose) --env-file $basefolder/compose/.env -f $appfolder/${typed}/docker-compose.yml up -d --force-recreate 1>/dev/null 2>&1
+   fi
+
      $($(which docker) ps -aq --format '{{.Names}}{{.State}}' | grep -qE ${typed}running 1>/dev/null 2>&1)
      errorcode=$?
   if [[ $errorcode -eq 0 ]];then
-     TRAEFIK=$(cat $basefolder/$compose | grep "traefik.enable" | wc -l)
+     TRAEFIK=$(cat $appfolder/${typed}/docker-compose.yml | grep "traefik.enable" | wc -l)
   if [[ ${TRAEFIK} == "0" ]];then
   printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ${typed} has successfully deployed and is now working     
@@ -1360,239 +1220,6 @@ printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━�
   fi
   if [[ ${restorebackup} == "restoredocker" ]];then clear && restorestorage;fi
   clear
-}
-
-function setpermission() {
-approot=$($(which ls) -l $basefolder/${typed} | awk '{if($3=="root") print $0}' | wc -l)
-if [[ $approot -gt 0 ]];then
-IFS=$'\n'
-mapfile -t setownapp < <(eval $(command -v ls) -l $basefolder/${typed}/ | awk '{if($3=="root") print $0}' | awk '{print $9}')
-  for appset in ${setownapp[@]};do
-      if [[ $(whoami) == "root" ]];then $(which chown) -hR 1000:1000 $basefolder/${typed}/$appset;fi
-      if [[ $(whoami) != "root" ]];then $(which chown) -hR $(whoami):$(whoami) $basefolder/${typed}/$appset;fi
-  done
-fi
-dlroot=$($(which ls) -l $storage/ | awk '{if($3=="root") print $0}' | wc -l)
-if [[ $dlroot -gt 0 ]];then
-IFS=$'\n'
-mapfile -t setowndl < <(eval $(command -v ls) -l $storage/ | awk '{if($3=="root") print $0}' | awk '{print $9}')
-  for dlset in ${setowndl[@]};do
-      if [[ $(whoami) == "root" ]];then $(command -v chown) -hR 1000:1000 $storage/$dlset;fi
-      if [[ $(whoami) != "root" ]];then $(command -v chown) -hR $(whoami):$(whoami) $storage/$dlset;fi
-  done
-fi
-}
-
-function overserrf2ban() {
-OV2BAN="/etc/fail2ban/filter.d/overseerr.local"
-if [[ ! -f $OV2BAN ]];then
-   cat > $OV2BAN << EOF; $(echo)
-## overseerr fail2ban filter ##
-[Definition]
-failregex = .*\[info\]\[Auth\]\: Failed sign-in attempt.*"ip":"<HOST>"
-EOF
-fi
-
-f2ban=$($(command -v systemctl) is-active fail2ban | grep -qE 'active' && echo true || echo false)
-if [[ $f2ban != "false" ]];then $(which systemctl) reload-or-restart fail2ban.service 1>/dev/null 2>&1;fi
-}
-
-function vnstatcheck() {
-if [[ ! -x $(command -v vnstat) ]];then $(which apt) install vnstat -yqq;fi
-}
-
-function autoscancheck() {
-$(docker ps -aq --format={{.Names}} | grep -E 'arr|ple|emb|jelly' 1>/dev/null 2>&1)
-code=$?
-if [[ $code -eq 0 ]];then
-   $(command -v rsync) $appfolder/.subactions/${typed}.config.yml $basefolder/${typed}/config.yml -aqhv
-   $(command -v bash) $appfolder/.subactions/${typed}.sh
-fi
-}
-
-function plexclaim() {
-compose="compose/docker-compose.yml"
-basefolder="/opt/appdata"
-printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀  PLEX CLAIM
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    Please claim your Plex server
-    https://www.plex.tv/claim/
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-  read -erp "Enter your PLEX CLAIM CODE : " PLEXCLAIM </dev/tty
-  if [[ $PLEXCLAIM != "" ]];then
-     if [[ $(uname) == "Darwin" ]];then
-        $(which sed) -i '' "s/PLEX_CLAIM_ID/$PLEXCLAIM/g" $basefolder/$compose
-     else
-        $(which sed) -i "s/PLEX_CLAIM_ID/$PLEXCLAIM/g" $basefolder/$compose
-     fi
-  else
-     echo "Plex Claim cannot be empty"
-     plexclaim
-  fi
-}
-
-function plex443() {
-basefolder="/opt/appdata"
-source $basefolder/compose/.env
-printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀  PLEX 443 Options
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    You need to add a Cloudflare Page Rule
-    https://dash.cloudflare.com/
-    > Domain
-      > Rules
-        > add new rule
-          > Domain : plex.${DOMAIN}/*
-          > cache-level: bypass
-        > save
-    __________________
-
-    > in plex settings
-      > settings
-        > remote access
-          > remote access = enabled
-          > manual port 32400
-          > save
-        > network
-          > Strict TLS configuration [ X ]
-          > allowed networks = 172.18.0.0
-          > save 
-      > have fun !
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-read -erp "Confirm Info | PRESS [ENTER]" typed </dev/tty
-
-}
-
-function subtasks() {
-typed=${typed}
-section=${section}
-basefolder="/opt/appdata"
-appfolder="/opt/dockserver/apps"
-source $basefolder/compose/.env
-authcheck=$($(command -v docker) ps -aq --format '{{.Names}}' | grep -x 'authelia' 1>/dev/null 2>&1 && echo true || echo false)
-conf=$basefolder/authelia/configuration.yml
-confnew=$basefolder/authelia/.new-configuration.yml.new
-confbackup=$basefolder/authelia/.backup-configuration.yml.backup
-authadd=$(cat $conf | grep -E ${typed})
-  if [[ ! -x $(command -v ansible) || ! -x $(command -v ansible-playbook) ]];then $(command -v apt) install ansible -yqq;fi
-  if [[ -f $appfolder/.subactions/${typed}.yml ]];then $(command -v ansible-playbook) $appfolder/.subactions/${typed}.yml;fi
-     $(grep "model name" /proc/cpuinfo | cut -d ' ' -f3- | head -n1 |grep -qE 'i7|i9' 1>/dev/null 2>&1)
-     setcode=$?
-     if [[ $setcode -eq 0 ]];then
-        if [[ -f $appfolder/.subactions/${typed}.sh ]];then $(which bash) $appfolder/.subactions/${typed}.sh;fi
-     fi
-  if [[ $authadd == "" ]];then
-     if [[ ${section} == "mediaserver" || ${section} == "request" ]];then
-     { head -n 55 $conf;
-     echo "\
-    - domain: ${typed}.${DOMAIN}
-      policy: bypass"; tail -n +56 $conf; } > $confnew
-        if [[ -f $conf ]];then $(which rsync) $conf $confbackup -aqhv;fi
-        if [[ -f $conf ]];then $(which rsync) $confnew $conf -aqhv;fi
-        if [[ $authcheck == "true" ]];then $(which docker) restart authelia 1>/dev/null 2>&1;fi
-        if [[ -f $conf ]];then $(command -v rm) -rf $confnew;fi
-     fi
-     if [[ ${typed} == "xteve" || ${typed} == "heimdall" || ${typed} == "librespeed" || ${typed} == "tautulli" || ${typed} == "nextcloud" ]];then
-     { head -n 55 $conf;
-     echo "\
-    - domain: ${typed}.${DOMAIN}
-      policy: bypass"; tail -n +56 $conf; } > $confnew
-        if [[ -f $conf ]];then $(which rsync) $conf $confbackup -aqhv;fi
-        if [[ -f $conf ]];then $(which rsync) $confnew $conf -aqhv;fi
-        if [[ $authcheck == "true" ]];then $(which docker) restart authelia 1>/dev/null 2>&1;fi
-        if [[ -f $conf ]];then $(which rm) -rf $confnew;fi
-     fi
-  fi
-  if [[ ${section} == "mediaserver" || ${section} == "request" || ${section} == "downloadclients" ]];then $(which docker) restart ${typed} 1>/dev/null 2>&1;fi
-  if [[ ${section} == "request" ]];then $(which chown) -R 1000:1000 $basefolder/${typed} 1>/dev/null 2>&1;fi
-}
-
-function removeapp() {
-list=$($(which docker) ps -aq --format '{{.Names}}' | grep -vE 'auth|trae|cf-companion')
-printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀   App Removal Menu
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-$list
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    [ EXIT or Z ] - Exit
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-  read -erp "↪️ Type App-Name to remove and Press [ENTER]: " typed </dev/tty
-  case $typed in
-     Z|z|exit|EXIT|Exit|close) clear && headapps ;;
-     *) checktyped=$($(which docker) ps -aq --format={{.Names}} | grep -x $typed)
-        if [[ $checktyped == $typed ]];then clear && deleteapp; else removeapp; fi ;;
-  esac
-}
-
-function deleteapp() {
-  typed=${typed}
-  basefolder="/opt/appdata"
-  storage="/mnt/downloads"
-  source $basefolder/compose/.env
-  conf=$basefolder/authelia/configuration.yml
-  checktyped=$($(command -v docker) ps -aq --format={{.Names}} | grep -x $typed)
-  auth=$(cat -An $conf | grep -x ${typed}.${DOMAIN} | awk '{print $1}')
-  if [[ $checktyped == $typed ]];then
-printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    ${typed} removal started    
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-     app=${typed}
-     for i in ${app};do
-         $(which docker) stop $i 1>/dev/null 2>&1
-         $(which docker) rm $i 1>/dev/null 2>&1
-         $(which docker) image prune -af 1>/dev/null 2>&1
-     done
-     if [[ -d $basefolder/${typed} ]];then 
-        folder=$basefolder/${typed}
-printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   App ${typed} folder removal started
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-        for i in ${folder};do
-            $(which rm) -rf $i 1>/dev/null 2>&1
-        done
-     fi
-     if [[ -d $storage/${typed} ]];then 
-        folder=$storage/${typed}
-printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   Storage ${typed} folder removal started
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-        for i in ${folder};do
-            $(which rm) -rf $i 1>/dev/null 2>&1
-        done
-     fi
-     if [[ $auth == ${typed} ]];then
-        if [[ ! -x $(command -v bc) ]];then $(command -v apt) install bc -yqq 1>/dev/null 2>&1;fi
-           source $basefolder/compose/.env
-           authrmapp=$(cat -An $conf | grep -x ${typed}.${DOMAIN})
-           authrmapp2=$(echo "$(${authrmapp} + 1)" | bc)
-        if [[ $authrmapp != "" ]];then sed -i '${authrmapp};${authrmapp2}d' $conf;fi
-           $($(which docker) ps -aq --format '{{.Names}}' | grep -x authelia 1>/dev/null 2>&1)
-           newcode=$?
-        if [[ $newcode -eq 0 ]];then $(which docker) restart authelia;fi
-     fi
-     source $basefolder/compose/.env 
-     if [ ${DOMAIN1_ZONE_ID} != "" ] && [ ${DOMAIN} != "" ] && [ ${CLOUDFLARE_EMAIL} != "" ] ; then
-        $(which apt) install curl -yqq
-        dnsrecordid=$(curl -sX GET "https://api.cloudflare.com/client/v4/zones/$DOMAIN1_ZONE_ID/dns_records?name=${typed}.${DOMAIN}" -H "X-Auth-Email: $CLOUDFLARE_EMAIL" -H "X-Auth-Key: $CLOUDFLARE_API_KEY" -H "Content-Type: application/json" | grep -Po '(?<="id":")[^"]*' | head -1 )
-        if [[ $dnsrecordid != "" ]] ; then
-           result=$(curl -sX DELETE "https://api.cloudflare.com/client/v4/zones/$DOMAIN1_ZONE_ID/dns_records/$dnsrecordid" -H "X-Auth-Email: $CLOUDFLARE_EMAIL" -H "X-Auth-Key: $CLOUDFLARE_API_KEY" -H "Content-Type: application/json")
-           if [[ $result != "" ]]; then
-printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    ${typed} CNAME record removed from Cloudflare 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-           fi
-        fi
-    fi
-printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    ${typed} removal finished
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-    sleep 2 && removeapp
-  else
-     removeapp
-  fi
 }
 
 function updatecompose() {
