@@ -11,7 +11,7 @@ services:
       - 'UMASK=${UMASK}'
     security_opt:
       - "${SECURITYOPS}:${SECURITYOPSSET}"
-    image: 'aunefyren/plex-wrapped:latest'
+    image: 'aunefyren/wrapperr:latest'
     restart: '${RESTARTAPP}'
     networks:
       - ${DOCKERNETWORK}
