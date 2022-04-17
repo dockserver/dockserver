@@ -506,7 +506,7 @@
    "newversion": "3.15.4",
    "appversion": "3.15.4",
    "baseimage": "alpine",
-   "description": "Docker + Traefik with Authelia and Cloudflare Protection",
+   "description": "DEVELOP STATUS DO NOT USE IN PRODUCTION ENVIROMENT",
    "body": "Upgrading docker-ui to 3.15.4",
    "user": "github-actions[bot]"
 }
