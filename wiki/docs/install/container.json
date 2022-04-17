@@ -123,9 +123,9 @@
    "newversion": "3.15.4",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "3216c54149da43dcc11b650861aac0e5b18b63d4",
+   "appversion": "937b045129e3bb5e47c969466caf8c6b7e7d6529",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to 3216c54149da43dcc11b650861aac0e5b18b63d4",
+   "body": "Upgrading docker-fenrus to 937b045129e3bb5e47c969466caf8c6b7e7d6529",
    "user": "github-actions[bot]"
 }
 {
@@ -142,11 +142,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.876",
+   "newversion": "0.20.892",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.876",
+   "body": "Upgrading docker-jackett to 0.20.892",
    "user": "github-actions[bot]"
 }
 {
@@ -567,10 +567,10 @@
    "appname": "docker-whisparr-nightly",
    "apppic": "./images/docker-whisparr-nightly.png",
    "appfolder": "./nightly/docker-whisparr-nightly",
-   "newversion": "0.1.0.25",
+   "newversion": "0.1.0.27",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Whisparr is an adult movie collection manager for Usenet and BitTorrent users.",
-   "body": "Upgrading docker-whisparr-nightly to 0.1.0.25",
+   "body": "Upgrading docker-whisparr-nightly to 0.1.0.27",
    "user": "github-actions[bot]"
 }
