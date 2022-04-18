@@ -18,17 +18,24 @@ if [[ $EUID != 0 ]]; then
     sudo "$0" "$@" && exit $?
 fi
 
-source /opt/dockserver/function/function.sh
+function rundocker() {
 
-APP=${@:2}
-case "$1" in
-  -i|--install ) clear && run ;;
-  -u|--update ) clear && update ;;
-  -a|--app ) clear && fastapp ;;
-  -h|--help ) clear && usage ;;
-  -r|--reconnect ) clear && recon ;;
-  -p|--preinstall ) clear && preinstall ;;
-  *) clear && updatebin && run ;;
-esac
+   TZONE=$($(which timedatectl) | $(which grep) -i zone | $(which awk) '{print $3}')
+   $(which docker) pull -q docker.dockserver.io/dockserver/docker-client
+   ## RUN AS INTERACTIVE SHELL WRAPPER
+   $(which docker) run -it \
+     --name=dockserver-client \
+     --entrypoint /bin/bash \
+     -e PUID=1000 -e PGID=1000 \
+     -e TZ=$TZONE \
+     -v /opt:/opt:rw -v /mnt:/mnt:rw \
+     -v /var/run/docker.sock:/var/run/docker.sock:ro \
+     docker.dockserver.io/dockserver/docker-client -c '$COMMAND' && \
+     clear
+   $(which docker) rmi -q docker.dockserver.io/dockserver/docker-client
+   
+}
 
+COMMAND=$1
+rundocker
 #E-o-F#
