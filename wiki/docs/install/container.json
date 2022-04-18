@@ -483,10 +483,10 @@
    "appname": "docker-ubuntu-focal",
    "apppic": "./images/docker-ubuntu-focal.png",
    "appfolder": "./base/docker-ubuntu-focal",
-   "newversion": "3.15.4",
+   "newversion": "",
    "baseimage": "alpine",
    "description": "Docker image  for docker-ubuntu-focal",
-   "body": "Upgrading docker-ubuntu-focal to baseimage: alpine:3.15.4",
+   "body": "Upgrading docker-ubuntu-focal to baseimage: alpine:",
    "user": "dockserver image update[bot]"
 }
 {
@@ -547,10 +547,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "7c17dc64c94b3c28ce283d2e6fdf84a50c84218f",
+   "newversion": "601649e02882ec695154463f7153777e15c55738",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 7c17dc64c94b3c28ce283d2e6fdf84a50c84218f",
+   "body": "Upgrading docker-sabnzbd-nightly to 601649e02882ec695154463f7153777e15c55738",
    "user": "github-actions[bot]"
 }
 {
