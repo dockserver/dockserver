@@ -45,7 +45,7 @@ function checksys() {
    case "$(distribution)" in
       ubuntu|debian|rasbian) upsysubu && dockinst && dockcomp ;;
       ##*) upsysanother ;;
-      *) echo 'You are using an unsupported operating system." && sleep 10 && exit 0 ;;
+      *) echo 'You are using an unsupported operating system.' && sleep 10 && exit 0 ;;
    esac
 }
 
