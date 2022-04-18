@@ -483,10 +483,10 @@
    "appname": "docker-ubuntu-focal",
    "apppic": "./images/docker-ubuntu-focal.png",
    "appfolder": "./base/docker-ubuntu-focal",
-   "newversion": "",
+   "newversion": "3.15.4",
    "baseimage": "alpine",
    "description": "Docker image  for docker-ubuntu-focal",
-   "body": "Upgrading docker-ubuntu-focal to baseimage: alpine:",
+   "body": "Upgrading docker-ubuntu-focal to baseimage: alpine:3.15.4",
    "user": "dockserver image update[bot]"
 }
 {
