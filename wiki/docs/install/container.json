@@ -511,6 +511,17 @@
    "user": "github-actions[bot]"
 }
 {
+   "appname": "docker-ui",
+   "apppic": "",
+   "appfolder": "./base/dockserver-ui",
+   "newversion": "0.0.1",
+   "appversion": "0.0.1",
+   "baseimage": "pyrhon-alpine",
+   "description": "DEVELOP STATUS DO NOT USE IN PRODUCTION ENVIROMENT",
+   "body": "Upgrading dockserver-ui to 0.0.1",
+   "user": "dockserver image update[bot]"
+}
+{
    "appname": "ubuntu",
    "apppic": "./images/ubuntu.png",
    "appfolder": "./base/ubuntu",
