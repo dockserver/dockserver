@@ -43,7 +43,7 @@ function pulldockserver() {
 function checksys() {
    distribution=$(. /etc/os-release;echo $ID)
    case "$(distribution)" in
-      ubuntu|debian|rasbian) upsysubu && dockinst && dockcomp ;;
+      ubuntu|debian|rasbian) upsysubu && dockinst && dockcomp && makefolder  ;;
       ##*) upsysanother ;;
       *) echo 'You are using an unsupported operating system.' && sleep 10 && exit 0 ;;
    esac
@@ -77,9 +77,26 @@ function dockinst() {
 if [ ! $(which docker) ]; then
    log "**** installing now docker ****" && \
      $(which curl) https://get.docker.com | sh &>/dev/null && \
-       $(which systemctl) --now enable docker &>/dev/null && \
-         $(which systemctl) reload-or-restart docker.service
+       $(which systemctl) --now enable docker &>/dev/null
 fi
+cat > /etc/docker/daemon.json <<EOF
+{
+    "storage-driver": "overlay2",
+    "userland-proxy": false,
+    "dns": ["8.8.8.8", "1.1.1.1"],
+    "ipv6": false,
+    "log-driver": "json-file",
+    "live-restore": true,
+    "log-opts": {"max-size": "8m", "max-file": "2"}
+}
+EOF
+
+$(which usermod) -aG docker $(whoami)
+  $(which systemctl) reload-or-restart docker.service &>/dev/null && \
+    $(which systemctl) enable docker.service &>/dev/null
+      $(which curl) --silent -fsSL https://raw.githubusercontent.com/MatchbookLab/local-persist/master/scripts/install.sh | bash &>/dev/null
+        $(which docker) volume create -d local-persist -o mountpoint=/mnt --name=unionfs && \
+          $(which docker) network create --driver=bridge proxy &>/dev/null && \
 }
 
 function dockcomp() {
@@ -89,16 +106,45 @@ if [ ! $($(which docker) compose version) ]; then
    VERSION="$($(which curl) -sX GET https://api.github.com/repos/docker/compose/releases/latest | jq --raw-output '.tag_name')"
    DOCKER_CONFIG=${DOCKER_CONFIG:-/opt/appdata/.docker}
      $(which mkdir) -p $DOCKER_CONFIG/cli-plugins && \
-       $(which curl) -SL https://github.com/docker/compose/releases/download/$VERSION/docker-compose-linux-`$(uname -m)` -o $DOCKER_CONFIG/cli-plugins/docker-compose
+       $(which curl) -SL https://github.com/docker/compose/releases/download/$VERSION/docker-compose-`$(uname -s)`-`$(uname -m)` -o $DOCKER_CONFIG/cli-plugins/docker-compose
        if test -f $DOCKER_CONFIG/cli-plugins/docker-compose;then
-          $(which chmod) +x $DOCKER_CONFIG/cli-plugins/docker-compose
+          $(which chmod) +x $DOCKER_CONFIG/cli-plugins/docker-compose && \
+            $(which ln) -sf $DOCKER_CONFIG/cli-plugins/docker-compose /usr/bin/docker-compose
        else
           sleep 5 ## wait time before next pull
             $(which mkdir) -p $DOCKER_CONFIG/cli-plugins && \
               $(which curl) -SL https://github.com/docker/compose/releases/download/$VERSION/docker-compose-linux-`$(uname -m)` -o $DOCKER_CONFIG/cli-plugins/docker-compose
-                $(which chmod) +x $DOCKER_CONFIG/cli-plugins/docker-compose
+                $(which chmod) +x $DOCKER_CONFIG/cli-plugins/docker-compose && \
+                  $(which ln) -sf $DOCKER_CONFIG/cli-plugins/docker-compose /usr/bin/docker-compose
+
        fi
 fi
+
+## THX to @sdr-enthusiasts/kx1t
+# Add some aliases to localhost in `/etc/hosts`. This will speed up recreation of images with docker-compose
+if ! grep localunixsocket /etc/hosts >/dev/null 2>&1
+then
+  $(which echo) "Speeding up the recreation of containers when using docker-compose..." && \
+    $(which sed) -i 's/^\(127.0.0.1\s*localhost\)\(.*\)/\1\2 localunixsocket localunixsocket.local localunixsocket.home/g' /etc/hosts
+fi
+}
+
+function makefolder() {
+
+folder="/mnt"
+  $(which mkdir) -p \
+    $folder/{unionfs,downloads,incomplete,torrent,nzb} \
+      $folder/{incomplete,downloads}/{nzb,torrent}/{complete,temp,movies,tv,tv4k,movies4k,movieshdr,tvhdr,remux,watch} \
+        $folder/downloads/torrent/{temp,complete}/{movies,tv,tv4k,movies4k,movieshdr,tvhdr,remux}
+
+basefolder="/opt/appdata"
+  $(which mkdir) -p $basefolder/{compose,system,traefik,authelia}
+
+  $(which find) $basefolder -exec $(command -v chmod) a=rx,u+w {} \; 
+    $(which find) $basefolder -exec $(command -v chown) -hR 1000:1000 {} \;
+      $(which find) $folder -exec $(which chmod) a=rx,u+w {} \;
+        $(which find) $folder -exec $(which chown) -hR 1000:1000 {} \;
+
 }
 
 function finalend() {
@@ -136,11 +182,11 @@ printf "
 
 checksys
 
-[[ ! -d "/opt/dockserver" ]] && $(which mkdir) -p /opt/{dockserver,appdata,compose}
+if [[ "$(systemd-detect-virt)" == "lxc" ]]; then
+   $(which curl) --silent -fsSl https://raw.githubusercontent.com/dockserver/dockserver/V2/scripts/lxc/lxc.sh | bash
+fi
 
-file=/opt/dockserver/.installer/dockserver
-store=/usr/bin/dockserver
-dockserver=/opt/dockserver
+[[ ! -d "/opt/dockserver" ]] && $(which mkdir) -p /opt/dockserver
 
 while true; do
    if [ "$(ls -A $dockserver)" ]; then
