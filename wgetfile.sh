@@ -165,18 +165,24 @@ else
             $(which chown) -R 1000:1000 /usr/bin/dockserver
 fi
 
+installed=$($(which docker) ps -aq --format '{{.Names}}' | grep -x 'traefik')
+if [[ $installed == "" ]]; then
+   RUN=$(curl -s http://whatismijnip.nl | cut -d " " -f 5)
+     FINAL=$(echo http://$RUN:5000)
+else
+   #RUN=$($(which docker) inspect traefik | jq -r '.[0].Config.Labels["traefik.http.routers.traefik-rtr.rule"]')
+   RUN=$($(which cat) /opt/appdata/compose/.env | grep "DOMAIN" | tail -n1 | awk -F"=" '{print $2}')
+     FINAL=$(echo https://ui.$RUN)
+fi
 printf "
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀    DockServer
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     to run the first install :
+     dockserver webui : ${FINAL}
 
-     run dockserver docker
-     [ sudo ] dockserver -i
-
-     all commands
-     [ sudo ] dockserver -h / --help
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     from the dockserver-ui you can deploy the rest
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 " 
 }
 
