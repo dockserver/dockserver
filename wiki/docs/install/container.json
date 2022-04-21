@@ -267,11 +267,11 @@
    "appname": "docker-plex",
    "apppic": "./images/docker-plex.png",
    "appfolder": "./apps/docker-plex",
-   "newversion": "1.25.9.5721-965587f64",
+   "newversion": "1.26.0.5715-8cf78dab3",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:focal",
    "description": "Docker Container for Plex Media Server",
-   "body": "Upgrading docker-plex to 1.25.9.5721-965587f64",
+   "body": "Upgrading docker-plex to 1.26.0.5715-8cf78dab3",
    "user": "github-actions[bot]"
 }
 {
