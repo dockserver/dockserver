@@ -10,12 +10,7 @@ on:
       - 'preinstall/**'
       - 'traefik/**'
       - 'scripts/**'
-      - 'wiki/**'
   workflow_dispatch:
-  workflow_run:
-    workflows: ["COPY index"]
-    types:
-      - completed
 
 jobs:
   deploy:
