@@ -165,8 +165,38 @@ else
             $(which chown) -R 1000:1000 /usr/bin/dockserver
 fi
 
-installed=$($(which docker) ps -aq --format '{{.Names}}' | grep -x 'traefik')
+## Add PROXY socket option when user want int
+## fallback when it's not running
+
+socket-proxy=$($(which docker) ps -aq --format '{{.Names}}' | grep -x '*socket-proxy*')
 if [[ $installed == "" ]]; then
+   DOCKER_HOST=/var/run/docker.sock
+else
+   DOCKER_HOST='tcp://localhost:2375'
+fi
+
+## pull and execute initial image
+ $(which docker) pull -q ghcr.io/dockserver/docker-create:latest && \
+   $(which docker) run -it --rm \
+   --name dockserver-create \
+   -v /opt/appdata:/opt/appdata \
+   -v $DOCKER_HOST/$DOCKER_HOST \
+   docker.dockserver.io/dockserver/docker-create:latest && clear
+
+## ADD authelia host part {} needs to added to /etc/hosts
+## before deployment 
+
+# Deploy needed apps
+
+if test -f "/opt/appdata/compose/docker-compose.yml"; then
+  $(which cd) $PWD && \
+    $(which cd) /opt/appdata/compose/ && \
+      $(which docker compose) up -d --force-recreate && \
+        $(which cd) $PWD
+fi
+
+check=$($(which docker) ps -aq --format '{{.Names}}' | grep -x 'traefik')
+if [[ $check == "" ]]; then
    RUN=$(curl -s http://whatismijnip.nl | cut -d " " -f 5)
      FINAL=$(echo http://$RUN:5000)
 else
