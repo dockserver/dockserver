@@ -30,6 +30,17 @@
    "user": "github-actions[bot]"
 }
 {
+   "appname": "docker-cf-companion",
+   "apppic": "",
+   "appfolder": "./base/docker-cf-companion",
+   "newversion": "0.0.1",
+   "appversion": "0.0.1",
+   "baseimage": "alpine",
+   "description": "DEVELOP STATUS DO NOT USE IN PRODUCTION ENVIROMENT",
+   "body": "Upgrading docker-cf-companion to 0.0.1",
+   "user": "dockserver image update[bot]"
+}
+{
    "appname": "docker-cloudflared",
    "apppic": "./images/docker-cloudflared.png",
    "appfolder": "./apps/docker-cloudflared",
@@ -123,9 +134,9 @@
    "newversion": "3.15.4",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "937b045129e3bb5e47c969466caf8c6b7e7d6529",
+   "appversion": "96de8d6134876681f51ca0dac5058656a5328289",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to 937b045129e3bb5e47c969466caf8c6b7e7d6529",
+   "body": "Upgrading docker-fenrus to 96de8d6134876681f51ca0dac5058656a5328289",
    "user": "github-actions[bot]"
 }
 {
@@ -142,11 +153,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.929",
+   "newversion": "0.20.933",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.929",
+   "body": "Upgrading docker-jackett to 0.20.933",
    "user": "github-actions[bot]"
 }
 {
@@ -256,11 +267,11 @@
    "appname": "docker-plex",
    "apppic": "./images/docker-plex.png",
    "appfolder": "./apps/docker-plex",
-   "newversion": "1.25.9.5721-965587f64",
+   "newversion": "1.26.0.5715-8cf78dab3",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:focal",
    "description": "Docker Container for Plex Media Server",
-   "body": "Upgrading docker-plex to 1.25.9.5721-965587f64",
+   "body": "Upgrading docker-plex to 1.26.0.5715-8cf78dab3",
    "user": "github-actions[bot]"
 }
 {
@@ -459,6 +470,16 @@
    "user": "dockserver image update[bot]"
 }
 {
+   "appname": "docker-create",
+   "apppic": "./images/docker-create.png",
+   "appfolder": "./base/docker-create",
+   "newversion": "3.15.4",
+   "baseimage": "alpine",
+   "description": "Docker + Traefik with Authelia and Cloudflare Protection",
+   "body": "Upgrading docker-create to 3.15.4",
+   "user": "github-actions[bot]"
+}
+{
    "appname": "docker-dockserver",
    "apppic": "",
    "appfolder": "./base/docker-dockserver",
@@ -547,21 +568,21 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "4.2.0.6209",
+   "newversion": "4.2.0.6216",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to 4.2.0.6209",
+   "body": "Upgrading docker-radarr-nightly to 4.2.0.6216",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "fdf4242a6c5ad267256f8c52a8974c3f56ee51ad",
+   "newversion": "ce4524e2bbb8b919afdf93bbf806fe3f27a184e8",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to fdf4242a6c5ad267256f8c52a8974c3f56ee51ad",
+   "body": "Upgrading docker-sabnzbd-nightly to ce4524e2bbb8b919afdf93bbf806fe3f27a184e8",
    "user": "github-actions[bot]"
 }
 {
