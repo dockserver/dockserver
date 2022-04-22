@@ -122,8 +122,7 @@ fi
 
 ## THX to @sdr-enthusiasts/kx1t
 # Add some aliases to localhost in `/etc/hosts`. This will speed up recreation of images with docker-compose
-if ! grep localunixsocket /etc/hosts >/dev/null 2>&1
-then
+if ! grep localunixsocket /etc/hosts >/dev/null 2>&1; then
   $(which echo) "Speeding up the recreation of containers when using docker-compose..." && \
     $(which sed) -i 's/^\(127.0.0.1\s*localhost\)\(.*\)/\1\2 localunixsocket localunixsocket.local localunixsocket.home/g' /etc/hosts
 fi
@@ -176,17 +175,18 @@ else
 fi
 
 ## pull and execute initial image
- $(which docker) pull -q ghcr.io/dockserver/docker-create:latest && \
-   $(which docker) run -it --rm \
-   --name dockserver-create \
-   -v /opt/appdata:/opt/appdata \
-   -v $DOCKER_HOST/$DOCKER_HOST \
-   docker.dockserver.io/dockserver/docker-create:latest && clear
+  $(which docker) pull -q ghcr.io/dockserver/docker-create:latest && \
+    $(which docker) run -it --rm \
+    --name dockserver-create \
+    -v /opt/appdata:/opt/appdata \
+    -v $DOCKER_HOST/$DOCKER_HOST \
+    docker.dockserver.io/dockserver/docker-create:latest && clear
 
-## ADD authelia host part {} needs to added to /etc/hosts
-## before deployment 
-
-# Deploy needed apps
+DOMAIN=$($(which cat) /opt/appdata/compose/.env | grep "DOMAIN" | tail -n1 | awk -F"=" '{print $2}')
+if ! grep $DOMAIN /etc/hosts >/dev/null 2>&1; then
+  $(which echo) "Adding $DOMAINA to /etc/hosts...." && \
+    echo "127.0.0.1 *.$DOMAIN $DOMAIN" | tee -a /etc/hosts > /dev/null
+fi
 
 if test -f "/opt/appdata/compose/docker-compose.yml"; then
   $(which cd) $PWD && \
