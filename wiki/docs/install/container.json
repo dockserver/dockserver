@@ -475,7 +475,7 @@
    "appfolder": "./base/docker-create",
    "newversion": "3.15.4",
    "baseimage": "alpine",
-   "description": "Docker + Traefik with Authelia and Cloudflare Protection",
+   "description": " !!! DEVELOP STATUS !!! DO NOT TRY TO PULL THE IMAGE YOU NEED ACCESS TO THE REPOSITORY",
    "body": "Upgrading docker-create to 3.15.4",
    "user": "github-actions[bot]"
 }
