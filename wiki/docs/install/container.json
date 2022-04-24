@@ -322,11 +322,11 @@
    "appname": "docker-readarr",
    "apppic": "./images/docker-readarr.png",
    "appfolder": "./apps/docker-readarr",
-   "newversion": "0.1.1.1312",
+   "newversion": "0.1.1.1314",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-readarr to 0.1.1.1312",
+   "body": "Upgrading docker-readarr to 0.1.1.1314",
    "user": "github-actions[bot]"
 }
 {
@@ -568,11 +568,11 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "4.2.0.6229",
+   "newversion": "4.2.0.6234",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to 4.2.0.6229",
+   "body": "Upgrading docker-radarr-nightly to 4.2.0.6234",
    "user": "github-actions[bot]"
 }
 {
