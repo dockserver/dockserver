@@ -143,21 +143,21 @@
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "382.0.0-alpine",
+   "newversion": "383.0.1-alpine",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to 382.0.0-alpine",
+   "body": "Upgrading docker-gdsa to 383.0.1-alpine",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.961",
+   "newversion": "0.20.970",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.961",
+   "body": "Upgrading docker-jackett to 0.20.970",
    "user": "github-actions[bot]"
 }
 {
