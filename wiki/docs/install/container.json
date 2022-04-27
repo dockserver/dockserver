@@ -494,10 +494,10 @@
    "appname": "docker-haproxy",
    "apppic": "./images/docker-haproxy.png",
    "appfolder": "./base/docker-haproxy",
-   "newversion": "2.5.5-alpine3.15",
+   "newversion": "2.5.6-alpine3.15",
    "baseimage": "haproxy",
    "description": "HAProxy Load Balancer's development branch (mirror of git.haproxy.org)",
-   "body": "Upgrading docker-haproxy to 2.5.5-alpine3.15",
+   "body": "Upgrading docker-haproxy to 2.5.6-alpine3.15",
    "user": "github-actions[bot]"
 }
 {
@@ -568,11 +568,11 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "4.2.0.6235",
+   "newversion": "4.2.0.6237",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to 4.2.0.6235",
+   "body": "Upgrading docker-radarr-nightly to 4.2.0.6237",
    "user": "github-actions[bot]"
 }
 {
