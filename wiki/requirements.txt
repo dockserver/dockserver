@@ -27,7 +27,7 @@ mkdocs-macros-plugin==0.7.0
 mkdocs-awesome-pages-plugin==2.7.0
 mkdocs-git-revision-date-localized-plugin==1.0.1
 markdown==3.3.6
-pygments==2.12.0
+pygments
 mkdocs-render-swagger-plugin
 mkdocs-mermaid2-plugin
 MkDocsJsonSchemaPlugin
