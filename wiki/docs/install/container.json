@@ -153,11 +153,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.993",
+   "newversion": "0.20.1001",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.993",
+   "body": "Upgrading docker-jackett to 0.20.1001",
    "user": "github-actions[bot]"
 }
 {
@@ -278,11 +278,11 @@
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "0.3.0.1728",
+   "newversion": "0.3.0.1730",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 0.3.0.1728",
+   "body": "Upgrading docker-prowlarr to 0.3.0.1730",
    "user": "github-actions[bot]"
 }
 {
@@ -419,7 +419,7 @@
    "appbranch": "master",
    "newversion": "3.15.4",
    "appversion": "1.4.25",
-   "wikiversion": "8.2.12",
+   "wikiversion": "8.2.13",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
    "body": "Upgrading docker-wiki to 3.15.4",
@@ -568,21 +568,21 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "4.2.0.6242",
+   "newversion": "4.2.0.6243",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to 4.2.0.6242",
+   "body": "Upgrading docker-radarr-nightly to 4.2.0.6243",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "fa3bf93464aaf6e5ec1f800a89e7dae8dd289685",
+   "newversion": "5f498c3bb11bd443b320ea058d6172f2b911b906",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to fa3bf93464aaf6e5ec1f800a89e7dae8dd289685",
+   "body": "Upgrading docker-sabnzbd-nightly to 5f498c3bb11bd443b320ea058d6172f2b911b906",
    "user": "github-actions[bot]"
 }
 {
