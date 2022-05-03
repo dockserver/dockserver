@@ -143,10 +143,10 @@
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "383.0.1-alpine",
+   "newversion": "384.0.0-alpine",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to 383.0.1-alpine",
+   "body": "Upgrading docker-gdsa to 384.0.0-alpine",
    "user": "github-actions[bot]"
 }
 {
@@ -229,6 +229,16 @@
    "description": "A Python based monitoring and tracking tool for Plex Media Server.",
    "body": "Upgrading docker-multitautulli to 4.1.07",
    "user": "github-actions[bot]"
+}
+{
+   "appname": "docker-newznab",
+   "apppic": "./images/docker-newznab.png",
+   "appfolder": "./apps/docker-newznab",
+   "newversion": "20.04",
+   "baseimage": "ubuntu",
+   "description": "Docker image  for docker-newznab",
+   "body": "Upgrading docker-newznab to baseimage: ubuntu:20.04",
+   "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-nzbget",
