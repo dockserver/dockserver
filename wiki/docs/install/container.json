@@ -44,10 +44,10 @@
    "appname": "docker-cloudflared",
    "apppic": "./images/docker-cloudflared.png",
    "appfolder": "./apps/docker-cloudflared",
-   "newversion": "2022.4.1",
+   "newversion": "2022.5.0",
    "baseimage": "alpine",
    "description": "Cloudflare Tunnel client (formerly Argo Tunnel)",
-   "body": "Upgrading docker-cloudflared to 2022.4.1",
+   "body": "Upgrading docker-cloudflared to 2022.5.0",
    "user": "github-actions[bot]"
 }
 {
@@ -120,11 +120,11 @@
    "appname": "docker-embystat",
    "apppic": "./images/docker-embystat.png",
    "appfolder": "./apps/docker-embystat",
-   "newversion": "0.2.0-beta.27",
+   "newversion": "0.2.0-beta.26",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "null",
-   "body": "Upgrading docker-embystat to 0.2.0-beta.27",
+   "body": "Upgrading docker-embystat to 0.2.0-beta.26",
    "user": "github-actions[bot]"
 }
 {
@@ -153,11 +153,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.1001",
+   "newversion": "0.20.1005",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.1001",
+   "body": "Upgrading docker-jackett to 0.20.1005",
    "user": "github-actions[bot]"
 }
 {
@@ -579,10 +579,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "5f498c3bb11bd443b320ea058d6172f2b911b906",
+   "newversion": "d70d8d34dc662497701c1ad409baf911739622d2",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 5f498c3bb11bd443b320ea058d6172f2b911b906",
+   "body": "Upgrading docker-sabnzbd-nightly to d70d8d34dc662497701c1ad409baf911739622d2",
    "user": "github-actions[bot]"
 }
 {
