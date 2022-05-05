@@ -11,19 +11,21 @@
 # bash rmdupe.sh Movies << MOVIES is $1 
 # it's running without any separate yes/no action
 
-for name in /mnt/unionfs/$1/*/*; do
-        [ ! -f "$name" ] && continue # skip non-regular files
-        printf '%s\n' "${name%.*}" 
-done | sort -u | while IFS= read -r prefix; do
+FOLDER=$1
 
+if [ ! -d "/mnt/unionfs/$1" ];then
+   echo " $FOLDER dont exist " && sleep 5 && exit 0
+else
+   for name in /mnt/unionfs/$FOLDER/*/*; do
+           [ ! -f "$name" ] && continue # skip non-regular files
+           printf '%s\n' "${name%.*}" 
+   done | sort -u | while IFS= read -r prefix; do
         # Set the positional parameters to the names matching a particular prefix.
         set -- "$prefix"*
-
         if [ "$#" -ne 2 ]; then
            printf 'Not exactly two files having prefix "%s"\n' "$prefix" >&2
            continue
         fi
-
         # Check file sizes and remove smallest.
         if [ "$( stat -c '%s' "$1" )" -lt "$( stat -c '%s' "$2" )" ]; then
            # First file is smaller
@@ -34,4 +36,5 @@ done | sort -u | while IFS= read -r prefix; do
            printf 'Would remove "%s"\n' "$2"
            echo rm -rf "$2"
         fi
-done
+   done
+fi
