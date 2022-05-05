@@ -2,20 +2,20 @@
    "appname": "docker-auto-replyarr",
    "apppic": "",
    "appfolder": "./apps/docker-auto-replyarr",
-   "newversion": "",
+   "newversion": "3.15.4",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading docker-auto-replyarr to ",
+   "body": "Upgrading docker-auto-replyarr to 3.15.4",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-backup",
    "apppic": "./images/docker-backup.png",
    "appfolder": "./apps/docker-backup",
-   "newversion": "",
+   "newversion": "3.15.4",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading docker-backup to ",
+   "body": "Upgrading docker-backup to 3.15.4",
    "user": "github-actions[bot]"
 }
 {
@@ -77,11 +77,11 @@
    "apppic": "./images/docker-dockserverupdate.png",
    "appfolder": "./apps/docker-dockserverupdate",
    "appbranch": "master",
-   "newversion": "",
-   "appversion": "",
+   "newversion": "3.15.4",
+   "appversion": "3.15.4",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
-   "body": "Upgrading docker-dockserverupdate to ",
+   "body": "Upgrading docker-dockserverupdate to 3.15.4",
    "user": "github-actions[bot]"
 }
 {
@@ -131,7 +131,7 @@
    "appname": "docker-fenrus",
    "apppic": "./images/docker-fenrus.png",
    "appfolder": "./apps/docker-fenrus",
-   "newversion": "",
+   "newversion": "3.15.4",
    "appbranch": "master",
    "baseimage": "alpine",
    "appversion": "777872674bd155004193e0686ef412dec63ea415",
@@ -143,21 +143,21 @@
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "",
+   "newversion": "384.0.0-alpine",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to ",
+   "body": "Upgrading docker-gdsa to 384.0.0-alpine",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.1008",
+   "newversion": "0.20.1010",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.1008",
+   "body": "Upgrading docker-jackett to 0.20.1010",
    "user": "github-actions[bot]"
 }
 {
@@ -427,12 +427,12 @@
    "apppic": "./images/docker-wiki.png",
    "appfolder": "./apps/docker-wiki",
    "appbranch": "master",
-   "newversion": "",
+   "newversion": "3.15.4",
    "appversion": "1.4.25",
    "wikiversion": "8.2.13",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
-   "body": "Upgrading docker-wiki to ",
+   "body": "Upgrading docker-wiki to 3.15.4",
    "user": "github-actions[bot]"
 }
 {
@@ -493,11 +493,11 @@
    "appname": "docker-dockserver",
    "apppic": "",
    "appfolder": "./base/docker-dockserver",
-   "newversion": "",
-   "appversion": "",
+   "newversion": "3.15.4",
+   "appversion": "3.15.4",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
-   "body": "Upgrading docker-dockserver to ",
+   "body": "Upgrading docker-dockserver to 3.15.4",
    "user": "github-actions[bot]"
 }
 {
@@ -589,10 +589,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "cc59037fbcfabf73510f3c56fbe1fea7289a3b2c",
+   "newversion": "705b3aa74e45a76ecc36d734277a8946a989dc86",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to cc59037fbcfabf73510f3c56fbe1fea7289a3b2c",
+   "body": "Upgrading docker-sabnzbd-nightly to 705b3aa74e45a76ecc36d734277a8946a989dc86",
    "user": "github-actions[bot]"
 }
 {
