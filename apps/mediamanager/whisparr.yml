@@ -10,7 +10,7 @@ services:
       - "TZ=${TZ}"
       - "UMASK=${UMASK}"
       - "DOCKER_MODS=ghcr.io/gilbn/theme.park:whisparr"
-      - "TP_THEME=${WHISPARRTHEME}"
+      - "TP_THEME=${whisparrTHEME}" 
     image: "${WHISPARRIMAGE}"
     restart: "${RESTARTAPP}"
     networks:
@@ -24,13 +24,13 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
       - "dockupdater.enable=true"
-      - "traefik.http.routers.whisparr.entrypoints=https"
-      - "traefik.http.routers.whisparr.rule=Host(`whisparr.${DOMAIN}`)"
+      - "traefik.http.routers.whisparr-rtr.entrypoints=https"
+      - "traefik.http.routers.whisparr-rtr.rule=Host(`whisparr.${DOMAIN}`)"
       - "traefik.http.routers.whisparr-rtr.tls=true"
-      - "traefik.http.routers.whisarr-rtr.tls.certresolver=dns-cloudflare"
-      - "traefik.http.routers.whisarr-rtr.middlewares=chain-authelia@file"
-      - "traefik.http.routers.whisarr-rtr.service=prowlarr-svc"
-      - "traefik.http.services.whisarr-svc.loadbalancer.server.port=6969"
+      - "traefik.http.routers.whisparr-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.whisparr-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.whisparr-rtr.service=whisparr-svc"
+      - "traefik.http.services.whisparr-svc.loadbalancer.server.port=6969"
 networks:
   proxy:
     driver: bridge
