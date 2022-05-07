@@ -10,12 +10,7 @@ on:
       - 'preinstall/**'
       - 'traefik/**'
       - 'scripts/**'
-      - 'wiki/**'
   workflow_dispatch:
-  workflow_run:
-    workflows: ["COPY index"]
-    types:
-      - completed
 
 jobs:
   deploy:
@@ -30,7 +25,7 @@ jobs:
           token: ${{ secrets.CR_PAT }}
 
       - name: Set up Python
-        uses: actions/setup-python@v3.1.1
+        uses: actions/setup-python@v3.1.2
         with:
           python-version: 3.
 

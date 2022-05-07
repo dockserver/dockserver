@@ -29,7 +29,7 @@ jobs:
           fetch-depth: 0
 
       - name: Run Trivy vulnerability scanner in repo mode
-        uses: aquasecurity/trivy-action@a7a829a4345428ddd92ca57b18257440f6a18c90
+        uses: aquasecurity/trivy-action@2b30463ddb3d11724a04e760e020c7d9af24d8b3
         with:
           scan-type: 'fs'
           ignore-unfixed: 'true'
@@ -39,6 +39,6 @@ jobs:
           severity: 'CRITICAL,HIGH'
 
       - name: Upload Trivy scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v1
+        uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: 'trivy-results.sarif'

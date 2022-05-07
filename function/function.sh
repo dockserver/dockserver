@@ -13,6 +13,68 @@
 # NO CODE MIRRORING IS ALLOWED      #
 #####################################
 
+### DOCKER CREATE + CONFIG LOGIC || FUNCTION
+function runcreate() {
+$(which docker) pull -q docker.dockserver.io/dockserver/docker-create
+
+TYPE=$1
+PART=$2
+
+if [[ ! "$(grep '1000' /etc/passwd | cut -d: -f1 | awk '{print $1}')" ]];then
+   USER=1000
+   USERID=1000
+else
+   USER=$(grep "1000" /etc/passwd | cut -d: -f1 | awk '{print $1}')
+   USERID=$(grep "1000" /etc/passwd | cut -d: -f1 | awk '{print $2}')
+fi
+
+$(which docker) run -d \
+ --name=dockserver-create \
+ -e PUID=$USER \
+ -e PGID=$USERID \
+ -e TZ=Europe/London \
+ -v /opt:/opt:rw \
+ -v /mnt:/mnt:rw \
+ docker.dockserver.io/dockserver/docker-create $TYPE $PART
+}
+
+function killruncreate() {
+  $(which docker) stop dockserver-create
+  $(which docker) rm dockserver-create
+}  
+
+function runconfig() {
+$(which docker) pull -q docker.dockserver.io/dockserver/docker-config
+
+TYPE=$1
+PART=$2
+if [[ ! "$(grep '1000' /etc/passwd | cut -d: -f1 | awk '{print $1}')" ]];then
+   USER=1000
+   USERID=1000
+else
+   USER=$(grep "1000" /etc/passwd | cut -d: -f1 | awk '{print $1}')
+   USERID=$(grep "1000" /etc/passwd | cut -d: -f1 | awk '{print $2}')
+fi
+
+$(which docker) run -d \
+ --name=dockserver-config \
+ -e PUID=$USER \
+ -e PGID=$USERID \
+ -e TZ=Europe/London \
+ -v /opt:/opt:rw \
+ docker.dockserver.io/dockserver/docker-config $TYPE $PART
+}
+
+function killrunconfig() {
+  $(which docker) stop dockserver-config
+  $(which docker) rm dockserver-config
+}
+
+### DOCKER CREATE + CONFIG LOGIC || FUNCTION
+#####################################
+
+### GLOBAL CONFIG
+
 function preinstall() {
 # shellcheck disable=SC2046
 printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -27,24 +89,16 @@ printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━�
         *) type='' && exit 0 ;
      esac
 
-
      basefolder="/opt/appdata"
+
      proxydel      
 
      case $(. /etc/os-release && echo "$ID") in
         ubuntu|debian|raspian) fastapt ;;
      esac
 
-     $(which docker) pull -q docker.dockserver.io/dockserver/docker-create
-     $(which docker) run -d \
-        --name=dockserver \
-        -e PUID=1000 \
-        -e PGID=1000 \
-        -e TZ=Europe/London \
-        -v /opt:/opt:rw \
-        -v /mnt:/mnt:rw \
-        docker.dockserver.io/dockserver/docker-docker-create $type folder
-        $(which chown) -R 1000:1000 /opt/dockserver
+     runcreate
+     $(which chown) -R 1000:1000 /opt/dockserver
  
      if test -f /etc/sysctl.d/99-sysctl.conf; then
          config="/etc/sysctl.d/99-sysctl.conf"
@@ -63,51 +117,20 @@ printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━�
               sysctl -p -q
            fi
       fi
-      ## USE OFFICIAL DOCKER INSTALL PART
-      if [[ ! $(which docker) ]]; then wget -qO- https://get.docker.com/ | sh >/dev/null 2>&1 ; fi
-         daemonjson
-         $(which usermod) -aG docker $(whoami)
-         $(which systemctl) reload-or-restart docker.service 1>/dev/null 2>&1
-         $(which systemctl) enable docker.service >/dev/null 2>&1
-         $(which curl) --silent -fsSL https://raw.githubusercontent.com/MatchbookLab/local-persist/master/scripts/install.sh | bash 1>/dev/null 2>&1
-         $(which docker) volume create -d local-persist -o mountpoint=/mnt --name=unionfs
-         $(which docker) network create --driver=bridge proxy 1>/dev/null 2>&1
+
+      daemonjson
+
+      $(which usermod) -aG docker $(whoami)
+      $(which systemctl) reload-or-restart docker.service 1>/dev/null 2>&1
+      $(which systemctl) enable docker.service >/dev/null 2>&1
+      $(which curl) --silent -fsSL https://raw.githubusercontent.com/MatchbookLab/local-persist/master/scripts/install.sh | bash 1>/dev/null 2>&1
+      $(which docker) volume create -d local-persist -o mountpoint=/mnt --name=unionfs
+      $(which docker) network create --driver=bridge proxy 1>/dev/null 2>&1
 
       updatecompose && gpupart
 
       disable=(apt-daily.service apt-daily.timer apt-daily-upgrade.timer apt-daily-upgrade.service)
       $(which systemctl) disable ${disable[@]} >/dev/null 2>&1
-
-      if [[ ! $(which ansible) ]]; then
-         if [[ -r /etc/os-release ]]; then lsb_dist="$(. /etc/os-release && echo "$ID")"; fi
-         package_list="ansible dialog python3-lxml"
-         package_listdebian="apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367"
-         package_listubuntu="apt-add-repository --yes --update ppa:ansible/ansible"
-         if [[ $lsb_dist == 'ubuntu' ]] || [[ $lsb_dist == 'rasbian' ]]; then ${package_listubuntu} 1>/dev/null 2>&1; else ${package_listdebian} 1>/dev/null 2>&1; fi
-         for i in ${package_list}; do
-            $(which apt) install $i --reinstall -yqq 1>/dev/null 2>&1
-         done
-         if [[ $lsb_dist == 'ubuntu' ]]; then add-apt-repository --yes --remove ppa:ansible/ansible; fi
-      fi
-
-      if [[ ! -d "/etc/ansible/inventories" ]]; then $(which mkdir) -p $invet ; fi
-      cat > /etc/ansible/inventories/local << EOF; $(echo)
-## CUSTOM local inventories
-[local]
-127.0.0.1 ansible_connection=local
-EOF
-      if test -f /etc/ansible/ansible.cfg; then
-        $(which mv) /etc/ansible/ansible.cfg /etc/ansible/ansible.cfg.bak
-      fi
-cat > /etc/ansible/ansible.cfg << EOF; $(echo)
-## CUSTOM Ansible.cfg
-[defaults]
-deprecation_warnings = False
-command_warnings = False
-force_color = True
-inventory = /etc/ansible/inventories/local
-retry_files_enabled = False
-EOF
 
       if [[ "$(systemd-detect-virt)" == "lxc" ]]; then lxc ; fi
 
@@ -116,8 +139,8 @@ EOF
          if [[ $f2ban != 'true' ]]; then echo "Waiting for fail2ban to start" && sleep 1 && continue; else break; fi
       done
 
-      ORGFILE="/etc/fail2ban/jail.conf"
-      LOCALMOD="/etc/fail2ban/jail.local"
+ORGFILE="/etc/fail2ban/jail.conf"
+LOCALMOD="/etc/fail2ban/jail.local"
 cat > /etc/fail2ban/filter.d/log4j-jndi.conf << EOF; $(echo)
 # jay@gooby.org
 # https://jay.gooby.org/2021/12/13/a-fail2ban-filter-for-the-log4j-cve-2021-44228
@@ -147,6 +170,8 @@ failregex   = (?i)^<HOST> .* ".*\$.*(7B|\{).*(lower:)?.*j.*n.*d.*i.*:.*".*?$' /e
  echo '#log4j
 [Definition]
 failregex   = (?i)^<HOST> .* ".*\$.*(7B|\{).*(lower:)?.*j.*n.*d.*i.*:.*".*?$' > /etc/fail2ban/jail.local
+
+
          sed -i "s#rotate 4#rotate 1#g" /etc/logrotate.conf
          sed -i "s#weekly#daily#g" /etc/logrotate.conf
 
@@ -202,16 +227,14 @@ function proxydel() {
 }
 
 function lxc() {
-    lxcstart
-    $(which chmod) a=rx,u+w /home/.lxcstart.sh
-    $(which  bash) /home/.lxcstart.sh
-    lxcansible
-    $(which ansible-playbook) /home/.lxcplaybook.yml 1>/dev/null 2>&1
-cat > /etc/cron.d/lxcstart << EOF; $(echo)
-SHELL=/bin/bash
-@reboot root /bin/bash /home/.lxcstart.sh 1>/dev/null 2>&1
-EOF
-    $(command -v chmod) a=rx,u+w /etc/cron.d/lxcstart
+    runcreate
+    $(which chmod) a=rx,u+w /opt/lxc/.lxcstart.sh
+    $(which bash) /opt/lxc/.lxcstart.sh
+    $(which crontab) -l > cron_bkp
+    $(which echo) "@reboot root /bin/bash /opt/lxc/.lxcstart.sh 1>/dev/null 2>&1" >> cron_bkp
+    $(which crontab) cron_bkp
+    $(which rm) cron_bkp
+    killruncreate
     lxcending && clear
 }
 
@@ -227,38 +250,6 @@ printf "%1s\n" "${blue}━━━━━━━━━━━━━━━━━━━
   read -erp "Confirm Info | Type confirm & PRESS [ENTER]" input </dev/tty
 }
 
-function lxcansible() {
-cat > /home/.lxcplaybook.yml << EOF; $(echo)
----
-- hosts: localhost
-  gather_facts: false
-  name: LXC Playbook
-  tasks:
-    - cron:
-        name: LXC Bypass the mount :shared
-        special_time: 'reboot'
-        user: root
-        job: '/bin/bash /home/.lxcstart.sh 1>/dev/null 2>&1'
-        state: present
-      become_user: root
-      ignore_errors: yes
-EOF
-}
-
-function lxcstart() {
-cat > /home/.lxcstart.sh << EOF; $(echo)
-#!/bin/bash
-#
-# Title:      LXC Bypass the mount :shared
-# OS Branch:  ubuntu,debian,rasbian
-# Author(s):  mrdoob
-# Coauthor:   DrAgOn141
-# GNU:        General Public License v3.0
-################################################################################
-## make / possible to add /mnt:shared
-mount --make-shared /
-EOF
-}
 
 function gpupart() {
 GVID=$(id $(whoami) | grep -qE 'video' && echo true || echo false)
@@ -281,137 +272,16 @@ else
 fi
 }
 
-function endcommand() {
-    if [[ $DEVT != "false" ]]; then
-        $(which chmod) -R 750 /dev/dri
-    else
-printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-You need to restart the server to get access to /dev/dri
-after restarting execute the install again
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-        read -p "Type confirm to reboot: " input
-        if [[ "$input" = "confirm" ]]; then reboot -n; else endcommand; fi
-    fi
-}
-
-function subos() {
-    NSO=$(curl -s -L https://nvidia.github.io/nvidia-docker/$DIST/nvidia-docker.list)
-    NSOE=$(echo ${NSO} | grep -E 'Unsupported')
-    if [[ $NSOE != "" ]]; then
-printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-      NVIDIA ❌ ERROR
-      NVIDIA don't support your running Distribution
-      Installed Distribution = ${DIST}
-      Please visit the link below to see all supported Distributionen
-      NVIDIA ❌ ERROR
-      ${NSO}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-        read -erp "Confirm Info | Type confirm & PRESS [ENTER]" input </dev/tty
-        if [[ "$input" = "confirm" ]]; then clear; else subos; fi
-    fi
-}
-
 function igpuhetzner() {
-HMOD=$(ls /etc/modprobe.d/ | grep -qE 'hetzner' && echo true || echo false)
-ITEL=$(cat /etc/modprobe.d/blacklist-hetzner.conf | grep -qE '#blacklist i915' && echo true || echo false)
-IMOL1=$(cat /etc/default/grub | grep -qE '#GRUB_CMDLINE_LINUX_DEFAULT' && echo true || echo false)
-IMOL2=$(cat /etc/default/grub.d/hetzner.cfg | grep -qE '#GRUB_CMDLINE_LINUX_DEFAULT' && echo true || echo false)
-INTE=$(ls /usr/bin/intel_gpu_* 1>/dev/null 2>&1 && echo true || echo false)
-VIFO=$(which vainfo 1>/dev/null 2>&1 && echo true || echo false)
-
-if [[ $HMOD == "false" ]]; then exit; fi
-if [[ $ITEL == "false" ]]; then sed -i "s/blacklist i915/#blacklist i915/g" /etc/modprobe.d/blacklist-hetzner.conf; fi
-if [[ $IMOL1 == "false" ]]; then sed -i "s/GRUB_CMDLINE_LINUX_DEFAUL/#GRUB_CMDLINE_LINUX_DEFAUL/g" /etc/default/grub; fi
-if [[ $IMOL2 == "false" ]]; then sed -i "s/GRUB_CMDLINE_LINUX_DEFAUL/#GRUB_CMDLINE_LINUX_DEFAUL/g" /etc/default/grub.d/hetzner.cfg; fi
-if [[ $OSVE == "ubuntu" && $VERS == "focal" ]]; then
-   if [[ $IMOL1 == "true" && $IMOL2 == "true" && $ITEL == "true" ]]; then sudo update-grub; fi
-else
-   if [[ $IMOL1 == "true" && $IMOL2 == "true" && $ITEL == "true" ]]; then sudo grub-mkconfig -o /boot/grub/grub.cfg; fi
-fi
-if [[ $GCHK == "false" ]]; then groupadd -f video; fi
-if [[ $GVID == "false" ]]; then usermod -aG video $(whoami); fi
-   endcommand
-if [[ $VIFO == "false" ]]; then $(command -v apt) install vainfo -yqq; fi
-if [[ $INTE == "false" && $IGPU == "true" ]]; then $(command -v apt) update -yqq && $(command -v apt) install intel-gpu-tools -yqq; fi
-if [[ $IMOL1 == "true" && $IMOL2 == "true" && $ITEL == "true" && $GVID == "true" && $DEVT == "true" ]]; then echo "Intel IGPU is working"; else echo "Intel IGPU is not working"; fi
+   runcreate
+   $(which bash) /opt/hetzner/hetzner.sh
+   killruncreate
 }
-
 
 function nvidiagpu() {
-
-VERSION=510.54
-RCHK=$(ls /etc/apt/sources.list.d/ 1>/dev/null 2>&1 | grep -qE 'nvidia' && echo true || echo false)
-DREA=$(pidof dockerd 1>/dev/null 2>&1 && echo true || echo false)
-CHKN=$(which nvidia-smi 1>/dev/null 2>&1 && echo true || echo false)
-DCHK=$(cat /etc/docker/daemon.json | grep -qE 'nvidia' && echo true || echo false)
-
-subos
-
-if [[ ! -f "/opt/nvidia/nvidia.run" ]]; then
-   $(which mkdir) /opt/nvidia && \
-   $(which wget) -O /opt/nvidia/nvidia.run https://international.download.nvidia.com/XFree86/Linux-x86_64/$VERSION/NVIDIA-Linux-x86_64-$VERSION.run && \
-   $(which chmod) +x ./nvidia.run && \
-   ./opt/nvidia/nvidia.run --dkms --silent
-   if test -f "/opt/nvidia/nvidia.run"; then
-      $(which rm) -rf /opt/nvidia/nvidia.run
-   fi
-fi
-
-if [[ $RCHK == "false" ]]; then
-   $(which apt) install $(apt-cache search 'nvidia-driver-' | grep '^nvidia-driver-[[:digit:]]*' | tail -n1 | awk '{print $1}') -y
-   $(which curl) -s -L https://nvidia.github.io/nvidia-container-runtime/gpgkey | \
-     apt-key add -
-   distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
-   $(which curl) -s -L https://nvidia.github.io/nvidia-container-runtime/$distribution/nvidia-container-runtime.list | \
-     tee /etc/apt/sources.list.d/nvidia-container-runtime.list
-   $(which apt) update -y && \
-   $(which apt) install nvidia-container-runtime nvidia-container-toolkit -y
-fi
-
-if [[ $DCHK == "false" ]]; then
-$(which mkdir) -p /etc/systemd/system/docker.service.d
-$(which tee) /etc/systemd/system/docker.service.d/override.conf <<EOF
-[Service]
-ExecStart=
-ExecStart=/usr/bin/dockerd --host=fd:// --add-runtime=nvidia=/usr/bin/nvidia-container-runtime
-EOF
-$(which systemctl) daemon-reload && $(which systemctl) restart docker
-$(which tee) /etc/docker/daemon.json <<EOF
-{
-    "runtimes": {
-        "nvidia": {
-            "path": "/usr/bin/nvidia-container-runtime",
-            "runtimeArgs": []
-        }
-    }
-}
-EOF
-$(which pkill) -SIGHUP dockerd
-fi
-
-if [[ ! -d "/opt/nvidia/libnvidia-encode-backup" ]];then
-   $(which wget) -O /opt/nvidia/nvidia-patch.sh https://raw.githubusercontent.com/keylase/nvidia-patch/master/patch.sh && \
-   chmod +x /opt/nvidia/nvidia-patch.sh && |
-   ./opt/nvidia/nvidia-patch.sh
-   if test -f "/opt/nvidia/nvidia-patch.sh"; then
-      $(which rm) -rf /opt/nvidia/nvidia-patch.sh
-   fi
-fi
-
-if [[ $(which nvidia-smi) ]];then
-   SHOW=$(nvidia-smi)
-printf "%1s\n" "${blue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-      NVIDIA OUTPUT
-   ${SHOW}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-fi
-
-if [[ $GVID == "false" ]]; then usermod -aG video $(whoami); fi
-if [[ $DREA == "true" ]]; then pkill -SIGHUP dockerd; fi
-    endcommand
-if [[ $DREA == "true" && $DCHK == "true" && $CHKN == "true" && $DEVT != "false" ]]; then echo "nvidia-container-runtime is working"; else echo "nvidia-container-runtime is not working"; fi
+   runcreate
+   $(which bash) /opt/nvidia/nvidia.sh
+   killruncreate
 }
 
 function run() {
@@ -420,7 +290,7 @@ if [ ! $(which docker) ] && [ ! $(which docker-compose) ] && [ ! $(docker --vers
 fi
 
 if [[ -d ${dockserver} ]];then
-   envmigra && fastapt && cleanup && clear && appstartup
+   envmigra && cleanup && clear && appstartup
 else
    usage
 fi
@@ -472,10 +342,12 @@ for rec in ${APP[@]} ; do
 printf "%1s\n" "${blue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     Reconnect $rec to the docker network 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-    docker stop $rec &>/dev/null
-    docker network disconnect proxy $rec &>/dev/null
-    docker network connect proxy $rec &>/dev/null
-    docker start $rec &>/dev/null
+
+    $(which docker) stop $rec &>/dev/null
+    $(which docker) network disconnect proxy $rec &>/dev/null
+    $(which docker) network connect proxy $rec &>/dev/null
+    $(which docker) start $rec &>/dev/null
+
 printf "%1s\n" "${green}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     Starting now $rec
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
@@ -517,21 +389,24 @@ fi
 }
 
 function fastapt() {
-if ! type aria2c >/dev/null 2>&1; then
-   $(which apt) update -yqq && \
-   $(which apt) install --force-yes -yqq aria2
-fi
-if [[ ! -f /etc/apt-fast.conf ]]; then
-   $(which bash) -c "$(curl -sL https://raw.githubusercontent.com/ilikenwf/apt-fast/master/quick-install.sh)"
-   echo debconf apt-fast/maxdownloads string 16 | debconf-set-selections
-   echo debconf apt-fast/dlflag boolean true | debconf-set-selections
-   echo debconf apt-fast/aptmanager string apt | debconf-set-selections
-fi
+    case $(. /etc/os-release && echo "$ID") in
+        ubuntu|debian|raspian) \
+        if ! type aria2c >/dev/null 2>&1; then
+           $(which apt) update -yqq && \
+           $(which apt) install --force-yes -yqq aria2
+        fi && \
+        if ! test -f "/etc/apt-fast.conf"; then
+           $(which bash) -c "$(curl -sL https://raw.githubusercontent.com/ilikenwf/apt-fast/master/quick-install.sh)"
+           echo debconf apt-fast/maxdownloads string 16 | debconf-set-selections
+           echo debconf apt-fast/dlflag boolean true | debconf-set-selections
+          echo debconf apt-fast/aptmanager string apt | debconf-set-selections
+        fi
+    esac
 }
 
 function appstartup() {
-     dockertraefik=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -E 'traefik')
-     ntdocker=$(docker network ls | grep -E 'proxy')
+     dockertraefik=$($(which docker) ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -E 'traefik')
+     ntdocker=$($(which docker)docker network ls | grep -E 'proxy')
   if [[ $ntdocker == "" && $dockertraefik == "" ]]; then
      unset ntdocker && unset dockertraefik
      preinstall
@@ -830,7 +705,6 @@ function cleanup() {
    $(command -v docker) image prune -af 1>/dev/null 2>&1
    $(which find) /var/log -type f -regex ".*\.gz$" -delete
    $(which find) /var/log -type f -regex ".*\.[0-9]$" -delete
-
 }
 
 function envcreate() {
@@ -876,11 +750,10 @@ function certs() {
 function deploynow() {
    basefolder="/opt/appdata"
    source $basefolder/compose/.env
-   compose="compose/docker-compose.yml"
+
    envcreate && certs && secrets
    timezone && cleanup
    jounanctlpatch && serverip
-   $(command -v cd) $basefolder/compose/
    if [[ -f $basefolder/$compose ]]; then
       $(which docker-compose) config 1>/dev/null 2>&1
       code=$?
@@ -981,7 +854,7 @@ printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━�
   esac
 }
 
-function appinterface() {
+function install() {
 buildshow=$(ls -1p /opt/dockserver/apps/ | grep '/$' | $(command -v sed) 's/\/$//')
 printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀  Applications Category Menu
@@ -999,28 +872,6 @@ $buildshow
      *) checksection=$(ls -1p /opt/dockserver/apps/ | grep '/$' | $(command -v sed) 's/\/$//' | grep -x $section) && \
      if [[ $checksection == $section ]];then clear && install ; else appinterface; fi ;;
   esac
-}
-
-function install() {
-restorebackup=null
-section=${section}
-buildshow=$(ls -1p /opt/dockserver/apps/${section}/ | sed -e 's/.yml//g' )
-printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀  Applications to install under ${section} category
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-$buildshow
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    [ EXIT or Z ] - Exit
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-  read -erp "↪️ Type App-Name to install and Press [ENTER]: " typed </dev/tty
-  case $typed in
-    Z|z|exit|EXIT|Exit|close) headapps ;;
-    *) buildapp=$(ls -1p /opt/dockserver/apps/${section}/ | $(command -v sed) -e 's/.yml//g' | grep -x $typed) && \
-       if [[ $buildapp == $typed ]];then clear && runinstall && install; else install; fi ;;
-  esac
-
 }
 
 ### backup docker ###
@@ -1074,7 +925,6 @@ function newbackupfolder() {
 printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀  New Backup folder set to $storage
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 "
 sleep 3
 
@@ -1135,16 +985,12 @@ printf "━━━━━━━━━━━━━━━━━━━━━━━━
    for i in "${files[@]}";do
        section=$(dirname "${i}" | sed "s#${appfolder}##g" | sed 's/\/$//')
    done
-   if [[ ${section} == "mediaserver" || ${section} == "mediamanager" ]];then
-      $(which docker) stop ${typed} 1>/dev/null 2>&1 && echo "We stopped now $typed"
+   $(which docker) stop ${typed} 1>/dev/null 2>&1 && echo "We stopped now $typed"
 printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀  Please Wait it can take some minutes
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-      $(which tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${STORAGE}/${ARCHIVETAR} ./
-      $(which docker) start ${typed} 1>/dev/null 2>&1  && echo "We started now $typed"
-   else
-      $(which tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${STORAGE}/${ARCHIVETAR} ./
-   fi
+   $(which tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${STORAGE}/${ARCHIVETAR} ./
+   $(which docker) start ${typed} 1>/dev/null 2>&1  && echo "We started now $typed"
    $(which chown) -hR 1000:1000 ${DESTINATION}/${STORAGE}/${ARCHIVETAR}
 done
 clear && backupdocker
@@ -1250,7 +1096,7 @@ for app in ${apps};do
    if [[ ! -d $basefolder/$app ]];then
    ARCHIVE=$app
    ARCHIVETAR=${ARCHIVE}.tar.gz
-      echo "Create folder for $i is running"  
+      echo "Create folder for $app is running"  
       folder=$basefolder/$app
       for appset in ${folder};do
           $(which mkdir) -p $appset
@@ -1259,9 +1105,11 @@ for app in ${apps};do
       done
    fi
 printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀  Restore is running for $i
+    🚀  Restore is running for $app
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
    $(which unpigz) -dcqp 8 ${DESTINATION}/${STORAGE}/${ARCHIVETAR} | $(command -v pv) -pterb | $(command -v tar) pxf - -C ${FOLDER}/${ARCHIVE} --strip-components=1
+   $(which docker-compose) --env-file $basefolder/compose/.env -f $appfolder/$app/docker-compose.yml up -d --force-recreate 1>/dev/null 2>&1
+
 done
 clear && headapps
 }
@@ -1272,10 +1120,8 @@ STORAGE=${storage}
 FOLDER="/opt/appdata"
 ARCHIVE=${typed}
 ARCHIVETAR=${ARCHIVE}.tar.gz
-restorebackup=restoredocker
 DESTINATION="/mnt/unionfs/appbackups"
 basefolder="/opt/appdata"
-compose="compose/docker-compose.yml"
 forcepush=(tar pigz pv)
 $(which apt) install ${forcepush[@]} -yqq 1>/dev/null 2>&1
 
@@ -1292,16 +1138,7 @@ printf "━━━━━━━━━━━━━━━━━━━━━━━━
     🚀  Restore is running for ${typed}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
    $(which unpigz) -dcqp 8 ${DESTINATION}/${STORAGE}/${ARCHIVETAR} | $(command -v pv) -pterb | $(command -v tar) pxf - -C ${FOLDER}/${ARCHIVE} --strip-components=1
-   appfolder=/opt/dockserver/apps/
-   IGNORE="! -path '**.subactions/**'"
-   mapfile -t files < <(eval find ${appfolder} -type f -name $typed.yml ${IGNORE})
-   for i in "${files[@]}";do
-       section=$(dirname "${i}" | sed "s#${appfolder}##g" | sed 's/\/$//')
-   done
-   section=${section}
-   typed=${typed}
-   restorebackup=${restorebackup}
-   runinstall && clear
+   $(which docker-compose) --env-file $basefolder/compose/.env -f $appfolder/${typed}/docker-compose.yml up -d --force-recreate 1>/dev/null 2>&1
 else
    clear && restoredocker
 fi
@@ -1309,26 +1146,23 @@ fi
 
 function runinstall() {
   restorebackup=${restorebackup:-null}
-  section=${section}
   typed=${typed}
   updatecompose
-  compose="compose/docker-compose.yml"
-  composeoverwrite="compose/docker-compose.override.yml"
   storage="/mnt/downloads"
   appfolder="/opt/dockserver/apps"
   basefolder="/opt/appdata"
+  composeoverwrite="$basefolder/compose/docker-compose.override.yml"
+
 printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     Please Wait, We are installing ${typed} for you
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-  $(which mkdir) -p $basefolder/compose/
-  $(which find) $basefolder/compose/ -type f -name "docker*" -exec rm -f {} \;
-  $(which rsync) $appfolder/${section}/${typed}.yml $basefolder/$compose -aqhv
+
   if [[ ${section} == "mediaserver" || ${section} == "encoder" ]]; then
      if [[ -x "/dev/dri" ]]; then
         if test -f "/etc/modprobe.d/blacklist-hetzner.conf"; then
-           $(which rsync) $appfolder/${section}/.gpu/INTEL.yml $basefolder/$composeoverwrite -aqhv
+           $(which rsync) $appfolder/.gpu/INTEL.yml $basefolder/$composeoverwrite -aqhv
         elif $(which nvidia-smi --version) ]]; then
-           $(which rsync) $appfolder/${section}/.gpu/NVIDIA.yml $basefolder/$composeoverwrite -aqhv
+           $(which rsync) $appfolder/.gpu/NVIDIA.yml $basefolder/$composeoverwrite -aqhv
         else
            echo "You are using an unsupported graphic system."
         fi
@@ -1341,135 +1175,36 @@ printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━�
         fi
      fi
   fi
-  if [[ -f $appfolder/${section}/.overwrite/${typed}.overwrite.yml ]];then
-     $(command -v rsync) $appfolder/${section}/.overwrite/${typed}.overwrite.yml $basefolder/$composeoverwrite -aqhv
-  fi
-  if [[ ! -d $basefolder/${typed} ]];then
-     folder=$basefolder/${typed}
-     for fol in ${folder};do
-         $(which mkdir) -p $fol
-         $(which find) $fol -exec $(which chmod) a=rx,u+w {} \;
-         $(which find) $fol -exec $(which chown) -hR 1000:1000 {} \;
-     done
-  fi
-  container=$($(which docker) ps -aq --format '{{.Names}}' | grep -x ${typed})
-  if [[ $container == ${typed} ]];then
-     docker="stop rm"
-     for con in ${docker};do
-         $(which docker) $con ${typed} 1>/dev/null 2>&1
-     done
-     $(which docker) image prune -af 1>/dev/null 2>&1
-  else
-     $(which docker) image prune -af 1>/dev/null 2>&1
-  fi
-  if [[ ${typed} == "vnstat" ]];then vnstatcheck;fi
-  if [[ ${typed} == "autoscan" ]];then autoscancheck;fi
-  if [[ ${typed} == "plex" ]];then plexclaim && plex443;fi
-  if [[ ${typed} == "jdownloader2" ]];then
-     folder=$storage/${typed}
-     for jdl in ${folder};do
-         $(which mkdir) -p $jdl
-         $(which find) $jdl -exec $(command -v chmod) a=rx,u+w {} \;
-         $(which find) $jdl -exec $(command -v chown) -hR 1000:1000 {} \;
-     done
-  fi
-  if [[ ${typed} == "rutorrent" ]];then
-     folder=$storage/torrent
-     for rto in ${folder};do
-         $(which mkdir) -p $rto/{temp,complete}/{movies,tv,tv4k,movies4k,movieshdr,tvhdr,remux}
-         $(which find) $rto -exec $(command -v chmod) a=rx,u+w {} \;
-         $(which find) $rto -exec $(command -v chown) -hR 1000:1000 {} \;
-     done
-  fi
-  if [[ ${typed} == "lidarr" ]];then
-     folder=$storage/amd
-     for lid in ${folder};do
-         $(which mkdir) -p $lid
-         $(which find) $lid -exec $(command -v chmod) a=rx,u+w {} \;
-         $(which find) $lid -exec $(command -v chown) -hR 1000:1000 {} \;
-     done
-  fi
-  if [[ && ${typed} == "readarr" ]];then
-     folder=$storage/books
-     for rea in ${folder};do
-         $(which mkdir) -p $rea
-         $(which find) $rea -exec $(command -v chmod) a=rx,u+w {} \;
-         $(which find) $rea -exec $(command -v chown) -hR 1000:1000 {} \;
-     done
-  fi
-  if [[ ${typed} == "mount" ]];then
-     $(which docker) stop mount &>/dev/null && $(command -v docker) rm mount &>/dev/null
-     folderunmount
-  fi
-  if [[ ${typed} == "youtubedl-material" ]];then
-     folder="appdata audio video subscriptions"
-     for ytf in ${folder};do
-         $(which mkdir) -p $basefolder/${typed}/$ytf
-         $(which find) $basefolder/${typed}/$ytf -exec $(command -v chmod) a=rx,u+w {} \;
-         $(which find) $basefolder/${typed}/$ytf -exec $(command -v chown) -hR 1000:1000 {} \;
-     done
-     folder=$storage/youtubedl
-     for ytdl in ${folder};do
-         $(which mkdir) -p $ytdl
-         $(which find) $ytdl -exec $(command -v chmod) a=rx,u+w {} \;
-         $(which find) $ytdl -exec $(command -v chown) -hR 1000:1000 {} \;
-     done
-  fi
-  if [[ ${typed} == "handbrake" ]];then
-     folder=$storage/${typed}
-     for hbrake in ${folder};do
-         $(which mkdir) -p $hbrake/{watch,storage,output}
-         $(which find) $hbrake -exec $(command -v chmod) a=rx,u+w {} \;
-         $(which find) $hbrake -exec $(command -v chown) -hR 1000:1000 {} \;
-     done
-  fi
-  if [[ ${typed} == "bitwarden" ]];then
-     if [[ -f $appfolder/.subactions/${typed}.sh ]];then $(which bash) $appfolder/.subactions/${typed}.sh;fi
-  fi
-  if [[ ${typed} == "dashy" ]];then
-     if [[ -f $appfolder/.subactions/${typed}.sh ]];then $(which bash) $appfolder/.subactions/${typed}.sh;fi
-  fi
-  if [[ ${typed} == "invitarr" ]];then
-      $(which nano) $basefolder/$compose      
-      $(which rsync) $appfolder/.subactions/${typed}.js $basefolder/${typed}/config.ini -aqhv
-      $(which nano) $basefolder/${typed}/config.ini
-  fi
-  if [[ ${typed} == "plex-utills" ]];then
-     if [[ -f $appfolder/.subactions/${typed}.sh ]];then $(command -v bash) $appfolder/.subactions/${typed}.sh;fi
-  fi
-  if [[ ${typed} == "petio" ]];then $(command -v mkdir) -p $basefolder/${typed}/{db,config,logs} && $(which chown) -hR 1000:1000 $basefolder/${typed}/{db,config,logs} 1>/dev/null 2>&1;fi
-  if [[ ${typed} == "tdarr" ]];then $(command -v mkdir) -p $basefolder/${typed}/{server,configs,logs,encoders} && $(which chown) -hR 1000:1000 $basefolder/${typed}/{server,configs,logs} 1>/dev/null 2>&1;fi
-  if [[ -f $basefolder/$compose ]];then
-     $(which cd) $basefolder/compose/
-     $(which docker-compose) config 1>/dev/null 2>&1
-     errorcode=$?
-     if [[ $errorcode -ne 0 ]];then
-     erroline=$($(which docker-compose) config)
+  $(which docker-compose) --env-file $basefolder/compose/.env -f $appfolder/${typed}/docker-compose.yml stop 1>/dev/null 2>&1
+  $(which docker-compose) --env-file $basefolder/compose/.env -f $appfolder/${typed}/docker-compose.yml rm 1>/dev/null 2>&1
+  $(which docker-compose) --env-file $basefolder/compose/.env -f $appfolder/${typed}/docker-compose.yml config 1>/dev/null 2>&1
+    errorcode=$?
+  if [[ $errorcode -ne 0 ]];then
+     erroline=$($(which docker-compose) --env-file $basefolder/compose/.env -f $appfolder/${typed}/docker-compose.yml config)
+
 printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ❌ ERROR
     Compose check of ${typed} has failed
     Return code is ${errorcode}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
+
 sleep 5
+
 printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ❌ OUTPUT OF COMPOSER ERROR
     ${erroline}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
+
   read -erp "Confirm Info | PRESS [ENTER]" typed </dev/tty
   clear && interface
-     else
-        $(which docker-compose) up -d --force-recreate 1>/dev/null 2>&1
-     fi
-  fi
-  if [[ ${section} == "mediaserver" || ${section} == "request" ]];then subtasks;fi
-  if [[ ${typed} == "xteve" || ${typed} == "heimdall" || ${typed} == "librespeed" || ${typed} == "tautulli" || ${typed} == "nextcloud" ]];then subtasks;fi
-  if [[ ${section} == "downloadclients" ]];then subtasks;fi
-  if [[ ${typed} == "overseerr" ]];then overserrf2ban;fi
-     setpermission
+  else
+      $(which docker-compose) --env-file $basefolder/compose/.env -f $appfolder/${typed}/docker-compose.yml up -d --force-recreate 1>/dev/null 2>&1
+   fi
+
      $($(which docker) ps -aq --format '{{.Names}}{{.State}}' | grep -qE ${typed}running 1>/dev/null 2>&1)
      errorcode=$?
   if [[ $errorcode -eq 0 ]];then
-     TRAEFIK=$(cat $basefolder/$compose | grep "traefik.enable" | wc -l)
+     TRAEFIK=$(cat $appfolder/${typed}/docker-compose.yml | grep "traefik.enable" | wc -l)
   if [[ ${TRAEFIK} == "0" ]];then
   printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ${typed} has successfully deployed and is now working     
@@ -1485,239 +1220,6 @@ printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━�
   fi
   if [[ ${restorebackup} == "restoredocker" ]];then clear && restorestorage;fi
   clear
-}
-
-function setpermission() {
-approot=$($(which ls) -l $basefolder/${typed} | awk '{if($3=="root") print $0}' | wc -l)
-if [[ $approot -gt 0 ]];then
-IFS=$'\n'
-mapfile -t setownapp < <(eval $(command -v ls) -l $basefolder/${typed}/ | awk '{if($3=="root") print $0}' | awk '{print $9}')
-  for appset in ${setownapp[@]};do
-      if [[ $(whoami) == "root" ]];then $(which chown) -hR 1000:1000 $basefolder/${typed}/$appset;fi
-      if [[ $(whoami) != "root" ]];then $(which chown) -hR $(whoami):$(whoami) $basefolder/${typed}/$appset;fi
-  done
-fi
-dlroot=$($(which ls) -l $storage/ | awk '{if($3=="root") print $0}' | wc -l)
-if [[ $dlroot -gt 0 ]];then
-IFS=$'\n'
-mapfile -t setowndl < <(eval $(command -v ls) -l $storage/ | awk '{if($3=="root") print $0}' | awk '{print $9}')
-  for dlset in ${setowndl[@]};do
-      if [[ $(whoami) == "root" ]];then $(command -v chown) -hR 1000:1000 $storage/$dlset;fi
-      if [[ $(whoami) != "root" ]];then $(command -v chown) -hR $(whoami):$(whoami) $storage/$dlset;fi
-  done
-fi
-}
-
-function overserrf2ban() {
-OV2BAN="/etc/fail2ban/filter.d/overseerr.local"
-if [[ ! -f $OV2BAN ]];then
-   cat > $OV2BAN << EOF; $(echo)
-## overseerr fail2ban filter ##
-[Definition]
-failregex = .*\[info\]\[Auth\]\: Failed sign-in attempt.*"ip":"<HOST>"
-EOF
-fi
-
-f2ban=$($(command -v systemctl) is-active fail2ban | grep -qE 'active' && echo true || echo false)
-if [[ $f2ban != "false" ]];then $(which systemctl) reload-or-restart fail2ban.service 1>/dev/null 2>&1;fi
-}
-
-function vnstatcheck() {
-if [[ ! -x $(command -v vnstat) ]];then $(which apt) install vnstat -yqq;fi
-}
-
-function autoscancheck() {
-$(docker ps -aq --format={{.Names}} | grep -E 'arr|ple|emb|jelly' 1>/dev/null 2>&1)
-code=$?
-if [[ $code -eq 0 ]];then
-   $(command -v rsync) $appfolder/.subactions/${typed}.config.yml $basefolder/${typed}/config.yml -aqhv
-   $(command -v bash) $appfolder/.subactions/${typed}.sh
-fi
-}
-
-function plexclaim() {
-compose="compose/docker-compose.yml"
-basefolder="/opt/appdata"
-printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀  PLEX CLAIM
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    Please claim your Plex server
-    https://www.plex.tv/claim/
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-  read -erp "Enter your PLEX CLAIM CODE : " PLEXCLAIM </dev/tty
-  if [[ $PLEXCLAIM != "" ]];then
-     if [[ $(uname) == "Darwin" ]];then
-        $(which sed) -i '' "s/PLEX_CLAIM_ID/$PLEXCLAIM/g" $basefolder/$compose
-     else
-        $(which sed) -i "s/PLEX_CLAIM_ID/$PLEXCLAIM/g" $basefolder/$compose
-     fi
-  else
-     echo "Plex Claim cannot be empty"
-     plexclaim
-  fi
-}
-
-function plex443() {
-basefolder="/opt/appdata"
-source $basefolder/compose/.env
-printf "%1s\n" "${white}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀  PLEX 443 Options
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    You need to add a Cloudflare Page Rule
-    https://dash.cloudflare.com/
-    > Domain
-      > Rules
-        > add new rule
-          > Domain : plex.${DOMAIN}/*
-          > cache-level: bypass
-        > save
-    __________________
-
-    > in plex settings
-      > settings
-        > remote access
-          > remote access = enabled
-          > manual port 32400
-          > save
-        > network
-          > Strict TLS configuration [ X ]
-          > allowed networks = 172.18.0.0
-          > save 
-      > have fun !
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-read -erp "Confirm Info | PRESS [ENTER]" typed </dev/tty
-
-}
-
-function subtasks() {
-typed=${typed}
-section=${section}
-basefolder="/opt/appdata"
-appfolder="/opt/dockserver/apps"
-source $basefolder/compose/.env
-authcheck=$($(command -v docker) ps -aq --format '{{.Names}}' | grep -x 'authelia' 1>/dev/null 2>&1 && echo true || echo false)
-conf=$basefolder/authelia/configuration.yml
-confnew=$basefolder/authelia/.new-configuration.yml.new
-confbackup=$basefolder/authelia/.backup-configuration.yml.backup
-authadd=$(cat $conf | grep -E ${typed})
-  if [[ ! -x $(command -v ansible) || ! -x $(command -v ansible-playbook) ]];then $(command -v apt) install ansible -yqq;fi
-  if [[ -f $appfolder/.subactions/${typed}.yml ]];then $(command -v ansible-playbook) $appfolder/.subactions/${typed}.yml;fi
-     $(grep "model name" /proc/cpuinfo | cut -d ' ' -f3- | head -n1 |grep -qE 'i7|i9' 1>/dev/null 2>&1)
-     setcode=$?
-     if [[ $setcode -eq 0 ]];then
-        if [[ -f $appfolder/.subactions/${typed}.sh ]];then $(which bash) $appfolder/.subactions/${typed}.sh;fi
-     fi
-  if [[ $authadd == "" ]];then
-     if [[ ${section} == "mediaserver" || ${section} == "request" ]];then
-     { head -n 55 $conf;
-     echo "\
-    - domain: ${typed}.${DOMAIN}
-      policy: bypass"; tail -n +56 $conf; } > $confnew
-        if [[ -f $conf ]];then $(which rsync) $conf $confbackup -aqhv;fi
-        if [[ -f $conf ]];then $(which rsync) $confnew $conf -aqhv;fi
-        if [[ $authcheck == "true" ]];then $(which docker) restart authelia 1>/dev/null 2>&1;fi
-        if [[ -f $conf ]];then $(command -v rm) -rf $confnew;fi
-     fi
-     if [[ ${typed} == "xteve" || ${typed} == "heimdall" || ${typed} == "librespeed" || ${typed} == "tautulli" || ${typed} == "nextcloud" ]];then
-     { head -n 55 $conf;
-     echo "\
-    - domain: ${typed}.${DOMAIN}
-      policy: bypass"; tail -n +56 $conf; } > $confnew
-        if [[ -f $conf ]];then $(which rsync) $conf $confbackup -aqhv;fi
-        if [[ -f $conf ]];then $(which rsync) $confnew $conf -aqhv;fi
-        if [[ $authcheck == "true" ]];then $(which docker) restart authelia 1>/dev/null 2>&1;fi
-        if [[ -f $conf ]];then $(which rm) -rf $confnew;fi
-     fi
-  fi
-  if [[ ${section} == "mediaserver" || ${section} == "request" || ${section} == "downloadclients" ]];then $(which docker) restart ${typed} 1>/dev/null 2>&1;fi
-  if [[ ${section} == "request" ]];then $(which chown) -R 1000:1000 $basefolder/${typed} 1>/dev/null 2>&1;fi
-}
-
-function removeapp() {
-list=$($(which docker) ps -aq --format '{{.Names}}' | grep -vE 'auth|trae|cf-companion')
-printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀   App Removal Menu
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-$list
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    [ EXIT or Z ] - Exit
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-  read -erp "↪️ Type App-Name to remove and Press [ENTER]: " typed </dev/tty
-  case $typed in
-     Z|z|exit|EXIT|Exit|close) clear && headapps ;;
-     *) checktyped=$($(which docker) ps -aq --format={{.Names}} | grep -x $typed)
-        if [[ $checktyped == $typed ]];then clear && deleteapp; else removeapp; fi ;;
-  esac
-}
-
-function deleteapp() {
-  typed=${typed}
-  basefolder="/opt/appdata"
-  storage="/mnt/downloads"
-  source $basefolder/compose/.env
-  conf=$basefolder/authelia/configuration.yml
-  checktyped=$($(command -v docker) ps -aq --format={{.Names}} | grep -x $typed)
-  auth=$(cat -An $conf | grep -x ${typed}.${DOMAIN} | awk '{print $1}')
-  if [[ $checktyped == $typed ]];then
-printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    ${typed} removal started    
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-     app=${typed}
-     for i in ${app};do
-         $(which docker) stop $i 1>/dev/null 2>&1
-         $(which docker) rm $i 1>/dev/null 2>&1
-         $(which docker) image prune -af 1>/dev/null 2>&1
-     done
-     if [[ -d $basefolder/${typed} ]];then 
-        folder=$basefolder/${typed}
-printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   App ${typed} folder removal started
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-        for i in ${folder};do
-            $(which rm) -rf $i 1>/dev/null 2>&1
-        done
-     fi
-     if [[ -d $storage/${typed} ]];then 
-        folder=$storage/${typed}
-printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   Storage ${typed} folder removal started
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-        for i in ${folder};do
-            $(which rm) -rf $i 1>/dev/null 2>&1
-        done
-     fi
-     if [[ $auth == ${typed} ]];then
-        if [[ ! -x $(command -v bc) ]];then $(command -v apt) install bc -yqq 1>/dev/null 2>&1;fi
-           source $basefolder/compose/.env
-           authrmapp=$(cat -An $conf | grep -x ${typed}.${DOMAIN})
-           authrmapp2=$(echo "$(${authrmapp} + 1)" | bc)
-        if [[ $authrmapp != "" ]];then sed -i '${authrmapp};${authrmapp2}d' $conf;fi
-           $($(which docker) ps -aq --format '{{.Names}}' | grep -x authelia 1>/dev/null 2>&1)
-           newcode=$?
-        if [[ $newcode -eq 0 ]];then $(which docker) restart authelia;fi
-     fi
-     source $basefolder/compose/.env 
-     if [ ${DOMAIN1_ZONE_ID} != "" ] && [ ${DOMAIN} != "" ] && [ ${CLOUDFLARE_EMAIL} != "" ] ; then
-        $(which apt) install curl -yqq
-        dnsrecordid=$(curl -sX GET "https://api.cloudflare.com/client/v4/zones/$DOMAIN1_ZONE_ID/dns_records?name=${typed}.${DOMAIN}" -H "X-Auth-Email: $CLOUDFLARE_EMAIL" -H "X-Auth-Key: $CLOUDFLARE_API_KEY" -H "Content-Type: application/json" | grep -Po '(?<="id":")[^"]*' | head -1 )
-        if [[ $dnsrecordid != "" ]] ; then
-           result=$(curl -sX DELETE "https://api.cloudflare.com/client/v4/zones/$DOMAIN1_ZONE_ID/dns_records/$dnsrecordid" -H "X-Auth-Email: $CLOUDFLARE_EMAIL" -H "X-Auth-Key: $CLOUDFLARE_API_KEY" -H "Content-Type: application/json")
-           if [[ $result != "" ]]; then
-printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    ${typed} CNAME record removed from Cloudflare 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-           fi
-        fi
-    fi
-printf "%1s\n" "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    ${typed} removal finished
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${normal}"
-    sleep 2 && removeapp
-  else
-     removeapp
-  fi
 }
 
 function updatecompose() {
