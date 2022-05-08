@@ -181,7 +181,7 @@ basefolder="/opt/appdata"
   $(which docker) run -it --rm \
     --name dockserver-create \
     -v $basefolder:$basefolder \
-    -v $DOCKER_HOST/$DOCKER_HOST \
+    -v $DOCKER_HOST:$DOCKER_HOST \
     docker.dockserver.io/dockserver/docker-create:latest && clear
 
 ## wait until create is done ##
