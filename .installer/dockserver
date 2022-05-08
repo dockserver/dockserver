@@ -18,24 +18,26 @@ if [[ $EUID != 0 ]]; then
     sudo "$0" "$@" && exit $?
 fi
 
-function rundocker() {
+function shoeui() {
 
-   TZONE=$($(which timedatectl) | $(which grep) -i zone | $(which awk) '{print $3}')
-   $(which docker) pull -q docker.dockserver.io/dockserver/docker-client
-   ## RUN AS INTERACTIVE SHELL WRAPPER
-   $(which docker) run -it \
-     --name=dockserver-client \
-     --entrypoint /bin/bash \
-     -e PUID=1000 -e PGID=1000 \
-     -e TZ=$TZONE \
-     -v /opt:/opt:rw -v /mnt:/mnt:rw \
-     -v /var/run/docker.sock:/var/run/docker.sock:ro \
-     docker.dockserver.io/dockserver/docker-client -c '$COMMAND' && \
-     clear
-   $(which docker) rmi -q docker.dockserver.io/dockserver/docker-client
-   
+check=$($(which docker) ps -aq --format '{{.Names}}' | grep -x 'traefik')
+if [[ $check == "" ]]; then
+   RUN=$(curl -s http://whatismijnip.nl | cut -d " " -f 5)
+     FINAL=$(echo http://$RUN:5000)
+else
+   RUN=$($(which cat) /opt/appdata/compose/.env | grep "DOMAIN" | tail -n1 | awk -F"=" '{print $2}')
+     FINAL=$(echo https://webui.$RUN)
+fi
+printf "
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    🚀    DockServer WebUI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+     dockserver webui : ${FINAL}
+     from the dockserver-ui you can deploy all apps
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+"   
 }
-
-COMMAND=$1
-rundocker
+shoeui
 #E-o-F#
