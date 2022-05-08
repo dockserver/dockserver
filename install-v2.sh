@@ -221,7 +221,8 @@ printf "
 checksys
 
 if [[ "$(systemd-detect-virt)" == "lxc" ]]; then
-   $(which curl) --silent -fsSl https://raw.githubusercontent.com/dockserver/dockserver/V2/scripts/lxc/lxc.sh | bash
+   $(which curl) --silent -fsSl https://raw.githubusercontent.com/dockserver/dockserver/master/scripts/lxc/lxc.sh -o /tmp/lxcscript.sh && \
+   $(which bash) /tmp/lxcscript.sh
 fi
 
 [[ ! -d "/opt/dockserver" ]] && $(which mkdir) -p /opt/dockserver
