@@ -101,23 +101,25 @@ $(which usermod) -aG docker $(whoami)
 
 function dockcomp() {
 
-if [ ! $($(which docker) compose version) ]; then
-   log "**** installing now docker composer v2 ****" && \
-   VERSION="$($(which curl) -sX GET https://api.github.com/repos/docker/compose/releases/latest | jq --raw-output '.tag_name')"
-   DOCKER_CONFIG=${DOCKER_CONFIG:-/opt/appdata/.docker}
-     $(which mkdir) -p $DOCKER_CONFIG/cli-plugins && \
-       $(which curl) -SL https://github.com/docker/compose/releases/download/$VERSION/docker-compose-`$(uname -s)`-`$(uname -m)` -o $DOCKER_CONFIG/cli-plugins/docker-compose
-       if test -f $DOCKER_CONFIG/cli-plugins/docker-compose;then
-          $(which chmod) +x $DOCKER_CONFIG/cli-plugins/docker-compose && \
-            $(which ln) -sf $DOCKER_CONFIG/cli-plugins/docker-compose /usr/bin/docker-compose
-       else
-          sleep 5 ## wait time before next pull
-            $(which mkdir) -p $DOCKER_CONFIG/cli-plugins && \
-              $(which curl) -SL https://github.com/docker/compose/releases/download/$VERSION/docker-compose-linux-`$(uname -m)` -o $DOCKER_CONFIG/cli-plugins/docker-compose
-                $(which chmod) +x $DOCKER_CONFIG/cli-plugins/docker-compose && \
-                  $(which ln) -sf $DOCKER_CONFIG/cli-plugins/docker-compose /usr/bin/docker-compose
+export DOCKER_CONFIG=${DOCKER_CONFIG:-/opt/appdata/.docker}
+VERSION="$($(which curl) -sX GET https://api.github.com/repos/docker/compose/releases/latest | jq --raw-output '.tag_name')"
+ARCH=$(uname -m)
 
-       fi
+if [ ! -f "$DOCKER_CONFIG/cli-plugins/docker-compose" ]; then
+   log "**** installing now docker composer $VERSION on $ARCH ****" && \
+   $(which mkdir) -p $DOCKER_CONFIG/cli-plugins && \
+     $(which curl) -fsSL "https://github.com/docker/compose/releases/download/${VERSION}/docker-compose-linux-${ARCH}" -o $DOCKER_CONFIG/cli-plugins/docker-compose
+     if test -f $DOCKER_CONFIG/cli-plugins/docker-compose;then
+        $(which chmod) +x $DOCKER_CONFIG/cli-plugins/docker-compose && \
+          $(which ln) -sf $DOCKER_CONFIG/cli-plugins/docker-compose /usr/bin/docker-compose
+     else
+        sleep 5 ## wait time before next pull
+          $(which mkdir) -p $DOCKER_CONFIG/cli-plugins && \
+            $(which curl) -SL https://github.com/docker/compose/releases/download/$VERSION/docker-compose-linux-`$(uname -m)` -o $DOCKER_CONFIG/cli-plugins/docker-compose
+              $(which chmod) +x $DOCKER_CONFIG/cli-plugins/docker-compose && \
+                $(which ln) -sf $DOCKER_CONFIG/cli-plugins/docker-compose /usr/bin/docker-compose
+
+     fi
 fi
 
 ## THX to @sdr-enthusiasts/kx1t
@@ -138,7 +140,6 @@ folder="/mnt"
 
 basefolder="/opt/appdata"
   $(which mkdir) -p $basefolder/{compose,system,traefik,authelia}
-
   $(which find) $basefolder -exec $(command -v chmod) a=rx,u+w {} \; 
     $(which find) $basefolder -exec $(command -v chown) -hR 1000:1000 {} \;
       $(which find) $folder -exec $(which chmod) a=rx,u+w {} \;
@@ -174,25 +175,26 @@ else
    DOCKER_HOST='tcp://localhost:2375'
 fi
 
+basefolder="/opt/appdata"
 ## pull and execute initial image
   $(which docker) pull -q ghcr.io/dockserver/docker-create:latest && \
-    $(which docker) run -it --rm \
+  $(which docker) run -it --rm \
     --name dockserver-create \
-    -v /opt/appdata:/opt/appdata \
+    -v $basefolder:$basefolder \
     -v $DOCKER_HOST/$DOCKER_HOST \
     docker.dockserver.io/dockserver/docker-create:latest && clear
 
-DOMAIN=$($(which cat) /opt/appdata/compose/.env | grep "DOMAIN" | tail -n1 | awk -F"=" '{print $2}')
+## wait until create is done ##
+
+DOMAIN=$($(which cat) $basefolder/compose/.env | grep "DOMAIN" | tail -n1 | awk -F"=" '{print $2}')
 if ! grep $DOMAIN /etc/hosts >/dev/null 2>&1; then
   $(which echo) "Adding $DOMAINA to /etc/hosts...." && \
     echo "127.0.0.1 *.$DOMAIN $DOMAIN" | tee -a /etc/hosts > /dev/null
 fi
 
-if test -f "/opt/appdata/compose/docker-compose.yml"; then
+if test -f "$basefolder/compose/docker-compose.yml"; then
   $(which cd) $PWD && \
-    $(which cd) /opt/appdata/compose/ && \
-      $(which docker compose) up -d --force-recreate && \
-        $(which cd) $PWD
+    $(which docker compose) -f $basefolder/compose/docker-compose.yml --env-file $basefolder/compose/.env up -d --force-recreate
 fi
 
 check=$($(which docker) ps -aq --format '{{.Names}}' | grep -x 'traefik')
