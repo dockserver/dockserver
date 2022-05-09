@@ -18,17 +18,26 @@ if [[ $EUID != 0 ]]; then
     sudo "$0" "$@" && exit $?
 fi
 
-source /opt/dockserver/function/function.sh
+function shoeui() {
 
-APP=${@:2}
-case "$1" in
-  -i|--install ) clear && run ;;
-  -u|--update ) clear && update ;;
-  -a|--app ) clear && fastapp ;;
-  -h|--help ) clear && usage ;;
-  -r|--reconnect ) clear && recon ;;
-  -p|--preinstall ) clear && preinstall ;;
-  *) clear && updatebin && run ;;
-esac
+check=$($(which docker) ps -aq --format '{{.Names}}' | grep -x 'traefik')
+if [[ $check == "" ]]; then
+   RUN=$(curl -s http://whatismijnip.nl | cut -d " " -f 5)
+     FINAL=$(echo http://$RUN:5000)
+else
+   RUN=$($(which cat) /opt/appdata/compose/.env | grep "DOMAIN" | tail -n1 | awk -F"=" '{print $2}')
+     FINAL=$(echo https://webui.$RUN)
+fi
+printf "
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    🚀    DockServer WebUI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+     dockserver webui : ${FINAL}
+     from the dockserver-ui you can deploy all apps
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+"   
+}
+shoeui
 #E-o-F#
