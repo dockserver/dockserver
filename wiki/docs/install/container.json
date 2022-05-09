@@ -491,6 +491,16 @@
    "user": "dockserver image update[bot]"
 }
 {
+   "appname": "docker-config",
+   "apppic": "./images/docker-config.png",
+   "appfolder": "./base/docker-config",
+   "newversion": "3.15.4",
+   "baseimage": "alpine",
+   "description": " !!! DEVERLOP STATUS !!! DO NOT TRY TO PULL THE IMAGE YOU NEED ACCESS TO THE REPOSITORY",
+   "body": "Upgrading docker-config to 3.15.4",
+   "user": "github-actions[bot]"
+}
+{
    "appname": "docker-create",
    "apppic": "./images/docker-create.png",
    "appfolder": "./base/docker-create",
@@ -589,11 +599,11 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "4.2.0.6246",
+   "newversion": "4.2.0.6253",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to 4.2.0.6246",
+   "body": "Upgrading docker-radarr-nightly to 4.2.0.6253",
    "user": "github-actions[bot]"
 }
 {
