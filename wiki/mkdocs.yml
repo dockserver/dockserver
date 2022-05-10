@@ -195,7 +195,7 @@ nav:
           - diun: apps/addons/diun.md
           - Dozzle: apps/addons/dozzle.md
           - Heimdall: apps/addons/heimdall.md
-          - Kintana: apps/addons/kitana.md
+          - Kitana: apps/addons/kitana.md
           - Librespeed: apps/addons/librespeed.md
           - NetData: apps/addons/netdata.md
           - NotiFiarr: apps/addons/notifiarr.md
