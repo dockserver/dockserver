@@ -131,11 +131,11 @@
    "appname": "docker-embystat",
    "apppic": "./images/docker-embystat.png",
    "appfolder": "./apps/docker-embystat",
-   "newversion": "0.2.0-beta.29",
+   "newversion": "0.2.0-beta.26",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "null",
-   "body": "Upgrading docker-embystat to 0.2.0-beta.29",
+   "body": "Upgrading docker-embystat to 0.2.0-beta.26",
    "user": "github-actions[bot]"
 }
 {
@@ -154,10 +154,10 @@
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "384.0.1-alpine",
+   "newversion": "385.0.0-alpine",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to 384.0.1-alpine",
+   "body": "Upgrading docker-gdsa to 385.0.0-alpine",
    "user": "github-actions[bot]"
 }
 {
@@ -277,11 +277,11 @@
    "appname": "docker-overseerr",
    "apppic": "./images/docker-overseerr.png",
    "appfolder": "./apps/docker-overseerr",
-   "newversion": "1.29.1",
+   "newversion": "1.29.0",
    "appbranch": "",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr to 1.29.1",
+   "body": "Upgrading docker-overseerr to 1.29.0",
    "user": "github-actions[bot]"
 }
 {
@@ -610,20 +610,20 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "da961b77227a27ce592cd8094b7591125437412b",
+   "newversion": "dadf1bdcc1fa6b9dfb6fca53df0e641e9c17261e",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to da961b77227a27ce592cd8094b7591125437412b",
+   "body": "Upgrading docker-sabnzbd-nightly to dadf1bdcc1fa6b9dfb6fca53df0e641e9c17261e",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-sonarr-nightly",
    "apppic": "./images/docker-sonarr-nightly.png",
    "appfolder": "./nightly/docker-sonarr-nightly",
-   "newversion": "3.0.8.1518",
+   "newversion": "3.0.8.1519",
    "appbranch": "develop",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr-nightly to 3.0.8.1518",
+   "body": "Upgrading docker-sonarr-nightly to 3.0.8.1519",
    "user": "github-actions[bot]"
 }
 {
