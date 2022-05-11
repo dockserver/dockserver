@@ -145,9 +145,9 @@
    "newversion": "3.15.4",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "42085f832dea3e426a106f0ca3ed36769529d05c",
+   "appversion": "c1035c3af981178df84df6b045371fada9c70be6",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to 42085f832dea3e426a106f0ca3ed36769529d05c",
+   "body": "Upgrading docker-fenrus to c1035c3af981178df84df6b045371fada9c70be6",
    "user": "github-actions[bot]"
 }
 {
@@ -164,11 +164,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.1043",
+   "newversion": "0.20.1047",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.1043",
+   "body": "Upgrading docker-jackett to 0.20.1047",
    "user": "github-actions[bot]"
 }
 {
@@ -277,11 +277,11 @@
    "appname": "docker-overseerr",
    "apppic": "./images/docker-overseerr.png",
    "appfolder": "./apps/docker-overseerr",
-   "newversion": "1.29.0",
+   "newversion": "1.29.1",
    "appbranch": "",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr to 1.29.0",
+   "body": "Upgrading docker-overseerr to 1.29.1",
    "user": "github-actions[bot]"
 }
 {
@@ -299,11 +299,11 @@
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "0.3.1.1758",
+   "newversion": "0.4.0.1763",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 0.3.1.1758",
+   "body": "Upgrading docker-prowlarr to 0.4.0.1763",
    "user": "github-actions[bot]"
 }
 {
