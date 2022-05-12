@@ -142,7 +142,7 @@
    "appname": "docker-fenrus",
    "apppic": "./images/docker-fenrus.png",
    "appfolder": "./apps/docker-fenrus",
-   "newversion": "3.15.4",
+   "newversion": "",
    "appbranch": "master",
    "baseimage": "alpine",
    "appversion": "c1035c3af981178df84df6b045371fada9c70be6",
@@ -164,11 +164,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.1047",
+   "newversion": "0.20.1050",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.1047",
+   "body": "Upgrading docker-jackett to 0.20.1050",
    "user": "github-actions[bot]"
 }
 {
@@ -299,11 +299,11 @@
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "0.4.0.1763",
+   "newversion": "0.4.0.1764",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 0.4.0.1763",
+   "body": "Upgrading docker-prowlarr to 0.4.0.1764",
    "user": "github-actions[bot]"
 }
 {
@@ -599,21 +599,21 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "4.2.0.6256",
+   "newversion": "4.2.0.6257",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to 4.2.0.6256",
+   "body": "Upgrading docker-radarr-nightly to 4.2.0.6257",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "b42e600285b663d69487372163f364775dbaa775",
+   "newversion": "64bf7d541e70545694adf6409d627065b9e99830",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to b42e600285b663d69487372163f364775dbaa775",
+   "body": "Upgrading docker-sabnzbd-nightly to 64bf7d541e70545694adf6409d627065b9e99830",
    "user": "github-actions[bot]"
 }
 {
