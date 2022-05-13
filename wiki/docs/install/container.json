@@ -145,9 +145,9 @@
    "newversion": "3.15.4",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "c1035c3af981178df84df6b045371fada9c70be6",
+   "appversion": "6d163ea39cd26a38753a1bd5a6a3024d9e8bf471",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to c1035c3af981178df84df6b045371fada9c70be6",
+   "body": "Upgrading docker-fenrus to 6d163ea39cd26a38753a1bd5a6a3024d9e8bf471",
    "user": "github-actions[bot]"
 }
 {
@@ -164,11 +164,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.1050",
+   "newversion": "0.20.1053",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.1050",
+   "body": "Upgrading docker-jackett to 0.20.1053",
    "user": "github-actions[bot]"
 }
 {
@@ -299,11 +299,11 @@
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "0.4.0.1764",
+   "newversion": "0.4.0.1765",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 0.4.0.1764",
+   "body": "Upgrading docker-prowlarr to 0.4.0.1765",
    "user": "github-actions[bot]"
 }
 {
@@ -599,11 +599,11 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "4.2.0.6257",
+   "newversion": "4.2.0.6264",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to 4.2.0.6257",
+   "body": "Upgrading docker-radarr-nightly to 4.2.0.6264",
    "user": "github-actions[bot]"
 }
 {
