@@ -54,11 +54,11 @@
    "appname": "docker-dash",
    "apppic": "",
    "appfolder": "./apps/docker-dash",
-   "newversion": "1054b4e2d7262d841fa83cde624f1138ad7bd23a",
+   "newversion": "14519ef5559038b0d9d037a2bdc5d98e63c9db6f",
    "baseimage": "alpine",
    "baseversion": "3.15.4",
    "description": "A simple, modern server dashboard, primarily used by smaller private servers",
-   "body": "Upgrading docker-dash to 1054b4e2d7262d841fa83cde624f1138ad7bd23a",
+   "body": "Upgrading docker-dash to 14519ef5559038b0d9d037a2bdc5d98e63c9db6f",
    "user": "dockserver-image[bot]"
 }
 {
@@ -299,11 +299,11 @@
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "0.4.0.1765",
+   "newversion": "0.4.0.1766",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 0.4.0.1765",
+   "body": "Upgrading docker-prowlarr to 0.4.0.1766",
    "user": "github-actions[bot]"
 }
 {
@@ -588,32 +588,32 @@
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "1054b4e2d7262d841fa83cde624f1138ad7bd23a",
+   "newversion": "14519ef5559038b0d9d037a2bdc5d98e63c9db6f",
    "appbranch": "develop",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to 1054b4e2d7262d841fa83cde624f1138ad7bd23a",
+   "body": "Upgrading docker-overseerr-nightly to 14519ef5559038b0d9d037a2bdc5d98e63c9db6f",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "4.2.0.6264",
+   "newversion": "4.2.0.6269",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to 4.2.0.6264",
+   "body": "Upgrading docker-radarr-nightly to 4.2.0.6269",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "f3a2e54e61cae2e9f15fa36f35e685ebeb3c4180",
+   "newversion": "81d27ece5488c1c627b140c71bd8a01bf4546c47",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to f3a2e54e61cae2e9f15fa36f35e685ebeb3c4180",
+   "body": "Upgrading docker-sabnzbd-nightly to 81d27ece5488c1c627b140c71bd8a01bf4546c47",
    "user": "github-actions[bot]"
 }
 {
@@ -630,10 +630,10 @@
    "appname": "docker-whisparr-nightly",
    "apppic": "./images/docker-whisparr-nightly.png",
    "appfolder": "./nightly/docker-whisparr-nightly",
-   "newversion": "0.1.0.34",
+   "newversion": "0.1.0.35",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Whisparr is an adult movie collection manager for Usenet and BitTorrent users.",
-   "body": "Upgrading docker-whisparr-nightly to 0.1.0.34",
+   "body": "Upgrading docker-whisparr-nightly to 0.1.0.35",
    "user": "github-actions[bot]"
 }
