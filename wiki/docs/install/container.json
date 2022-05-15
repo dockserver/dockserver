@@ -12,10 +12,10 @@
    "appname": "docker-backup",
    "apppic": "./images/docker-backup.png",
    "appfolder": "./apps/docker-backup",
-   "newversion": "3.15.4",
+   "newversion": "",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading docker-backup to 3.15.4",
+   "body": "Upgrading docker-backup to ",
    "user": "github-actions[bot]"
 }
 {

@@ -1,3 +1,3 @@
 
-## 2022-05-14
- * Update 89-hama (doob187)
+## 2022-05-15
+ * Update docker-emby.sh (doob187)
