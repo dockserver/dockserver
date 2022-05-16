@@ -3,8 +3,8 @@ version: "3"
 services:
   librespeed:
     hostname: "librespeed"
-    image: "lscr.io/linuxserver/librespeed"
     container_name: "librespeed"
+    image: "lscr.io/linuxserver/librespeed:latest"
     restart: "${RESTARTAPP}"
     environment:
       - "PGID=${ID}"
@@ -13,7 +13,7 @@ services:
       - "UMASK=${UMASK}"
       - "CUSTOM_RESULTS=true"
     volumes:
-      - librespeed:/config
+      - "${APPFOLDER}/librespeed:/config
     networks:
       - ${DOCKERNETWORK}
     labels:
@@ -31,5 +31,3 @@ networks:
   proxy:
     driver: bridge
     external: true
-volumes:
-  librespeed:
