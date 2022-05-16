@@ -131,11 +131,11 @@
    "appname": "docker-embystat",
    "apppic": "./images/docker-embystat.png",
    "appfolder": "./apps/docker-embystat",
-   "newversion": "0.2.0-beta.26",
+   "newversion": "0.2.0-beta.30",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "null",
-   "body": "Upgrading docker-embystat to 0.2.0-beta.26",
+   "body": "Upgrading docker-embystat to 0.2.0-beta.30",
    "user": "github-actions[bot]"
 }
 {
@@ -164,11 +164,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.1062",
+   "newversion": "0.20.1066",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.1062",
+   "body": "Upgrading docker-jackett to 0.20.1066",
    "user": "github-actions[bot]"
 }
 {
@@ -610,10 +610,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "81d27ece5488c1c627b140c71bd8a01bf4546c47",
+   "newversion": "51ce7b657c9540967799b2b4676bbe511606d501",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 81d27ece5488c1c627b140c71bd8a01bf4546c47",
+   "body": "Upgrading docker-sabnzbd-nightly to 51ce7b657c9540967799b2b4676bbe511606d501",
    "user": "github-actions[bot]"
 }
 {
