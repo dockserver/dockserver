@@ -13,7 +13,7 @@ services:
       - "UMASK=${UMASK}"
       - "CUSTOM_RESULTS=true"
     volumes:
-      - "${APPFOLDER}/librespeed:/config
+      - "${APPFOLDER}/librespeed:/config"
     networks:
       - ${DOCKERNETWORK}
     labels:
