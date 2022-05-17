@@ -18,7 +18,7 @@ services:
       - "TZ=${TZ}"
       - "UMASK=${UMASK}"
     volumes:
-      - "netdataconfig:/etc/netdata"
+      - "${APPFOLDER}/netdata:/etc/netdata"
       - "netdatalib:/var/lib/netdata"
       - "netdatacache:/var/cache/netdata"
       - "/etc/passwd:/host/etc/passwd:ro"
@@ -39,7 +39,6 @@ services:
       - "traefik.http.routers.netdata-rtr.service=netdata-svc"
       - "traefik.http.services.netdata-svc.loadbalancer.server.port=19999"
 volumes:
-  netdataconfig:
   netdatalib:
   netdatacache:
 networks:
