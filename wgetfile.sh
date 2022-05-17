@@ -57,7 +57,7 @@ unset packages
 
 log "**** remove old links  ****"
 remove="/bin/dockserver /usr/bin/dockserver"
-for rmold in ${packages}; do
+for rmold in ${remove}; do
     sudo $(command -v rm) -rf $rmold 1>/dev/null 2>&1
 done
 unset remove
@@ -95,8 +95,8 @@ if [[ $EUID != 0 ]]; then
     $(which cp) /opt/dockserver/.installer/dockserver /usr/bin/dockserver
     $(which ln) -sf /usr/bin/dockserver /bin/dockserver
     $(which chmod) +x /usr/bin/dockserver
-    $(which chown) $(whoami):$(whoami) /usr/bin/dockserver 
-else 
+    $(which chown) $(whoami):$(whoami) /usr/bin/dockserver
+else
     $(which chown) -R 1000:1000 /opt/dockserver
     $(which cp) /opt/dockserver/.installer/dockserver /usr/bin/dockserver
     $(which ln) -sf /usr/bin/dockserver /bin/dockserver
@@ -113,7 +113,7 @@ printf "
      all commands
      [ sudo ] dockserver -h / --help
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-" 
+"
 }
 
 #### run in order

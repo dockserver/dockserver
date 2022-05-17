@@ -226,7 +226,7 @@ if [[ "$(systemd-detect-virt)" == "lxc" ]]; then
 fi
 
 [[ ! -d "/opt/dockserver" ]] && $(which mkdir) -p /opt/dockserver
-
+dockserver=/opt/dockserver
 while true; do
    if [ "$(ls -A $dockserver)" ]; then
       rmdocker && sleep 3 && break
