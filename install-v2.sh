@@ -42,8 +42,8 @@ function pulldockserver() {
 
 function checksys() {
    distribution=$(. /etc/os-release;echo $ID)
-   case "$(distribution)" in
-      ubuntu|debian|rasbian) upsysubu && dockinst && dockcomp && makefolder  ;;
+   case "$distribution" in
+      ubuntu|debian|rasbian) upsysubu && dockinst && dockcomp && makefolder ;;
       ##*) upsysanother ;;
       *) echo 'You are using an unsupported operating system.' && sleep 10 && exit 0 ;;
    esac
@@ -96,7 +96,7 @@ $(which usermod) -aG docker $(whoami)
     $(which systemctl) enable docker.service &>/dev/null
       $(which curl) --silent -fsSL https://raw.githubusercontent.com/MatchbookLab/local-persist/master/scripts/install.sh | bash &>/dev/null
         $(which docker) volume create -d local-persist -o mountpoint=/mnt --name=unionfs && \
-          $(which docker) network create --driver=bridge proxy &>/dev/null && \
+          $(which docker) network create --driver=bridge proxy &>/dev/null
 }
 
 function dockcomp() {
@@ -140,7 +140,7 @@ folder="/mnt"
 
 basefolder="/opt/appdata"
   $(which mkdir) -p $basefolder/{compose,system,traefik,authelia}
-  $(which find) $basefolder -exec $(command -v chmod) a=rx,u+w {} \; 
+  $(which find) $basefolder -exec $(command -v chmod) a=rx,u+w {} \;
     $(which find) $basefolder -exec $(command -v chown) -hR 1000:1000 {} \;
       $(which find) $folder -exec $(which chmod) a=rx,u+w {} \;
         $(which find) $folder -exec $(which chown) -hR 1000:1000 {} \;
@@ -156,8 +156,8 @@ if [[ $EUID != 0 ]]; then
         $(which cp) /opt/dockserver/.installer/dockserver /usr/bin/dockserver
           $(which ln) -sf /usr/bin/dockserver /bin/dockserver
             $(which chmod) a+x /usr/bin/dockserver
-              $(which chown) $(whoami):$(whoami) /usr/bin/dockserver 
-else 
+              $(which chown) $(whoami):$(whoami) /usr/bin/dockserver
+else
     $(which chown) -R 1000:1000 /opt/dockserver
       $(which cp) /opt/dockserver/.installer/dockserver /usr/bin/dockserver
         $(which ln) -sf /usr/bin/dockserver /bin/dockserver
@@ -168,7 +168,7 @@ fi
 ## Add PROXY socket option when user want int
 ## fallback when it's not running
 
-socket-proxy=$($(which docker) ps -aq --format '{{.Names}}' | grep -x '*socket-proxy*')
+installed=$($(which docker) ps -aq --format '{{.Names}}' | grep -x '*socket-proxy*')
 if [[ $installed == "" ]]; then
    DOCKER_HOST=/var/run/docker.sock
 else
@@ -188,7 +188,7 @@ basefolder="/opt/appdata"
 
 DOMAIN=$($(which cat) $basefolder/compose/.env | grep "DOMAIN" | tail -n1 | awk -F"=" '{print $2}')
 if ! grep $DOMAIN /etc/hosts >/dev/null 2>&1; then
-  $(which echo) "Adding $DOMAINA to /etc/hosts...." && \
+  $(which echo) "Adding $DOMAIN to /etc/hosts...." && \
     echo "127.0.0.1 *.$DOMAIN $DOMAIN" | tee -a /etc/hosts > /dev/null
 fi
 
@@ -215,7 +215,7 @@ printf "
 
      from the dockserver-ui you can deploy the rest
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-" 
+"
 }
 
 checksys
@@ -226,7 +226,7 @@ if [[ "$(systemd-detect-virt)" == "lxc" ]]; then
 fi
 
 [[ ! -d "/opt/dockserver" ]] && $(which mkdir) -p /opt/dockserver
-
+dockserver=/opt/dockserver
 while true; do
    if [ "$(ls -A $dockserver)" ]; then
       rmdocker && sleep 3 && break
