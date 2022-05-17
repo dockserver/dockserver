@@ -13,7 +13,7 @@
 # NO CODE MIRRORING IS ALLOWED      #
 #####################################
 function reconnect() {
-mapfile -t dockers < <(evaldocker ps -aq --format='{{.Names}}' | sort -u)
+mapfile -t dockers < <(eval docker ps -aq --format='{{.Names}}' | sort -u)
 for rec in ${dockers[@]}; do
     $(which docker) stop $rec &>/dev/null
     if [[ $rec == "mount" ]]; then
