@@ -22,6 +22,7 @@ services:
       - "/mnt:/mnt:shared"
     labels:
       - "dockupdater.disable=true"
+      - "com.centurylinklabs.watchtower.enable=false"
 networks:
   proxy:
     driver: bridge
