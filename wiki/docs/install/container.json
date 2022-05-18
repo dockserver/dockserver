@@ -131,11 +131,11 @@
    "appname": "docker-embystat",
    "apppic": "./images/docker-embystat.png",
    "appfolder": "./apps/docker-embystat",
-   "newversion": "0.2.0-beta.30",
+   "newversion": "0.2.0-beta.31",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "null",
-   "body": "Upgrading docker-embystat to 0.2.0-beta.30",
+   "body": "Upgrading docker-embystat to 0.2.0-beta.31",
    "user": "github-actions[bot]"
 }
 {
@@ -164,11 +164,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.1071",
+   "newversion": "0.20.1076",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.1071",
+   "body": "Upgrading docker-jackett to 0.20.1076",
    "user": "github-actions[bot]"
 }
 {
@@ -525,10 +525,10 @@
    "appname": "docker-haproxy",
    "apppic": "./images/docker-haproxy.png",
    "appfolder": "./base/docker-haproxy",
-   "newversion": "2.5.6-alpine3.15",
+   "newversion": "2.5.7-alpine3.15",
    "baseimage": "haproxy",
    "description": "HAProxy Load Balancer's development branch (mirror of git.haproxy.org)",
-   "body": "Upgrading docker-haproxy to 2.5.6-alpine3.15",
+   "body": "Upgrading docker-haproxy to 2.5.7-alpine3.15",
    "user": "github-actions[bot]"
 }
 {
@@ -610,10 +610,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "a68ab27baccaa96b0c422439537c04ec1507a2cf",
+   "newversion": "39eb594e129dae540649dabca08994845ea4704f",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to a68ab27baccaa96b0c422439537c04ec1507a2cf",
+   "body": "Upgrading docker-sabnzbd-nightly to 39eb594e129dae540649dabca08994845ea4704f",
    "user": "github-actions[bot]"
 }
 {
