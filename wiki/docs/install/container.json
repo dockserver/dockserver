@@ -120,11 +120,11 @@
    "appname": "docker-emby",
    "apppic": "./images/docker-emby.png",
    "appfolder": "./apps/docker-emby",
-   "newversion": "4.6.7.0",
+   "newversion": "4.7.0.60",
    "appbranch": "master",
    "baseimage": "",
    "description": "Docker Container for Emby Server",
-   "body": "Upgrading docker-emby to 4.6.7.0",
+   "body": "Upgrading docker-emby to 4.7.0.60",
    "user": "github-actions[bot]"
 }
 {
@@ -154,10 +154,10 @@
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "385.0.0-alpine",
+   "newversion": "386.0.0-alpine",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to 385.0.0-alpine",
+   "body": "Upgrading docker-gdsa to 386.0.0-alpine",
    "user": "github-actions[bot]"
 }
 {
