@@ -145,9 +145,9 @@
    "newversion": "3.15.4",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "0b1766f8363a0f492799fdac12be94558167043e",
+   "appversion": "cf716e610144beb9e324dc43b8470baebc0cee03",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to 0b1766f8363a0f492799fdac12be94558167043e",
+   "body": "Upgrading docker-fenrus to cf716e610144beb9e324dc43b8470baebc0cee03",
    "user": "github-actions[bot]"
 }
 {
@@ -164,11 +164,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.1088",
+   "newversion": "0.20.1092",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.1088",
+   "body": "Upgrading docker-jackett to 0.20.1092",
    "user": "github-actions[bot]"
 }
 {
