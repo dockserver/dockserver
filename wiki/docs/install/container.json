@@ -610,20 +610,20 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "8fa77691d058981e44cdab0e6fdefe4bf1234047",
+   "newversion": "5c15747d6235b3fef872ee0db0bb2602da66f31b",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 8fa77691d058981e44cdab0e6fdefe4bf1234047",
+   "body": "Upgrading docker-sabnzbd-nightly to 5c15747d6235b3fef872ee0db0bb2602da66f31b",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-sonarr-nightly",
    "apppic": "./images/docker-sonarr-nightly.png",
    "appfolder": "./nightly/docker-sonarr-nightly",
-   "newversion": "3.0.8.1520",
+   "newversion": "3.0.8.1523",
    "appbranch": "develop",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr-nightly to 3.0.8.1520",
+   "body": "Upgrading docker-sonarr-nightly to 3.0.8.1523",
    "user": "github-actions[bot]"
 }
 {
