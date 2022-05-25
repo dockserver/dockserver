@@ -120,11 +120,11 @@
    "appname": "docker-emby",
    "apppic": "./images/docker-emby.png",
    "appfolder": "./apps/docker-emby",
-   "newversion": "4.7.0.60",
+   "newversion": "4.7.1.0",
    "appbranch": "master",
    "baseimage": "",
    "description": "Docker Container for Emby Server",
-   "body": "Upgrading docker-emby to 4.7.0.60",
+   "body": "Upgrading docker-emby to 4.7.1.0",
    "user": "github-actions[bot]"
 }
 {
@@ -154,10 +154,10 @@
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "386.0.0-alpine",
+   "newversion": "387.0.0-alpine",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to 386.0.0-alpine",
+   "body": "Upgrading docker-gdsa to 387.0.0-alpine",
    "user": "github-actions[bot]"
 }
 {
@@ -288,11 +288,11 @@
    "appname": "docker-plex",
    "apppic": "./images/docker-plex.png",
    "appfolder": "./apps/docker-plex",
-   "newversion": "1.26.1.5798-99a4a6ac9",
+   "newversion": "1.26.2.5797-5bd057d2b",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:jammy",
    "description": "Docker Container for Plex Media Server",
-   "body": "Upgrading docker-plex to 1.26.1.5798-99a4a6ac9",
+   "body": "Upgrading docker-plex to 1.26.2.5797-5bd057d2b",
    "user": "github-actions[bot]"
 }
 {
@@ -610,10 +610,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "5c15747d6235b3fef872ee0db0bb2602da66f31b",
+   "newversion": "cd337cb1643615d481aed9a57ddbd139edb307d4",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 5c15747d6235b3fef872ee0db0bb2602da66f31b",
+   "body": "Upgrading docker-sabnzbd-nightly to cd337cb1643615d481aed9a57ddbd139edb307d4",
    "user": "github-actions[bot]"
 }
 {
