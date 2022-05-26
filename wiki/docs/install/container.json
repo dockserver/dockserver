@@ -164,11 +164,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.1102",
+   "newversion": "0.20.1104",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.1102",
+   "body": "Upgrading docker-jackett to 0.20.1104",
    "user": "github-actions[bot]"
 }
 {
@@ -610,10 +610,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "cd337cb1643615d481aed9a57ddbd139edb307d4",
+   "newversion": "19fc60a1d8562800cba353baa2bb66e7f0597629",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to cd337cb1643615d481aed9a57ddbd139edb307d4",
+   "body": "Upgrading docker-sabnzbd-nightly to 19fc60a1d8562800cba353baa2bb66e7f0597629",
    "user": "github-actions[bot]"
 }
 {
