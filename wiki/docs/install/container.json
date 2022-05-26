@@ -54,11 +54,11 @@
    "appname": "docker-dash",
    "apppic": "",
    "appfolder": "./apps/docker-dash",
-   "newversion": "90095bb18548dfd663a78df1908c40dbf2f99faf",
+   "newversion": "db05172d8b924a591ece4fae72d076eb59ee5f82",
    "baseimage": "alpine",
    "baseversion": "3.16.0",
    "description": "A simple, modern server dashboard, primarily used by smaller private servers",
-   "body": "Upgrading docker-dash to 90095bb18548dfd663a78df1908c40dbf2f99faf",
+   "body": "Upgrading docker-dash to db05172d8b924a591ece4fae72d076eb59ee5f82",
    "user": "dockserver-image[bot]"
 }
 {
@@ -343,11 +343,11 @@
    "appname": "docker-readarr",
    "apppic": "./images/docker-readarr.png",
    "appfolder": "./apps/docker-readarr",
-   "newversion": "0.1.1.1323",
+   "newversion": "0.1.1.1337",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-readarr to 0.1.1.1323",
+   "body": "Upgrading docker-readarr to 0.1.1.1337",
    "user": "github-actions[bot]"
 }
 {
@@ -588,11 +588,11 @@
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "90095bb18548dfd663a78df1908c40dbf2f99faf",
+   "newversion": "db05172d8b924a591ece4fae72d076eb59ee5f82",
    "appbranch": "develop",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to 90095bb18548dfd663a78df1908c40dbf2f99faf",
+   "body": "Upgrading docker-overseerr-nightly to db05172d8b924a591ece4fae72d076eb59ee5f82",
    "user": "github-actions[bot]"
 }
 {
