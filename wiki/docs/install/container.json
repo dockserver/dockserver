@@ -12,10 +12,10 @@
    "appname": "docker-backup",
    "apppic": "./images/docker-backup.png",
    "appfolder": "./apps/docker-backup",
-   "newversion": "",
+   "newversion": "3.16.0",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading docker-backup to ",
+   "body": "Upgrading docker-backup to 3.16.0",
    "user": "github-actions[bot]"
 }
 {
@@ -54,11 +54,11 @@
    "appname": "docker-dash",
    "apppic": "",
    "appfolder": "./apps/docker-dash",
-   "newversion": "c3454683cb6356ab503afa1f28946b01df145303",
+   "newversion": "2b16577e41575c54f1173d7ecbeb5f001b807e19",
    "baseimage": "alpine",
    "baseversion": "3.16.0",
    "description": "A simple, modern server dashboard, primarily used by smaller private servers",
-   "body": "Upgrading docker-dash to c3454683cb6356ab503afa1f28946b01df145303",
+   "body": "Upgrading docker-dash to 2b16577e41575c54f1173d7ecbeb5f001b807e19",
    "user": "dockserver-image[bot]"
 }
 {
@@ -620,10 +620,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "c80012e3674caa529d0768653a4b9ba3332f556f",
+   "newversion": "8baab13192b733d48618ad035795f5cbe823efd8",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to c80012e3674caa529d0768653a4b9ba3332f556f",
+   "body": "Upgrading docker-sabnzbd-nightly to 8baab13192b733d48618ad035795f5cbe823efd8",
    "user": "github-actions[bot]"
 }
 {
