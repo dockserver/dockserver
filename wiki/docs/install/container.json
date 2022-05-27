@@ -310,12 +310,12 @@
    "appname": "docker-qbittorrent",
    "apppic": "./images/docker-qbittorrent.png",
    "appfolder": "./apps/docker-qbittorrent",
-   "newversion": "4.4.3-r0",
+   "newversion": "4.4.3.1-r0",
    "appversion": "1.7",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-alpine:edge",
    "description": "Cli to manage qBittorrent",
-   "body": "Upgrading docker-qbittorrent to 4.4.3-r0 with 1.7",
+   "body": "Upgrading docker-qbittorrent to 4.4.3.1-r0 with 1.7",
    "user": "github-actions[bot]"
 }
 {
@@ -620,10 +620,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "19fc60a1d8562800cba353baa2bb66e7f0597629",
+   "newversion": "c80012e3674caa529d0768653a4b9ba3332f556f",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 19fc60a1d8562800cba353baa2bb66e7f0597629",
+   "body": "Upgrading docker-sabnzbd-nightly to c80012e3674caa529d0768653a4b9ba3332f556f",
    "user": "github-actions[bot]"
 }
 {
