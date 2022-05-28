@@ -56,7 +56,7 @@
    "appfolder": "./apps/docker-dash",
    "newversion": "2b16577e41575c54f1173d7ecbeb5f001b807e19",
    "baseimage": "alpine",
-   "baseversion": "",
+   "baseversion": "3.16.0",
    "description": "A simple, modern server dashboard, primarily used by smaller private servers",
    "body": "Upgrading docker-dash to 2b16577e41575c54f1173d7ecbeb5f001b807e19",
    "user": "dockserver-image[bot]"
@@ -164,11 +164,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.1108",
+   "newversion": "0.20.1117",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.1108",
+   "body": "Upgrading docker-jackett to 0.20.1117",
    "user": "github-actions[bot]"
 }
 {
