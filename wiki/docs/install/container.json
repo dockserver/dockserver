@@ -56,7 +56,7 @@
    "appfolder": "./apps/docker-dash",
    "newversion": "2b16577e41575c54f1173d7ecbeb5f001b807e19",
    "baseimage": "alpine",
-   "baseversion": "3.16.0",
+   "baseversion": "",
    "description": "A simple, modern server dashboard, primarily used by smaller private servers",
    "body": "Upgrading docker-dash to 2b16577e41575c54f1173d7ecbeb5f001b807e19",
    "user": "dockserver-image[bot]"
@@ -437,10 +437,10 @@
    "appname": "docker-vnstat",
    "apppic": "",
    "appfolder": "./apps/docker-vnstat",
-   "newversion": "22.2.11",
+   "newversion": "22.5.28",
    "finalimage": "node:alpine3.15",
    "description": "GUI Client for vnStat Network Monitor for Linux or GNU/Linux",
-   "body": "Upgrading docker-vnstat to 22.2.11",
+   "body": "Upgrading docker-vnstat to 22.5.28",
    "user": "dockserver-image[bot]"
 }
 {
