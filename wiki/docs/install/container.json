@@ -194,6 +194,17 @@
    "user": "github-actions[bot]"
 }
 {
+   "appname": "docker-jellyseerr",
+   "apppic": "./images/docker-jellyseerr.png",
+   "appfolder": "./apps/docker-jellyseerr",
+   "newversion": "1.1.0",
+   "appbranch": "",
+   "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
+   "description": "fork of overseerr for jellyfin support",
+   "body": "Upgrading docker-jellyseerr to 1.1.0",
+   "user": "github-actions[bot]"
+}
+{
    "appname": "docker-librespeed",
    "apppic": "./images/docker-librespeed.png",
    "appfolder": "./apps/docker-librespeed",
@@ -620,10 +631,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "392ae695d0608aedc7a322d1c0b57d77851eafa2",
+   "newversion": "5a7cff491d4acd82c5df2ceaecc2c7d957605f3d",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 392ae695d0608aedc7a322d1c0b57d77851eafa2",
+   "body": "Upgrading docker-sabnzbd-nightly to 5a7cff491d4acd82c5df2ceaecc2c7d957605f3d",
    "user": "github-actions[bot]"
 }
 {
