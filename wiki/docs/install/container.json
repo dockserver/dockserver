@@ -44,10 +44,10 @@
    "appname": "docker-cloudflared",
    "apppic": "./images/docker-cloudflared.png",
    "appfolder": "./apps/docker-cloudflared",
-   "newversion": "2022.5.1",
+   "newversion": "2022.5.2",
    "baseimage": "alpine",
    "description": "Cloudflare Tunnel client (formerly Argo Tunnel)",
-   "body": "Upgrading docker-cloudflared to 2022.5.1",
+   "body": "Upgrading docker-cloudflared to 2022.5.2",
    "user": "github-actions[bot]"
 }
 {
@@ -164,11 +164,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.1119",
+   "newversion": "0.20.1120",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.1119",
+   "body": "Upgrading docker-jackett to 0.20.1120",
    "user": "github-actions[bot]"
 }
 {
@@ -354,11 +354,11 @@
    "appname": "docker-readarr",
    "apppic": "./images/docker-readarr.png",
    "appfolder": "./apps/docker-readarr",
-   "newversion": "0.1.1.1337",
+   "newversion": "0.1.1.1352",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-readarr to 0.1.1.1337",
+   "body": "Upgrading docker-readarr to 0.1.1.1352",
    "user": "github-actions[bot]"
 }
 {
@@ -631,10 +631,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "5a7cff491d4acd82c5df2ceaecc2c7d957605f3d",
+   "newversion": "d4e10f32e70779c59f5c2d5b785306b3047df1e4",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 5a7cff491d4acd82c5df2ceaecc2c7d957605f3d",
+   "body": "Upgrading docker-sabnzbd-nightly to d4e10f32e70779c59f5c2d5b785306b3047df1e4",
    "user": "github-actions[bot]"
 }
 {
