@@ -51,6 +51,16 @@
    "user": "github-actions[bot]"
 }
 {
+   "appname": "docker-crunchy",
+   "apppic": "./images/docker-crunchy.png",
+   "appfolder": "./apps/docker-crunchy",
+   "newversion": "22.10",
+   "baseimage": "ubuntu",
+   "description": "Docker image  for docker-crunchy",
+   "body": "Upgrading docker-crunchy to baseimage: ubuntu:22.10",
+   "user": "dockserver image update[bot]"
+}
+{
    "appname": "docker-dash",
    "apppic": "",
    "appfolder": "./apps/docker-dash",
@@ -154,10 +164,10 @@
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "387.0.0-alpine",
+   "newversion": "388.0.0-alpine",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to 387.0.0-alpine",
+   "body": "Upgrading docker-gdsa to 388.0.0-alpine",
    "user": "github-actions[bot]"
 }
 {
@@ -415,10 +425,10 @@
    "appname": "docker-tautulli",
    "apppic": "./images/docker-tautulli.png",
    "appfolder": "./apps/docker-tautulli",
-   "newversion": "2.10.0",
+   "newversion": "2.10.1",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "A Python based monitoring and tracking tool for Plex Media Server.",
-   "body": "Upgrading docker-tautulli to 2.10.0",
+   "body": "Upgrading docker-tautulli to 2.10.1",
    "user": "github-actions[bot]"
 }
 {
