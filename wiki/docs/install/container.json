@@ -64,11 +64,11 @@
    "appname": "docker-dash",
    "apppic": "",
    "appfolder": "./apps/docker-dash",
-   "newversion": "61aa9f935f8395be76c79961e9a96e6f86c76062",
+   "newversion": "d319386c6bf72d67303d8361fec55c9da18810c3",
    "baseimage": "alpine",
    "baseversion": "3.16.0",
    "description": "A simple, modern server dashboard, primarily used by smaller private servers",
-   "body": "Upgrading docker-dash to 61aa9f935f8395be76c79961e9a96e6f86c76062",
+   "body": "Upgrading docker-dash to d319386c6bf72d67303d8361fec55c9da18810c3",
    "user": "dockserver-image[bot]"
 }
 {
