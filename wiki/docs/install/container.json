@@ -64,11 +64,11 @@
    "appname": "docker-dash",
    "apppic": "",
    "appfolder": "./apps/docker-dash",
-   "newversion": "d319386c6bf72d67303d8361fec55c9da18810c3",
+   "newversion": "20195c898e535e73c1a0bea6cf22b52bd659809f",
    "baseimage": "alpine",
    "baseversion": "3.16.0",
    "description": "A simple, modern server dashboard, primarily used by smaller private servers",
-   "body": "Upgrading docker-dash to d319386c6bf72d67303d8361fec55c9da18810c3",
+   "body": "Upgrading docker-dash to 20195c898e535e73c1a0bea6cf22b52bd659809f",
    "user": "dockserver-image[bot]"
 }
 {
@@ -471,7 +471,7 @@
    "appbranch": "master",
    "newversion": "3.16.0",
    "appversion": "1.4.25",
-   "wikiversion": "8.2.16",
+   "wikiversion": "8.3.0",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
    "body": "Upgrading docker-wiki to 3.16.0",
