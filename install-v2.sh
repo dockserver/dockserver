@@ -176,7 +176,7 @@ if [[ $check == "" ]]; then
    RUN=$($(which) curl) -fsSL http://whatismijnip.nl | $(which cut) -d " " -f 5)
      FINAL=$($(which echo) http://$RUN:5000)
 else
-   RUN=$($(which cat) /opt/appdata/compose/.env | $(which grep) "DOMAIN" | $(which tail) -n1 | $(which awk) -F"=" '{print $2}')
+   RUN=$($(which cat) $basefolder/compose/.env | $(which grep) "DOMAIN" | $(which tail) -n1 | $(which awk) -F"=" '{print $2}')
      FINAL=$($(which echo) https://ui.$RUN)
 fi
 progress "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
