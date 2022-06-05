@@ -80,7 +80,7 @@ dockserver="/opt/dockserver"
 envmigrate="$dockserver/apps/.subactions/envmigrate.sh"
 if [[ -f "$basefolder/compose/.env" ]];then
    $(which bash) $envmigrate
-fi 
+fi
 }
 
 function traefik() {
@@ -121,11 +121,11 @@ function overwrite() {
       done
       $(which rm) -rf $i/{authelia,traefik,compose}
       $(which mkdir) -p $i/{authelia,traefik,compose} $i/traefik/{rules,acme}
-      $(which find) $i/{authelia,traefik} -exec $(command -v chown) -hR 1000:1000 {} \;
+      $(which find) $i/{authelia,traefik} -exec $(which chown) -hR 1000:1000 {} \;
       $(which touch) $i/traefik/acme/acme.json $i/traefik/traefik.log $i/authelia/authelia.log
       $(which chmod) 600 $i/traefik/traefik.log $i/authelia/authelia.log $i/traefik/acme/acme.json
    done
-   $(command -v rsync) ${source} ${basefolder} -aqhv --exclude={'local','installer'}
+   $(which rsync) ${source} ${basefolder} -aqhv --exclude={'local','installer'}
    envmigra
    traefikinterface
 }
