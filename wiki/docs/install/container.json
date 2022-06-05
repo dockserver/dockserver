@@ -64,11 +64,11 @@
    "appname": "docker-crunchy-gui",
    "apppic": "./images/docker-crunchy-gui.png",
    "appfolder": "./apps/docker-crunchy-gui",
-   "newversion": "3.16.0",
-   "baseimage": "alpine",
-   "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading docker-crunchy-gui to 3.16.0",
-   "user": "github-actions[bot]"
+   "newversion": "3.0.7",
+   "baseimage": "ghcr.io/dockserver/docker-alpine-v3:latest",
+   "description": "",
+   "body": "Upgrading docker-crunchy-gui to 3.0.7",
+   "user": "dockserver-image[bot]"
 }
 {
    "appname": "docker-dash",
