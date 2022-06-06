@@ -66,8 +66,8 @@
    "appfolder": "./apps/docker-crunchydl",
    "newversion": "3.0.7",
    "appbranch": "master",
-   "baseimage": "node:17-bullseye-slim",
-   "description": "Docker Container for crunchyroll downloading Emby",
+   "baseimage": "alpine:latest",
+   "description": "Docker Container for crunchyroll download client",
    "body": "Upgrading docker-crunchydl to 3.0.7",
    "user": "dockserver-image[bot]"
 }
@@ -640,10 +640,10 @@
    "appname": "docker-whisparr-nightly",
    "apppic": "./images/docker-whisparr-nightly.png",
    "appfolder": "./nightly/docker-whisparr-nightly",
-   "newversion": "0.1.0.46",
+   "newversion": "0.1.0.47",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Whisparr is an adult movie collection manager for Usenet and BitTorrent users.",
-   "body": "Upgrading docker-whisparr-nightly to 0.1.0.46",
+   "body": "Upgrading docker-whisparr-nightly to 0.1.0.47",
    "user": "github-actions[bot]"
 }
