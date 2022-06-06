@@ -61,16 +61,6 @@
    "user": "dockserver image update[bot]"
 }
 {
-   "appname": "docker-crunchy-gui",
-   "apppic": "./images/docker-crunchy-gui.png",
-   "appfolder": "./apps/docker-crunchy-gui",
-   "newversion": "3.0.7",
-   "baseimage": "ghcr.io/dockserver/docker-alpine-v3:latest",
-   "description": "Download videos from Funimation via cli.",
-   "body": "Upgrading docker-crunchy-gui to 3.0.7",
-   "user": "dockserver-image[bot]"
-}
-{
    "appname": "docker-dash",
    "apppic": "",
    "appfolder": "./apps/docker-dash",
@@ -640,11 +630,11 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "4.2.0.6343",
+   "newversion": "4.2.0.6344",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to 4.2.0.6343",
+   "body": "Upgrading docker-radarr-nightly to 4.2.0.6344",
    "user": "github-actions[bot]"
 }
 {
