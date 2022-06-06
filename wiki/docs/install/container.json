@@ -61,6 +61,17 @@
    "user": "dockserver image update[bot]"
 }
 {
+   "appname": "docker-crunchydl",
+   "apppic": "./images/docker-crunchydl.png",
+   "appfolder": "./apps/docker-crunchydl",
+   "newversion": "3.0.7",
+   "appbranch": "master",
+   "baseimage": "node:17-bullseye-slim",
+   "description": "Docker Container for crunchyroll downloading Emby",
+   "body": "Upgrading docker-crunchydl to 3.0.7",
+   "user": "dockserver-image[bot]"
+}
+{
    "appname": "docker-dash",
    "apppic": "",
    "appfolder": "./apps/docker-dash",
