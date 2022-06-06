@@ -94,18 +94,6 @@
    "user": "github-actions[bot]"
 }
 {
-   "appname": "docker-dockserverupdate",
-   "apppic": "./images/docker-dockserverupdate.png",
-   "appfolder": "./apps/docker-dockserverupdate",
-   "appbranch": "master",
-   "newversion": "3.16.0",
-   "appversion": "3.16.0",
-   "baseimage": "alpine",
-   "description": "Docker + Traefik with Authelia and Cloudflare Protection",
-   "body": "Upgrading docker-dockserverupdate to 3.16.0",
-   "user": "github-actions[bot]"
-}
-{
    "appname": "docker-dockupdate",
    "apppic": "./images/docker-dockupdate.png",
    "appfolder": "./apps/docker-dockupdate",
@@ -158,16 +146,6 @@
    "appversion": "d138e13bd4bece3e9274fafe30b466a2dbefad14",
    "description": "A personal home page for quick access to all your personal apps/sites.",
    "body": "Upgrading docker-fenrus to d138e13bd4bece3e9274fafe30b466a2dbefad14",
-   "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-gdsa",
-   "apppic": "./images/docker-gdsa.png",
-   "appfolder": "./apps/docker-gdsa",
-   "newversion": "388.0.0-alpine",
-   "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
-   "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to 388.0.0-alpine",
    "user": "github-actions[bot]"
 }
 {
@@ -309,11 +287,11 @@
    "appname": "docker-plex",
    "apppic": "./images/docker-plex.png",
    "appfolder": "./apps/docker-plex",
-   "newversion": "",
+   "newversion": "1.26.2.5797-5bd057d2b",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:jammy",
    "description": "Docker Container for Plex Media Server",
-   "body": "Upgrading docker-plex to ",
+   "body": "Upgrading docker-plex to 1.26.2.5797-5bd057d2b",
    "user": "github-actions[bot]"
 }
 {
@@ -348,16 +326,6 @@
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
    "body": "Upgrading docker-radarr to 4.1.0.6175",
-   "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-rclone",
-   "apppic": "./images/docker-rclone.png",
-   "appfolder": "./apps/docker-rclone",
-   "newversion": "3.16.0",
-   "baseimage": "alpine",
-   "description": "Docker + Traefik with Authelia and Cloudflare Protection",
-   "body": "Upgrading docker-rclone to 3.16.0",
    "user": "github-actions[bot]"
 }
 {
