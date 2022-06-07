@@ -140,11 +140,11 @@
    "appname": "docker-embystat",
    "apppic": "./images/docker-embystat.png",
    "appfolder": "./apps/docker-embystat",
-   "newversion": "0.2.0-beta.33",
+   "newversion": "0.2.0-beta.34",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:focal",
    "description": "null",
-   "body": "Upgrading docker-embystat to 0.2.0-beta.33",
+   "body": "Upgrading docker-embystat to 0.2.0-beta.34",
    "user": "github-actions[bot]"
 }
 {
@@ -374,10 +374,10 @@
    "appname": "docker-sabnzbd",
    "apppic": "./images/docker-sabnzbd.png",
    "appfolder": "./apps/docker-sabnzbd",
-   "newversion": "3.5.3",
+   "newversion": "3.6.0",
    "appbranch": "master",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd to 3.5.3",
+   "body": "Upgrading docker-sabnzbd to 3.6.0",
    "user": "github-actions[bot]"
 }
 {
@@ -450,7 +450,7 @@
    "appbranch": "master",
    "newversion": "3.16.0",
    "appversion": "1.4.25",
-   "wikiversion": "8.3.2",
+   "wikiversion": "8.3.3",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
    "body": "Upgrading docker-wiki to 3.16.0",
