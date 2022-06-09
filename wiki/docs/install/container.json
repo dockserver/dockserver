@@ -163,11 +163,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.1154",
+   "newversion": "0.20.1158",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.1154",
+   "body": "Upgrading docker-jackett to 0.20.1158",
    "user": "github-actions[bot]"
 }
 {
@@ -492,12 +492,12 @@
    "appname": "docker-alpine-v3",
    "apppic": "./images/docker-alpine-v3.png",
    "appfolder": "./base/docker-alpine-v3",
-   "newversion": "3.16.0",
+   "newversion": "",
    "baseimage": "alpine",
-   "baseversion": "3.16.0",
+   "baseversion": "",
    "s6stage": "v3.1.0.1",
    "description": "Docker docker-alpine-v3 with include s6-overlay: v3.1.0.1",
-   "body": "Upgrading docker-alpine-v3 to baseimage: alpine:3.16.0  with include s6-overlay: v3.1.0.1",
+   "body": "Upgrading docker-alpine-v3 to baseimage: alpine:  with include s6-overlay: v3.1.0.1",
    "user": "dockserver image update[bot]"
 }
 {
