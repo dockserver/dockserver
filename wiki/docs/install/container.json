@@ -64,22 +64,22 @@
    "appname": "docker-crunchydl",
    "apppic": "./images/docker-crunchydl.png",
    "appfolder": "./apps/docker-crunchydl",
-   "newversion": "3.0.7",
+   "newversion": "null",
    "appbranch": "master",
    "baseimage": "alpine:latest",
    "description": "Docker Container for crunchyroll download client",
-   "body": "Upgrading docker-crunchydl to 3.0.7",
+   "body": "Upgrading docker-crunchydl to null",
    "user": "dockserver-image[bot]"
 }
 {
    "appname": "docker-dash",
    "apppic": "",
    "appfolder": "./apps/docker-dash",
-   "newversion": "33544867c3b1e292a7f3f653e28a88856ac80598",
+   "newversion": "e26dcca828995a531a7cae3e4062d61a38851d90",
    "baseimage": "alpine",
    "baseversion": "3.16.0",
    "description": "A simple, modern server dashboard, primarily used by smaller private servers",
-   "body": "Upgrading docker-dash to 33544867c3b1e292a7f3f653e28a88856ac80598",
+   "body": "Upgrading docker-dash to e26dcca828995a531a7cae3e4062d61a38851d90",
    "user": "dockserver-image[bot]"
 }
 {
@@ -229,16 +229,16 @@
    "appname": "docker-mount",
    "apppic": "./images/docker-mount.png",
    "appfolder": "./apps/docker-mount",
-   "newversion": "",
+   "newversion": "3.16.0",
    "mergerfs": "2.33.5",
    "rclone": "v1.58.1",
    "baseimage": "alpine",
    "buildimage": "alpine",
    "finalimage": "ghcr.io/dockserver/docker-alpine-v3",
-   "baseversion": "",
+   "baseversion": "3.16.0",
    "s6stage": "v3.1.0.1",
    "description": "Docker docker-mount with mergerfs version 2.33.5 and rclone version v1.58.1 include s6-overlay: v3.1.0.1",
-   "body": "Upgrading docker-mount to baseimage: alpine: with mergerfs: 2.33.5 and rclone: v1.58.1 include s6-overlay: v3.1.0.1",
+   "body": "Upgrading docker-mount to baseimage: alpine:3.16.0 with mergerfs: 2.33.5 and rclone: v1.58.1 include s6-overlay: v3.1.0.1",
    "user": "dockserver image update[bot]"
 }
 {
