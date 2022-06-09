@@ -354,10 +354,10 @@
    "appname": "docker-rollarr",
    "apppic": "./images/docker-rollarr.png",
    "appfolder": "./apps/docker-rollarr",
-   "newversion": "22.10",
+   "newversion": "",
    "baseimage": "ubuntu",
    "description": "This is the new and improved Automatic Pre-roll script with a GUI for Plex now called Rollarr!",
-   "body": "Upgrading docker-rollarr to 22.10",
+   "body": "Upgrading docker-rollarr to ",
    "user": "github-actions[bot]"
 }
 {
@@ -620,10 +620,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "fb75cde7100241dd31a17bb0627cbb799bf7f362",
+   "newversion": "8c8a78c0ab3410186f46b59f6f07eb282a9f8561",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to fb75cde7100241dd31a17bb0627cbb799bf7f362",
+   "body": "Upgrading docker-sabnzbd-nightly to 8c8a78c0ab3410186f46b59f6f07eb282a9f8561",
    "user": "github-actions[bot]"
 }
 {
