@@ -75,11 +75,11 @@
    "appname": "docker-dash",
    "apppic": "",
    "appfolder": "./apps/docker-dash",
-   "newversion": "6f37393c7546b629a98a93be1c6aeaa04ffe2a42",
+   "newversion": "33544867c3b1e292a7f3f653e28a88856ac80598",
    "baseimage": "alpine",
    "baseversion": "3.16.0",
    "description": "A simple, modern server dashboard, primarily used by smaller private servers",
-   "body": "Upgrading docker-dash to 6f37393c7546b629a98a93be1c6aeaa04ffe2a42",
+   "body": "Upgrading docker-dash to 33544867c3b1e292a7f3f653e28a88856ac80598",
    "user": "dockserver-image[bot]"
 }
 {
@@ -229,16 +229,16 @@
    "appname": "docker-mount",
    "apppic": "./images/docker-mount.png",
    "appfolder": "./apps/docker-mount",
-   "newversion": "3.16.0",
+   "newversion": "",
    "mergerfs": "2.33.5",
    "rclone": "v1.58.1",
    "baseimage": "alpine",
    "buildimage": "alpine",
    "finalimage": "ghcr.io/dockserver/docker-alpine-v3",
-   "baseversion": "3.16.0",
+   "baseversion": "",
    "s6stage": "v3.1.0.1",
    "description": "Docker docker-mount with mergerfs version 2.33.5 and rclone version v1.58.1 include s6-overlay: v3.1.0.1",
-   "body": "Upgrading docker-mount to baseimage: alpine:3.16.0 with mergerfs: 2.33.5 and rclone: v1.58.1 include s6-overlay: v3.1.0.1",
+   "body": "Upgrading docker-mount to baseimage: alpine: with mergerfs: 2.33.5 and rclone: v1.58.1 include s6-overlay: v3.1.0.1",
    "user": "dockserver image update[bot]"
 }
 {
@@ -492,12 +492,12 @@
    "appname": "docker-alpine-v3",
    "apppic": "./images/docker-alpine-v3.png",
    "appfolder": "./base/docker-alpine-v3",
-   "newversion": "",
+   "newversion": "3.16.0",
    "baseimage": "alpine",
-   "baseversion": "",
+   "baseversion": "3.16.0",
    "s6stage": "v3.1.0.1",
    "description": "Docker docker-alpine-v3 with include s6-overlay: v3.1.0.1",
-   "body": "Upgrading docker-alpine-v3 to baseimage: alpine:  with include s6-overlay: v3.1.0.1",
+   "body": "Upgrading docker-alpine-v3 to baseimage: alpine:3.16.0  with include s6-overlay: v3.1.0.1",
    "user": "dockserver image update[bot]"
 }
 {
@@ -620,10 +620,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "fc855dccffd15538a02e2fe84ec25b5897d1e419",
+   "newversion": "fb75cde7100241dd31a17bb0627cbb799bf7f362",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to fc855dccffd15538a02e2fe84ec25b5897d1e419",
+   "body": "Upgrading docker-sabnzbd-nightly to fb75cde7100241dd31a17bb0627cbb799bf7f362",
    "user": "github-actions[bot]"
 }
 {
