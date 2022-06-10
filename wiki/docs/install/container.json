@@ -354,10 +354,10 @@
    "appname": "docker-rollarr",
    "apppic": "./images/docker-rollarr.png",
    "appfolder": "./apps/docker-rollarr",
-   "newversion": "",
+   "newversion": "22.10",
    "baseimage": "ubuntu",
    "description": "This is the new and improved Automatic Pre-roll script with a GUI for Plex now called Rollarr!",
-   "body": "Upgrading docker-rollarr to ",
+   "body": "Upgrading docker-rollarr to 22.10",
    "user": "github-actions[bot]"
 }
 {
