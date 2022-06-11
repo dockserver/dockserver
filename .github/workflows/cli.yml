@@ -4,12 +4,6 @@ on:
   push:
     branches:
       - master
-    paths:
-      - '.installer/**'
-      - 'preinstall/**'
-      - 'traefik/**'
-      - 'scripts/**'
-      - 'wiki/**'
   workflow_dispatch:
 
 jobs:
