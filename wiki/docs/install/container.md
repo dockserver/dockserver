@@ -127,7 +127,4 @@ SOME fancy stats
 
 ---
 
-Own Builded Containers
 
-
-#JsonSchema#
