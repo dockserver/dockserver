@@ -27,7 +27,7 @@ fi
 
 pgblitz1=$(systemctl is-active pgblitz)
 pgblitz2=$(systemctl is-active pgmove)
-if [ "$pgblitz1" == "active" ] || [ "$pgblitz2" == "active" ]:then
+if [ "$pgblitz1" == "active" ] || [ "$pgblitz2" == "active" ];then
    echo  "***** BEWARE OWN RISK !!!! *****"
 fi
 
