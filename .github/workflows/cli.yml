@@ -9,7 +9,7 @@ on:
       - 'preinstall/**'
       - 'traefik/**'
       - 'scripts/**'
-      - 'wiki/***'
+      - 'wiki/**'
   workflow_dispatch:
 
 jobs:
