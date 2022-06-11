@@ -6,10 +6,10 @@ on:
       - master
     paths:
       - '.installer/**'
-      - 'apps/**'
       - 'preinstall/**'
       - 'traefik/**'
       - 'scripts/**'
+      - 'wiki/***'
   workflow_dispatch:
 
 jobs:
@@ -27,7 +27,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4.0.0
         with:
-          python-version: 3.
+          python-version: 3
 
       - uses: actions/cache@v3
         with:
