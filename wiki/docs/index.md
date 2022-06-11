@@ -44,7 +44,7 @@ Some stats of [DOCKSERVER](https://dockserver.io)![metrics](https://raw.githubus
 
 ## Minimum Specs and Requirements
 
-- Stable: Ubuntu 18/20/21 or Debian 9/10/11
+- Stable: Ubuntu 18/20/21/22 or Debian 9/10/11
 
 - CPU 2 Cores or 2 VCores
 - 4GB Ram
