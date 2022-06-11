@@ -93,10 +93,6 @@ plugins:
         404.html: index.md
   - minify:
       minify_html: true
-  - json-schema:
-      json_schema: install/container.json
-      markdown_tag: #JsonSchema#
-
 
 extra_css:
   - https://unpkg.com/mermaid/dist/mermaid.css
