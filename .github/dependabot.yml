@@ -14,17 +14,3 @@ updates:
       prefix-development: "GH dev"
       include: "scope"
 
-  - package-ecosystem: "pip"
-    directory: "/wiki"
-    schedule:
-      interval: "daily"
-    rebase-strategy: "auto"
-    target-branch: "master"
-    labels:
-      - "dependabot"
-    open-pull-requests-limit: 10
-    commit-message:
-      prefix: "pip "
-      prefix-development: "pip dev"
-      include: "scope"
-
