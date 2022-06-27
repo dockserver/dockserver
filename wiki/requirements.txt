@@ -29,3 +29,4 @@ mkdocs-git-revision-date-localized-plugin==1.0.1
 markdown==3.3.7
 pygments
 mkdocs-render-swagger-plugin
+mkdocs-mermaid2-plugin
