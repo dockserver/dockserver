@@ -23,7 +23,7 @@ jobs:
     name: Deploy Dockserver Wiki on GitHub Pages
     runs-on: ubuntu-latest
     if: github.event.repository.fork == false
-
+    steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
