@@ -20,19 +20,13 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v3
-        with:
-          fetch-depth: '0'
-          token: ${{ secrets.CR_PAT }}
 
       - name: Set up Python
         uses: actions/setup-python@v4.0.0
-
-      - uses: actions/cache@v3
         with:
-          key: ${{ github.ref }}
-          path: .cache
+          python-version: '3.x'
 
       - name: Set up Wiki
         run: |
-          python3 -m pip install -r wiki/requirements.txt
+          pip install -r wiki/requirements.txt
           mkdocs gh-deploy --force --config-file wiki/mkdocs.yml --remote-branch wiki
