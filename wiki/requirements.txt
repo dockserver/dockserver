@@ -19,7 +19,7 @@
 # IN THE SOFTWARE.
  
 mkdocs==1.3.0
-mkdocs-material==8.2.15
+mkdocs-material==8.3.0
 mkdocs-material-extensions==1.0.3
 mkdocs-minify-plugin==0.5.0
 mkdocs-redirects==1.0.4
@@ -29,4 +29,3 @@ mkdocs-git-revision-date-localized-plugin==1.0.1
 markdown==3.3.7
 pygments
 mkdocs-render-swagger-plugin
-mkdocs-mermaid2-plugin
