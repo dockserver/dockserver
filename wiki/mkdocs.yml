@@ -87,7 +87,6 @@ theme:
 # Plugins
 plugins:
   - search
-  - mermaid2
   - redirects:
       redirect_maps:
         404.html: index.md
