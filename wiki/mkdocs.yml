@@ -94,9 +94,6 @@ plugins:
   - minify:
       minify_html: true
 
-extra_javascript:
-    - https://unpkg.com/mermaid/dist/mermaid.min.js
-
 # Customization
 extra:
   analytics:
@@ -141,11 +138,7 @@ markdown_extensions:
       repo: mkdocs-material
   - pymdownx.mark
   - pymdownx.smartsymbols
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.superfences
   - pymdownx.tabbed
   - pymdownx.tasklist:
       custom_checkbox: true
