@@ -12,31 +12,29 @@ on:
       - 'wiki/**'
   workflow_dispatch:
 
+env:
+  PYTHON_VERSION: 3.x
+
+permissions:
+  contents: write
+
 jobs:
   deploy:
     name: Deploy Dockserver Wiki on GitHub Pages
     runs-on: ubuntu-latest
     if: github.event.repository.fork == false
-    steps:
-      - name: Check out code
+
+      - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: '1'
-          token: ${{ secrets.CR_PAT }}
+          fetch-depth: 0
 
-      - name: Set up Python
-        uses: actions/setup-python@v4.0.0
+      - name: Set up Python runtime
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
-          architecture: 'x64'
-
-      - uses: actions/cache@v3
-        with:
-          key: ${{ github.ref }}
-          path: .cache
+          python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Set up Wiki
         run: |
-          python3 -m pip install --upgrade pip
-          python3 -m pip install --upgrade --force-reinstall -r wiki/requirements.txt
+          pip install -r wiki/requirements.txt
           mkdocs gh-deploy --force --config-file wiki/mkdocs.yml --remote-branch wiki
