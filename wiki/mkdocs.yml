@@ -94,10 +94,8 @@ plugins:
   - minify:
       minify_html: true
 
-extra_css:
-  - https://unpkg.com/mermaid/dist/mermaid.css
 extra_javascript:
-  - https://unpkg.com/mermaid/dist/mermaid.min.js
+    - https://unpkg.com/mermaid/dist/mermaid.min.js
 
 # Customization
 extra:
