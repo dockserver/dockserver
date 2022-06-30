@@ -1,0 +1,45 @@
+---
+version: "3"
+services:
+  komga:
+    hostname: "komga"
+    container_name: "komga"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "SERVER_PORT=${KOMGA_SERVER_PORT}"
+      - "KOMGA_DELETE_EMPTY_COLLECTIONS=true"
+      - "KOMGA_FILE_HASHING=true"
+      - "KOMGA_DELETE_EMPTY_READ_LISTS=true"
+    image: ${KOMGAIMAGE}
+    restart: "${RESTARTAPP}"
+    networks:
+      - "${DOCKERNETWORK}"
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/komga/config:/config:rw"
+      - "/etc/timezone:/etc/timezone"
+      - "unionfs:/mnt"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=${DOCKERNETWORK}"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.komga-rtr.entrypoints=https"
+      - "traefik.http.routers.komga-rtr.rule=Host(`komga.${DOMAIN}`)"
+      - "traefik.http.routers.komga-rtr.tls=true"
+      - "traefik.http.routers.komga-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.komga-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.komga-rtr.service=komga-svc"
+      - "traefik.http.services.komga-svc.loadbalancer.server.port=8088"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

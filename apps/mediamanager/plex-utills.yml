@@ -1,0 +1,41 @@
+---
+version: "3"
+services:
+  plex-utills:
+    hostname: "plex-utills"
+    image: "jkirkcaldy/plex-utills"
+    container_name: "plex-utills"
+    restart: "${RESTARTAPP}"
+    volumes:
+      - "unionfs:/films"
+      - "${APPFOLDER}/plex-utills/logs:/logs"
+      - "${APPFOLDER}/plex-utills:/config"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.plex-utills-rtr.entrypoints=https"
+      - "traefik.http.routers.plex-utills-rtr.rule=Host(`plex-utills.${DOMAIN}`)"
+      - "traefik.http.routers.plex-utills-rtr.tls=true"
+      - "traefik.http.routers.plex-utills-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.plex-utills-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.plex-utills-rtr.service=plex-utills-svc"
+      - "traefik.http.services.plex-utills-svc.loadbalancer.server.port=5000"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

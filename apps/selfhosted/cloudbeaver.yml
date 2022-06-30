@@ -1,0 +1,36 @@
+---
+version: "3"
+
+services:
+  cloudbeaver:
+    hostname: "cloudbeaver"
+    container_name: "cloudbeaver"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "dbeaver/cloudbeaver"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/cloudbeaver:/opt/cloudbeaver/workspace:rw"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.cloudbeaver-rtr.entrypoints=https"
+      - "traefik.http.routers.cloudbeaver-rtr.rule=Host(`cloudbeaver.${DOMAIN}`)"
+      - "traefik.http.routers.cloudbeaver-rtr.tls=true"
+      - "traefik.http.routers.cloudbeaver-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.cloudbeaver-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.cloudbeaver-rtr.service=cloudbeaver-svc"
+      - "traefik.http.services.cloudbeaver-svc.loadbalancer.server.port=8978"
+
+networks:
+  proxy:
+    driver: bridge
+    external: true

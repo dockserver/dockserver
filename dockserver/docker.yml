@@ -1,0 +1,26 @@
+---
+version: "3"
+services:
+  dockserver:
+    hostname: "dockserver"
+    container_name: "dockserver"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "ghcr.io/dockserver/docker-dockserver:latest"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "/opt/dockserver:/opt/dockserver"
+    labels:
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+networks:
+  proxy:
+    driver: bridge
+    external: true

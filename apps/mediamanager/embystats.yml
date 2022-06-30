@@ -1,0 +1,34 @@
+---
+version: "3"
+services:
+  embystat:
+    hostname: "embystat"
+    container_name: "embystat"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "lscr.io/linuxserver/embystat:latest"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/embystat:/config:rw"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.embystat-rtr.entrypoints=https"
+      - "traefik.http.routers.embystat-rtr.rule=Host(`embystat.${DOMAIN}`)"
+      - "traefik.http.routers.embystat-rtr.tls=true"
+      - "traefik.http.routers.embystat-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.embystat-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.embystat-rtr.service=embystat-svc"
+      - "traefik.http.services.embystat-svc.loadbalancer.server.port=6555"
+networks:
+  proxy:
+    driver: bridge
+    external: true

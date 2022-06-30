@@ -1,0 +1,31 @@
+---
+version: "3"
+services:
+  watchtower:
+    hostname: "watchtower"
+    container_name: "watchtower"
+    image: "ghcr.io/containrrr/watchtower:latest"
+    environment:
+      - "PUID=${ID}"
+      - "PGID=${ID}"
+      - "TZ=${TZ}"
+      - "WATCHTOWER_CLEANUP=${WATCHTOWER_CLEANUP}"
+      - "WATCHTOWER_REMOVE_VOLUMES=${WATCHTOWER_REMOVE_VOLUMES}"
+      - "WATCHTOWER_INCLUDE_STOPPED=${WATCHTOWER_INCLUDE_STOPPED}"
+      - "WATCHTOWER_NO_STARTUP_MESSAGE=${WATCHTOWER_NO_STARTUP_MESSAGE}"
+      - "WATCHTOWER_POLL_INTERVAL=${WATCHTOWER_POLL_INTERVAL}"
+      - "WATCHTOWER_LABEL_ENABLE=${WATCHTOWER_LABEL_ENABLE}"
+      - "WATCHTOWER_ROLLING_RESTART=${WATCHTOWER_ROLLING_RESTART}"
+      - "WATCHTOWER_TIMEOUT=${WATCHTOWER_TIMEOUT}"
+      - "DOCKER_HOST=${SOCKET}"
+    restart: "${RESTARTAPP}"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    networks:
+      - socket-proxy
+networks:
+  socket-proxy:
+    driver: bridge
+    external: true

@@ -1,0 +1,34 @@
+---
+version: '3.8'
+services:
+  mira:
+    hostname: 'mira'
+    container_name: 'mira'
+    pid: 'host'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=${UMASK}'
+    image: 'jams246/mira'
+    restart: '${RESTARTAPP}'
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    networks:
+      - ${DOCKERNETWORK}
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.mira-rtr.entrypoints=https'
+      - 'traefik.http.routers.mira-rtr.rule=Host(`mira.${DOMAIN}`)'
+      - 'traefik.http.routers.mira-rtr.tls=true'
+      - 'traefik.http.routers.mira-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.mira-rtr.middlewares=chain-no-auth@file'
+      - 'traefik.http.routers.mira-rtr.service=mira-svc'
+      - 'traefik.http.services.mira-svc.loadbalancer.server.port=44356'
+networks:
+  proxy:
+    driver: bridge
+    external: true
+#EOF

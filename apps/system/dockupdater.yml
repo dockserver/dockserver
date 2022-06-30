@@ -1,0 +1,26 @@
+---
+version: "3"
+services:
+  dockupdater:
+    hostname: "dockupdater"
+    container_name: "dockupdater"
+    image: "dockupdater/dockupdater:latest"
+    environment:
+      - "CLEANUP=true"
+      - "LOG_LEVEL=info"
+      - "INTERVAL=7200"
+      - "LABEL=true"
+      - "WAIT=180"
+    restart: "${RESTARTAPP}"
+    labels:
+      - "dockupdater.enable=false"
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    networks:
+      - ${DOCKERNETWORK}
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+networks:
+  proxy:
+    driver: bridge
+    external: true

@@ -1,0 +1,48 @@
+---
+version: "3"
+services:
+  wgmanager:
+    hostname: "wgmanager"
+    container_name: "wgmanager"
+    cap_add:
+      - "NET_ADMIN"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "HOST=0.0.0.0"
+      - "PORT=8888"
+      - "WEB_CONCURRENCY=1"
+      - "ADMIN_USERNAME=${WGADMIN_USERNAME}"
+      - "ADMIN_PASSWORD=${WGADMIN_PASSWORD}"
+    image: "perara/wg-manager:latest"
+    restart: "${RESTARTAPP}"
+    ports:
+      - target: 51800
+        published: 51800
+        protocol: udp
+        mode: host
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/wgmanager:/config:rw"
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.wgmanager-rtr.entrypoints=https"
+      - "traefik.http.routers.wgmanager-rtr.rule=Host(`wgmanager.${DOMAIN}`)"
+      - "traefik.http.routers.wgmanager-rtr.tls=true"
+      - "traefik.http.routers.wgmanager-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.wgmanager-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.wgmanager-rtr.service=wgmanager-svc"
+      - "traefik.http.services.wgmanager-svc.loadbalancer.server.port=8888"
+networks:
+  proxy:
+    driver: bridge
+    external: true

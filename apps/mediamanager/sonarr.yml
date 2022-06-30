@@ -1,0 +1,42 @@
+---
+version: "3"
+services:
+  sonarr:
+    hostname: "sonarr"
+    container_name: "sonarr"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:sonarr"
+      - "TP_THEME=${SONARRTHEME}"
+    image: "${SONARRIMAGE}"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/sonarr:/config:rw"
+      - "unionfs:/mnt"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.sonarr-rtr.entrypoints=https"
+      - "traefik.http.routers.sonarr-rtr.rule=Host(`sonarr.${DOMAIN}`)"
+      - "traefik.http.routers.sonarr-rtr.tls=true"
+      - "traefik.http.routers.sonarr-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.sonarr-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.sonarr-rtr.service=sonarr-svc"
+      - "traefik.http.services.sonarr-svc.loadbalancer.server.port=8989"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

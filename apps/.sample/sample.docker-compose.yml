@@ -1,0 +1,43 @@
+---
+version: "3"
+services:
+  <CONTAINERNAME>:
+    hostname: "<CONTAINERNAME>"
+    container_name: "<CONTAINERNAME>"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      #- '<ADDITIONALENVIROMENT>'
+    image: "<DOCKERHUBorGHRCIO/><REPO>/<IMAGE>:<VERSION>"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/<CONTAINERNAME>:/config:rw"
+      - "unionfs:/mnt"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      #- 'dockupdater.enable=true' ## Enable auto update docker
+      #- 'dockupdater.disable=false' ## Disable auto update docker
+      - "traefik.http.routers.<CONTAINERNAME>-rtr.entrypoints=https"
+      - "traefik.http.routers.<CONTAINERNAME>-rtr.rule=Host(`<CONTAINERNAME>.${DOMAIN}`)"
+      - "traefik.http.routers.<CONTAINERNAME>-rtr.tls=true"
+      - "traefik.http.routers.<CONTAINERNAME>-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.<CONTAINERNAME>-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.<CONTAINERNAME>-rtr.service=<CONTAINERNAME>-svc"
+      - "traefik.http.services.<CONTAINERNAME>-svc.loadbalancer.server.port=<PORTOFAPP>"
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

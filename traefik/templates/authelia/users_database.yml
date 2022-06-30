@@ -1,0 +1,11 @@
+###############################################################
+#                         Users Database                      #
+###############################################################
+users:
+  <USERNAME>:
+    displayname: "<DISPLAYNAME>"
+    password: "<PASSWORD>"
+    email: example-CF-EMAIL
+    groups:
+      - admins
+      - dev

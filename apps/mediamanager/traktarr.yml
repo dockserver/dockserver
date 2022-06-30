@@ -1,0 +1,32 @@
+---
+version: "3"
+services:
+  traktarr:
+    hostname: "traktarr"
+    container_name: "traktarr"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "DELAY=2.5"
+      - "SORT=rating"
+      - "NOSEARCH=yes"
+      - "NOTIFICATIONS=yes"
+      - "BLACKLIST=yes"
+      - "RUNNOW=yes"
+      - "SKIPUPDATE=no"
+      - "APP_BRANCH=master"
+    image: "ghcr.io/dockserver/docker-traktarr:latest"
+    restart: "${RESTARTAPP}"
+    labels:
+      - "dockupdater.enable=true"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/traktarr:/config:rw"
+networks:
+  proxy:
+    driver: bridge
+    external: true

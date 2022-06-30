@@ -1,0 +1,32 @@
+---
+version: "3"
+services:
+  mount:
+    cap_add:
+      - "SYS_ADMIN"
+    container_name: "mount"
+    hostname: "mount"
+    privileged: true
+    devices:
+      - "/dev/fuse:/dev/fuse"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+    image: "ghcr.io/dockserver/docker-mount:latest"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "apparmor:unconfined"
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "${APPFOLDER}/system:/system:rshared"
+      - "/mnt:/mnt:shared"
+    labels:
+      - "dockupdater.disable=true"
+networks:
+  proxy:
+    driver: bridge
+    external: true

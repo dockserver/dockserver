@@ -1,0 +1,39 @@
+---
+version: '3'
+services:
+  scrutiny:
+    hostname: 'scrutiny'
+    container_name: 'scrutiny'
+    cap_add:
+      - 'SYS_RAWIO'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'UMASK=${UMASK}'
+    image: 'analogj/scrutiny:latest'
+    restart: '${RESTARTAPP}'
+    devices:
+      - '${SCRUTINY_DEV1}:${SCRUTINY_DEV1}'
+      - '${SCRUTINY_DEV2}:${SCRUTINY_DEV2}'	  
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - '${SECURITYOPS}:${SECURITYOPSSET}'
+    volumes:
+      - '/run/udev:/run/udev:ro'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.scrutiny-rtr.entrypoints=https'
+      - 'traefik.http.routers.scrutiny-rtr.rule=Host(`scrutiny.${DOMAIN}`)'
+      - 'traefik.http.routers.scrutiny-rtr.tls=true'
+      - 'traefik.http.routers.scrutiny-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.scrutiny-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.scrutiny-rtr.service=scrutiny-svc'
+      - 'traefik.http.services.scrutiny-svc.loadbalancer.server.port=8080'
+networks:
+  proxy:
+    driver: bridge
+    external: true

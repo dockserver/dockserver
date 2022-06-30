@@ -1,0 +1,27 @@
+version: "3"
+services:
+  gluetun:
+    hostname: "gluetun"
+    container_name: "gluetun"
+    image: qmcgaw/gluetun
+    cap_add:
+      - NET_ADMIN
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    environment:
+      - "GID=${ID}"
+      - "UID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "VPN_SERVICE_PROVIDER=${GLUETUN_VPN_SERVICE_PROVIDER}"
+      - "VPN_TYPE=${GLUETUN_VPN_TYPE}"
+      - "OPENVPN_USER=${GLUETUN_OPEN_VPN_USER}"
+      - "OPENVPN_PASSWORD=${GLUETUN_OPEN_VPN_PASSWORD}"
+      - "REGION=${GLUETUN_VPN_REGION}"
+    volumes:
+      - "${APPFOLDER}/gluetun/:/gluetun"
+networks:
+  proxy:
+    driver: bridge
+    external: true

@@ -1,0 +1,43 @@
+---
+version: "3"
+services:
+  bazarr4k:
+    hostname: "bazarr4k"
+    container_name: "bazarr4k"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:bazarr"
+      - "TP_THEME=${BAZARR4KTHEME}"
+      - "TP_ADDON=bazarr-4k-logo"
+    image: "${BAZARR4KIMAGE}"
+    restart: "${RESTARTAPP}"
+    networks:
+      - "${DOCKERNETWORK}"
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/bazarr4k:/config:rw"
+      - "unionfs:/mnt"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=${DOCKERNETWORK}"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.bazarr4k-rtr.entrypoints=https"
+      - "traefik.http.routers.bazarr4k-rtr.rule=Host(`bazarr4k.${DOMAIN}`)"
+      - "traefik.http.routers.bazarr4k-rtr.tls=true"
+      - "traefik.http.routers.bazarr4k-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.bazarr4k-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.bazarr4k-rtr.service=bazarr-svc"
+      - "traefik.http.services.bazarr4k-svc.loadbalancer.server.port=6767"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

@@ -1,0 +1,36 @@
+---
+version: "3"
+services:
+  fenrus:
+    hostname: "fenrus"
+    container_name: "fenrus"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "${FENRUSIMAGE}"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/fenrus/data:/app/data:rw"
+      - "${APPFOLDER}/fenrus/images:/app/wwwroot/images:rw"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.fenrus-rtr.entrypoints=https"
+      - "traefik.http.routers.fenrus-rtr.rule=Host(`fenrus.${DOMAIN}`)"
+      - "traefik.http.routers.fenrus-rtr.tls=true"
+      - "traefik.http.routers.fenrus-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.fenrus-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.fenrus-rtr.service=fenrus-svc"
+      - "traefik.http.services.fenrus-svc.loadbalancer.server.port=3000"
+
+networks:
+  proxy:
+    driver: bridge
+    external: true

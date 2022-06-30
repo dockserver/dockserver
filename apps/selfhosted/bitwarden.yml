@@ -1,0 +1,40 @@
+---
+version: "3"
+services:
+  bitwarden:
+    hostname: "bitwarden"
+    container_name: "bitwarden"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+    image: "vaultwarden/server"
+    networks:
+      - ${DOCKERNETWORK}
+    restart: "${RESTARTAPP}"
+    volumes:
+      - "${APPFOLDER}/bitwarden/data:/data"
+      - "${APPFOLDER}/bitwarden/database:/database"
+      - "/etc/localtime:/etc/localtime:ro"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.bitwarden-rtr.entrypoints=https"
+      - "traefik.http.routers.bitwarden-rtr.rule=Host(`bitwarden.${DOMAIN}`)"
+      - "traefik.http.routers.bitwarden-rtr.tls=true"
+      - "traefik.http.routers.bitwarden-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.bitwarden-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.bitwarden-rtr.service=bitwarden-svc"
+      - "traefik.http.services.bitwarden-svc.loadbalancer.server.port=80"
+      - "traefik.http.routers.bitwarden-websocket-rtr.entrypoints=https"
+      - "traefik.http.routers.bitwarden-websocket-rtr.rule=Host(`bitwarden.${DOMAIN}`) && Path(`/notifications/hub`)"
+      - "traefik.http.routers.bitwarden-websocket-rtr.tls=true"
+      - "traefik.http.routers.bitwarden-websocket-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.bitwarden-websocket-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.bitwarden-websocket-rtr.service=bitwarden-svc"
+      - "traefik.http.services.bitwarden-websocket-svc.loadbalancer.server.port=3012"
+networks:
+  proxy:
+    driver: bridge
+    external: true

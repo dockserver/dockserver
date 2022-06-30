@@ -1,0 +1,60 @@
+version: "2.1"
+services:
+  amd:
+    hostname: "amd"
+    container_name: "amd"
+    image: "randomninjaatk/amd:latest"
+    restart: "${RESTARTAPP}"
+    volumes:
+      - "${APPFOLDER}/amd:/config:rw"
+      - "/mnt/downloads/amd:/downloads-amd:rw"
+      - "unionfs:/mnt"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "AUTOSTART=true"
+      - "SCRIPTINTERVAL=1h"
+      - "DOWNLOADMODE=wanted"
+      - "FALLBACKSEARCH=True"
+      - "LIST=both"
+      - "SearchType=both"
+      - "Concurrency=1"
+      - "EMBEDDED_COVER_QUALITY=80"
+      - "FORMAT=FLAC"
+      - "BITRATE=320"
+      - "ENABLEPOSTPROCESSING=true"
+      - "FORCECONVERT=false"
+      - "requirequality=false"
+      - "MatchDistance=10"
+      - "replaygain=true"
+      - "FolderPermissions=766"
+      - "FilePermissions=666"
+      - "MBRAINZMIRROR=${AMD_MBRAINZMIRROR}"
+      - "MBRATELIMIT=1"
+      - "LidarrUrl=${AMD_LidarrUrl}"
+      - "LidarrAPIkey=${AMD_LidarrAPIkey}"
+      - "ARL_TOKEN=${AMD_ARL_TOKEN}"
+      - "NOTIFYPLEX=true"
+      - "PLEXLIBRARYNAME=${AMD_PLEXLIBRARYNAME}"
+      - "PLEXURL=${AMD_PLEXURL}"
+      - "PLEXTOKEN=${AMD_PLEXTOKEN}"
+      - "ALBUM_TYPE_FILTER=COMPILE"
+      - "POSTPROCESSTHREADS=1"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    labels:
+      - "dockupdater.enable=true"
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

@@ -1,0 +1,41 @@
+---
+version: "3"
+services:
+  unmanic:
+    hostname: "unmanic"
+    container_name: "unmanic"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "josh5/unmanic:latest"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/unmanic:/config:rw"
+      - "${APPFOLDER}/unmanic/tmp:/tmp/unmanic:rw"
+      - "unionfs:/mnt"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.unmanic-rtr.entrypoints=https"
+      - "traefik.http.routers.unmanic-rtr.rule=Host(`unmanic.${DOMAIN}`)"
+      - "traefik.http.routers.unmanic-rtr.tls=true"
+      - "traefik.http.routers.unmanic-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.unmanic-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.unmanic-rtr.service=unmanic-svc"
+      - "traefik.http.services.unmanic-svc.loadbalancer.server.port=8888"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

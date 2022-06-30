@@ -1,0 +1,51 @@
+---
+version: "3"
+services:
+  emby:
+    hostname: "emby"
+    container_name: "emby"
+    image: "${EMBYIMAGE}"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    environment:
+      - "PUID=${ID}"
+      - "PGID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:emby"
+      - "TP_THEME=${EMBYTHEME}"
+    ports:
+      - target: 8096
+        published: 8096
+        protocol: tcp
+        mode: host
+      - target: 8920
+        published: 8920
+        protocol: tcp
+        mode: host
+    volumes:
+      - "${APPFOLDER}/emby:/config"
+      - "unionfs:/mnt:ro"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.emby-rtr.entrypoints=https"
+      - "traefik.http.routers.emby-rtr.rule=Host(`emby.${DOMAIN}`)"
+      - "traefik.http.routers.emby-rtr.tls=true"
+      - "traefik.http.routers.emby-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.emby-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.emby-rtr.service=emby-svc"
+      - "traefik.http.services.emby-svc.loadbalancer.server.port=8096"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

@@ -1,0 +1,34 @@
+---
+version: "3"
+services:
+  tauticord:
+    hostname: "tauticord"
+    container_name: "tauticord"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "ghcr.io/cyb3rgh05t/tauticord:latest"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/tauticord:/app/config:rw"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.tauticord-rtr.entrypoints=https"
+      - "traefik.http.routers.tauticord-rtr.rule=Host(`tauticord.${DOMAIN}`)"
+      - "traefik.http.routers.tauticord-rtr.tls=true"
+      - "traefik.http.routers.tauticord-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.tauticord-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.tauticord-rtr.service=tauticord-svc"
+      - "traefik.http.services.tauticord-svc.loadbalancer.server.port=80"
+networks:
+  proxy:
+    driver: bridge
+    external: true

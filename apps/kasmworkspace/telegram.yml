@@ -1,0 +1,45 @@
+---
+version: "3"
+services:
+  telegram:
+    container_name: "telegram"
+    hostname: "telegram"
+    image: "kasmweb/telegram:1.9.0-rolling"
+    restart: "${RESTARTAPP}"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "VNC_PW=${VNC_PW}"
+      - "VNC_RESOLUTION=${VNC_RESOLUTION}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "${APPFOLDER}/telegram:/config:rw"
+      - "unionfs:/mnt:rw"
+    shm_size: "512m"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.telegram-rtr.entrypoints=https"
+      - "traefik.http.routers.telegram-rtr.rule=Host(`telegram.${DOMAIN}`)"
+      - "traefik.http.routers.telegram-rtr.tls=true"
+      - "traefik.http.routers.telegram-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.telegram-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.telegram-rtr.service=telegram-svc"
+      - "traefik.http.services.telegram-svc.loadbalancer.server.scheme=https"
+      - "traefik.http.services.telegram-svc.loadbalancer.server.port=6901"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

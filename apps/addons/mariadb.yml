@@ -1,0 +1,28 @@
+---
+version: "3"
+services:
+  mariadb:
+    container_name: "mariadb"
+    hostname: "mariadb"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "MYSQL_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}"
+    image: "lscr.io/linuxserver/mariadb:alpine-version-10.5.11-r0"
+    restart: "${RESTARTAPP}"
+    ports:
+      - "${PORTBLOCK}:3306:3306"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/mariadb:/config:rw"
+    labels:
+      - "dockupdater.enable=true"
+networks:
+  proxy:
+    driver: bridge
+    external: true

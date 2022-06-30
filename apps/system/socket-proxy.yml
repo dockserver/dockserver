@@ -1,0 +1,58 @@
+---
+version: "3"
+services:
+  socket-proxy:
+    image: "ghcr.io/tecnativa/docker-socket-proxy:latest"
+    hostname: "socket-proxy"
+    container_name: "socket-proxy"
+    restart: "${RESTARTAPP}"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    environment:
+      - "TZ=Europe/Berlin"
+      - "LOG_LEVEL=info"
+      - "EVENTS=1"
+      - "PING=1"
+      - "VERSION=1"
+      - "AUTH=0"
+      - "SECRETS=0"
+      - "POST=1" # Dockupdater
+      - "DELETE=1" # Dockupdater
+      - "BUILD=0"
+      - "COMMIT=0"
+      - "CONFIGS=0"
+      - "CONTAINERS=1" # Traefik
+      - "DISTRIBUTION=0"
+      - "EXEC=0"
+      - "IMAGES=1" # Dockupdater
+      - "INFO=0"
+      - "NETWORKS=1" # Dockupdater
+      - "NODES=0"
+      - "PLUGINS=0"
+      - "SERVICES=0"
+      - "SESSION=0"
+      - "SWARM=0"
+      - "SYSTEM=0"
+      - "TASKS=0"
+      - "VOLUMES=0"
+      - "CONTAINERS_CREATE=1" # Dockupdater
+      - "CONTAINERS_START=1" # Dockupdater
+      - "CONTAINERS_UPDATE=1" # Dockupdater
+      - "CONTAINERS_DELETE=1" # Dockupdater
+      - "IMAGES_DELETE=1" # Dockupdater
+    networks:
+      - socket-proxy
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    labels:
+      - "dockupdater.enable=true"
+    healthcheck:
+      test: "wget --spider http://localhost:2375/version || exit 1"
+      interval: "60s"
+      timeout: "10s"
+      retries: "3"
+      start_period: "20s"
+networks:
+  socket-proxy:
+    driver: bridge
+    external: true

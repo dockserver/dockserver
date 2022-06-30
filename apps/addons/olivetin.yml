@@ -1,0 +1,35 @@
+---
+version: "3"
+services:
+  olivetin:
+    hostname: "olivetin"
+    container_name: "olivetin"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=022"
+    image: "jamesread/olivetin:latest"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/olivetin:/config:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.olivetin-rtr.entrypoints=https"
+      - "traefik.http.routers.olivetin-rtr.rule=Host(`olivetin.${DOMAIN}`)"
+      - "traefik.http.routers.olivetin-rtr.tls=true"
+      - "traefik.http.routers.olivetin-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.olivetin-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.olivetin-rtr.service=olivetin-svc"
+      - "traefik.http.services.olivetin-svc.loadbalancer.server.port=1337"
+networks:
+  proxy:
+    driver: bridge
+    external: true

@@ -1,0 +1,121 @@
+########################################
+#  example.com Authelia configuration  #
+########################################
+
+theme: dark
+jwt_secret: JWTTOKENID
+
+default_redirection_url: https://authelia.example.com
+
+server:
+  host: 0.0.0.0
+  port: 9091
+  read_buffer_size: 4096
+  write_buffer_size: 4096
+  enable_pprof: false
+  enable_expvars: false
+  disable_healthcheck: false
+  asset_path: /config/assets/
+
+log:
+  level: debug
+  format: text
+  file_path: /config/authelia.log
+  keep_stdout: false
+
+totp:
+  issuer: example.com
+  period: 30
+  skew: 1
+
+#duo_api:
+#  hostname: duo_api.example.com
+#  integration_key: here-the-key
+#  secret_key: here-the-secret-key
+
+authentication_backend:
+  password_reset:
+    ## Disable both the HTML element and the API for reset password functionality.
+    disable: false
+  refresh_interval: 5m
+  file:
+    path: /config/users_database.yml
+    password:
+      algorithm: argon2id
+      iterations: 4
+      key_length: 32
+      salt_length: 32
+      parallelism: 8
+      memory: 1024
+
+# Rules applied to everyone
+access_control:
+  default_policy: deny
+  rules:
+    ## bypass rule for login
+    - domain: authelia.example.com
+      policy: bypass
+    ## bypass rules for api / trigges / rss / xmltv
+    - domain: "*.example.com"
+      policy: bypass
+      resources:
+        - "^/api([/?].*)?$"
+        - "^/identity.*$"
+        - "^/triggers.*$"
+        - "^/rss/*$"
+        - "^/xmltv/*$"
+        - "^/liverel.*$"
+        - "^/meshagents.*$"
+        - "^/meshsettings.*$"
+        - "^/agent.*$"
+        - "^/control.*$"
+        - "^/meshrelay.*$"
+        - "^/wl/.*$"
+    ## bypass rule for Uptime-Kuma (Status Page)
+    - domain: "uptime-kuma.example.com"
+      policy: bypass
+      resources:
+        - "^/status?.*$"
+        - "^/assets/.*$"
+        - "^/upload/logo.png.*$"
+        - "^/icon.svg"
+    ## block admin bitwarden.example.com resources
+    - domain: "bitwarden.example.com"
+      policy: one_factor
+      resources:
+        - "^*/admin.*$"
+    ## one factor login
+    - domain: "*.example.com"
+      policy: one_factor
+    ## deny rule
+    - domain: "example.com"
+      policy: deny
+    - domain: SERVERIP_ID
+      policy: deny
+
+session:
+  name: authelia_session
+  secret: unsecure_session_secret
+  same_site: lax
+  expiration: 1h
+  inactivity: 10m
+  remember_me_duration: 1M
+  domain: example.com
+
+regulation:
+  max_retries: 3
+  find_time: 10m
+  ban_time: 12h
+
+storage:
+  encryption_key: encryption_key_secret
+  local:
+    path: /config/db.sqlite3
+
+notifier:
+  filesystem:
+    filename: /config/notification.txt
+
+#######################################
+# example.com Authelia configuration  #
+#######################################

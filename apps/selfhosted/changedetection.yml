@@ -1,0 +1,34 @@
+---
+version: "3"
+services:
+  changedetection:
+    hostname: "changedetection"
+    container_name: "changedetection"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "dgtlmoon/changedetection.io"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/changedetection:/datastore:rw"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.changedetection-rtr.entrypoints=https"
+      - "traefik.http.routers.changedetection-rtr.rule=Host(`changedetection.${DOMAIN}`)"
+      - "traefik.http.routers.changedetection-rtr.tls=true"
+      - "traefik.http.routers.changedetection-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.changedetection-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.changedetection-rtr.service=changedetection-svc"
+      - "traefik.http.services.changedetection-svc.loadbalancer.server.port=5000"
+networks:
+  proxy:
+    driver: bridge
+    external: true

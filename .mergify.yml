@@ -1,0 +1,79 @@
+pull_request_rules:
+  - name: Automatic welcome on new pr
+    conditions:
+      - "#approved-reviews-by>=1"
+      - author!=dependabot[bot]
+      - "-closed"
+    actions:
+      comment:
+        message: |
+          Thanks for opening this pull request! 
+          Please check out the [Contributing Guidelines](https://github.com/dockserver/dockserver/blob/master/CONTRIBUTING.md).
+  - name: Assign author
+    conditions:
+      - "-closed"
+      - "#assignee=0"
+    actions:
+      assign: 
+        users:
+          - "{{author}}"
+  - name: Label enhancement
+    conditions:
+      - head~=^feature\/[a-zA-Z0-9-_\/]+$|^feat\/[a-zA-Z0-9-_\/]+$
+    actions:
+      label:
+        add:
+          - enhancement
+  - name: Label bug
+    conditions:
+      - head~=^fix\/[a-zA-Z0-9-_\/]+$
+    actions:
+      label:
+        add:
+          - bug
+  - name: Label documentation
+    conditions:
+      - head~=^docs\/[a-zA-Z0-9-_\/]+$|^LinuxCommand\/[a-zA-Z0-9-_\/]+$|^LinuxTool\/[a-zA-Z0-9-_\/]+$
+    actions:
+      label:
+        add:
+          - documentation
+  - name: Label chore
+    conditions:
+      - head~=^chore\/[a-zA-Z0-9-_\/]+$
+    actions:
+      label:
+        add:
+          - chore
+  - name: Label dependencies
+    conditions:
+      - head~=^dependabot\/[a-zA-Z0-9-_\/]+$
+    actions:
+      label:
+        add:
+          - dependencies
+  - name: message check comment
+    conditions:
+      - author!=dependabot[bot]
+      - author!=doob187
+      - author!=drag0n141
+      - "-closed"
+      - "-merged"
+    actions:
+      comment:
+        message: |
+          @{{author}}
+          Please follow the [Contributing Guidelines](https://github.com/dockserver/dockserver/blob/master/CONTRIBUTING.md).
+          Before we can merg the PR , we will check the PR.
+  - name: conflict comment
+    conditions:
+      - "-closed"
+      - "-draft"
+      - "-merged"
+      - "conflict"
+    actions:
+      comment:
+        message: |
+          @{{author}}
+          There are some conflicts within your pull request.
+          Could you please fix them?
