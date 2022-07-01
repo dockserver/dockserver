@@ -219,9 +219,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     </td>
     <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
         <a href=https://github.com/dan3805>
-            <img src=https://avatars.githubusercontent.com/u/35934387?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=dan3805/>
+            <img src=https://avatars.githubusercontent.com/u/35934387?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=DoCtEuR3805 | FRENCH-QC/>
             <br />
-            <sub style="font-size:14px"><b>dan3805</b></sub>
+            <sub style="font-size:14px"><b>DoCtEuR3805 | FRENCH-QC</b></sub>
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
