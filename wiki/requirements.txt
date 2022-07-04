@@ -25,7 +25,7 @@ mkdocs-minify-plugin==0.5.0
 mkdocs-redirects==1.0.4
 mkdocs-macros-plugin==0.7.0
 mkdocs-awesome-pages-plugin==2.7.0
-mkdocs-git-revision-date-localized-plugin==1.0.1
+mkdocs-git-revision-date-localized-plugin==1.1.0
 markdown==3.3.7
 pygments
 mkdocs-render-swagger-plugin
