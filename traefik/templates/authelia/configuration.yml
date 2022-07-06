@@ -34,7 +34,9 @@ totp:
 #  secret_key: here-the-secret-key
 
 authentication_backend:
-  disable_reset_password: false
+  password_reset:
+    ## Disable both the HTML element and the API for reset password functionality.
+    disable: false
   refresh_interval: 5m
   file:
     path: /config/users_database.yml

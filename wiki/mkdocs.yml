@@ -87,21 +87,11 @@ theme:
 # Plugins
 plugins:
   - search
-  - mermaid2
   - redirects:
       redirect_maps:
         404.html: index.md
   - minify:
       minify_html: true
-  - json-schema:
-      json_schema: install/container.json
-      markdown_tag: #JsonSchema#
-
-
-extra_css:
-  - https://unpkg.com/mermaid/dist/mermaid.css
-extra_javascript:
-  - https://unpkg.com/mermaid/dist/mermaid.min.js
 
 # Customization
 extra:
@@ -147,11 +137,7 @@ markdown_extensions:
       repo: mkdocs-material
   - pymdownx.mark
   - pymdownx.smartsymbols
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.superfences
   - pymdownx.tabbed
   - pymdownx.tasklist:
       custom_checkbox: true
