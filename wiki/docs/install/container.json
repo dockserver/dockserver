@@ -44,10 +44,10 @@
    "appname": "docker-cloudflared",
    "apppic": "./images/docker-cloudflared.png",
    "appfolder": "./apps/docker-cloudflared",
-   "newversion": "2022.7.0",
+   "newversion": "2022.7.1",
    "baseimage": "alpine",
    "description": "Cloudflare Tunnel client (formerly Argo Tunnel)",
-   "body": "Upgrading docker-cloudflared to 2022.7.0",
+   "body": "Upgrading docker-cloudflared to 2022.7.1",
    "user": "github-actions[bot]"
 }
 {
