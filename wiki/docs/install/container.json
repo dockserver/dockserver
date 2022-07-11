@@ -163,11 +163,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.1296",
+   "newversion": "0.20.1299",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.1296",
+   "body": "Upgrading docker-jackett to 0.20.1299",
    "user": "github-actions[bot]"
 }
 {
