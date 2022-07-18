@@ -140,11 +140,11 @@
    "appname": "docker-embystat",
    "apppic": "./images/docker-embystat.png",
    "appfolder": "./apps/docker-embystat",
-   "newversion": "0.2.0-beta.37",
+   "newversion": "0.2.0-beta.38",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:focal",
    "description": "null",
-   "body": "Upgrading docker-embystat to 0.2.0-beta.37",
+   "body": "Upgrading docker-embystat to 0.2.0-beta.38",
    "user": "github-actions[bot]"
 }
 {
