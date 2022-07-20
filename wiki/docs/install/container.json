@@ -2,20 +2,20 @@
    "appname": "docker-auto-replyarr",
    "apppic": "",
    "appfolder": "./apps/docker-auto-replyarr",
-   "newversion": "3.16.0",
+   "newversion": "3.16.1",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading docker-auto-replyarr to 3.16.0",
+   "body": "Upgrading docker-auto-replyarr to 3.16.1",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-backup",
    "apppic": "./images/docker-backup.png",
    "appfolder": "./apps/docker-backup",
-   "newversion": "3.16.0",
+   "newversion": "3.16.1",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading docker-backup to 3.16.0",
+   "body": "Upgrading docker-backup to 3.16.1",
    "user": "github-actions[bot]"
 }
 {
@@ -75,22 +75,22 @@
    "appname": "docker-dash",
    "apppic": "",
    "appfolder": "./apps/docker-dash",
-   "newversion": "4.1.0",
+   "newversion": "4.3.6",
    "baseimage": "alpine",
-   "baseversion": "3.16.0",
+   "baseversion": "3.16.1",
    "description": "A simple, modern server dashboard, primarily used by smaller private servers",
-   "body": "Upgrading docker-dash to 4.1.0",
+   "body": "Upgrading docker-dash to 4.3.6",
    "user": "dockserver-image[bot]"
 }
 {
    "appname": "docker-deluge",
    "apppic": "./images/docker-deluge.png",
    "appfolder": "./apps/docker-deluge",
-   "newversion": "2.1.0-0",
+   "newversion": "2.1.1-0",
    "appbranch": "master",
    "baseimage": "ghcr.io/dockserver/docker-ubuntu-focal:latest",
    "description": "Deluge BitTorrent client - Git mirror, PRs only",
-   "body": "Upgrading docker-deluge to 2.1.0-0",
+   "body": "Upgrading docker-deluge to 2.1.1-0",
    "user": "github-actions[bot]"
 }
 {
@@ -108,10 +108,10 @@
    "appname": "docker-dockupdate",
    "apppic": "./images/docker-dockupdate.png",
    "appfolder": "./apps/docker-dockupdate",
-   "newversion": "3.16.0",
+   "newversion": "3.16.1",
    "baseimage": "alpine",
    "description": "Automatically keep your docker services and your docker containers up-to-date with the latest version",
-   "body": "Upgrading docker-dockupdate to 3.16.0",
+   "body": "Upgrading docker-dockupdate to 3.16.1",
    "user": "github-actions[bot]"
 }
 {
@@ -140,18 +140,18 @@
    "appname": "docker-embystat",
    "apppic": "./images/docker-embystat.png",
    "appfolder": "./apps/docker-embystat",
-   "newversion": "0.2.0-beta.37",
+   "newversion": "0.2.0-beta.38",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:focal",
    "description": "null",
-   "body": "Upgrading docker-embystat to 0.2.0-beta.37",
+   "body": "Upgrading docker-embystat to 0.2.0-beta.38",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-fenrus",
    "apppic": "./images/docker-fenrus.png",
    "appfolder": "./apps/docker-fenrus",
-   "newversion": "3.16.0",
+   "newversion": "3.16.1",
    "appbranch": "master",
    "baseimage": "alpine",
    "appversion": "d138e13bd4bece3e9274fafe30b466a2dbefad14",
@@ -163,11 +163,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.1285",
+   "newversion": "0.20.1342",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.1285",
+   "body": "Upgrading docker-jackett to 0.20.1342",
    "user": "github-actions[bot]"
 }
 {
@@ -229,16 +229,16 @@
    "appname": "docker-mount",
    "apppic": "./images/docker-mount.png",
    "appfolder": "./apps/docker-mount",
-   "newversion": "3.16.0",
+   "newversion": "3.16.1",
    "mergerfs": "2.33.5",
-   "rclone": "v1.58.1",
+   "rclone": "v1.59.0",
    "baseimage": "alpine",
    "buildimage": "alpine",
    "finalimage": "ghcr.io/dockserver/docker-alpine-v3",
-   "baseversion": "3.16.0",
+   "baseversion": "3.16.1",
    "s6stage": "v3.1.1.2",
-   "description": "Docker docker-mount with mergerfs version 2.33.5 and rclone version v1.58.1 include s6-overlay: v3.1.1.2",
-   "body": "Upgrading docker-mount to baseimage: alpine:3.16.0 with mergerfs: 2.33.5 and rclone: v1.58.1 include s6-overlay: v3.1.1.2",
+   "description": "Docker docker-mount with mergerfs version 2.33.5 and rclone version v1.59.0 include s6-overlay: v3.1.1.2",
+   "body": "Upgrading docker-mount to baseimage: alpine:3.16.1 with mergerfs: 2.33.5 and rclone: v1.59.0 include s6-overlay: v3.1.1.2",
    "user": "dockserver image update[bot]"
 }
 {
@@ -298,22 +298,22 @@
    "appname": "docker-plex",
    "apppic": "./images/docker-plex.png",
    "appfolder": "./apps/docker-plex",
-   "newversion": "1.27.2.5929-a806c5905",
+   "newversion": "1.28.0.5973-52ca4217f",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:jammy",
    "description": "Docker Container for Plex Media Server || PLEX PASS",
-   "body": "Upgrading docker-plex to 1.27.2.5929-a806c5905",
+   "body": "Upgrading docker-plex to 1.28.0.5973-52ca4217f",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "0.4.3.1893",
+   "newversion": "0.4.3.1905",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 0.4.3.1893",
+   "body": "Upgrading docker-prowlarr to 0.4.3.1905",
    "user": "github-actions[bot]"
 }
 {
@@ -343,11 +343,11 @@
    "appname": "docker-readarr",
    "apppic": "./images/docker-readarr.png",
    "appfolder": "./apps/docker-readarr",
-   "newversion": "0.1.1.1377",
+   "newversion": "0.1.1.1383",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-readarr to 0.1.1.1377",
+   "body": "Upgrading docker-readarr to 0.1.1.1383",
    "user": "github-actions[bot]"
 }
 {
@@ -425,9 +425,9 @@
    "appname": "docker-uploader",
    "apppic": "./images/docker-uploader.png",
    "appfolder": "./apps/docker-uploader",
-   "newversion": "3.16.0",
+   "newversion": "3.16.1",
    "baseimage": "ghcr.io/dockserver/docker-alpine-v3",
-   "baseversion": "3.16.0",
+   "baseversion": "3.16.1",
    "s6_stage": "",
    "description": "",
    "body": "Upgrading docker-uploader to ",
@@ -448,12 +448,12 @@
    "apppic": "./images/docker-wiki.png",
    "appfolder": "./apps/docker-wiki",
    "appbranch": "master",
-   "newversion": "3.16.0",
+   "newversion": "3.16.1",
    "appversion": "1.4.27",
-   "wikiversion": "8.3.9",
+   "wikiversion": "8.4.0rc1",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
-   "body": "Upgrading docker-wiki to 3.16.0",
+   "body": "Upgrading docker-wiki to 3.16.1",
    "user": "github-actions[bot]"
 }
 {
@@ -471,10 +471,10 @@
    "appname": "alpine",
    "apppic": "",
    "appfolder": "./base/alpine",
-   "newversion": "3.16.0",
+   "newversion": "3.16.1",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading alpine to 3.16.0",
+   "body": "Upgrading alpine to 3.16.1",
    "user": "github-actions[bot]"
 }
 {
@@ -492,43 +492,43 @@
    "appname": "docker-alpine-v3",
    "apppic": "./images/docker-alpine-v3.png",
    "appfolder": "./base/docker-alpine-v3",
-   "newversion": "3.16.0",
+   "newversion": "3.16.1",
    "baseimage": "alpine",
-   "baseversion": "3.16.0",
+   "baseversion": "3.16.1",
    "s6stage": "v3.1.1.2",
    "description": "Docker docker-alpine-v3 with include s6-overlay: v3.1.1.2",
-   "body": "Upgrading docker-alpine-v3 to baseimage: alpine:3.16.0  with include s6-overlay: v3.1.1.2",
+   "body": "Upgrading docker-alpine-v3 to baseimage: alpine:3.16.1  with include s6-overlay: v3.1.1.2",
    "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-config",
    "apppic": "./images/docker-config.png",
    "appfolder": "./base/docker-config",
-   "newversion": "3.16.0",
+   "newversion": "3.16.1",
    "baseimage": "alpine",
    "description": " !!! DEVERLOP STATUS !!! DO NOT TRY TO PULL THE IMAGE YOU NEED ACCESS TO THE REPOSITORY",
-   "body": "Upgrading docker-config to 3.16.0",
+   "body": "Upgrading docker-config to 3.16.1",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-create",
    "apppic": "./images/docker-create.png",
    "appfolder": "./base/docker-create",
-   "newversion": "3.16.0",
+   "newversion": "3.16.1",
    "baseimage": "alpine",
    "description": " !!! DEVERLOP STATUS !!! DO NOT TRY TO PULL THE IMAGE YOU NEED ACCESS TO THE REPOSITORY",
-   "body": "Upgrading docker-create to 3.16.0",
+   "body": "Upgrading docker-create to 3.16.1",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-dockserver",
    "apppic": "",
    "appfolder": "./base/docker-dockserver",
-   "newversion": "3.16.0",
-   "appversion": "3.16.0",
+   "newversion": "3.16.1",
+   "appversion": "3.16.1",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
-   "body": "Upgrading docker-dockserver to 3.16.0",
+   "body": "Upgrading docker-dockserver to 3.16.1",
    "user": "github-actions[bot]"
 }
 {
@@ -545,31 +545,31 @@
    "appname": "docker-ubuntu-focal",
    "apppic": "./images/docker-ubuntu-focal.png",
    "appfolder": "./base/docker-ubuntu-focal",
-   "newversion": "3.16.0",
+   "newversion": "3.16.1",
    "baseimage": "alpine",
    "description": "Docker image  for docker-ubuntu-focal",
-   "body": "Upgrading docker-ubuntu-focal to baseimage: alpine:3.16.0",
+   "body": "Upgrading docker-ubuntu-focal to baseimage: alpine:3.16.1",
    "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-ubuntu-jammy",
    "apppic": "./images/docker-ubuntu-jammy.png",
    "appfolder": "./base/docker-ubuntu-jammy",
-   "newversion": "3.16.0",
+   "newversion": "3.16.1",
    "baseimage": "alpine",
    "description": "Docker image  for docker-ubuntu-jammy",
-   "body": "Upgrading docker-ubuntu-jammy to baseimage: alpine:3.16.0",
+   "body": "Upgrading docker-ubuntu-jammy to baseimage: alpine:3.16.1",
    "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-ui",
    "apppic": "",
    "appfolder": "./base/docker-ui",
-   "newversion": "3.16.0",
-   "appversion": "3.16.0",
+   "newversion": "3.16.1",
+   "appversion": "3.16.1",
    "baseimage": "alpine",
    "description": " !!! DEVERLOP STATUS !!! DO NOT TRY TO PULL THE IMAGE YOU NEED ACCESS TO THE REPOSITORY",
-   "body": "Upgrading docker-ui to 3.16.0",
+   "body": "Upgrading docker-ui to 3.16.1",
    "user": "github-actions[bot]"
 }
 {
@@ -609,21 +609,21 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "4.2.0.6407",
+   "newversion": "4.2.0.6438",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to 4.2.0.6407",
+   "body": "Upgrading docker-radarr-nightly to 4.2.0.6438",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "9bac23b38fa44245b23f9ada229186f5fce1507c",
+   "newversion": "5b69155d49bc3606fef017f5e79e39d63a800e50",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 9bac23b38fa44245b23f9ada229186f5fce1507c",
+   "body": "Upgrading docker-sabnzbd-nightly to 5b69155d49bc3606fef017f5e79e39d63a800e50",
    "user": "github-actions[bot]"
 }
 {

@@ -65,6 +65,26 @@ Before starting the container, you need to set the following on the Options, Fea
 Run the steps on the following guide to pass through the GPU (my own system is an Intel GPU so I followed each step exactly without any changes and everything worked):
 https://forums.plex.tv/t/pms-installation-guide-when-using-a-proxmox-5-1-lxc-container/219728
 
+NOTE: the above steps worked for Proxmox 6 however with changes to cgroup to cgroup2, the lxc conf file stated:
+```
+lxc.cgroup.devices.allow = c 226:0 rwm
+lxc.cgroup.devices.allow = c 226:128 rwm
+lxc.cgroup.devices.allow = c 29:0 rwm
+lxc.autodev: 1
+lxc.hook.autodev:/var/lib/lxc/100/mount_hook.sh
+```
+Changes this to:
+```
+lxc.cgroup2.devices.allow: a
+227 lxc.cap.drop:
+228 lxc.cgroup2.devices.allow: c 226:0 rwm
+229 lxc.cgroup2.devices.allow: c 226:128 rwm
+230 lxc.cgroup2.devices.allow: c 29:0 rwm
+231 lxc.autodev: 1
+232 lxc.hook.autodev: /var/lib/lxc/112/mount_hook.sh
+```
+Be mindful of the last line - change this to your correct container number rather than 112!
+
 ##### **Mounting external NFS Drives**
 
 1. In _Datacenter_, _Storage_ add your NFS external drives.
