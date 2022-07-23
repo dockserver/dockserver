@@ -160,6 +160,16 @@
    "user": "github-actions[bot]"
 }
 {
+   "appname": "docker-gdsa",
+   "apppic": "./images/docker-gdsa.png",
+   "appfolder": "./apps/docker-gdsa",
+   "newversion": "394.0.0-alpine",
+   "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
+   "description": "Docker for Creating GDSA keys",
+   "body": "Upgrading docker-gdsa to 394.0.0-alpine",
+   "user": "dockserver-actions[bot]"
+}
+{
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
