@@ -630,10 +630,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "5d359afedb2f58a269bd8e4e85fea75e98ddb4d6",
+   "newversion": "249d73e27079dc0255664228ec8f63ce0fc761ea",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 5d359afedb2f58a269bd8e4e85fea75e98ddb4d6",
+   "body": "Upgrading docker-sabnzbd-nightly to 249d73e27079dc0255664228ec8f63ce0fc761ea",
    "user": "github-actions[bot]"
 }
 {
