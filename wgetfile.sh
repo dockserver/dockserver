@@ -102,11 +102,13 @@ if [ ! $(which docker-compose) ]; then
       $SUID $(which cp) -r $DOCKER_CONFIG/cli-plugins/docker-compose /usr/bin/docker-compose && \
       $SUID $(which cp) -r $DOCKER_CONFIG/cli-plugins/docker-compose /usr/local/bin/docker-compose
   fi
+fi
 }
 
 function finalend() {
 if test -f "/usr/bin/dockserver"; then
-    $(which rm) /usr/bin/dockserver /bin/dockserver
+   $SUID $(which rm) -rf /usr/bin/dockserver
+   $SUID $(which rm) -rf /bin/dockserver
 fi
 if [[ $EUID != 0 ]]; then
     $(which chown) -R $(whoami):$(whoami) /opt/dockserver
@@ -116,11 +118,11 @@ if [[ $EUID != 0 ]]; then
     $(which chmod) +x /usr/bin/dockserver
     $(which chown) $(whoami):$(whoami) /usr/bin/dockserver
 else
-    $(which chown) -R 1000:1000 /opt/dockserver
-    $(which cp) /opt/dockserver/.installer/dockserver /usr/bin/dockserver
-    $(which ln) -sf /usr/bin/dockserver /bin/dockserver
-    $(which chmod) +x /usr/bin/dockserver
-    $(which chown) -R 1000:1000 /usr/bin/dockserver
+    $SUID $(which chown) -R 1000:1000 /opt/dockserver
+    $SUID $(which cp) /opt/dockserver/.installer/dockserver /usr/bin/dockserver
+    $SUID $(which ln) -sf /usr/bin/dockserver /bin/dockserver
+    $SUID $(which chmod) +x /usr/bin/dockserver
+    $SUID $(which chown) -R 1000:1000 /usr/bin/dockserver
 fi
 
 printf "
