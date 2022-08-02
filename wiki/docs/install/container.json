@@ -22,11 +22,11 @@
    "appname": "docker-bazarr",
    "apppic": "./images/docker-bazarr.png",
    "appfolder": "./apps/docker-bazarr",
-   "newversion": "1.1.0",
+   "newversion": "null",
    "appbranch": "master",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Bazarr is a companion application to Sonarr and Radarr. It manages and downloads subtitles based on your requirements. You define your preferences by TV show or movie and Bazarr takes care of everything for you.",
-   "body": "Upgrading docker-bazarr to 1.1.0",
+   "body": "Upgrading docker-bazarr to null",
    "user": "github-actions[bot]"
 }
 {
@@ -414,10 +414,10 @@
    "appname": "docker-tautulli",
    "apppic": "./images/docker-tautulli.png",
    "appfolder": "./apps/docker-tautulli",
-   "newversion": "2.10.2",
+   "newversion": "null",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "A Python based monitoring and tracking tool for Plex Media Server.",
-   "body": "Upgrading docker-tautulli to 2.10.2",
+   "body": "Upgrading docker-tautulli to null",
    "user": "github-actions[bot]"
 }
 {
@@ -460,7 +460,7 @@
    "appbranch": "master",
    "newversion": "3.16.1",
    "appversion": "1.4.27",
-   "wikiversion": "8.4.0rc1",
+   "wikiversion": "",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
    "body": "Upgrading docker-wiki to 3.16.1",
@@ -630,10 +630,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "4b42b1f55d857a9a21cb9162f4f1b5145d8e2a3e",
+   "newversion": "27a933063824cedb3c0dc6e2915a47160034c6c5",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 4b42b1f55d857a9a21cb9162f4f1b5145d8e2a3e",
+   "body": "Upgrading docker-sabnzbd-nightly to 27a933063824cedb3c0dc6e2915a47160034c6c5",
    "user": "github-actions[bot]"
 }
 {
