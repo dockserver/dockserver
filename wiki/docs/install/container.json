@@ -340,13 +340,13 @@
 }
 {
    "appname": "docker-radarr",
-   "apppic": "./images/docker-radarr.png",
+   "apppic": "",
    "appfolder": "./apps/docker-radarr",
-   "newversion": "4.1.0.6175",
+   "newversion": "4.1.0.6175-ls148",
    "appbranch": "master",
-   "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
+   "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr to 4.1.0.6175",
+   "body": "Upgrading docker-radarr to 4.1.0.6175-ls148",
    "user": "github-actions[bot]"
 }
 {
@@ -394,10 +394,10 @@
    "appname": "docker-sonarr",
    "apppic": "./images/docker-sonarr.png",
    "appfolder": "./apps/docker-sonarr",
-   "newversion": "3.0.8.1507",
+   "newversion": "3.0.8.1507-ls151",
    "appbranch": "main",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr to 3.0.8.1507",
+   "body": "Upgrading docker-sonarr to 3.0.8.1507-ls151",
    "user": "github-actions[bot]"
 }
 {
@@ -619,11 +619,11 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "4.2.1.6450",
+   "newversion": "nightly-4.2.1.6450-ls346",
    "appbranch": "nightly",
-   "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
+   "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to 4.2.1.6450",
+   "body": "Upgrading docker-radarr-nightly to nightly-4.2.1.6450-ls346",
    "user": "github-actions[bot]"
 }
 {
@@ -640,10 +640,10 @@
    "appname": "docker-sonarr-nightly",
    "apppic": "./images/docker-sonarr-nightly.png",
    "appfolder": "./nightly/docker-sonarr-nightly",
-   "newversion": "3.0.8.1548",
+   "newversion": "elop-3.0.8.1548-ls295",
    "appbranch": "develop",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr-nightly to 3.0.8.1548",
+   "body": "Upgrading docker-sonarr-nightly to elop-3.0.8.1548-ls295",
    "user": "github-actions[bot]"
 }
 {
