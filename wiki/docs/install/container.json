@@ -195,11 +195,11 @@
    "appname": "docker-jellyfin",
    "apppic": "./images/docker-jellyfin.png",
    "appfolder": "./apps/docker-jellyfin",
-   "newversion": "10.8.2-1",
+   "newversion": "10.8.3-1",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:focal",
    "description": "The Free Software Media System",
-   "body": "Upgrading docker-jellyfin to 10.8.2-1",
+   "body": "Upgrading docker-jellyfin to 10.8.3-1",
    "user": "github-actions[bot]"
 }
 {
