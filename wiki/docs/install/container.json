@@ -163,10 +163,10 @@
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "395.0.0-alpine",
+   "newversion": "396.0.0-alpine",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to 395.0.0-alpine",
+   "body": "Upgrading docker-gdsa to 396.0.0-alpine",
    "user": "dockserver-actions[bot]"
 }
 {
@@ -630,20 +630,20 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "27a933063824cedb3c0dc6e2915a47160034c6c5",
+   "newversion": "3ebe2773033a0a0bc6829156cd94c5997e873372",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 27a933063824cedb3c0dc6e2915a47160034c6c5",
+   "body": "Upgrading docker-sabnzbd-nightly to 3ebe2773033a0a0bc6829156cd94c5997e873372",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-sonarr-nightly",
    "apppic": "./images/docker-sonarr-nightly.png",
    "appfolder": "./nightly/docker-sonarr-nightly",
-   "newversion": "3.0.8.1540",
+   "newversion": "3.0.8.1548",
    "appbranch": "develop",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr-nightly to 3.0.8.1540",
+   "body": "Upgrading docker-sonarr-nightly to 3.0.8.1548",
    "user": "github-actions[bot]"
 }
 {
