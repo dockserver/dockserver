@@ -17,7 +17,7 @@ jobs:
 
       - name: Clear all workflow runs
         env:
-          TOKEN: ${{ secrets.CR_PAT }}
+          TOKEN: ${{ secrets.CRREMOVE }}
         run: |
           echo "${TOKEN}" | gh auth login --with-token
           runs=$(gh api repos/dockserver/container/actions/runs | jq -r .total_count)
