@@ -84,7 +84,6 @@ access_control:
       policy: one_factor
       resources:
         - "^*/admin.*$"
-
     ## bypass rule for xbvr (deovr)
     - domain: "xbvr.example.com"
       policy: bypass
@@ -92,7 +91,6 @@ access_control:
         - "^/deovr*"
         - "^/ui/images/*"
         - "^/img/*"
-
     ## one factor login
     - domain: "*.example.com"
       policy: one_factor
