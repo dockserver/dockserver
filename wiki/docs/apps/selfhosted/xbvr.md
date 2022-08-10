@@ -1,25 +1,30 @@
-<p align="left">
-    <a href="https://discord.gg/FYSvu83caM">
-        <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
+<p align="center">
+    <a href="https://cloud.drone.io/xbapps/xbvr">
+        <img src="https://cloud.drone.io/api/badges/xbapps/xbvr/status.svg">
     </a>
-        <a href="https://github.com/dockserver/dockserver/releases">
-        <img src="https://img.shields.io/github/downloads/dockserver/dockserver/total?label=Total%20Downloads&logo=github" alt="Total Releases Downloaded from GitHub">
+ <a href="https://cloud.drone.io/xbapps/xbvr">
+        <img src="https://img.shields.io/github/release/xbapps/xbvr.svg">
     </a>
-    <a href="https://github.com/dockserver/dockserver/releases/latest">
-        <img src="https://img.shields.io/github/v/release/dockserver/dockserver?include_prereleases&label=Latest%20Release&logo=github" alt="Latest Official Release on GitHub">
-    </a>
-    <a href="https://github.com/dockserver/dockserver/blob/master/LICENSE">
-        <img src="https://img.shields.io/github/license/dockserver/dockserver?label=License&logo=gnu" alt="GNU General Public License">
-    </a>
-</p>
-<h1 align="center">
-<img src="https://i.imgur.com/T2UvcHc.png">
-<h1>
-<h1 align="center">
-<img src="https://i.imgur.com/Q3UdJhV.jpg">
-<h1>
+ </p>
 
+<p align="center">
+    <strong>
+        <a href="https://github.com/xbapps/xbvr/issues">XBVR Suggestions</a>
+        •
+        <a href="https://discord.gg/wdCHXAG">XBVR Discord</a>
+    </strong>
+</p>
+
+<h1 align="center">
+<img src="https://i.imgur.com/T2UvcHc.png" width="50%">
+<h1>
+<p align="center">
+<img src="https://i.imgur.com/Q3UdJhV.jpg" width="70%">
+</p>
+
+<h3 align="center">
 The ultimate tool for managing your VR porn library.
+<h3>
 
 ## Features
 
