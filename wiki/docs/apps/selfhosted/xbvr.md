@@ -32,7 +32,7 @@ The ultimate tool for managing your VR porn library.
 1. You must have the deovr app on your vr headset. Go to <https://xbvr.exemple.com> on the deovr browser.
 1. It is not possible to disable automatic scans of the library on xbvr. this could be problematic for very large libraries. 
 1. The scene scrapper  is very demanding on bandwidth, if you have playback problems, consider disabling automatic scene updates.
-1. Your videos will passes through Cloudflare infrastructure.Even if you add a cache bypass rules for XBVR and is technically against their TOS. 
+1. Your videos will passes through Cloudflare infrastructure.Even if you add a cache bypass rules for XBVR, this is technically against their TOS. 
    [Section 2.8 of the Self-Serve Subscription Agreement](https://www.cloudflare.com/terms/)
 
 
