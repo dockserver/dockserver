@@ -2,7 +2,7 @@
     <a href="https://cloud.drone.io/xbapps/xbvr">
         <img src="https://cloud.drone.io/api/badges/xbapps/xbvr/status.svg">
     </a>
- <a href="https://cloud.drone.io/xbapps/xbvr">
+ <a href="https://github.com/xbapps/xbvr/releases">
         <img src="https://img.shields.io/github/release/xbapps/xbvr.svg">
     </a>
  </p>
