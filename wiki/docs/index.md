@@ -113,7 +113,7 @@ sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/wg
 
 <!--START_SECTION:activity-->
 
-1. 🗣 Commented on [#520](https://github.com/dockserver/dockserver/issues/520) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+1. 🎉 Merged PR [#6](https://github.com/dockserver/panel-docker/pull/6) in [dockserver/panel-docker](https://github.com/dockserver/panel-docker)
 <!--END_SECTION:activity-->
 
 
