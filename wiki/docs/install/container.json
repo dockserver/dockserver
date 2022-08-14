@@ -154,9 +154,9 @@
    "newversion": "3.16.2",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "862fdd9b627aff78098dae266de0b76670629bc1",
+   "appversion": "2a28d6728c2444b2e29b549558bc9c2cff98864f",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to 862fdd9b627aff78098dae266de0b76670629bc1",
+   "body": "Upgrading docker-fenrus to 2a28d6728c2444b2e29b549558bc9c2cff98864f",
    "user": "github-actions[bot]"
 }
 {
@@ -195,11 +195,11 @@
    "appname": "docker-jellyfin",
    "apppic": "./images/docker-jellyfin.png",
    "appfolder": "./apps/docker-jellyfin",
-   "newversion": "10.8.3-1",
+   "newversion": "10.8.4-1",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:focal",
    "description": "The Free Software Media System",
-   "body": "Upgrading docker-jellyfin to 10.8.3-1",
+   "body": "Upgrading docker-jellyfin to 10.8.4-1",
    "user": "github-actions[bot]"
 }
 {
