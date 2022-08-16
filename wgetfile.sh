@@ -21,9 +21,11 @@ function log() {
 function rmdocker() {
 if [ $(which docker) ]; then
    dockers=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep 'dockserver')
-   $(which docker) stop $dockers > /dev/null
-   $(which docker) rm $dockers > /dev/null
-   $(which docker) system prune -af > /dev/null
+   if [[ $dockers != "" ]]; then
+      $(which docker) stop $dockers > /dev/null
+      $(which docker) rm $dockers > /dev/null
+      $(which docker) system prune -af > /dev/null
+   fi
    unset $dockers
 fi
 }
@@ -44,21 +46,21 @@ function upsys() {
 log "**** update system ****"
 updates="update upgrade autoremove autoclean"
 for upp in ${updates}; do
-    sudo $(command -v apt) $upp -yqq 1>/dev/null 2>&1 && clear
+    sudo $(which apt) $upp -yqq 1>/dev/null 2>&1 && clear
 done
 unset updates
 
 log "**** install build packages ****"
 packages="curl bc sudo wget tar git jq pv pigz tzdata rsync"
 for pack in ${packages}; do
-    sudo $(command -v apt) $pack -yqq 1>/dev/null 2>&1
+    sudo $(which apt) $pack -yqq 1>/dev/null 2>&1
 done
 unset packages
 
 log "**** remove old links  ****"
 remove="/bin/dockserver /usr/bin/dockserver"
 for rmold in ${remove}; do
-    sudo $(command -v rm) -rf $rmold 1>/dev/null 2>&1
+    sudo $(which rm) -rf $rmold 1>/dev/null 2>&1
 done
 unset remove
 
@@ -138,5 +140,3 @@ while true; do
 done
 
 finalend
-
-#EOF#

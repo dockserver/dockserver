@@ -18,15 +18,15 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
  
-mkdocs==1.3.0
+mkdocs
 mkdocs-material==8.2.16
 mkdocs-material-extensions==1.0.3
 mkdocs-minify-plugin==0.5.0
-mkdocs-redirects==1.0.4
+mkdocs-redirects==1.0.5
 mkdocs-macros-plugin==0.7.0
-mkdocs-awesome-pages-plugin==2.7.0
+mkdocs-awesome-pages-plugin==2.8.0
 mkdocs-git-revision-date-localized-plugin==1.1.0
-markdown==3.4.1
+markdown
 pygments
 mkdocs-render-swagger-plugin
 mkdocs-mermaid2-plugin
