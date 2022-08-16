@@ -163,10 +163,10 @@
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "397.0.0-alpine",
+   "newversion": "398.0.0-alpine",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to 397.0.0-alpine",
+   "body": "Upgrading docker-gdsa to 398.0.0-alpine",
    "user": "dockserver-actions[bot]"
 }
 {
@@ -608,11 +608,11 @@
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "b33956e6b85b2c2fc12e23951c06f36e009fb627",
+   "newversion": "6428b8d4195c736a384441a761a746a35a3ad009",
    "appbranch": "develop",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to b33956e6b85b2c2fc12e23951c06f36e009fb627",
+   "body": "Upgrading docker-overseerr-nightly to 6428b8d4195c736a384441a761a746a35a3ad009",
    "user": "github-actions[bot]"
 }
 {
