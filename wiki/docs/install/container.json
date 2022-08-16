@@ -308,11 +308,11 @@
    "appname": "docker-plex",
    "apppic": "./images/docker-plex.png",
    "appfolder": "./apps/docker-plex",
-   "newversion": "1.28.1.6057-f954ae495",
+   "newversion": "1.28.1.6092-87136b92b",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:jammy",
    "description": "Docker Container for Plex Media Server || PLEX PASS",
-   "body": "Upgrading docker-plex to 1.28.1.6057-f954ae495",
+   "body": "Upgrading docker-plex to 1.28.1.6092-87136b92b",
    "user": "github-actions[bot]"
 }
 {
@@ -630,10 +630,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "85aed457b2a327af56e0703bb29bc4c575103bb1",
+   "newversion": "ff2ab2da8de533ecb0e6ef1964572716ea9a5912",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 85aed457b2a327af56e0703bb29bc4c575103bb1",
+   "body": "Upgrading docker-sabnzbd-nightly to ff2ab2da8de533ecb0e6ef1964572716ea9a5912",
    "user": "github-actions[bot]"
 }
 {
