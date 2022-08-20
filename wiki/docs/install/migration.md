@@ -127,7 +127,8 @@ Edit rclonegdsa.conf
 sudo nano /opt/appdata/system/servicekeys/rclonegdsa.conf
 ```
 
-Remove all the remotes (g/tdrive, g/tcrypt) - PGUNION has to be deleted as well
+Remove all the remotes (g/tdrive, g/tcrypt) - PGUNION has to be deleted as well.
+You'll also want to make sure to update the `service_account_file` line. Remove the previous path and change it to `/system/servicekeys/keys/` like below.
 Again, remove all zeroes so that the values will be displayed like this:
 
 ```
