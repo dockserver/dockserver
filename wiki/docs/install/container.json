@@ -154,9 +154,9 @@
    "newversion": "3.16.2",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "526e549ca02ea52237a41714121c4397c11de02b",
+   "appversion": "3386f56d3ef10f21b614d7b87c79bd81ae6241d5",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to 526e549ca02ea52237a41714121c4397c11de02b",
+   "body": "Upgrading docker-fenrus to 3386f56d3ef10f21b614d7b87c79bd81ae6241d5",
    "user": "github-actions[bot]"
 }
 {
@@ -608,11 +608,11 @@
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "3b2633812b5ca8cde010b3f8c2ea9a8646b33e1d",
+   "newversion": "6e60a275c7c2451beb1922d66eaa6c5411d36c3d",
    "appbranch": "develop",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to 3b2633812b5ca8cde010b3f8c2ea9a8646b33e1d",
+   "body": "Upgrading docker-overseerr-nightly to 6e60a275c7c2451beb1922d66eaa6c5411d36c3d",
    "user": "github-actions[bot]"
 }
 {
