@@ -2,10 +2,10 @@
    "appname": "docker-auto-replyarr",
    "apppic": "",
    "appfolder": "./apps/docker-auto-replyarr",
-   "newversion": "3.16.2",
+   "newversion": "",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading docker-auto-replyarr to 3.16.2",
+   "body": "Upgrading docker-auto-replyarr to ",
    "user": "github-actions[bot]"
 }
 {
@@ -77,7 +77,7 @@
    "appfolder": "./apps/docker-dash",
    "newversion": "4.3.10",
    "baseimage": "alpine",
-   "baseversion": "3.16.2",
+   "baseversion": "",
    "description": "A simple, modern server dashboard, primarily used by smaller private servers",
    "body": "Upgrading docker-dash to 4.3.10",
    "user": "dockserver-image[bot]"
@@ -502,22 +502,22 @@
    "appname": "docker-alpine-v3",
    "apppic": "./images/docker-alpine-v3.png",
    "appfolder": "./base/docker-alpine-v3",
-   "newversion": "3.16.2",
+   "newversion": "",
    "baseimage": "alpine",
-   "baseversion": "3.16.2",
+   "baseversion": "",
    "s6stage": "v3.1.1.2",
    "description": "Docker docker-alpine-v3 with include s6-overlay: v3.1.1.2",
-   "body": "Upgrading docker-alpine-v3 to baseimage: alpine:3.16.2  with include s6-overlay: v3.1.1.2",
+   "body": "Upgrading docker-alpine-v3 to baseimage: alpine:  with include s6-overlay: v3.1.1.2",
    "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-config",
    "apppic": "./images/docker-config.png",
    "appfolder": "./base/docker-config",
-   "newversion": "3.16.2",
+   "newversion": "",
    "baseimage": "alpine",
    "description": " !!! DEVERLOP STATUS !!! DO NOT TRY TO PULL THE IMAGE YOU NEED ACCESS TO THE REPOSITORY",
-   "body": "Upgrading docker-config to 3.16.2",
+   "body": "Upgrading docker-config to ",
    "user": "github-actions[bot]"
 }
 {
@@ -545,10 +545,10 @@
    "appname": "docker-haproxy",
    "apppic": "./images/docker-haproxy.png",
    "appfolder": "./base/docker-haproxy",
-   "newversion": "2.5.7-alpine3.15",
+   "newversion": "",
    "baseimage": "haproxy",
    "description": "HAProxy Load Balancer's development branch (mirror of git.haproxy.org)",
-   "body": "Upgrading docker-haproxy to 2.5.7-alpine3.15",
+   "body": "Upgrading docker-haproxy to ",
    "user": "github-actions[bot]"
 }
 {
@@ -565,21 +565,21 @@
    "appname": "docker-ubuntu-jammy",
    "apppic": "./images/docker-ubuntu-jammy.png",
    "appfolder": "./base/docker-ubuntu-jammy",
-   "newversion": "3.16.2",
+   "newversion": "",
    "baseimage": "alpine",
    "description": "Docker image  for docker-ubuntu-jammy",
-   "body": "Upgrading docker-ubuntu-jammy to baseimage: alpine:3.16.2",
+   "body": "Upgrading docker-ubuntu-jammy to baseimage: alpine:",
    "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-ui",
    "apppic": "",
    "appfolder": "./base/docker-ui",
-   "newversion": "3.16.2",
-   "appversion": "3.16.2",
+   "newversion": "",
+   "appversion": "",
    "baseimage": "alpine",
    "description": " !!! DEVERLOP STATUS !!! DO NOT TRY TO PULL THE IMAGE YOU NEED ACCESS TO THE REPOSITORY",
-   "body": "Upgrading docker-ui to 3.16.2",
+   "body": "Upgrading docker-ui to ",
    "user": "github-actions[bot]"
 }
 {
@@ -630,10 +630,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "8620412b3a56f69d0a5a1929b937c08d6ca803af",
+   "newversion": "3d97ce99e16a2592e08989240448c86984bd0135",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 8620412b3a56f69d0a5a1929b937c08d6ca803af",
+   "body": "Upgrading docker-sabnzbd-nightly to 3d97ce99e16a2592e08989240448c86984bd0135",
    "user": "github-actions[bot]"
 }
 {
