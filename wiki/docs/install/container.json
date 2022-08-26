@@ -619,11 +619,11 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "develop-4.2.2.6503-ls68",
+   "newversion": "nightly-4.2.3.6522-ls361",
    "appbranch": "nightly",
    "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to develop-4.2.2.6503-ls68",
+   "body": "Upgrading docker-radarr-nightly to nightly-4.2.3.6522-ls361",
    "user": "github-actions[bot]"
 }
 {
