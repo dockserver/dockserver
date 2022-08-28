@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: GitHub metrics as SVG image
-        uses: lowlighter/metrics@v3.26
+        uses: lowlighter/metrics@v3.27
         with:
           committer_token: ${{ secrets.CR_PAT }}
           config_timezone: 'Europe/Berlin'
