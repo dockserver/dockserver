@@ -154,9 +154,9 @@
    "newversion": "3.16.2",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "c8fd2d80d3d8d5edbeb5c8397932082949cf57cd",
+   "appversion": "be9b8352e87abd1138facfab8f7511b1d77e82c1",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to c8fd2d80d3d8d5edbeb5c8397932082949cf57cd",
+   "body": "Upgrading docker-fenrus to be9b8352e87abd1138facfab8f7511b1d77e82c1",
    "user": "github-actions[bot]"
 }
 {
@@ -241,14 +241,14 @@
    "appfolder": "./apps/docker-mount",
    "newversion": "3.16.2",
    "mergerfs": "2.33.5",
-   "rclone": "",
+   "rclone": "v1.59.1",
    "baseimage": "alpine",
    "buildimage": "alpine",
    "finalimage": "ghcr.io/dockserver/docker-alpine-v3",
    "baseversion": "3.16.2",
    "s6stage": "v3.1.2.1",
-   "description": "Docker docker-mount with mergerfs version 2.33.5 and rclone version  include s6-overlay: v3.1.2.1",
-   "body": "Upgrading docker-mount to baseimage: alpine:3.16.2 with mergerfs: 2.33.5 and rclone:  include s6-overlay: v3.1.2.1",
+   "description": "Docker docker-mount with mergerfs version 2.33.5 and rclone version v1.59.1 include s6-overlay: v3.1.2.1",
+   "body": "Upgrading docker-mount to baseimage: alpine:3.16.2 with mergerfs: 2.33.5 and rclone: v1.59.1 include s6-overlay: v3.1.2.1",
    "user": "dockserver image update[bot]"
 }
 {
@@ -322,7 +322,7 @@
    "newversion": "0.4.5.1955",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
-   "description": "",
+   "description": "null",
    "body": "Upgrading docker-prowlarr to 0.4.5.1955",
    "user": "github-actions[bot]"
 }
@@ -374,10 +374,10 @@
    "appname": "docker-rutorrent",
    "apppic": "",
    "appfolder": "./apps/docker-rutorrent",
-   "newversion": "",
+   "newversion": "3.10",
    "baseimage": "alpine",
    "description": "Yet another web front-end for rTorrent",
-   "body": "Upgrading docker-rutorrent to ",
+   "body": "Upgrading docker-rutorrent to 3.10",
    "user": "dockserver[bot]"
 }
 {
@@ -447,10 +447,10 @@
    "appname": "docker-vnstat",
    "apppic": "",
    "appfolder": "./apps/docker-vnstat",
-   "newversion": "",
+   "newversion": "5.0.0-beta",
    "finalimage": "node:alpine3.15",
    "description": "GUI Client for vnStat Network Monitor for Linux or GNU/Linux",
-   "body": "Upgrading docker-vnstat to ",
+   "body": "Upgrading docker-vnstat to 5.0.0-beta",
    "user": "dockserver-image[bot]"
 }
 {
