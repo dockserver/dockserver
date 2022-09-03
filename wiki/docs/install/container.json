@@ -241,14 +241,14 @@
    "appfolder": "./apps/docker-mount",
    "newversion": "3.16.2",
    "mergerfs": "2.33.5",
-   "rclone": "v1.59.1",
+   "rclone": "",
    "baseimage": "alpine",
    "buildimage": "alpine",
    "finalimage": "ghcr.io/dockserver/docker-alpine-v3",
    "baseversion": "3.16.2",
    "s6stage": "v3.1.2.1",
-   "description": "Docker docker-mount with mergerfs version 2.33.5 and rclone version v1.59.1 include s6-overlay: v3.1.2.1",
-   "body": "Upgrading docker-mount to baseimage: alpine:3.16.2 with mergerfs: 2.33.5 and rclone: v1.59.1 include s6-overlay: v3.1.2.1",
+   "description": "Docker docker-mount with mergerfs version 2.33.5 and rclone version  include s6-overlay: v3.1.2.1",
+   "body": "Upgrading docker-mount to baseimage: alpine:3.16.2 with mergerfs: 2.33.5 and rclone:  include s6-overlay: v3.1.2.1",
    "user": "dockserver image update[bot]"
 }
 {
@@ -322,7 +322,7 @@
    "newversion": "0.4.5.1955",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
-   "description": "null",
+   "description": "",
    "body": "Upgrading docker-prowlarr to 0.4.5.1955",
    "user": "github-actions[bot]"
 }
@@ -374,10 +374,10 @@
    "appname": "docker-rutorrent",
    "apppic": "",
    "appfolder": "./apps/docker-rutorrent",
-   "newversion": "3.10",
+   "newversion": "",
    "baseimage": "alpine",
    "description": "Yet another web front-end for rTorrent",
-   "body": "Upgrading docker-rutorrent to 3.10",
+   "body": "Upgrading docker-rutorrent to ",
    "user": "dockserver[bot]"
 }
 {
@@ -447,10 +447,10 @@
    "appname": "docker-vnstat",
    "apppic": "",
    "appfolder": "./apps/docker-vnstat",
-   "newversion": "5.0.0-beta",
+   "newversion": "",
    "finalimage": "node:alpine3.15",
    "description": "GUI Client for vnStat Network Monitor for Linux or GNU/Linux",
-   "body": "Upgrading docker-vnstat to 5.0.0-beta",
+   "body": "Upgrading docker-vnstat to ",
    "user": "dockserver-image[bot]"
 }
 {
