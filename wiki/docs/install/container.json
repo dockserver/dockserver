@@ -608,11 +608,11 @@
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "87825a0e058162e82634503c81deeff1a59634e5",
+   "newversion": "30141f76e025763bf79fd3c8fb344d45519d5d8d",
    "appbranch": "develop",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to 87825a0e058162e82634503c81deeff1a59634e5",
+   "body": "Upgrading docker-overseerr-nightly to 30141f76e025763bf79fd3c8fb344d45519d5d8d",
    "user": "github-actions[bot]"
 }
 {
@@ -630,10 +630,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "08b249ee094dba66e483b700c4b2cb3ed87215fb",
+   "newversion": "b9225fb15389d41107cd3eb07862ffbc3e86febb",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 08b249ee094dba66e483b700c4b2cb3ed87215fb",
+   "body": "Upgrading docker-sabnzbd-nightly to b9225fb15389d41107cd3eb07862ffbc3e86febb",
    "user": "github-actions[bot]"
 }
 {
