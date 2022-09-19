@@ -342,11 +342,11 @@
    "appname": "docker-radarr",
    "apppic": "./images/docker-radarr.png",
    "appfolder": "./apps/docker-radarr",
-   "newversion": "4.1.0.6175-ls152",
+   "newversion": "4.1.0.6175-ls153",
    "appbranch": "master",
    "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr to 4.1.0.6175-ls152",
+   "body": "Upgrading docker-radarr to 4.1.0.6175-ls153",
    "user": "github-actions[bot]"
 }
 {
@@ -608,11 +608,11 @@
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "16cb53f703a6c42b99aa776515f90b3ed153b382",
+   "newversion": "7404d68143e830df73b9d2779a6d7ea65bc9fd4f",
    "appbranch": "develop",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to 16cb53f703a6c42b99aa776515f90b3ed153b382",
+   "body": "Upgrading docker-overseerr-nightly to 7404d68143e830df73b9d2779a6d7ea65bc9fd4f",
    "user": "github-actions[bot]"
 }
 {
