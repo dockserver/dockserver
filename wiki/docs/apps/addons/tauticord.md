@@ -84,30 +84,40 @@ logLevel: WARN
 
 Tautulli:
   Connection:
-    URL: "http://tautulli:8181" # change this if tautulli is not installed from Dockserver.
+    URL: ""
     APIKey: ""
   Customization:
     TerminateMessage: "Your stream has been terminated. Please contact the admin in the Discord."
-    # how often (seconds) the bot pulls new data. I'd recommend not making the bot ping Tautulli more often than every 5 seconds.
+    # how often (seconds) the bot pulls new data. 5-second minimum built-in, it's for your own good
     RefreshSeconds: 15
-    # can only kill streams if you have a plex pass, so this controls whether you're given the option
+    # can only kill streams if you have a Plex Pass, so this controls whether you're given the option
     PlexPass: true
     ServerTimeZone: "UTC"
     Use24HourTime: false
-  LibraryNames:
-    # list of names of the libraries you'd like stats about
-    # Voice channels will be made/updated with stats (refreshed every hour)
-    - Movies
-    - TV Shows
-    - Music
+    VoiceChannels:
+      CategoryName: "Tautulli Stats"
+      StreamCount: false
+      TranscodeCount: false
+      Bandwidth: false
+      LocalBandwidth: false
+      RemoteBandwidth: false
+      LibraryStats: false
+      LibraryRefreshSeconds: 3600
+      LibraryNames:
+        # list of names of the libraries you'd like stats about
+        # Voice channels will be made/updated with stats (refreshed every hour)
+        - Movies
+        - TV Shows
+        - Music
 
 Discord:
   Connection:
     BotToken: ""
     # Right-click on your server's icon -> "Copy ID"
-    ServerID: 00000000000000000
+    ServerID: 472537215457689601
     # Right-click on your profile picture -> "Copy ID"
-    OwnerID: 00000000000
+    AdminIDs:
+      - 00000000000
     # Where the live stats will be posted
     ChannelName: "tautulli"
   Customization:
