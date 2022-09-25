@@ -319,11 +319,11 @@
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "0.4.7.1984",
+   "newversion": "0.4.7.1985",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 0.4.7.1984",
+   "body": "Upgrading docker-prowlarr to 0.4.7.1985",
    "user": "github-actions[bot]"
 }
 {
@@ -342,11 +342,11 @@
    "appname": "docker-radarr",
    "apppic": "./images/docker-radarr.png",
    "appfolder": "./apps/docker-radarr",
-   "newversion": "4.1.0.6175-ls153",
+   "newversion": "4.2.4.6635-ls153",
    "appbranch": "master",
    "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr to 4.1.0.6175-ls153",
+   "body": "Upgrading docker-radarr to 4.2.4.6635-ls153",
    "user": "github-actions[bot]"
 }
 {
