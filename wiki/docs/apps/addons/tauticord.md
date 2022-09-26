@@ -95,20 +95,23 @@ Tautulli:
     ServerTimeZone: "UTC"
     Use24HourTime: false
     VoiceChannels:
-      CategoryName: "Tautulli Stats"
-      StreamCount: false
-      TranscodeCount: false
-      Bandwidth: false
-      LocalBandwidth: false
-      RemoteBandwidth: false
-      LibraryStats: false
-      LibraryRefreshSeconds: 3600
-      LibraryNames:
-        # list of names of the libraries you'd like stats about
-        # Voice channels will be made/updated with stats (refreshed every hour)
-        - Movies
-        - TV Shows
-        - Music
+      Stats:
+        CategoryName: "Tautulli Stats"
+        StreamCount: false
+        TranscodeCount: false
+        Bandwidth: false
+        LocalBandwidth: false
+        RemoteBandwidth: false
+      Libraries:
+        CategoryName: "Tautulli Libraries"
+        Enable: false
+        LibraryRefreshSeconds: 3600
+        LibraryNames:
+          # list of names of the libraries you'd like stats about
+          # Voice channels will be made/updated with stats (refreshed every hour)
+          - Movies
+          - TV Shows
+          - Music
 
 Discord:
   Connection:
