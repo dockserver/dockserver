@@ -75,11 +75,11 @@
    "appname": "docker-dash",
    "apppic": "",
    "appfolder": "./apps/docker-dash",
-   "newversion": "4.5.1",
+   "newversion": "4.5.2",
    "baseimage": "alpine",
    "baseversion": "",
    "description": "A simple, modern server dashboard, primarily used by smaller private servers",
-   "body": "Upgrading docker-dash to 4.5.1",
+   "body": "Upgrading docker-dash to 4.5.2",
    "user": "dockserver-image[bot]"
 }
 {
@@ -97,11 +97,11 @@
    "appname": "docker-dim",
    "apppic": "./images/docker-dim.png",
    "appfolder": "./apps/docker-dim",
-   "newversion": "0.3.0-rc4",
+   "newversion": "0.3.0-rc6",
    "appbranch": "",
    "baseimage": "multi-stages",
    "description": "Dim, a media manager fueled by dark forces.",
-   "body": "Upgrading docker-dim to 0.3.0-rc4",
+   "body": "Upgrading docker-dim to 0.3.0-rc6",
    "user": "github-actions[bot]"
 }
 {
@@ -118,11 +118,11 @@
    "appname": "docker-duplicati",
    "apppic": "./images/docker-duplicati.png",
    "appfolder": "./apps/docker-duplicati",
-   "newversion": "2.0.6.103",
+   "newversion": "2.0.6.104",
    "appbranch": "master",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-duplicati to 2.0.6.103",
+   "body": "Upgrading docker-duplicati to 2.0.6.104",
    "user": "github-actions[bot]"
 }
 {
@@ -140,11 +140,11 @@
    "appname": "docker-embystat",
    "apppic": "./images/docker-embystat.png",
    "appfolder": "./apps/docker-embystat",
-   "newversion": "0.2.0-beta.37",
+   "newversion": "0.2.0-beta.38",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:focal",
    "description": "null",
-   "body": "Upgrading docker-embystat to 0.2.0-beta.37",
+   "body": "Upgrading docker-embystat to 0.2.0-beta.38",
    "user": "github-actions[bot]"
 }
 {
@@ -206,11 +206,11 @@
    "appname": "docker-jellyseerr",
    "apppic": "./images/docker-jellyseerr.png",
    "appfolder": "./apps/docker-jellyseerr",
-   "newversion": "1.1.0",
+   "newversion": "1.1.1",
    "appbranch": "",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "fork of overseerr for jellyfin support",
-   "body": "Upgrading docker-jellyseerr to 1.1.0",
+   "body": "Upgrading docker-jellyseerr to 1.1.1",
    "user": "github-actions[bot]"
 }
 {
@@ -459,7 +459,7 @@
    "appfolder": "./apps/docker-wiki",
    "appbranch": "master",
    "newversion": "",
-   "appversion": "1.4.25",
+   "appversion": "1.4.27",
    "wikiversion": "8.5.6",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
