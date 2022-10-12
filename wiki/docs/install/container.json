@@ -206,11 +206,11 @@
    "appname": "docker-jellyseerr",
    "apppic": "./images/docker-jellyseerr.png",
    "appfolder": "./apps/docker-jellyseerr",
-   "newversion": "1.1.1",
+   "newversion": "1.2.0",
    "appbranch": "",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "fork of overseerr for jellyfin support",
-   "body": "Upgrading docker-jellyseerr to 1.1.1",
+   "body": "Upgrading docker-jellyseerr to 1.2.0",
    "user": "github-actions[bot]"
 }
 {
