@@ -175,6 +175,7 @@ nav:
       - Applikation: apps/apps.md
       - Addons:
           - Autoscan: apps/addons/autoscan.md
+          - A-Train: apps/addons/atrain.md
           - Cloud: apps/addons/cloud.md
           - CloudCMD: apps/addons/cloudcmd.md
           - Flaresolverr: apps/addons/flaresolverr.md
