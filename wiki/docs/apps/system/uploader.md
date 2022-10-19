@@ -97,36 +97,44 @@ Options:
 
 `NOTIFICATION_SERVERNAME=${NOTIFICATION_SERVERNAME:-null}`
 </br>
-Default Servername: Uploader
+Default Servername: `Uploader`
 
 #### LANGUAGE MESSAGES
 `LANGUAGE=${LANGUAGE:-en}`
 </br>
 Only `en` or `de`
 
+
 ### MULTI DRIVE UPLOAD
 
-If you would like to upload to different Tdrives instead of using one single Tdrive you can use the MULTI DRIVE UPLOADER. \
-To make use of this feature you need to create a file named `uploader.csv in `/opt/appdata/system/servicekeys/` \
-You can find a sample file in `opt/appdata/system/uploader/sample` \
-
-
+If you would like to upload to different Tdrives instead of using one single Tdrive you can use the MULTI DRIVE UPLOADER.
+</br>
+To make use of this feature you need to create a file named `uploader.csv` in `/opt/appdata/system/servicekeys/`.
+</br>
+You can find a sample file in `opt/appdata/system/uploader/sample`.
+</br>
 Example:
-\
 ```yaml
 TVShows|0XXXXXXXXX000000EERR
 TV4K|0XXXXXXXXX000000ZZTT
 Movies|0XXXXXXXXX000000JJJKK
 4K|0XXXXXXXXX000000BBAA
 ```
+Foreach Tdrive add a line in the `uploader.csv` file (look at example file).
+</br>
+**IMPORTANT**: All Keys must be know on all Tdrives!
+
 
 ### OTHER UPLOADER FEATURES
 
-
-
-
-
-
+Instead of using the `rclonegdsa.conf` located in `/opt/appdata/system/servicekeys/`, you can now use a `drive.csv` where you can put the default Tdrive to upload in.
+</br>
+To make use of this feature you need to create a file named `drive.csv` in `/opt/appdata/system/uploader/`.
+</br>
+Example:
+```yaml
+uploader|0XXXXXXXXX000000EERR
+```
 
 ## Support
 
