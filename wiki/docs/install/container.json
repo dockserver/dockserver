@@ -44,10 +44,10 @@
    "appname": "docker-cloudflared",
    "apppic": "./images/docker-cloudflared.png",
    "appfolder": "./apps/docker-cloudflared",
-   "newversion": "2022.10.1",
+   "newversion": "2022.10.2",
    "baseimage": "alpine",
    "description": "Cloudflare Tunnel client (formerly Argo Tunnel)",
-   "body": "Upgrading docker-cloudflared to 2022.10.1",
+   "body": "Upgrading docker-cloudflared to 2022.10.2",
    "user": "github-actions[bot]"
 }
 {
@@ -173,11 +173,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.2122",
+   "newversion": "0.20.2124",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.2122",
+   "body": "Upgrading docker-jackett to 0.20.2124",
    "user": "github-actions[bot]"
 }
 {
@@ -330,12 +330,12 @@
    "appname": "docker-qbittorrent",
    "apppic": "./images/docker-qbittorrent.png",
    "appfolder": "./apps/docker-qbittorrent",
-   "newversion": "4.4.5-r0",
+   "newversion": "4.4.5-r1",
    "appversion": "1.7",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-alpine:edge",
    "description": "Cli to manage qBittorrent",
-   "body": "Upgrading docker-qbittorrent to 4.4.5-r0 with 1.7",
+   "body": "Upgrading docker-qbittorrent to 4.4.5-r1 with 1.7",
    "user": "github-actions[bot]"
 }
 {
@@ -608,22 +608,22 @@
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "500cd1f872942923d2b9c3b835e6329e335d4a3f",
+   "newversion": "64aab6dd8240e191026512733b34cc046b6e508a",
    "appbranch": "develop",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to 500cd1f872942923d2b9c3b835e6329e335d4a3f",
+   "body": "Upgrading docker-overseerr-nightly to 64aab6dd8240e191026512733b34cc046b6e508a",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "nightly-4.3.1.6683-ls385",
+   "newversion": "nightly-4.3.1.6691-ls386",
    "appbranch": "nightly",
    "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to nightly-4.3.1.6683-ls385",
+   "body": "Upgrading docker-radarr-nightly to nightly-4.3.1.6691-ls386",
    "user": "github-actions[bot]"
 }
 {
