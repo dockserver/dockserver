@@ -25,63 +25,107 @@ Can be started/stopped as docker at your convenience - Or keep it running all th
 ### Uploader.env `/opt/appdata/system/uploader/uploader.env`
 
 #### RCLONE - Settings
-`BANDWITHLIMIT=${BANDWITHLIMIT:-null}`</br>
-The value per upload, not for the entire upload.</br>
+`BANDWITHLIMIT=${BANDWITHLIMIT:-null}`
+</br>
+The value per upload, not for the entire upload.
+</br>
 Please refer to the Rclone documentation before changes are made-> https://rclone.org/docs/#bwlimit-bandwidth-spec
 
-`LOG_LEVEL=${LOG_LEVEL:-INFO}`</br>
+`LOG_LEVEL=${LOG_LEVEL:-INFO}`
+</br>
 Please refer to the Rclone documentation before changes are made -> https://rclone.org/docs/#log-level-level
 
-`FOLDER_DEPTH=${FOLDER_DEPTH:-1}`</br>
+`FOLDER_DEPTH=${FOLDER_DEPTH:-1}`
+</br>
 If you use Multi-Drive Uploader then this is necessary to define how deep you have to look into the folders (the depth has to be the same on every Trive) and for the correct display in the Uploader-UI, SQL and Notifications. 
 </br> 
 Example: if it is set to 1, then the "movies" folder on the Tdrive has to be in the root e.g. `/movies`.</br>
          if it is set to 2, then the "movies" folder on the Tdrive has to be below the root folder e.g. `/media/movies`.
 
-`TRANSFERS=${TRANSFERS:-2}`</br>
+`TRANSFERS=${TRANSFERS:-2}`
+</br>
 The number of concurrent uploads
 
 #### USER - SETTINGS
-`DRIVEUSEDSPACE=${DRIVEUSEDSPACE:-null}`</br>
+`DRIVEUSEDSPACE=${DRIVEUSEDSPACE:-null}`
+</br>
 Example: if you write "80" in here, the uploader will wait until the disk used space is over 80%, only then will the upload begin.
 
-`MIN_AGE_UPLOAD=${MIN_AGE_UPLOAD:-1}`</br>
+`MIN_AGE_UPLOAD=${MIN_AGE_UPLOAD:-1}`
+</br>
 How many `minutes` old the file should be before the upload takes place, e.g. `10m`.
 
-`LOG_ENTRY=${LOG_ENTRY:-1000}`</br>
+`LOG_ENTRY=${LOG_ENTRY:-1000}`
+</br>
 How many log entries should be saved
 
-`LOG_RETENTION_DAYS=${LOG_RETENTION_DAYS:-null}`</br>
+`LOG_RETENTION_DAYS=${LOG_RETENTION_DAYS:-null}`
+</br>
 How many days of log entries should be kept. If `LOG_RETENTION_DAYS` is defined, then `LOG_ENTRY` is ignored.
 
 #### AUTOSCAN - SETTINGS
-`AUTOSCAN_URL=${AUTOSCAN_URL:-null}`</br>
-Example Remote https://autoscan.domain.com</br>
-Example Local http://autoscan:3030
+`AUTOSCAN_URL=${AUTOSCAN_URL:-null}`
+</br>
+Example Remote: `https://autoscan.domain.com`
+</br>
+Example Local: `http://autoscan:3030`
 
-`AUTOSCAN_USER=${AUTOSCAN_USER:-null}`</br>
+`AUTOSCAN_USER=${AUTOSCAN_USER:-null}`
+</br>
 `AUTOSCAN_PASS=${AUTOSCAN_PASS:-null}`
 
 #### NOTIFICATION - SETTINGS
-Apprise is integrated in the uploader, a markdown has already been integrated in the uploader.</br>
+Apprise is integrated in the uploader, a markdown has already been integrated in the uploader.
+</br>
 Please refer to the Apprise documentation for mor information -> https://github.com/caronc/apprise/wiki
 
 ![Image of Notification](/img/notifications/discord-uploader.png)
 
-`NOTIFICATION_URL=${NOTIFICATION_URL:-null}`</br>
-Discord Example: discord://{WebhookID}/{WebhookToken}
+`NOTIFICATION_URL=${NOTIFICATION_URL:-null}`
+</br>
+Discord Example: `discord://{WebhookID}/{WebhookToken}`
 
-`NOTIFICATION_LEVEL=${NOTIFICATION_LEVEL:-ALL}`</br>
-`ALL` - logging everything</br>
-`ERROR` - logging only errors</br>
-`NONE` - logging nothing</br>
+`NOTIFICATION_LEVEL=${NOTIFICATION_LEVEL:-ALL}`
+</br>
+Options:
+</br>
+`ALL` - logging everything
+</br>
+`ERROR` - logging only errors
+</br>
+`NONE` - logging nothing
 
-`NOTIFICATION_SERVERNAME=${NOTIFICATION_SERVERNAME:-null}`</br>
+`NOTIFICATION_SERVERNAME=${NOTIFICATION_SERVERNAME:-null}`
+</br>
 Default Servername: Uploader
 
 #### LANGUAGE MESSAGES
-`LANGUAGE=${LANGUAGE:-en}`</br>
-only `EN` and `DE`
+`LANGUAGE=${LANGUAGE:-en}`
+</br>
+Only `en` or `de`
+
+### MULTI DRIVE UPLOAD
+
+If you would like to upload to different Tdrives instead of using one single Tdrive you can use the MULTI DRIVE UPLOADER. \
+To make use of this feature you need to create a file named `uploader.csv in `/opt/appdata/system/servicekeys/` \
+You can find a sample file in `opt/appdata/system/uploader/sample` \
+
+
+Example:
+\
+```yaml
+TVShows|0XXXXXXXXX000000EERR
+TV4K|0XXXXXXXXX000000ZZTT
+Movies|0XXXXXXXXX000000JJJKK
+4K|0XXXXXXXXX000000BBAA
+```
+
+### OTHER UPLOADER FEATURES
+
+
+
+
+
 
 
 ## Support
