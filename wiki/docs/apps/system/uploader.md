@@ -41,6 +41,8 @@ If you use Multi-Drive Uploader then this is necessary to define how deep you ha
 </br> 
 Example: if it is set to 1, then the "movies" folder on the Tdrive has to be in the root e.g. `/movies`.</br>
          if it is set to 2, then the "movies" folder on the Tdrive has to be below the root folder e.g. `/media/movies`.
+</br>
+**IMPORTANT**: This setting schould only be used if you know what you are doing. By changing the value no exception is possible.
 
 `TRANSFERS=${TRANSFERS:-2}`
 </br>
@@ -53,11 +55,11 @@ Example: if you write "80" in here, the uploader will wait until the disk used s
 
 `MIN_AGE_UPLOAD=${MIN_AGE_UPLOAD:-1}`
 </br>
-How many `minutes` old the file should be before the upload takes place, e.g. `10m`.
+How old in minutes the file should be before the upload takes place, e.g. `10` for 10 minutes.
 
 `LOG_ENTRY=${LOG_ENTRY:-1000}`
 </br>
-How many log entries should be saved
+How many log entries should be saved.
 
 `LOG_RETENTION_DAYS=${LOG_RETENTION_DAYS:-null}`
 </br>
@@ -97,7 +99,8 @@ Options:
 
 `NOTIFICATION_SERVERNAME=${NOTIFICATION_SERVERNAME:-null}`
 </br>
-Default Servername: `Uploader`
+Default Servername: `Uploader - Docker`
+Changing this setting, only "Docker" will be replaced, "Uploader" is fixed.
 
 #### LANGUAGE MESSAGES
 `LANGUAGE=${LANGUAGE:-en}`
