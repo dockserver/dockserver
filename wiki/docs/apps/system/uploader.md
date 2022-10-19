@@ -16,106 +16,90 @@
 </p>
 
 # Uploader
+Automated uploader for Google Team Drive.</br>
 
-#### Slick uploader for TDrive or TCrypt based of Google Service Accounts
+### Features:
+- Completely automated.
+- Clean web interface.
+- Support for encrypted Team Drives.
+- Support for multiple Team Drives.
+- Bypass daily upload limit of 750GB via Service Accounts.
+- Support for [Autoscan](https://github.com/Cloudbox/autoscan).
+- Full support for [Rclone's bandwidth limit](https://rclone.org/docs/#bwlimit-bandwidth-spec).
+- Notifications via [Apprise](https://github.com/caronc/apprise).
+- Variable concurrent uploads.
+- Settings are refreshed for each upload. No need to restart the container after making a configuration change!
+- Start and stop on demand via the container or web interface.
 
-Can be started/stopped as docker at your convenience - Or keep it running all the time...
+### Limitations:
+- No support for Google Drive.
+- If using multiple Team Drives for Uploader, `FOLDER_DEPTH` must be identical across all drives.
+- Bandwidth limit is *per* upload IE - If you have `TRANSFERS=2` and `BANDWIDTH_LIMIT=20M`, the maximum total upload speed would be 40MiB.
+- Bandwidth cannot be changed for any active uploads.
+- Support for only English or German.
 
-## Uploader Setup
-### Uploader.env `/opt/appdata/system/uploader/uploader.env`
+## Configuration
+All settings can be found here: `/opt/appdata/system/uploader/uploader.env`
 
-#### RCLONE - Settings
-`BANDWITHLIMIT=${BANDWITHLIMIT:-null}`
-</br>
-The value per upload, not for the entire upload.
-</br>
-Please refer to the Rclone documentation before changes are made-> https://rclone.org/docs/#bwlimit-bandwidth-spec
+#### USER VALUES
+|Setting   |Default|Description|
+|----------|-------|-----------|
+|`PUID`    |`1000` |PGUID to be used by Uploader.|
+|`PGID`    |`1000` |PGID to be used by Uploader.|
+|`TIMEZONE`|`UTC`  |Timezone to be used by Uploader.|
 
-`LOG_LEVEL=${LOG_LEVEL:-INFO}`
-</br>
-Please refer to the Rclone documentation before changes are made -> https://rclone.org/docs/#log-level-level
+#### ENCRYPTION SETUP
+|Setting       |Default |Description|
+|--------------|--------|-----------|
+|`HASHPASSWORD`|`hashed`|If using an encrypted Team Drive, this must be set.|
 
-`FOLDER_DEPTH=${FOLDER_DEPTH:-1}`
-</br>
-If you use Multi-Drive Uploader then this is necessary to define how deep you have to look into the folders (the depth has to be the same on every Trive) and for the correct display in the Uploader-UI, SQL and Notifications. 
-</br> 
-Example: if it is set to 1, then the "movies" folder on the Tdrive has to be in the root e.g. `/movies`.</br>
-         if it is set to 2, then the "movies" folder on the Tdrive has to be below the root folder e.g. `/media/movies`.
-</br>
-**IMPORTANT**: This setting schould only be used if you know what you are doing. By changing the value no exception is possible.
-
-`TRANSFERS=${TRANSFERS:-2}`
-</br>
-The number of concurrent uploads
+#### RCLONE - SETTINGS
+|Setting          |Default         |Description|
+|-----------------|----------------|-----------|
+|`BANDWIDTH_LIMIT`|`null`          |The maximum upload speed *per upload*. Please refer to the [Rclone documentation](https://rclone.org/docs/#bwlimit-bandwidth-spec) before changes are made.|
+|`LOG_LEVEL`      |`INFO`          |Please refer to the [Rclone documentation](https://rclone.org/docs#log-level-level) before changes are made.|
+|`DLFOLDER`       |`/mnt/downloads`|Path to your download directory.|
+|`FOLDER_DEPTH`   |`1`             |How many folders deep your library folder is from the root of your Team Drive. If set incorrectly, the Uploader web interface, database, and notifications will all display the incorrect folder. Examples:</br>`FOLDER_DEPTH=1` the library folder is in the root of your Team Drive. IE - `/movies`.</br>`FOLDER_DEPTH=2` the library folder is below the root folder. IE - `/media/movies`.</br></br>**IMPORTANT**: This setting should only be used if you know what you are doing. By changing the value, you accept all risks that come with it.|
+|`TRANSFERS`      |`2`             |The maximum number of concurrent uploads.|
 
 #### USER - SETTINGS
-`DRIVEUSEDSPACE=${DRIVEUSEDSPACE:-null}`
-</br>
-Example: if you write "80" in here, the uploader will wait until the disk used space is over 80%, only then will the upload begin.
+|Setting             |Default|Description|
+|--------------------|-------|-----------|
+|`DRIVEUSEDSPACE`    |`null` |Amount of local storage, in percent, to use before uploading any files. Example:</br></br>`DRIVEUSEDSPACE=80` will wait until the drive space used reaches 80% before uploading files.|
+|`MIN_AGE_UPLOAD`    |`1`    |How old a file should be, in minutes, before it is uploaded. Example:</br>`MIN_AGE_UPLOAD=10` will wait until a file is 10 minutes old before it is uploaded.|
+|`LOG_ENTRY`         |`1000` |How many log entries should be retained in the local database.|
+|`LOG_RETENTION_DAYS`|`null` |How many days of log entries should be kept. If `LOG_RETENTION_DAYS` is defined, then `LOG_ENTRY` is ignored.|
 
-`MIN_AGE_UPLOAD=${MIN_AGE_UPLOAD:-1}`
-</br>
-How old in minutes the file should be before the upload takes place, e.g. `10` for 10 minutes.
-
-`LOG_ENTRY=${LOG_ENTRY:-1000}`
-</br>
-How many log entries should be saved.
-
-`LOG_RETENTION_DAYS=${LOG_RETENTION_DAYS:-null}`
-</br>
-How many days of log entries should be kept. If `LOG_RETENTION_DAYS` is defined, then `LOG_ENTRY` is ignored.
+#### VFS - SETTINGS
+|Setting             |Default     |Description|
+|--------------------|------------|-----------|
+|`VFS_REFRESH_ENABLE`|`true`      |Whether or not the VFS cache should be refreshed. Options:</br>`true`</br>`false`|
+|`MOUNT`             |`mount:8554`|The local address of your mount instance.|
 
 #### AUTOSCAN - SETTINGS
-`AUTOSCAN_URL=${AUTOSCAN_URL:-null}`
-</br>
-Example Remote: `https://autoscan.domain.com`
-</br>
-Example Local: `http://autoscan:3030`
-
-`AUTOSCAN_USER=${AUTOSCAN_USER:-null}`
-</br>
-`AUTOSCAN_PASS=${AUTOSCAN_PASS:-null}`
+|Setting        |Default|Description|
+|---------------|-------|-----------|
+|`AUTOSCAN_URL` |`null` |Remote or local path to Autoscan. Examples:</br>Remote: `AUTOSCAN_URL=https://autoscan.domain.com`</br>Local: `AUTOSCAN_URL=http://autoscan:3030`|
+|`AUTOSCAN_USER`|`null` |Autoscan username.|
+|`AUTOSCAN_PASS`|`null` |Autoscan password.|
 
 #### NOTIFICATION - SETTINGS
-Apprise is integrated in the uploader, a markdown has already been integrated in the uploader.
-</br>
-Please refer to the Apprise documentation for mor information -> https://github.com/caronc/apprise/wiki
+[Apprise](https://github.com/caronc/apprise) has been integrated into Uploader and is defaulted to format all notifications in [Markdown](https://www.markdownguide.org/). Please refer to the [Apprise documentation](https://github.com/caronc/apprise/wiki) for more information.
 
 ![Image of Notification](/img/notifications/discord-uploader.png)
-
-`NOTIFICATION_URL=${NOTIFICATION_URL:-null}`
-</br>
-Discord Example: `discord://{WebhookID}/{WebhookToken}`
-
-`NOTIFICATION_LEVEL=${NOTIFICATION_LEVEL:-ALL}`
-</br>
-Options:
-</br>
-`ALL` - logging everything
-</br>
-`ERROR` - logging only errors
-</br>
-`NONE` - logging nothing
-
-`NOTIFICATION_SERVERNAME=${NOTIFICATION_SERVERNAME:-null}`
-</br>
-Default Servername: `Uploader - Docker`
-</br>
-Changing this setting, only "Docker" will be replaced, "Uploader" is fixed.
+|Setting                  |Default|Description|
+|-------------------------|-------|------------|
+|`NOTIFICATION_URL`       |`null` |The notification URL to be passed to Apprise. Discord examples:</br>`https://discordapp.com/api/webhooks/{WebhookID}/{WebhookToken}`</br>`discord://{WebhookID}/{WebhookToken}/`</br>`discord://{user}@{WebhookID}/{WebhookToken}/`|
+|`NOTIFICATION_LEVEL`     |`ALL`  |What notifications should be sent to `NOTIFICATION_URL`. Options:</br>`ALL` - Send notification for all uploads</br>`ERROR` - Send notification for only errors</br>`NONE` - Do not send any notifications|
+|`NOTIFICATION_SERVERNAME`|`null` |What to display on the notification, after "Uploader - ". `null` will default to "Uploader - Docker". Anything else will only replace "Docker".</br>Examples:</br>`NOTIFICATION_SERVERNAME=null` results in "Uploader - Docker"</br>`NOTIFICATION_SERVERNAME=My Awesome Server` will result in "Uploader - My Awesome Server"|
 
 #### LANGUAGE MESSAGES
-`LANGUAGE=${LANGUAGE:-en}`
-</br>
-Only `en` or `de`
+|Setting   |Default|Description|
+|----------|-------|-----------|
+|`LANGUAGE`|`en`   |Language to use. Options:</br>`en` - English</br>`ge` - German|
 
-
-### MULTI DRIVE UPLOAD
-
-If you would like to upload to different Tdrives instead of using one single Tdrive you can use the MULTI DRIVE UPLOADER.
-</br>
-To make use of this feature you need to create a file named `uploader.csv` in `/opt/appdata/system/servicekeys/`.
-</br>
-You can find a sample file in `opt/appdata/system/uploader/sample`.
+### Multi-Drive Uploader
+If you would like to upload to multiple Team Drives, you need to create a file named `uploader.csv` in `/opt/appdata/system/servicekeys/`. You can find a sample file in `opt/appdata/system/uploader/sample`. For each Team Drive, add a line in the `uploader.csv` file.
 </br>
 </br>
 Example:
@@ -125,16 +109,11 @@ TV4K|0XXXXXXXXX000000ZZTT
 Movies|0XXXXXXXXX000000JJJKK
 4K|0XXXXXXXXX000000BBAA
 ```
-Foreach Tdrive add a line in the `uploader.csv` file (look at example file).
-</br>
-**IMPORTANT**: All Keys must be know on all Tdrives!
 
+**IMPORTANT**: All Keys must be known on all Team Drives!
 
-### OTHER UPLOADER FEATURES
-
-Instead of using the `rclonegdsa.conf` located in `/opt/appdata/system/servicekeys/`, you can now use a `drive.csv` where you can put the default Tdrive to upload in.
-</br>
-To make use of this feature you need to create a file named `drive.csv` in `/opt/appdata/system/uploader/`.
+### Other Uploader Features
+Instead of using `/opt/appdata/system/servicekeys/rclonegdsa.conf`, you can now use a `drive.csv` where you can put the default Team Drive to upload in. To make use of this feature, you need to create a file named `drive.csv` in `/opt/appdata/system/uploader/`.
 </br>
 </br>
 Example:
@@ -143,7 +122,4 @@ uploader|0XXXXXXXXX000000EERR
 ```
 
 ## Support
-
-Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
-
-- Join our [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa) for Support
+Kindly report any issues on [GitHub](https://github.com/dockserver/dockserver/issues) or [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa)
