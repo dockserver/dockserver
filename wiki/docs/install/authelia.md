@@ -1,4 +1,4 @@
-# **Authelia**
+![Image of DockServer](/img/container_images/docker-dockserver.png)
 
 <p align="left">
     <a href="https://discord.gg/FYSvu83caM">
@@ -10,7 +10,7 @@
     <a href="https://github.com/dockserver/dockserver/releases/latest">
         <img src="https://img.shields.io/github/v/release/dockserver/dockserver?include_prereleases&label=Latest%20Release&logo=github" alt="Latest Official Release on GitHub">
     </a>
-    <a href="https://github.com/dockserver/dockserver/blob/main/LICENSE">
+    <a href="https://github.com/dockserver/dockserver/blob/master/LICENSE">
         <img src="https://img.shields.io/github/license/dockserver/dockserver?label=License&logo=gnu" alt="GNU General Public License">
     </a>
 </p>
