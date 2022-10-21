@@ -241,14 +241,14 @@
    "appfolder": "./apps/docker-mount",
    "newversion": "",
    "mergerfs": "2.33.5",
-   "rclone": "v1.59.2",
+   "rclone": "v1.60.0",
    "baseimage": "alpine",
    "buildimage": "alpine",
    "finalimage": "ghcr.io/dockserver/docker-alpine-v3",
    "baseversion": "",
    "s6stage": "v3.1.2.1",
-   "description": "Docker docker-mount with mergerfs version 2.33.5 and rclone version v1.59.2 include s6-overlay: v3.1.2.1",
-   "body": "Upgrading docker-mount to baseimage: alpine: with mergerfs: 2.33.5 and rclone: v1.59.2 include s6-overlay: v3.1.2.1",
+   "description": "Docker docker-mount with mergerfs version 2.33.5 and rclone version v1.60.0 include s6-overlay: v3.1.2.1",
+   "body": "Upgrading docker-mount to baseimage: alpine: with mergerfs: 2.33.5 and rclone: v1.60.0 include s6-overlay: v3.1.2.1",
    "user": "dockserver image update[bot]"
 }
 {
