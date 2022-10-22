@@ -173,11 +173,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.2124",
+   "newversion": "0.20.2137",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.2124",
+   "body": "Upgrading docker-jackett to 0.20.2137",
    "user": "github-actions[bot]"
 }
 {
@@ -241,14 +241,14 @@
    "appfolder": "./apps/docker-mount",
    "newversion": "",
    "mergerfs": "2.33.5",
-   "rclone": "v1.59.2",
+   "rclone": "v1.60.0",
    "baseimage": "alpine",
    "buildimage": "alpine",
    "finalimage": "ghcr.io/dockserver/docker-alpine-v3",
    "baseversion": "",
    "s6stage": "v3.1.2.1",
-   "description": "Docker docker-mount with mergerfs version 2.33.5 and rclone version v1.59.2 include s6-overlay: v3.1.2.1",
-   "body": "Upgrading docker-mount to baseimage: alpine: with mergerfs: 2.33.5 and rclone: v1.59.2 include s6-overlay: v3.1.2.1",
+   "description": "Docker docker-mount with mergerfs version 2.33.5 and rclone version v1.60.0 include s6-overlay: v3.1.2.1",
+   "body": "Upgrading docker-mount to baseimage: alpine: with mergerfs: 2.33.5 and rclone: v1.60.0 include s6-overlay: v3.1.2.1",
    "user": "dockserver image update[bot]"
 }
 {
@@ -308,11 +308,11 @@
    "appname": "docker-plex",
    "apppic": "./images/docker-plex.png",
    "appfolder": "./apps/docker-plex",
-   "newversion": "1.29.1.6276-4a96dd5b1",
+   "newversion": "1.29.1.6316-f4cdfea9c",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:jammy",
    "description": "Docker Container for Plex Media Server || PLEX PASS",
-   "body": "Upgrading docker-plex to 1.29.1.6276-4a96dd5b1",
+   "body": "Upgrading docker-plex to 1.29.1.6316-f4cdfea9c",
    "user": "github-actions[bot]"
 }
 {
@@ -460,7 +460,7 @@
    "appbranch": "master",
    "newversion": "",
    "appversion": "1.4.27",
-   "wikiversion": "8.5.6",
+   "wikiversion": "8.5.7",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
    "body": "Upgrading docker-wiki to ",
@@ -619,11 +619,11 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "nightly-4.3.1.6691-ls386",
+   "newversion": "nightly-4.3.1.6695-ls388",
    "appbranch": "nightly",
    "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to nightly-4.3.1.6691-ls386",
+   "body": "Upgrading docker-radarr-nightly to nightly-4.3.1.6695-ls388",
    "user": "github-actions[bot]"
 }
 {
