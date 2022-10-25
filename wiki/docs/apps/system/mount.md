@@ -58,7 +58,7 @@ You can leave the value as it is if you dont use Multi Drive uploading.
 #### RCLONE - SETTINGS
 |Setting             |Default|Description|
 |--------------------|-------|-----------|
-|`UMASK`    |`18` |None|
+|`UMASK`    |`18` |Rclone uses his own values `18` = `022`|
 |`DRIVETRASH`    |`false`    |Whether or not the Drive Trash schould be used. Options:</br>`true`</br>`false`|
 |`DRIVE_CHUNK_SIZE`         |`128M` |Rclone Performance setting - This setting should only be changed if you know what you are doing|
 |`BUFFER_SIZE`|`32M` |Rclone memory buffer setting - [Rclone documentation](https://rclone.org/docs/#buffer-size-size)|
