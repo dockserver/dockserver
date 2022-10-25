@@ -70,8 +70,8 @@ You can leave the value as it is if you dont use Multi Drive uploading.
 #### VFS - SETTINGS
 |Setting             |Default     |Description|
 |--------------------|------------|-----------|
-|`VFS_READ_CHUNK_SIZE`|`128M`      |Rclone Performance setting - This setting should only be changed if you know what you are doing|
-|`VFS_READ_CHUNK_SIZE_LIMIT`|`4096M`      |Rclone Performance setting - This setting should only be changed if you know what you are doing|
+|`VFS_READ_CHUNK_SIZE`|`128M`      |Rclone read chunk size - [Rclone documentation](https://rclone.org/commands/rclone_mount/#vfs-chunked-reading)|
+|`VFS_READ_CHUNK_SIZE_LIMIT`|`4096M`      |Rclone limit read chunk size - [Rclone documentation](https://rclone.org/commands/rclone_mount/#vfs-chunked-reading)|
 |`VFS_CACHE_MAX_SIZE`|`NONE`      |Maximum rclone cache size - calculated within server drive size|
 |`VFS_REFRESH_ENABLE`|`true`      |Whether or not the VFS cache should be refreshed. Options:</br>`true`</br>`false`|
 |`VFS_REFRESH`             |`12h`|After what period of time the next VFS refresh should be done|
