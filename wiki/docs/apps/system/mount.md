@@ -1,4 +1,4 @@
-# **RAM rclone_cache**
+![Image of DockServer](/img/container_images/docker-mount.png)
 
 <p align="left">
     <a href="https://discord.gg/FYSvu83caM">
@@ -15,16 +15,137 @@
     </a>
 </p>
 
-## rclone_cache into ram
+# Mount
+
+### Features:
+- Key Rotation System.
+- Rclone Web-GUI (https://mount.mydomain.com).
+- Notifications via [Apprise](https://github.com/caronc/apprise).
+
+
+### Limitations:
+- Support for only English or German.
+
+## Configuration
+All settings can be found here: `/opt/appdata/system/mount/mount.env`
+
+#### USER VALUES
+|Setting   |Default|Description|
+|----------|-------|-----------|
+|`PUID`    |`1000` |PGUID to be used by Mount.|
+|`PGID`    |`1000` |PGID to be used by Mount.|
+|`TIMEZONE`|`UTC`  |Timezone to be used by Mount.|
+
+#### CRITICAL SETUP FOR CRYPT USER
+|Setting       |Default |Description|
+|--------------|--------|-----------|
+|`HASHPASSWORD`|`hashed`|If using `drive.csv` and encrypted Team Drive, this must be set.</br>Options:</br>`hashed`</br>`plain`|
+
+- `plain`: if using a manually created `drive.csv`, set `HASHPASSWORD` to `plain`.
+- `hashed`: if using `drive.csv`created by the mount docker, set `HASHPASSWORD` to `hashed`.
+
+#### MERGERFS ADDITIONAL FOLDER
+|Setting          |Default         |Description|
+|-----------------|----------------|-----------|
+|`ADDITIONAL_MOUNT`|`null`          |Additional mount points for `unionfs`|
+|`ADDITIONAL_MOUNT_PERMISSION`      |`RW`          |Read/Write permissons for additional mount points. Options:</br>`RW`</br>`RO`|
+
+#### RCLONE - SETTINGS
+|Setting             |Default|Description|
+|--------------------|-------|-----------|
+|`UMASK`    |`18` |None|
+|`DRIVETRASH`    |`false`    |Whether or not the Drive Trash schould be used. Options:</br>`true`</br>`false`|
+|`DRIVE_CHUNK_SIZE`         |`128M` |Rclone Performance setting - This setting should only be changed if you know what you are doing|
+|`BUFFER_SIZE`|`32M` |Rclone Performance setting - This setting should only be changed if you know what you are doing|
+|`TMPRCLONE`|`/mnt/rclone_cache` |Rclone Cache Folder|
+|`UAGENT`|`Gxxxxxxxxxxxxxxxxjhg` |Randomly generated - should not be changed|
+|`TPSLIMIT`|`10` |Rclone Performance setting - This setting should only be changed if you know what you are doing|
+|`TPSBURST`|`10` |Rclone Performance setting - This setting should only be changed if you know what you are doing|
+
+#### VFS - SETTINGS
+|Setting             |Default     |Description|
+|--------------------|------------|-----------|
+|`VFS_READ_CHUNK_SIZE`|`128M`      |Rclone Performance setting - This setting should only be changed if you know what you are doing|
+|`VFS_READ_CHUNK_SIZE_LIMIT`|`4096M`      |Rclone Performance setting - This setting should only be changed if you know what you are doing|
+|`VFS_CACHE_MAX_SIZE`|NONE      |Maximum rclone cache size - calculated within server drive size|
+|`VFS_REFRESH_ENABLE`|`true`      |Whether or not the VFS cache should be refreshed. Options:</br>`true`</br>`false`|
+|`VFS_REFRESH`             |`12h`|After what period of time the next VFS refresh should be done|
+
+#### LOG - SETTINGS
+|Setting             |Default     |Description|
+|--------------------|------------|-----------|
+|`LOG_LEVEL`      |`INFO`          |Please refer to the [Rclone documentation](https://rclone.org/docs#log-level-level) before changes are made.|
+
+#### NOTIFICATION - SETTINGS
+[Apprise](https://github.com/caronc/apprise) has been integrated into Mount and is defaulted to format all notifications in [Markdown](https://www.markdownguide.org/). Please refer to the [Apprise documentation](https://github.com/caronc/apprise/wiki) for more information.
+
+![Image of Notification](/img/notifications/discord-mount.png)
+|Setting                  |Default|Description|
+|-------------------------|-------|------------|
+|`NOTIFICATION_URL`       |`null` |The notification URL to be passed to Apprise. Discord examples:</br>`https://discordapp.com/api/webhooks/{WebhookID}/{WebhookToken}`</br>`discord://{WebhookID}/{WebhookToken}/`</br>`discord://{user}@{WebhookID}/{WebhookToken}/`|
+|`NOTIFICATION_SERVERNAME`|`null` |What to display on the notification, after "Mount - ". `null` will default to "Mount - Docker". Anything else will only replace "Docker".</br>Examples:</br>`NOTIFICATION_SERVERNAME=null` results in "Uploader - Docker"</br>`NOTIFICATION_SERVERNAME=My Awesome Server` will result in "Mount - My Awesome Server"|
+
+#### LANGUAGE MESSAGES
+|Setting   |Default|Description|
+|----------|-------|-----------|
+|`LANGUAGE`|`en`   |Language to use. Options:</br>`en` - English</br>`ge` - German|
+
+# KEY ROTATION SYSTEM
+Key Rotation System is used to prevent **GOOGLE API Bans** on hugh library scans. To make use of this you need to create new Keys.</br></br>
+**IMPORTANT**: do not use the same Keys as for the Uploader.</br></br>
+To create new Keys please refer to this [Documentation](https://dockserver.io/drive/saccounts.html).</br>
+Put the new Keys in `opt/appdata/system/mount/keys`.</br>
+On Mount startup a new file named `drive.csv` is created under `opt/appdata/system/mount`. This file contains all Team Drive Informations from your `rclone.conf` located in `opt/appdata/system/rclone`.
+</br>
+</br>
+#### Uncryted Team Drives
+</br>
+Example:
+```yaml
+## 1 = TEAM_DRIVE_NAME
+## 2 = TEAM_DRIVE_ID
+TV|0AFsVct4HDKPrUk9PVvvvvvvvv
+TV4K|0AFsVct4HDKPrUk9PVxxxxxxxxxx
+Movies|0AFsVct4HDKPrUk9PVyyyyyyyyyy
+Movies4K|0AFsVct4HDKPrUk9PVzzzzzzzzzz
+.
+.
+.
+```
+</br>
+</br>
+#### Encryted Team Drives
+</br>
+Example:
+```yaml
+## 1 = TEAM_DRIVE_NAME
+## 2 = TEAM_DRIVE_ID
+## 3 = PASSWORD - HASHED OR PLAIN
+## 4 = PASSWORD SALT - HASHED OR PLAIN
+tdrive1|0AFsVct4HDKPrUk9PVvvvvvvvv|72nsjsiwjsjsu|72nsjsiwjsjsu
+tdrive2|0AFsVct4HDKPrUk9PVxxxxxxxxxx|72nsjsiwjsjsu|72nsjsiwjsjsu
+tdrive3|0AFsVct4HDKPrUk9PVyyyyyyyyyy|72nsjsiwjsjsu|72nsjsiwjsjsu
+tdrive4|0AFsVct4HDKPrUk9PVzzzzzzzzzz|72nsjsiwjsjsu|72nsjsiwjsjsu
+.
+.
+.
+```
+
+**IMPORTANT**: All Keys must be known on all Team Drives!
+
+
+# RAM Rclone Cache
+
+### Rclone_cache into RAM
 
 Since our servers usually have a lot of ram that is not used at all, there is a possibility to save some ssd memory by putting the rclone_cache into the ram.
 
-# IMPORTANT! | Only for advanced Users
+**IMPORTANT**: Only for advanced Users
 
 You should give rclone at least 50GB cache!
 This tutorial is only recommended if you have at least 128GB RAM.
 
-# Setup
+#### Setup
 
 For this we proceed as follows:
 
@@ -44,8 +165,9 @@ However, we can increase this.
 1. reboot machine `sudo reboot -n`
 1. check if /mnt/unionfs get still mounted, if not redeploy mount app ( `sudo mountpoint /mnt/unionfs/` & `sudo docker log mount` )
 
+
 ## Support
+Kindly report any issues on [GitHub](https://github.com/dockserver/dockserver/issues) or [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa)
 
-Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
+- Join our [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa) for Support
 
-* Join our [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa) for Support
