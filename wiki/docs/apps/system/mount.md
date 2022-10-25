@@ -23,8 +23,8 @@
 - Notifications via [Apprise](https://github.com/caronc/apprise).
 
 
-### Limitations:
-- Support for only English or German.
+### Language:
+- English or German.
 
 ## Configuration
 All settings can be found here: `/opt/appdata/system/mount/mount.env`
@@ -45,7 +45,7 @@ You have 2 options for this value `HASHPASSWORD`.
 
 1. `hashed` this tells uploader that you have the encrypted password in your `drive.csv`.
 
-2.  `plain` this tells the uploader that you have the plain password in your `drive.csv`.
+2.  `plain` this tells uploader that you have the plain password in your `drive.csv`.
 
 You can leave the value as it is if you dont use Multi Drive uploading.
 
