@@ -41,9 +41,6 @@ All settings can be found here: `/opt/appdata/system/mount/mount.env`
 |--------------|--------|-----------|
 |`HASHPASSWORD`|`hashed`|If using `drive.csv` and encrypted Team Drive, this must be set.</br>Options:</br>`hashed`</br>`plain`|
 
-- `plain`: if using a manually created `drive.csv`, set `HASHPASSWORD` to `plain`.
-- `hashed`: if using `drive.csv`created by the mount docker, set `HASHPASSWORD` to `hashed`.
-
 You have 2 options for this value `HASHPASSWORD`.
 
 1. `hashed` this tells uploader that you have the envrypted password in your `drive.csv`.
@@ -106,8 +103,9 @@ Put the new Keys in `opt/appdata/system/mount/keys`.</br>
 On Mount startup a new file named `drive.csv` is created under `opt/appdata/system/mount`. This file contains all Team Drive Informations from your `rclone.conf` located in `opt/appdata/system/rclone`.
 </br>
 </br>
+
 #### Uncryted Team Drives
-</br>
+
 Example:
 
 ```yaml
@@ -124,8 +122,8 @@ Movies4K|0AFsVct4HDKPrUk9PVzzzzzzzzzz
 
 </br>
 </br>
+
 #### Encryted Team Drives
-</br>
 
 Example:
 ```yaml
