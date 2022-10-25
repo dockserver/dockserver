@@ -25,6 +25,10 @@
 ## Configuration
 All settings can be found here: `/opt/appdata/system/mount/mount.env`
 
+Latest yml for installation can be found here [Link](https://github.com/dockserver/apps/blob/master/mount/docker-compose.yml).
+
+
+
 #### USER VALUES
 |Setting   |Default|Description|
 |----------|-------|-----------|
