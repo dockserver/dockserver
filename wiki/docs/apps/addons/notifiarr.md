@@ -1,3 +1,5 @@
+![Image of DockServer](/img/container_images/docker-dockserver.png)
+
 <p align="left">
     <a href="https://discord.gg/FYSvu83caM">
         <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
@@ -13,7 +15,8 @@
     </a>
 </p>
 
-<img src="https://docs.notifiarr.com/img/repo-logo.png">
+
+# Notifiarr
 
 This is the unified client for [Notifiarr.com](https://notifiarr.com).
 The client enables content requests from Media Bot in your Discord Server.
