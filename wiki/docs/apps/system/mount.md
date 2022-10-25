@@ -22,10 +22,6 @@
 - Rclone Web-GUI (https://mount.mydomain.com).
 - Notifications via [Apprise](https://github.com/caronc/apprise).
 
-
-### Language:
-- English or German.
-
 ## Configuration
 All settings can be found here: `/opt/appdata/system/mount/mount.env`
 
