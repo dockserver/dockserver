@@ -63,7 +63,7 @@ You can leave the value as it is if you dont use Multi Drive uploading.
 |`DRIVE_CHUNK_SIZE`         |`128M` |Rclone Performance setting - This setting should only be changed if you know what you are doing|
 |`BUFFER_SIZE`|`32M` |Rclone memory buffer setting - [Rclone documentation](https://rclone.org/docs/#buffer-size-size)|
 |`TMPRCLONE`|`/mnt/rclone_cache` |Rclone Cache Folder|
-|`UAGENT`|`xxxxxxxxxxxxxxxxxxxx` |Randomly generated - doesn't need to be changed|
+|`UAGENT`|`NONE` |Randomly generated - doesn't need to be changed|
 |`TPSLIMIT`|`10` |Rclone limit transactions per second - [Rclone documentation](https://rclone.org/docs/#tpslimit-float)|
 |`TPSBURST`|`10` |Rclone limit transactions burst - [Rclone documentation](https://rclone.org/docs/#tpslimit-burst-int)|
 
