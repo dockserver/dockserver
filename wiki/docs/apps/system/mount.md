@@ -85,6 +85,7 @@ You can leave the value as it is if you dont use Multi Drive uploading.
 [Apprise](https://github.com/caronc/apprise) has been integrated into Mount and is defaulted to format all notifications in [Markdown](https://www.markdownguide.org/). Please refer to the [Apprise documentation](https://github.com/caronc/apprise/wiki) for more information.
 
 ![Image of Notification](/img/notifications/discord-mount.png)
+
 |Setting                  |Default|Description|
 |-------------------------|-------|------------|
 |`NOTIFICATION_URL`       |`null` |The notification URL to be passed to Apprise. Discord examples:</br>`https://discordapp.com/api/webhooks/{WebhookID}/{WebhookToken}`</br>`discord://{WebhookID}/{WebhookToken}/`</br>`discord://{user}@{WebhookID}/{WebhookToken}/`|
