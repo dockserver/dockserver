@@ -44,6 +44,14 @@ All settings can be found here: `/opt/appdata/system/mount/mount.env`
 - `plain`: if using a manually created `drive.csv`, set `HASHPASSWORD` to `plain`.
 - `hashed`: if using `drive.csv`created by the mount docker, set `HASHPASSWORD` to `hashed`.
 
+You have 2 options for this value `HASHPASSWORD`.
+
+1. `hashed` this tells uploader that you have the envrypted password in your `drive.csv`.
+
+2.  `plain` this tells the uploader that you have the plain password in your `drive.csv`.
+
+You can leave the value as it is if you dont use Multi Drive uploading.
+
 #### MERGERFS ADDITIONAL FOLDER
 |Setting          |Default         |Description|
 |-----------------|----------------|-----------|
@@ -67,7 +75,7 @@ All settings can be found here: `/opt/appdata/system/mount/mount.env`
 |--------------------|------------|-----------|
 |`VFS_READ_CHUNK_SIZE`|`128M`      |Rclone Performance setting - This setting should only be changed if you know what you are doing|
 |`VFS_READ_CHUNK_SIZE_LIMIT`|`4096M`      |Rclone Performance setting - This setting should only be changed if you know what you are doing|
-|`VFS_CACHE_MAX_SIZE`|NONE      |Maximum rclone cache size - calculated within server drive size|
+|`VFS_CACHE_MAX_SIZE`|`NONE`      |Maximum rclone cache size - calculated within server drive size|
 |`VFS_REFRESH_ENABLE`|`true`      |Whether or not the VFS cache should be refreshed. Options:</br>`true`</br>`false`|
 |`VFS_REFRESH`             |`12h`|After what period of time the next VFS refresh should be done|
 
@@ -101,6 +109,7 @@ On Mount startup a new file named `drive.csv` is created under `opt/appdata/syst
 #### Uncryted Team Drives
 </br>
 Example:
+
 ```yaml
 1 = TEAM_DRIVE_NAME
 2 = TEAM_DRIVE_ID
@@ -112,10 +121,12 @@ Movies4K|0AFsVct4HDKPrUk9PVzzzzzzzzzz
 .
 .
 ```
+
 </br>
 </br>
 #### Encryted Team Drives
 </br>
+
 Example:
 ```yaml
 1 = TEAM_DRIVE_NAME
