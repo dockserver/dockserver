@@ -138,10 +138,10 @@ tdrive4|0AFsVct4HDKPrUk9PVzzzzzzzzzz|72nsjsiwjsjsu|72nsjsiwjsjsu
 .
 ```
 
-**IMPORTANT**: All Keys must be known on all Team Drives!
+**IMPORTANT**: All Keys must be known on all Team Drives! And added as `Manager` to the Team Drives.
 
 
-## RAM Rclone Cache
+## Optional - RAM Rclone Cache
 
 #### Rclone_cache into RAM
 
