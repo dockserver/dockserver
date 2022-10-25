@@ -96,11 +96,11 @@ You can leave the value as it is if you dont use Multi Drive uploading.
 |`LANGUAGE`|`en`   |Language to use. Options:</br>`en` - English</br>`ge` - German|
 
 # KEY ROTATION SYSTEM
-Key Rotation System is used to prevent **GOOGLE API Bans** on hugh library scans. To make use of this you need to create new Keys.</br></br>
+Key Rotation System is used to prevent **GOOGLE API Bans** on hugh library scans. To make use of this you need to create new Keys with a new Google Project.</br></br>
 **IMPORTANT**: do not use the same Keys as for the Uploader.</br></br>
 To create new Keys please refer to this [Documentation](https://dockserver.io/drive/saccounts.html).</br>
-Put the new Keys in `opt/appdata/system/mount/keys`.</br>
-On Mount startup a new file named `drive.csv` is created under `opt/appdata/system/mount`. This file contains all Team Drive Informations from your `rclone.conf` located in `opt/appdata/system/rclone`.
+Put the new Keys in `opt/appdata/system/mount/keys`. You can name the keys whatever you want.</br>
+When keys are present a new file named `drive.csv` is created under `opt/appdata/system/mount`. This file contains all Team Drive Informations from your `rclone.conf` located in `opt/appdata/system/rclone`.
 </br>
 </br>
 
