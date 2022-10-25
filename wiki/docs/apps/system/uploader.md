@@ -152,7 +152,7 @@ Instead of using `/opt/appdata/system/servicekeys/rclonegdsa.conf`, you can now 
 </br>
 Example:
 ```yaml
-uploader|0XXXXXXXXX000000EERR
+uploader|0XABCFXXXX000000EERR
 ```
 
 ## Support
