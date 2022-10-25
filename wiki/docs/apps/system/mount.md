@@ -43,7 +43,7 @@ All settings can be found here: `/opt/appdata/system/mount/mount.env`
 
 You have 2 options for this value `HASHPASSWORD`.
 
-1. `hashed` this tells uploader that you have the envrypted password in your `drive.csv`.
+1. `hashed` this tells uploader that you have the encrypted password in your `drive.csv`.
 
 2.  `plain` this tells the uploader that you have the plain password in your `drive.csv`.
 
