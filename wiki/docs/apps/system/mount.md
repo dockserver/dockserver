@@ -93,7 +93,7 @@ You can leave the value as it is if you dont use Multi Drive uploading.
 #### LANGUAGE MESSAGES
 |Setting   |Default|Description|
 |----------|-------|-----------|
-|`LANGUAGE`|`en`   |Language to use. Options:</br>`en` - English</br>`ge` - German|
+|`LANGUAGE`|`en`   |Language to use. Options:</br>`en` - English</br>`de` - German|
 
 # KEY ROTATION SYSTEM
 Key Rotation System is used to prevent **GOOGLE API Bans** on hugh library scans. To make use of this you need to create new Keys with a new Google Project.</br></br>
