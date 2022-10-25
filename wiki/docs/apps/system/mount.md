@@ -18,7 +18,7 @@
 # Mount
 
 ### Features:
-- Key Rotation System.
+- Service Key Mount.
 - Rclone Web-GUI (https://mount.mydomain.com).
 - Notifications via [Apprise](https://github.com/caronc/apprise).
 
