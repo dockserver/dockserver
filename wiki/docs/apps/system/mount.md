@@ -95,7 +95,7 @@ You can leave the value as it is if you dont use Multi Drive uploading.
 |----------|-------|-----------|
 |`LANGUAGE`|`en`   |Language to use. Options:</br>`en` - English</br>`de` - German|
 
-# OPTIONAL - KEY ROTATION SYSTEM
+## OPTIONAL - KEY ROTATION SYSTEM
 Key Rotation System is used to prevent **GOOGLE API Bans** on hugh library scans. To make use of this you need to create new Keys with a new Google Project.</br></br>
 **IMPORTANT**: do not use the same Keys as for the Uploader.</br></br>
 To create new Keys please refer to this [Documentation](https://dockserver.io/drive/saccounts.html).</br>
@@ -141,7 +141,7 @@ tdrive4|0AFsVct4HDKPrUk9PVzzzzzzzzzz|72nsjsiwjsjsu|72nsjsiwjsjsu
 **IMPORTANT**: All Keys must be known on all Team Drives!
 
 
-# RAM Rclone Cache
+## RAM Rclone Cache
 
 ### Rclone_cache into RAM
 
