@@ -120,9 +120,6 @@ Movies4K|0AFsVct4HDKPrUk9PVzzzzzzzzzz
 .
 ```
 
-</br>
-</br>
-
 #### Encryted Team Drives
 
 Example:
