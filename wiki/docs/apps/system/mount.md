@@ -100,7 +100,7 @@ Service Key Mount is used to prevent **GOOGLE API Bans**. To make use of this yo
 **IMPORTANT**: do not use the same Keys as for the Uploader.</br></br>
 To create new Keys please refer to this [Documentation](https://dockserver.io/drive/saccounts.html).</br>
 Put the new Keys in `opt/appdata/system/mount/keys`. You can name the keys whatever you want.</br>
-When keys are present a new file named `drive.csv` is created under `opt/appdata/system/mount`. This file contains all Team Drive Informations from your `rclone.conf` located in `opt/appdata/system/rclone`.
+When Keys are present a new file named `drive.csv` is created under `opt/appdata/system/mount`. This file contains all Team Drive Informations from your `rclone.conf` located in `opt/appdata/system/rclone`.
 When you dont have an `rclone.conf` you can create the `drive.csv` by yourself.
 </br>
 </br>
