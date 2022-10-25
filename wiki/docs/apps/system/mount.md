@@ -88,7 +88,7 @@ You can leave the value as it is if you dont use Multi Drive uploading.
 |Setting                  |Default|Description|
 |-------------------------|-------|------------|
 |`NOTIFICATION_URL`       |`null` |The notification URL to be passed to Apprise. Discord examples:</br>`https://discordapp.com/api/webhooks/{WebhookID}/{WebhookToken}`</br>`discord://{WebhookID}/{WebhookToken}/`</br>`discord://{user}@{WebhookID}/{WebhookToken}/`|
-|`NOTIFICATION_SERVERNAME`|`null` |What to display on the notification, after "Mount - ". `null` will default to "Mount - Docker". Anything else will only replace "Docker".</br>Examples:</br>`NOTIFICATION_SERVERNAME=null` results in "Uploader - Docker"</br>`NOTIFICATION_SERVERNAME=My Awesome Server` will result in "Mount - My Awesome Server"|
+|`NOTIFICATION_SERVERNAME`|`null` |What to display on the notification, after "Mount - ". `null` will default to "Mount - Docker". Anything else will only replace "Docker".</br>Examples:</br>`NOTIFICATION_SERVERNAME=null` results in "Mount - Docker"</br>`NOTIFICATION_SERVERNAME=My Awesome Server` will result in "Mount - My Awesome Server"|
 
 #### LANGUAGE MESSAGES
 |Setting   |Default|Description|
