@@ -47,7 +47,7 @@ You have 2 options for this value `HASHPASSWORD`.
 
 2.  `plain` this tells uploader that you have the plain password in your `drive.csv`.
 
-You can leave the value as it is if you dont use Multi Drive uploading.
+You can leave the value as it is if you dont use Service Key mounting.
 
 #### MERGERFS ADDITIONAL FOLDER
 |Setting          |Default         |Description|
