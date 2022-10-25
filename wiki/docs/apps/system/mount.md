@@ -102,8 +102,8 @@ On Mount startup a new file named `drive.csv` is created under `opt/appdata/syst
 </br>
 Example:
 ```yaml
-## 1 = TEAM_DRIVE_NAME
-## 2 = TEAM_DRIVE_ID
+1 = TEAM_DRIVE_NAME
+2 = TEAM_DRIVE_ID
 TV|0AFsVct4HDKPrUk9PVvvvvvvvv
 TV4K|0AFsVct4HDKPrUk9PVxxxxxxxxxx
 Movies|0AFsVct4HDKPrUk9PVyyyyyyyyyy
@@ -118,10 +118,10 @@ Movies4K|0AFsVct4HDKPrUk9PVzzzzzzzzzz
 </br>
 Example:
 ```yaml
-## 1 = TEAM_DRIVE_NAME
-## 2 = TEAM_DRIVE_ID
-## 3 = PASSWORD - HASHED OR PLAIN
-## 4 = PASSWORD SALT - HASHED OR PLAIN
+1 = TEAM_DRIVE_NAME
+2 = TEAM_DRIVE_ID
+3 = PASSWORD - HASHED OR PLAIN
+4 = PASSWORD SALT - HASHED OR PLAIN
 tdrive1|0AFsVct4HDKPrUk9PVvvvvvvvv|72nsjsiwjsjsu|72nsjsiwjsjsu
 tdrive2|0AFsVct4HDKPrUk9PVxxxxxxxxxx|72nsjsiwjsjsu|72nsjsiwjsjsu
 tdrive3|0AFsVct4HDKPrUk9PVyyyyyyyyyy|72nsjsiwjsjsu|72nsjsiwjsjsu
