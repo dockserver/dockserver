@@ -1,4 +1,4 @@
-<![Image of DockServer](/img/container_images/docker-dockserver.png)
+![Image of DockServer](/img/container_images/docker-dockserver.png)
 
 <p align="left">
     <a href="https://discord.gg/FYSvu83caM">
