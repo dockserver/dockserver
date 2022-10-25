@@ -61,11 +61,11 @@ You can leave the value as it is if you dont use Multi Drive uploading.
 |`UMASK`    |`18` |None|
 |`DRIVETRASH`    |`false`    |Whether or not the Drive Trash schould be used. Options:</br>`true`</br>`false`|
 |`DRIVE_CHUNK_SIZE`         |`128M` |Rclone Performance setting - This setting should only be changed if you know what you are doing|
-|`BUFFER_SIZE`|`32M` |Rclone Performance setting - This setting should only be changed if you know what you are doing|
+|`BUFFER_SIZE`|`32M` |Rclone memory buffer setting - [Rclone documentation](https://rclone.org/docs/#buffer-size-size)|
 |`TMPRCLONE`|`/mnt/rclone_cache` |Rclone Cache Folder|
 |`UAGENT`|`Gxxxxxxxxxxxxxxxxjhg` |Randomly generated - should not be changed|
-|`TPSLIMIT`|`10` |Rclone Performance setting - This setting should only be changed if you know what you are doing|
-|`TPSBURST`|`10` |Rclone Performance setting - This setting should only be changed if you know what you are doing|
+|`TPSLIMIT`|`10` |Rclone limit transactions per second - [Rclone documentation](https://rclone.org/docs/#tpslimit-float)|
+|`TPSBURST`|`10` |Rclone limit transactions burst - [Rclone documentation](https://rclone.org/docs/#tpslimit-burst-int)|
 
 #### VFS - SETTINGS
 |Setting             |Default     |Description|
