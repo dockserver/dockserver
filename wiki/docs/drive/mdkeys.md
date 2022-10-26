@@ -15,10 +15,44 @@
     </a>
 </p>
 
+# Mount Keys
 
-# Mount - Key Rotation System
+### Service Key Mount
+Service Key Mount is used to prevent **Google API Bans**. To make use of this, you need to create new Keys within a different Google Project.
 
-[Please refer to this Documentation](https://github.com/cyb3rgh05t/dockserver/blob/master/wiki/docs/apps/system/mount.md#key-rotation-system)
+**IMPORTANT**: Do **not** use the same Keys as for the Uploader!
+
+#### Setup:
+- Create new Service Account Keys (see [Documentation](https://dockserver.io/drive/saccounts.html))
+- Share all Keys with all Team Drives and set to `Manager`.
+- Place the new Keys in `opt/appdata/system/mount/keys`. (You may name the Keys whatever you'd like)
+- When Keys are present, a file named `drive.csv` is created under `opt/appdata/system/mount`. This file contains all Team Drive information from your `rclone.conf` located in `opt/appdata/system/rclone`.
+
+If you don't have an `rclone.conf`, you can create the `drive.csv` manually. </br>
+
+**Unencrypted Team Drives example:**
+```yaml
+1 = TEAM_DRIVE_NAME
+2 = TEAM_DRIVE_ID
+TV|0AFsVct4HDKPrUk9PVvvvvvvvv
+TV4K|0AFsVct4HDKPrUk9PVxxxxxxxxxx
+Movies|0AFsVct4HDKPrUk9PVyyyyyyyyyy
+Movies4K|0AFsVct4HDKPrUk9PVzzzzzzzzzz
+...
+```
+
+**Encrypted Team Drives example:**
+```yaml
+1 = TEAM_DRIVE_NAME
+2 = TEAM_DRIVE_ID
+3 = PASSWORD - <HASHED|PLAIN>
+4 = PASSWORD SALT - <HASHED|PLAIN>
+tdrive1|0AFsVct4HDKPrUk9PVvvvvvvvv|72nsjsiwjsjsu|72nsjsiwjsjsu
+tdrive2|0AFsVct4HDKPrUk9PVxxxxxxxxxx|72nsjsiwjsjsu|72nsjsiwjsjsu
+tdrive3|0AFsVct4HDKPrUk9PVyyyyyyyyyy|72nsjsiwjsjsu|72nsjsiwjsjsu
+tdrive4|0AFsVct4HDKPrUk9PVzzzzzzzzzz|72nsjsiwjsjsu|72nsjsiwjsjsu
+...
+```
 
 ## Support
 
