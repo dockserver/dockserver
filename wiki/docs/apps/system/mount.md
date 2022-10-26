@@ -46,7 +46,7 @@ Latest yml for installation can be found here [Link](https://github.com/dockserv
 |`ADDITIONAL_MOUNT_PERMISSION`|`RW`            |Read/Write permissons for additional mount points. Options:</br>`RW` - Read/Write</br>`RO` - Read Only|
 
 #### RCLONE - SETTINGS
-For Rclone WebUI - Default user is `admin` and password is also `admin`
+For Rclone WebUI - Leave User and Password blank and hit login button. 
 |Setting           |Default            |Description|
 |------------------|-------------------|-----------|
 |`UMASK`           |`18`               |Rclone uses its own values `18` = `022`.|
