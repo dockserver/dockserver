@@ -173,11 +173,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.2171",
+   "newversion": "0.20.2175",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.2171",
+   "body": "Upgrading docker-jackett to 0.20.2175",
    "user": "github-actions[bot]"
 }
 {
@@ -195,11 +195,11 @@
    "appname": "docker-jellyfin",
    "apppic": "./images/docker-jellyfin.png",
    "appfolder": "./apps/docker-jellyfin",
-   "newversion": "10.8.5-1",
+   "newversion": "10.8.6-1",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:focal",
    "description": "The Free Software Media System",
-   "body": "Upgrading docker-jellyfin to 10.8.5-1",
+   "body": "Upgrading docker-jellyfin to 10.8.6-1",
    "user": "github-actions[bot]"
 }
 {
@@ -619,11 +619,11 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "nightly-4.3.1.6695-ls388",
+   "newversion": "nightly-4.3.1.6695-ls389",
    "appbranch": "nightly",
    "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to nightly-4.3.1.6695-ls388",
+   "body": "Upgrading docker-radarr-nightly to nightly-4.3.1.6695-ls389",
    "user": "github-actions[bot]"
 }
 {
