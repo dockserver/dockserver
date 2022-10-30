@@ -33,7 +33,7 @@ Easily expose your locally hosted services securly, using Cloudflare Tunnel!
 mkdir /opt/appdata/cloudflared && chmod 777 /opt/appdata/cloudflared
 ```
 
-2. Download `latest` Cloudflared Container Image.
+2. Download `latest` Cloudflared Docker Image.
 
 ```yaml
 docker pull cloudflare/cloudflared:latest
