@@ -75,10 +75,6 @@ services:
     labels:
       - 'dockupdater.enable=true'
       - 'traefik.enable=true'
-      - 'traefik.http.routers.http-catchall.entrypoints=http'
-      - 'traefik.http.routers.http-catchall.rule=HostRegexp(`{host:.+}`)'
-      - 'traefik.http.routers.http-catchall.middlewares=redirect-to-https'
-      - 'traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https'
       - 'traefik.http.routers.traefik-rtr.entrypoints=https'
       - 'traefik.http.routers.traefik-rtr.rule=HostHeader(`traefik.${DOMAIN}`)'
       - 'traefik.http.routers.traefik-rtr.service=api@internal'
