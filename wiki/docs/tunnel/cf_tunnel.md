@@ -27,9 +27,23 @@ Easily expose your locally hosted services securly, using Cloudflare Tunnel!
 
 ### Cloudflare Setup
 
-1. `mkdir /opt/appdata/cloudflared && chmod 777 /opt/appdata/cloudflared`.
-2. `docker pull cloudflare/cloudflared:latest`.
-3. `docker run -it --rm -v /opt/appdata/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:latest tunnel login`.
+1. Create `cloudflared` folder.
+
+```yaml
+mkdir /opt/appdata/cloudflared && chmod 777 /opt/appdata/cloudflared
+```
+
+2. Download `latest` Cloudflared Container Image.
+
+```yaml
+docker pull cloudflare/cloudflared:latest
+```
+
+3. Clouflare login.
+
+```yaml
+docker run -it --rm -v /opt/appdata/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:latest tunnel login
+```
 
 ![Image of Cloudflared](/img/cloudflared/login.png)
 
@@ -40,7 +54,11 @@ Easily expose your locally hosted services securly, using Cloudflare Tunnel!
 
 ![Image of Cloudflared](/img/cloudflared/success.png)
 
-4. `docker run -it --rm -v /opt/appdata/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:latest tunnel create tunnel-YOUR_TUNNEL_NAME`
+4. Create your Cloudflare Tunnel. 
+
+```yaml
+docker run -it --rm -v /opt/appdata/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:latest tunnel create tunnel-YOUR_TUNNEL_NAME
+```
 
 - Change `tunnel-YOUR_TUNNEL_NAME` to wathever you like.
 
