@@ -27,9 +27,9 @@ Easily expose your locally hosted services securly, using Cloudflare Tunnel!
 
 ### Cloudflare Setup
 
-1. `mkdir /opt/appdata/cloudflared && chmod 777 /opt/appdata/cloudflared`
-2. `docker pull cloudflare/cloudflared:latest`
-3. `docker run -it --rm -v /opt/appdata/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:latest tunnel login`
+1. `mkdir /opt/appdata/cloudflared && chmod 777 /opt/appdata/cloudflared`.
+2. `docker pull cloudflare/cloudflared:latest`.
+3. `docker run -it --rm -v /opt/appdata/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:latest tunnel login`.
 
 ![Image of Cloudflared](/img/cloudflared/login.png)
 
@@ -46,8 +46,11 @@ Easily expose your locally hosted services securly, using Cloudflare Tunnel!
 
 ![Image of Cloudflared](/img/cloudflared/tunnel.png)
 
-5. - `cd /opt/appdata/cloudflared`
-   - `wget https://raw.githubusercontent.com/dockserver/dockserver/863a2a0dacaf1a9f076d236f1f918dbbed138865/traefik/templates/cloudflared/config.yaml`
+5. Download the `config.yaml` to `/opt/appdata/cloudflared/`.
+
+```yaml
+wget https://raw.githubusercontent.com/dockserver/dockserver/863a2a0dacaf1a9f076d236f1f918dbbed138865/traefik/templates/cloudflared/config.yaml -P       /opt/appdata/clouflared/
+```
 
 - Edit `config.yaml` and add the TUNNEL_UUID.
 
@@ -114,11 +117,13 @@ ingress:
 .
 ```
 
-6. `cd /opt/dockserver/apps/myapps`
-7. Download the Cloudflared.yml
-   - `wget https://raw.githubusercontent.com/dockserver/apps/master/cloudflared/docker-compose.yml`
-8. Save it as `cloudflared.yml`.
-9. Add the `TUNNEL_UUID` to `/opt/appdata/compose/.env`
+6. Download the `cloudflared.yml` to `/opt/dockserver/apps/myapps/`.
+
+   ```yaml
+   wget https://raw.githubusercontent.com/dockserver/apps/master/cloudflared/docker-compose.yml -O /opt/dockserver/apps/myapps/clouflared.yml
+   ```
+   
+7. Add the `TUNNEL_UUID` to `/opt/appdata/compose/.env`.
 
   ```yaml
   ##Environment for Docker-Compose
@@ -131,7 +136,7 @@ DOMAIN=example.com
 CLOUDFLARED_UUID=TUNNEL_UUID_HERE
 ```
 
-10. Deploy CloudFlared over DockServer.
+8. Deploy CloudFlared over DockServer.
 
 
 ![Image of Cloudflared](/img/cloudflared/record.png)
