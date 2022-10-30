@@ -67,7 +67,7 @@ docker run -it --rm -v /opt/appdata/cloudflared:/home/nonroot/.cloudflared/ clou
 5. Download the `config.yaml` to `/opt/appdata/cloudflared/`.
 
 ```yaml
-wget https://raw.githubusercontent.com/dockserver/dockserver/863a2a0dacaf1a9f076d236f1f918dbbed138865/traefik/templates/cloudflared/config.yaml -P       /opt/appdata/clouflared/
+wget https://raw.githubusercontent.com/dockserver/dockserver/863a2a0dacaf1a9f076d236f1f918dbbed138865/traefik/templates/cloudflared/config.yaml -O /opt/appdata/cloudflared/config.yaml
 ```
 
 - Edit `config.yaml` and add the TUNNEL_UUID.
@@ -138,7 +138,7 @@ ingress:
 6. Download the `cloudflared.yml` to `/opt/dockserver/apps/myapps/`.
 
    ```yaml
-   wget https://raw.githubusercontent.com/dockserver/apps/master/cloudflared/docker-compose.yml -O /opt/dockserver/apps/myapps/clouflared.yml
+   wget https://raw.githubusercontent.com/dockserver/apps/master/cloudflared/docker-compose.yml -O /opt/dockserver/apps/myapps/cloudflared.yml
    ```
    
 7. Add the `TUNNEL_UUID` to `/opt/appdata/compose/.env`.
