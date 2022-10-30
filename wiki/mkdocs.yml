@@ -153,7 +153,7 @@ nav:
       - cf-companion: install/cf-companion.md
       - Traefik: install/traefik.md
   - Special:
-      - CloudFlare-Tunnel: tunnel/cf_tunnel.md
+      - Cloudflare Tunnel: tunnel/cf_tunnel.md
       - LXC-Container: lxc/lxc.md
       - Migration: install/migration.md
       - Changelog: install/changelog.md
