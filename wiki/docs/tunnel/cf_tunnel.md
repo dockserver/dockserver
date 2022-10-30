@@ -23,13 +23,27 @@
 Easily expose your locally hosted services securly, using Cloudflare Tunnel!
 
 **IMPORTANT** - A Cloudflare Tunnel can only be used with apps that can be accessed over port 80 and 443.
+- Example: **TAUTULLI** will still be accessible over tautulli.domain.com but **PLEX** only over SERVER_IP:32400.
 
 ### Cloudflare Setup
 
-1. `mkdir /opt/appdata/cloudflared`
-2. `chmod 777 /opt/appdata/cloudflared`
-3. `docker pull cloudflare/cloudflared:latest`
-4. `docker run -it --rm -v /opt/appdata/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:latest tunnel login`
+1. Create `cloudflared` folder.
+
+```yaml
+mkdir /opt/appdata/cloudflared && chmod 777 /opt/appdata/cloudflared
+```
+
+2. Download `latest` Cloudflared Docker Image.
+
+```yaml
+docker pull cloudflare/cloudflared:latest
+```
+
+3. Clouflare login.
+
+```yaml
+docker run -it --rm -v /opt/appdata/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:latest tunnel login
+```
 
 ![Image of Cloudflared](/img/cloudflared/login.png)
 
@@ -40,15 +54,21 @@ Easily expose your locally hosted services securly, using Cloudflare Tunnel!
 
 ![Image of Cloudflared](/img/cloudflared/success.png)
 
-5. `docker run -it --rm -v /opt/appdata/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:latest tunnel create tunnel-YOUR_TUNNEL_NAME`
+4. Create your Cloudflare Tunnel. 
+
+```yaml
+docker run -it --rm -v /opt/appdata/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:latest tunnel create tunnel-YOUR_TUNNEL_NAME
+```
 
 - Change `tunnel-YOUR_TUNNEL_NAME` to wathever you like.
 
 ![Image of Cloudflared](/img/cloudflared/tunnel.png)
 
-6. `cd /opt/appdata/cloudflared`</br></br>
-   `wget https://raw.githubusercontent.com/dockserver/dockserver/863a2a0dacaf1a9f076d236f1f918dbbed138865/traefik/templates/cloudflared/config.yaml`</br></br>
-   `nano config.yaml`
+5. Download the `config.yaml` to `/opt/appdata/cloudflared/`.
+
+```yaml
+wget https://raw.githubusercontent.com/dockserver/dockserver/863a2a0dacaf1a9f076d236f1f918dbbed138865/traefik/templates/cloudflared/config.yaml -O /opt/appdata/cloudflared/config.yaml
+```
 
 - Edit `config.yaml` and add the TUNNEL_UUID.
 
@@ -87,8 +107,8 @@ ingress:
 #### CONFIG VALUES
 |Setting   |Default|Description|
 |----------|-------|-----------|
-|`tunnel`    |`null` |TUNNEL_UUID retrieved in STEP 6.|
-|`credentials-file`    |`null` |TUNNEL_UUID retrieved in STEP 6.|
+|`tunnel`    |`null` |TUNNEL_UUID retrieved in STEP 5.|
+|`credentials-file`    |`null` |TUNNEL_UUID retrieved in STEP 5.|
 
 Example: 
 
@@ -115,39 +135,26 @@ ingress:
 .
 ```
 
-7. `cd /opt/dockserver/apps/myapps`
-8. Add a YML for Cloudflared.
+6. Download the `cloudflared.yml` to `/opt/dockserver/apps/myapps/`.
 
-```yaml
----
-version: "3"
-services:
-  cloudflared:
-    image: "cloudflare/cloudflared:latest"
-    hostname: "cloudflared"
-    container_name: "cloudflared"
-    command: "tunnel --no-autoupdate run --token TUNNEL_UUID"
-    volumes:
-      - "${APPFOLDER}/cloudflared:/home/nonroot/.cloudflared/:rw"
-    networks:
-      - ${DOCKERNETWORK}
-    environment:
-      - "PGID=${ID}"
-      - "PUID=${ID}"
-      - "TZ=${TZ}"
-    restart: always
-    labels:
-      - "dockupdater.enable=true"
-networks:
-  proxy:
-    driver: bridge
-    external: true
+   ```yaml
+   wget https://raw.githubusercontent.com/dockserver/apps/master/cloudflared/docker-compose.yml -O /opt/dockserver/apps/myapps/cloudflared.yml
+   ```
+   
+7. Add the `TUNNEL_UUID` to `/opt/appdata/compose/.env`.
+
+  ```yaml
+  ##Environment for Docker-Compose
+
+## TRAEFIK
+CLOUDFLARE_EMAIL=domain.com
+CLOUDFLARE_API_KEY=9ba9xxxxxxxTFsgah22417fba15b
+DOMAIN1_ZONE_ID=4b5xxxxwesrf1e344f94e1
+DOMAIN=example.com
+CLOUDFLARED_UUID=TUNNEL_UUID_HERE
 ```
 
-- Change `TUNNEL_UUID` to your UUID retrieved in STEP 6.
-
-9. Save it as `cloudflared.yml`.
-10. Deploy CloudFlared over DockServer.
+8. Deploy CloudFlared over DockServer.
 
 
 ![Image of Cloudflared](/img/cloudflared/record.png)
