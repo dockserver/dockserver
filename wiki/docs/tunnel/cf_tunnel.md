@@ -24,7 +24,7 @@ Easily expose your locally hosted services securly, using Cloudflare Tunnel!
 
 **IMPORTANT** - A Cloudflare Tunnel can only be used with apps that can be accessed over port 80 and 443.
 
-### Setup
+### Cloudflare Setup
 
 1. `mkdir /opt/appdata/cloudflared`
 2. `chmod 777 /opt/appdata/cloudflared`
@@ -115,13 +115,39 @@ ingress:
 .
 ```
 
-7. `docker run -it --rm -v /opt/appdata/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:latest tunnel route dns tunnel-YOUR_TUNNEL_NAME your_domain.com`
+7. `cd /opt/dockserver/apps/myapps`
+8. Add a YML for Cloudflared.
 
-- Change `tunnel-YOUR_TUNNEL_NAME` to the name you choosed in STEP 5.
-- Change `your_domain.com` to your domain you gave access to in STEP 4.
+```yaml
+---
+version: "3"
+services:
+  cloudflared:
+    image: "cloudflare/cloudflared:latest"
+    hostname: "cloudflared"
+    container_name: "cloudflared"
+    command: "tunnel --no-autoupdate run --token TUNNEL_UUID"
+    volumes:
+      - "${APPFOLDER}/cloudflared:/home/nonroot/.cloudflared/:rw"
+    networks:
+      - ${DOCKERNETWORK}
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+    restart: always
+    labels:
+      - "dockupdater.enable=true"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+```
 
-![Image of Cloudflared](/img/cloudflared/created.png)
+- Change `TUNNEL_UUID` to your UUID retrieved in STEP 6.
 
+9. Save it as `cloudflared.yml`.
+10. Deploy CloudFlared over DockServer.
 
 
 ![Image of Cloudflared](/img/cloudflared/record.png)
