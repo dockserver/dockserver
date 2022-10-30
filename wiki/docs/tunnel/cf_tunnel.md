@@ -140,19 +140,6 @@ ingress:
    ```yaml
    wget https://raw.githubusercontent.com/dockserver/apps/master/cloudflared/docker-compose.yml -O /opt/dockserver/apps/myapps/cloudflared.yml
    ```
-   
-7. Add the `TUNNEL_UUID` to `/opt/appdata/compose/.env`.
-
-  ```yaml
-  ##Environment for Docker-Compose
-
-## TRAEFIK
-CLOUDFLARE_EMAIL=domain.com
-CLOUDFLARE_API_KEY=9ba9xxxxxxxTFsgah22417fba15b
-DOMAIN1_ZONE_ID=4b5xxxxwesrf1e344f94e1
-DOMAIN=example.com
-CLOUDFLARED_UUID=TUNNEL_UUID_HERE
-```
 
 8. Deploy CloudFlared over DockServer.
 
