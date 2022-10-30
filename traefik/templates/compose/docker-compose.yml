@@ -77,8 +77,10 @@ services:
       - 'traefik.enable=true'
       - 'traefik.http.routers.traefik-rtr.entrypoints=https'
       - 'traefik.http.routers.traefik-rtr.rule=HostHeader(`traefik.${DOMAIN}`)'
-      - 'traefik.http.routers.traefik-rtr.service=api@internal'
+      - 'traefik.http.routers.traefik-rtr.tls=true'
+      - 'traefik.http.routers.traefik-rtr.tls.certresolver=dns-cloudflare'
       - 'traefik.http.routers.traefik-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.traefik-rtr.service=api@internal'
   cf-companion:
     container_name: 'cf-companion'
     image: 'tiredofit/traefik-cloudflare-companion:latest'
