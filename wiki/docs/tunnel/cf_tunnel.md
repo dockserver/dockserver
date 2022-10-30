@@ -141,7 +141,7 @@ ingress:
    wget https://raw.githubusercontent.com/dockserver/apps/master/cloudflared/docker-compose.yml -O /opt/dockserver/apps/myapps/cloudflared.yml
    ```
 
-8. Deploy CloudFlared over DockServer.
+7. Deploy CloudFlared over DockServer.
 
 
 ![Image of Cloudflared](/img/cloudflared/record.png)
