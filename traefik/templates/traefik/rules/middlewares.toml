@@ -12,7 +12,6 @@
       accessControlAllowMethods= ["GET", "OPTIONS", "PUT", "POST"]
       accessControlMaxAge = 100
       hostsProxyHeaders = ["X-Forwarded-Host"]
-      sslRedirect = true
       stsSeconds = 63072000
       stsIncludeSubdomains = true
       stsPreload = true
