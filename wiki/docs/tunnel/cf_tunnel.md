@@ -72,9 +72,9 @@ Easily expose your locally hosted services securly, using Cloudflare Tunnel!
 
     - Edit `config.yaml` and add the TUNNEL_UUID.
 
-  #### CONFIG
+    #### CONFIG
 
-  ```yaml
+    ```yaml
       # Cloudflared
       tunnel: TUNNEL_UUID 
       credentials-file: /home/nonroot/.cloudflared/TUNNEL_UUID.json
@@ -102,38 +102,39 @@ Easily expose your locally hosted services securly, using Cloudflare Tunnel!
       # forward all traffic to reverse proxy over http
       #ingress:
       #  - service: http://REVERSEPROXYIP:PORT
-  ```
+    ```
 
-  #### CONFIG VALUES
-  |Setting   |Default|Description|
-  |----------|-------|-----------|
-  |`tunnel`    |`null` |TUNNEL_UUID retrieved in STEP 5.|
-  |`credentials-file`    |`null` |TUNNEL_UUID retrieved in STEP 5.|
+    #### CONFIG VALUES
+  
+    |Setting   |Default|Description|
+    |----------|-------|-----------|
+    |`tunnel`    |`null` |TUNNEL_UUID retrieved in STEP 5.|
+    |`credentials-file`    |`null` |TUNNEL_UUID retrieved in STEP 5.|
 
-  Example: 
+    Example: 
 
-  ```yaml
-    # Cloudflared
-    tunnel: a8fc25aa-xxxx-450b-8c59-xxxxxx 
-    credentials-file: /home/nonroot/.cloudflared/a8fc25aa-xxxx-450b-8c59-xxxxxx.json
+    ```yaml
+        # Cloudflared
+        tunnel: a8fc25aa-xxxx-450b-8c59-xxxxxx 
+        credentials-file: /home/nonroot/.cloudflared/a8fc25aa-xxxx-450b-8c59-xxxxxx.json
 
-    # NOTE: You should only have one ingress tag, so if you uncomment one block comment the others
+        # NOTE: You should only have one ingress tag, so if you uncomment one block comment the others
 
-    # forward all traffic to Reverse Proxy w/ SSL
-    #ingress:
-      #- service: https://${SERVERIP}:443
-        #originRequest:
-          #originServerName: dns-cloudflare.acme
+        # forward all traffic to Reverse Proxy w/ SSL
+        #ingress:
+        #- service: https://${SERVERIP}:443
+            #originRequest:
+            #originServerName: dns-cloudflare.acme
       
-    #forward all traffic to Reverse Proxy w/ SSL and no TLS Verify
-    ingress:
-      - service: https://traefik:443
-        originRequest:
-          noTLSVerify: true
-    .
-    .
-    .
-  ```
+        #forward all traffic to Reverse Proxy w/ SSL and no TLS Verify
+        ingress:
+        - service: https://traefik:443
+            originRequest:
+                noTLSVerify: true
+        .
+        .
+        .
+    ```
 
 6. Download the `cloudflared.yml` to `/opt/dockserver/apps/myapps/`.
 
