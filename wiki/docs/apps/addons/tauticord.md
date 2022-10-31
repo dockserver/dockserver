@@ -75,25 +75,27 @@ Permissions required:
 1. Install Tauticord from Docksever Addons Menu.
 2. Stop Tauticord.
 
-```yaml
-sudo docker stop tauticord
-```
+    ```yaml
+    sudo docker stop tauticord
+    ```
 
-3. Download `config.yaml` to `/opt/appdata/tauticord/`
+3.  Download `config.yaml` to `/opt/appdata/tauticord/`
 
-```yaml
-wget https://raw.githubusercontent.com/cyb3rgh05t/tauticord/master/config.yaml.example -O /opt/appdata/tauticord/config.yaml
-```
+    ```yaml
+    wget https://raw.githubusercontent.com/cyb3rgh05t/tauticord/master/config.yaml.example -O /opt/appdata/tauticord/config.yaml
+    ```
 
 4. Edit the config file to your needs.
-```yaml
-nano /opt/appdata/tauticord/config.yaml
-```
+
+    ```yaml
+    nano /opt/appdata/tauticord/config.yaml
+    ```
+
 5. Start the container.
 
-```yaml
-sudo docker start tauticord
-```
+    ```yaml
+    sudo docker start tauticord
+    ```
 
 Et voilà, your Bot should now be online in your Disord Server.
 
