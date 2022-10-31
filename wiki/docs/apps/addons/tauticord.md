@@ -72,81 +72,30 @@ Permissions required:
 
 ## Setup Tauticord
 
-- Install Tauticord from Docksever Addons Menu.
+1. Install Tauticord from Docksever Addons Menu.
+2. Stop Tauticord.
 
-- Stop the container.
+    ```yaml
+    sudo docker stop tauticord
+    ```
 
-`sudo docker stop tauticord`
+3.  Download `config.yaml` to `/opt/appdata/tauticord/`
 
-- Head over to the appdata folder.
+    ```yaml
+    wget https://raw.githubusercontent.com/cyb3rgh05t/tauticord/master/config.yaml.example -O /opt/appdata/tauticord/config.yaml
+    ```
 
-`cd /opt/appdata/tauticord/`
+4. Edit the config file to your needs.
 
-- Create a config file.
+    ```yaml
+    nano /opt/appdata/tauticord/config.yaml
+    ```
 
-`sudo nano config.yaml`
+5. Start the container.
 
-- Copy / Paste the following config into the created file from previous step.
-
-```sh
-appName: Tauticord
-logLevel: WARN
-
-Tautulli:
-  Connection:
-    URL: ""
-    APIKey: ""
-  Customization:
-    TerminateMessage: "Your stream has been terminated. Please contact the admin in the Discord."
-    # how often (seconds) the bot pulls new data. 5-second minimum built-in, it's for your own good
-    RefreshSeconds: 15
-    # can only kill streams if you have a Plex Pass, so this controls whether you're given the option
-    PlexPass: true
-    ServerTimeZone: "UTC"
-    Use24HourTime: false
-    VoiceChannels:
-      Stats:
-        CategoryName: "Tautulli Stats"
-        StreamCount: false
-        TranscodeCount: false
-        Bandwidth: false
-        LocalBandwidth: false
-        RemoteBandwidth: false
-      Libraries:
-        CategoryName: "Tautulli Libraries"
-        Enable: false
-        LibraryRefreshSeconds: 3600
-        LibraryNames:
-          # list of names of the libraries you'd like stats about
-          # Voice channels will be made/updated with stats (refreshed every hour)
-          - Movies
-          - TV Shows
-          - Music
-
-Discord:
-  Connection:
-    BotToken: ""
-    # Right-click on your server's icon -> "Copy ID"
-    ServerID: 472537215457689601
-    # Right-click on your profile picture -> "Copy ID"
-    AdminIDs:
-      - 00000000000
-    # Where the live stats will be posted
-    ChannelName: "tautulli"
-  Customization:
-    # if True, use embeds to print information, use regular text message if False
-    UseEmbeds: true
-
-Extras:
-  # See README.md for details
-  Analytics: true
-```
-
-- Edit the config file to your needs.
-
-- Start the container.
-
-`sudo docker start tauticord`
+    ```yaml
+    sudo docker start tauticord
+    ```
 
 Et voilà, your Bot should now be online in your Disord Server.
 
