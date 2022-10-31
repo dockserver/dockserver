@@ -138,9 +138,9 @@ Easily expose your locally hosted services securly, using Cloudflare Tunnel!
 
 6. Download the `cloudflared.yml` to `/opt/dockserver/apps/myapps/`.
 
-   ```yaml
-   wget https://raw.githubusercontent.com/dockserver/apps/master/cloudflared/docker-compose.yml -O /opt/dockserver/apps/myapps/cloudflared.yml
-   ```
+    ```yaml
+    wget https://raw.githubusercontent.com/dockserver/apps/master/cloudflared/docker-compose.yml -O /opt/dockserver/apps/myapps/cloudflared.yml
+    ```
 
 7. Deploy Cloudflared over DockServer.
 
