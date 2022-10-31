@@ -27,19 +27,19 @@ Easily expose your locally hosted services securly, using Cloudflare Tunnel!
 
 ### Cloudflare Setup
 
-1. Create `cloudflared` folder.
+1.  Create `cloudflared` folder.
 
 ```yaml
 mkdir /opt/appdata/cloudflared && chmod 777 /opt/appdata/cloudflared
 ```
 
-2. Download `latest` Cloudflared Docker Image.
+2.  Download `latest` Cloudflared Docker Image.
 
 ```yaml
 docker pull cloudflare/cloudflared:latest
 ```
 
-3. Clouflare login.
+3.  Clouflare login.
 
 ```yaml
 docker run -it --rm -v /opt/appdata/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:latest tunnel login
@@ -54,7 +54,7 @@ docker run -it --rm -v /opt/appdata/cloudflared:/home/nonroot/.cloudflared/ clou
 
 ![Image of Cloudflared](/img/cloudflared/success.png)
 
-4. Create your Cloudflare Tunnel. 
+4.  Create your Cloudflare Tunnel. 
 
 ```yaml
 docker run -it --rm -v /opt/appdata/cloudflared:/home/nonroot/.cloudflared/ cloudflare/cloudflared:latest tunnel create tunnel-YOUR_TUNNEL_NAME
@@ -64,7 +64,7 @@ docker run -it --rm -v /opt/appdata/cloudflared:/home/nonroot/.cloudflared/ clou
 
 ![Image of Cloudflared](/img/cloudflared/tunnel.png)
 
-5. Download the `config.yaml` to `/opt/appdata/cloudflared/`.
+5.  Download the `config.yaml` to `/opt/appdata/cloudflared/`.
 
 ```yaml
 wget https://raw.githubusercontent.com/dockserver/dockserver/863a2a0dacaf1a9f076d236f1f918dbbed138865/traefik/templates/cloudflared/config.yaml -O /opt/appdata/cloudflared/config.yaml
@@ -135,13 +135,13 @@ ingress:
 .
 ```
 
-6. Download the `cloudflared.yml` to `/opt/dockserver/apps/myapps/`.
+6.  Download the `cloudflared.yml` to `/opt/dockserver/apps/myapps/`.
 
    ```yaml
    wget https://raw.githubusercontent.com/dockserver/apps/master/cloudflared/docker-compose.yml -O /opt/dockserver/apps/myapps/cloudflared.yml
    ```
 
-7. Deploy Cloudflared over DockServer.
+7.  Deploy Cloudflared over DockServer.
 
 
 ![Image of Cloudflared](/img/cloudflared/record.png)
