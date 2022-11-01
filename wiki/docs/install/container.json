@@ -308,11 +308,11 @@
    "appname": "docker-plex",
    "apppic": "./images/docker-plex.png",
    "appfolder": "./apps/docker-plex",
-   "newversion": "1.29.2.6334-817e19b35",
+   "newversion": "1.29.2.6364-6d72b0cf6",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:jammy",
    "description": "Docker Container for Plex Media Server || PLEX PASS",
-   "body": "Upgrading docker-plex to 1.29.2.6334-817e19b35",
+   "body": "Upgrading docker-plex to 1.29.2.6364-6d72b0cf6",
    "user": "github-actions[bot]"
 }
 {
@@ -608,11 +608,11 @@
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "07ec3efbcaf669de7ccde4421c1112bfd23675d6",
+   "newversion": "",
    "appbranch": "develop",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to 07ec3efbcaf669de7ccde4421c1112bfd23675d6",
+   "body": "Upgrading docker-overseerr-nightly to ",
    "user": "github-actions[bot]"
 }
 {
@@ -630,10 +630,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "cc402e35a1da6cb62cb1af237a25a6019ab929b5",
+   "newversion": "",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to cc402e35a1da6cb62cb1af237a25a6019ab929b5",
+   "body": "Upgrading docker-sabnzbd-nightly to ",
    "user": "github-actions[bot]"
 }
 {
