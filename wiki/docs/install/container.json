@@ -342,11 +342,11 @@
    "appname": "docker-radarr",
    "apppic": "./images/docker-radarr.png",
    "appfolder": "./apps/docker-radarr",
-   "newversion": "4.2.4.6635-ls154",
+   "newversion": "4.2.4.6635-ls155",
    "appbranch": "master",
    "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr to 4.2.4.6635-ls154",
+   "body": "Upgrading docker-radarr to 4.2.4.6635-ls155",
    "user": "github-actions[bot]"
 }
 {
@@ -394,10 +394,10 @@
    "appname": "docker-sonarr",
    "apppic": "./images/docker-sonarr.png",
    "appfolder": "./apps/docker-sonarr",
-   "newversion": "3.0.9.1549-ls161",
+   "newversion": "3.0.9.1549-ls162",
    "appbranch": "main",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr to 3.0.9.1549-ls161",
+   "body": "Upgrading docker-sonarr to 3.0.9.1549-ls162",
    "user": "github-actions[bot]"
 }
 {
@@ -640,10 +640,10 @@
    "appname": "docker-sonarr-nightly",
    "apppic": "./images/docker-sonarr-nightly.png",
    "appfolder": "./nightly/docker-sonarr-nightly",
-   "newversion": "develop-3.0.9.1555-ls309",
+   "newversion": "develop-3.0.9.1555-ls310",
    "appbranch": "develop",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr-nightly to develop-3.0.9.1555-ls309",
+   "body": "Upgrading docker-sonarr-nightly to develop-3.0.9.1555-ls310",
    "user": "github-actions[bot]"
 }
 {
