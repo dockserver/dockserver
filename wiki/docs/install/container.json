@@ -163,10 +163,10 @@
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "408.0.0-alpine",
+   "newversion": "408.0.1-alpine",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to 408.0.0-alpine",
+   "body": "Upgrading docker-gdsa to 408.0.1-alpine",
    "user": "dockserver-actions[bot]"
 }
 {
@@ -630,10 +630,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "a14a2f6c96410f109a1c600ec98aabfb125065d5",
+   "newversion": "c7791a478ae61d38703971f606e098d9ae788424",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to a14a2f6c96410f109a1c600ec98aabfb125065d5",
+   "body": "Upgrading docker-sabnzbd-nightly to c7791a478ae61d38703971f606e098d9ae788424",
    "user": "github-actions[bot]"
 }
 {
