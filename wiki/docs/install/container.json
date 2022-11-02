@@ -54,10 +54,10 @@
    "appname": "docker-crunchy",
    "apppic": "./images/docker-crunchy.png",
    "appfolder": "./apps/docker-crunchy",
-   "newversion": "xenial-20210804",
+   "newversion": "22.10",
    "baseimage": "ubuntu",
    "description": "Docker image  for docker-crunchy",
-   "body": "Upgrading docker-crunchy to baseimage: ubuntu:xenial-20210804",
+   "body": "Upgrading docker-crunchy to baseimage: ubuntu:22.10",
    "user": "dockserver image update[bot]"
 }
 {
@@ -364,10 +364,10 @@
    "appname": "docker-rollarr",
    "apppic": "./images/docker-rollarr.png",
    "appfolder": "./apps/docker-rollarr",
-   "newversion": "xenial-20210804",
+   "newversion": "22.10",
    "baseimage": "ubuntu",
    "description": "This is the new and improved Automatic Pre-roll script with a GUI for Plex now called Rollarr!",
-   "body": "Upgrading docker-rollarr to xenial-20210804",
+   "body": "Upgrading docker-rollarr to 22.10",
    "user": "github-actions[bot]"
 }
 {
