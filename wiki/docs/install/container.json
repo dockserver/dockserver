@@ -445,13 +445,13 @@
 }
 {
    "appname": "docker-vnstat",
-   "apppic": "",
+   "apppic": "./images/docker-vnstat.png",
    "appfolder": "./apps/docker-vnstat",
-   "newversion": "22.5.28",
-   "finalimage": "node:alpine3.15",
-   "description": "GUI Client for vnStat Network Monitor for Linux or GNU/Linux",
-   "body": "Upgrading docker-vnstat to 22.5.28",
-   "user": "dockserver-image[bot]"
+   "newversion": "8-apache",
+   "baseimage": "php",
+   "description": "Docker image  for docker-vnstat",
+   "body": "Upgrading docker-vnstat to baseimage: php:8-apache",
+   "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-wiki",
