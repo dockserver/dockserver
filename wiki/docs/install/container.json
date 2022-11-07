@@ -414,10 +414,10 @@
    "appname": "docker-tautulli",
    "apppic": "./images/docker-tautulli.png",
    "appfolder": "./apps/docker-tautulli",
-   "newversion": "2.10.4",
+   "newversion": "2.10.5",
    "baseimage": "ghcr.io/dockserver/docker-alpine",
    "description": "A Python based monitoring and tracking tool for Plex Media Server.",
-   "body": "Upgrading docker-tautulli to 2.10.4",
+   "body": "Upgrading docker-tautulli to 2.10.5",
    "user": "github-actions[bot]"
 }
 {
@@ -630,10 +630,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "d8bfe4f16cc339eddfefb9edaa65b158e31e21cb",
+   "newversion": "7758079efac1eae2b1ee0c977968c33dd9a19607",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to d8bfe4f16cc339eddfefb9edaa65b158e31e21cb",
+   "body": "Upgrading docker-sabnzbd-nightly to 7758079efac1eae2b1ee0c977968c33dd9a19607",
    "user": "github-actions[bot]"
 }
 {
