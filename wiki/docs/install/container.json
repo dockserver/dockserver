@@ -342,11 +342,11 @@
    "appname": "docker-radarr",
    "apppic": "./images/docker-radarr.png",
    "appfolder": "./apps/docker-radarr",
-   "newversion": "4.2.4.6635-ls155",
+   "newversion": "4.2.4.6635-ls156",
    "appbranch": "master",
    "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr to 4.2.4.6635-ls155",
+   "body": "Upgrading docker-radarr to 4.2.4.6635-ls156",
    "user": "github-actions[bot]"
 }
 {
@@ -404,10 +404,10 @@
    "appname": "docker-spotweb",
    "apppic": "",
    "appfolder": "./apps/docker-spotweb",
-   "newversion": "1.5.1",
+   "newversion": "1.5.2",
    "baseimage": "ubuntu:latest",
    "description": "Decentralized community",
-   "body": "Upgrading docker-spotweb to 1.5.1",
+   "body": "Upgrading docker-spotweb to 1.5.2",
    "user": "dockserver[bot]"
 }
 {
