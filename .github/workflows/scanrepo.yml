@@ -1,0 +1,44 @@
+name: Scan Repo
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - master
+    paths:
+      - '.installer/**'
+      - 'apps/**'
+      - 'preinstall/**'
+      - 'traefik/**'
+      - 'scripts/**'
+      - 'wiki/**'
+
+jobs:
+  screpo:
+    name: Scan Repository
+
+    permissions:
+      contents: read
+      security-events: write
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.1.0
+        with:
+          token: ${{ secrets.CR_PAT }}
+          fetch-depth: 0
+
+      - name: Run Trivy vulnerability scanner in repo mode
+        uses: aquasecurity/trivy-action@9ab158e8597f3b310480b9a69402b419bc03dbd5
+        with:
+          scan-type: 'fs'
+          ignore-unfixed: 'true'
+          format: 'template'
+          template: '@/contrib/sarif.tpl'
+          output: 'trivy-results.sarif'
+          severity: 'CRITICAL,HIGH'
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
