@@ -44,7 +44,7 @@ Some stats of [DOCKSERVER](https://dockserver.io)![metrics](https://raw.githubus
 
 ## Minimum Specs and Requirements
 
-- Stable: Ubuntu 18/20/21 or Debian 9/10/11
+- Stable: Ubuntu 18/20/21/22 or Debian 9/10/11
 
 - CPU 2 Cores or 2 VCores
 - 4GB Ram
@@ -113,7 +113,7 @@ sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/wg
 
 <!--START_SECTION:activity-->
 
-1. 🎉 Merged PR [#419](https://github.com/dockserver/dockserver/pull/419) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
+1. 🎉 Merged PR [#520](https://github.com/dockserver/dockserver/pull/520) in [dockserver/dockserver](https://github.com/dockserver/dockserver)
 <!--END_SECTION:activity-->
 
 
@@ -158,6 +158,13 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
+        <a href=https://github.com/fscorrupt>
+            <img src=https://avatars.githubusercontent.com/u/45659314?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=FSCorrupt/>
+            <br />
+            <sub style="font-size:14px"><b>FSCorrupt</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
         <a href=https://github.com/drag0n141>
             <img src=https://avatars.githubusercontent.com/u/44865095?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=DrAg0n141/>
             <br />
@@ -171,6 +178,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
             <sub style="font-size:14px"><b>Aelfa</b></sub>
         </a>
     </td>
+</tr>
+<tr>
     <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
         <a href=https://github.com/cyb3rgh05t>
             <img src=https://avatars.githubusercontent.com/u/5200101?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=cyb3rgh05t/>
@@ -178,20 +187,11 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
             <sub style="font-size:14px"><b>cyb3rgh05t</b></sub>
         </a>
     </td>
-</tr>
-<tr>
     <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
         <a href=https://github.com/justinglock40>
             <img src=https://avatars.githubusercontent.com/u/23133649?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=justinglock40/>
             <br />
             <sub style="font-size:14px"><b>justinglock40</b></sub>
-        </a>
-    </td>
-    <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
-        <a href=https://github.com/fscorrupt>
-            <img src=https://avatars.githubusercontent.com/u/45659314?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=FSCorrupt/>
-            <br />
-            <sub style="font-size:14px"><b>FSCorrupt</b></sub>
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
@@ -211,17 +211,17 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 </tr>
 <tr>
     <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
-        <a href=https://github.com/renovate-bot>
-            <img src=https://avatars.githubusercontent.com/u/25180681?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=WhiteSource Renovate/>
+        <a href=https://github.com/dan3805>
+            <img src=https://avatars.githubusercontent.com/u/35934387?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=DoCtEuR3805 | FRENCH-QC/>
             <br />
-            <sub style="font-size:14px"><b>WhiteSource Renovate</b></sub>
+            <sub style="font-size:14px"><b>DoCtEuR3805 | FRENCH-QC</b></sub>
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
-        <a href=https://github.com/dan3805>
-            <img src=https://avatars.githubusercontent.com/u/35934387?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=dan3805/>
+        <a href=https://github.com/renovate-bot>
+            <img src=https://avatars.githubusercontent.com/u/25180681?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Mend Renovate/>
             <br />
-            <sub style="font-size:14px"><b>dan3805</b></sub>
+            <sub style="font-size:14px"><b>Mend Renovate</b></sub>
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
@@ -255,17 +255,33 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
+        <a href=https://github.com/townsmcp>
+            <img src=https://avatars.githubusercontent.com/u/14061617?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=James T/>
+            <br />
+            <sub style="font-size:14px"><b>James T</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
         <a href=https://github.com/RedDaut>
             <img src=https://avatars.githubusercontent.com/u/78737369?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Red Daut/>
             <br />
             <sub style="font-size:14px"><b>Red Daut</b></sub>
         </a>
     </td>
+</tr>
+<tr>
     <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
-        <a href=https://github.com/townsmcp>
-            <img src=https://avatars.githubusercontent.com/u/14061617?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=James T/>
+        <a href=https://github.com/Shayne55434>
+            <img src=https://avatars.githubusercontent.com/u/37595910?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Shayne/>
             <br />
-            <sub style="font-size:14px"><b>James T</b></sub>
+            <sub style="font-size:14px"><b>Shayne</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
+        <a href=https://github.com/domesticwarlord86>
+            <img src=https://avatars.githubusercontent.com/u/57776315?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=domesticwarlord86/>
+            <br />
+            <sub style="font-size:14px"><b>domesticwarlord86</b></sub>
         </a>
     </td>
 </tr>
