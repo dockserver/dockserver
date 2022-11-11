@@ -1,0 +1,35 @@
+---
+version: "3"
+services:
+  sui:
+    hostname: "sui"
+    container_name: "sui"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=022"
+    image: "jamesread/sui:latest"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/sui:/opt/html:rw"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.sui-rtr.entrypoints=https"
+      - "traefik.http.routers.sui-rtr.rule=Host(`sui.${DOMAIN}`)"
+      - "traefik.http.routers.sui-rtr.tls=true"
+      - "traefik.http.routers.sui-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.sui-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.sui-rtr.service=sui-svc"
+      - "traefik.http.services.sui-svc.loadbalancer.server.port=80"
+networks:
+  proxy:
+    driver: bridge
+    external: true

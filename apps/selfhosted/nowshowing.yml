@@ -1,0 +1,35 @@
+---
+version: "3"
+services:
+  nowshowing:
+    hostname: "nowshowing"
+    container_name: "nowshowing"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "ninthwalker/nowshowing:v2"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/nowshowing:/config"
+      - "/etc/localtime:/etc/localtime:ro"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.nowshowing-rtr.entrypoints=https"
+      - "traefik.http.routers.nowshowing-rtr.rule=Host(`nowshowing.${DOMAIN}`)"
+      - "traefik.http.routers.nowshowing-rtr.tls=true"
+      - "traefik.http.routers.nowshowing-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.nowshowing-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.nowshowing-rtr.service=nowshowing-svc"
+      - "traefik.http.services.nowshowing-svc.loadbalancer.server.port=6878"
+networks:
+  proxy:
+    driver: bridge
+    external: true

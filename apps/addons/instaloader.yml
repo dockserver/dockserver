@@ -1,0 +1,27 @@
+---
+version: "3"
+services:
+  instaloader:
+    container_name: "instaloader"
+    hostname: "instaloader"
+    image: "didc/docker-instaloader:latest"
+    restart: "${RESTARTAPP}"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "${APPFOLDER}/instaloader/il_args.txt:/il_args.txt:rw"
+      - "${APPFOLDER}/instaloader/il_targets.txt:/il_targets.txt:rw"
+      - "${APPFOLDER}/instaloader/session-username:/session-username:rw"
+    labels:
+      - "dockupdater.enable=true"
+networks:
+  proxy:
+    driver: bridge
+    external: true

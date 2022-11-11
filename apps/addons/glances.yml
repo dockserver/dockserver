@@ -1,0 +1,31 @@
+---
+version: '3'
+services:
+  glances:
+    hostname: 'glances'
+    container_name: 'glances'
+    image: 'nicolargo/glances:alpine-latest-full'
+    restart: '${RESTARTAPP}'
+    pid: host
+    environment:
+      - 'TZ=${TZ}'
+      - 'GLANCES_OPT=-w'
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock:ro'
+    networks:
+      - ${DOCKERNETWORK}
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'dockupdater.enable=true'
+      - 'traefik.http.routers.glances-rtr.entrypoints=https'
+      - 'traefik.http.routers.glances.rule=Host(`glances.${DOMAIN}`)'
+      - 'traefik.http.routers.glances-rtr.tls=true'
+      - 'traefik.http.routers.glances-rtr.tls.certresolver=dns-cloudflare'
+      - 'traefik.http.routers.glances-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.glances-rtr.service=glances-svc'
+      - 'traefik.http.services.glances-svc.loadbalancer.server.port=61208'
+networks:
+  proxy:
+    driver: bridge
+    external: true

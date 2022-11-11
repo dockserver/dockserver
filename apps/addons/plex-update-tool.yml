@@ -1,0 +1,25 @@
+---
+version: '3'
+services:
+  plex-update-tool:
+    hostname: 'plex-update-tool'
+    container_name: 'plex-update-tool'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'TMDB_API_KEY=${TMDBAPI}'
+      - 'RUN_EVERY_N_HOURS=${RUN_EVERY_N_HOURS}'
+    image: 'mynttt/updatetool'
+    restart: '${RESTARTAPP}'
+    networks:
+      - ${DOCKERNETWORK}
+    volumes:
+      - '${APPFOLDER}/plex-update-tool:/config:rw'
+      - '${APPFOLDER}/plex/database/Library/Application Support/Plex Media Server:/plexdata'
+    labels:
+      - 'dockupdater.enable=true'
+networks:
+  proxy:
+    driver: bridge
+    external: true

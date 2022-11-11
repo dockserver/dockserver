@@ -1,0 +1,39 @@
+---
+version: "3"
+services:
+  unifi-controller:
+    hostname: "unifi-controller"
+    container_name: "unifi-controller"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "lscr.io/linuxserver/unifi-controller"
+    restart: "${RESTARTAPP}"
+    ports:
+      - "3478:3478/udp"
+      - "8080:8080/tcp"
+      - "10001:10001/udp"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/unifi-controller:/config:rw"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.unifi-controller-rtr.entrypoints=https"
+      - "traefik.http.routers.unifi-controller-rtr.rule=Host(`unifi-controller.${DOMAIN}`)"
+      - "traefik.http.routers.unifi-controller-rtr.tls=true"
+      - "traefik.http.routers.unifi-controller-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.unifi-controller-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.unifi-controller-rtr.service=unifi-controller-svc"
+      - "traefik.http.services.unifi-controller-svc.loadbalancer.server.port=8443"
+      - "traefik.http.services.unifi-controller-svc.loadbalancer.server.scheme=https"
+networks:
+  proxy:
+    driver: bridge
+    external: true

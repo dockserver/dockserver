@@ -1,0 +1,40 @@
+---
+version: "3"
+services:
+  flaresolverr:
+    hostname: "flaresolverr"
+    container_name: "flaresolverr"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "LOG_LEVEL=${FLARE_LOG_LEVEL}"
+      - "LOG_HTML=${FLARE_LOG_HTML}"
+      - "CAPTCHA_SOLVER=${FLARE_CAPTCHA_SOLVER}"
+    image: "flaresolverr/flaresolverr:latest"
+    restart: "${RESTARTAPP}"
+    ports:
+      - "8191:8191"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/flaresolverr/:/home/flaresolverr:rw"
+      - "/etc/localtime:/etc/localtime:ro"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.flaresolverr-rtr.entrypoints=https"
+      - "traefik.http.routers.flaresolverr.rule=Host(`flaresolverr.${DOMAIN}`)"
+      - "traefik.http.routers.flaresolverr-rtr.tls=true"
+      - "traefik.http.routers.flaresolverr-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.flaresolverr-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.flaresolverr-rtr.service=flaresolverr-svc"
+      - "traefik.http.services.flaresolverr-svc.loadbalancer.server.port=8191"
+networks:
+  proxy:
+    driver: bridge
+    external: true

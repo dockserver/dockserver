@@ -1,0 +1,35 @@
+---
+version: "3"
+
+services:
+  crewlink:
+    hostname: "crewlink"
+    container_name: "crewlink"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "ADDRESS=crewlink.${DOMAIN}"
+    image: "ottomated/crewlink-server"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.crewlink-rtr.entrypoints=https"
+      - "traefik.http.routers.crewlink-rtr.rule=Host(`crewlink.${DOMAIN}`)"
+      - "traefik.http.routers.crewlink-rtr.tls=true"
+      - "traefik.http.routers.crewlink-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.crewlink-rtr.middlewares=chain-no-auth@file"
+      - "traefik.http.routers.crewlink-rtr.service=crewlink-svc"
+      - "traefik.http.services.crewlink-svc.loadbalancer.server.port=9736"
+
+networks:
+  proxy:
+    driver: bridge
+    external: true

@@ -1,0 +1,41 @@
+---
+version: "3"
+services:
+  tubesync:
+    hostname: "tubesync"
+    container_name: "tubesync"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=022"
+    image: "ghcr.io/meeb/tubesync:latest"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/tubesync:/config:rw"
+      - "/mnt/downloads/tubesync:/downloads:rw"
+      - "unionfs:/mnt"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.tubesync-rtr.entrypoints=https"
+      - "traefik.http.routers.tubesync-rtr.rule=Host(`tubesync.${DOMAIN}`)"
+      - "traefik.http.routers.tubesync-rtr.tls=true"
+      - "traefik.http.routers.tubesync-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.tubesync-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.tubesync-rtr.service=tubesync-svc"
+      - "traefik.http.services.tubesync-svc.loadbalancer.server.port=4848"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

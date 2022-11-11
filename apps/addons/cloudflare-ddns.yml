@@ -1,0 +1,24 @@
+---
+version: "3"
+services:
+  cloudflare-ddns:
+    image: oznu/cloudflare-ddns:latest
+    hostname: cloudflare-ddns
+    container_name: cloudflare-ddns
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "API_KEY=${CLOUDFLARE_API_KEY}"
+      - "ZONE=${DOMAIN}"
+      - "PROXIED=true"
+    labels:
+      - "dockupdater.enable=true"
+networks:
+  proxy:
+    driver: bridge
+    external: true

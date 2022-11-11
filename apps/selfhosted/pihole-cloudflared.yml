@@ -1,0 +1,69 @@
+---
+version: "3"
+services:
+  pihole:
+    depends_on:
+      - pi-cloudflared
+    image: ${PIHOLEIMAGE}
+    hostname: pihole
+    container_name: pihole
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "${PORTBLOCK}:53:53/tcp"
+      - "${PORTBLOCK}:53:53/udp"
+      - "${PORTBLOCK}:8008:80/tcp"
+    networks:
+      - ${DOCKERNETWORK}
+    dns:
+      - ${NS1}
+      - ${NS2}
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "PIHOLE_DNS_=172.18.0.200#5053;172.18.0.200#5053"
+      - "ServerIP=${PORTBLOCK}"
+      - "WEBPASSWORD=${PIHOLEWEBPASSWORD}"
+      - "DNSSEC=${PIHOLEDNSSEC}"
+      - "DNSMASQ_LISTENING=all"
+    restart: ${RESTARTAPP}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${APPFOLDER}/pihole/dnsmasq.d:/etc/dnsmasq.d
+      - ${APPFOLDER}/pihole:/etc/pihole
+      - ${APPFOLDER}/pihole/pihole-updatelists:/etc/pihole-updatelists
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.pihole-rtr.entrypoints=https"
+      - "traefik.http.routers.pihole-rtr.rule=Host(`pihole.${DOMAIN}`)"
+      - "traefik.http.routers.pihole-rtr.tls=true"
+      - "traefik.http.routers.pihole-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.pihole-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.pihole-rtr.service=pihole-svc"
+      - "traefik.http.services.pihole-svc.loadbalancer.server.port=80"
+  pi-cloudflared:
+    image: ghcr.io/crazy-max/cloudflared
+    hostname: pi-cloudflared
+    container_name: pi-cloudflared
+    networks:
+      proxy:
+        ipv4_address: 172.18.0.200
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "TUNNEL_DNS_UPSTREAM=https://1.1.1.1/dns-query,https://1.0.0.1/dns-query"
+      - "TUNNEL_DNS_ADDRESS=0.0.0.0" #This should not be changed unless you know what you are doing
+      - "TUNNEL_DNS_PORT=5053" #This should not be changed unless you know what you are doing
+      - "TUNNEL_METRICS=0.0.0.0:49312" #This should not be changed unless you know what you are doing
+    restart: ${RESTARTAPP}
+    labels:
+      - "dockupdater.enable=true"
+networks:
+  proxy:
+    driver: bridge
+    external: true

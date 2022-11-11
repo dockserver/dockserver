@@ -1,0 +1,68 @@
+---
+version: "3"
+services:
+  db_koel:
+    hostname: "db_koel"
+    container_name: "db_koel"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}"
+      - "MYSQL_USER=${MYSQL_USER}"
+      - "MYSQL_PASSWORD=${MYSQL_PASSWORD}"
+      - "MYSQL_DATABASE=${MYSQL_DATABASE}"
+      - "TIMEZONE=${TZ}"
+    image: "mysql/mysql-server:5.7"
+    networks:
+      - default
+    restart: "${RESTARTAPP}"
+    volumes:
+      - "${APPFOLDER}/koel/mysql:/var/lib/mysql"
+  koel:
+    hostname: "koel"
+    container_name: "koel"
+    depends_on:
+      - db_koel
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "DB_CONNECTIONT=mysql"
+      - "DB_PASSWORD=${MYSQL_PASSWORD}"
+      - "DB_USERNAME=${MYSQL_USER}"
+      - "DB_DATABASE=${MYSQL_DATABASE}"
+      - "DB_HOST=db_koel"
+    image: "hyzual/koel"
+    restart: "${RESTARTAPP}"
+    volumes:
+      - "${APPFOLDER}/koel/covers:/var/www/html/public/img/covers"
+      - "${APPFOLDER}/koel/search:/var/www/html/storage/search-indexes"
+      - "unionfs:/mnt"
+    networks:
+      - ${DOCKERNETWORK}
+      - default
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.koel-rtr.entrypoints=https"
+      - "traefik.http.routers.koel-rtr.rule=Host(`koel.${DOMAIN}`)"
+      - "traefik.http.routers.koel-rtr.tls=true"
+      - "traefik.http.routers.koel-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.koel-rtr.middlewares=chain-no-auth@file"
+      - "traefik.http.routers.koel-rtr.service=koel-svc"
+      - "traefik.http.services.koel-svc.loadbalancer.server.port=80"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+  default:
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt
+#"

@@ -1,0 +1,26 @@
+---
+version: "3"
+
+services:
+  nabarr:
+    hostname: "nabarr"
+    container_name: "nabarr"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=022"
+    image: "cloudb0x/nabarr:latest"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/nabarr:/config:rw"
+    labels:
+      - "dockupdater.enable=true"
+networks:
+  proxy:
+    driver: bridge
+    external: true

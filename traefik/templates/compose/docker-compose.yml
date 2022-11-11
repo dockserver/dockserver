@@ -27,8 +27,6 @@ services:
       - --providers.docker.network=proxy
       - --providers.docker.swarmMode=false
       - --entryPoints.http.address=:80
-      - --entrypoints.http.http.redirections.entryPoint.to=https
-      - --entrypoints.http.http.redirections.entryPoint.scheme=https
       - --entryPoints.https.address=:443
       - --entrypoints.https.forwardedHeaders.trustedIPs=173.245.48.0/20,103.21.244.0/22,103.22.200.0/22,103.31.4.0/22,141.101.64.0/18,108.162.192.0/18,190.93.240.0/20,188.114.96.0/20,197.234.240.0/22,198.41.128.0/17,162.158.0.0/15,104.16.0.0/12,172.64.0.0/13,131.0.72.0/22
       - --entryPoints.traefik.address=:8080
@@ -75,12 +73,14 @@ services:
     labels:
       - 'dockupdater.enable=true'
       - 'traefik.enable=true'
+      - 'traefik.http.routers.http-catchall.entrypoints=http'
+      - 'traefik.http.routers.http-catchall.rule=HostRegexp(`{host:.+}`)'
+      - 'traefik.http.routers.http-catchall.middlewares=redirect-to-https'
+      - 'traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https'
       - 'traefik.http.routers.traefik-rtr.entrypoints=https'
       - 'traefik.http.routers.traefik-rtr.rule=HostHeader(`traefik.${DOMAIN}`)'
-      - 'traefik.http.routers.traefik-rtr.tls=true'
-      - 'traefik.http.routers.traefik-rtr.tls.certresolver=dns-cloudflare'
-      - 'traefik.http.routers.traefik-rtr.middlewares=chain-authelia@file'
       - 'traefik.http.routers.traefik-rtr.service=api@internal'
+      - 'traefik.http.routers.traefik-rtr.middlewares=chain-authelia@file'
   cf-companion:
     container_name: 'cf-companion'
     image: 'tiredofit/traefik-cloudflare-companion:latest'
@@ -112,7 +112,7 @@ services:
       - 'dockupdater.enable=true'
   traefik-error-pages:
     container_name: 'traefik-error-pages'
-    image: 'ghcr.io/tarampampam/error-pages:latest'
+    image: 'guillaumebriday/traefik-custom-error-pages'
     restart: 'unless-stopped'
     networks:
       - ${DOCKERNETWORK}
@@ -120,21 +120,21 @@ services:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
       - 'TZ=${TZ}'
-      - 'TEMPLATE_NAME=${TEMPLATE_NAME}'
     labels:
       - 'traefik.enable=true'
       - 'dockupdater.enable=true'
       - 'traefik.docker.network=proxy'
-      - 'traefik.http.routers.traefik-error-pages-rtr.entrypoints=https'
+      - 'traefik.http.routers.traefik-error-pages-rtr.entrypoints=http'
       - 'traefik.http.routers.traefik-error-pages-rtr.rule=HostRegexp(`{host:.+}`)'
-      - 'traefik.http.routers.traefik-error-pages-rtr.priority=10'
+      - 'traefik.http.routers.traefik-error-pages-rtr.priority=1'
       - 'traefik.http.routers.traefik-error-pages-rtr.middlewares=traefik-error-pages'
-      - 'traefik.http.routers.traefik-error-pages-rtr.middlewares=chain-no-auth@file'
+      - 'traefik.http.routers.traefik-error-pages-rtr.middlewares=chain-authelia@file'
       - 'traefik.http.routers.traefik-error-pages-rtr.service=traefik-error-pages-svc'
+      - 'traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https'
       - 'traefik.http.middlewares.traefik-error-pages.errors.service=traefik-error-pages-svc'
-      - 'traefik.http.middlewares.traefik-error-pages.errors.status=400,402,404-599'
+      - 'traefik.http.middlewares.traefik-error-pages.errors.status=401,403,404,429,500,502,503'
       - 'traefik.http.middlewares.traefik-error-pages.errors.query=/{status}.html'
-      - 'traefik.http.services.traefik-error-pages-svc.loadbalancer.server.port=8080'
+      - 'traefik.http.services.traefik-error-pages-svc.loadbalancer.server.port=80'
   authelia:
     container_name: 'authelia'
     image: 'authelia/authelia:latest'

@@ -1,0 +1,34 @@
+---
+version: "3"
+services:
+  uptime-kuma:
+    hostname: "uptime-kuma"
+    container_name: "uptime-kuma"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "louislam/uptime-kuma:latest"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/uptime-kuma:/app/data:rw"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.uptime-kuma-rtr.entrypoints=https"
+      - "traefik.http.routers.uptime-kuma-rtr.rule=Host(`uptime-kuma.${DOMAIN}`)"
+      - "traefik.http.routers.uptime-kuma-rtr.tls=true"
+      - "traefik.http.routers.uptime-kuma-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.uptime-kuma-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.uptime-kuma-rtr.service=uptime-kuma-svc"
+      - "traefik.http.services.uptime-kuma-svc.loadbalancer.server.port=3001"
+networks:
+  proxy:
+    driver: bridge
+    external: true

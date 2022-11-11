@@ -1,0 +1,36 @@
+---
+version: "3"
+services:
+  deemix:
+    hostname: "deemix"
+    container_name: "deemix"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "registry.gitlab.com/bockiii/deemix-docker:latest"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/deemix:/config"
+      - "/mnt/downloads/music:/downloads:rw"
+      - "/etc/localtime:/etc/localtime:ro"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.deemix-rtr.entrypoints=https"
+      - "traefik.http.routers.deemix-rtr.rule=Host(`deemix.${DOMAIN}`)"
+      - "traefik.http.routers.deemix-rtr.tls=true"
+      - "traefik.http.routers.deemix-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.deemix-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.deemix-rtr.service=deemix-svc"
+      - "traefik.http.services.deemix-svc.loadbalancer.server.port=6595"
+networks:
+  proxy:
+    driver: bridge
+    external: true

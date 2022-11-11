@@ -1,0 +1,113 @@
+---
+version: "3"
+services:
+  db_recipes:
+    container_name: db_recipes
+    environment:
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
+      - "ALLOWED_HOSTS=recipes.${DOMAIN}"
+      - "COMMENT_PREF_DEFAULT=1"
+      - "DB_ENGINE=django.db.backends.postgresql"
+      - "DEBUG=0"
+      - "FRACTION_PREF_DEFAULT=0"
+      - "GUNICORN_MEDIA=0"
+      - "POSTGRES_DB=djangodb"
+      - "POSTGRES_HOST=db_recipes"
+      - "POSTGRES_PASSWORD=djangouser"
+      - "POSTGRES_PORT=5432"
+      - "POSTGRES_USER=djangouser"
+      - "REVERSE_PROXY_AUTH=0"
+      - "SECRET_KEY=radnomkey"
+      - "SHOPPING_MIN_AUTOSYNC_INTERVAL=5"
+      - "TIMEZONE=${TZ}"
+    image: "postgres:11-alpine"
+    networks:
+      - default
+    restart: "always"
+    volumes:
+      - "${APPFOLDER}/recipes/postgresql:/var/lib/postgresql/data"
+  web_recipes:
+    container_name: web_recipes
+    depends_on:
+      - db_recipes
+    networks:
+      - default
+    environment:
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
+      - "ALLOWED_HOSTS=recipes.${DOMAIN}"
+      - "COMMENT_PREF_DEFAULT=1"
+      - "DB_ENGINE=django.db.backends.postgresql"
+      - "DEBUG=0"
+      - "FRACTION_PREF_DEFAULT=0"
+      - "GUNICORN_MEDIA=0"
+      - "POSTGRES_DB=djangodb"
+      - "POSTGRES_HOST=db_recipes"
+      - "POSTGRES_PASSWORD=djangouser"
+      - "POSTGRES_PORT=5432"
+      - "POSTGRES_USER=djangouser"
+      - "REVERSE_PROXY_AUTH=0"
+      - "SECRET_KEY=radnomkey"
+      - "SHOPPING_MIN_AUTOSYNC_INTERVAL=5"
+      - "TIMEZONE=${TZ}"
+    image: "vabene1111/recipes"
+    restart: "always"
+    volumes:
+      - "staticfiles:/opt/recipes/staticfiles"
+      - "nginx_config:/opt/recipes/nginx/conf.d"
+      - "${APPFOLDER}/recipes/mediafiles:/opt/recipes/mediafiles"
+  nginx_recipes:
+    container_name: nginx_recipes
+    depends_on:
+      - web_recipes
+    networks:
+      - ${DOCKERNETWORK}
+      - default
+    environment:
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
+      - "ALLOWED_HOSTS=recipes.${DOMAIN}"
+      - "COMMENT_PREF_DEFAULT=1"
+      - "DB_ENGINE=django.db.backends.postgresql"
+      - "DEBUG=0"
+      - "FRACTION_PREF_DEFAULT=0"
+      - "GUNICORN_MEDIA=0"
+      - "POSTGRES_DB=djangodb"
+      - "POSTGRES_HOST=db_recipes"
+      - "POSTGRES_PASSWORD=djangouser"
+      - "POSTGRES_PORT=5432"
+      - "POSTGRES_USER=djangouser"
+      - "REVERSE_PROXY_AUTH=0"
+      - "SECRET_KEY=radnomkey"
+      - "SHOPPING_MIN_AUTOSYNC_INTERVAL=5"
+      - "TIMEZONE=${TZ}"
+    image: "nginx:mainline-alpine"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.recipes-rtr.entrypoints=https"
+      - "traefik.http.routers.recipes-rtr.rule=Host(`recipes.${DOMAIN}`)"
+      - "traefik.http.routers.recipes-rtr.tls=true"
+      - "traefik.http.routers.recipes-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.recipes-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.recipes-rtr.service=recipes-svc"
+      - "traefik.http.services.recipes-svc.loadbalancer.server.port=80"
+    restart: "always"
+    volumes:
+      - "nginx_config:/etc/nginx/conf.d:ro"
+      - "staticfiles:/static"
+      - "${APPFOLDER}/recipes/mediafiles:/media"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+    name: proxy
+  default:
+volumes:
+  staticfiles:
+    driver: local-persist
+    driver_opts:
+      mountpoint: "${APPFOLDER}/recipes/staticfiles"
+  nginx_config:
+    driver: local-persist
+    driver_opts:
+      mountpoint: "${APPFOLDER}/recipes/nginx_config"

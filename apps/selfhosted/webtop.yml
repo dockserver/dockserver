@@ -1,0 +1,35 @@
+---
+version: "3"
+services:
+  webtop:
+    hostname: "webtop"
+    container_name: "webtop"
+    image: "${WEBTOP_IMAGE}"
+    privileged: true
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    restart: "${RESTARTAPP}"
+    shm_size: "${WEBTOP_SHM_SIZE}"
+    networks:
+      - ${DOCKERNETWORK}
+    volumes:
+      - "${APPFOLDER}/webtop:/config"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.webtop-rtr.entrypoints=https"
+      - "traefik.http.routers.webtop-rtr.rule=Host(`webtop.${DOMAIN}`)"
+      - "traefik.http.routers.webtop-rtr.tls=true"
+      - "traefik.http.routers.webtop-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.webtop-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.webtop-rtr.service=webtop-svc"
+      - "traefik.http.services.webtop-svc.loadbalancer.server.port=3000"
+networks:
+  proxy:
+    driver: bridge
+    external: true

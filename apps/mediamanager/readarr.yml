@@ -1,0 +1,44 @@
+---
+version: "3"
+services:
+  readarr:
+    hostname: "readarr"
+    container_name: "readarr"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:readarr"
+      - "TP_THEME=${READARRTHEME}"
+      - "TP_HOTIO=${TP_HOTIO}"
+    image: "${READARRIMAGE}"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/readarr:/config:rw"
+      - "unionfs:/mnt"
+      - "${APPFOLDER}/readarr/host/98-themepark:/etc/cont-init.d/99-themepark"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.readarr-rtr.entrypoints=https"
+      - "traefik.http.routers.readarr-rtr.rule=Host(`readarr.${DOMAIN}`)"
+      - "traefik.http.routers.readarr-rtr.tls=true"
+      - "traefik.http.routers.readarr-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.readarr-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.readarr-rtr.service=readarr-svc"
+      - "traefik.http.services.readarr-svc.loadbalancer.server.port=8787"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

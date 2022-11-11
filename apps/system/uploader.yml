@@ -1,0 +1,42 @@
+---
+version: "3"
+services:
+  uploader:
+    cap_add:
+      - "SYS_ADMIN"
+    container_name: "uploader"
+    hostname: "uploader"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+    image: "ghcr.io/dockserver/docker-uploader:latest"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "apparmor:unconfined"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "${APPFOLDER}/system:/system:rshared"
+      - "unionfs:/mnt"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.uploader-rtr.entrypoints=https"
+      - "traefik.http.routers.uploader-rtr.rule=Host(`uploader.${DOMAIN}`)"
+      - "traefik.http.routers.uploader-rtr.tls=true"
+      - "traefik.http.routers.uploader-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.uploader-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.uploader-rtr.service=uploader-svc"
+      - "traefik.http.services.uploader-svc.loadbalancer.server.port=8080"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

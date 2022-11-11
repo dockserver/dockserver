@@ -1,0 +1,28 @@
+---
+version: "3"
+
+services:
+  webgrabplus:
+    hostname: "webgrabplus"
+    container_name: "webgrabplus"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=022"
+    image: "lscr.io/linuxserver/webgrabplus"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/webgrabplus/config:/config:rw"
+      - "${APPFOLDER}/webgrabplus/data:/data:rw"
+    labels:
+      - "dockupdater.enable=true"
+
+networks:
+  proxy:
+    driver: bridge
+    external: true

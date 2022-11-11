@@ -1,0 +1,34 @@
+---
+version: "3"
+services:
+  remmina:
+    hostname: "remmina"
+    container_name: "remmina"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "lscr.io/linuxserver/remmina"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/remmina:/config:rw"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.remmina-rtr.entrypoints=https"
+      - "traefik.http.routers.remmina-rtr.rule=Host(`remmina.${DOMAIN}`)"
+      - "traefik.http.routers.remmina-rtr.tls=true"
+      - "traefik.http.routers.remmina-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.remmina-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.remmina-rtr.service=remmina-svc"
+      - "traefik.http.services.remmina-svc.loadbalancer.server.port=3000"
+networks:
+  proxy:
+    driver: bridge
+    external: true

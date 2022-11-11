@@ -1,0 +1,31 @@
+---
+version: "3"
+services:
+  diun:
+    command: "serve"
+    hostname: "diun"
+    container_name: "diun"
+    image: "ghcr.io/crazy-max/diun:latest"
+    restart: "${RESTARTAPP}"
+    environment:
+      - "TZ=${TZ}"
+      - "LOG_LEVEL=info"
+      - "LOG_JSON=false"
+      - "DIUN_WATCH_WORKERS=20"
+      - "DIUN_WATCH_SCHEDULE=0 */6 * * *"
+      - "DIUN_PROVIDERS_DOCKER=true"
+    volumes:
+      - "${APPFOLDER}/diun:/data"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    networks:
+      - ${DOCKERNETWORK}
+    labels:
+      - "diun.enable=true"
+      - "diun.watch_repo=true"
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+networks:
+  proxy:
+    driver: bridge
+    external: true

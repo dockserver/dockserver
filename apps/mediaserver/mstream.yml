@@ -1,0 +1,45 @@
+---
+version: "3"
+services:
+  mstream:
+    hostname: "mstream"
+    container_name: "mstream"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "lscr.io/linuxserver/mstream:latest"
+    restart: "${RESTARTAPP}"
+    ports:
+      - target: 3000
+        published: 3000
+        protocol: tcp
+        mode: host
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/mstream:/config:rw"
+      - "unionfs:/mnt:ro"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.mstream-rtr.entrypoints=https"
+      - "traefik.http.routers.mstream-rtr.rule=Host(`mstream.${DOMAIN}`)"
+      - "traefik.http.routers.mstream-rtr.tls=true"
+      - "traefik.http.routers.mstream-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.mstream-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.mstream-rtr.service=mstream-svc"
+      - "traefik.http.services.mstream-svc.loadbalancer.server.port=3000"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

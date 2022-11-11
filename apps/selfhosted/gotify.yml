@@ -1,0 +1,34 @@
+---
+version: "3"
+services:
+  gotify:
+    hostname: "gotify"
+    container_name: "gotify"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "gotify/server"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/gotify:/app/data:rw"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.gotify-rtr.entrypoints=https"
+      - "traefik.http.routers.gotify-rtr.rule=Host(`gotify.${DOMAIN}`)"
+      - "traefik.http.routers.gotify-rtr.tls=true"
+      - "traefik.http.routers.gotify-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.gotify-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.gotify-rtr.service=gotify-svc"
+      - "traefik.http.services.gotify-svc.loadbalancer.server.port=80"
+networks:
+  proxy:
+    driver: bridge
+    external: true

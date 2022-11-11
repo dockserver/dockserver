@@ -1,0 +1,45 @@
+---
+version: "3"
+services:
+  handbrake:
+    hostname: "handbrake"
+    container_name: "handbrake"
+    environment:
+      - "PGID=${ID}"
+      - "USER_ID:${ID}"
+      - "GROUP_ID:${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "jlesage/handbrake"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/handbrake:/config:rw"
+      - "/mnt/handbrake/watch:/watch:rw"
+      - "/mnt/handbrake/output:/output:rw"
+      - "/mnt/handbrake/storage:/storage:ro"
+      - "unionfs:/mnt"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.handbrake-rtr.entrypoints=https"
+      - "traefik.http.routers.handbrake-rtr.rule=Host(`handbrake.${DOMAIN}`)"
+      - "traefik.http.routers.handbrake-rtr.tls=true"
+      - "traefik.http.routers.handbrake-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.handbrake-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.handbrake-rtr.service=handbrake-svc"
+      - "traefik.http.services.handbrake-svc.loadbalancer.server.port=5800"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

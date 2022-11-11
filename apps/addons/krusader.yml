@@ -1,0 +1,45 @@
+---
+version: "3"
+services:
+  krusader:
+    hostname: "krusader"
+    container_name: "krusader"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "VNC_PASSWORD=${KRUSADER_PASSWORD}"
+      - "WEBPAGE_TITLE=${KRUSADER_WEBPAGE_TITLE}"
+      - "TEMP_FOLDER=/config/krusader/tmp"
+    image: "binhex/arch-krusader"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    privileged: "true"
+    volumes:
+      - "${APPFOLDER}/krusader:/config"
+      - "/etc/localtime:/etc/localtime:ro"
+      - "${APPFOLDER}/krusader/data:/data"
+      - "/:/SERVER"
+      - "unionfs:/mnt"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.krusader-rtr.entrypoints=https"
+      - "traefik.http.routers.krusader-rtr.rule=Host(`krusader.${DOMAIN}`)"
+      - "traefik.http.routers.krusader-rtr.tls=true"
+      - "traefik.http.routers.krusader-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.krusader-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.krusader-rtr.service=krusader-svc"
+      - "traefik.http.services.krusader-svc.loadbalancer.server.port=6080"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

@@ -1,0 +1,27 @@
+---
+version: "3"
+services:
+  fail2ban:
+    image: "ghcr.io/crazy-max/fail2ban"
+    hostname: "fail2ban"
+    container_name: "fail2ban"
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    networks:
+      - ${DOCKERNETWORK}
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "F2B_LOG_TARGET=STDOUT"
+      - "F2B_LOG_LEVEL=INFO"
+      - "F2B_DB_PURGE_AGE=1d"
+    restart: unless-stopped
+    volumes:
+      - "${APPFOLDER}/fail2ban:/data"
+      - "/var/log:/var/log:ro"
+networks:
+  proxy:
+    driver: bridge
+    external: true

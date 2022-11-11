@@ -1,0 +1,41 @@
+---
+version: "3"
+services:
+  statping:
+    hostname: "statping"
+    container_name: "statping"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "statping/statping:latest"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/statping/config:/app:rw"
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.statping-rtr.entrypoints=https"
+      - "traefik.http.routers.statping-rtr.rule=Host(`statping.${DOMAIN}`)"
+      - "traefik.http.routers.statping-rtr.tls=true"
+      - "traefik.http.routers.statping-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.statping-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.statping-rtr.service=statping-svc"
+      - "traefik.http.services.statping-svc.loadbalancer.server.port=8080"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

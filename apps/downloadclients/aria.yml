@@ -1,0 +1,77 @@
+---
+version: "3"
+services:
+  aria:
+    image: "p3terx/aria2-pro:latest"
+    hostname: "aria"
+    container_name: "aria"
+    restart: "${RESTARTAPP}"
+    ports:
+      - "6888:6888"
+      - "6888:6888/udp"
+    volumes:
+      - "${APPFOLDER}/aria:/config:rw"
+      - "/mnt/downloads/aria:/downloads:rw"
+      - "unionfs:/mnt"
+    environment:
+      - "TZ=${TZ}"
+      - "PUID=${ID}"
+      - "PGID=${ID}"
+      - "UMASK_SET=022"
+      - "RPC_SECRET=${ARIA_RPC_SECRET}"
+      - "RPC_PORT=6800"
+      - "LISTEN_PORT=6888"
+      - "DISK_CACHE=64M"
+      - "IPV6_MODE=false"
+      - "UPDATE_TRACKERS=true"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.routers.aria-rtr.entrypoints=https"
+      - "traefik.http.routers.aria-rtr.rule=Host(`aria.${DOMAIN}`) && Path(`/jsonrpc`)"
+      - "traefik.http.routers.aria-rtr.tls=true"
+      - "traefik.http.routers.aria-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.aria-rtr.middlewares=chain-no-auth@file"
+      - "traefik.http.routers.aria-rtr.service=aria-svc"
+      - "traefik.http.services.aria-svc.loadbalancer.server.port=6800"
+      - "dockupdater.enable=true"
+
+  ariang:
+    image: "p3terx/ariang:latest"
+    hostname: "ariang"
+    container_name: "ariang"
+    restart: "${RESTARTAPP}"
+    depends_on:
+      - "aria"
+    environment:
+      - "TZ=${TZ}"
+      - "PUID=${ID}"
+      - "PGID=${ID}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.routers.ariang-rtr.entrypoints=https"
+      - "traefik.http.routers.ariang-rtr.rule=Host(`aria.${DOMAIN}`)"
+      - "traefik.http.routers.ariang-rtr.tls=true"
+      - "traefik.http.routers.ariang-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.ariang-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.ariang-rtr.service=ariang-svc"
+      - "traefik.http.services.ariang-svc.loadbalancer.server.port=6880"
+      - "dockupdater.enable=true"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt
