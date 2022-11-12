@@ -2,20 +2,20 @@
    "appname": "docker-auto-replyarr",
    "apppic": "",
    "appfolder": "./apps/docker-auto-replyarr",
-   "newversion": "3.16.2",
+   "newversion": "3.16.3",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading docker-auto-replyarr to 3.16.2",
+   "body": "Upgrading docker-auto-replyarr to 3.16.3",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-backup",
    "apppic": "./images/docker-backup.png",
    "appfolder": "./apps/docker-backup",
-   "newversion": "3.16.2",
+   "newversion": "3.16.3",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading docker-backup to 3.16.2",
+   "body": "Upgrading docker-backup to 3.16.3",
    "user": "github-actions[bot]"
 }
 {
@@ -77,7 +77,7 @@
    "appfolder": "./apps/docker-dash",
    "newversion": "4.5.3",
    "baseimage": "alpine",
-   "baseversion": "3.16.2",
+   "baseversion": "3.16.3",
    "description": "A simple, modern server dashboard, primarily used by smaller private servers",
    "body": "Upgrading docker-dash to 4.5.3",
    "user": "dockserver-image[bot]"
@@ -108,10 +108,10 @@
    "appname": "docker-dockupdate",
    "apppic": "./images/docker-dockupdate.png",
    "appfolder": "./apps/docker-dockupdate",
-   "newversion": "3.16.2",
+   "newversion": "3.16.3",
    "baseimage": "alpine",
    "description": "Automatically keep your docker services and your docker containers up-to-date with the latest version",
-   "body": "Upgrading docker-dockupdate to 3.16.2",
+   "body": "Upgrading docker-dockupdate to 3.16.3",
    "user": "github-actions[bot]"
 }
 {
@@ -151,7 +151,7 @@
    "appname": "docker-fenrus",
    "apppic": "./images/docker-fenrus.png",
    "appfolder": "./apps/docker-fenrus",
-   "newversion": "3.16.2",
+   "newversion": "3.16.3",
    "appbranch": "master",
    "baseimage": "alpine",
    "appversion": "fea6f6c5790dd71270b3c708ffa54965131035fa",
@@ -435,9 +435,9 @@
    "appname": "docker-uploader",
    "apppic": "./images/docker-uploader.png",
    "appfolder": "./apps/docker-uploader",
-   "newversion": "3.16.2",
+   "newversion": "3.16.3",
    "baseimage": "ghcr.io/dockserver/docker-alpine-v3",
-   "baseversion": "3.16.2",
+   "baseversion": "3.16.3",
    "s6_stage": "",
    "description": "",
    "body": "Upgrading docker-uploader to ",
@@ -458,12 +458,12 @@
    "apppic": "./images/docker-wiki.png",
    "appfolder": "./apps/docker-wiki",
    "appbranch": "master",
-   "newversion": "3.16.2",
+   "newversion": "3.16.3",
    "appversion": "1.4.27",
    "wikiversion": "8.5.10",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
-   "body": "Upgrading docker-wiki to 3.16.2",
+   "body": "Upgrading docker-wiki to 3.16.3",
    "user": "github-actions[bot]"
 }
 {
@@ -481,10 +481,10 @@
    "appname": "alpine",
    "apppic": "",
    "appfolder": "./base/alpine",
-   "newversion": "3.16.2",
+   "newversion": "3.16.3",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading alpine to 3.16.2",
+   "body": "Upgrading alpine to 3.16.3",
    "user": "github-actions[bot]"
 }
 {
@@ -502,43 +502,43 @@
    "appname": "docker-alpine-v3",
    "apppic": "./images/docker-alpine-v3.png",
    "appfolder": "./base/docker-alpine-v3",
-   "newversion": "3.16.2",
+   "newversion": "3.16.3",
    "baseimage": "alpine",
-   "baseversion": "3.16.2",
+   "baseversion": "3.16.3",
    "s6stage": "v3.1.2.1",
    "description": "Docker docker-alpine-v3 with include s6-overlay: v3.1.2.1",
-   "body": "Upgrading docker-alpine-v3 to baseimage: alpine:3.16.2  with include s6-overlay: v3.1.2.1",
+   "body": "Upgrading docker-alpine-v3 to baseimage: alpine:3.16.3  with include s6-overlay: v3.1.2.1",
    "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-config",
    "apppic": "./images/docker-config.png",
    "appfolder": "./base/docker-config",
-   "newversion": "3.16.2",
+   "newversion": "3.16.3",
    "baseimage": "alpine",
    "description": " !!! DEVERLOP STATUS !!! DO NOT TRY TO PULL THE IMAGE YOU NEED ACCESS TO THE REPOSITORY",
-   "body": "Upgrading docker-config to 3.16.2",
+   "body": "Upgrading docker-config to 3.16.3",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-create",
    "apppic": "./images/docker-create.png",
    "appfolder": "./base/docker-create",
-   "newversion": "3.16.2",
+   "newversion": "3.16.3",
    "baseimage": "alpine",
    "description": " !!! DEVERLOP STATUS !!! DO NOT TRY TO PULL THE IMAGE YOU NEED ACCESS TO THE REPOSITORY",
-   "body": "Upgrading docker-create to 3.16.2",
+   "body": "Upgrading docker-create to 3.16.3",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-dockserver",
    "apppic": "",
    "appfolder": "./base/docker-dockserver",
-   "newversion": "3.16.2",
-   "appversion": "3.16.2",
+   "newversion": "3.16.3",
+   "appversion": "3.16.3",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
-   "body": "Upgrading docker-dockserver to 3.16.2",
+   "body": "Upgrading docker-dockserver to 3.16.3",
    "user": "github-actions[bot]"
 }
 {
@@ -555,31 +555,31 @@
    "appname": "docker-ubuntu-focal",
    "apppic": "./images/docker-ubuntu-focal.png",
    "appfolder": "./base/docker-ubuntu-focal",
-   "newversion": "3.16.2",
+   "newversion": "3.16.3",
    "baseimage": "alpine",
    "description": "Docker image  for docker-ubuntu-focal",
-   "body": "Upgrading docker-ubuntu-focal to baseimage: alpine:3.16.2",
+   "body": "Upgrading docker-ubuntu-focal to baseimage: alpine:3.16.3",
    "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-ubuntu-jammy",
    "apppic": "./images/docker-ubuntu-jammy.png",
    "appfolder": "./base/docker-ubuntu-jammy",
-   "newversion": "3.16.2",
+   "newversion": "3.16.3",
    "baseimage": "alpine",
    "description": "Docker image  for docker-ubuntu-jammy",
-   "body": "Upgrading docker-ubuntu-jammy to baseimage: alpine:3.16.2",
+   "body": "Upgrading docker-ubuntu-jammy to baseimage: alpine:3.16.3",
    "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-ui",
    "apppic": "",
    "appfolder": "./base/docker-ui",
-   "newversion": "3.16.2",
-   "appversion": "3.16.2",
+   "newversion": "3.16.3",
+   "appversion": "3.16.3",
    "baseimage": "alpine",
    "description": " !!! DEVERLOP STATUS !!! DO NOT TRY TO PULL THE IMAGE YOU NEED ACCESS TO THE REPOSITORY",
-   "body": "Upgrading docker-ui to 3.16.2",
+   "body": "Upgrading docker-ui to 3.16.3",
    "user": "github-actions[bot]"
 }
 {
