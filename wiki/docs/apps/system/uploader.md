@@ -74,22 +74,27 @@ You can leave the value as it is if you dont use Multi Drive uploading.
 |`BANDWIDTH_LIMIT`|`null`          |The maximum upload speed *per upload*. Please refer to the [Rclone documentation](https://rclone.org/docs/#bwlimit-bandwidth-spec) before changes are made.|
 |`LOG_LEVEL`      |`INFO`          |Please refer to the [Rclone documentation](https://rclone.org/docs#log-level-level) before changes are made.|
 |`DLFOLDER`       |`/mnt/downloads`|Path to your download directory.|
-|`FOLDER_DEPTH`   |`1`             |How many folders deep your library folder is from the root of your Team Drive. If set incorrectly, the Uploader web interface, database, and notifications will all display the incorrect folder. Examples:</br>`FOLDER_DEPTH=1` the library folder is in the root of your Team Drive. IE - `/movies`.</br>`FOLDER_DEPTH=2` the library folder is below the root folder. IE - `/media/movies`.</br></br>**IMPORTANT**: This setting should only be used if you know what you are doing. By changing the value, you accept all risks that come with it.|
 |`TRANSFERS`      |`2`             |The maximum number of concurrent uploads.|
 
 #### USER - SETTINGS
 |Setting             |Default|Description|
 |--------------------|-------|-----------|
 |`DRIVEUSEDSPACE`    |`null` |Amount of local storage, in percent, to use before uploading any files. Example:</br></br>`DRIVEUSEDSPACE=80` will wait until the drive space used reaches 80% before uploading files.|
+|`FOLDER_DEPTH`    |`1`    |If your movie/show folders are in root of drive, you can leve this to 1, if you have them in a subfolder you have to change the depth value, Example `media/tvshow/showname` would result in `FOLDER_DEPTH=2` (if you use multiuploader, you need the same DEPTH/folder structure on all drives where you upload to).</br></br>**IMPORTANT**: This setting should only be used if you know what you are doing. By changing the value, you accept all risks that come with it.|
+|`FOLDER_PRIORITY`    |`1`    |Add folders you like to prioritize Example: `tv,movies` (tv first, then movies, then all others not in the list).|
 |`MIN_AGE_UPLOAD`    |`1`    |How old a file should be, in minutes, before it is uploaded. Example:</br>`MIN_AGE_UPLOAD=10` will wait until a file is 10 minutes old before it is uploaded.|
-|`LOG_ENTRY`         |`1000` |How many log entries should be retained in the local database.|
-|`LOG_RETENTION_DAYS`|`null` |How many days of log entries should be kept. If `LOG_RETENTION_DAYS` is defined, then `LOG_ENTRY` is ignored.|
 
 #### VFS - SETTINGS
 |Setting             |Default     |Description|
 |--------------------|------------|-----------|
 |`VFS_REFRESH_ENABLE`|`true`      |Whether or not the VFS cache refresh should be send to the Mount Docker. Options:</br>`true`</br>`false`|
 |`MOUNT`             |`mount:8554`|The local address of your mount instance.|
+
+#### LOG - SETTINGS
+|Setting             |Default|Description|
+|--------------------|-------|-----------|
+|`LOG_ENTRY`         |`1000` |How many log entries should be retained in the local database.|
+|`LOG_RETENTION_DAYS`|`null` |How many days of log entries should be kept. If `LOG_RETENTION_DAYS` is defined, then `LOG_ENTRY` is ignored.|
 
 #### AUTOSCAN - SETTINGS
 |Setting        |Default|Description|
