@@ -107,9 +107,9 @@ You can leave the value as it is if you dont use Multi Drive uploading.
 |`LANGUAGE`|`en`   |Language to use. Options:</br>`en` - English</br>`de` - German|
 
 ### Multi-Drive Uploader
-If you would like to upload to multiple Team Drives, you need to create a file named `uploader.csv` in `/opt/appdata/system/servicekeys/`. You can find a sample file in `opt/appdata/system/uploader/sample`. For each Team Drive, add a line in the `uploader.csv` file. 
-**IMPORTANT**: When you have a "LOCAL_FOLDER_NAME" with an hyphen, then add it without the hyphen.
+If you would like to upload to multiple Team Drives, you need to create a file named `uploader.csv` in `/opt/appdata/system/servicekeys/`. You can find a sample file in `opt/appdata/system/uploader/sample`. For each Team Drive, add a line in the `uploader.csv` file.
 
+**IMPORTANT**: When you have a "LOCAL_FOLDER_NAME" with an hyphen, then add it without the hyphen.
 </br>
 </br>
 
