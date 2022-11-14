@@ -124,9 +124,7 @@ TV|0AFsVct4HDKPrUk9PVvvvvvvvv
 TV4K|0AFsVct4HDKPrUk9PVxxxxxxxxxx
 Movies|0AFsVct4HDKPrUk9PVyyyyyyyyyy
 Movies4K|0AFsVct4HDKPrUk9PVzzzzzzzzzz
-.
-.
-.
+...
 ```
 
 #### Encryted Team Drives
@@ -141,9 +139,7 @@ Movies|0AFsVct4HDKPrUk9PVvvvvvvvv|72nsjsiwjsjsu|72nsjsiwjsjsu
 TV SHows|0AFsVct4HDKPrUk9PVxxxxxxxxxx|72nsjsiwjsjsu|72nsjsiwjsjsu
 4K|0AFsVct4HDKPrUk9PVyyyyyyyyyy|72nsjsiwjsjsu|72nsjsiwjsjsu
 TV 4K|0AFsVct4HDKPrUk9PVzzzzzzzzzz|72nsjsiwjsjsu|72nsjsiwjsjsu
-.
-.
-.
+...
 ```
 
 **IMPORTANT**: All Keys must be known on all Team Drives!
