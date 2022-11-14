@@ -29,7 +29,10 @@ Automated uploader for Google Team Drive.</br>
 - Notifications via [Apprise](https://github.com/caronc/apprise).
 - Variable concurrent uploads.
 - Settings are refreshed for each upload. No need to restart the container after making a configuration change!
-- Start and stop on demand via the container or web interface.
+- Start and stop on demand via the container or web interface.</br>
+    ![pauseupload](/img/uploader/pauseupload.gif)
+- Change time formatting.</br>
+    ![changetime](/img/uploader/changetime.gif)
 
 ### Limitations:
 - No support for Google Drive.
@@ -37,22 +40,6 @@ Automated uploader for Google Team Drive.</br>
 - Bandwidth limit is *per* upload IE - If you have `TRANSFERS=2` and `BANDWIDTH_LIMIT=20M`, the maximum total upload speed would be 40MiB.
 - Bandwidth cannot be changed for any active uploads.
 
-### Features:
-Pause Uploader (current ones are not taken into account):
-
-<p align="left">
-    <a href="https://dockserver.io/apps/system/uploader.html#features" width="100%">
-      <img height="250px" src="https://raw.githubusercontent.com/dockserver/dockserver/master/wiki/docs/img/uploader/pauseupload.gif">
-    </a>
-</p>
-
-Change Time Format:
-
-<p align="left">
-    <a href="https://dockserver.io/apps/system/uploader.html#features" width="100%">
-      <img height="250px" src="https://raw.githubusercontent.com/dockserver/dockserver/master/wiki/docs/img/uploader/changetime.gif">
-    </a>
-</p>
 
 ## Configuration
 All settings can be found here: `/opt/appdata/system/uploader/uploader.env`
