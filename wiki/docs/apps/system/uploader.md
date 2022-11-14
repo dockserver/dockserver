@@ -29,7 +29,7 @@ Automated uploader for Google Team Drive.</br>
 - Notifications via [Apprise](https://github.com/caronc/apprise).
 - Variable concurrent uploads.
 - Settings are refreshed for each upload. No need to restart the container after making a configuration change!
-- Start and stop on demand via the container or web interface (current ones are not taken into account).
+- Start and stop on demand via the container or web interface (active uploads are not considered when pausing via the web interface).
 
     ![pauseupload](/img/uploader/pauseupload.gif)
     
@@ -64,7 +64,7 @@ You have 2 options for this value `HASHPASSWORD`.
 
 1. `hashed` this tells uploader that you have the encrypted password in your `drive.csv`.
 
-2.  `plain` this tells uploader that you have the plain password in your `drive.csv`.
+2. `plain` this tells uploader that you have the plain password in your `drive.csv`.
 
 You can leave the value as it is if you dont use Multi Drive uploading.
 
@@ -77,12 +77,12 @@ You can leave the value as it is if you dont use Multi Drive uploading.
 |`TRANSFERS`      |`2`             |The maximum number of concurrent uploads.|
 
 #### USER - SETTINGS
-|Setting             |Default|Description|
-|--------------------|-------|-----------|
-|`DRIVEUSEDSPACE`    |`null` |Amount of local storage, in percent, to use before uploading any files. Example:</br></br>`DRIVEUSEDSPACE=80` will wait until the drive space used reaches 80% before uploading files.|
-|`FOLDER_DEPTH`    |`1`    |If your movie/show folders are in root of drive, you can leave this to 1, if you have them in a subfolder you have to change the depth value, Example `media/tvshow/showname` would result in `FOLDER_DEPTH=2` (if you use multiuploader, you need the same DEPTH/folder structure on all drives where you upload to).</br></br>**IMPORTANT**: This setting should only be used if you know what you are doing. By changing the value, you accept all risks that come with it.|
-|`FOLDER_PRIORITY`    |`null`    |Add folders you like to prioritize - Example: `tv,movies` (tv first, then movies, then all others not in the list).|
-|`MIN_AGE_UPLOAD`    |`1`    |How old a file should be, in minutes, before it is uploaded. Example:</br>`MIN_AGE_UPLOAD=10` will wait until a file is 10 minutes old before it is uploaded.|
+|Setting          |Default|Description|
+|-----------------|-------|-----------|
+|`DRIVEUSEDSPACE` |`null` |Amount of local storage, in percent, to use before uploading any files. Example:</br>`DRIVEUSEDSPACE=80` will wait until the drive space used reaches 80% before uploading files.|
+|`FOLDER_DEPTH`   |`1`    |If your movie/show folders are in root of drive, you can leave this to 1, if you have them in a subfolder you have to change the depth value, Example `media/tvshow/showname` would result in `FOLDER_DEPTH=2` (if you use multiuploader, you need the same DEPTH/folder structure on all drives where you upload to).</br></br>**IMPORTANT**: This setting should only be used if you know what you are doing. By changing the value, you accept all risks that come with it.|
+|`FOLDER_PRIORITY`|`null` |Add folders you like to prioritize - Example: `tv,movies` (tv first, then movies, then all others not in the list).|
+|`MIN_AGE_UPLOAD` |`1`    |How old a file should be, in minutes, before it is uploaded. Example:</br>`MIN_AGE_UPLOAD=10` will wait until a file is 10 minutes old before it is uploaded.|
 
 #### VFS - SETTINGS
 |Setting             |Default     |Description|
@@ -122,11 +122,11 @@ You can leave the value as it is if you dont use Multi Drive uploading.
 ### Multi-Drive Uploader
 If you would like to upload to multiple Team Drives, you need to create a file named `uploader.csv` in `/opt/appdata/system/servicekeys/`. You can find a sample file in `opt/appdata/system/uploader/sample`. For each Team Drive, add a line in the `uploader.csv` file.
 
-**IMPORTANT**: When you have a "LOCAL_FOLDER_NAME" with an hyphen, then add it without the hyphen.
+**IMPORTANT**: If "LOCAL_FOLDER_NAME" contains a hyphen, do not include it.
 </br>
 </br>
 
-#### Uncryted Team Drives
+#### Unencrypted Team Drives
 
 Example:
 
@@ -140,7 +140,7 @@ Movies4K|0AFsVct4HDKPrUk9PVzzzzzzzzzz
 ...
 ```
 
-#### Encryted Team Drives
+#### Encrypted Team Drives
 
 Example:
 ```yaml
@@ -162,7 +162,7 @@ Instead of using `/opt/appdata/system/servicekeys/rclonegdsa.conf`, you can now 
 </br>
 </br>
 
-#### Uncryted Team Drives
+#### Unencrypted Team Drives
 
 Example:
 
@@ -172,7 +172,7 @@ Example:
 uploader|0XXXXXXXXX000000EERR
 ```
 
-#### Encryted Team Drives
+#### Encrypted Team Drives
 
 Example:
 ```yaml
