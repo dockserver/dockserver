@@ -80,7 +80,7 @@ You can leave the value as it is if you dont use Multi Drive uploading.
 |Setting             |Default|Description|
 |--------------------|-------|-----------|
 |`DRIVEUSEDSPACE`    |`null` |Amount of local storage, in percent, to use before uploading any files. Example:</br></br>`DRIVEUSEDSPACE=80` will wait until the drive space used reaches 80% before uploading files.|
-|`FOLDER_DEPTH`    |`1`    |If your movie/show folders are in root of drive, you can leve this to 1, if you have them in a subfolder you have to change the depth value, Example `media/tvshow/showname` would result in `FOLDER_DEPTH=2` (if you use multiuploader, you need the same DEPTH/folder structure on all drives where you upload to).</br></br>**IMPORTANT**: This setting should only be used if you know what you are doing. By changing the value, you accept all risks that come with it.|
+|`FOLDER_DEPTH`    |`1`    |If your movie/show folders are in root of drive, you can leave this to 1, if you have them in a subfolder you have to change the depth value, Example `media/tvshow/showname` would result in `FOLDER_DEPTH=2` (if you use multiuploader, you need the same DEPTH/folder structure on all drives where you upload to).</br></br>**IMPORTANT**: This setting should only be used if you know what you are doing. By changing the value, you accept all risks that come with it.|
 |`FOLDER_PRIORITY`    |`1`    |Add folders you like to prioritize Example: `tv,movies` (tv first, then movies, then all others not in the list).|
 |`MIN_AGE_UPLOAD`    |`1`    |How old a file should be, in minutes, before it is uploaded. Example:</br>`MIN_AGE_UPLOAD=10` will wait until a file is 10 minutes old before it is uploaded.|
 
