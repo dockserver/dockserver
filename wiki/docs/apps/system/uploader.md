@@ -97,6 +97,8 @@ You can leave the value as it is if you dont use Multi Drive uploading.
 |`LOG_RETENTION_DAYS`|`null` |How many days of log entries should be kept. If `LOG_RETENTION_DAYS` is defined, then `LOG_ENTRY` is ignored.|
 
 #### AUTOSCAN - SETTINGS
+Autoscan is optional, people with feeders may use it to trigger scan after upload is completed.</br>If you enable it in uploader, you can disable it in the *arrs.
+
 |Setting        |Default|Description|
 |---------------|-------|-----------|
 |`AUTOSCAN_URL` |`null` |Remote or local path to Autoscan. Examples:</br>Remote: `AUTOSCAN_URL=https://autoscan.domain.com`</br>Local: `AUTOSCAN_URL=http://autoscan:3030`|
