@@ -139,6 +139,8 @@ TV|0AFsVct4HDKPrUk9PVvvvvvvvv
 TV4K|0AFsVct4HDKPrUk9PVxxxxxxxxxx
 Movies|0AFsVct4HDKPrUk9PVyyyyyyyyyy
 Movies4K|0AFsVct4HDKPrUk9PVzzzzzzzzzz
+appbackups|0AFsVct4HDKPrUk9PVzzzzzzzzzz
+music|0AFsVct4HDKPrUk9PVzzzzzzzzzz
 ...
 ```
 
@@ -154,10 +156,12 @@ Movies|0AFsVct4HDKPrUk9PVvvvvvvvv|72nsjsiwjsjsu|72nsjsiwjsjsu
 TV SHows|0AFsVct4HDKPrUk9PVxxxxxxxxxx|72nsjsiwjsjsu|72nsjsiwjsjsu
 4K|0AFsVct4HDKPrUk9PVyyyyyyyyyy|72nsjsiwjsjsu|72nsjsiwjsjsu
 TV 4K|0AFsVct4HDKPrUk9PVzzzzzzzzzz|72nsjsiwjsjsu|72nsjsiwjsjsu
+appbackups|0AFsVct4HDKPrUk9PVzzzzzzzzzz|72nsjsiwjsjsu|72nsjsiwjsjsu
+music|0AFsVct4HDKPrUk9PVzzzzzzzzzz|72nsjsiwjsjsu|72nsjsiwjsjsu
 ...
 ```
 
-**IMPORTANT**: All Keys must be known on all Team Drives!
+**IMPORTANT**:</br></br>All Keys must be known on all Team Drives!</br>You also have to add all folders where you want to upload files (even backup folders).
 
 ### Other Uploader Features
 Instead of using `/opt/appdata/system/servicekeys/rclonegdsa.conf`, you can now use a `drive.csv` where you can put the default Team Drive to upload in. To make use of this feature, you need to create a file named `drive.csv` in `/opt/appdata/system/uploader/`.
