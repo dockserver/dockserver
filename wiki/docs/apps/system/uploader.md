@@ -161,7 +161,10 @@ music|0AFsVct4HDKPrUk9PVzzzzzzzzzz|72nsjsiwjsjsu|72nsjsiwjsjsu
 ...
 ```
 
-**IMPORTANT**:</br></br>All Keys must be known on all Team Drives!</br>You also have to add all folders where you want to upload files (even backup folders).
+**IMPORTANT**: </br>
+</br>
+All Keys must be known on all Team Drives! </br>
+You also have to add all folders where you want to upload files (even backup folders).
 
 ### Other Uploader Features
 Instead of using `/opt/appdata/system/servicekeys/rclonegdsa.conf`, you can now use a `drive.csv` where you can put the default Team Drive to upload in. To make use of this feature, you need to create a file named `drive.csv` in `/opt/appdata/system/uploader/`.
