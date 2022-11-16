@@ -55,16 +55,16 @@ All settings can be found here: `/opt/appdata/system/uploader/uploader.env`
 |`PGID`    |`1000` |PGID to be used by Uploader.|
 |`TIMEZONE`|`UTC`  |Timezone to be used by Uploader.|
 
-#### ENCRYPTION SETUP
+#### CRITICAL SETUP FOR CRYPT USER
 |Setting       |Default |Description|
 |--------------|--------|-----------|
-|`HASHPASSWORD`|`hashed`|If using `drive.csv` and encrypted Team Drive, this must be set.</br>Options:</br>`hashed`</br>`plain`|
+|`HASHPASSWORD`|`hashed`|If using `drive.csv` or `uploader.csv` and encrypted Team Drive, this must be set.</br>Options:</br>`hashed`</br>`plain`|
 
 You have 2 options for this value `HASHPASSWORD`.
 
-1. `hashed` this tells uploader that you have the encrypted password in your `drive.csv`.
+1. `hashed` this tells uploader that you have the encrypted password in your `drive.csv` or `uploader.csv`.
 
-2. `plain` this tells uploader that you have the plain password in your `drive.csv`.
+2. `plain` this tells uploader that you have the plain password in your `drive.csv` or `uploader.csv`.
 
 You can leave the value as it is if you dont use Multi Drive uploading.
 
