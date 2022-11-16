@@ -37,7 +37,15 @@ Latest yml for installation can be found here [Link](https://github.com/dockserv
 #### CRITICAL SETUP FOR CRYPT USER
 |Setting       |Default |Description|
 |--------------|--------|-----------|
-|`HASHPASSWORD`|`hashed`|If using `drive.csv` and encrypted Team Drive, this must be set. Otherwise, you may leave the value as is.</br>Options:</br>`hashed` - Tells uploader that you have the encrypted password in your `drive.csv`.</br>`plain` - Tells uploader that you have the plain password in your `drive.csv`.|
+|`HASHPASSWORD`|`hashed`|If using `drive.csv` and encrypted Team Drive, this must be set.</br>Options:</br>`hashed`</br>`plain`|
+
+You have 2 options for this value `HASHPASSWORD`.
+
+1. `hashed` this tells mount that you have the encrypted password in your `drive.csv`.
+
+2. `plain` this tells mount that you have the plain password in your `drive.csv` or.
+
+You can leave the value as it is if you dont has created the `drive.csv` by yourself.
 
 #### MERGERFS ADDITIONAL FOLDER
 |Setting                      |Default         |Description|
