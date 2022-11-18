@@ -173,11 +173,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.2260",
+   "newversion": "0.20.2264",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.2260",
+   "body": "Upgrading docker-jackett to 0.20.2264",
    "user": "github-actions[bot]"
 }
 {
@@ -308,11 +308,11 @@
    "appname": "docker-plex",
    "apppic": "./images/docker-plex.png",
    "appfolder": "./apps/docker-plex",
-   "newversion": "1.30.0.6359-1185e28d9",
+   "newversion": "1.30.0.6406-f3f2fcc0a",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:jammy",
    "description": "Docker Container for Plex Media Server || PLEX PASS",
-   "body": "Upgrading docker-plex to 1.30.0.6359-1185e28d9",
+   "body": "Upgrading docker-plex to 1.30.0.6406-f3f2fcc0a",
    "user": "github-actions[bot]"
 }
 {
