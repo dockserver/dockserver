@@ -1,0 +1,43 @@
+---
+version: "3"
+services:
+  sync:
+    hostname: "sync"
+    container_name: "sync"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      #- '<ADDITIONALENVIROMENT>'
+    image: "resilio/sync"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/sync:/mnt/sync"
+      - "unionfs:/mnt"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - 'dockupdater.enable=true' ## Enable auto update docker
+      #- 'dockupdater.disable=false' ## Disable auto update docker
+      - "traefik.http.routers.sync-rtr.entrypoints=https"
+      - "traefik.http.routers.sync-rtr.rule=Host(`sync.${DOMAIN}`)"
+      - "traefik.http.routers.sync-rtr.tls=true"
+      - "traefik.http.routers.sync-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.sync-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.sync-rtr.service=sync-svc"
+      - "traefik.http.services.sync-svc.loadbalancer.server.port=8888"
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt
