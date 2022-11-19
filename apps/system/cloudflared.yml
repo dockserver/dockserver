@@ -1,0 +1,22 @@
+---
+version: "3"
+services:
+  cloudflared:
+    image: "ghcr.io/dockserver/docker-cloudflared:latest"
+    hostname: "cloudflared"
+    container_name: "cloudflared"
+    command: "'tunnel' 'run' '${CLOUDFLARED_UUID}'"
+    networks:
+      - ${DOCKERNETWORK}
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+    volumes:
+      - "${APPFOLDER}/cloudflared:/home/nonroot/.cloudflared"
+    restart: always
+networks:
+  proxy:
+    driver: bridge
+    external: true
+#"

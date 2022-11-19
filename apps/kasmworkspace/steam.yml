@@ -1,0 +1,45 @@
+---
+version: "3"
+services:
+  steam:
+    container_name: "steam"
+    hostname: "steam"
+    image: "kasmweb/steam:1.9.0-rolling"
+    restart: "${RESTARTAPP}"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "VNC_PW=${VNC_PW}"
+      - "VNC_RESOLUTION=${VNC_RESOLUTION}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "${APPFOLDER}/steam:/config:rw"
+      - "unionfs:/mnt:rw"
+    shm_size: "512m"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.steam-rtr.entrypoints=https"
+      - "traefik.http.routers.steam-rtr.rule=Host(`steam.${DOMAIN}`)"
+      - "traefik.http.routers.steam-rtr.tls=true"
+      - "traefik.http.routers.steam-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.steam-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.steam-rtr.service=steam-svc"
+      - "traefik.http.services.steam-svc.loadbalancer.server.scheme=https"
+      - "traefik.http.services.steam-svc.loadbalancer.server.port=6901"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

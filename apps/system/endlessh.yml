@@ -1,0 +1,19 @@
+---
+version: "3"
+services:
+  endlessh:
+    image: "lscr.io/linuxserver/endlessh:latest"
+    container_name: "endlessh"
+    environment:
+      - "PUID=${ID}"
+      - "PGID=${ID}"
+      - "TZ=${TZ}"
+      - "MSDELAY=10000"
+      - "MAXLINES=32"
+      - "MAXCLIENTS=4096"
+      - "LOGFILE=true"
+    volumes:
+      - "${APPFOLDER}/endlessh:/config"
+    ports:
+      - "22:2222"
+    restart: "${RESTARTAPP}"

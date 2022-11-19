@@ -1,11 +1,22 @@
-<br />
-![Image of DockServer](/img/logo.png)
+![Image of DockServer](/img/container_images/docker-jdownloader.png)
 
-[![Website: https://dockserver.io](https://img.shields.io/badge/Website-https%3A%2F%2Fdockserver.io-blue.svg?style=for-the-badge&colorB=177DC1&label=website)](https://dockserver.io)
-[![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa)
-[![License: GPL 3](https://img.shields.io/badge/License-GPL%203-blue.svg?style=for-the-badge&colorB=177DC1&label=license)](LICENSE)
+<p align="left">
+    <a href="https://discord.gg/FYSvu83caM">
+        <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
+    </a>
+        <a href="https://github.com/dockserver/dockserver/releases">
+        <img src="https://img.shields.io/github/downloads/dockserver/dockserver/total?label=Total%20Downloads&logo=github" alt="Total Releases Downloaded from GitHub">
+    </a>
+    <a href="https://github.com/dockserver/dockserver/releases/latest">
+        <img src="https://img.shields.io/github/v/release/dockserver/dockserver?include_prereleases&label=Latest%20Release&logo=github" alt="Latest Official Release on GitHub">
+    </a>
+    <a href="https://github.com/dockserver/dockserver/blob/master/LICENSE">
+        <img src="https://img.shields.io/github/license/dockserver/dockserver?label=License&logo=gnu" alt="GNU General Public License">
+    </a>
+</p>
 
-# Docker container for JDownloader 2
+
+# JDownloader 2
 
 [![Docker Image Size](https://img.shields.io/docker/image-size/jlesage/jdownloader-2/latest)](https://hub.docker.com/r/jlesage/jdownloader-2/tags) [![Build Status](https://drone.le-sage.com/api/badges/jlesage/docker-jdownloader-2/status.svg)](https://drone.le-sage.com/jlesage/docker-jdownloader-2) [![GitHub Release](https://img.shields.io/github/release/jlesage/docker-jdownloader-2.svg)](https://github.com/jlesage/docker-jdownloader-2/releases/latest) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/JocelynLeSage/0usd)
 

@@ -1,0 +1,43 @@
+---
+version: "3"
+services:
+  prowlarrhdr:
+    hostname: "prowlarrhdr"
+    container_name: "prowlarrhdr"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:prowlarr"
+      - "TP_THEME=${PROWLARRHDRTHEME}"
+    image: "${PROWLARRHDRIMAGE}"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/prowlarrhdr:/config:rw"
+      - "unionfs:/mnt"
+      - "${APPFOLDER}/prowlarrhdr/host/98-themepark:/etc/cont-init.d/99-themepark"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.prowlarrhdr-rtr.entrypoints=https"
+      - "traefik.http.routers.prowlarrhdr-rtr.rule=Host(`prowlarrhdr.${DOMAIN}`)"
+      - "traefik.http.routers.prowlarrhdr-rtr.tls=true"
+      - "traefik.http.routers.prowlarrhdr-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.prowlarrhdr-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.prowlarrhdr-rtr.service=prowlarrhdr-svc"
+      - "traefik.http.services.prowlarrhdr-svc.loadbalancer.server.port=9696"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

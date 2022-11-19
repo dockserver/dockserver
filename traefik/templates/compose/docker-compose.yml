@@ -1,5 +1,5 @@
 ---
-version: '3.3'
+version: '3.8'
 services:
   traefik:
     container_name: 'traefik'
@@ -27,6 +27,8 @@ services:
       - --providers.docker.network=proxy
       - --providers.docker.swarmMode=false
       - --entryPoints.http.address=:80
+      - --entrypoints.http.http.redirections.entryPoint.to=https
+      - --entrypoints.http.http.redirections.entryPoint.scheme=https
       - --entryPoints.https.address=:443
       - --entrypoints.https.forwardedHeaders.trustedIPs=173.245.48.0/20,103.21.244.0/22,103.22.200.0/22,103.31.4.0/22,141.101.64.0/18,108.162.192.0/18,190.93.240.0/20,188.114.96.0/20,197.234.240.0/22,198.41.128.0/17,162.158.0.0/15,104.16.0.0/12,172.64.0.0/13,131.0.72.0/22
       - --entryPoints.traefik.address=:8080
@@ -73,14 +75,12 @@ services:
     labels:
       - 'dockupdater.enable=true'
       - 'traefik.enable=true'
-      - 'traefik.http.routers.http-catchall.entrypoints=http'
-      - 'traefik.http.routers.http-catchall.rule=HostRegexp(`{host:.+}`)'
-      - 'traefik.http.routers.http-catchall.middlewares=redirect-to-https'
-      - 'traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https'
       - 'traefik.http.routers.traefik-rtr.entrypoints=https'
       - 'traefik.http.routers.traefik-rtr.rule=HostHeader(`traefik.${DOMAIN}`)'
-      - 'traefik.http.routers.traefik-rtr.service=api@internal'
+      - 'traefik.http.routers.traefik-rtr.tls=true'
+      - 'traefik.http.routers.traefik-rtr.tls.certresolver=dns-cloudflare'
       - 'traefik.http.routers.traefik-rtr.middlewares=chain-authelia@file'
+      - 'traefik.http.routers.traefik-rtr.service=api@internal'
   cf-companion:
     container_name: 'cf-companion'
     image: 'tiredofit/traefik-cloudflare-companion:latest'

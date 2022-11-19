@@ -81,8 +81,8 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
-  favicon: img/dockserver_logo_github.png
-  logo: img/dockserver_logo_github.png
+  favicon: img/logo_without_text.png
+  logo: img/logo_without_text.png
 
 # Plugins
 plugins:
@@ -153,6 +153,7 @@ nav:
       - cf-companion: install/cf-companion.md
       - Traefik: install/traefik.md
   - Special:
+      - Cloudflare Tunnel: tunnel/cf_tunnel.md
       - LXC-Container: lxc/lxc.md
       - Migration: install/migration.md
       - Changelog: install/changelog.md
@@ -175,6 +176,7 @@ nav:
       - Applikation: apps/apps.md
       - Addons:
           - Autoscan: apps/addons/autoscan.md
+          - A-Train: apps/addons/a-train.md
           - Cloud: apps/addons/cloud.md
           - CloudCMD: apps/addons/cloudcmd.md
           - Flaresolverr: apps/addons/flaresolverr.md

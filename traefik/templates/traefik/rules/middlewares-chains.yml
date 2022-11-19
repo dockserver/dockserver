@@ -17,4 +17,3 @@ http:
           - middlewares-secure-headers
           - traefik-error-pages@docker
           - middlewares-authelia
-

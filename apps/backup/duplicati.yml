@@ -1,0 +1,41 @@
+---
+version: "3"
+services:
+  duplicati:
+    hostname: "duplicati"
+    container_name: "duplicati"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "ghcr.io/dockserver/docker-duplicati:latest"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/duplicati:/config:rw"
+      - "${APPFOLDER}:${APPFOLDER}:rw"
+      - "unionfs:/backups:rw"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.duplicati-rtr.entrypoints=https"
+      - "traefik.http.routers.duplicati-rtr.rule=Host(`duplicati.${DOMAIN}`)"
+      - "traefik.http.routers.duplicati-rtr.tls=true"
+      - "traefik.http.routers.duplicati-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.duplicati-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.duplicati-rtr.service=duplicati-svc"
+      - "traefik.http.services.duplicati-svc.loadbalancer.server.port=8200"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

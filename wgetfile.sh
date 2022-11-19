@@ -20,107 +20,53 @@ function log() {
 
 function rmdocker() {
 if [ $(which docker) ]; then
-   dockers=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep 'dockserver')
-   if [[ $dockers != "" ]]; then
-      $(which docker) stop $dockers > /dev/null
-      $(which docker) rm $dockers > /dev/null
-      $(which docker) system prune -af > /dev/null
-   fi
+   dockers=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -E 'dockserver')
+   $(which docker) stop $dockers > /dev/null
+   $(which docker) rm $dockers > /dev/null
+   $(which docker) system prune -af > /dev/null
    unset $dockers
 fi
 }
 
 function pulldockserver() {
 if [ $(which docker) ]; then
-   $(which docker) pull -q docker.dockserver.io/dockserver/docker-dockserver
+   $(which docker) pull -q docker.dockserver.io/dockserver/docker-dockserver && \
    $(which docker) run -d \
-   --name=dockserver \
-   -e PUID=1000 -e PGID=1000 -e TZ=Europe/London \
-   -v /opt/dockserver:/opt/dockserver:rw \
-   docker.dockserver.io/dockserver/docker-dockserver
-   $(which chown) -R 1000:1000 /opt/dockserver
+  --name=dockserver \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e TZ=Europe/London \
+  -v /opt/dockserver:/opt/dockserver:rw \
+  docker.dockserver.io/dockserver/docker-dockserver
 fi
 }
 
-function upsys() {
-log "**** update system ****"
 updates="update upgrade autoremove autoclean"
 for upp in ${updates}; do
-    sudo $(which apt) $upp -yqq 1>/dev/null 2>&1 && clear
+    sudo $(command -v apt) $upp -yqq 1>/dev/null 2>&1 && clear
 done
 unset updates
 
-log "**** install build packages ****"
-packages="curl bc sudo wget tar git jq pv pigz tzdata rsync"
-for pack in ${packages}; do
-    sudo $(which apt) $pack -yqq 1>/dev/null 2>&1
-done
+packages=(curl bc tar git jq pv pigz tzdata rsync)
+log "**** install build packages ****" && \
+sudo $(command -v apt) install $packages -yqq 1>/dev/null 2>&1 && clear
 unset packages
 
-log "**** remove old links  ****"
-remove="/bin/dockserver /usr/bin/dockserver"
-for rmold in ${remove}; do
-    sudo $(which rm) -rf $rmold 1>/dev/null 2>&1
-done
+remove=(/bin/dockserver /usr/bin/dockserver)
+log "**** remove old dockserver bins ****" && \
+sudo $(command -v rm) -rf $remove 1>/dev/null 2>&1 && clear
 unset remove
 
-if [ $(which snapd) ]; then
-   log "**** snapd  ****" && \
-   if [[ -d "/var/cache/snapd/" ]];then
-      sudo $(which rm) -rf /var/cache/snapd/
-   fi
-   sudo $(which apt) autoremove --purge snapd gnome-software-plugin-snap -yqq && \
-   sudo $(which apt) autoclean -yqq
-fi
-}
-
-function dockcomp() {
 if [ ! $(which docker) ]; then
-   log "**** installing now docker ****" && \
-   $(which wget) -qO- https://get.docker.com/ | sh >/dev/null 2>&1 && \
+   $(which curl) -fsSL https://get.docker.com -o /tmp/docker.sh && bash /tmp/docker.sh
    $(which systemctl) reload-or-restart docker.service
 fi
 
 if [ ! $(which docker-compose) ]; then
-   log "**** installing now docker-composer ****" && \
-   $(which curl) -fsSL --fail https://raw.githubusercontent.com/linuxserver/docker-docker-compose/master/run.sh -o /usr/local/bin/docker-compose
-   $(which ln) -sf /usr/local/bin/docker-compose /usr/bin/docker-compose && \
-   $(which chmod) +x /usr/local/bin/docker-compose /usr/bin/docker-compose
+    $(which curl) -L --fail https://raw.githubusercontent.com/linuxserver/docker-docker-compose/master/run.sh -o /usr/local/bin/docker-compose
+    $(which ln) -sf /usr/local/bin/docker-compose /usr/bin/docker-compose
+    $(which chmod) +x /usr/local/bin/docker-compose /usr/bin/docker-compose
 fi
-}
-
-function finalend() {
-if test -f "/usr/bin/dockserver"; then $(which rm) /usr/bin/dockserver ; fi
-if [[ $EUID != 0 ]]; then
-    $(which chown) -R $(whoami):$(whoami) /opt/dockserver
-    $(which usermod) -aG sudo $(whoami)
-    $(which cp) /opt/dockserver/.installer/dockserver /usr/bin/dockserver
-    $(which ln) -sf /usr/bin/dockserver /bin/dockserver
-    $(which chmod) +x /usr/bin/dockserver
-    $(which chown) $(whoami):$(whoami) /usr/bin/dockserver
-else
-    $(which chown) -R 1000:1000 /opt/dockserver
-    $(which cp) /opt/dockserver/.installer/dockserver /usr/bin/dockserver
-    $(which ln) -sf /usr/bin/dockserver /bin/dockserver
-    $(which chmod) +x /usr/bin/dockserver
-    $(which chown) -R 1000:1000 /usr/bin/dockserver
-fi
-
-printf "
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀    DockServer
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     install dockserver
-     [ sudo ] dockserver -i
-     all commands
-     [ sudo ] dockserver -h / --help
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-"
-}
-
-#### run in order
-
-upsys && dockcomp
 
 [[ ! -d "/opt/dockserver" ]] && mkdir -p /opt/dockserver
 
@@ -129,14 +75,42 @@ store=/usr/bin/dockserver
 dockserver=/opt/dockserver
 
 while true; do
-   if [ "$(ls -A $dockserver)" ]; then
-      rmdocker && sleep 3 && break
-   else
-      pulldockserver && \
-      log "**** dockserver is not pulled yet ****" && \
-      log "**** this could take some time ****" && \
-      sleep 5 && continue
-   fi
+if [ "$(ls -A $dockserver)" ]; then
+   rmdocker && sleep 3 && break
+else
+   pulldockserver
+   echo "dockserver is not pulled yet" 
+   sleep 5 && continue
+fi
 done
 
-finalend
+if test -f "/usr/bin/dockserver"; then $(which rm) /usr/bin/dockserver ; fi
+if [[ $EUID != 0 ]]; then
+    $(which chown) -R $(whoami):$(whoami) /opt/dockserver
+    $(which usermod) -aG sudo $(whoami)
+    cp /opt/dockserver/.installer/dockserver /usr/bin/dockserver
+    ln -sf /usr/bin/dockserver /bin/dockserver
+    chmod +x /usr/bin/dockserver
+    $(which chown) $(whoami):$(whoami) /usr/bin/dockserver 
+else 
+    $(which chown) -R 1000:1000 /opt/dockserver
+    cp /opt/dockserver/.installer/dockserver /usr/bin/dockserver
+    ln -sf /usr/bin/dockserver /bin/dockserver
+    chmod +x /usr/bin/dockserver
+    $(which chown) -R 1000:1000 /usr/bin/dockserver
+fi
+
+printf "
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    🚀    DockServer
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+     install dockserver
+     [ sudo ] dockserver -i
+
+     all commands
+     [ sudo ] dockserver -h / --help
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+" 
+#EOF#

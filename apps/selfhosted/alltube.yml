@@ -1,0 +1,36 @@
+---
+version: "3"
+
+services:
+  alltube:
+    hostname: "alltube"
+    container_name: "alltube"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "rudloff/alltube:latest"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/alltube:/var/www/html/config:rw"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.alltube-rtr.entrypoints=https"
+      - "traefik.http.routers.alltube-rtr.rule=Host(`alltube.${DOMAIN}`)"
+      - "traefik.http.routers.alltube-rtr.tls=true"
+      - "traefik.http.routers.alltube-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.alltube-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.alltube-rtr.service=alltube-svc"
+      - "traefik.http.services.alltube-svc.loadbalancer.server.port=80"
+
+networks:
+  proxy:
+    driver: bridge
+    external: true

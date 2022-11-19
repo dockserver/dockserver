@@ -1,0 +1,51 @@
+---
+version: "3"
+services:
+  wg-easy:
+    hostname: "wg-easy"
+    container_name: "wg-easy"
+    cap_add:
+      - "NET_ADMIN"
+      - "SYS_MODULE"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "WG_HOST=wgeasy.${DOMAIN}"
+      - "WG_PORT=51820"
+      - "WG_PERSISTENT_KEEPALIVE=25"
+      - "WG_DEFAULT_ADDRESS=10.8.0.x"
+      - "WG_DEFAULT_DNS=1.1.1.1, 1.0.0.1"
+      - "WG_ALLOWED_IPS=0.0.0.0/0"
+    image: "weejewel/wg-easy:latest"
+    restart: "${RESTARTAPP}"
+    ports:
+      - target: 51820
+        published: 51820
+        protocol: udp
+        mode: host
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/wireguard:/etc/wireguard:rw"
+    sysctls:
+      - net.ipv4.ip_forward=1
+      - net.ipv4.conf.all.src_valid_mark=1
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.wgeasy-rtr.entrypoints=https"
+      - "traefik.http.routers.wgeasy-rtr.rule=Host(`wgeasy.${DOMAIN}`)"
+      - "traefik.http.routers.wgeasy-rtr.tls=true"
+      - "traefik.http.routers.wgeasy-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.wgeasy-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.wgeasy-rtr.service=wgeasy-svc"
+      - "traefik.http.services.wgeasy-svc.loadbalancer.server.port=51821"
+networks:
+  proxy:
+    driver: bridge
+    external: true

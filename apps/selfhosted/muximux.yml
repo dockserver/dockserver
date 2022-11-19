@@ -1,0 +1,32 @@
+---
+version: "3"
+services:
+  maximux:
+    hostname: "maximux"
+    container_name: "maximux"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "lscr.io/linuxserver/muximux"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    volumes:
+      - "${APPFOLDER}/maximux:/config:rw"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.maximux-rtr.entrypoints=https"
+      - "traefik.http.routers.maximux-rtr.rule=Host(`maximux.${DOMAIN}`)"
+      - "traefik.http.routers.maximux-rtr.tls=true"
+      - "traefik.http.routers.maximux-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.maximux-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.maximux-rtr.service=maximux-svc"
+      - "traefik.http.services.maximux-svc.loadbalancer.server.port=80"
+networks:
+  proxy:
+    driver: bridge
+    external: true

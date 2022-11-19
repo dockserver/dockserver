@@ -1,0 +1,25 @@
+---
+version: "3"
+services:
+  rsnapshot:
+    hostname: "rsnapshot"
+    container_name: "rsnapshot"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+    image: "lscr.io/linuxserver/rsnapshot"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    volumes:
+      - "${APPFOLDER}/rsnapshot:/config:rw"
+      - "unionfs/snapshots:/data"
+      - "/etc/locatime:/etc/localtime:ro"
+    labels:
+      - "dockupdater.enable=true"
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

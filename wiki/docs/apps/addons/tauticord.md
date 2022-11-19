@@ -1,15 +1,25 @@
-<br />
-![Image of DockServer](/img/logo.png)
+![Image of DockServer](/img/container_images/docker-tauticord.png)
 
-[![Website: https://dockserver.io](https://img.shields.io/badge/Website-https%3A%2F%2Fdockserver.io-blue.svg?style=for-the-badge&colorB=177DC1&label=website)](https://dockserver.io)
-[![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa)
-[![License: GPL 3](https://img.shields.io/badge/License-GPL%203-blue.svg?style=for-the-badge&colorB=177DC1&label=license)](LICENSE)
+<p align="left">
+    <a href="https://discord.gg/FYSvu83caM">
+        <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
+    </a>
+        <a href="https://github.com/dockserver/dockserver/releases">
+        <img src="https://img.shields.io/github/downloads/dockserver/dockserver/total?label=Total%20Downloads&logo=github" alt="Total Releases Downloaded from GitHub">
+    </a>
+    <a href="https://github.com/dockserver/dockserver/releases/latest">
+        <img src="https://img.shields.io/github/v/release/dockserver/dockserver?include_prereleases&label=Latest%20Release&logo=github" alt="Latest Official Release on GitHub">
+    </a>
+    <a href="https://github.com/dockserver/dockserver/blob/master/LICENSE">
+        <img src="https://img.shields.io/github/license/dockserver/dockserver?label=License&logo=gnu" alt="GNU General Public License">
+    </a>
+</p>
 
 # Tauticord
 
 A Discord bot that displays live data from Tautulli
 
-# Features
+## Features
 
 Tauticord uses the Tautulli API to pull information from Tautulli and display them in a Discord channel, including:
 
@@ -62,68 +72,30 @@ Permissions required:
 
 ## Setup Tauticord
 
-- Install Tauticord from Docksever Addons Menu.
+1. Install Tauticord from Docksever Addons Menu.
+2. Stop Tauticord.
 
-- Stop the container.
+    ```yaml
+    sudo docker stop tauticord
+    ```
 
-`sudo docker stop tauticord`
+3.  Download `config.yaml` to `/opt/appdata/tauticord/`
 
-- Head over to the appdata folder.
+    ```yaml
+    wget https://raw.githubusercontent.com/cyb3rgh05t/tauticord/master/config.yaml.example -O /opt/appdata/tauticord/config.yaml
+    ```
 
-`cd /opt/appdata/tauticord/`
+4. Edit the config file to your needs.
 
-- Create a config file.
+    ```yaml
+    nano /opt/appdata/tauticord/config.yaml
+    ```
 
-`sudo nano config.yaml`
+5. Start the container.
 
-- Copy / Paste the following config into the created file from previous step.
-
-```sh
-appName: Tauticord
-logLevel: WARN
-
-Tautulli:
-  Connection:
-    URL: "http://tautulli:8181" # change this if tautulli is not installed from Dockserver.
-    APIKey: ""
-  Customization:
-    TerminateMessage: "Your stream has been terminated. Please contact the admin in the Discord."
-    # how often (seconds) the bot pulls new data. I'd recommend not making the bot ping Tautulli more often than every 5 seconds.
-    RefreshSeconds: 15
-    # can only kill streams if you have a plex pass, so this controls whether you're given the option
-    PlexPass: true
-    ServerTimeZone: "UTC"
-    Use24HourTime: false
-  LibraryNames:
-    # list of names of the libraries you'd like stats about
-    # Voice channels will be made/updated with stats (refreshed every hour)
-    - Movies
-    - TV Shows
-    - Music
-
-Discord:
-  Connection:
-    BotToken: ""
-    # Right-click on your server's icon -> "Copy ID"
-    ServerID: 00000000000000000
-    # Right-click on your profile picture -> "Copy ID"
-    OwnerID: 00000000000
-    # Where the live stats will be posted
-    ChannelName: "tautulli"
-  Customization:
-    # if True, use embeds to print information, use regular text message if False
-    UseEmbeds: true
-
-Extras:
-  # See README.md for details
-  Analytics: true
-```
-
-- Edit the config file to your needs.
-
-- Start the container.
-
-`sudo docker start tauticord`
+    ```yaml
+    sudo docker start tauticord
+    ```
 
 Et voilà, your Bot should now be online in your Disord Server.
 

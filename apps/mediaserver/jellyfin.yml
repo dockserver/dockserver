@@ -1,0 +1,53 @@
+---
+version: "3"
+services:
+  jellyfin:
+    hostname: "jellyfin"
+    container_name: "jellyfin"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:jellyfin"
+      - "TP_THEME=${JELLYFINTHEME}"
+      - "JELLYFIN_PublishedServerUrl=jellyfin.${DOMAIN}"
+    image: "${JELLYFINIMAGE}"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    ports:
+      - target: 8096
+        published: 8096
+        protocol: tcp
+        mode: host
+      - target: 8920
+        published: 8920
+        protocol: tcp
+        mode: host
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "${APPFOLDER}/jellyfin:/config:rw"
+      - "unionfs:/mnt:ro"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.jellyfin-rtr.entrypoints=https"
+      - "traefik.http.routers.jellyfin-rtr.rule=Host(`jellyfin.${DOMAIN}`)"
+      - "traefik.http.routers.jellyfin-rtr.tls=true"
+      - "traefik.http.routers.jellyfin-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.jellyfin-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.jellyfin-rtr.service=jellyfin-svc"
+      - "traefik.http.services.jellyfin-svc.loadbalancer.server.port=8096"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

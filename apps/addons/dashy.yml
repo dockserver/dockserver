@@ -1,0 +1,41 @@
+---
+version: "3"
+services:
+  dashy:
+    hostname: "dashy"
+    container_name: "dashy"
+    environment:
+      - "GID=${ID}"
+      - "UID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "NODE_ENV=production"
+    image: "ghcr.io/lissy93/dashy:latest"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/dashy/conf.yml:/app/public/conf.yml:rw"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.dashy-rtr.entrypoints=https"
+      - "traefik.http.routers.dashy-rtr.rule=Host(`dashy.${DOMAIN}`)"
+      - "traefik.http.routers.dashy-rtr.tls=true"
+      - "traefik.http.routers.dashy-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.dashy-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.dashy-rtr.service=dashy-svc"
+      - "traefik.http.services.dashy-svc.loadbalancer.server.port=80"
+    healthcheck:
+      test: ["CMD", "node", "/app/services/healthcheck"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+networks:
+  proxy:
+    driver: bridge
+    external: true

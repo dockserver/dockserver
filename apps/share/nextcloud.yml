@@ -1,0 +1,68 @@
+---
+version: "3"
+services:
+  mariadb:
+    container_name: "mariadb"
+    hostname: "mariadb"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "MYSQL_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}"
+    image: "lscr.io/linuxserver/mariadb:alpine-version-10.5.11-r0"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/mariadb:/config:rw"
+    labels:
+      - "dockupdater.enable=true"
+  nextcloud:
+    hostname: "nextcloud"
+    container_name: "nextcloud"
+    depends_on:
+      - mariadb
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "lscr.io/linuxserver/nextcloud"
+    restart: "${RESTARTAPP}"
+    ports:
+      - "${PORTBLOCK}:4551:443"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/nextcloud/data:/data"
+      - "${APPFOLDER}/nextcloud/cloud:/config:rw"
+      - "/etc/localtime:/etc/localtime:ro"
+      - "unionfs:/mnt"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.nextcloud-rtr.entrypoints=https"
+      - "traefik.http.routers.nextcloud-rtr.rule=Host(`nextcloud.${DOMAIN}`)"
+      - "traefik.http.routers.nextcloud-rtr.tls=true"
+      - "traefik.http.routers.nextcloud-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.nextcloud-rtr.middlewares=nextcloud-dav,chain-authelia@file"
+      - "traefik.http.routers.nextcloud-rtr.service=nextcloud-svc"
+      - "traefik.http.middlewares.nextcloud-dav.replacepathregex.regex=^/.well-known/ca(l|rd)dav"
+      - "traefik.http.middlewares.nextcloud-dav.replacepathregex.replacement=/remote.php/dav/"
+      - "traefik.http.services.nextcloud-svc.loadbalancer.server.port=443"
+      - "traefik.http.services.nextcloud-svc.loadbalancer.server.scheme=https"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

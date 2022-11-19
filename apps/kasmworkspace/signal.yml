@@ -1,0 +1,45 @@
+---
+version: "3"
+services:
+  signal:
+    container_name: "signal"
+    hostname: "signal"
+    image: "kasmweb/signal:1.9.0-rolling"
+    restart: "${RESTARTAPP}"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "VNC_PW=${VNC_PW}"
+      - "VNC_RESOLUTION=${VNC_RESOLUTION}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "${APPFOLDER}/signal:/config:rw"
+      - "unionfs:/mnt:rw"
+    shm_size: "512m"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.signal-rtr.entrypoints=https"
+      - "traefik.http.routers.signal-rtr.rule=Host(`signal.${DOMAIN}`)"
+      - "traefik.http.routers.signal-rtr.tls=true"
+      - "traefik.http.routers.signal-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.signal-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.signal-rtr.service=signal-svc"
+      - "traefik.http.services.signal-svc.loadbalancer.server.scheme=https"
+      - "traefik.http.services.signal-svc.loadbalancer.server.port=6901"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

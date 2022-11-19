@@ -1,0 +1,31 @@
+---
+version: "3"
+services:
+  wiki:
+    container_name: "wiki"
+    hostname: "wiki"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+    image: "ghcr.io/dockserver/docker-wiki"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.wiki-rtr.entrypoints=https"
+      - "traefik.http.routers.wiki-rtr.rule=Host(`wiki.${DOMAIN}`)"
+      - "traefik.http.routers.wiki-rtr.tls=true"
+      - "traefik.http.routers.wiki-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.wiki-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.wiki-rtr.service=wiki-svc"
+      - "traefik.http.services.wiki-svc.loadbalancer.server.port=8000"
+networks:
+  proxy:
+    driver: bridge
+    external: true

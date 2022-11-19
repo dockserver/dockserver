@@ -1,0 +1,45 @@
+---
+version: "3"
+services:
+  qbittorrent:
+    hostname: "qbittorrent"
+    container_name: "qbittorrent"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "WEBUI_PORT=8080"
+      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:qbittorrent"
+      - "TP_THEME=${QBITORRENTTHEME}"
+    image: "${QBITORRENTIMAGE}"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    ports:
+      - "7889:7889"
+    volumes:
+      - "${APPFOLDER}/qbittorrent:/config:rw"
+      - "unionfs:/mnt"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.qbittorrent-rtr.entrypoints=https"
+      - "traefik.http.routers.qbittorrent-rtr.rule=Host(`qbittorrent.${DOMAIN}`)"
+      - "traefik.http.routers.qbittorrent-rtr.tls=true"
+      - "traefik.http.routers.qbittorrent-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.qbittorrent-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.qbittorrent-rtr.service=qbittorrent-svc"
+      - "traefik.http.services.qbittorrent-svc.loadbalancer.server.port=8080"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

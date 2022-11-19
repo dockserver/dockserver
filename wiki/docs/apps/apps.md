@@ -1,5 +1,4 @@
-
-![Image of DockServer](/img/dockserver_logo_github.png)
+![Image of DockServer](/img/container_images/docker-dockserver.png)
 
 <p align="left">
     <a href="https://discord.gg/FYSvu83caM">
@@ -15,7 +14,6 @@
         <img src="https://img.shields.io/github/license/dockserver/dockserver?label=License&logo=gnu" alt="GNU General Public License">
     </a>
 </p>
-
 
 
 ## Support

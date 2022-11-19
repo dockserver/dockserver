@@ -1,0 +1,70 @@
+---
+version: "3"
+services:
+  tdarr:
+    container_name: "tdarr"
+    hostname: "tdarr"
+    image: "haveagitgat/tdarr:latest"
+    restart: "${RESTARTAPP}"
+    networks:
+      - "proxy"
+    ports:
+      - "${PORTBLOCK}:8265:8265"
+      - "${PORTBLOCK}:8266:8266"
+      - "${PORTBLOCK}:8267:8267"
+    environment:
+      - "TZ=${TZ}"
+      - "PUID=${ID}"
+      - "PGID=${ID}"
+      - "UMASK_SET=002"
+      - "serverIP=${PORTBLOCK}"
+      - "serverPort=8266"
+      - "webUIPort=8265"
+    volumes:
+      - "${APPFOLDER}/tdarr/server:/app/server"
+      - "${APPFOLDER}/tdarr/configs:/app/configs"
+      - "${APPFOLDER}/tdarr/logs:/app/logs"
+      - "${APPFOLDER}/tdarr/encoders:/app/encoders"
+      - "unionfs:/mnt"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.tdarr-rtr.entrypoints=https"
+      - "traefik.http.routers.tdarr-rtr.rule=Host(`tdarr.${DOMAIN}`)"
+      - "traefik.http.routers.tdarr-rtr.tls=true"
+      - "traefik.http.routers.tdarr-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.tdarr-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.tdarr-rtr.service=tdarr-svc"
+      - "traefik.http.services.tdarr-svc.loadbalancer.server.port=8265"
+  tdarr-node:
+    container_name: "tdarr-node"
+    image: "haveagitgat/tdarr_node:latest"
+    restart: "${RESTARTAPP}"
+    depends_on:
+      - "tdarr"
+    networks:
+      - "proxy"
+    environment:
+      - "TZ=${TZ}"
+      - "PUID=${ID}"
+      - "PGID=${ID}"
+      - "UMASK_SET=002"
+      - "nodeID=MainNode"
+      - "nodeIP=127.0.0.1"
+      - "nodePort=8267"
+      - "serverIP=127.0.0.1"
+      - "serverPort=8266"
+    volumes:
+      - "${APPFOLDER}/tdarr/configs:/app/configs"
+      - "${APPFOLDER}/tdarr/logs:/app/logs"
+      - "unionfs:/mnt"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt

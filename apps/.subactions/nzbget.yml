@@ -1,0 +1,165 @@
+#!/bin/ansible-playbook
+#
+# Title:      NZBGET Subtask
+# Author(s):  MrDoob
+# GNU:        General Public License v3.0
+################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: "Set Known Facts"
+      set_fact:
+        app: "nzbget"
+        path: "/mnt"
+    - name: "Waiting for {{app}} to initialize"
+      wait_for:
+        path: "/opt/appdata/{{app}}/nzbget.conf"
+        state: present
+        delay: 5
+    - name: "Register Domain"
+      shell: cat /etc/hosts | grep 127.0.0.1 | tail -n 1 | awk '{print $2}'
+      register: domain
+    - name: "Stopping {{app}}"
+      shell: "docker stop {{app}}"
+    - name: "Set Main Location"
+      lineinfile:
+        path: "/opt/appdata/{{app}}/nzbget.conf"
+        regexp: '^MainDir\s*=.*'
+        line: "MainDir=/config"
+        state: present
+    - name: "Set download location"
+      lineinfile:
+        path: "/opt/appdata/{{app}}/nzbget.conf"
+        regexp: '^DestDir\s*=.*'
+        line: "DestDir={{path}}/downloads/nzb"
+        state: present
+    - name: "Set incomplete location"
+      lineinfile:
+        path: "/opt/appdata/{{app}}/nzbget.conf"
+        regexp: '^InterDir\s*=.*'
+        line: "InterDir={{path}}/incomplete/nzb"
+        state: present
+    - name: "Set TempDir"
+      lineinfile:
+        path: "/opt/appdata/{{app}}/nzbget.conf"
+        regexp: '^TempDir\s*=.*'
+        line: "TempDir=/tmp"
+        state: present
+    - name: "Set NzbDir Location"
+      lineinfile:
+        path: "/opt/appdata/{{app}}/nzbget.conf"
+        regexp: '^NzbDir\s*=.*'
+        line: "NzbDir={{path}}/nzb"
+        state: present
+    - name: "Set ScriptDir Location"
+      lineinfile:
+        path: "/opt/appdata/{{app}}/nzbget.conf"
+        regexp: '^ScriptDir\s*=.*'
+        line: "ScriptDir=${MainDir}/scripts"
+        state: present
+    - name: "Checking for existing {{app}}.conf"
+      stat:
+        path: /opt/appdata/{{app}}/nzbget.conf
+      register: confcheck
+    # FIRST TIME CONFIGURATION #############################################################
+    - name: "Configuring {{app}} for first time use"
+      block:
+        - name: "Lowercase & Set Movie Category"
+          lineinfile:
+            path: "/opt/appdata/{{app}}/nzbget.conf"
+            regexp: '^Category1.Name\s*=.*'
+            line: "Category1.Name=movies"
+            state: present
+        - name: "Set Location of Movies"
+          lineinfile:
+            path: "/opt/appdata/{{app}}/nzbget.conf"
+            regexp: '^Category1.DestDir\s*=.*'
+            line: "Category1.DestDir="
+            state: present
+        - name: "Lowercase & Set TV Category"
+          lineinfile:
+            path: "/opt/appdata/{{app}}/nzbget.conf"
+            regexp: '^Category2.Name\s*=.*'
+            line: "Category2.Name=tv"
+            state: present
+        - name: "Set Location of TV"
+          lineinfile:
+            path: "/opt/appdata/{{app}}/nzbget.conf"
+            regexp: '^Category2.DestDir\s*=.*'
+            line: "Category2.DestDir="
+            state: present
+        - name: "Lowercase & Set Movies 4k"
+          lineinfile:
+            path: "/opt/appdata/{{app}}/nzbget.conf"
+            regexp: '^Category3.Name\s*=.*'
+            line: "Category3.Name=movies4k"
+            state: present
+        - name: "Set Location of Movies 4k"
+          lineinfile:
+            path: "/opt/appdata/{{app}}/nzbget.conf"
+            regexp: '^Category3.DestDir\s*=.*'
+            line: "Category3.DestDir="
+            state: present
+        - name: "Lowercase & Set TV 4k"
+          lineinfile:
+            path: "/opt/appdata/{{app}}/nzbget.conf"
+            regexp: '^Category4.Name\s*=.*'
+            line: "Category4.Name=tv4k"
+            state: present
+        - name: "Set Location of TV 4k"
+          lineinfile:
+            path: "/opt/appdata/{{app}}/nzbget.conf"
+            regexp: '^Category4.DestDir\s*=.*'
+            line: "Category4.DestDir="
+            state: present
+        - name: "Overwrite Default User"
+          lineinfile:
+            path: "/opt/appdata/{{app}}/nzbget.conf"
+            regexp: '^ControlUsername\s*=.*'
+            line: "ControlUsername="
+            state: present
+        - name: "Overwrite Default Password"
+          lineinfile:
+            path: "/opt/appdata/{{app}}/nzbget.conf"
+            regexp: 'ControlPassword\s*=.*'
+            line: "ControlPassword="
+            state: present
+        - name: "DirectUnpack Set to On"
+          lineinfile:
+            path: "/opt/appdata/{{app}}/nzbget.conf"
+            regexp: '^DirectUnpack\s*=.*'
+            line: "DirectUnpack=yes"
+            state: present
+        - name: "HealthCheck"
+          lineinfile:
+            path: "/opt/appdata/{{app}}/nzbget.conf"
+            regexp: '^HealthCheck\s*=.*'
+            line: "HealthCheck=Delete"
+            state: present
+        - name: "Set minimum DiskSpace to 25Gb"
+          lineinfile:
+            path: "/opt/appdata/{{app}}/nzbget.conf"
+            regexp: '^DiskSpace\s*=.*'
+            line: "DiskSpace=25000"
+            state: present
+        - name: "Remove Generic Task"
+          lineinfile:
+            path: "/opt/appdata/{{app}}/nzbget.conf"
+            regexp: "{{ item.regexp }}"
+            state: absent
+          with_items:
+            - { regexp: '.Task1\.Time\=' }
+            - { regexp: '.Task1\.WeekDays\=' }
+            - { regexp: '.Task1\.Command\=' }
+            - { regexp: '.Task1\.Param\=' }
+        - name: "Unpause"
+          blockinfile:
+            path: "/opt/appdata/{{app}}/nzbget.conf"
+            block: |
+              Task1.Time=*,*:00,*:30
+              Task1.WeekDays=1-7
+              Task1.Command=UnpauseDownload
+              Task1.Param=
+            insertafter: "^### SCHEDULER"
+      when: confcheck.stat.exists

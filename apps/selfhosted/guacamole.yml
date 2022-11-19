@@ -1,0 +1,44 @@
+---
+version: "3"
+services:
+  guacamole:
+    hostname: "guacamole"
+    container_name: "guacamole"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "OPT_CAS=N"
+      - "OPT_DUO=N"
+      - "OPT_LDAP=N"
+      - "OPT_MYSQL=Y"
+      - "OPT_MYSQL_EXTENSION=N"
+      - "OPT_QUICKCONNECT=N"
+      - "OPT_SQLSERVER=N"
+      - "OPT_TOTP=N"
+    image: "jasonbean/guacamole:latest"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/guacamole:/config:rw"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.guacamole-rtr.entrypoints=https"
+      - "traefik.http.routers.guacamole-rtr.rule=Host(`guacamole.${DOMAIN}`)"
+      - "traefik.http.routers.guacamole-rtr.tls=true"
+      - "traefik.http.routers.guacamole-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.guacamole-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.guacamole-rtr.service=guacamole-svc"
+      - "traefik.http.services.guacamole-svc.loadbalancer.server.port=8080"
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
+#"

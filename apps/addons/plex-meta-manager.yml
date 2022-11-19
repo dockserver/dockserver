@@ -1,0 +1,29 @@
+---
+version: "3"
+services:
+  plex-meta-manager:
+    container_name: "plex-meta-manager"
+    hostname: "plex-meta-manager"
+    image: "meisnate12/plex-meta-manager:latest"
+    restart: "${RESTARTAPP}"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "PMM_TIME=${PMM_TIME}" # comma-separated list of times to update each day Format: HH:MM
+      - "PMM_COLLECTIONS_ONLY=${PMM_COLLECTIONS_ONLY}" # Process only collections during the run DEFAULT: false
+      - "PMM_LIBRARIES_ONLY=${PMM_LIBRARIES_ONLY}" # Process everything but collections during the run DEFAULT: false
+      - "PMM_NO_MISSING=${PMM_NO_MISSING}" # Run without any of the missing movie/show functions DEFAULT: false
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "${APPFOLDER}/plex-meta-manager:/config:rw"
+    labels:
+      - "dockupdater.enable=true"
+networks:
+  proxy:
+    driver: bridge
+    external: true

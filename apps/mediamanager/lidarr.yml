@@ -1,0 +1,43 @@
+---
+version: "3"
+services:
+  lidarr:
+    hostname: "lidarr"
+    container_name: "lidarr"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:lidarr"
+      - "TP_THEME=${LIDARRTHEME}"
+    image: "${LIDARRIMAGE}"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/lidarr:/config:rw"
+      - "unionfs:/mnt"
+      - "/mnt/downloads/amd:/downloads-amd:rw"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.lidarr-rtr.entrypoints=https"
+      - "traefik.http.routers.lidarr-rtr.rule=Host(`lidarr.${DOMAIN}`)"
+      - "traefik.http.routers.lidarr-rtr.tls=true"
+      - "traefik.http.routers.lidarr-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.lidarr-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.lidarr-rtr.service=lidarr-svc"
+      - "traefik.http.services.lidarr-svc.loadbalancer.server.port=8686"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt
