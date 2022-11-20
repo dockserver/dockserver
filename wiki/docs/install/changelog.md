@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [v1.4.30](https://github.com/dockserver/dockserver/releases/tag/v1.4.30) - 2022-11-20 01:49:28
+
+repository changes
+
+### Documentation
+
+- README:
+  - update contributors ([4983328](https://github.com/dockserver/dockserver/commit/49833285ad025ccfb5be72a64df63c1e137fe2dd))
+  - update contributors ([0e9631a](https://github.com/dockserver/dockserver/commit/0e9631a7f49dcbf51ddb5a214d8279b56e84360c))
+
 ## [v1.4.29](https://github.com/dockserver/dockserver/releases/tag/v1.4.29) - 2022-11-19 19:52:10
 
 - [ImgBot] Optimize images
