@@ -29,6 +29,7 @@ Automated uploader for Google Team Drive.</br>
 - Notifications via [Apprise](https://github.com/caronc/apprise).
 - Variable concurrent uploads.
 - Settings are refreshed for each upload. No need to restart the container after making a configuration change!
+- Key rotation at midnight (TZ - America/Los_Angeles) to key number 1. 
 - Start and stop on demand via the container or web interface (active uploads are not considered when pausing via the web interface).
 
     ![pauseupload](/img/uploader/pauseupload.gif)
