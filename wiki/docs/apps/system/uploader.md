@@ -44,11 +44,10 @@ Automated uploader for Google Team Drive.</br>
 - Bandwidth limit is *per* upload IE - If you have `TRANSFERS=2` and `BANDWIDTH_LIMIT=20M`, the maximum total upload speed would be 40MiB.
 - Bandwidth cannot be changed for any active uploads.
 
-## Exclude files from being uploaded
+### Exclude files from being uploaded
 rclone.exclude is located here: `/opt/appdata/system/uploader/rclone.exclude`
 
 Example:
-
 - if you don´t want that **srt** files are being uploaded, you have to add `.*\.srt$` to the file.
 - You can exclude folders to, examples are in the file, because we already exclude certain folders.
 
