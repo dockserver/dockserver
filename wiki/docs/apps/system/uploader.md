@@ -48,6 +48,7 @@ Automated uploader for Google Team Drive.</br>
 rclone.exclude is located here: `/opt/appdata/system/uploader/rclone.exclude`
 
 Example:
+
 - if you don´t want that **srt** files are being uploaded, you have to add `.*\.srt$` to the file.
 - You can exclude folders to, examples are in the file, because we already exclude certain folders.
 
