@@ -129,11 +129,11 @@
    "appname": "docker-emby",
    "apppic": "./images/docker-emby.png",
    "appfolder": "./apps/docker-emby",
-   "newversion": "4.7.9.0",
+   "newversion": "4.7.10.0",
    "appbranch": "master",
    "baseimage": "",
    "description": "Docker Container for Emby Server",
-   "body": "Upgrading docker-emby to 4.7.9.0",
+   "body": "Upgrading docker-emby to 4.7.10.0",
    "user": "github-actions[bot]"
 }
 {
