@@ -173,11 +173,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.2297",
+   "newversion": "0.20.2304",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.2297",
+   "body": "Upgrading docker-jackett to 0.20.2304",
    "user": "github-actions[bot]"
 }
 {
@@ -640,10 +640,10 @@
    "appname": "docker-sonarr-nightly",
    "apppic": "./images/docker-sonarr-nightly.png",
    "appfolder": "./nightly/docker-sonarr-nightly",
-   "newversion": "develop-4.0.0.195-ls316",
+   "newversion": "develop-4.0.0.200-ls317",
    "appbranch": "develop",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.195-ls316",
+   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.200-ls317",
    "user": "github-actions[bot]"
 }
 {
