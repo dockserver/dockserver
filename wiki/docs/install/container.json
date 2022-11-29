@@ -394,10 +394,10 @@
    "appname": "docker-sonarr",
    "apppic": "./images/docker-sonarr.png",
    "appfolder": "./apps/docker-sonarr",
-   "newversion": "3.0.9.1549-ls166",
+   "newversion": "3.0.9.1549-ls167",
    "appbranch": "main",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr to 3.0.9.1549-ls166",
+   "body": "Upgrading docker-sonarr to 3.0.9.1549-ls167",
    "user": "github-actions[bot]"
 }
 {
