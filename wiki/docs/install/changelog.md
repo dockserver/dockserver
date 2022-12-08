@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [v1.4.31](https://github.com/dockserver/dockserver/releases/tag/v1.4.31) - 2022-12-08 16:01:46
+
+## 💻 GitHub updates
+
+- GH updates (deps): Bump lowlighter/metrics from 3.28 to 3.29
+   - PR: #574
+- GH updates (deps): Bump anothrNick/github-tag-action from 1.52.0 to 1.53.0
+   - PR: #575
+- GH updates (deps): Bump anothrNick/github-tag-action from 1.53.0 to 1.54.0
+   - PR: #576
+
 ## [v1.4.30](https://github.com/dockserver/dockserver/releases/tag/v1.4.30) - 2022-11-20 01:49:28
 
 repository changes
