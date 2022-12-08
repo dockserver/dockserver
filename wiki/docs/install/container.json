@@ -308,11 +308,11 @@
    "appname": "docker-plex",
    "apppic": "./images/docker-plex.png",
    "appfolder": "./apps/docker-plex",
-   "newversion": "1.30.0.6442-5070ad484",
+   "newversion": "1.30.0.6486-629d58034",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:jammy",
    "description": "Docker Container for Plex Media Server || PLEX PASS",
-   "body": "Upgrading docker-plex to 1.30.0.6442-5070ad484",
+   "body": "Upgrading docker-plex to 1.30.0.6486-629d58034",
    "user": "github-actions[bot]"
 }
 {
@@ -459,7 +459,7 @@
    "appfolder": "./apps/docker-wiki",
    "appbranch": "master",
    "newversion": "3.17.0_rc1",
-   "appversion": "1.4.30",
+   "appversion": "1.4.31",
    "wikiversion": "9.0.0b2",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
