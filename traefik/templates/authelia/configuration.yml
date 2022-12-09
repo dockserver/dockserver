@@ -10,8 +10,8 @@ default_redirection_url: https://authelia.example.com
 server:
   host: 0.0.0.0
   port: 9091
-  buffers_read: 4096
-  buffers_write: 4096
+  buffers.read: 4096
+  buffers.write: 4096
   enable_pprof: false
   enable_expvars: false
   disable_healthcheck: false
