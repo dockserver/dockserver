@@ -619,11 +619,11 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "nightly-4.3.1.6821-ls413",
+   "newversion": "nightly-4.3.1.6822-ls414",
    "appbranch": "nightly",
    "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to nightly-4.3.1.6821-ls413",
+   "body": "Upgrading docker-radarr-nightly to nightly-4.3.1.6822-ls414",
    "user": "github-actions[bot]"
 }
 {
@@ -640,10 +640,10 @@
    "appname": "docker-sonarr-nightly",
    "apppic": "./images/docker-sonarr-nightly.png",
    "appfolder": "./nightly/docker-sonarr-nightly",
-   "newversion": "develop-4.0.0.269-ls343",
+   "newversion": "develop-4.0.0.271-ls344",
    "appbranch": "develop",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.269-ls343",
+   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.271-ls344",
    "user": "github-actions[bot]"
 }
 {
