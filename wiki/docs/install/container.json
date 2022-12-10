@@ -173,11 +173,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.2352",
+   "newversion": "0.20.2357",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.2352",
+   "body": "Upgrading docker-jackett to 0.20.2357",
    "user": "github-actions[bot]"
 }
 {
@@ -619,31 +619,31 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "nightly-4.3.1.6807-ls411",
+   "newversion": "nightly-4.3.1.6821-ls413",
    "appbranch": "nightly",
    "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to nightly-4.3.1.6807-ls411",
+   "body": "Upgrading docker-radarr-nightly to nightly-4.3.1.6821-ls413",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "6a8086986139d491ac9ca237c8ef278576908fac",
+   "newversion": "5cd5f00df787544811b3802d6960d969842f6a99",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 6a8086986139d491ac9ca237c8ef278576908fac",
+   "body": "Upgrading docker-sabnzbd-nightly to 5cd5f00df787544811b3802d6960d969842f6a99",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-sonarr-nightly",
    "apppic": "./images/docker-sonarr-nightly.png",
    "appfolder": "./nightly/docker-sonarr-nightly",
-   "newversion": "develop-4.0.0.258-ls338",
+   "newversion": "develop-4.0.0.269-ls343",
    "appbranch": "develop",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.258-ls338",
+   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.269-ls343",
    "user": "github-actions[bot]"
 }
 {
