@@ -30,14 +30,14 @@ fi
 
 function pulldockserver() {
 if [ $(which docker) ]; then
-   $(which docker) pull -q docker.dockserver.io/dockserver/docker-dockserver && \
+   $(which docker) pull -q ghcr.io/dockserver/docker-dockserver:latest && \
    $(which docker) run -d \
   --name=dockserver \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=Europe/London \
   -v /opt/dockserver:/opt/dockserver:rw \
-  docker.dockserver.io/dockserver/docker-dockserver
+  ghcr.io/dockserver/docker-dockserver:latest
 fi
 }
 
