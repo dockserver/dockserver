@@ -460,7 +460,7 @@
    "appbranch": "master",
    "newversion": "3.17.0_rc1",
    "appversion": "1.4.32",
-   "wikiversion": "9.0.0b3",
+   "wikiversion": "9.0.0b4",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
    "body": "Upgrading docker-wiki to 3.17.0_rc1",
