@@ -308,11 +308,11 @@
    "appname": "docker-plex",
    "apppic": "./images/docker-plex.png",
    "appfolder": "./apps/docker-plex",
-   "newversion": "1.30.1.6483-85af1e381",
+   "newversion": "1.30.1.6497-5fc2e0894",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:jammy",
    "description": "Docker Container for Plex Media Server || PLEX PASS",
-   "body": "Upgrading docker-plex to 1.30.1.6483-85af1e381",
+   "body": "Upgrading docker-plex to 1.30.1.6497-5fc2e0894",
    "user": "github-actions[bot]"
 }
 {
