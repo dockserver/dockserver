@@ -640,10 +640,10 @@
    "appname": "docker-sonarr-nightly",
    "apppic": "./images/docker-sonarr-nightly.png",
    "appfolder": "./nightly/docker-sonarr-nightly",
-   "newversion": "develop-4.0.0.284-ls350",
+   "newversion": "develop-4.0.0.285-ls351",
    "appbranch": "develop",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.284-ls350",
+   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.285-ls351",
    "user": "github-actions[bot]"
 }
 {
