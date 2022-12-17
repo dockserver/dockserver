@@ -384,10 +384,10 @@
    "appname": "docker-sabnzbd",
    "apppic": "./images/docker-sabnzbd.png",
    "appfolder": "./apps/docker-sabnzbd",
-   "newversion": "3.7.0",
+   "newversion": "3.7.1",
    "appbranch": "master",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd to 3.7.0",
+   "body": "Upgrading docker-sabnzbd to 3.7.1",
    "user": "github-actions[bot]"
 }
 {
