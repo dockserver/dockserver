@@ -44,10 +44,10 @@
    "appname": "docker-cloudflared",
    "apppic": "./images/docker-cloudflared.png",
    "appfolder": "./apps/docker-cloudflared",
-   "newversion": "2022.11.1",
+   "newversion": "2022.12.0",
    "baseimage": "alpine",
    "description": "Cloudflare Tunnel client (formerly Argo Tunnel)",
-   "body": "Upgrading docker-cloudflared to 2022.11.1",
+   "body": "Upgrading docker-cloudflared to 2022.12.0",
    "user": "github-actions[bot]"
 }
 {
@@ -630,10 +630,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "a140c1ddc134195b263a303f8060fbc564e48bc8",
+   "newversion": "e34301fb2fef9e5ab9d0a3fa70a2775babadc6c2",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to a140c1ddc134195b263a303f8060fbc564e48bc8",
+   "body": "Upgrading docker-sabnzbd-nightly to e34301fb2fef9e5ab9d0a3fa70a2775babadc6c2",
    "user": "github-actions[bot]"
 }
 {
