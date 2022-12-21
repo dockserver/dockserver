@@ -173,11 +173,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.2405",
+   "newversion": "0.20.2409",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.2405",
+   "body": "Upgrading docker-jackett to 0.20.2409",
    "user": "github-actions[bot]"
 }
 {
@@ -608,11 +608,11 @@
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "15e246929bdbc2b7b5bdab7a84bd7882b79d5cb1",
+   "newversion": "",
    "appbranch": "develop",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to 15e246929bdbc2b7b5bdab7a84bd7882b79d5cb1",
+   "body": "Upgrading docker-overseerr-nightly to ",
    "user": "github-actions[bot]"
 }
 {
@@ -630,10 +630,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "e34301fb2fef9e5ab9d0a3fa70a2775babadc6c2",
+   "newversion": "",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to e34301fb2fef9e5ab9d0a3fa70a2775babadc6c2",
+   "body": "Upgrading docker-sabnzbd-nightly to ",
    "user": "github-actions[bot]"
 }
 {
