@@ -35,7 +35,7 @@ services:
       - "traefik.http.routers.mount-rtr.tls.certresolver=dns-cloudflare"
       - "traefik.http.routers.mount-rtr.middlewares=chain-authelia@file"
       - "traefik.http.routers.mount-rtr.service=mount-svc"
-      - "traefik.http.services.mount-svc.loadbalancer.server.port=8554"
+      - "traefik.http.services.mount-svc.loadbalancer.server.port=5572"
 networks:
   proxy:
     driver: bridge
