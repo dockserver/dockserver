@@ -75,11 +75,11 @@
    "appname": "docker-dash",
    "apppic": "",
    "appfolder": "./apps/docker-dash",
-   "newversion": "4.5.7",
+   "newversion": "null",
    "baseimage": "alpine",
    "baseversion": "3.17.0_rc1",
    "description": "A simple, modern server dashboard, primarily used by smaller private servers",
-   "body": "Upgrading docker-dash to 4.5.7",
+   "body": "Upgrading docker-dash to null",
    "user": "dockserver-image[bot]"
 }
 {
