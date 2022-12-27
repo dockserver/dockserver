@@ -319,11 +319,11 @@
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "1.0.0.2180",
+   "newversion": "1.0.0.2181",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 1.0.0.2180",
+   "body": "Upgrading docker-prowlarr to 1.0.0.2181",
    "user": "github-actions[bot]"
 }
 {
