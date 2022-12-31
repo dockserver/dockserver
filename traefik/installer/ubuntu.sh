@@ -135,7 +135,7 @@ password() {
    read -erp "Enter a password for $USERNAME: " PASSWORD </dev/tty
    if [[ $PASSWORD != "" ]]; then
       $(command -v docker) pull authelia/authelia -q >/dev/null
-      PASSWORD=$($(command -v docker) run authelia/authelia authelia hash-password $PASSWORD -i 2 -k 32 -m 128 -p 8 -l 32 | sed 's/Password hash: //g')
+      PASSWORD=$($(command -v docker) run authelia/authelia authelia crypto hash generate argon2 --password $PASSWORD | sed 's/Digest: //g')
       if [[ $(uname) == "Darwin" ]]; then
          sed -i '' "s/<PASSWORD>/$(echo $PASSWORD | sed -e 's/[\/&]/\\&/g')/g" $basefolder/authelia/users_database.yml
       else
