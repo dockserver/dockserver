@@ -1,17 +1,18 @@
 # CHANGELOG
 
-## [v1.4.33](https://github.com/dockserver/dockserver/releases/tag/v1.4.33) - 2022-12-22 11:18:33
+## [v1.4.34](https://github.com/dockserver/dockserver/releases/tag/v1.4.34) - 2023-01-02 18:29:10
 
 ## 💻 GitHub updates
 
-- GH updates (deps): Bump actions/checkout from 3.1.0 to 3.2.0
-   - PR: #579
-- GH updates (deps): Bump lowlighter/metrics from 3.29 to 3.30
-   - PR: #580
-- GH updates (deps): Bump anothrNick/github-tag-action from 1.54.0 to 1.55.0
-   - PR: #581
-- GH updates (deps): Bump actions/stale from 6 to 7
-   - PR: #582
+- GH updates (deps): Bump lowlighter/metrics from 3.30 to 3.31
+   - PR: #583
+
+## 🎨 DockServer Update
+
+- Update Authelia Password creation
+   - PR: #584
+
+## [v1.4.33](https://github.com/dockserver/dockserver/releases/tag/v1.4.33) - 2022-12-22 11:18:33
 
 ## [v1.4.32](https://github.com/dockserver/dockserver/releases/tag/v1.4.32) - 2022-12-11 09:07:52
 
