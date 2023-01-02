@@ -364,10 +364,10 @@
    "appname": "docker-rollarr",
    "apppic": "./images/docker-rollarr.png",
    "appfolder": "./apps/docker-rollarr",
-   "newversion": "rolling",
+   "newversion": "18.04",
    "baseimage": "ubuntu",
    "description": "This is the new and improved Automatic Pre-roll script with a GUI for Plex now called Rollarr!",
-   "body": "Upgrading docker-rollarr to rolling",
+   "body": "Upgrading docker-rollarr to 18.04",
    "user": "github-actions[bot]"
 }
 {
@@ -619,11 +619,11 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "nightly-4.3.2.6847-ls421",
+   "newversion": "nightly-4.3.2.6847-ls422",
    "appbranch": "nightly",
    "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to nightly-4.3.2.6847-ls421",
+   "body": "Upgrading docker-radarr-nightly to nightly-4.3.2.6847-ls422",
    "user": "github-actions[bot]"
 }
 {
