@@ -319,11 +319,11 @@
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "1.0.1.2211",
+   "newversion": "1.0.1.2218",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 1.0.1.2211",
+   "body": "Upgrading docker-prowlarr to 1.0.1.2218",
    "user": "github-actions[bot]"
 }
 {
@@ -364,10 +364,10 @@
    "appname": "docker-rollarr",
    "apppic": "./images/docker-rollarr.png",
    "appfolder": "./apps/docker-rollarr",
-   "newversion": "23.04",
+   "newversion": "",
    "baseimage": "ubuntu",
    "description": "This is the new and improved Automatic Pre-roll script with a GUI for Plex now called Rollarr!",
-   "body": "Upgrading docker-rollarr to 23.04",
+   "body": "Upgrading docker-rollarr to ",
    "user": "github-actions[bot]"
 }
 {
