@@ -75,11 +75,11 @@
    "appname": "docker-dash",
    "apppic": "",
    "appfolder": "./apps/docker-dash",
-   "newversion": "null",
+   "newversion": "4.6.0",
    "baseimage": "alpine",
    "baseversion": "3.17.0_rc1",
    "description": "A simple, modern server dashboard, primarily used by smaller private servers",
-   "body": "Upgrading docker-dash to null",
+   "body": "Upgrading docker-dash to 4.6.0",
    "user": "dockserver-image[bot]"
 }
 {
@@ -173,11 +173,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.2465",
+   "newversion": "0.20.2469",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.2465",
+   "body": "Upgrading docker-jackett to 0.20.2469",
    "user": "github-actions[bot]"
 }
 {
@@ -619,11 +619,11 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "nightly-4.3.2.6852-ls423",
+   "newversion": "nightly-4.3.2.6855-ls424",
    "appbranch": "nightly",
    "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to nightly-4.3.2.6852-ls423",
+   "body": "Upgrading docker-radarr-nightly to nightly-4.3.2.6855-ls424",
    "user": "github-actions[bot]"
 }
 {
