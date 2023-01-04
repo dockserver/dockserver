@@ -460,7 +460,7 @@
    "appbranch": "master",
    "newversion": "3.17.0_rc1",
    "appversion": "1.4.34",
-   "wikiversion": "9.0.1",
+   "wikiversion": "9.0.2",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
    "body": "Upgrading docker-wiki to 3.17.0_rc1",
@@ -608,11 +608,11 @@
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "2f680b4cec92af17a3f09ba5fa2d92479d3addf9",
+   "newversion": "9d3446d370499c3251159393e5c791b01225e05c",
    "appbranch": "develop",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to 2f680b4cec92af17a3f09ba5fa2d92479d3addf9",
+   "body": "Upgrading docker-overseerr-nightly to 9d3446d370499c3251159393e5c791b01225e05c",
    "user": "github-actions[bot]"
 }
 {
