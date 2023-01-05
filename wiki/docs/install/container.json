@@ -619,21 +619,21 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "nightly-4.3.2.6855-ls424",
+   "newversion": "nightly-4.4.0.6866-ls425",
    "appbranch": "nightly",
    "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to nightly-4.3.2.6855-ls424",
+   "body": "Upgrading docker-radarr-nightly to nightly-4.4.0.6866-ls425",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "4423cbfcf354f32f1450c9ff26c6de9daf963e1c",
+   "newversion": "129d62201537adda2a0494e3a92fe73f8c91c661",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 4423cbfcf354f32f1450c9ff26c6de9daf963e1c",
+   "body": "Upgrading docker-sabnzbd-nightly to 129d62201537adda2a0494e3a92fe73f8c91c661",
    "user": "github-actions[bot]"
 }
 {
