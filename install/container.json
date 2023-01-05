@@ -404,10 +404,10 @@
    "appname": "docker-spotweb",
    "apppic": "",
    "appfolder": "./apps/docker-spotweb",
-   "newversion": "1.5.2",
+   "newversion": "1.5.4",
    "baseimage": "ubuntu:latest",
    "description": "Decentralized community",
-   "body": "Upgrading docker-spotweb to 1.5.2",
+   "body": "Upgrading docker-spotweb to 1.5.4",
    "user": "dockserver[bot]"
 }
 {
