@@ -608,11 +608,11 @@
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "9d3446d370499c3251159393e5c791b01225e05c",
+   "newversion": "",
    "appbranch": "develop",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to 9d3446d370499c3251159393e5c791b01225e05c",
+   "body": "Upgrading docker-overseerr-nightly to ",
    "user": "github-actions[bot]"
 }
 {
@@ -630,20 +630,20 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "7f0d845dd0400c44a8b72b23106c2a8f73c16c2f",
+   "newversion": "",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 7f0d845dd0400c44a8b72b23106c2a8f73c16c2f",
+   "body": "Upgrading docker-sabnzbd-nightly to ",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-sonarr-nightly",
    "apppic": "./images/docker-sonarr-nightly.png",
    "appfolder": "./nightly/docker-sonarr-nightly",
-   "newversion": "develop-4.0.0.328-ls375",
+   "newversion": "develop-4.0.0.333-ls376",
    "appbranch": "develop",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.328-ls375",
+   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.333-ls376",
    "user": "github-actions[bot]"
 }
 {
