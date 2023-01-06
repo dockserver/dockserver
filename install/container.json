@@ -2,20 +2,20 @@
    "appname": "docker-auto-replyarr",
    "apppic": "",
    "appfolder": "./apps/docker-auto-replyarr",
-   "newversion": "3.17.0_rc1",
+   "newversion": "",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading docker-auto-replyarr to 3.17.0_rc1",
+   "body": "Upgrading docker-auto-replyarr to ",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-backup",
    "apppic": "./images/docker-backup.png",
    "appfolder": "./apps/docker-backup",
-   "newversion": "3.17.0_rc1",
+   "newversion": "",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading docker-backup to 3.17.0_rc1",
+   "body": "Upgrading docker-backup to ",
    "user": "github-actions[bot]"
 }
 {
@@ -54,10 +54,10 @@
    "appname": "docker-crunchy",
    "apppic": "./images/docker-crunchy.png",
    "appfolder": "./apps/docker-crunchy",
-   "newversion": "23.04",
+   "newversion": "",
    "baseimage": "ubuntu",
    "description": "Docker image  for docker-crunchy",
-   "body": "Upgrading docker-crunchy to baseimage: ubuntu:23.04",
+   "body": "Upgrading docker-crunchy to baseimage: ubuntu:",
    "user": "dockserver image update[bot]"
 }
 {
@@ -77,7 +77,7 @@
    "appfolder": "./apps/docker-dash",
    "newversion": "4.6.0",
    "baseimage": "alpine",
-   "baseversion": "3.17.0_rc1",
+   "baseversion": "",
    "description": "A simple, modern server dashboard, primarily used by smaller private servers",
    "body": "Upgrading docker-dash to 4.6.0",
    "user": "dockserver-image[bot]"
@@ -108,10 +108,10 @@
    "appname": "docker-dockupdate",
    "apppic": "./images/docker-dockupdate.png",
    "appfolder": "./apps/docker-dockupdate",
-   "newversion": "3.17.0_rc1",
+   "newversion": "",
    "baseimage": "alpine",
    "description": "Automatically keep your docker services and your docker containers up-to-date with the latest version",
-   "body": "Upgrading docker-dockupdate to 3.17.0_rc1",
+   "body": "Upgrading docker-dockupdate to ",
    "user": "github-actions[bot]"
 }
 {
@@ -608,11 +608,11 @@
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "0d8b390b678731e76bd1f0f8a0a4952c11e77f4d",
+   "newversion": "8bd10b5bf3d1b8069872b616c7c8596caeb4937e",
    "appbranch": "develop",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to 0d8b390b678731e76bd1f0f8a0a4952c11e77f4d",
+   "body": "Upgrading docker-overseerr-nightly to 8bd10b5bf3d1b8069872b616c7c8596caeb4937e",
    "user": "github-actions[bot]"
 }
 {
