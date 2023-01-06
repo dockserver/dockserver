@@ -154,9 +154,9 @@
    "newversion": "3.17.0_rc1",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "",
+   "appversion": "a8b4910002df478f7e2d7f220c718831299d0900",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to ",
+   "body": "Upgrading docker-fenrus to a8b4910002df478f7e2d7f220c718831299d0900",
    "user": "github-actions[bot]"
 }
 {
@@ -374,10 +374,10 @@
    "appname": "docker-rutorrent",
    "apppic": "",
    "appfolder": "./apps/docker-rutorrent",
-   "newversion": "null",
+   "newversion": "4.0-stable",
    "baseimage": "alpine",
    "description": "Yet another web front-end for rTorrent",
-   "body": "Upgrading docker-rutorrent to null",
+   "body": "Upgrading docker-rutorrent to 4.0-stable",
    "user": "dockserver[bot]"
 }
 {
@@ -404,10 +404,10 @@
    "appname": "docker-spotweb",
    "apppic": "",
    "appfolder": "./apps/docker-spotweb",
-   "newversion": "null",
+   "newversion": "1.5.4",
    "baseimage": "ubuntu:latest",
    "description": "Decentralized community",
-   "body": "Upgrading docker-spotweb to null",
+   "body": "Upgrading docker-spotweb to 1.5.4",
    "user": "dockserver[bot]"
 }
 {
@@ -608,11 +608,11 @@
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "",
+   "newversion": "d23b2132de05f072f7f9daad83d81421d747cf99",
    "appbranch": "develop",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to ",
+   "body": "Upgrading docker-overseerr-nightly to d23b2132de05f072f7f9daad83d81421d747cf99",
    "user": "github-actions[bot]"
 }
 {
@@ -630,10 +630,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "",
+   "newversion": "129d62201537adda2a0494e3a92fe73f8c91c661",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to ",
+   "body": "Upgrading docker-sabnzbd-nightly to 129d62201537adda2a0494e3a92fe73f8c91c661",
    "user": "github-actions[bot]"
 }
 {
