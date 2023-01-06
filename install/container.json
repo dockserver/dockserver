@@ -75,11 +75,11 @@
    "appname": "docker-dash",
    "apppic": "",
    "appfolder": "./apps/docker-dash",
-   "newversion": "4.6.0",
+   "newversion": "4.6.1",
    "baseimage": "alpine",
    "baseversion": "3.17.0_rc1",
    "description": "A simple, modern server dashboard, primarily used by smaller private servers",
-   "body": "Upgrading docker-dash to 4.6.0",
+   "body": "Upgrading docker-dash to 4.6.1",
    "user": "dockserver-image[bot]"
 }
 {
@@ -608,11 +608,11 @@
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "8bd10b5bf3d1b8069872b616c7c8596caeb4937e",
+   "newversion": "d23b2132de05f072f7f9daad83d81421d747cf99",
    "appbranch": "develop",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to 8bd10b5bf3d1b8069872b616c7c8596caeb4937e",
+   "body": "Upgrading docker-overseerr-nightly to d23b2132de05f072f7f9daad83d81421d747cf99",
    "user": "github-actions[bot]"
 }
 {
