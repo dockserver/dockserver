@@ -2,20 +2,20 @@
    "appname": "docker-auto-replyarr",
    "apppic": "",
    "appfolder": "./apps/docker-auto-replyarr",
-   "newversion": "",
+   "newversion": "3.17.0_rc1",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading docker-auto-replyarr to ",
+   "body": "Upgrading docker-auto-replyarr to 3.17.0_rc1",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-backup",
    "apppic": "./images/docker-backup.png",
    "appfolder": "./apps/docker-backup",
-   "newversion": "",
+   "newversion": "3.17.0_rc1",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading docker-backup to ",
+   "body": "Upgrading docker-backup to 3.17.0_rc1",
    "user": "github-actions[bot]"
 }
 {
@@ -54,10 +54,10 @@
    "appname": "docker-crunchy",
    "apppic": "./images/docker-crunchy.png",
    "appfolder": "./apps/docker-crunchy",
-   "newversion": "",
+   "newversion": "23.04",
    "baseimage": "ubuntu",
    "description": "Docker image  for docker-crunchy",
-   "body": "Upgrading docker-crunchy to baseimage: ubuntu:",
+   "body": "Upgrading docker-crunchy to baseimage: ubuntu:23.04",
    "user": "dockserver image update[bot]"
 }
 {
@@ -77,7 +77,7 @@
    "appfolder": "./apps/docker-dash",
    "newversion": "4.6.0",
    "baseimage": "alpine",
-   "baseversion": "",
+   "baseversion": "3.17.0_rc1",
    "description": "A simple, modern server dashboard, primarily used by smaller private servers",
    "body": "Upgrading docker-dash to 4.6.0",
    "user": "dockserver-image[bot]"
@@ -108,10 +108,10 @@
    "appname": "docker-dockupdate",
    "apppic": "./images/docker-dockupdate.png",
    "appfolder": "./apps/docker-dockupdate",
-   "newversion": "",
+   "newversion": "3.17.0_rc1",
    "baseimage": "alpine",
    "description": "Automatically keep your docker services and your docker containers up-to-date with the latest version",
-   "body": "Upgrading docker-dockupdate to ",
+   "body": "Upgrading docker-dockupdate to 3.17.0_rc1",
    "user": "github-actions[bot]"
 }
 {
@@ -319,11 +319,11 @@
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "1.1.0.2245",
+   "newversion": "1.1.0.2246",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 1.1.0.2245",
+   "body": "Upgrading docker-prowlarr to 1.1.0.2246",
    "user": "github-actions[bot]"
 }
 {
