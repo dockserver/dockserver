@@ -107,7 +107,7 @@ services:
       - 'DEFAULT_TTL=1'
       - 'REFRESH_ENTRIES=TRUE'
       - 'DOCKER_ENTRYPOINT=unix://var/run/docker.sock'
-      - 'SWARM_MODE=FALSE'
+      - 'DOCKER_SWARM_MODE=FALSE'
     labels:
       - 'dockupdater.enable=true'
   traefik-error-pages:
