@@ -313,7 +313,7 @@
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:jammy",
    "description": "Docker Container for Plex Media Server || PLEX PASS",
    "body": "Upgrading docker-plex to 1.30.2.6563-3d4dc0cce",
-   "user": "github-actions[bot]"
+   "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-prowlarr",
@@ -613,7 +613,7 @@
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
    "body": "Upgrading docker-overseerr-nightly to 7b6db50ae55b1fc60d19a5cff62dd46bb989fa51",
-   "user": "github-actions[bot]"
+   "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-radarr-nightly",
@@ -624,7 +624,7 @@
    "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
    "body": "Upgrading docker-radarr-nightly to nightly-4.4.0.6875-ls428",
-   "user": "github-actions[bot]"
+   "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-sabnzbd-nightly",
@@ -634,7 +634,7 @@
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
    "body": "Upgrading docker-sabnzbd-nightly to 61e901e07b0ed73604c304c2a1302d036be5544c",
-   "user": "github-actions[bot]"
+   "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-sonarr-nightly",
@@ -644,7 +644,7 @@
    "appbranch": "develop",
    "description": "Smart PVR for newsgroup and bittorrent users.",
    "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.344-ls384",
-   "user": "github-actions[bot]"
+   "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-whisparr-nightly",
@@ -655,5 +655,5 @@
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Whisparr is an adult movie collection manager for Usenet and BitTorrent users.",
    "body": "Upgrading docker-whisparr-nightly to 0.1.0.53",
-   "user": "github-actions[bot]"
+   "user": "dockserver image update[bot]"
 }
