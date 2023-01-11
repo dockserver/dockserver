@@ -459,7 +459,6 @@ runinstall() {
      $(command -v docker) image prune -af 1>/dev/null 2>&1
   fi
   if [[ ${section} == "addons" && ${typed} == "vnstat" ]];then vnstatcheck;fi
-  if [[ ${section} == "addons" && ${typed} == "autoscan" ]];then autoscancheck;fi
   if [[ ${section} == "mediaserver" && ${typed} == "plex" ]];then plexclaim && plex443;fi
   if [[ ${section} == "downloadclients" && ${typed} == "jdownloader2" ]];then
      folder=$storage/${typed}
@@ -615,14 +614,6 @@ if [[ $f2ban != "false" ]];then $(command -v systemctl) reload-or-restart fail2b
 }
 vnstatcheck() {
 if [[ ! -x $(command -v vnstat) ]];then $(command -v apt) install vnstat -yqq;fi
-}
-autoscancheck() {
-$(docker ps -aq --format={{.Names}} | grep -E 'arr|ple|emb|jelly' 1>/dev/null 2>&1)
-code=$?
-if [[ $code -eq 0 ]];then
-   $(command -v rsync) $appfolder/.subactions/${typed}.config.yml $basefolder/${typed}/config.yml -aqhv
-   $(command -v bash) $appfolder/.subactions/${typed}.sh
-fi
 }
 lubox() {
 basefolder="/opt/appdata"
