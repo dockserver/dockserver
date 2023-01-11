@@ -12,6 +12,7 @@
 #########################################################################
 
 basefolder="/opt/appdata"
+appfolder="/opt/dockserver/apps/"
 typed=autoscan
 composeoverwrite="compose/docker-compose.override.yml"
 headrm() {
@@ -301,6 +302,7 @@ printf "
   read -erp "Confirm Info | PRESS [ENTER]" typed </dev/tty
 }
 runautoscan() {
+   $(command -v rsync) $appfolder/.subactions/${typed}.config.yml $basefolder/${typed}/config.yml -aqhv
    $($(command -v docker) ps -aq --format={{.Names}} | grep -E 'arr|ple|emb|jelly' 1>/dev/null 2>&1)
    errorcode=$?
 if [[ $errorcode -eq 0 ]]; then
