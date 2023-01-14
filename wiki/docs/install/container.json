@@ -608,11 +608,11 @@
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "a672b324ec391a20f6f3a1daed82a8d276a52c2c",
+   "newversion": "3aefddd48834d86150d5f5cceb2d08af3a78847b",
    "appbranch": "develop",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to a672b324ec391a20f6f3a1daed82a8d276a52c2c",
+   "body": "Upgrading docker-overseerr-nightly to 3aefddd48834d86150d5f5cceb2d08af3a78847b",
    "user": "dockserver image update[bot]"
 }
 {
@@ -640,10 +640,10 @@
    "appname": "docker-sonarr-nightly",
    "apppic": "./images/docker-sonarr-nightly.png",
    "appfolder": "./nightly/docker-sonarr-nightly",
-   "newversion": "develop-4.0.0.346-ls385",
+   "newversion": "develop-4.0.0.352-ls386",
    "appbranch": "develop",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.346-ls385",
+   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.352-ls386",
    "user": "dockserver image update[bot]"
 }
 {
