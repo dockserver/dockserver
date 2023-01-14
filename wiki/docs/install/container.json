@@ -319,11 +319,11 @@
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "1.1.0.2301",
+   "newversion": "1.1.0.2303",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 1.1.0.2301",
+   "body": "Upgrading docker-prowlarr to 1.1.0.2303",
    "user": "github-actions[bot]"
 }
 {
@@ -460,7 +460,7 @@
    "appbranch": "master",
    "newversion": "3.17.1",
    "appversion": "1.4.37",
-   "wikiversion": "9.0.4",
+   "wikiversion": "9.0.5",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
    "body": "Upgrading docker-wiki to 3.17.1",
