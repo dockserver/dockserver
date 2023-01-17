@@ -104,6 +104,7 @@ Run the following command:
 ```sh
 sudo wget -qO- https://git.io/J3GDc | sudo bash
 ```
+You can find a more detailed guide on our [Wiki](https://dockserver.io/install/install.html)
 
 <details>
   <summary>Long commmand if the short one doesn't work.</summary>
