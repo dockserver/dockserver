@@ -16,7 +16,7 @@
 </p>
 
 
-# KASM Desktop (Ubuntu)
+# KASM Desktop 
 
 ## INTRODUCTION
 
@@ -27,31 +27,17 @@ Kasm Desktop Provides Ubuntu Desktop with all available applications from KASM i
 
 ![Screenshot_6](https://user-images.githubusercontent.com/23133649/136709038-f63d824a-187d-4584-96d8-94b535c815f5.png)
 
-Individually deployable apps include:
-<br />
--FireFox
-<br />
--Chrome
-<br />
--Telegram
-<br />
--Signal
-<br />
--Discord
-<br />
--OnlyOffice
-<br />
--Tor Broswer
-<br />
+This container allows you to choose the applications you would like to use. For example, if you want to access a specific website that may be blocked by company fire walls. 
 
 Install via DockServer Menu
 
-Default User: _kasm_user_
+Default User: admin@kasm.local
+              user@kasm.local
 <br />
-Default Pass: _passwordbasic_
+Default Pass: this is setup when you go to http://serverip:3002/ on first boot to setup.
 <br />
 <br />
-**_Note: If kasmdesktop hangs for a really long time. Stop the install and run the following command for dependencies, then deploy the app again: `pip3 install dockerpty && pip3 install texttable`_**
+**_Note: If you need to use more varirables such as making persistent profiles, adding GPUs, or gaming controllers, please see LSIO Documentation https://github.com/linuxserver/docker-kasm#application-setup_**
 
 ## Support
 
