@@ -13,17 +13,22 @@
       accessControlMaxAge = 100
       hostsProxyHeaders = ["X-Forwarded-Host"]
       sslRedirect = true
-      stsSeconds = 63072000
+      stsSeconds = 31536000
       stsIncludeSubdomains = true
       stsPreload = true
       forceSTSHeader = true
       customFrameOptionsValue = "allow-from https:example.com" #CSP takes care of this but may be needed for organizr.
       contentTypeNosniff = true
       browserXssFilter = true
+      frameDeny = true
       referrerPolicy = "same-origin"
-      featurePolicy = "camera 'none'; geolocation 'none'; microphone 'none'; payment 'none'; usb 'none'; vr 'none';"
       [http.middlewares.middlewares-secure-headers.headers.customResponseHeaders]
-        X-Robots-Tag = "none,noarchive,nosnippet,notranslate,noimageindex,"
+        Permissions-Policy = "accelerometer=(),camera=(),geolocation=(),gyroscope=(),magnetometer=(),microphone=(),payment=(),usb=()"
+        Content-Security-Policy = "upgrade-insecure-requests;"
+        X-Frame-Options = "SAMEORIGIN"
+        X-Robots-Tag = "none,noindex,nofollow,noarchive,nosnippet,notranslate,noimageindex"
+        X-Permitted-Cross-Domain-Policies = "none"
+        X-Forwarded-Proto = "https"
         server = ""
 
   [http.middlewares.middlewares-authelia]
