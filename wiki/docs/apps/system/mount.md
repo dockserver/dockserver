@@ -74,8 +74,8 @@ For Rclone WebUI - Leave user and password blank and hit login button.
 |`VFS_READ_CHUNK_SIZE`      |`128M` |Rclone read chunk size. See [Rclone documentation](https://rclone.org/commands/rclone_mount/#vfs-chunked-reading) for details.|
 |`VFS_READ_CHUNK_SIZE_LIMIT`|`4096M`|Rclone limit read chunk size. See [Rclone documentation](https://rclone.org/commands/rclone_mount/#vfs-chunked-reading) for details.|
 |`VFS_CACHE_MAX_SIZE`       |`NONE` |Rclone maximum allowed local cache size.|
-|`VFS_CACHE_MAX_AGE`        |`21600000000000` |Rclone maximum allowed local age in **nanoseconds**.|
-|`VFS_DIR_CACHE_TIME`       |`43200000000000` |Rclone dir cache time in **nanoseconds**. See [Rclone documentation](https://rclone.org/commands/rclone_mount/#vfs-directory-cache) for details.|
+|`VFS_CACHE_MAX_AGE`        |`6h`   |Rclone maximum allowed local age. Can be s,m,h,d.|
+|`VFS_DIR_CACHE_TIME`       |`12h`  |Rclone dir cache time. Can be s,m,h,d. See [Rclone documentation](https://rclone.org/commands/rclone_mount/#vfs-directory-cache) for details.|
 |`VFS_REFRESH_ENABLE`       |`true` |Whether or not the VFS cache should be refreshed. Options:</br>`true`</br>`false`|
 |`VFS_REFRESH`              |`12h`  |How often to perform a VFS refresh.|
 
