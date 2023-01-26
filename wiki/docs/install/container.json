@@ -75,11 +75,11 @@
    "appname": "docker-dash",
    "apppic": "",
    "appfolder": "./apps/docker-dash",
-   "newversion": "null",
+   "newversion": "4.6.1",
    "baseimage": "alpine",
    "baseversion": "3.17.1",
    "description": "A simple, modern server dashboard, primarily used by smaller private servers",
-   "body": "Upgrading docker-dash to null",
+   "body": "Upgrading docker-dash to 4.6.1",
    "user": "dockserver-image[bot]"
 }
 {
@@ -154,9 +154,9 @@
    "newversion": "3.17.1",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "",
+   "appversion": "a8b4910002df478f7e2d7f220c718831299d0900",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to ",
+   "body": "Upgrading docker-fenrus to a8b4910002df478f7e2d7f220c718831299d0900",
    "user": "github-actions[bot]"
 }
 {
@@ -374,10 +374,10 @@
    "appname": "docker-rutorrent",
    "apppic": "",
    "appfolder": "./apps/docker-rutorrent",
-   "newversion": "null",
+   "newversion": "4.0-stable",
    "baseimage": "alpine",
    "description": "Yet another web front-end for rTorrent",
-   "body": "Upgrading docker-rutorrent to null",
+   "body": "Upgrading docker-rutorrent to 4.0-stable",
    "user": "dockserver[bot]"
 }
 {
@@ -404,10 +404,10 @@
    "appname": "docker-spotweb",
    "apppic": "",
    "appfolder": "./apps/docker-spotweb",
-   "newversion": "null",
+   "newversion": "1.5.4",
    "baseimage": "ubuntu:latest",
    "description": "Decentralized community",
-   "body": "Upgrading docker-spotweb to null",
+   "body": "Upgrading docker-spotweb to 1.5.4",
    "user": "dockserver[bot]"
 }
 {
@@ -608,11 +608,11 @@
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "",
+   "newversion": "f4a22dc437404558f301ccfc195cf0a300dd1ff2",
    "appbranch": "develop",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to ",
+   "body": "Upgrading docker-overseerr-nightly to f4a22dc437404558f301ccfc195cf0a300dd1ff2",
    "user": "dockserver image update[bot]"
 }
 {
