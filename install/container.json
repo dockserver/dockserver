@@ -319,11 +319,11 @@
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "1.1.2.2425",
+   "newversion": "1.1.2.2430",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 1.1.2.2425",
+   "body": "Upgrading docker-prowlarr to 1.1.2.2430",
    "user": "github-actions[bot]"
 }
 {
@@ -608,11 +608,11 @@
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "374c78c989cc86bb144a954a91d5d183c4b591c0",
+   "newversion": "51b05cd8fbb5d332807d8c00b2ffb7b10c3d0179",
    "appbranch": "develop",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to 374c78c989cc86bb144a954a91d5d183c4b591c0",
+   "body": "Upgrading docker-overseerr-nightly to 51b05cd8fbb5d332807d8c00b2ffb7b10c3d0179",
    "user": "dockserver image update[bot]"
 }
 {
