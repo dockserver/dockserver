@@ -59,6 +59,7 @@ For Rclone WebUI - Leave user and password blank and hit login button.
 
 |Setting           |Default            |Description|
 |------------------|-------------------|-----------|
+|`PROXY`           |`NULL`             |Set HTTP or SOCKS5 Proxy for RClone. [Rclone documentation](https://rclone.org/faq/#can-i-use-rclone-with-an-http-proxy) for details.|
 |`UMASK`           |`18`               |Rclone uses its own values `18` = `022`.|
 |`DRIVETRASH`      |`false`            |Whether or not the Drive Trash should be used. Options:</br>`true`</br>`false`|
 |`DRIVE_CHUNK_SIZE`|`128M`             |Rclone performance setting. This setting should only be changed if you know what you are doing.|
