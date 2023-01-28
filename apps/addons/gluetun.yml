@@ -3,7 +3,7 @@ services:
   gluetun:
     hostname: "gluetun"
     container_name: "gluetun"
-    image: qmcgaw/gluetun
+    image: "qmcgaw/gluetun:latest"
     cap_add:
       - NET_ADMIN
     devices:
@@ -26,7 +26,7 @@ services:
       - "HTTPPROXY=on"
       - "HTTPPROXY_LISTENING_ADDRESS=:8888"
     volumes:
-      - "${APPFOLDER}/gluetun/:/gluetun"
+      - "${APPFOLDER}/gluetun/:/gluetun:rw"
 networks:
   proxy:
     driver: bridge
