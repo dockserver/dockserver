@@ -27,6 +27,11 @@ services:
       - "HTTPPROXY_LISTENING_ADDRESS=:8888"
     volumes:
       - "${APPFOLDER}/gluetun/:/gluetun:rw"
+  socks5:
+    image: "serjs/go-socks5-proxy:latest"
+    depends_on:
+      - gluetun
+    network_mode: "service:gluetun"
 networks:
   proxy:
     driver: bridge
