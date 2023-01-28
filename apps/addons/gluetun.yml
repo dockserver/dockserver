@@ -6,6 +6,8 @@ services:
     image: qmcgaw/gluetun
     cap_add:
       - NET_ADMIN
+    devices:
+      - "/dev/net/tun:/dev/net/tun"
     restart: "${RESTARTAPP}"
     networks:
       - ${DOCKERNETWORK}
@@ -19,6 +21,10 @@ services:
       - "OPENVPN_USER=${GLUETUN_OPEN_VPN_USER}"
       - "OPENVPN_PASSWORD=${GLUETUN_OPEN_VPN_PASSWORD}"
       - "REGION=${GLUETUN_VPN_REGION}"
+      - "SHADOWSOCKS=on"
+      - "SHADOWSOCKS_ADDRESS=:8388"
+      - "HTTPPROXY=on"
+      - "HTTPPROXY_LISTENING_ADDRESS=:8888"
     volumes:
       - "${APPFOLDER}/gluetun/:/gluetun"
 networks:
