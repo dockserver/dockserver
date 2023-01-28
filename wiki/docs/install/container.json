@@ -246,9 +246,9 @@
    "buildimage": "alpine",
    "finalimage": "ghcr.io/dockserver/docker-alpine-v3",
    "baseversion": "3.17.1",
-   "s6stage": "v3.1.3.0",
-   "description": "Docker docker-mount with mergerfs version 2.34.1 and rclone version v1.61.1 include s6-overlay: v3.1.3.0",
-   "body": "Upgrading docker-mount to baseimage: alpine:3.17.1 with mergerfs: 2.34.1 and rclone: v1.61.1 include s6-overlay: v3.1.3.0",
+   "s6stage": "v3.1.2.1",
+   "description": "Docker docker-mount with mergerfs version 2.34.1 and rclone version v1.61.1 include s6-overlay: v3.1.2.1",
+   "body": "Upgrading docker-mount to baseimage: alpine:3.17.1 with mergerfs: 2.34.1 and rclone: v1.61.1 include s6-overlay: v3.1.2.1",
    "user": "dockserver image update[bot]"
 }
 {
@@ -460,7 +460,7 @@
    "appbranch": "master",
    "newversion": "3.17.1",
    "appversion": "1.4.37",
-   "wikiversion": "9.0.6",
+   "wikiversion": "9.0.7",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
    "body": "Upgrading docker-wiki to 3.17.1",
