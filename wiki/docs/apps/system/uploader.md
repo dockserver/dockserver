@@ -79,6 +79,7 @@ You can leave the value as it is if you dont use Multi Drive uploading.
 |Setting          |Default         |Description|
 |-----------------|----------------|-----------|
 |`BANDWIDTH_LIMIT`|`null`          |The maximum upload speed *per upload*. Please refer to the [Rclone documentation](https://rclone.org/docs/#bwlimit-bandwidth-spec) before changes are made.|
+|`PROXY`          |`null`          |Set HTTP or SOCKS5 Proxy for RClone. [Rclone documentation](https://rclone.org/faq/#can-i-use-rclone-with-an-http-proxy) for details.|
 |`LOG_LEVEL`      |`INFO`          |Please refer to the [Rclone documentation](https://rclone.org/docs#log-level-level) before changes are made.|
 |`DLFOLDER`       |`/mnt/downloads`|Path to your download directory.|
 |`TRANSFERS`      |`2`             |The maximum number of concurrent uploads.|
