@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## [v1.4.39](https://github.com/dockserver/dockserver/releases/tag/v1.4.39) - 2023-01-28 23:16:28
+
+repository changes
+
+## [v1.4.38](https://github.com/dockserver/dockserver/releases/tag/v1.4.38) - 2023-01-28 23:02:38
+
+## 💻 GitHub updates
+
+- GH updates (deps): Bump step-security/harden-runner from 2.0.0 to 2.1.0
+   - PR: #592
+- GH updates (deps): Bump lowlighter/metrics from 3.31 to 3.32
+   - PR: #593
+- GH updates (deps): Bump dependabot/fetch-metadata from 1.3.5 to 1.3.6
+   - PR: #595
+
+## 🎨 DockServer Update
+
+- Update mount.md
+   - PR: #596
+
 ## [v1.4.37](https://github.com/dockserver/dockserver/releases/tag/v1.4.37) - 2023-01-11 16:53:52
 
 repository changes
