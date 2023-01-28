@@ -51,7 +51,14 @@ updatesystem() {
         find $app -exec $(command -v chmod) a=rx,u+w {} \;
         find $app -exec $(command -v chown) -hR 1000:1000 {} \;
       done
- 
+
+      #### CHANGE DNS SERVERS ####
+      $(which sed) -i 's/185.12.64.1/1.1.1.1/' /etc/netplan/01-netcfg.yaml
+      $(which sed) -i 's/185.12.64.2/1.0.0.1/' /etc/netplan/01-netcfg.yaml
+      $(which sed) -i 's/2a01:4ff:ff00::add:2/2606:4700:4700::1111/' /etc/netplan/01-netcfg.yaml
+      $(which sed) -i 's/2a01:4ff:ff00::add:1/2606:4700:4700::1001/' /etc/netplan/01-netcfg.yaml
+      netplan apply
+
      if test -f /etc/sysctl.d/99-sysctl.conf; then
          config="/etc/sysctl.d/99-sysctl.conf"
          ipv6=$(cat $config | grep -qE 'ipv6' && echo true || false)
