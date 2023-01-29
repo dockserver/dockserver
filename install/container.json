@@ -297,11 +297,11 @@
    "appname": "docker-overseerr",
    "apppic": "./images/docker-overseerr.png",
    "appfolder": "./apps/docker-overseerr",
-   "newversion": "1.32.3",
+   "newversion": "1.32.4",
    "appbranch": "",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr to 1.32.3",
+   "body": "Upgrading docker-overseerr to 1.32.4",
    "user": "github-actions[bot]"
 }
 {
@@ -460,7 +460,7 @@
    "appbranch": "master",
    "newversion": "3.17.1",
    "appversion": "1.4.39",
-   "wikiversion": "9.0.7",
+   "wikiversion": "9.0.8",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
    "body": "Upgrading docker-wiki to 3.17.1",
@@ -630,10 +630,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "",
+   "newversion": "5e58fdf82141fcec6b7b379c957909d82aae3e51",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to ",
+   "body": "Upgrading docker-sabnzbd-nightly to 5e58fdf82141fcec6b7b379c957909d82aae3e51",
    "user": "dockserver image update[bot]"
 }
 {
