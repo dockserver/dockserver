@@ -54,10 +54,10 @@
    "appname": "docker-crunchy",
    "apppic": "./images/docker-crunchy.png",
    "appfolder": "./apps/docker-crunchy",
-   "newversion": "23.04",
+   "newversion": "lunar-20230124.1",
    "baseimage": "ubuntu",
    "description": "Docker image  for docker-crunchy",
-   "body": "Upgrading docker-crunchy to baseimage: ubuntu:23.04",
+   "body": "Upgrading docker-crunchy to baseimage: ubuntu:lunar-20230124.1",
    "user": "dockserver image update[bot]"
 }
 {
@@ -319,11 +319,11 @@
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "1.1.2.2459",
+   "newversion": "1.1.3.2464",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 1.1.2.2459",
+   "body": "Upgrading docker-prowlarr to 1.1.3.2464",
    "user": "github-actions[bot]"
 }
 {
@@ -364,10 +364,10 @@
    "appname": "docker-rollarr",
    "apppic": "./images/docker-rollarr.png",
    "appfolder": "./apps/docker-rollarr",
-   "newversion": "23.04",
+   "newversion": "lunar-20230124.1",
    "baseimage": "ubuntu",
    "description": "This is the new and improved Automatic Pre-roll script with a GUI for Plex now called Rollarr!",
-   "body": "Upgrading docker-rollarr to 23.04",
+   "body": "Upgrading docker-rollarr to lunar-20230124.1",
    "user": "github-actions[bot]"
 }
 {
