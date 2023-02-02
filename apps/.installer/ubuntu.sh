@@ -684,7 +684,7 @@ printf "
       > have fun !
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 "
-read -erp "Confirm Info | PRESS [ENTER]" typed </dev/tty
+read -erp "Confirm Info | PRESS [ENTER]" confirm </dev/tty
 
 }
 subtasks() {
