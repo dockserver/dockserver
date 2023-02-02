@@ -540,7 +540,7 @@ runinstall() {
     Return code is ${errorcode}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 "
-  read -erp "Confirm Info | PRESS [ENTER]" typed </dev/tty
+  read -erp "Confirm Info | PRESS [ENTER]" confirm </dev/tty
   clear && interface
      else
        composer=$(command -v docker-compose)
