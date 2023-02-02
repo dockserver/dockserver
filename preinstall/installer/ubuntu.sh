@@ -55,10 +55,10 @@ updatesystem() {
       #### CHANGE DNS SERVERS ####
       mapfile -t "FILE" < <($(which find) "/etc/netplan" -type f -name "*.yaml")
       for NETYAML in "${FILE[@]}"; do
-         $(which sed) -i 's/185.12.64.1/1.1.1.1/' ${NETYAML} &>/dev/null
-         $(which sed) -i 's/185.12.64.2/1.0.0.1/' ${NETYAML} &>/dev/null
-         $(which sed) -i 's/2a01:4ff:ff00::add:2/2606:4700:4700::1111/' ${NETYAML} &>/dev/null
-         $(which sed) -i 's/2a01:4ff:ff00::add:1/2606:4700:4700::1001/' ${NETYAML} &>/dev/null
+         $(which sed) -i 's/185.12.64.1/9.9.9.9/' ${NETYAML} &>/dev/null
+         $(which sed) -i 's/185.12.64.2/149.112.112.112/' ${NETYAML} &>/dev/null
+         $(which sed) -i 's/2a01:4ff:ff00::add:2/2620:fe::fe/' ${NETYAML} &>/dev/null
+         $(which sed) -i 's/2a01:4ff:ff00::add:1/2620:fe::9/' ${NETYAML} &>/dev/null
       done
       netplan apply
 
