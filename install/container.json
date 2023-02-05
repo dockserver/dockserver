@@ -384,10 +384,10 @@
    "appname": "docker-sabnzbd",
    "apppic": "./images/docker-sabnzbd.png",
    "appfolder": "./apps/docker-sabnzbd",
-   "newversion": "3.7.1",
+   "newversion": "3.7.2",
    "appbranch": "master",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd to 3.7.1",
+   "body": "Upgrading docker-sabnzbd to 3.7.2",
    "user": "github-actions[bot]"
 }
 {
@@ -630,10 +630,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "32bd5a4ccafddf2595ea9544b9b27547b40237c7",
+   "newversion": "5315eeb26bbe993089150b7a14d76a8b972e7798",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 32bd5a4ccafddf2595ea9544b9b27547b40237c7",
+   "body": "Upgrading docker-sabnzbd-nightly to 5315eeb26bbe993089150b7a14d76a8b972e7798",
    "user": "dockserver image update[bot]"
 }
 {
