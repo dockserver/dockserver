@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [v1.4.45](https://github.com/dockserver/dockserver/releases/tag/v1.4.45) - 2023-02-06 17:34:01
+
+repository changes
+
 ## [v1.4.43](https://github.com/dockserver/dockserver/releases/tag/v1.4.43) - 2023-02-06 13:57:31
 
 repository changes
@@ -299,30 +303,6 @@ repository changes
 
 **Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.19...v1.3.20
 
-## [v1.3.19](https://github.com/dockserver/dockserver/releases/tag/v1.3.19) - 2021-12-17 07:36:37
-
-repository changes
-
-**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.18...v1.3.19
-
-## [v1.3.18](https://github.com/dockserver/dockserver/releases/tag/v1.3.18) - 2021-12-17 07:25:11
-
-repository changes
-
-**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.17...v1.3.18
-
-## [v1.3.16](https://github.com/dockserver/dockserver/releases/tag/v1.3.16) - 2021-12-17 06:26:21
-
-repository changes
-
-**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.15...v1.3.16
-
-## [v1.3.15](https://github.com/dockserver/dockserver/releases/tag/v1.3.15) - 2021-12-17 06:19:19
-
-repository changes
-
-**Full Changelog**: https://github.com/dockserver/dockserver/compare/v1.3.14...v1.3.15
-
 ## [v1.3.14](https://github.com/dockserver/dockserver/releases/tag/v1.3.14) - 2021-12-17 04:56:53
 
 repository changes
@@ -448,8 +428,6 @@ repository changes
   - update contributors ([e2949f1](https://github.com/dockserver/dockserver/commit/e2949f16014f69f1a6f057042135008f78a5f98d))
 
 ## [v1.2.44](https://github.com/dockserver/dockserver/releases/tag/v1.2.44) - 2021-11-21 22:53:42
-
-## [v1.2.43](https://github.com/dockserver/dockserver/releases/tag/v1.2.43) - 2021-11-18 22:47:45
 
 ## [v1.2.42](https://github.com/dockserver/dockserver/releases/tag/v1.2.42) - 2021-11-17 12:36:27
 
