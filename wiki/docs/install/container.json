@@ -435,9 +435,9 @@
    "appname": "docker-uploader",
    "apppic": "./images/docker-uploader.png",
    "appfolder": "./apps/docker-uploader",
-   "newversion": "",
+   "newversion": "3.17.1",
    "baseimage": "ghcr.io/dockserver/docker-alpine-v3",
-   "baseversion": "",
+   "baseversion": "3.17.1",
    "s6_stage": "",
    "description": "",
    "body": "Upgrading docker-uploader to ",
@@ -447,10 +447,10 @@
    "appname": "docker-vnstat",
    "apppic": "./images/docker-vnstat.png",
    "appfolder": "./apps/docker-vnstat",
-   "newversion": "",
+   "newversion": "8-apache",
    "baseimage": "php",
    "description": "Docker image  for docker-vnstat",
-   "body": "Upgrading docker-vnstat to baseimage: php:",
+   "body": "Upgrading docker-vnstat to baseimage: php:8-apache",
    "user": "dockserver image update[bot]"
 }
 {
@@ -458,12 +458,12 @@
    "apppic": "./images/docker-wiki.png",
    "appfolder": "./apps/docker-wiki",
    "appbranch": "master",
-   "newversion": "",
-   "appversion": "1.4.41",
+   "newversion": "3.17.1",
+   "appversion": "1.4.42",
    "wikiversion": "9.0.11",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
-   "body": "Upgrading docker-wiki to ",
+   "body": "Upgrading docker-wiki to 3.17.1",
    "user": "github-actions[bot]"
 }
 {
@@ -481,10 +481,10 @@
    "appname": "alpine",
    "apppic": "",
    "appfolder": "./base/alpine",
-   "newversion": "",
+   "newversion": "3.17.1",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading alpine to ",
+   "body": "Upgrading alpine to 3.17.1",
    "user": "github-actions[bot]"
 }
 {
@@ -502,43 +502,43 @@
    "appname": "docker-alpine-v3",
    "apppic": "./images/docker-alpine-v3.png",
    "appfolder": "./base/docker-alpine-v3",
-   "newversion": "",
+   "newversion": "3.17.1",
    "baseimage": "alpine",
-   "baseversion": "",
+   "baseversion": "3.17.1",
    "s6stage": "v3.1.3.0",
    "description": "Docker docker-alpine-v3 with include s6-overlay: v3.1.3.0",
-   "body": "Upgrading docker-alpine-v3 to baseimage: alpine:  with include s6-overlay: v3.1.3.0",
+   "body": "Upgrading docker-alpine-v3 to baseimage: alpine:3.17.1  with include s6-overlay: v3.1.3.0",
    "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-config",
    "apppic": "./images/docker-config.png",
    "appfolder": "./base/docker-config",
-   "newversion": "",
+   "newversion": "3.17.1",
    "baseimage": "alpine",
    "description": " !!! DEVERLOP STATUS !!! DO NOT TRY TO PULL THE IMAGE YOU NEED ACCESS TO THE REPOSITORY",
-   "body": "Upgrading docker-config to ",
+   "body": "Upgrading docker-config to 3.17.1",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-create",
    "apppic": "./images/docker-create.png",
    "appfolder": "./base/docker-create",
-   "newversion": "",
+   "newversion": "3.17.1",
    "baseimage": "alpine",
    "description": " !!! DEVERLOP STATUS !!! DO NOT TRY TO PULL THE IMAGE YOU NEED ACCESS TO THE REPOSITORY",
-   "body": "Upgrading docker-create to ",
+   "body": "Upgrading docker-create to 3.17.1",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-dockserver",
    "apppic": "",
    "appfolder": "./base/docker-dockserver",
-   "newversion": "",
-   "appversion": "",
+   "newversion": "3.17.1",
+   "appversion": "3.17.1",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
-   "body": "Upgrading docker-dockserver to ",
+   "body": "Upgrading docker-dockserver to 3.17.1",
    "user": "github-actions[bot]"
 }
 {
@@ -555,31 +555,31 @@
    "appname": "docker-ubuntu-focal",
    "apppic": "./images/docker-ubuntu-focal.png",
    "appfolder": "./base/docker-ubuntu-focal",
-   "newversion": "",
+   "newversion": "3.17.1",
    "baseimage": "alpine",
    "description": "Docker image  for docker-ubuntu-focal",
-   "body": "Upgrading docker-ubuntu-focal to baseimage: alpine:",
+   "body": "Upgrading docker-ubuntu-focal to baseimage: alpine:3.17.1",
    "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-ubuntu-jammy",
    "apppic": "./images/docker-ubuntu-jammy.png",
    "appfolder": "./base/docker-ubuntu-jammy",
-   "newversion": "",
+   "newversion": "3.17.1",
    "baseimage": "alpine",
    "description": "Docker image  for docker-ubuntu-jammy",
-   "body": "Upgrading docker-ubuntu-jammy to baseimage: alpine:",
+   "body": "Upgrading docker-ubuntu-jammy to baseimage: alpine:3.17.1",
    "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-ui",
    "apppic": "",
    "appfolder": "./base/docker-ui",
-   "newversion": "",
-   "appversion": "",
+   "newversion": "3.17.1",
+   "appversion": "3.17.1",
    "baseimage": "alpine",
    "description": " !!! DEVERLOP STATUS !!! DO NOT TRY TO PULL THE IMAGE YOU NEED ACCESS TO THE REPOSITORY",
-   "body": "Upgrading docker-ui to ",
+   "body": "Upgrading docker-ui to 3.17.1",
    "user": "github-actions[bot]"
 }
 {
@@ -608,11 +608,11 @@
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "",
+   "newversion": "c93467b3acf2c256324297e7e8f21e9944005dd4",
    "appbranch": "develop",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to ",
+   "body": "Upgrading docker-overseerr-nightly to c93467b3acf2c256324297e7e8f21e9944005dd4",
    "user": "dockserver image update[bot]"
 }
 {
@@ -630,10 +630,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "",
+   "newversion": "5315eeb26bbe993089150b7a14d76a8b972e7798",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to ",
+   "body": "Upgrading docker-sabnzbd-nightly to 5315eeb26bbe993089150b7a14d76a8b972e7798",
    "user": "dockserver image update[bot]"
 }
 {
