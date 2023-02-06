@@ -25,7 +25,7 @@
       [http.middlewares.middlewares-secure-headers.headers.customResponseHeaders]
         Permissions-Policy = "accelerometer=(),camera=(),geolocation=(),gyroscope=(),magnetometer=(),microphone=(),payment=(),usb=()"
         Content-Security-Policy = "upgrade-insecure-requests;"
-        X-Frame-Options = "SAMEORIGIN"
+        X-Frame-Options = "ALLOW-FROM SAMEDOMAIN"
         X-Robots-Tag = "none,noindex,nofollow,noarchive,nosnippet,notranslate,noimageindex"
         X-Permitted-Cross-Domain-Policies = "none"
         X-Forwarded-Proto = "https"
