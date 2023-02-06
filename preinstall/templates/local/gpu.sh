@@ -139,8 +139,8 @@ endcommand() {
         printf "\033[0;31m You need to restart the server to get access to /dev/dri
 after restarting execute the install again\033[0m\n"
         echo ""
-        read -p "Type confirm when you have read the message: " input
-        if [[ "$input" = "confirm" ]]; then exit; else endcommand; fi
+        read -p "Type confirm to reboot: " input
+        if [[ "$input" = "confirm" ]]; then reboot -n; else endcommand; fi
     fi
 }
 while true; do
