@@ -110,7 +110,7 @@ updatesystem() {
        
       gpu="ntel NVIDIA"
       for i in ${gpu}; do
-            TDV=$(lspci | grep -i --color 'vga\|display\|3d\|2d' | grep -E $i 1>/dev/null 2>&1 && echo true || echo false)
+            TDV=$(lspci | grep -i --color 'vga\|display\|3d\|2d' 1>/dev/null 2>&1 && echo true || echo false)
             if [[ $TDV == "true" ]]; then $(command -v bash) ${source}/gpu.sh; fi
       done
 
