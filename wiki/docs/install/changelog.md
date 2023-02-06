@@ -1,11 +1,14 @@
 # CHANGELOG
 
+## [v1.4.43](https://github.com/dockserver/dockserver/releases/tag/v1.4.43) - 2023-02-06 13:57:31
+
+repository changes
+
+## [v1.4.42](https://github.com/dockserver/dockserver/releases/tag/v1.4.42) - 2023-02-06 10:32:45
+
+repository changes
+
 ## [v1.4.41](https://github.com/dockserver/dockserver/releases/tag/v1.4.41) - 2023-02-02 20:39:39
-
-## 💻 GitHub updates
-
-- GH updates (deps): Bump aquasecurity/trivy-action from 0.8.0 to 0.9.0 (#597)Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
-   - PR: #597
 
 ## [v1.4.39](https://github.com/dockserver/dockserver/releases/tag/v1.4.39) - 2023-01-28 23:16:28
 
