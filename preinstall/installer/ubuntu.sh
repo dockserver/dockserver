@@ -91,6 +91,7 @@ updatesystem() {
       if [ -z `command -v docker` ]; then
          curl --silent -fsSL https://raw.githubusercontent.com/docker/docker-install/master/install.sh | sudo bash >/dev/null 2>&1
       fi
+         mkdir -p /etc/docker &>/dev/null
          rsync -aqhv ${source}/daemon.j2 /etc/docker/daemon.json 1>/dev/null 2>&1
          usermod -aG docker $(whoami)
          systemctl reload-or-restart docker.service 1>/dev/null 2>&1
