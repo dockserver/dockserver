@@ -54,9 +54,9 @@ igpuhetzner() {
     fi
     if [[ $GCHK == "false" ]]; then groupadd -f video; fi
     if [[ $GVID == "false" ]]; then usermod -aG video $(whoami); fi
-    endcommand
     if [[ $VIFO == "false" ]]; then $(command -v apt) install vainfo -yqq; fi
     if [[ $INTE == "false" && $IGPU == "true" ]]; then $(command -v apt) update -yqq && $(command -v apt) install intel-gpu-tools -yqq; fi
+    endcommand
     if [[ $IMOL1 == "true" && $IMOL2 == "true" && $ITEL == "true" && $GVID == "true" && $DEVT == "true" ]]; then echo "Intel IGPU is working"; else echo "Intel IGPU is not working"; fi
 }
 
