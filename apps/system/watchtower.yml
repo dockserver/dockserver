@@ -17,15 +17,16 @@ services:
       - "WATCHTOWER_LABEL_ENABLE=${WATCHTOWER_LABEL_ENABLE}"
       - "WATCHTOWER_ROLLING_RESTART=${WATCHTOWER_ROLLING_RESTART}"
       - "WATCHTOWER_TIMEOUT=${WATCHTOWER_TIMEOUT}"
-      - "DOCKER_HOST=${SOCKET}"
     restart: "${RESTARTAPP}"
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
     security_opt:
       - "${SECURITYOPS}:${SECURITYOPSSET}"
     networks:
-      - socket-proxy
+      - ${DOCKERNETWORK}
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
 networks:
-  socket-proxy:
+  proxy:
     driver: bridge
     external: true
