@@ -1,0 +1,26 @@
+---
+version: "3.9"
+## SET GLOBAL HEADER FOR COMPOSER
+services:
+  restic:
+    container_name: "restic"
+    hostname: "restic"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+    image: "ghcr.io/dockserver/docker-restic:latest"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "apparmor:unconfined"
+    volumes:
+      - "${APPFOLDER}/restic:/config:rw"
+      - "${APPFOLDER}:/opt/appdata:rw"
+    labels:
+      - "dockupdater.enable=true"
+networks:
+  proxy:
+    driver: bridge
+    external: true
