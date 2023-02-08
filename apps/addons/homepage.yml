@@ -1,0 +1,33 @@
+---
+version: "3.9"
+## SET GLOBAL HEADER FOR COMPOSER
+services:
+  homepage:
+    hostname: "homepage"
+    container_name: "homepage"
+    environment:
+      - "TZ=${TZ}"
+    image: "ghcr.io/benphelps/homepage:latest"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/homepage:/app/config:rw"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.homepage-rtr.entrypoints=https"
+      - "traefik.http.routers.homepage-rtr.rule=Host(`homepage.${DOMAIN}`)"
+      - "traefik.http.routers.homepage-rtr.tls=true"
+      - "traefik.http.routers.homepage-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.homepage-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.homepage-rtr.service=homepage-svc"
+      - "traefik.http.services.homepage-svc.loadbalancer.server.port=3000"
+networks:
+  proxy:
+    driver: bridge
+    external: true
