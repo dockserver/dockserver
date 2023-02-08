@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## [v1.4.47](https://github.com/dockserver/dockserver/releases/tag/v1.4.47) - 2023-02-08 08:16:30
+
+- bugfix: Fix GPU Install (#598
+   - PR: #598
+
 ## [v1.4.45](https://github.com/dockserver/dockserver/releases/tag/v1.4.45) - 2023-02-06 17:34:01
 
 repository changes
