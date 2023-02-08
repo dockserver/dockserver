@@ -136,8 +136,7 @@ endcommand() {
         $(command -v chmod) -R 750 /dev/dri
     else
         echo ""
-        printf "\033[0;31m You need to restart the server to get access to /dev/dri
-after restarting execute the install again\033[0m\n"
+        printf "\033[0;31m You need to restart the server to get access to /dev/dri\033[0m\n"
         echo ""
         read -p "Type confirm when you have read the message: " input
         if [[ "$input" = "confirm" ]]; then exit; else endcommand; fi
