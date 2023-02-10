@@ -1,35 +1,44 @@
 ---
-version: '3'
+version: "3"
 services:
   yacht:
-    container_name: 'yacht'
-    image: 'selfhostedpro/yacht'
-    restart: 'unless-stopped'
-    ports:
-      - '8000:8000'
-    networks:
-      - proxy
-    security_opt:
-      - 'no-new-privileges:true'
-    volumes:
-      - '/var/run/docker.sock:/var/run/docker.sock:ro'
-      - '/opt/appdata/yacht:/config'
+    hostname: "yacht"
+    container_name: "yacht"
     environment:
-      - 'PGID=${ID}'
-      - 'PUID=${ID}'
-      - 'TZ=${TZ}'
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+      #- '<ADDITIONALENVIROMENT>'
+    image: "selfhostedpro/yacht"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "${APPFOLDER}/yacht:/config:rw"
+      - "unionfs:/mnt"
     labels:
-      - 'dockupdater.enable=true'
-      - 'traefik.enable=true'
-      - 'traefik.docker.network=proxy'
-      - 'traefik.http.routers.frontend.rule=Host(`yacht.${DOMAIN}`)'
-      - 'traefik.http.routers.frontend.entrypoints=https'
-      - 'traefik.http.services.frontend.loadbalancer.server.port=8000'
-      - 'traefik.http.routers.frontend.service=frontend'
-      - 'traefik.http.routers.frontend.tls.certresolver=dns-cloudflare'  
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true" ## Enable auto update docker
+      #- 'dockupdater.disable=false' ## Disable auto update docker
+      - "traefik.http.routers.yacht-rtr.entrypoints=https"
+      - "traefik.http.routers.yacht-rtr.rule=Host(`yacht.${DOMAIN}`)"
+      - "traefik.http.routers.yacht-rtr.tls=true"
+      - "traefik.http.routers.yacht-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.yacht-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.yacht-rtr.service=yacht-svc"
+      - "traefik.http.services.yacht-svc.loadbalancer.server.port=8000"
+
 networks:
   proxy:
     driver: bridge
     external: true
 volumes:
-  yacht:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt
