@@ -1,0 +1,35 @@
+---
+version: '3'
+services:
+  yacht:
+    container_name: 'yacht'
+    image: 'selfhostedpro/yacht'
+    restart: 'unless-stopped'
+    ports:
+      - '8000:8000'
+    networks:
+      - proxy
+    security_opt:
+      - 'no-new-privileges:true'
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock:ro'
+      - '/opt/appdata/yacht:/config'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+    labels:
+      - 'dockupdater.enable=true'
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'traefik.http.routers.frontend.rule=Host(`yacht.${DOMAIN}`)'
+      - 'traefik.http.routers.frontend.entrypoints=https'
+      - 'traefik.http.services.frontend.loadbalancer.server.port=8000'
+      - 'traefik.http.routers.frontend.service=frontend'
+      - 'traefik.http.routers.frontend.tls.certresolver=dns-cloudflare'  
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  yacht:
