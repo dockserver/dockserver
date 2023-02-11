@@ -1,22 +1,26 @@
 ---
-version: "3"
+version: "3.9"
+## SET GLOBAL HEADER FOR COMPOSER
 services:
   cloudflared:
-    image: "ghcr.io/dockserver/docker-cloudflared:latest"
     hostname: "cloudflared"
     container_name: "cloudflared"
-    command: "'tunnel' 'run' '${CLOUDFLARED_UUID}'"
-    networks:
-      - ${DOCKERNETWORK}
     environment:
       - "PGID=${ID}"
       - "PUID=${ID}"
       - "TZ=${TZ}"
+    image: "cloudflare/cloudflared:latest"
+    command: "tunnel --no-autoupdate --config=/home/nonroot/.cloudflared/config.yaml run"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
-      - "${APPFOLDER}/cloudflared:/home/nonroot/.cloudflared"
-    restart: always
+      - "${APPFOLDER}/cloudflared:/home/nonroot/.cloudflared:rw"
+    labels:
+      - "dockupdater.enable=true"
 networks:
   proxy:
     driver: bridge
     external: true
-#"
