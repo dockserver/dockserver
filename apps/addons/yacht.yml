@@ -1,0 +1,36 @@
+---
+version: "3.9"
+## SET GLOBAL HEADER FOR COMPOSER
+services:
+  yacht:
+    hostname: "yacht"
+    container_name: "yacht"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "selfhostedpro/yacht:latest"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "${APPFOLDER}/yacht:/config:rw"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.yacht-rtr.entrypoints=https"
+      - "traefik.http.routers.yacht-rtr.rule=Host(`yacht.${DOMAIN}`)"
+      - "traefik.http.routers.yacht-rtr.tls=true"
+      - "traefik.http.routers.yacht-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.yacht-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.yacht-rtr.service=yacht-svc"
+      - "traefik.http.services.yacht-svc.loadbalancer.server.port=8000"
+networks:
+  proxy:
+    driver: bridge
+    external: true
