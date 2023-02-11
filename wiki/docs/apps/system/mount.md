@@ -59,6 +59,7 @@ For Rclone WebUI - Leave user and password blank and hit login button.
 
 |Setting           |Default            |Description|
 |------------------|-------------------|-----------|
+|`GOOGLE_IP`       |`142.250.74.78`    |Set hardcoded IP for `www.googleapis.com` this does prevent Error 429. You can specify multiple IPs with comma separated. |
 |`PROXY`           |`null`             |Set HTTP or SOCKS5 Proxy for RClone. [Rclone documentation](https://rclone.org/faq/#can-i-use-rclone-with-an-http-proxy) for details.|
 |`UMASK`           |`18`               |Rclone uses its own values `18` = `022`.|
 |`DRIVETRASH`      |`false`            |Whether or not the Drive Trash should be used. Options:</br>`true`</br>`false`|
