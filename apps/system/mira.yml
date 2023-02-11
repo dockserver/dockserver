@@ -1,5 +1,6 @@
 ---
-version: '3.8'
+version: "3.9"
+## SET GLOBAL HEADER FOR COMPOSER
 services:
   mira:
     hostname: 'mira'
@@ -16,6 +17,8 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     networks:
       - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=proxy'
@@ -31,4 +34,3 @@ networks:
   proxy:
     driver: bridge
     external: true
-#EOF
