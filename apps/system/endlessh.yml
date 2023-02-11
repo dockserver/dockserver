@@ -1,8 +1,9 @@
 ---
-version: "3"
+version: "3.9"
+## SET GLOBAL HEADER FOR COMPOSER
 services:
   endlessh:
-    image: "lscr.io/linuxserver/endlessh:latest"
+    hostname: "endlessh"
     container_name: "endlessh"
     environment:
       - "PUID=${ID}"
@@ -12,8 +13,11 @@ services:
       - "MAXLINES=32"
       - "MAXCLIENTS=4096"
       - "LOGFILE=true"
+    image: "lscr.io/linuxserver/endlessh:latest"
+    restart: "${RESTARTAPP}"
     volumes:
       - "${APPFOLDER}/endlessh:/config"
     ports:
       - "22:2222"
-    restart: "${RESTARTAPP}"
+    labels:
+      - "dockupdater.enable=true"
