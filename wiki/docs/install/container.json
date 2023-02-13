@@ -319,11 +319,11 @@
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "1.2.1.2588",
+   "newversion": "1.2.1.2596",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 1.2.1.2588",
+   "body": "Upgrading docker-prowlarr to 1.2.1.2596",
    "user": "github-actions[bot]"
 }
 {
@@ -665,10 +665,10 @@
    "appname": "docker-whisparr-nightly",
    "apppic": "./images/docker-whisparr-nightly.png",
    "appfolder": "./nightly/docker-whisparr-nightly",
-   "newversion": "2.0.0.115",
+   "newversion": "2.0.0.116",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Whisparr is an adult movie collection manager for Usenet and BitTorrent users.",
-   "body": "Upgrading docker-whisparr-nightly to 2.0.0.115",
+   "body": "Upgrading docker-whisparr-nightly to 2.0.0.116",
    "user": "dockserver image update[bot]"
 }
