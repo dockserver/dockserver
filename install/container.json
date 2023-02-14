@@ -163,10 +163,10 @@
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "417.0.1-alpine",
+   "newversion": "418.0.0-alpine",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to 417.0.1-alpine",
+   "body": "Upgrading docker-gdsa to 418.0.0-alpine",
    "user": "dockserver-actions[bot]"
 }
 {
@@ -623,11 +623,11 @@
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "6bd3f015d65507efca60279007bd2b86ee860643",
+   "newversion": "dd1378cef53dfd9dadbc08996e7f07c018e413b9",
    "appbranch": "develop",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to 6bd3f015d65507efca60279007bd2b86ee860643",
+   "body": "Upgrading docker-overseerr-nightly to dd1378cef53dfd9dadbc08996e7f07c018e413b9",
    "user": "dockserver image update[bot]"
 }
 {
@@ -645,10 +645,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "a70f943462c74f36812077cd8fd2b3bcf9997b26",
+   "newversion": "f851f10ee14b8d0b2b247c251d59783610457eee",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to a70f943462c74f36812077cd8fd2b3bcf9997b26",
+   "body": "Upgrading docker-sabnzbd-nightly to f851f10ee14b8d0b2b247c251d59783610457eee",
    "user": "dockserver image update[bot]"
 }
 {
