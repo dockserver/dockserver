@@ -75,11 +75,11 @@
    "appname": "docker-dash",
    "apppic": "",
    "appfolder": "./apps/docker-dash",
-   "newversion": "4.9.0",
+   "newversion": "null",
    "baseimage": "alpine",
    "baseversion": "3.17.2",
    "description": "A simple, modern server dashboard, primarily used by smaller private servers",
-   "body": "Upgrading docker-dash to 4.9.0",
+   "body": "Upgrading docker-dash to null",
    "user": "dockserver-image[bot]"
 }
 {
@@ -154,9 +154,9 @@
    "newversion": "3.17.2",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "408ddf35609b2dcce1f4fd67b8882d60d2b17296",
+   "appversion": "",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to 408ddf35609b2dcce1f4fd67b8882d60d2b17296",
+   "body": "Upgrading docker-fenrus to ",
    "user": "github-actions[bot]"
 }
 {
@@ -389,10 +389,10 @@
    "appname": "docker-rutorrent",
    "apppic": "",
    "appfolder": "./apps/docker-rutorrent",
-   "newversion": "4.0.1-hotfix",
+   "newversion": "null",
    "baseimage": "alpine",
    "description": "Yet another web front-end for rTorrent",
-   "body": "Upgrading docker-rutorrent to 4.0.1-hotfix",
+   "body": "Upgrading docker-rutorrent to null",
    "user": "dockserver[bot]"
 }
 {
@@ -419,10 +419,10 @@
    "appname": "docker-spotweb",
    "apppic": "",
    "appfolder": "./apps/docker-spotweb",
-   "newversion": "1.5.4",
+   "newversion": "null",
    "baseimage": "ubuntu:latest",
    "description": "Decentralized community",
-   "body": "Upgrading docker-spotweb to 1.5.4",
+   "body": "Upgrading docker-spotweb to null",
    "user": "dockserver[bot]"
 }
 {
