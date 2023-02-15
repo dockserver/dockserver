@@ -389,10 +389,10 @@
    "appname": "docker-rutorrent",
    "apppic": "",
    "appfolder": "./apps/docker-rutorrent",
-   "newversion": "null",
+   "newversion": "4.0.1-hotfix",
    "baseimage": "alpine",
    "description": "Yet another web front-end for rTorrent",
-   "body": "Upgrading docker-rutorrent to null",
+   "body": "Upgrading docker-rutorrent to 4.0.1-hotfix",
    "user": "dockserver[bot]"
 }
 {
