@@ -17,6 +17,9 @@
 
 # Mount
 
+### IMPORTANT
+Each Mount instance needs his own Project/Keys, never use keys from other projects.
+
 ### Features:
 - Service Key Mount.
 - Rclone Web-GUI (https://mount.mydomain.com).
