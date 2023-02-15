@@ -18,6 +18,9 @@
 # Uploader
 Automated uploader for Google Team Drive.</br>
 
+### IMPORTANT
+Each Uploader instance needs his own Project/Keys, never use keys from other projects.
+
 ### Features:
 - Completely automated.
 - Clean web interface.
