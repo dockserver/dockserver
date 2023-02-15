@@ -19,34 +19,60 @@
 
 A Discord bot that displays live data from Tautulli
 
-## Features
+# Features
 
 Tauticord uses the Tautulli API to pull information from Tautulli and display them in a Discord channel, including:
 
-### OVERVIEW:
+### Overview:
 
-- Number of current streams
-- Number of transcoding streams
-- Total bandwidth
-- Total LAN bandwidth
+* Number of current streams
+* Number of transcoding streams
+* Total bandwidth
+* Total LAN bandwidth
+* Total remote bandwidth
+* Library item counts
 
-### FOR EACH STREAM:
+### For each stream:
 
-- Stream state (playing, paused, stopped, loading)
-- Media type (tv show/movie/song/photo)
-- User
-- Media title
-- Product and player
-- Quality profile
-- Stream bandwidth
-- If stream is transcoding
-- Progress of stream
-- ETA of stream completion
+* Stream state (playing, paused, stopped, loading)
+* Media type (tv show/movie/song/photo)
+* User
+* Media title
+* Product and player
+* Quality profile
+* Stream bandwidth
+* If stream is transcoding
+* Progress of stream
+* ETA of stream completion
+
+<img src="https://raw.githubusercontent.com/nwithan8/tauticord/master/documentation/images/embed.png">
 
 Administrator (the bot owner) can react to Tauticord's messages to terminate a specific stream (if they have Plex Pass).
 
-Users can also indicate what libraries they would like monitored. Tauticord will create/update a voice channel for each library name with item counts every hour.
+Users can also indicate what libraries they would like monitored. Tauticord will create/update a voice channel for each
+library name with item counts every hour.
 
+<img src="https://raw.githubusercontent.com/nwithan8/tauticord/master/documentation/images/libraries.png">
+
+# Installation and setup
+
+## Requirements
+
+- A Plex Media Server
+- Tautulli (formerly known as PlexPy)
+- A Discord server
+- Docker
+- [A Discord bot token](https://www.digitaltrends.com/gaming/how-to-make-a-discord-bot/)
+    - Permissions required:
+        - Manage Channels
+        - View Channels
+        - Send Messages
+        - Manage Messages
+        - Read Message History
+        - Add Reactions
+        - Manage Emojis
+    - **Shortcut**: Use the following link to invite your bot to your server with the above permissions:
+      https://discord.com/oauth2/authorize?client_id=YOUR_APPLICATION_ID&scope=bot&permissions=1074080848
 # Requirements
 
 - A Plex Media Server
