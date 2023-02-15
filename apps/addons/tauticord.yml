@@ -16,7 +16,8 @@ services:
     security_opt:
       - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
-      - "${APPFOLDER}/tauticord:/app/config:rw"
+      - "${APPFOLDER}/tauticord/config:/config:rw"
+      - "${APPFOLDER}/tauticord/logs:/logs:rw"
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
