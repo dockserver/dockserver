@@ -246,9 +246,9 @@
    "buildimage": "alpine",
    "finalimage": "ghcr.io/dockserver/docker-alpine-v3",
    "baseversion": "3.17.2",
-   "s6stage": "v3.1.3.0",
-   "description": "Docker docker-mount with mergerfs version 2.34.1 and rclone version v1.61.1 include s6-overlay: v3.1.3.0",
-   "body": "Upgrading docker-mount to baseimage: alpine:3.17.2 with mergerfs: 2.34.1 and rclone: v1.61.1 include s6-overlay: v3.1.3.0",
+   "s6stage": "v3.1.4.0",
+   "description": "Docker docker-mount with mergerfs version 2.34.1 and rclone version v1.61.1 include s6-overlay: v3.1.4.0",
+   "body": "Upgrading docker-mount to baseimage: alpine:3.17.2 with mergerfs: 2.34.1 and rclone: v1.61.1 include s6-overlay: v3.1.4.0",
    "user": "dockserver image update[bot]"
 }
 {
@@ -370,9 +370,9 @@
    "buildimage": "alpine",
    "finalimage": "ghcr.io/dockserver/docker-alpine-v3",
    "baseversion": "3.17.2",
-   "s6stage": "v3.1.3.0",
-   "description": "Docker docker-restic with rclone version v1.61.1 include s6-overlay: v3.1.3.0",
-   "body": "Upgrading docker-restic to baseimage: alpine:3.17.2 with rclone: v1.61.1 include s6-overlay: v3.1.3.0",
+   "s6stage": "v3.1.4.0",
+   "description": "Docker docker-restic with rclone version v1.61.1 include s6-overlay: v3.1.4.0",
+   "body": "Upgrading docker-restic to baseimage: alpine:3.17.2 with rclone: v1.61.1 include s6-overlay: v3.1.4.0",
    "user": "dockserver image update[bot]"
 }
 {
@@ -520,9 +520,9 @@
    "newversion": "3.17.2",
    "baseimage": "alpine",
    "baseversion": "3.17.2",
-   "s6stage": "v3.1.3.0",
-   "description": "Docker docker-alpine-v3 with include s6-overlay: v3.1.3.0",
-   "body": "Upgrading docker-alpine-v3 to baseimage: alpine:3.17.2  with include s6-overlay: v3.1.3.0",
+   "s6stage": "v3.1.4.0",
+   "description": "Docker docker-alpine-v3 with include s6-overlay: v3.1.4.0",
+   "body": "Upgrading docker-alpine-v3 to baseimage: alpine:3.17.2  with include s6-overlay: v3.1.4.0",
    "user": "dockserver image update[bot]"
 }
 {
