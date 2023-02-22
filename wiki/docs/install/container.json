@@ -75,11 +75,11 @@
    "appname": "docker-dash",
    "apppic": "",
    "appfolder": "./apps/docker-dash",
-   "newversion": "4.9.0",
+   "newversion": "4.9.1",
    "baseimage": "alpine",
    "baseversion": "3.17.2",
    "description": "A simple, modern server dashboard, primarily used by smaller private servers",
-   "body": "Upgrading docker-dash to 4.9.0",
+   "body": "Upgrading docker-dash to 4.9.1",
    "user": "dockserver-image[bot]"
 }
 {
@@ -645,10 +645,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "0734547aeca369ca9480076415731a74a1b42e0d",
+   "newversion": "f94c48b27cde12a246f8fb102e6f0d8283f202c4",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 0734547aeca369ca9480076415731a74a1b42e0d",
+   "body": "Upgrading docker-sabnzbd-nightly to f94c48b27cde12a246f8fb102e6f0d8283f202c4",
    "user": "dockserver image update[bot]"
 }
 {
