@@ -623,11 +623,11 @@
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "50f06dabbffc693f0843584a64d1d96e77982820",
+   "newversion": "eb5502a16f86e37a933f6beca0678c2d228e77d5",
    "appbranch": "develop",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to 50f06dabbffc693f0843584a64d1d96e77982820",
+   "body": "Upgrading docker-overseerr-nightly to eb5502a16f86e37a933f6beca0678c2d228e77d5",
    "user": "dockserver image update[bot]"
 }
 {
