@@ -173,11 +173,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.3269",
+   "newversion": "0.20.3288",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.3269",
+   "body": "Upgrading docker-jackett to 0.20.3288",
    "user": "github-actions[bot]"
 }
 {
@@ -623,11 +623,11 @@
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "b3882de8930a70adb2f93a27be6370bfa1826587",
+   "newversion": "ae3818304b2f75222d1bd223ece94f829a3b42d0",
    "appbranch": "develop",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to b3882de8930a70adb2f93a27be6370bfa1826587",
+   "body": "Upgrading docker-overseerr-nightly to ae3818304b2f75222d1bd223ece94f829a3b42d0",
    "user": "dockserver image update[bot]"
 }
 {
@@ -655,10 +655,10 @@
    "appname": "docker-sonarr-nightly",
    "apppic": "./images/docker-sonarr-nightly.png",
    "appfolder": "./nightly/docker-sonarr-nightly",
-   "newversion": "develop-4.0.0.390-ls412",
+   "newversion": "develop-4.0.0.391-ls413",
    "appbranch": "develop",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.390-ls412",
+   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.391-ls413",
    "user": "dockserver image update[bot]"
 }
 {
