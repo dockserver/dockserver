@@ -319,11 +319,11 @@
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "1.3.1.2764",
+   "newversion": "1.3.1.2772",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 1.3.1.2764",
+   "body": "Upgrading docker-prowlarr to 1.3.1.2772",
    "user": "github-actions[bot]"
 }
 {
@@ -409,10 +409,10 @@
    "appname": "docker-sonarr",
    "apppic": "./images/docker-sonarr.png",
    "appfolder": "./apps/docker-sonarr",
-   "newversion": "3.0.9.1549-ls178",
+   "newversion": "3.0.9.1549-ls179",
    "appbranch": "main",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr to 3.0.9.1549-ls178",
+   "body": "Upgrading docker-sonarr to 3.0.9.1549-ls179",
    "user": "github-actions[bot]"
 }
 {
@@ -655,10 +655,10 @@
    "appname": "docker-sonarr-nightly",
    "apppic": "./images/docker-sonarr-nightly.png",
    "appfolder": "./nightly/docker-sonarr-nightly",
-   "newversion": "develop-4.0.0.391-ls413",
+   "newversion": "develop-4.0.0.391-ls414",
    "appbranch": "develop",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.391-ls413",
+   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.391-ls414",
    "user": "dockserver image update[bot]"
 }
 {
