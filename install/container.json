@@ -319,11 +319,11 @@
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "1.3.1.2772",
+   "newversion": "1.3.1.2776",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 1.3.1.2772",
+   "body": "Upgrading docker-prowlarr to 1.3.1.2776",
    "user": "github-actions[bot]"
 }
 {
@@ -353,11 +353,11 @@
    "appname": "docker-readarr",
    "apppic": "./images/docker-readarr.png",
    "appfolder": "./apps/docker-readarr",
-   "newversion": "0.1.4.1591",
+   "newversion": "0.1.4.1594",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-readarr to 0.1.4.1591",
+   "body": "Upgrading docker-readarr to 0.1.4.1594",
    "user": "github-actions[bot]"
 }
 {
