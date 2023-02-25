@@ -51,7 +51,7 @@ All settings can be found here: `/opt/appdata/restic/restic/restic.env`
 #### NOTIFICATION - SETTINGS
 [Apprise](https://github.com/caronc/apprise) has been integrated into Uploader and is defaulted to format all notifications in [Markdown](https://www.markdownguide.org/). Please refer to the [Apprise documentation](https://github.com/caronc/apprise/wiki) for more information.
 
-![Image of Notification](/img/notifications/discord-uploader.png)
+![Image of Notification](/img/notifications/discord-restic.png)
 
 |Setting                  |Default|Description|
 |-------------------------|-------|------------|
