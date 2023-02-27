@@ -342,11 +342,11 @@
    "appname": "docker-radarr",
    "apppic": "./images/docker-radarr.png",
    "appfolder": "./apps/docker-radarr",
-   "newversion": "4.3.2.6857-ls162",
+   "newversion": "4.3.2.6857-ls163",
    "appbranch": "master",
    "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr to 4.3.2.6857-ls162",
+   "body": "Upgrading docker-radarr to 4.3.2.6857-ls163",
    "user": "github-actions[bot]"
 }
 {
