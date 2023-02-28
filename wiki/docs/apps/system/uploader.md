@@ -133,7 +133,7 @@ Autoscan is optional, people with feeders may use it to trigger scan after uploa
 
 |Setting       |Default|Description|
 |--------------|-------|-----------|
-|`STRIPARR_URL`|`null` |The Striparr URL. Example:`STRIPARR_URL=http://striparr:40000`|
+|`STRIPARR_URL`|`null` |The Striparr URL. Example: `STRIPARR_URL=http://striparr:40000`|
 
 #### LANGUAGE MESSAGES
 |Setting   |Default|Description|
