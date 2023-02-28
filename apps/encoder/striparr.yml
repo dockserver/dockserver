@@ -1,0 +1,33 @@
+---
+version: "3.9"
+## SET GLOBAL HEADER FOR COMPOSER
+services:
+  striparr:
+    hostname: "striparr"
+    container_name: "striparr"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "UMASK=${UMASK}"
+    image: "mikenye/striparr:latest"
+    restart: "${RESTARTAPP}"
+    networks:
+      - "${DOCKERNETWORK}"
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "/mnt/incomplete/striparr:/tmp:rw"
+      - "unionfs:/mnt"
+    labels:
+      - "dockupdater.enable=true"
+      - "com.centurylinklabs.watchtower.enable=true"
+networks:
+  proxy:
+    driver: bridge
+    external: true
+volumes:
+  unionfs:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /mnt
