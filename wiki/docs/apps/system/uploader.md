@@ -123,10 +123,17 @@ Autoscan is optional, people with feeders may use it to trigger scan after uploa
 ![Image of Notification](/img/notifications/discord-uploader.png)
 
 |Setting                  |Default|Description|
-|-------------------------|-------|------------|
+|-------------------------|-------|-----------|
 |`NOTIFICATION_URL`       |`null` |The notification URL to be passed to Apprise. Discord examples:</br>`https://discordapp.com/api/webhooks/{WebhookID}/{WebhookToken}`</br>`discord://{WebhookID}/{WebhookToken}/`</br>`discord://{user}@{WebhookID}/{WebhookToken}/`|
 |`NOTIFICATION_LEVEL`     |`ALL`  |What notifications should be sent to `NOTIFICATION_URL`. Options:</br>`ALL` - Send notification for all uploads</br>`ERROR` - Send notification for only errors</br>`NONE` - Do not send any notifications|
 |`NOTIFICATION_SERVERNAME`|`null` |What to display on the notification, after "Uploader - ". `null` will default to "Uploader - Docker". Anything else will only replace "Docker".</br>Examples:</br>`NOTIFICATION_SERVERNAME=null` results in "Uploader - Docker"</br>`NOTIFICATION_SERVERNAME=My Awesome Server` will result in "Uploader - My Awesome Server"|
+
+#### STRIPARR - SETTINGS
+[Striparr](https://github.com/mikenye/docker-striparr) has been integrated into Uploader. The files will not be uploaded until they have been successfully striped. 
+
+|Setting       |Default|Description|
+|--------------|-------|-----------|
+|`STRIPARR_URL`|`null` |The Striparr URL. Example:`STRIPARR_URL=http://striparr:40000`|
 
 #### LANGUAGE MESSAGES
 |Setting   |Default|Description|
