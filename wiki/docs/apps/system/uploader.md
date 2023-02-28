@@ -129,7 +129,7 @@ Autoscan is optional, people with feeders may use it to trigger scan after uploa
 |`NOTIFICATION_SERVERNAME`|`null` |What to display on the notification, after "Uploader - ". `null` will default to "Uploader - Docker". Anything else will only replace "Docker".</br>Examples:</br>`NOTIFICATION_SERVERNAME=null` results in "Uploader - Docker"</br>`NOTIFICATION_SERVERNAME=My Awesome Server` will result in "Uploader - My Awesome Server"|
 
 #### STRIPARR - SETTINGS
-[Striparr](https://github.com/mikenye/docker-striparr) has been integrated into Uploader. The files will not be uploaded until they have been successfully striped. 
+[Striparr](https://github.com/mikenye/docker-striparr) is optional and needs the Striparr Docker to be deployed on the same System. The files will not be uploaded until they have been successfully striped. 
 
 |Setting       |Default|Description|
 |--------------|-------|-----------|
