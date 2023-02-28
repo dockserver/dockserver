@@ -474,7 +474,7 @@
    "appfolder": "./apps/docker-wiki",
    "appbranch": "master",
    "newversion": "3.17.2",
-   "appversion": "1.4.47",
+   "appversion": "1.4.48",
    "wikiversion": "9.0.15",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
@@ -645,10 +645,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "05d58ca0daf776549bdb77df93c40b210473856a",
+   "newversion": "38270bf4e2bf105a3f37d4a508a25c8154e271fe",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 05d58ca0daf776549bdb77df93c40b210473856a",
+   "body": "Upgrading docker-sabnzbd-nightly to 38270bf4e2bf105a3f37d4a508a25c8154e271fe",
    "user": "dockserver image update[bot]"
 }
 {
