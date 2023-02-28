@@ -173,11 +173,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.3392",
+   "newversion": "0.20.3403",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.3392",
+   "body": "Upgrading docker-jackett to 0.20.3403",
    "user": "github-actions[bot]"
 }
 {
@@ -623,11 +623,11 @@
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "c36a4ba2b8df05873f5dfd0946a9bc3dc4ecfd1d",
+   "newversion": "2520d8f739abfde608f3ef66a9fbe6b7b5c6647a",
    "appbranch": "develop",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to c36a4ba2b8df05873f5dfd0946a9bc3dc4ecfd1d",
+   "body": "Upgrading docker-overseerr-nightly to 2520d8f739abfde608f3ef66a9fbe6b7b5c6647a",
    "user": "dockserver image update[bot]"
 }
 {
