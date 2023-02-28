@@ -163,10 +163,10 @@
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "419.0.0-alpine",
+   "newversion": "420.0.0-alpine",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to 419.0.0-alpine",
+   "body": "Upgrading docker-gdsa to 420.0.0-alpine",
    "user": "dockserver-actions[bot]"
 }
 {
@@ -379,10 +379,10 @@
    "appname": "docker-rollarr",
    "apppic": "./images/docker-rollarr.png",
    "appfolder": "./apps/docker-rollarr",
-   "newversion": "rolling",
+   "newversion": "",
    "baseimage": "ubuntu",
    "description": "This is the new and improved Automatic Pre-roll script with a GUI for Plex now called Rollarr!",
-   "body": "Upgrading docker-rollarr to rolling",
+   "body": "Upgrading docker-rollarr to ",
    "user": "github-actions[bot]"
 }
 {
