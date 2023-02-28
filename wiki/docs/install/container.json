@@ -308,11 +308,11 @@
    "appname": "docker-plex",
    "apppic": "./images/docker-plex.png",
    "appfolder": "./apps/docker-plex",
-   "newversion": "1.31.1.6733-bc0674160",
+   "newversion": "1.31.2.6739-a87e876bd",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:jammy",
    "description": "Docker Container for Plex Media Server || PLEX PASS",
-   "body": "Upgrading docker-plex to 1.31.1.6733-bc0674160",
+   "body": "Upgrading docker-plex to 1.31.2.6739-a87e876bd",
    "user": "dockserver image update[bot]"
 }
 {
@@ -379,10 +379,10 @@
    "appname": "docker-rollarr",
    "apppic": "./images/docker-rollarr.png",
    "appfolder": "./apps/docker-rollarr",
-   "newversion": "",
+   "newversion": "rolling",
    "baseimage": "ubuntu",
    "description": "This is the new and improved Automatic Pre-roll script with a GUI for Plex now called Rollarr!",
-   "body": "Upgrading docker-rollarr to ",
+   "body": "Upgrading docker-rollarr to rolling",
    "user": "github-actions[bot]"
 }
 {
