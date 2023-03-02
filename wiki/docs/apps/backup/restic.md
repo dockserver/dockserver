@@ -35,8 +35,8 @@ All settings can be found here: `/opt/appdata/restic/restic/restic.env`
 |-----------------|-------|-----------|
 |`RESTIC_JOBS` |`1` |..|
 |`RESTIC_HOST`   |`Restic`    |..|
-|`RESTIC_REPOSITORY`|`null` |Rclone Backup path eg example: `rclone:tdrive:backup/plexBeast`.|
-|`RESTIC_PASSWORD` |`null`    |..|
+|`RESTIC_REPOSITORY`|`null` |Rclone Backup path eg example: `rclone:tdrive:backup/myservername`.|
+|`RESTIC_PASSWORD` |`null`    |Secure password for your backups.|
 |`RESTIC_TAG` |`appdata`    |..|
 |`RESTIC_PACK_SIZE` |`32`    |..|
 |`RESTIC_CACHE_DIR` |`/config/.cache`    |..|
@@ -58,6 +58,26 @@ All settings can be found here: `/opt/appdata/restic/restic/restic.env`
 |`NOTIFICATION_URL`       |`null` |The notification URL to be passed to Apprise. Discord examples:</br>`https://discordapp.com/api/webhooks/{WebhookID}/{WebhookToken}`</br>`discord://{WebhookID}/{WebhookToken}/`</br>`discord://{user}@{WebhookID}/{WebhookToken}/`|
 |`NOTIFICATION_LEVEL`     |`ALL`  |What notifications should be sent to `NOTIFICATION_URL`. Options:</br>`ALL` - Send notification for all backups</br>`ERROR` - Send notification for only errors</br>`NONE` - Do not send any notifications|
 |`NOTIFICATION_SERVERNAME`|`null` |What to display on the notification, after "Restic - ". `null` will default to "Restic - Docker". Anything else will only replace "Docker".</br>Examples:</br>`NOTIFICATION_SERVERNAME=null` results in "Restic - Docker"</br>`NOTIFICATION_SERVERNAME=My Awesome Server` will result in "Restic Backup - My Awesome Server"|
+
+## Setup Restic Backup
+
+#### Create Service Account
+
+
+#### Create Rclone.conf 
+
+
+#### ENV Setup
+
+
+#### Deploy Container
+
+
+## Restic Backup Commands
+
+
+
+
 
 ## Support
 Kindly report any issues on [GitHub](https://github.com/dockserver/dockserver/issues) or [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa)
