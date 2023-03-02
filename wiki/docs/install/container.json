@@ -456,7 +456,7 @@
    "s6_stage": "",
    "description": "",
    "body": "Upgrading docker-uploader to ",
-   "user": "github-actions[bot]"
+   "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-vnstat",
@@ -645,10 +645,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "38270bf4e2bf105a3f37d4a508a25c8154e271fe",
+   "newversion": "2ec3da18f2e5c5eac2bb2f7d1831ab32f1e84130",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 38270bf4e2bf105a3f37d4a508a25c8154e271fe",
+   "body": "Upgrading docker-sabnzbd-nightly to 2ec3da18f2e5c5eac2bb2f7d1831ab32f1e84130",
    "user": "dockserver image update[bot]"
 }
 {
