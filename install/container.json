@@ -409,10 +409,10 @@
    "appname": "docker-sonarr",
    "apppic": "./images/docker-sonarr.png",
    "appfolder": "./apps/docker-sonarr",
-   "newversion": "3.0.9.1549-ls180",
+   "newversion": "3.0.10.1566-ls181",
    "appbranch": "main",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr to 3.0.9.1549-ls180",
+   "body": "Upgrading docker-sonarr to 3.0.10.1566-ls181",
    "user": "github-actions[bot]"
 }
 {
@@ -645,10 +645,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "824341e396637a01a7148deb21cb5a880af9640e",
+   "newversion": "32515172d3c35f68ba6f0abc43e5734b2be409bb",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 824341e396637a01a7148deb21cb5a880af9640e",
+   "body": "Upgrading docker-sabnzbd-nightly to 32515172d3c35f68ba6f0abc43e5734b2be409bb",
    "user": "dockserver image update[bot]"
 }
 {
