@@ -308,11 +308,11 @@
    "appname": "docker-plex",
    "apppic": "./images/docker-plex.png",
    "appfolder": "./apps/docker-plex",
-   "newversion": "1.31.2.6739-a87e876bd",
+   "newversion": "1.31.2.6757-39d3abef1",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:jammy",
    "description": "Docker Container for Plex Media Server || PLEX PASS",
-   "body": "Upgrading docker-plex to 1.31.2.6739-a87e876bd",
+   "body": "Upgrading docker-plex to 1.31.2.6757-39d3abef1",
    "user": "dockserver image update[bot]"
 }
 {
@@ -342,11 +342,11 @@
    "appname": "docker-radarr",
    "apppic": "./images/docker-radarr.png",
    "appfolder": "./apps/docker-radarr",
-   "newversion": "4.3.2.6857-ls163",
+   "newversion": "4.3.2.6857-ls164",
    "appbranch": "master",
    "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr to 4.3.2.6857-ls163",
+   "body": "Upgrading docker-radarr to 4.3.2.6857-ls164",
    "user": "github-actions[bot]"
 }
 {
@@ -634,11 +634,11 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "nightly-4.4.3.6983-ls453",
+   "newversion": "nightly-4.4.3.6983-ls454",
    "appbranch": "nightly",
    "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to nightly-4.4.3.6983-ls453",
+   "body": "Upgrading docker-radarr-nightly to nightly-4.4.3.6983-ls454",
    "user": "dockserver image update[bot]"
 }
 {
