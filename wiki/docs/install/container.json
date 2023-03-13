@@ -319,11 +319,11 @@
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "1.3.2.2921",
+   "newversion": "1.3.2.2925",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 1.3.2.2921",
+   "body": "Upgrading docker-prowlarr to 1.3.2.2925",
    "user": "github-actions[bot]"
 }
 {
@@ -429,10 +429,10 @@
    "appname": "docker-tautulli",
    "apppic": "./images/docker-tautulli.png",
    "appfolder": "./apps/docker-tautulli",
-   "newversion": "2.11.1",
+   "newversion": "2.12.0",
    "baseimage": "ghcr.io/dockserver/docker-alpine",
    "description": "A Python based monitoring and tracking tool for Plex Media Server.",
-   "body": "Upgrading docker-tautulli to 2.11.1",
+   "body": "Upgrading docker-tautulli to 2.12.0",
    "user": "github-actions[bot]"
 }
 {
