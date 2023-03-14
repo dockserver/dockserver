@@ -163,10 +163,10 @@
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "421.0.0-alpine",
+   "newversion": "422.0.0-alpine",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to 421.0.0-alpine",
+   "body": "Upgrading docker-gdsa to 422.0.0-alpine",
    "user": "dockserver-actions[bot]"
 }
 {
@@ -241,14 +241,14 @@
    "appfolder": "./apps/docker-mount",
    "newversion": "3.17.2",
    "mergerfs": "2.34.1",
-   "rclone": "v1.61.1",
+   "rclone": "v1.62.0",
    "baseimage": "alpine",
    "buildimage": "alpine",
    "finalimage": "ghcr.io/dockserver/docker-alpine-v3",
    "baseversion": "3.17.2",
    "s6stage": "v3.1.4.1",
-   "description": "Docker docker-mount with mergerfs version 2.34.1 and rclone version v1.61.1 include s6-overlay: v3.1.4.1",
-   "body": "Upgrading docker-mount to baseimage: alpine:3.17.2 with mergerfs: 2.34.1 and rclone: v1.61.1 include s6-overlay: v3.1.4.1",
+   "description": "Docker docker-mount with mergerfs version 2.34.1 and rclone version v1.62.0 include s6-overlay: v3.1.4.1",
+   "body": "Upgrading docker-mount to baseimage: alpine:3.17.2 with mergerfs: 2.34.1 and rclone: v1.62.0 include s6-overlay: v3.1.4.1",
    "user": "dockserver image update[bot]"
 }
 {
@@ -365,14 +365,14 @@
    "apppic": "./images/docker-restic.png",
    "appfolder": "./apps/docker-restic",
    "newversion": "3.17.2",
-   "rclone": "v1.61.1",
+   "rclone": "v1.62.0",
    "baseimage": "alpine",
    "buildimage": "alpine",
    "finalimage": "ghcr.io/dockserver/docker-alpine-v3",
    "baseversion": "3.17.2",
    "s6stage": "v3.1.4.1",
-   "description": "Docker docker-restic with rclone version v1.61.1 include s6-overlay: v3.1.4.1",
-   "body": "Upgrading docker-restic to baseimage: alpine:3.17.2 with rclone: v1.61.1 include s6-overlay: v3.1.4.1",
+   "description": "Docker docker-restic with rclone version v1.62.0 include s6-overlay: v3.1.4.1",
+   "body": "Upgrading docker-restic to baseimage: alpine:3.17.2 with rclone: v1.62.0 include s6-overlay: v3.1.4.1",
    "user": "dockserver image update[bot]"
 }
 {
