@@ -1,33 +1,17 @@
 # CHANGELOG
 
-## [v1.4.48](https://github.com/dockserver/dockserver/releases/tag/v1.4.48) - 2023-02-28 20:17:37
+## [v1.4.49](https://github.com/dockserver/dockserver/releases/tag/v1.4.49) - 2023-03-17 06:20:25
 
 ## 💻 GitHub updates
 
-- GH updates (deps): Bump aquasecurity/trivy-action from 0.9.0 to 0.9.1 (#603)Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
-   - PR: #603
-- GH updates (deps): Bump step-security/harden-runner from 2.1.0 to 2.2.0
-   - PR: #607
+- GH updates (deps): Bump aquasecurity/trivy-action from 0.9.1 to 0.9.2 (#609)Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+   - PR: #609
+- GH updates (deps): Bump step-security/harden-runner from 2.2.0 to 2.2.1
+   - PR: #611
+- GH updates (deps): Bump actions/checkout from 3.3.0 to 3.4.0 (#612)Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+   - PR: #612
 
-## 🎨 DockServer Update
-
-- Update tauticord.yml
-   - PR: #604
-- Update tauticord.md
-   - PR: #605
-
-
-
-
-- fix: Add Wiki Google_IP (#601
-   - PR: #601
-- restic
-   - PR: #606
-
-### Bug Fixes
-
-- general:
-  - Add Wiki Google_IP (#601 ([06beb9f](https://github.com/dockserver/dockserver/commit/06beb9fbba52d2d2d3de77253a9278b6a353f272)) ([#601](https://github.com/dockserver/dockserver/pull/601))
+## [v1.4.48](https://github.com/dockserver/dockserver/releases/tag/v1.4.48) - 2023-02-28 20:17:37
 
 ## [v1.4.47](https://github.com/dockserver/dockserver/releases/tag/v1.4.47) - 2023-02-08 08:16:30
 
