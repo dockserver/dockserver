@@ -179,20 +179,23 @@ nav:
           - A-Train: apps/addons/a-train.md
           - Cloud: apps/addons/cloud.md
           - CloudCMD: apps/addons/cloudcmd.md
-          - Flaresolverr: apps/addons/flaresolverr.md
-          - diun: apps/addons/diun.md
+          - Cloudflare-DDNS: apps/addons/cloudflare-ddns.md
+          - Dashmachine: apps/addons/dashmachine.md
+          - Diun: apps/addons/diun.md
           - Dozzle: apps/addons/dozzle.md
+          - Flaresolverr: apps/addons/flaresolverr.md
           - Heimdall: apps/addons/heimdall.md
           - Kitana: apps/addons/kitana.md
           - Librespeed: apps/addons/librespeed.md
           - NetData: apps/addons/netdata.md
           - NotiFiarr: apps/addons/notifiarr.md
           - Remmina: apps/addons/remmina.md
-          - Tauticord: apps/addons/tauticord.md
           - Speedtest: apps/addons/speedtest.md
+          - Tauticord: apps/addons/tauticord.md
           - vnstat: apps/addons/vnstat.md
       - Backup:
           - Duplicati: apps/backup/duplicati.md
+          - Restic: apps/backup/restic.md
           - Rsnapshot: apps/backup/rsnapshot.md
       - Coding:
           - Cloud9: apps/coding/cloud9.md
@@ -210,8 +213,8 @@ nav:
           - SabNZBD: apps/downloadclients/sabnzbd.md
           - Youtubedl-Material: apps/downloadclients/youtubedl-material.md
       - Encoder:
-          - Tdarr: apps/encoder/tdarr.md
           - HandBrake: apps/encoder/handbrake.md
+          - Tdarr: apps/encoder/tdarr.md
       - KASM Workspace:
           - Kasmdesktop: apps/kasmworkspace/kasmdesktop.md
       - MediaManager:
@@ -226,13 +229,13 @@ nav:
           - Readarr: apps/mediamanager/readarr.md
           - Sonarr: apps/mediamanager/sonarr.md
           - Tautulli: apps/mediamanager/tautulli.md
-          - Tracktarr: apps/mediamanager/traktarr.md
+          - Traktarr: apps/mediamanager/traktarr.md
           - Xteve: apps/mediamanager/xteve.md
       - MediaServer:
           - Emby: apps/mediaserver/emby.md
-          - Plex: apps/mediaserver/plex.md
           - Jellyfin: apps/mediaserver/jellyfin.md
           - MStream: apps/mediaserver/mstream.md
+          - Plex: apps/mediaserver/plex.md
       - Request:
           - Conreq: apps/request/conreq.md
           - Overseerr: apps/request/overseerr.md
@@ -258,9 +261,10 @@ nav:
           - Recipes: apps/selfhosted/recipes.md
           - Snapdrop: apps/selfhosted/snapdrop.md
           - Teamspeak: apps/selfhosted/teamspeak.md
-          - unifi-controller: apps/selfhosted/unifi-controller.md
-          - whoogle: apps/selfhosted/whoogle.md
+          - Unifi-Controller: apps/selfhosted/unifi-controller.md
+          - Whoogle: apps/selfhosted/whoogle.md
           - Wireguard: apps/selfhosted/wireguard.md
+          - XBVR: apps/selfhosted/xbvr.md
       - Share:
           - Filerun: apps/share/filerun.md
           - Nextcloud: apps/share/nextcloud.md
@@ -268,7 +272,7 @@ nav:
       - System:
           - Mount: apps/system/mount.md
           - Uploader: apps/system/uploader.md
-          - dockupdater: apps/system/dockupdater.md
+          - Dockupdater: apps/system/dockupdater.md
           - endlessh: apps/system/endlessh.md
           - Rclone-GUI: apps/system/rclone-gui.md
           - Statping: apps/system/statping.md
