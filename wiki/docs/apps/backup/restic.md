@@ -40,13 +40,13 @@ All settings can be found here: `/opt/appdata/restic/restic/restic.env`
 |Setting          |Default|Description|
 |-----------------|-------|-----------|
 |`RESTIC_JOBS` |`1` |Configure multiple jobs, creates for every job an extra ENV file.|
-|`RESTIC_HOST`   |`Restic`    |Restic Backup hostname|
+|`RESTIC_HOST`   |`Restic`    |Restic Backup hostname.|
 |`RESTIC_REPOSITORY`|`null` |Rclone Backup path eg example: `rclone:tdrive:backup/myservername`.|
 |`RESTIC_PASSWORD` |`null`    |Secure password for your backups.|
 |`RESTIC_TAG` |`appdata`    |Backup Tag, good for multiple Backups.|
 |`RESTIC_PACK_SIZE` |`32`    |Restic Pack Size [Restic documentation](https://restic.readthedocs.io/en/latest/047_tuning_backup_parameters.html#pack-size)|
-|`RESTIC_CACHE_DIR` |`/config/.cache`    |Backup Cache Folder|
-|`RESTIC_FOLDER` |`/opt/appdata`    |Backup Folder|
+|`RESTIC_CACHE_DIR` |`/config/.cache`    |Backup Cache Folder.|
+|`RESTIC_FOLDER` |`/opt/appdata`    |Backup Folder.|
 
 #### RCLONE - SETTINGS
 |Setting          |Default         |Description|
