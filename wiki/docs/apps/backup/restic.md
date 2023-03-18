@@ -69,28 +69,26 @@ All settings can be found here: `/opt/appdata/restic/restic/restic.env`
 ## Setup Restic Backup
 
 #### Install Container
-
 Install from dockserver>apps>backup menu
 
 #### Create Service Account
-copy service account to `/appdata/restic`
-make sure service account has manager permissions on google.
-
+Put service account into `/opt/appdata/restic/rclone/keys`
+**IMPORTANT**: Make sure service account has manager permissions on google.
 
 #### Create Rclone.conf 
 `nano /opt/appdata/restic/rclone/rclone.conf`
 Should look something like this:
-`
+```
 [tdrive]
 type = drive
 scope = drive
-service_account_file = /config/NAMEOFSA
+service_account_file = /config/rclone/keys/NAMEOFSA
 team_drive =xxxxxxxxx
-`
+```
 
 
 #### ENV Setup
-edit `/opt/appdata/restic/restic/restic.env`
+`nano /opt/appdata/restic/restic/restic.env`
 change `RESTIC_REPOSITORY="null"` to `RESTIC_REPOSITORY="rclone:tdrive:PATH/TO/BACKUP/FOLDER"`
 change `RESTIC_PASSWORD=null` to `RESTIC_PASSWORD=YOURPASSWORD`
 
@@ -103,23 +101,23 @@ After changes, `sudo docker restart restic`
 
 ## Restic Commands
 Manual Backup
-`
+```
 docker exec -it restic bash
 source /app/restic/restic.sh
 resticbackup
-`
-Full restore
-`
+```
+Full Restore
+```
 docker exec -it restic bash
 source /app/restic/restic.sh
 resticrestore-full
-`
-APP Restore
-`
+```
+App Restore
+```
 docker exec -it restic bash
 source /app/restic/restic.sh
 resticrestore <APPNAME>
-`
+```
 
 
 
