@@ -18,7 +18,13 @@
 
 # Restic
 
-restic is a backup program that is fast, efficient and secure. It supports the three major operating systems (Linux, macOS, Windows) and a few smaller ones (FreeBSD, OpenBSD).
+Restic is a backup program that is fast, efficient and secure. It supports the three major operating systems (Linux, macOS, Windows) and a few smaller ones (FreeBSD, OpenBSD).
+
+### Features:
+- Full Rclone Support.
+- Runs default every day at 2am.
+- Multiple jobs possible.
+- Automatic configuration and repository creation.
 
 ## Configuration
 All settings can be found here: `/opt/appdata/restic/restic/restic.env`
@@ -33,14 +39,14 @@ All settings can be found here: `/opt/appdata/restic/restic/restic.env`
 #### RESTIC - SETTINGS
 |Setting          |Default|Description|
 |-----------------|-------|-----------|
-|`RESTIC_JOBS` |`1` |..|
-|`RESTIC_HOST`   |`Restic`    |..|
+|`RESTIC_JOBS` |`1` |Configure multiple jobs, creates for every job an extra ENV file.|
+|`RESTIC_HOST`   |`Restic`    |Restic Backup hostname|
 |`RESTIC_REPOSITORY`|`null` |Rclone Backup path eg example: `rclone:tdrive:backup/myservername`.|
 |`RESTIC_PASSWORD` |`null`    |Secure password for your backups.|
-|`RESTIC_TAG` |`appdata`    |..|
-|`RESTIC_PACK_SIZE` |`32`    |..|
-|`RESTIC_CACHE_DIR` |`/config/.cache`    |..|
-|`RESTIC_FOLDER` |`/opt/appdata`    |..|
+|`RESTIC_TAG` |`appdata`    |Backup Tag, good for multiple Backups.|
+|`RESTIC_PACK_SIZE` |`32`    |Restic Pack Size [Restic Documentation](https://restic.readthedocs.io/en/latest/047_tuning_backup_parameters.html#pack-size)|
+|`RESTIC_CACHE_DIR` |`/config/.cache`    |Backup Cache Folder|
+|`RESTIC_FOLDER` |`/opt/appdata`    |Backup Folder|
 
 #### RCLONE - SETTINGS
 |Setting          |Default         |Description|
@@ -73,7 +79,7 @@ All settings can be found here: `/opt/appdata/restic/restic/restic.env`
 #### Deploy Container
 
 
-## Restic Backup Commands
+## Restic Restore Commands
 
 
 
