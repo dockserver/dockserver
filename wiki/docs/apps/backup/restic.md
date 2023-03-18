@@ -79,7 +79,7 @@ All settings can be found here: `/opt/appdata/restic/restic/restic.env`
 #### Deploy Container
 
 
-## Restic Restore Commands
+## Restic Commands
 
 
 
