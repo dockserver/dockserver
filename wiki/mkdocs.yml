@@ -172,8 +172,8 @@ nav:
       - Mount Keys: drive/mdkeys.md
       - Service Accounts: drive/saccounts.md
 
-  - Applikation:
-      - Applikation: apps/apps.md
+  - Applications:
+      - Applications: apps/apps.md
       - Addons:
           - Autoscan: apps/addons/autoscan.md
           - A-Train: apps/addons/a-train.md
@@ -256,7 +256,7 @@ nav:
           - Moviematch: apps/selfhosted/moviematch.md
           - Netbox: apps/selfhosted/netbox.md
           - Nowshowing: apps/selfhosted/nowshowing.md
-          - Organizzr: apps/selfhosted/organizr.md
+          - Organizr: apps/selfhosted/organizr.md
           - PiHole: apps/selfhosted/pihole.md
           - Recipes: apps/selfhosted/recipes.md
           - Snapdrop: apps/selfhosted/snapdrop.md
