@@ -41,7 +41,8 @@ _Docker + Traefik with Authelia and Cloudflare Protection_
 
 - Stable: Ubuntu 18/20/21/22 or Debian 9/10/11
 
-- CPU 2 Cores or 2 VCores (Only tested on x86/x64)
+- CPU 2 Cores or 2 VCores (x86/x64)
+    - **No** ARM Support
 - 4GB Ram
 - 20GB Disk Space
 
