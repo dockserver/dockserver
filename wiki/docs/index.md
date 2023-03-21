@@ -36,24 +36,13 @@ _Docker + Traefik with Authelia and Cloudflare Protection_
 
 ---
 
-<details close>
-<summary>Some stats of Dockserver 📊</summary>
-<br>
-<p>
-  <a href="https://dockserver.io/" width="100%">
-    <img alt="GitHub Stats" src="https://raw.githubusercontent.com/dockserver/dockserver/master/github-metrics.svg">
-  </a>
-</p>
-</details>
-
---- 
-
 
 ## Minimum Specs and Requirements
 
 - Stable: Ubuntu 18/20/21/22 or Debian 9/10/11
 
-- CPU 2 Cores or 2 VCores (Only tested on x86/x64)
+- CPU 2 Cores or 2 VCores (x86/x64)
+    - **No** ARM Support
 - 4GB Ram
 - 20GB Disk Space
 
