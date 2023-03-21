@@ -1,4 +1,4 @@
-name: revase
+name: rebase
 
 on:
   workflow_dispatch:
