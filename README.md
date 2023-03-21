@@ -36,18 +36,6 @@ _Docker + Traefik with Authelia and Cloudflare Protection_
 
 ---
 
-<details close>
-<summary>Some stats of Dockserver 📊</summary>
-<br>
-<p>
-  <a href="https://dockserver.io/" width="100%">
-    <img alt="GitHub Stats" src="https://raw.githubusercontent.com/dockserver/dockserver/master/github-metrics.svg">
-  </a>
-</p>
-</details>
-
---- 
-
 
 ## Minimum Specs and Requirements
 
