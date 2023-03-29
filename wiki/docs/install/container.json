@@ -75,11 +75,11 @@
    "appname": "docker-dash",
    "apppic": "",
    "appfolder": "./apps/docker-dash",
-   "newversion": "5.0.0",
+   "newversion": "5.1.1",
    "baseimage": "alpine",
    "baseversion": "3.17.2",
    "description": "A simple, modern server dashboard, primarily used by smaller private servers",
-   "body": "Upgrading docker-dash to 5.0.0",
+   "body": "Upgrading docker-dash to 5.1.1",
    "user": "dockserver-image[bot]"
 }
 {
@@ -163,21 +163,21 @@
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "423.0.0-alpine",
+   "newversion": "424.0.0-alpine",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to 423.0.0-alpine",
+   "body": "Upgrading docker-gdsa to 424.0.0-alpine",
    "user": "dockserver-actions[bot]"
 }
 {
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.3670",
+   "newversion": "0.20.3704",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.3670",
+   "body": "Upgrading docker-jackett to 0.20.3704",
    "user": "github-actions[bot]"
 }
 {
@@ -240,15 +240,15 @@
    "apppic": "./images/docker-mount.png",
    "appfolder": "./apps/docker-mount",
    "newversion": "3.17.2",
-   "mergerfs": "2.34.1",
+   "mergerfs": "2.35.0",
    "rclone": "v1.62.2",
    "baseimage": "alpine",
    "buildimage": "alpine",
    "finalimage": "ghcr.io/dockserver/docker-alpine-v3",
    "baseversion": "3.17.2",
    "s6stage": "v3.1.4.1",
-   "description": "Docker docker-mount with mergerfs version 2.34.1 and rclone version v1.62.2 include s6-overlay: v3.1.4.1",
-   "body": "Upgrading docker-mount to baseimage: alpine:3.17.2 with mergerfs: 2.34.1 and rclone: v1.62.2 include s6-overlay: v3.1.4.1",
+   "description": "Docker docker-mount with mergerfs version 2.35.0 and rclone version v1.62.2 include s6-overlay: v3.1.4.1",
+   "body": "Upgrading docker-mount to baseimage: alpine:3.17.2 with mergerfs: 2.35.0 and rclone: v1.62.2 include s6-overlay: v3.1.4.1",
    "user": "dockserver image update[bot]"
 }
 {
@@ -308,22 +308,22 @@
    "appname": "docker-plex",
    "apppic": "./images/docker-plex.png",
    "appfolder": "./apps/docker-plex",
-   "newversion": "1.31.3.6819-2ef591a4c",
+   "newversion": "1.31.3.6868-28fc46b27",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:jammy",
    "description": "Docker Container for Plex Media Server || PLEX PASS",
-   "body": "Upgrading docker-plex to 1.31.3.6819-2ef591a4c",
+   "body": "Upgrading docker-plex to 1.31.3.6868-28fc46b27",
    "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "1.3.2.2964",
+   "newversion": "1.3.2.2984",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 1.3.2.2964",
+   "body": "Upgrading docker-prowlarr to 1.3.2.2984",
    "user": "github-actions[bot]"
 }
 {
@@ -342,11 +342,11 @@
    "appname": "docker-radarr",
    "apppic": "./images/docker-radarr.png",
    "appfolder": "./apps/docker-radarr",
-   "newversion": "4.3.2.6857-ls164",
+   "newversion": "4.3.2.6857-ls165",
    "appbranch": "master",
    "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr to 4.3.2.6857-ls164",
+   "body": "Upgrading docker-radarr to 4.3.2.6857-ls165",
    "user": "github-actions[bot]"
 }
 {
@@ -473,7 +473,7 @@
    "appbranch": "master",
    "newversion": "3.17.2",
    "appversion": "1.4.49",
-   "wikiversion": "9.1.3",
+   "wikiversion": "9.1.4",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
    "body": "Upgrading docker-wiki to 3.17.2",
@@ -632,31 +632,31 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "nightly-4.4.3.7000-ls454",
+   "newversion": "nightly-4.4.3.7014-ls455",
    "appbranch": "nightly",
    "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to nightly-4.4.3.7000-ls454",
+   "body": "Upgrading docker-radarr-nightly to nightly-4.4.3.7014-ls455",
    "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "e474db33ec5c2de72a2cfb9eceeba2496606a213",
+   "newversion": "62f70fd628f642ccff755dbff983ef25c8bdd93e",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to e474db33ec5c2de72a2cfb9eceeba2496606a213",
+   "body": "Upgrading docker-sabnzbd-nightly to 62f70fd628f642ccff755dbff983ef25c8bdd93e",
    "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-sonarr-nightly",
    "apppic": "./images/docker-sonarr-nightly.png",
    "appfolder": "./nightly/docker-sonarr-nightly",
-   "newversion": "develop-4.0.0.410-ls424",
+   "newversion": "develop-4.0.0.421-ls431",
    "appbranch": "develop",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.410-ls424",
+   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.421-ls431",
    "user": "dockserver image update[bot]"
 }
 {
