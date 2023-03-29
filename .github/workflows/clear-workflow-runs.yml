@@ -5,7 +5,7 @@ name: Clear Workflow Runs CI
 on:
   workflow_dispatch:
   workflow_run:
-    workflows: ["metrics"]
+    workflows: ["copycontainer"]
     types:
       - completed
 
