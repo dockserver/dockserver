@@ -643,10 +643,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "62f70fd628f642ccff755dbff983ef25c8bdd93e",
+   "newversion": "f7bf1567c16120e513b321d13554181550d9a0e0",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 62f70fd628f642ccff755dbff983ef25c8bdd93e",
+   "body": "Upgrading docker-sabnzbd-nightly to f7bf1567c16120e513b321d13554181550d9a0e0",
    "user": "dockserver image update[bot]"
 }
 {
@@ -663,10 +663,10 @@
    "appname": "docker-whisparr-nightly",
    "apppic": "./images/docker-whisparr-nightly.png",
    "appfolder": "./nightly/docker-whisparr-nightly",
-   "newversion": "2.0.0.139",
+   "newversion": "2.0.0.143",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Whisparr is an adult movie collection manager for Usenet and BitTorrent users.",
-   "body": "Upgrading docker-whisparr-nightly to 2.0.0.139",
+   "body": "Upgrading docker-whisparr-nightly to 2.0.0.143",
    "user": "dockserver image update[bot]"
 }
