@@ -154,9 +154,9 @@
    "newversion": "3.17.3",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "739549dbe9bf3fa7fd0e2b125378b4c9b237c0f9",
+   "appversion": "e258cda0dcff32b8ac1a7ef2b9124b6b47bbd553",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to 739549dbe9bf3fa7fd0e2b125378b4c9b237c0f9",
+   "body": "Upgrading docker-fenrus to e258cda0dcff32b8ac1a7ef2b9124b6b47bbd553",
    "user": "github-actions[bot]"
 }
 {
@@ -246,9 +246,9 @@
    "buildimage": "alpine",
    "finalimage": "ghcr.io/dockserver/docker-alpine-v3",
    "baseversion": "3.17.3",
-   "s6stage": "v3.1.4.1",
-   "description": "Docker docker-mount with mergerfs version 2.35.0 and rclone version v1.62.2 include s6-overlay: v3.1.4.1",
-   "body": "Upgrading docker-mount to baseimage: alpine:3.17.3 with mergerfs: 2.35.0 and rclone: v1.62.2 include s6-overlay: v3.1.4.1",
+   "s6stage": "v3.1.4.2",
+   "description": "Docker docker-mount with mergerfs version 2.35.0 and rclone version v1.62.2 include s6-overlay: v3.1.4.2",
+   "body": "Upgrading docker-mount to baseimage: alpine:3.17.3 with mergerfs: 2.35.0 and rclone: v1.62.2 include s6-overlay: v3.1.4.2",
    "user": "dockserver image update[bot]"
 }
 {
@@ -319,11 +319,11 @@
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "1.3.2.2991",
+   "newversion": "1.3.3.2992",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 1.3.2.2991",
+   "body": "Upgrading docker-prowlarr to 1.3.3.2992",
    "user": "github-actions[bot]"
 }
 {
@@ -370,9 +370,9 @@
    "buildimage": "alpine",
    "finalimage": "ghcr.io/dockserver/docker-alpine-v3",
    "baseversion": "3.17.3",
-   "s6stage": "v3.1.4.1",
-   "description": "Docker docker-restic with rclone version v1.62.2 include s6-overlay: v3.1.4.1",
-   "body": "Upgrading docker-restic to baseimage: alpine:3.17.3 with rclone: v1.62.2 include s6-overlay: v3.1.4.1",
+   "s6stage": "v3.1.4.2",
+   "description": "Docker docker-restic with rclone version v1.62.2 include s6-overlay: v3.1.4.2",
+   "body": "Upgrading docker-restic to baseimage: alpine:3.17.3 with rclone: v1.62.2 include s6-overlay: v3.1.4.2",
    "user": "dockserver image update[bot]"
 }
 {
@@ -518,9 +518,9 @@
    "newversion": "3.17.3",
    "baseimage": "alpine",
    "baseversion": "3.17.3",
-   "s6stage": "v3.1.4.1",
-   "description": "Docker docker-alpine-v3 with include s6-overlay: v3.1.4.1",
-   "body": "Upgrading docker-alpine-v3 to baseimage: alpine:3.17.3  with include s6-overlay: v3.1.4.1",
+   "s6stage": "v3.1.4.2",
+   "description": "Docker docker-alpine-v3 with include s6-overlay: v3.1.4.2",
+   "body": "Upgrading docker-alpine-v3 to baseimage: alpine:3.17.3  with include s6-overlay: v3.1.4.2",
    "user": "dockserver image update[bot]"
 }
 {
@@ -632,11 +632,11 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "nightly-4.4.3.7025-ls456",
+   "newversion": "nightly-4.4.3.7028-ls457",
    "appbranch": "nightly",
    "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to nightly-4.4.3.7025-ls456",
+   "body": "Upgrading docker-radarr-nightly to nightly-4.4.3.7028-ls457",
    "user": "dockserver image update[bot]"
 }
 {
