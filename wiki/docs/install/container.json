@@ -240,15 +240,15 @@
    "apppic": "./images/docker-mount.png",
    "appfolder": "./apps/docker-mount",
    "newversion": "3.17.3",
-   "mergerfs": "2.35.0",
+   "mergerfs": "2.35.1",
    "rclone": "v1.62.2",
    "baseimage": "alpine",
    "buildimage": "alpine",
    "finalimage": "ghcr.io/dockserver/docker-alpine-v3",
    "baseversion": "3.17.3",
    "s6stage": "v3.1.4.2",
-   "description": "Docker docker-mount with mergerfs version 2.35.0 and rclone version v1.62.2 include s6-overlay: v3.1.4.2",
-   "body": "Upgrading docker-mount to baseimage: alpine:3.17.3 with mergerfs: 2.35.0 and rclone: v1.62.2 include s6-overlay: v3.1.4.2",
+   "description": "Docker docker-mount with mergerfs version 2.35.1 and rclone version v1.62.2 include s6-overlay: v3.1.4.2",
+   "body": "Upgrading docker-mount to baseimage: alpine:3.17.3 with mergerfs: 2.35.1 and rclone: v1.62.2 include s6-overlay: v3.1.4.2",
    "user": "dockserver image update[bot]"
 }
 {
@@ -663,10 +663,10 @@
    "appname": "docker-whisparr-nightly",
    "apppic": "./images/docker-whisparr-nightly.png",
    "appfolder": "./nightly/docker-whisparr-nightly",
-   "newversion": "2.0.0.143",
+   "newversion": "2.0.0.146",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Whisparr is an adult movie collection manager for Usenet and BitTorrent users.",
-   "body": "Upgrading docker-whisparr-nightly to 2.0.0.143",
+   "body": "Upgrading docker-whisparr-nightly to 2.0.0.146",
    "user": "dockserver image update[bot]"
 }
