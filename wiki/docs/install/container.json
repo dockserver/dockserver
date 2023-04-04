@@ -163,10 +163,10 @@
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "424.0.0-alpine",
+   "newversion": "425.0.0-alpine",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to 424.0.0-alpine",
+   "body": "Upgrading docker-gdsa to 425.0.0-alpine",
    "user": "dockserver-actions[bot]"
 }
 {
@@ -319,11 +319,11 @@
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "1.3.3.2992",
+   "newversion": "1.3.3.2996",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 1.3.3.2992",
+   "body": "Upgrading docker-prowlarr to 1.3.3.2996",
    "user": "github-actions[bot]"
 }
 {
