@@ -37,7 +37,7 @@ _Docker + Traefik with Authelia and Cloudflare Protection_
 
 ## Migration
 
-If you currently have a server with PG/MHS/PTS, have a look here before you start the isntallation: [Migration Guide](https://dockserver.io/install/migration.html)
+If you currently have a server with PG/MHS/PTS, have a look here before you start the installation: [Migration Guide](https://dockserver.io/install/migration.html)
 
 ---
 
