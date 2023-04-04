@@ -308,11 +308,11 @@
    "appname": "docker-plex",
    "apppic": "./images/docker-plex.png",
    "appfolder": "./apps/docker-plex",
-   "newversion": "1.31.3.6868-28fc46b27",
+   "newversion": "1.32.0.6865-ba892e5ce",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:jammy",
    "description": "Docker Container for Plex Media Server || PLEX PASS",
-   "body": "Upgrading docker-plex to 1.31.3.6868-28fc46b27",
+   "body": "Upgrading docker-plex to 1.32.0.6865-ba892e5ce",
    "user": "dockserver image update[bot]"
 }
 {
@@ -653,10 +653,10 @@
    "appname": "docker-sonarr-nightly",
    "apppic": "./images/docker-sonarr-nightly.png",
    "appfolder": "./nightly/docker-sonarr-nightly",
-   "newversion": "develop-4.0.0.431-ls437",
+   "newversion": "develop-4.0.0.432-ls438",
    "appbranch": "develop",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.431-ls437",
+   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.432-ls438",
    "user": "dockserver image update[bot]"
 }
 {
