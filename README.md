@@ -39,7 +39,7 @@ _Docker + Traefik with Authelia and Cloudflare Protection_
 
 ## Minimum Specs and Requirements
 
-- Stable: Ubuntu 18/20/21/22 or Debian 9/10/11
+- Stable: Ubuntu 22
 
 - CPU 2 Cores or 2 VCores (x86/x64)
     - **No** ARM Support
