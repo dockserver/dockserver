@@ -154,9 +154,9 @@
    "newversion": "3.17.3",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "e43d1d77f36ab0d6d20c135bfc07ef9754bb22c8",
+   "appversion": "428877aee346e6c5eec26f8a5a4a81ed431cfe49",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to e43d1d77f36ab0d6d20c135bfc07ef9754bb22c8",
+   "body": "Upgrading docker-fenrus to 428877aee346e6c5eec26f8a5a4a81ed431cfe49",
    "user": "github-actions[bot]"
 }
 {
@@ -319,11 +319,11 @@
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "1.3.3.3024",
+   "newversion": "1.3.3.3047",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 1.3.3.3024",
+   "body": "Upgrading docker-prowlarr to 1.3.3.3047",
    "user": "github-actions[bot]"
 }
 {
@@ -409,10 +409,10 @@
    "appname": "docker-sonarr",
    "apppic": "./images/docker-sonarr.png",
    "appfolder": "./apps/docker-sonarr",
-   "newversion": "3.0.10.1567-ls185",
+   "newversion": "3.0.10.1567-ls186",
    "appbranch": "main",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr to 3.0.10.1567-ls185",
+   "body": "Upgrading docker-sonarr to 3.0.10.1567-ls186",
    "user": "github-actions[bot]"
 }
 {
