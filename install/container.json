@@ -319,11 +319,11 @@
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "1.3.3.3085",
+   "newversion": "1.3.3.3087",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 1.3.3.3085",
+   "body": "Upgrading docker-prowlarr to 1.3.3.3087",
    "user": "github-actions[bot]"
 }
 {
@@ -632,11 +632,11 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "nightly-4.4.3.7034-ls458",
+   "newversion": "nightly-4.4.4.7035-ls458",
    "appbranch": "nightly",
    "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to nightly-4.4.3.7034-ls458",
+   "body": "Upgrading docker-radarr-nightly to nightly-4.4.4.7035-ls458",
    "user": "dockserver image update[bot]"
 }
 {
