@@ -154,9 +154,9 @@
    "newversion": "3.17.3",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "ff8d7c7b6c60c1fee21c6e974cc7b56c4399a8fa",
+   "appversion": "3ba2fadaed90c68b55e4a961be2e12f2a07f529e",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to ff8d7c7b6c60c1fee21c6e974cc7b56c4399a8fa",
+   "body": "Upgrading docker-fenrus to 3ba2fadaed90c68b55e4a961be2e12f2a07f529e",
    "user": "github-actions[bot]"
 }
 {
@@ -653,10 +653,10 @@
    "appname": "docker-sonarr-nightly",
    "apppic": "./images/docker-sonarr-nightly.png",
    "appfolder": "./nightly/docker-sonarr-nightly",
-   "newversion": "develop-4.0.0.434-ls440",
+   "newversion": "develop-4.0.0.435-ls441",
    "appbranch": "develop",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.434-ls440",
+   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.435-ls441",
    "user": "dockserver image update[bot]"
 }
 {
