@@ -163,10 +163,10 @@
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "425.0.0-alpine",
+   "newversion": "426.0.0-alpine",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to 425.0.0-alpine",
+   "body": "Upgrading docker-gdsa to 426.0.0-alpine",
    "user": "dockserver-actions[bot]"
 }
 {
@@ -653,10 +653,10 @@
    "appname": "docker-sonarr-nightly",
    "apppic": "./images/docker-sonarr-nightly.png",
    "appfolder": "./nightly/docker-sonarr-nightly",
-   "newversion": "develop-4.0.0.435-ls441",
+   "newversion": "develop-4.0.0.437-ls442",
    "appbranch": "develop",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.435-ls441",
+   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.437-ls442",
    "user": "dockserver image update[bot]"
 }
 {
