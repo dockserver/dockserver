@@ -2,20 +2,20 @@
    "appname": "docker-auto-replyarr",
    "apppic": "",
    "appfolder": "./apps/docker-auto-replyarr",
-   "newversion": "",
+   "newversion": "3.17.3",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading docker-auto-replyarr to ",
+   "body": "Upgrading docker-auto-replyarr to 3.17.3",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-backup",
    "apppic": "./images/docker-backup.png",
    "appfolder": "./apps/docker-backup",
-   "newversion": "",
+   "newversion": "3.17.3",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading docker-backup to ",
+   "body": "Upgrading docker-backup to 3.17.3",
    "user": "github-actions[bot]"
 }
 {
@@ -54,10 +54,10 @@
    "appname": "docker-crunchy",
    "apppic": "./images/docker-crunchy.png",
    "appfolder": "./apps/docker-crunchy",
-   "newversion": "",
+   "newversion": "rolling",
    "baseimage": "ubuntu",
    "description": "Docker image  for docker-crunchy",
-   "body": "Upgrading docker-crunchy to baseimage: ubuntu:",
+   "body": "Upgrading docker-crunchy to baseimage: ubuntu:rolling",
    "user": "dockserver image update[bot]"
 }
 {
@@ -77,7 +77,7 @@
    "appfolder": "./apps/docker-dash",
    "newversion": "5.1.3",
    "baseimage": "alpine",
-   "baseversion": "",
+   "baseversion": "3.17.3",
    "description": "A simple, modern server dashboard, primarily used by smaller private servers",
    "body": "Upgrading docker-dash to 5.1.3",
    "user": "dockserver-image[bot]"
@@ -108,10 +108,10 @@
    "appname": "docker-dockupdate",
    "apppic": "./images/docker-dockupdate.png",
    "appfolder": "./apps/docker-dockupdate",
-   "newversion": "",
+   "newversion": "3.17.3",
    "baseimage": "alpine",
    "description": "Automatically keep your docker services and your docker containers up-to-date with the latest version",
-   "body": "Upgrading docker-dockupdate to ",
+   "body": "Upgrading docker-dockupdate to 3.17.3",
    "user": "github-actions[bot]"
 }
 {
@@ -151,7 +151,7 @@
    "appname": "docker-fenrus",
    "apppic": "./images/docker-fenrus.png",
    "appfolder": "./apps/docker-fenrus",
-   "newversion": "",
+   "newversion": "3.17.3",
    "appbranch": "master",
    "baseimage": "alpine",
    "appversion": "d4a54bf00ae5d9e2f7cb4b1dce91aa55716c1238",
@@ -163,21 +163,21 @@
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "",
+   "newversion": "426.0.0-alpine",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to ",
+   "body": "Upgrading docker-gdsa to 426.0.0-alpine",
    "user": "dockserver-actions[bot]"
 }
 {
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.3897",
+   "newversion": "0.20.3903",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.3897",
+   "body": "Upgrading docker-jackett to 0.20.3903",
    "user": "github-actions[bot]"
 }
 {
@@ -239,16 +239,16 @@
    "appname": "docker-mount",
    "apppic": "./images/docker-mount.png",
    "appfolder": "./apps/docker-mount",
-   "newversion": "",
+   "newversion": "3.17.3",
    "mergerfs": "2.35.1",
    "rclone": "v1.62.2",
    "baseimage": "alpine",
    "buildimage": "alpine",
    "finalimage": "ghcr.io/dockserver/docker-alpine-v3",
-   "baseversion": "",
+   "baseversion": "3.17.3",
    "s6stage": "v3.1.4.2",
    "description": "Docker docker-mount with mergerfs version 2.35.1 and rclone version v1.62.2 include s6-overlay: v3.1.4.2",
-   "body": "Upgrading docker-mount to baseimage: alpine: with mergerfs: 2.35.1 and rclone: v1.62.2 include s6-overlay: v3.1.4.2",
+   "body": "Upgrading docker-mount to baseimage: alpine:3.17.3 with mergerfs: 2.35.1 and rclone: v1.62.2 include s6-overlay: v3.1.4.2",
    "user": "dockserver image update[bot]"
 }
 {
@@ -632,11 +632,11 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "nightly-4.4.4.7065-ls459",
+   "newversion": "nightly-4.4.4.7067-ls459",
    "appbranch": "nightly",
    "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to nightly-4.4.4.7065-ls459",
+   "body": "Upgrading docker-radarr-nightly to nightly-4.4.4.7067-ls459",
    "user": "dockserver image update[bot]"
 }
 {
@@ -653,10 +653,10 @@
    "appname": "docker-sonarr-nightly",
    "apppic": "./images/docker-sonarr-nightly.png",
    "appfolder": "./nightly/docker-sonarr-nightly",
-   "newversion": "develop-4.0.0.441-ls445",
+   "newversion": "develop-4.0.0.443-ls446",
    "appbranch": "develop",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.441-ls445",
+   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.443-ls446",
    "user": "dockserver image update[bot]"
 }
 {
