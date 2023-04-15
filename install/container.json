@@ -75,11 +75,11 @@
    "appname": "docker-dash",
    "apppic": "",
    "appfolder": "./apps/docker-dash",
-   "newversion": "null",
+   "newversion": "5.1.3",
    "baseimage": "alpine",
    "baseversion": "3.17.3",
    "description": "A simple, modern server dashboard, primarily used by smaller private servers",
-   "body": "Upgrading docker-dash to null",
+   "body": "Upgrading docker-dash to 5.1.3",
    "user": "dockserver-image[bot]"
 }
 {
@@ -154,9 +154,9 @@
    "newversion": "3.17.3",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "",
+   "appversion": "d4a54bf00ae5d9e2f7cb4b1dce91aa55716c1238",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to ",
+   "body": "Upgrading docker-fenrus to d4a54bf00ae5d9e2f7cb4b1dce91aa55716c1238",
    "user": "github-actions[bot]"
 }
 {
