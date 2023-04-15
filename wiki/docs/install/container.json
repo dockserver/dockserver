@@ -228,11 +228,11 @@
    "appname": "docker-lidarr",
    "apppic": "./images/docker-lidarr.png",
    "appfolder": "./apps/docker-lidarr",
-   "newversion": "1.0.2.2592",
+   "newversion": "1.1.4.3027",
    "appbranch": "master",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Looks and smells like Sonarr but made for music.",
-   "body": "Upgrading docker-lidarr to 1.0.2.2592",
+   "body": "Upgrading docker-lidarr to 1.1.4.3027",
    "user": "github-actions[bot]"
 }
 {
