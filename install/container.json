@@ -409,10 +409,10 @@
    "appname": "docker-sonarr",
    "apppic": "./images/docker-sonarr.png",
    "appfolder": "./apps/docker-sonarr",
-   "newversion": "3.0.10.1567-ls186",
+   "newversion": "3.0.10.1567-ls187",
    "appbranch": "main",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr to 3.0.10.1567-ls186",
+   "body": "Upgrading docker-sonarr to 3.0.10.1567-ls187",
    "user": "github-actions[bot]"
 }
 {
@@ -653,10 +653,10 @@
    "appname": "docker-sonarr-nightly",
    "apppic": "./images/docker-sonarr-nightly.png",
    "appfolder": "./nightly/docker-sonarr-nightly",
-   "newversion": "develop-4.0.0.443-ls446",
+   "newversion": "develop-4.0.0.445-ls447",
    "appbranch": "develop",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.443-ls446",
+   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.445-ls447",
    "user": "dockserver image update[bot]"
 }
 {
