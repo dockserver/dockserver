@@ -5,7 +5,7 @@ name: Clear Workflow Runs CI
 on:
   workflow_dispatch:
   workflow_run:
-    workflows: ["metrics"]
+    workflows: ["copycontainer"]
     types:
       - completed
 
@@ -13,7 +13,7 @@ jobs:
   clear-workflow-runs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.4.0
+      - uses: actions/checkout@v3.5.2
 
       - name: Clear all workflow runs
         env:

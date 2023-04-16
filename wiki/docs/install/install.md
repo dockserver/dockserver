@@ -38,17 +38,26 @@ sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/wg
 
 </details>
 
-1. Open the dockserver Interface 
+### Update System before you begin with installation
+
+```sh
+sudo apt-get update -yqq
+sudo apt-get upgrade -yqq
+sudo apt-get autoclean -yqq
+```
+
+### Open the dockserver Interface 
 
 ```sh
 sudo dockserver -i
 ```
 
-1. Now the preinstall runs full automatic
+- Now the preinstall runs full automatic
+- If not triggered by installer, please restart your server.
 
 ---
 
-1. Install Traefik & Authelia first 
+### Install Traefik & Authelia first 
 
 **Note** ( critical step | without dockserver will not work )
 
@@ -57,7 +66,7 @@ sudo dockserver -i
 After deployment of Traefik & Authelia you can install any apps
 
 1. Open the dockserver Interface again 
-1. Type 2 
-1. Type 1
+2. Type 2 
+3. Type 1
 and now you can see all the apps section 
 

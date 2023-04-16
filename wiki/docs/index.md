@@ -33,13 +33,18 @@
 
 _Docker + Traefik with Authelia and Cloudflare Protection_
 
+---
+
+## Migration
+
+If you currently have a server with PG/MHS/PTS, have a look here before you start the installation: [Migration Guide](https://dockserver.io/install/migration.html)
 
 ---
 
 
 ## Minimum Specs and Requirements
 
-- Stable: Ubuntu 18/20/21/22 or Debian 9/10/11
+- Stable: Ubuntu 22
 
 - CPU 2 Cores or 2 VCores (x86/x64)
     - **No** ARM Support
@@ -245,17 +250,17 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
-        <a href=https://github.com/ImgBotApp>
-            <img src=https://avatars.githubusercontent.com/u/31427850?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Imgbot/>
-            <br />
-            <sub style="font-size:14px"><b>Imgbot</b></sub>
-        </a>
-    </td>
-    <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
         <a href=https://github.com/Shayne55434>
             <img src=https://avatars.githubusercontent.com/u/37595910?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Shayne/>
             <br />
             <sub style="font-size:14px"><b>Shayne</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
+        <a href=https://github.com/ImgBotApp>
+            <img src=https://avatars.githubusercontent.com/u/31427850?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Imgbot/>
+            <br />
+            <sub style="font-size:14px"><b>Imgbot</b></sub>
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
