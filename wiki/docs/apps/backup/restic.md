@@ -118,6 +118,20 @@ docker exec -it restic bash
 source /app/restic/restic.sh
 resticrestore <APPNAME>
 ```
+View Snapshots
+```
+docker exec -it restic bash
+source /app/restic/restic.sh
+resticsnapshots
+```
+Restore Specific App Snapshot (Replace SNAPSHOT_ID and NAMEOFAPP)
+```
+docker exec -it restic bash
+source /app/restic/restic.sh
+source /config/restic/restic.env
+$(which restic) restore <SNAPSHOT_ID> --repo "${RESTIC_REPOSITORY}" --password-command "$(which echo) ${RESTIC_PASSWORD}" --target "/" --tag "${RESTIC_TAG}" --option rclone.args="serve restic --stdio --checkers=16 --drive-chunk-size=32M --drive-use-trash=false --fast-list --config=/config/rclone/rclone.conf" --include "${RESTIC_FOLDER}/<NAMEOFAPP>"
+```
+
 
 
 
