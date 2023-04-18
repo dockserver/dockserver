@@ -154,9 +154,9 @@
    "newversion": "3.17.3",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "c9adf4754825a9b0bf37b42da6ffa6498cb3edd8",
+   "appversion": "b36407bc6fb31ff73f0c3a354d6b91f839a1507c",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to c9adf4754825a9b0bf37b42da6ffa6498cb3edd8",
+   "body": "Upgrading docker-fenrus to b36407bc6fb31ff73f0c3a354d6b91f839a1507c",
    "user": "github-actions[bot]"
 }
 {
@@ -389,10 +389,10 @@
    "appname": "docker-rutorrent",
    "apppic": "",
    "appfolder": "./apps/docker-rutorrent",
-   "newversion": "4.0.4",
+   "newversion": "4.1",
    "baseimage": "alpine",
    "description": "Yet another web front-end for rTorrent",
-   "body": "Upgrading docker-rutorrent to 4.0.4",
+   "body": "Upgrading docker-rutorrent to 4.1",
    "user": "dockserver[bot]"
 }
 {
