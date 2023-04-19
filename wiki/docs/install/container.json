@@ -44,20 +44,20 @@
    "appname": "docker-cloudflared",
    "apppic": "./images/docker-cloudflared.png",
    "appfolder": "./apps/docker-cloudflared",
-   "newversion": "2023.4.0",
+   "newversion": "2023.4.1",
    "baseimage": "alpine",
    "description": "Cloudflare Tunnel client (formerly Argo Tunnel)",
-   "body": "Upgrading docker-cloudflared to 2023.4.0",
+   "body": "Upgrading docker-cloudflared to 2023.4.1",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-crunchy",
    "apppic": "./images/docker-crunchy.png",
    "appfolder": "./apps/docker-crunchy",
-   "newversion": "rolling",
+   "newversion": "23.04",
    "baseimage": "ubuntu",
    "description": "Docker image  for docker-crunchy",
-   "body": "Upgrading docker-crunchy to baseimage: ubuntu:rolling",
+   "body": "Upgrading docker-crunchy to baseimage: ubuntu:23.04",
    "user": "dockserver image update[bot]"
 }
 {
@@ -154,30 +154,30 @@
    "newversion": "3.17.3",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "d4a54bf00ae5d9e2f7cb4b1dce91aa55716c1238",
+   "appversion": "5ee44f479ab2cb136e4647ac2866250579711c03",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to d4a54bf00ae5d9e2f7cb4b1dce91aa55716c1238",
+   "body": "Upgrading docker-fenrus to 5ee44f479ab2cb136e4647ac2866250579711c03",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "426.0.0-alpine",
+   "newversion": "427.0.0-alpine",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to 426.0.0-alpine",
+   "body": "Upgrading docker-gdsa to 427.0.0-alpine",
    "user": "dockserver-actions[bot]"
 }
 {
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.3917",
+   "newversion": "0.20.3939",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.3917",
+   "body": "Upgrading docker-jackett to 0.20.3939",
    "user": "github-actions[bot]"
 }
 {
@@ -308,22 +308,22 @@
    "appname": "docker-plex",
    "apppic": "./images/docker-plex.png",
    "appfolder": "./apps/docker-plex",
-   "newversion": "1.32.0.6918-6f393eda1",
+   "newversion": "1.32.0.6950-8521b7d99",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:jammy",
    "description": "Docker Container for Plex Media Server || PLEX PASS",
-   "body": "Upgrading docker-plex to 1.32.0.6918-6f393eda1",
+   "body": "Upgrading docker-plex to 1.32.0.6950-8521b7d99",
    "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "1.3.3.3167",
+   "newversion": "1.3.3.3199",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 1.3.3.3167",
+   "body": "Upgrading docker-prowlarr to 1.3.3.3199",
    "user": "github-actions[bot]"
 }
 {
@@ -379,20 +379,20 @@
    "appname": "docker-rollarr",
    "apppic": "./images/docker-rollarr.png",
    "appfolder": "./apps/docker-rollarr",
-   "newversion": "rolling",
+   "newversion": "23.04",
    "baseimage": "ubuntu",
    "description": "This is the new and improved Automatic Pre-roll script with a GUI for Plex now called Rollarr!",
-   "body": "Upgrading docker-rollarr to rolling",
+   "body": "Upgrading docker-rollarr to 23.04",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-rutorrent",
    "apppic": "",
    "appfolder": "./apps/docker-rutorrent",
-   "newversion": "4.0.4",
+   "newversion": "4.1",
    "baseimage": "alpine",
    "description": "Yet another web front-end for rTorrent",
-   "body": "Upgrading docker-rutorrent to 4.0.4",
+   "body": "Upgrading docker-rutorrent to 4.1",
    "user": "dockserver[bot]"
 }
 {
@@ -632,31 +632,31 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "nightly-4.5.0.7070-ls460",
+   "newversion": "nightly-4.5.0.7075-ls460",
    "appbranch": "nightly",
    "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to nightly-4.5.0.7070-ls460",
+   "body": "Upgrading docker-radarr-nightly to nightly-4.5.0.7075-ls460",
    "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "613ec9c48c77c5c6738148ca3477d6ac86fa4708",
+   "newversion": "fcbc4e420e3bee5d39f4d24c1bab34cc64b3c3ef",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 613ec9c48c77c5c6738148ca3477d6ac86fa4708",
+   "body": "Upgrading docker-sabnzbd-nightly to fcbc4e420e3bee5d39f4d24c1bab34cc64b3c3ef",
    "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-sonarr-nightly",
    "apppic": "./images/docker-sonarr-nightly.png",
    "appfolder": "./nightly/docker-sonarr-nightly",
-   "newversion": "develop-4.0.0.445-ls447",
+   "newversion": "develop-4.0.0.449-ls449",
    "appbranch": "develop",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.445-ls447",
+   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.449-ls449",
    "user": "dockserver image update[bot]"
 }
 {
