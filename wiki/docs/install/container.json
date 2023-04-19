@@ -255,10 +255,10 @@
    "appname": "docker-multitautulli",
    "apppic": "./images/docker-multitautulli.png",
    "appfolder": "./apps/docker-multitautulli",
-   "newversion": "V4.1.06",
+   "newversion": "4.1.07",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "A Python based monitoring and tracking tool for Plex Media Server.",
-   "body": "Upgrading docker-multitautulli to V4.1.06",
+   "body": "Upgrading docker-multitautulli to 4.1.07",
    "user": "github-actions[bot]"
 }
 {
@@ -643,10 +643,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "50c7d1531baa323b70934dc2c6de0e22f9497fb9",
+   "newversion": "fcbc4e420e3bee5d39f4d24c1bab34cc64b3c3ef",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 50c7d1531baa323b70934dc2c6de0e22f9497fb9",
+   "body": "Upgrading docker-sabnzbd-nightly to fcbc4e420e3bee5d39f4d24c1bab34cc64b3c3ef",
    "user": "dockserver image update[bot]"
 }
 {
