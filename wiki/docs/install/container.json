@@ -173,11 +173,11 @@
    "appname": "docker-jackett",
    "apppic": "./images/docker-jackett.png",
    "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.3939",
+   "newversion": "0.20.3949",
    "appbranch": "master",
    "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
    "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.3939",
+   "body": "Upgrading docker-jackett to 0.20.3949",
    "user": "github-actions[bot]"
 }
 {
@@ -206,11 +206,11 @@
    "appname": "docker-jellyseerr",
    "apppic": "./images/docker-jellyseerr.png",
    "appfolder": "./apps/docker-jellyseerr",
-   "newversion": "1.4.1",
+   "newversion": "1.5.0",
    "appbranch": "",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "fork of overseerr for jellyfin support",
-   "body": "Upgrading docker-jellyseerr to 1.4.1",
+   "body": "Upgrading docker-jellyseerr to 1.5.0",
    "user": "github-actions[bot]"
 }
 {
@@ -319,11 +319,11 @@
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "1.3.3.3200",
+   "newversion": "1.3.3.3203",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 1.3.3.3200",
+   "body": "Upgrading docker-prowlarr to 1.3.3.3203",
    "user": "github-actions[bot]"
 }
 {
