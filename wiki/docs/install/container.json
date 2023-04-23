@@ -154,9 +154,9 @@
    "newversion": "3.17.3",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "2fe9fddad41ccbbce46c48dc2290d2016a70fa73",
+   "appversion": "cec32f02796f7bba970bdf5f9ff1b4e62e419849",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to 2fe9fddad41ccbbce46c48dc2290d2016a70fa73",
+   "body": "Upgrading docker-fenrus to cec32f02796f7bba970bdf5f9ff1b4e62e419849",
    "user": "github-actions[bot]"
 }
 {
@@ -319,11 +319,11 @@
    "appname": "docker-prowlarr",
    "apppic": "./images/docker-prowlarr.png",
    "appfolder": "./apps/docker-prowlarr",
-   "newversion": "1.3.3.3220",
+   "newversion": "1.3.3.3221",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-prowlarr to 1.3.3.3220",
+   "body": "Upgrading docker-prowlarr to 1.3.3.3221",
    "user": "github-actions[bot]"
 }
 {
