@@ -44,10 +44,10 @@
    "appname": "docker-cloudflared",
    "apppic": "./images/docker-cloudflared.png",
    "appfolder": "./apps/docker-cloudflared",
-   "newversion": "2023.4.1",
+   "newversion": "2023.4.2",
    "baseimage": "alpine",
    "description": "Cloudflare Tunnel client (formerly Argo Tunnel)",
-   "body": "Upgrading docker-cloudflared to 2023.4.1",
+   "body": "Upgrading docker-cloudflared to 2023.4.2",
    "user": "github-actions[bot]"
 }
 {
@@ -653,10 +653,10 @@
    "appname": "docker-sonarr-nightly",
    "apppic": "./images/docker-sonarr-nightly.png",
    "appfolder": "./nightly/docker-sonarr-nightly",
-   "newversion": "develop-4.0.0.455-ls453",
+   "newversion": "develop-4.0.0.457-ls454",
    "appbranch": "develop",
    "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.455-ls453",
+   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.457-ls454",
    "user": "dockserver image update[bot]"
 }
 {
