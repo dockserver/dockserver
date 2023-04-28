@@ -75,11 +75,11 @@
    "appname": "docker-dash",
    "apppic": "",
    "appfolder": "./apps/docker-dash",
-   "newversion": "5.1.3",
+   "newversion": "null",
    "baseimage": "alpine",
    "baseversion": "3.17.3",
    "description": "A simple, modern server dashboard, primarily used by smaller private servers",
-   "body": "Upgrading docker-dash to 5.1.3",
+   "body": "Upgrading docker-dash to null",
    "user": "dockserver-image[bot]"
 }
 {
@@ -154,9 +154,9 @@
    "newversion": "3.17.3",
    "appbranch": "master",
    "baseimage": "alpine",
-   "appversion": "6f2f442612d3b34425d71856a30572d3f473e0de",
+   "appversion": "",
    "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to 6f2f442612d3b34425d71856a30572d3f473e0de",
+   "body": "Upgrading docker-fenrus to ",
    "user": "github-actions[bot]"
 }
 {
@@ -389,10 +389,10 @@
    "appname": "docker-rutorrent",
    "apppic": "",
    "appfolder": "./apps/docker-rutorrent",
-   "newversion": "4.1.3",
+   "newversion": "null",
    "baseimage": "alpine",
    "description": "Yet another web front-end for rTorrent",
-   "body": "Upgrading docker-rutorrent to 4.1.3",
+   "body": "Upgrading docker-rutorrent to null",
    "user": "dockserver[bot]"
 }
 {
@@ -419,10 +419,10 @@
    "appname": "docker-spotweb",
    "apppic": "",
    "appfolder": "./apps/docker-spotweb",
-   "newversion": "1.5.4",
+   "newversion": "null",
    "baseimage": "ubuntu:latest",
    "description": "Decentralized community",
-   "body": "Upgrading docker-spotweb to 1.5.4",
+   "body": "Upgrading docker-spotweb to null",
    "user": "dockserver[bot]"
 }
 {
@@ -621,11 +621,11 @@
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "a4d07f5afab613317d96c9c6e9b47157a5a28986",
+   "newversion": "",
    "appbranch": "develop",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to a4d07f5afab613317d96c9c6e9b47157a5a28986",
+   "body": "Upgrading docker-overseerr-nightly to ",
    "user": "dockserver image update[bot]"
 }
 {
@@ -643,10 +643,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "53ce88d3d2bf4999411078f12a0df8c07b8f5b1f",
+   "newversion": "",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 53ce88d3d2bf4999411078f12a0df8c07b8f5b1f",
+   "body": "Upgrading docker-sabnzbd-nightly to ",
    "user": "dockserver image update[bot]"
 }
 {
