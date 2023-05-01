@@ -399,10 +399,10 @@
    "appname": "docker-sabnzbd",
    "apppic": "./images/docker-sabnzbd.png",
    "appfolder": "./apps/docker-sabnzbd",
-   "newversion": "4.0.0",
+   "newversion": "4.0.1",
    "appbranch": "master",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd to 4.0.0",
+   "body": "Upgrading docker-sabnzbd to 4.0.1",
    "user": "github-actions[bot]"
 }
 {
@@ -643,10 +643,10 @@
    "appname": "docker-sabnzbd-nightly",
    "apppic": "./images/docker-sabnzbd-nightly.png",
    "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "57d5ed2f21741f2847373bdfd0047ac527718453",
+   "newversion": "636a391db370c0e5d58894750031ed26e85f6644",
    "appbranch": "develop",
    "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 57d5ed2f21741f2847373bdfd0047ac527718453",
+   "body": "Upgrading docker-sabnzbd-nightly to 636a391db370c0e5d58894750031ed26e85f6644",
    "user": "dockserver image update[bot]"
 }
 {
