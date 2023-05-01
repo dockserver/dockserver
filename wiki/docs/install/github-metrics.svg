@@ -44,7 +44,7 @@
                         <div class="field calendar">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 11" width="210" height="16">
                                 <g>
-                                    <rect class="day" x="0" y="0" width="11" height="11" fill="var(--color-calendar-graph-day-L2-bg)" rx="2" ry="2"/>
+                                    <rect class="day" x="0" y="0" width="11" height="11" fill="var(--color-calendar-graph-day-L3-bg)" rx="2" ry="2"/>
                                     <rect class="day" x="15" y="0" width="11" height="11" fill="var(--color-calendar-graph-day-L3-bg)" rx="2" ry="2"/>
                                     <rect class="day" x="30" y="0" width="11" height="11" fill="var(--color-calendar-graph-day-L4-bg)" rx="2" ry="2"/>
                                     <rect class="day" x="45" y="0" width="11" height="11" fill="var(--color-calendar-graph-day-L2-bg)" rx="2" ry="2"/>
@@ -265,14 +265,14 @@
                         <rect x="0" y="0" width="460" height="8" fill="white" rx="5"/>
                     </mask>
                     <rect mask="url(#languages-bar)" x="0" y="0" width="0" height="8" fill="#d1d5da"/>
-                    <rect mask="url(#languages-bar)" x="0" y="0" width="138.91663445470166" height="8" fill="#563d7c"/>
-                    <rect mask="url(#languages-bar)" x="138.91663445470166" y="0" width="138.2912569133246" height="8" fill="#89e051"/>
-                    <rect mask="url(#languages-bar)" x="277.20789136802625" y="0" width="56.88265095408656" height="8" fill="#3572A5"/>
-                    <rect mask="url(#languages-bar)" x="334.0905423221128" y="0" width="51.98476165840424" height="8" fill="#e34c26"/>
-                    <rect mask="url(#languages-bar)" x="386.07530398051705" y="0" width="43.031045475455954" height="8" fill="#384d54"/>
-                    <rect mask="url(#languages-bar)" x="429.106349455973" y="0" width="20.166228436967675" height="8" fill="#f1e05a"/>
-                    <rect mask="url(#languages-bar)" x="449.27257789294066" y="0" width="10.537780593160676" height="8" fill="#4F5D95"/>
-                    <rect mask="url(#languages-bar)" x="459.81035848610134" y="0" width="0.1896415138986668" height="8" fill="#a52a22"/>
+                    <rect mask="url(#languages-bar)" x="0" y="0" width="138.90428312461103" height="8" fill="#563d7c"/>
+                    <rect mask="url(#languages-bar)" x="138.90428312461103" y="0" width="138.27896118668616" height="8" fill="#89e051"/>
+                    <rect mask="url(#languages-bar)" x="277.1832443112972" y="0" width="56.877593414353306" height="8" fill="#3572A5"/>
+                    <rect mask="url(#languages-bar)" x="334.06083772565046" y="0" width="51.980139598897495" height="8" fill="#e34c26"/>
+                    <rect mask="url(#languages-bar)" x="386.04097732454795" y="0" width="43.0681189419641" height="8" fill="#384d54"/>
+                    <rect mask="url(#languages-bar)" x="429.10909626651204" y="0" width="20.164435420997442" height="8" fill="#f1e05a"/>
+                    <rect mask="url(#languages-bar)" x="449.2735316875095" y="0" width="10.53684365996301" height="8" fill="#4F5D95"/>
+                    <rect mask="url(#languages-bar)" x="459.8103753474725" y="0" width="0.18962465252748367" height="8" fill="#a52a22"/>
                 </svg>
                 <div class="row fill-width">
                     <section>
@@ -297,7 +297,7 @@
                             </div>
                             <small>
                                 <div>168 kB</div>
-                                <div>12.37%</div>
+                                <div>12.36%</div>
                             </small>
                         </div>
                         <div class="field language details">
@@ -309,7 +309,7 @@
                             </div>
                             <small>
                                 <div>127 kB</div>
-                                <div>9.35%</div>
+                                <div>9.36%</div>
                             </small>
                         </div>
                         <div class="field language details">
@@ -399,8 +399,8 @@
                         <div class="category column">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="50" height="50" class="gauge high">
                                 <circle class="gauge-base" r="53" cx="60" cy="60"/>
-                                <circle class="gauge-arc" transform="rotate(-90 60 60)" r="53" cx="60" cy="60" stroke-dasharray="309.26 329"/>
-                                <text x="60" y="60" dominant-baseline="central">94</text>
+                                <circle class="gauge-arc" transform="rotate(-90 60 60)" r="53" cx="60" cy="60" stroke-dasharray="305.97 329"/>
+                                <text x="60" y="60" dominant-baseline="central">93</text>
                             </svg>
                             <span class="title">Performance</span>
                         </div>
@@ -476,6 +476,50 @@
                                 <div class="details">
                                     <div>on branch <span class="code">master</span></div>
                                     <div class="commit">
+                                        <div class="sha">#c8b4378</div>
+                                        <div class="message">[Auto Generation] Changes : github-metrics.svg
+
+Signed-off-by: dockserver-bot[bot] &lt;dockserver-bot[bot]@dockserver.io&gt;</div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="row fill-width">
+                            <section class="activity">
+                                <div class="field">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+                                        <path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm1.43.75a4.002 4.002 0 01-7.86 0H.75a.75.75 0 110-1.5h3.32a4.001 4.001 0 017.86 0h3.32a.75.75 0 110 1.5h-3.32z"/>
+                                    </svg>
+                                    <div class="content">
+                                        <span class="user">fscorrupt</span>
+                                        pushed 1 commit in
+                                        <span class="repo">dockserver/container</span>
+                                    </div>
+                                </div>
+                                <div class="details">
+                                    <div>on branch <span class="code">master</span></div>
+                                    <div class="commit">
+                                        <div class="sha">#eba12ac</div>
+                                        <div class="message">Update github-metrics.svg - [Skip GitHub Action]</div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="row fill-width">
+                            <section class="activity">
+                                <div class="field">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+                                        <path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm1.43.75a4.002 4.002 0 01-7.86 0H.75a.75.75 0 110-1.5h3.32a4.001 4.001 0 017.86 0h3.32a.75.75 0 110 1.5h-3.32z"/>
+                                    </svg>
+                                    <div class="content">
+                                        <span class="user">fscorrupt</span>
+                                        pushed 1 commit in
+                                        <span class="repo">dockserver/container</span>
+                                    </div>
+                                </div>
+                                <div class="details">
+                                    <div>on branch <span class="code">master</span></div>
+                                    <div class="commit">
                                         <div class="sha">#dbb4756</div>
                                         <div class="message">[Auto Generation] Changes : github-metrics.svg
 
@@ -528,55 +572,11 @@ Signed-off-by: dockserver-bot[bot] &lt;dockserver-bot[bot]@dockserver.io&gt;</di
                                 </div>
                             </section>
                         </div>
-                        <div class="row fill-width">
-                            <section class="activity">
-                                <div class="field">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                                        <path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm1.43.75a4.002 4.002 0 01-7.86 0H.75a.75.75 0 110-1.5h3.32a4.001 4.001 0 017.86 0h3.32a.75.75 0 110 1.5h-3.32z"/>
-                                    </svg>
-                                    <div class="content">
-                                        <span class="user">fscorrupt</span>
-                                        pushed 1 commit in
-                                        <span class="repo">dockserver/container</span>
-                                    </div>
-                                </div>
-                                <div class="details">
-                                    <div>on branch <span class="code">master</span></div>
-                                    <div class="commit">
-                                        <div class="sha">#32e027c</div>
-                                        <div class="message">Update github-metrics.svg - [Skip GitHub Action]</div>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-                        <div class="row fill-width">
-                            <section class="activity">
-                                <div class="field">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                                        <path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm1.43.75a4.002 4.002 0 01-7.86 0H.75a.75.75 0 110-1.5h3.32a4.001 4.001 0 017.86 0h3.32a.75.75 0 110 1.5h-3.32z"/>
-                                    </svg>
-                                    <div class="content">
-                                        <span class="user">fscorrupt</span>
-                                        pushed 1 commit in
-                                        <span class="repo">dockserver/container</span>
-                                    </div>
-                                </div>
-                                <div class="details">
-                                    <div>on branch <span class="code">master</span></div>
-                                    <div class="commit">
-                                        <div class="sha">#b9edda1</div>
-                                        <div class="message">[Auto Generation] Changes : github-metrics.svg
-
-Signed-off-by: dockserver-bot[bot] &lt;dockserver-bot[bot]@dockserver.io&gt;</div>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
                     </section>
                 </div>
             </section>
             <footer>
-                <span>Last updated 1 May 2023, 10:16:13 with lowlighter/metrics@3.33.0</span>
+                <span>Last updated 1 May 2023, 10:45:40 with lowlighter/metrics@3.33.0</span>
             </footer>
         </div>
         <div xmlns="http://www.w3.org/1999/xhtml" id="metrics-end"></div>
