@@ -379,10 +379,10 @@
    "appname": "docker-rollarr",
    "apppic": "./images/docker-rollarr.png",
    "appfolder": "./apps/docker-rollarr",
-   "newversion": "23.04",
+   "newversion": "rolling",
    "baseimage": "ubuntu",
    "description": "This is the new and improved Automatic Pre-roll script with a GUI for Plex now called Rollarr!",
-   "body": "Upgrading docker-rollarr to 23.04",
+   "body": "Upgrading docker-rollarr to rolling",
    "user": "github-actions[bot]"
 }
 {
