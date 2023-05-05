@@ -632,11 +632,11 @@
    "appname": "docker-radarr-nightly",
    "apppic": "./images/docker-radarr-nightly.png",
    "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "nightly-4.5.1.7200-ls465",
+   "newversion": "nightly-4.5.1.7202-ls465",
    "appbranch": "nightly",
    "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to nightly-4.5.1.7200-ls465",
+   "body": "Upgrading docker-radarr-nightly to nightly-4.5.1.7202-ls465",
    "user": "dockserver image update[bot]"
 }
 {
