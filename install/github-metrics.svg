@@ -399,8 +399,8 @@
                         <div class="category column">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="50" height="50" class="gauge high">
                                 <circle class="gauge-base" r="53" cx="60" cy="60"/>
-                                <circle class="gauge-arc" transform="rotate(-90 60 60)" r="53" cx="60" cy="60" stroke-dasharray="305.97 329"/>
-                                <text x="60" y="60" dominant-baseline="central">93</text>
+                                <circle class="gauge-arc" transform="rotate(-90 60 60)" r="53" cx="60" cy="60" stroke-dasharray="309.26 329"/>
+                                <text x="60" y="60" dominant-baseline="central">94</text>
                             </svg>
                             <span class="title">Performance</span>
                         </div>
@@ -476,7 +476,7 @@
                                 <div class="details">
                                     <div>on branch <span class="code">master</span></div>
                                     <div class="commit">
-                                        <div class="sha">#c56551d</div>
+                                        <div class="sha">#793321d</div>
                                         <div class="message">[Auto Generation] Changelog :
 
 Signed-off-by: dockserver-bot[bot] &lt;dockserver-bot[bot]@dockserver.io&gt;</div>
@@ -499,30 +499,7 @@ Signed-off-by: dockserver-bot[bot] &lt;dockserver-bot[bot]@dockserver.io&gt;</di
                                 <div class="details">
                                     <div>on branch <span class="code">master</span></div>
                                     <div class="commit">
-                                        <div class="sha">#309336b</div>
-                                        <div class="message">[Auto Generation] Changelog :
-
-Signed-off-by: dockserver-bot[bot] &lt;dockserver-bot[bot]@dockserver.io&gt;</div>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-                        <div class="row fill-width">
-                            <section class="activity">
-                                <div class="field">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                                        <path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm1.43.75a4.002 4.002 0 01-7.86 0H.75a.75.75 0 110-1.5h3.32a4.001 4.001 0 017.86 0h3.32a.75.75 0 110 1.5h-3.32z"/>
-                                    </svg>
-                                    <div class="content">
-                                        <span class="user">fscorrupt</span>
-                                        pushed 1 commit in
-                                        <span class="repo">dockserver/container</span>
-                                    </div>
-                                </div>
-                                <div class="details">
-                                    <div>on branch <span class="code">master</span></div>
-                                    <div class="commit">
-                                        <div class="sha">#9ddf6d9</div>
+                                        <div class="sha">#1ba286a</div>
                                         <div class="message">Update github-metrics.svg - [Skip GitHub Action]</div>
                                     </div>
                                 </div>
@@ -543,7 +520,7 @@ Signed-off-by: dockserver-bot[bot] &lt;dockserver-bot[bot]@dockserver.io&gt;</di
                                 <div class="details">
                                     <div>on branch <span class="code">master</span></div>
                                     <div class="commit">
-                                        <div class="sha">#25828dd</div>
+                                        <div class="sha">#aa7f70b</div>
                                         <div class="message">[Auto Generation] Changes : github-metrics.svg
 
 Signed-off-by: dockserver-bot[bot] &lt;dockserver-bot[bot]@dockserver.io&gt;</div>
@@ -566,8 +543,31 @@ Signed-off-by: dockserver-bot[bot] &lt;dockserver-bot[bot]@dockserver.io&gt;</di
                                 <div class="details">
                                     <div>on branch <span class="code">master</span></div>
                                     <div class="commit">
-                                        <div class="sha">#5d05967</div>
+                                        <div class="sha">#19ea8c8</div>
                                         <div class="message">Update github-metrics.svg - [Skip GitHub Action]</div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="row fill-width">
+                            <section class="activity">
+                                <div class="field">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+                                        <path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm1.43.75a4.002 4.002 0 01-7.86 0H.75a.75.75 0 110-1.5h3.32a4.001 4.001 0 017.86 0h3.32a.75.75 0 110 1.5h-3.32z"/>
+                                    </svg>
+                                    <div class="content">
+                                        <span class="user">fscorrupt</span>
+                                        pushed 1 commit in
+                                        <span class="repo">dockserver/container</span>
+                                    </div>
+                                </div>
+                                <div class="details">
+                                    <div>on branch <span class="code">master</span></div>
+                                    <div class="commit">
+                                        <div class="sha">#fc23413</div>
+                                        <div class="message">[Auto Generation] Changes : wiki/docs/install/container-gitlog.md
+
+Signed-off-by: dockserver-bot[bot] &lt;dockserver-bot[bot]@dockserver.io&gt;</div>
                                     </div>
                                 </div>
                             </section>
@@ -576,7 +576,7 @@ Signed-off-by: dockserver-bot[bot] &lt;dockserver-bot[bot]@dockserver.io&gt;</di
                 </div>
             </section>
             <footer>
-                <span>Last updated 5 May 2023, 20:36:57 with lowlighter/metrics@3.33.0</span>
+                <span>Last updated 5 May 2023, 22:37:42 with lowlighter/metrics@3.33.0</span>
             </footer>
         </div>
         <div xmlns="http://www.w3.org/1999/xhtml" id="metrics-end"></div>
