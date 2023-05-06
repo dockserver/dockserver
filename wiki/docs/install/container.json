@@ -353,11 +353,11 @@
    "appname": "docker-readarr",
    "apppic": "./images/docker-readarr.png",
    "appfolder": "./apps/docker-readarr",
-   "newversion": "0.1.5.1728",
+   "newversion": "0.1.5.1744",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "null",
-   "body": "Upgrading docker-readarr to 0.1.5.1728",
+   "body": "Upgrading docker-readarr to 0.1.5.1744",
    "user": "github-actions[bot]"
 }
 {
