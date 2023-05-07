@@ -342,11 +342,11 @@
    "appname": "docker-radarr",
    "apppic": "./images/docker-radarr.png",
    "appfolder": "./apps/docker-radarr",
-   "newversion": "4.4.4.7068-ls170",
+   "newversion": "4.4.4.7068-ls171",
    "appbranch": "master",
    "baseimage": "",
    "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr to 4.4.4.7068-ls170",
+   "body": "Upgrading docker-radarr to 4.4.4.7068-ls171",
    "user": "github-actions[bot]"
 }
 {
@@ -663,10 +663,10 @@
    "appname": "docker-whisparr-nightly",
    "apppic": "./images/docker-whisparr-nightly.png",
    "appfolder": "./nightly/docker-whisparr-nightly",
-   "newversion": "2.0.0.153",
+   "newversion": "2.0.0.155",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
    "description": "Whisparr is an adult movie collection manager for Usenet and BitTorrent users.",
-   "body": "Upgrading docker-whisparr-nightly to 2.0.0.153",
+   "body": "Upgrading docker-whisparr-nightly to 2.0.0.155",
    "user": "dockserver image update[bot]"
 }
