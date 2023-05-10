@@ -236,6 +236,12 @@
    "user": "github-actions[bot]"
 }
 {
+   "appname": "docker-mod-healthcheck",
+   "apppic": "./images/docker-mod-healthcheck.png",
+   "appfolder": "./apps/docker-mod-healthcheck",
+   "user": "github-actions[bot]"
+}
+{
    "appname": "docker-mount",
    "apppic": "./images/docker-mount.png",
    "appfolder": "./apps/docker-mount",
