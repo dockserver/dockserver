@@ -24,7 +24,7 @@
    "appfolder": "./apps/docker-bazarr",
    "newversion": "1.2.1",
    "appbranch": "master",
-   "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
+   "baseimage": "ghcr.io/dockserver/docker-alpine-v3:latest",
    "description": "Bazarr is a companion application to Sonarr and Radarr. It manages and downloads subtitles based on your requirements. You define your preferences by TV show or movie and Bazarr takes care of everything for you.",
    "body": "Upgrading docker-bazarr to 1.2.1",
    "user": "github-actions[bot]"
@@ -120,7 +120,7 @@
    "appfolder": "./apps/docker-duplicati",
    "newversion": "2.0.6.106",
    "appbranch": "master",
-   "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
+   "baseimage": "ghcr.io/dockserver/docker-alpine-v3:latest",
    "description": "null",
    "body": "Upgrading docker-duplicati to 2.0.6.106",
    "user": "github-actions[bot]"
@@ -208,7 +208,7 @@
    "appfolder": "./apps/docker-jellyseerr",
    "newversion": "1.5.0",
    "appbranch": "",
-   "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
+   "baseimage": "ghcr.io/dockserver/docker-alpine-v3:latest",
    "description": "fork of overseerr for jellyfin support",
    "body": "Upgrading docker-jellyseerr to 1.5.0",
    "user": "github-actions[bot]"
@@ -230,7 +230,7 @@
    "appfolder": "./apps/docker-lidarr",
    "newversion": "1.1.4.3027",
    "appbranch": "master",
-   "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
+   "baseimage": "ghcr.io/dockserver/docker-alpine-v3:latest",
    "description": "Looks and smells like Sonarr but made for music.",
    "body": "Upgrading docker-lidarr to 1.1.4.3027",
    "user": "github-actions[bot]"
@@ -256,7 +256,7 @@
    "apppic": "./images/docker-multitautulli.png",
    "appfolder": "./apps/docker-multitautulli",
    "newversion": "4.1.07",
-   "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
+   "baseimage": "ghcr.io/dockserver/docker-alpine-v3:latest",
    "description": "A Python based monitoring and tracking tool for Plex Media Server.",
    "body": "Upgrading docker-multitautulli to 4.1.07",
    "user": "github-actions[bot]"
@@ -299,7 +299,7 @@
    "appfolder": "./apps/docker-overseerr",
    "newversion": "1.32.5",
    "appbranch": "",
-   "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
+   "baseimage": "ghcr.io/dockserver/docker-alpine-v3:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
    "body": "Upgrading docker-overseerr to 1.32.5",
    "user": "github-actions[bot]"
@@ -321,7 +321,7 @@
    "appfolder": "./apps/docker-prowlarr",
    "newversion": "1.5.0.3312",
    "appbranch": "nightly",
-   "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
+   "baseimage": "ghcr.io/dockserver/docker-alpine-v3:latest",
    "description": "null",
    "body": "Upgrading docker-prowlarr to 1.5.0.3312",
    "user": "github-actions[bot]"
@@ -355,7 +355,7 @@
    "appfolder": "./apps/docker-readarr",
    "newversion": "0.1.5.1782",
    "appbranch": "nightly",
-   "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
+   "baseimage": "ghcr.io/dockserver/docker-alpine-v3:latest",
    "description": "null",
    "body": "Upgrading docker-readarr to 0.1.5.1782",
    "user": "github-actions[bot]"
@@ -623,7 +623,7 @@
    "appfolder": "./nightly/docker-overseerr-nightly",
    "newversion": "77a33cb74d744bb747b791785799b632af8c7862",
    "appbranch": "develop",
-   "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
+   "baseimage": "ghcr.io/dockserver/docker-alpine-v3:latest",
    "description": "Request management and media discovery tool for the Plex ecosystem",
    "body": "Upgrading docker-overseerr-nightly to 77a33cb74d744bb747b791785799b632af8c7862",
    "user": "dockserver image update[bot]"
@@ -665,7 +665,7 @@
    "appfolder": "./nightly/docker-whisparr-nightly",
    "newversion": "2.0.0.155",
    "appbranch": "nightly",
-   "baseimage": "ghcr.io/dockserver/docker-alpine:latest",
+   "baseimage": "ghcr.io/dockserver/docker-alpine-v3:latest",
    "description": "Whisparr is an adult movie collection manager for Usenet and BitTorrent users.",
    "body": "Upgrading docker-whisparr-nightly to 2.0.0.155",
    "user": "dockserver image update[bot]"
