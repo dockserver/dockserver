@@ -439,12 +439,11 @@
    "appname": "docker-traktarr",
    "apppic": "./images/docker-traktarr.png",
    "appfolder": "./apps/docker-traktarr",
-   "newversion": "latest-fb87f253",
-   "baseimage": "null",
-   "packages": "null",
-   "description": "null",
-   "body": "Upgrading docker-traktarr to latest-fb87f253",
-   "user": "github-actions[bot]"
+   "newversion": "3.18.0",
+   "baseimage": "ghcr.io/linuxserver/baseimage-alpine",
+   "baseversion": "3.18-a2ffcb28-ls1",
+   "body": "Upgrading docker-traktarr to ",
+   "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-uploader",
