@@ -1,3 +1,3 @@
 
 ## 2023-05-10
- * [Auto Generation] Changes : .templates/apps/docker-mod-healthcheck.sh (dockserver-bot[bot])
+ * [Auto Generation] Changelog : (dockserver-bot[bot])
