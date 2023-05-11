@@ -9,7 +9,7 @@ services:
       - "PUID=${ID}"
       - "TZ=${TZ}"
       - "UMASK=${UMASK}"
-      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:bazarr"
+      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:bazarr|ghcr.io/dockserver/docker-mod-healthcheck:latest"
       - "TP_THEME=${BAZARRTHEME}"
     image: "${BAZARRIMAGE}"
     restart: "${RESTARTAPP}"

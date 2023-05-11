@@ -4,7 +4,7 @@ services:
   dim:
     hostname: "dim"
     container_name: "dim"
-    image: "ghcr.io/dockserver/docker-dim:latest"
+    image: "ghcr.io/dusk-labs/dim:dev"
     restart: "${RESTARTAPP}"
     networks:
       - ${DOCKERNETWORK}
