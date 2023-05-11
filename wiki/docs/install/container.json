@@ -624,6 +624,12 @@
    "user": "github-actions[bot]"
 }
 {
+   "appname": "docker-mod-rclone",
+   "apppic": "./images/docker-mod-rclone.png",
+   "appfolder": "./mod/docker-mod-rclone",
+   "user": "github-actions[bot]"
+}
+{
    "appname": "docker-overseerr-nightly",
    "apppic": "./images/docker-overseerr-nightly.png",
    "appfolder": "./nightly/docker-overseerr-nightly",
