@@ -9,7 +9,7 @@ services:
       - "PUID=${ID}"
       - "TZ=${TZ}"
       - "UMASK=${UMASK}"
-      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:radarr"
+      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:radarr|ghcr.io/dockserver/docker-mod-healthcheck:latest"
       - "TP_THEME=${RADARRHDRTHEME}"
     image: "${RADARRHDRIMAGE}"
     restart: "${RESTARTAPP}"
