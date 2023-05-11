@@ -9,7 +9,7 @@ services:
       - "PUID=${ID}"
       - "TZ=${TZ}"
       - "UMASK=${UMASK}"
-      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:tautulli"
+      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:tautulli|ghcr.io/dockserver/docker-mod-tautulli:latest"
       - "TP_THEME=${TAUTULLITHEME}"
     image: "${TAUTULLIIMAGE}"
     restart: "${RESTARTAPP}"

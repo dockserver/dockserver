@@ -9,7 +9,7 @@ services:
       - "PUID=${ID}"
       - "TZ=${TZ}"
       - "UMASK=${UMASK}"
-      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:nzbget"
+      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:nzbget|ghcr.io/dockserver/docker-mod-nzbget:latest"
       - "TP_THEME=${NZBGETTHEME}"
     image: "${NZBGETIMAGE}"
     restart: "${RESTARTAPP}"
