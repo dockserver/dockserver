@@ -623,9 +623,33 @@
    "user": "github-actions[bot]"
 }
 {
+   "appname": "docker-mod-nzbget",
+   "apppic": "./images/docker-mod-nzbget.png",
+   "appfolder": "./mod/docker-mod-nzbget",
+   "user": "github-actions[bot]"
+}
+{
+   "appname": "docker-mod-qbittorrent",
+   "apppic": "./images/docker-mod-qbittorrent.png",
+   "appfolder": "./mod/docker-mod-qbittorrent",
+   "user": "github-actions[bot]"
+}
+{
    "appname": "docker-mod-rclone",
    "apppic": "./images/docker-mod-rclone.png",
    "appfolder": "./mod/docker-mod-rclone",
+   "user": "github-actions[bot]"
+}
+{
+   "appname": "docker-mod-sabnzbd",
+   "apppic": "./images/docker-mod-sabnzbd.png",
+   "appfolder": "./mod/docker-mod-sabnzbd",
+   "user": "github-actions[bot]"
+}
+{
+   "appname": "docker-mod-tautulli",
+   "apppic": "./images/docker-mod-tautulli.png",
+   "appfolder": "./mod/docker-mod-tautulli",
    "user": "github-actions[bot]"
 }
 {
