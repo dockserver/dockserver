@@ -1,3 +1,3 @@
 
-## 2023-05-11
- * Merge branch 'master' of https://github.com/dockserver/container (drag0n141)
+## 2023-05-12
+ * [Auto Generation] Changes : wiki/docs/install/container-gitlog.md (dockserver-bot[bot])
