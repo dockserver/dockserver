@@ -157,7 +157,7 @@
    "appbranch": "master",
    "newversion": "3.18.0",
    "appversion": "1.4.50",
-   "wikiversion": "9.1.11",
+   "wikiversion": "9.1.12",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
    "body": "Upgrading docker-wiki to 3.18.0",
