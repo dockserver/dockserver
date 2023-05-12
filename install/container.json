@@ -587,11 +587,11 @@
    "appname": "docker-ui",
    "apppic": "",
    "appfolder": "./base/docker-ui",
-   "newversion": "",
-   "appversion": "",
+   "newversion": "3.18.0",
+   "appversion": "3.18.0",
    "baseimage": "alpine",
    "description": " !!! DEVERLOP STATUS !!! DO NOT TRY TO PULL THE IMAGE YOU NEED ACCESS TO THE REPOSITORY",
-   "body": "Upgrading docker-ui to ",
+   "body": "Upgrading docker-ui to 3.18.0",
    "user": "github-actions[bot]"
 }
 {
