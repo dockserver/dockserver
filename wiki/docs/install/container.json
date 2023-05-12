@@ -19,38 +19,6 @@
    "user": "github-actions[bot]"
 }
 {
-   "appname": "docker-bazarr",
-   "apppic": "./images/docker-bazarr.png",
-   "appfolder": "./apps/docker-bazarr",
-   "newversion": "1.2.1",
-   "appbranch": "master",
-   "baseimage": "ghcr.io/dockserver/docker-alpine-v3:latest",
-   "description": "Bazarr is a companion application to Sonarr and Radarr. It manages and downloads subtitles based on your requirements. You define your preferences by TV show or movie and Bazarr takes care of everything for you.",
-   "body": "Upgrading docker-bazarr to 1.2.1",
-   "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-cf-companion",
-   "apppic": "",
-   "appfolder": "./base/docker-cf-companion",
-   "newversion": "0.0.1",
-   "appversion": "0.0.1",
-   "baseimage": "alpine",
-   "description": "DEVELOP STATUS DO NOT USE IN PRODUCTION ENVIROMENT",
-   "body": "Upgrading docker-cf-companion to 0.0.1",
-   "user": "dockserver image update[bot]"
-}
-{
-   "appname": "docker-cloudflared",
-   "apppic": "./images/docker-cloudflared.png",
-   "appfolder": "./apps/docker-cloudflared",
-   "newversion": "2023.5.0",
-   "baseimage": "alpine",
-   "description": "Cloudflare Tunnel client (formerly Argo Tunnel)",
-   "body": "Upgrading docker-cloudflared to 2023.5.0",
-   "user": "github-actions[bot]"
-}
-{
    "appname": "docker-crunchy",
    "apppic": "./images/docker-crunchy.png",
    "appfolder": "./apps/docker-crunchy",
@@ -72,39 +40,6 @@
    "user": "dockserver-image[bot]"
 }
 {
-   "appname": "docker-dash",
-   "apppic": "",
-   "appfolder": "./apps/docker-dash",
-   "newversion": "5.2.1",
-   "baseimage": "alpine",
-   "baseversion": "3.18.0",
-   "description": "A simple, modern server dashboard, primarily used by smaller private servers",
-   "body": "Upgrading docker-dash to 5.2.1",
-   "user": "dockserver-image[bot]"
-}
-{
-   "appname": "docker-deluge",
-   "apppic": "./images/docker-deluge.png",
-   "appfolder": "./apps/docker-deluge",
-   "newversion": "2.1.1-0",
-   "appbranch": "master",
-   "baseimage": "ghcr.io/dockserver/docker-ubuntu-focal:latest",
-   "description": "Deluge BitTorrent client - Git mirror, PRs only",
-   "body": "Upgrading docker-deluge to 2.1.1-0",
-   "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-dim",
-   "apppic": "./images/docker-dim.png",
-   "appfolder": "./apps/docker-dim",
-   "newversion": "0.3.0-rc6",
-   "appbranch": "",
-   "baseimage": "multi-stages",
-   "description": "Dim, a media manager fueled by dark forces.",
-   "body": "Upgrading docker-dim to 0.3.0-rc6",
-   "user": "github-actions[bot]"
-}
-{
    "appname": "docker-dockupdate",
    "apppic": "./images/docker-dockupdate.png",
    "appfolder": "./apps/docker-dockupdate",
@@ -112,51 +47,6 @@
    "baseimage": "alpine",
    "description": "Automatically keep your docker services and your docker containers up-to-date with the latest version",
    "body": "Upgrading docker-dockupdate to 3.18.0",
-   "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-duplicati",
-   "apppic": "./images/docker-duplicati.png",
-   "appfolder": "./apps/docker-duplicati",
-   "newversion": "2.0.6.106",
-   "appbranch": "master",
-   "baseimage": "ghcr.io/dockserver/docker-alpine-v3:latest",
-   "description": "null",
-   "body": "Upgrading docker-duplicati to 2.0.6.106",
-   "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-emby",
-   "apppic": "./images/docker-emby.png",
-   "appfolder": "./apps/docker-emby",
-   "newversion": "4.7.11.0",
-   "appbranch": "master",
-   "baseimage": "",
-   "description": "Docker Container for Emby Server",
-   "body": "Upgrading docker-emby to 4.7.11.0",
-   "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-embystat",
-   "apppic": "./images/docker-embystat.png",
-   "appfolder": "./apps/docker-embystat",
-   "newversion": "0.2.0-beta.38",
-   "appbranch": "master",
-   "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:focal",
-   "description": "null",
-   "body": "Upgrading docker-embystat to 0.2.0-beta.38",
-   "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-fenrus",
-   "apppic": "./images/docker-fenrus.png",
-   "appfolder": "./apps/docker-fenrus",
-   "newversion": "3.18.0",
-   "appbranch": "master",
-   "baseimage": "alpine",
-   "appversion": "41866191e99b98e8c5572175045e5273808a217f",
-   "description": "A personal home page for quick access to all your personal apps/sites.",
-   "body": "Upgrading docker-fenrus to 41866191e99b98e8c5572175045e5273808a217f",
    "user": "github-actions[bot]"
 }
 {
@@ -168,72 +58,6 @@
    "description": "Docker for Creating GDSA keys",
    "body": "Upgrading docker-gdsa to 430.0.0-alpine",
    "user": "dockserver-actions[bot]"
-}
-{
-   "appname": "docker-jackett",
-   "apppic": "./images/docker-jackett.png",
-   "appfolder": "./apps/docker-jackett",
-   "newversion": "0.20.4135",
-   "appbranch": "master",
-   "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:bionic",
-   "description": "API Support for your favorite torrent trackers",
-   "body": "Upgrading docker-jackett to 0.20.4135",
-   "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-jdownloader",
-   "apppic": "./images/docker-jdownloader.png",
-   "appfolder": "./apps/docker-jdownloader",
-   "newversion": "3.15.0-rc.4",
-   "baseimage": "null",
-   "packages": "null",
-   "description": "Docker container for JDownloader 2",
-   "body": "Upgrading docker-jdownloader to 3.15.0-rc.4",
-   "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-jellyfin",
-   "apppic": "./images/docker-jellyfin.png",
-   "appfolder": "./apps/docker-jellyfin",
-   "newversion": "10.8.10-1",
-   "appbranch": "master",
-   "baseimage": "ghcr.io/linuxserver/baseimage-ubuntu:focal",
-   "description": "The Free Software Media System",
-   "body": "Upgrading docker-jellyfin to 10.8.10-1",
-   "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-jellyseerr",
-   "apppic": "./images/docker-jellyseerr.png",
-   "appfolder": "./apps/docker-jellyseerr",
-   "newversion": "1.5.0",
-   "appbranch": "",
-   "baseimage": "ghcr.io/dockserver/docker-alpine-v3:latest",
-   "description": "fork of overseerr for jellyfin support",
-   "body": "Upgrading docker-jellyseerr to 1.5.0",
-   "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-librespeed",
-   "apppic": "./images/docker-librespeed.png",
-   "appfolder": "./apps/docker-librespeed",
-   "newversion": "5.2.5",
-   "appbranch": "master",
-   "baseimage": "ghcr.io/linuxserver/baseimage-alpine-nginx:3.15",
-   "description": "Self-hosted Speedtest for HTML5 and more. Easy setup, examples, configurable, mobile friendly. Supports PHP, Node, Multiple servers, and more",
-   "body": "Upgrading docker-librespeed to 5.2.5",
-   "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-lidarr",
-   "apppic": "./images/docker-lidarr.png",
-   "appfolder": "./apps/docker-lidarr",
-   "newversion": "1.1.4.3027",
-   "appbranch": "master",
-   "baseimage": "ghcr.io/dockserver/docker-alpine-v3:latest",
-   "description": "Looks and smells like Sonarr but made for music.",
-   "body": "Upgrading docker-lidarr to 1.1.4.3027",
-   "user": "github-actions[bot]"
 }
 {
    "appname": "docker-mount",
@@ -252,16 +76,6 @@
    "user": "dockserver image update[bot]"
 }
 {
-   "appname": "docker-multitautulli",
-   "apppic": "./images/docker-multitautulli.png",
-   "appfolder": "./apps/docker-multitautulli",
-   "newversion": "4.1.07",
-   "baseimage": "ghcr.io/dockserver/docker-alpine-v3:latest",
-   "description": "A Python based monitoring and tracking tool for Plex Media Server.",
-   "body": "Upgrading docker-multitautulli to 4.1.07",
-   "user": "github-actions[bot]"
-}
-{
    "appname": "docker-newznab",
    "apppic": "./images/docker-newznab.png",
    "appfolder": "./apps/docker-newznab",
@@ -270,95 +84,6 @@
    "description": "Docker image  for docker-newznab",
    "body": "Upgrading docker-newznab to baseimage: ubuntu:20.04",
    "user": "dockserver image update[bot]"
-}
-{
-   "appname": "docker-nzbget",
-   "apppic": "./images/docker-nzbget.png",
-   "appfolder": "./apps/docker-nzbget",
-   "newversion": "21.1",
-   "baseimage": "null",
-   "packages": "null",
-   "description": "Efficient Usenet Downloader",
-   "body": "Upgrading docker-nzbget to 21.1",
-   "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-nzbhydra2",
-   "apppic": "./images/docker-nzbhydra2.png",
-   "appfolder": "./apps/docker-nzbhydra2",
-   "newversion": "4.0.2",
-   "baseimage": "null",
-   "packages": "null",
-   "description": "Usenet meta search",
-   "body": "Upgrading docker-nzbhydra2 to 4.0.2",
-   "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-overseerr",
-   "apppic": "./images/docker-overseerr.png",
-   "appfolder": "./apps/docker-overseerr",
-   "newversion": "1.32.5",
-   "appbranch": "",
-   "baseimage": "ghcr.io/dockserver/docker-alpine-v3:latest",
-   "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr to 1.32.5",
-   "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-plex",
-   "apppic": "./images/docker-plex.png",
-   "appfolder": "./apps/docker-plex",
-   "newversion": "1.32.1.6999-91e1e2e2c-ls167",
-   "appbranch": "master",
-   "baseimage": "",
-   "description": "Plex Media Server Docker repo, for all your PMS docker needs.",
-   "body": "Upgrading docker-plex to 1.32.1.6999-91e1e2e2c-ls167",
-   "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-prowlarr",
-   "apppic": "./images/docker-prowlarr.png",
-   "appfolder": "./apps/docker-prowlarr",
-   "newversion": "1.5.0.3316",
-   "appbranch": "nightly",
-   "baseimage": "ghcr.io/dockserver/docker-alpine-v3:latest",
-   "description": "null",
-   "body": "Upgrading docker-prowlarr to 1.5.0.3316",
-   "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-qbittorrent",
-   "apppic": "./images/docker-qbittorrent.png",
-   "appfolder": "./apps/docker-qbittorrent",
-   "newversion": "4.5.2-r2",
-   "appversion": "1.7",
-   "appbranch": "master",
-   "baseimage": "ghcr.io/linuxserver/baseimage-alpine:edge",
-   "description": "Cli to manage qBittorrent",
-   "body": "Upgrading docker-qbittorrent to 4.5.2-r2 with 1.7",
-   "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-radarr",
-   "apppic": "./images/docker-radarr.png",
-   "appfolder": "./apps/docker-radarr",
-   "newversion": "4.4.4.7068-ls171",
-   "appbranch": "master",
-   "baseimage": "",
-   "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr to 4.4.4.7068-ls171",
-   "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-readarr",
-   "apppic": "./images/docker-readarr.png",
-   "appfolder": "./apps/docker-readarr",
-   "newversion": "0.1.5.1793",
-   "appbranch": "nightly",
-   "baseimage": "ghcr.io/dockserver/docker-alpine-v3:latest",
-   "description": "null",
-   "body": "Upgrading docker-readarr to 0.1.5.1793",
-   "user": "github-actions[bot]"
 }
 {
    "appname": "docker-restic",
@@ -386,36 +111,6 @@
    "user": "github-actions[bot]"
 }
 {
-   "appname": "docker-rutorrent",
-   "apppic": "",
-   "appfolder": "./apps/docker-rutorrent",
-   "newversion": "4.1.5",
-   "baseimage": "alpine",
-   "description": "Yet another web front-end for rTorrent",
-   "body": "Upgrading docker-rutorrent to 4.1.5",
-   "user": "dockserver[bot]"
-}
-{
-   "appname": "docker-sabnzbd",
-   "apppic": "./images/docker-sabnzbd.png",
-   "appfolder": "./apps/docker-sabnzbd",
-   "newversion": "4.0.1",
-   "appbranch": "master",
-   "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd to 4.0.1",
-   "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-sonarr",
-   "apppic": "./images/docker-sonarr.png",
-   "appfolder": "./apps/docker-sonarr",
-   "newversion": "3.0.10.1567-ls190",
-   "appbranch": "main",
-   "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr to 3.0.10.1567-ls190",
-   "user": "github-actions[bot]"
-}
-{
    "appname": "docker-spotweb",
    "apppic": "",
    "appfolder": "./apps/docker-spotweb",
@@ -424,16 +119,6 @@
    "description": "Decentralized community",
    "body": "Upgrading docker-spotweb to 1.5.4",
    "user": "dockserver[bot]"
-}
-{
-   "appname": "docker-tautulli",
-   "apppic": "./images/docker-tautulli.png",
-   "appfolder": "./apps/docker-tautulli",
-   "newversion": "2.12.3",
-   "baseimage": "ghcr.io/dockserver/docker-alpine",
-   "description": "A Python based monitoring and tracking tool for Plex Media Server.",
-   "body": "Upgrading docker-tautulli to 2.12.3",
-   "user": "github-actions[bot]"
 }
 {
    "appname": "docker-traktarr",
@@ -476,17 +161,6 @@
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
    "body": "Upgrading docker-wiki to 3.18.0",
-   "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-wireguard",
-   "apppic": "./images/docker-wireguard.png",
-   "appfolder": "./apps/docker-wireguard",
-   "newversion": "1.0.20210914",
-   "baseimage": "null",
-   "packages": "null",
-   "description": "Mirror only. Official repository is at https://git.zx2c4.com/wireguard-tools",
-   "body": "Upgrading docker-wireguard to 1.0.20210914",
    "user": "github-actions[bot]"
 }
 {
@@ -551,16 +225,6 @@
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
    "body": "Upgrading docker-dockserver to 3.18.0",
-   "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-haproxy",
-   "apppic": "./images/docker-haproxy.png",
-   "appfolder": "./base/docker-haproxy",
-   "newversion": "",
-   "baseimage": "haproxy",
-   "description": "HAProxy Load Balancer's development branch (mirror of git.haproxy.org)",
-   "body": "Upgrading docker-haproxy to ",
    "user": "github-actions[bot]"
 }
 {
@@ -651,48 +315,6 @@
    "apppic": "./images/docker-mod-tautulli.png",
    "appfolder": "./mod/docker-mod-tautulli",
    "user": "github-actions[bot]"
-}
-{
-   "appname": "docker-overseerr-nightly",
-   "apppic": "./images/docker-overseerr-nightly.png",
-   "appfolder": "./nightly/docker-overseerr-nightly",
-   "newversion": "e051b1dfea9c9320cc9dd420c475ae74cff0d901",
-   "appbranch": "develop",
-   "baseimage": "ghcr.io/dockserver/docker-alpine-v3:latest",
-   "description": "Request management and media discovery tool for the Plex ecosystem",
-   "body": "Upgrading docker-overseerr-nightly to e051b1dfea9c9320cc9dd420c475ae74cff0d901",
-   "user": "dockserver image update[bot]"
-}
-{
-   "appname": "docker-radarr-nightly",
-   "apppic": "./images/docker-radarr-nightly.png",
-   "appfolder": "./nightly/docker-radarr-nightly",
-   "newversion": "nightly-4.5.1.7261-ls466",
-   "appbranch": "nightly",
-   "baseimage": "",
-   "description": "A fork of Sonarr to work with movies à la Couchpotato.",
-   "body": "Upgrading docker-radarr-nightly to nightly-4.5.1.7261-ls466",
-   "user": "dockserver image update[bot]"
-}
-{
-   "appname": "docker-sabnzbd-nightly",
-   "apppic": "./images/docker-sabnzbd-nightly.png",
-   "appfolder": "./nightly/docker-sabnzbd-nightly",
-   "newversion": "59620c22173ec6bb2dc86e5fdfe7a4243c5d3e14",
-   "appbranch": "develop",
-   "description": "SABnzbd - The automated Usenet download tool",
-   "body": "Upgrading docker-sabnzbd-nightly to 59620c22173ec6bb2dc86e5fdfe7a4243c5d3e14",
-   "user": "dockserver image update[bot]"
-}
-{
-   "appname": "docker-sonarr-nightly",
-   "apppic": "./images/docker-sonarr-nightly.png",
-   "appfolder": "./nightly/docker-sonarr-nightly",
-   "newversion": "develop-4.0.0.492-ls474",
-   "appbranch": "develop",
-   "description": "Smart PVR for newsgroup and bittorrent users.",
-   "body": "Upgrading docker-sonarr-nightly to develop-4.0.0.492-ls474",
-   "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-whisparr-nightly",
