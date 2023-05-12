@@ -1,97 +1,77 @@
-# Copyright (c) 2016-2021 Martin Donath <martin.donath@squidfunk.com>
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to
-# deal in the Software without restriction, including without limitation the
-# rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-# sell copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-# IN THE SOFTWARE.
-
 # Project information
-site_name: DockServer Wiki
+site_name: docs.dockserver.io
 use_directory_urls: false
-site_url: ""
+site_url: "https://dockserver.io/"
 site_author: DockServer
-site_description: Use your self hosted docker as wiki
+site_description: DockServer is an Docker-based solution for deploying a Docker containerized cloud media server.
 
 # Repository
 repo_name: DockServer Wiki
 repo_url: https://github.com/dockserver/dockserver
 edit_uri: https://github.com/dockserver/dockserver/edit/master/wiki/docs/
-copyright: Copyright &copy; 2022 DockServer.io
+copyright: Copyright &copy; 2023 DockServer.io
 
 # Configuration
 theme:
   name: material
-  custom_dir: overrides
-
-  # Static files
-  static_templates:
-    - 404.html
-  include_search_page: false
-  search_index_only: true
   icon:
-    admonition:
-      note: fontawesome/solid/sticky-note
-      abstract: fontawesome/solid/book
-      info: fontawesome/solid/info-circle
-      tip: fontawesome/solid/bullhorn
-      success: fontawesome/solid/check
-      question: fontawesome/solid/question-circle
-      warning: fontawesome/solid/exclamation-triangle
-      failure: fontawesome/solid/bomb
-      danger: fontawesome/solid/skull
-      bug: fontawesome/solid/robot
-      example: fontawesome/solid/flask
-      quote: fontawesome/solid/quote-left
-
-  language: en
+    logo: material/sofa
+    repo: fontawesome/brands/github-alt
+  custom_dir: overrides
   features:
+    - content.code.copy
+    - content.action.edit
+    - content.action.view
+    - header.autohide
+    - navigation.footer
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.sections
-    - navigation.expand
-    - search.suggest
-    - search.highligh
-    - search.share
     - navigation.top
-    - toc.integrate
+    - navigation.tracking
+    - navigation.instant
+    - navigation.prune
+    # - toc.integrate
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+  language: en
   palette:
-    - media: "(prefers-color-scheme: dark)" 
-      scheme: slate
-      primary: black
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      primary: teal
+      accent: teal
       toggle:
-        icon: material/toggle-switch
+        icon: material/brightness-auto
         name: Switch to light mode
-    - media: "(prefers-color-scheme: light)" 
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigio
+      primary: teal
+      accent: teal
       toggle:
-        icon: material/toggle-switch-off-outline
+        icon: material/brightness-7
         name: Switch to dark mode
 
-  font:
-    text: Roboto
-    code: Roboto Mono
-  favicon: img/logo_without_text.png
-  logo: img/logo_without_text.png
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
 
 # Plugins
 plugins:
-  - search
+  - search:
+      lang: en
+  - meta
   - redirects:
       redirect_maps:
         404.html: index.md
-  - minify:
-      minify_html: true
 
 # Customization
 extra:
@@ -99,16 +79,25 @@ extra:
     provider: google
     property: 'G-00QEDJW2TS'
   social:
+    - icon: fontawesome/solid/heart
+      class: md-social__link heart
+      link: 'https://liberapay.com/dockserver/donate'
+      name: Donate
     - icon: fontawesome/brands/github
+      class: md-social__link
       link: https://github.com/dockserver/dockserver
+      name: GitHub
     - icon: fontawesome/brands/docker
       link: https://github.com/orgs/dockserver/packages/
     - icon: fontawesome/brands/discord
+      class: md-social__link
       link: https://discord.gg/A7h7bKBCVa
+      name: Discord
     - icon: fontawesome/brands/firefox
       link: https://dockserver.io/
 
 markdown_extensions:
+  - meta
   - admonition
   - abbr
   - attr_list
@@ -116,6 +105,8 @@ markdown_extensions:
   - footnotes
   - meta
   - md_in_html
+  - pymdownx.tabbed:
+      alternate_style: true
   - toc:
       permalink: true
   - pymdownx.arithmatex:
@@ -142,6 +133,9 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
+
+extra_css:
+  - stylesheets/extra.css
 
 # Page tree
 nav:
@@ -279,5 +273,43 @@ nav:
           - DockServerWiki: apps/system/wiki.md
   - Scripts:
       - Scripts: scripts/scripts.md
+
+  # Static files
+  static_templates:
+    - 404.html
+  include_search_page: false
+  search_index_only: true
+  icon:
+    admonition:
+      note: fontawesome/solid/sticky-note
+      abstract: fontawesome/solid/book
+      info: fontawesome/solid/info-circle
+      tip: fontawesome/solid/bullhorn
+      success: fontawesome/solid/check
+      question: fontawesome/solid/question-circle
+      warning: fontawesome/solid/exclamation-triangle
+      failure: fontawesome/solid/bomb
+      danger: fontawesome/solid/skull
+      bug: fontawesome/solid/robot
+      example: fontawesome/solid/flask
+      quote: fontawesome/solid/quote-left
+
+  favicon: img/logo_without_text.png
+  logo: img/logo_without_text.png
+
+
+
+
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: img/logo_without_text.png
+  logo: img/logo_without_text.png
+
+
+
+
+
+
 
 #E-O-F#
