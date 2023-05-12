@@ -1,3 +1,3 @@
 
 ## 2023-05-12
- * Cleanup Container Repo (drag0n141)
+ * [Auto Generation] Changes : wiki/docs/install/container-gitlog.md (dockserver-bot[bot])
