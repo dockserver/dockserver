@@ -41,8 +41,6 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
-    
     <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -97,7 +95,7 @@
 
 <header class="md-header md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../index.html" title="DockServer Wiki" class="md-header__button md-logo" aria-label="DockServer Wiki" data-md-component="logo">
+    <a href="../.." title="DockServer Wiki" class="md-header__button md-logo" aria-label="DockServer Wiki" data-md-component="logo">
       
   <img src="../../img/logo_without_text.png" alt="logo">
 
@@ -211,11 +209,15 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="../../index.html" class="md-tabs__link">
-      Home
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../index.html" class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
 
       
         
@@ -359,7 +361,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../index.html" title="DockServer Wiki" class="md-nav__button md-logo" aria-label="DockServer Wiki" data-md-component="logo">
+    <a href="../.." title="DockServer Wiki" class="md-nav__button md-logo" aria-label="DockServer Wiki" data-md-component="logo">
       
   <img src="../../img/logo_without_text.png" alt="logo">
 
@@ -388,10 +390,43 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../index.html" class="md-nav__link">
-        Home
+        Overview
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -2792,7 +2827,7 @@
 
 <h1 id="heimdall">Heimdall<a class="headerlink" href="#heimdall" title="Permanent link">&para;</a></h1>
 <p><a href="https://heimdall.site"><img alt="Heimdall_Banner" src="https://i.imgur.com/iuV8w3y.png" /></a></p>
-<p>Visit the website - <a href="https://heimdall.site">https://heimdall.site</a></p>
+<p>Visit the website - https://heimdall.site</p>
 <hr />
 <h2 id="about">About<a class="headerlink" href="#about" title="Permanent link">&para;</a></h2>
 <p>As the name suggests Heimdall Application Dashboard is a dashboard for all your web applications. It doesn't need to be limited to applications though, you can add links to anything you like.</p>
@@ -2800,7 +2835,7 @@
 <p>Why not use it as your browser start page? It even has the ability to include a search bar using either Google, Bing or DuckDuckGo.</p>
 <p><img alt="Heimdall demo animation" src="https://i.imgur.com/MrC4QpN.gif" /></p>
 <h2 id="video">Video<a class="headerlink" href="#video" title="Permanent link">&para;</a></h2>
-<p>If you want to see a quick video of it in use, go to <a href="https://youtu.be/GXnnMAxPzMc">https://youtu.be/GXnnMAxPzMc</a></p>
+<p>If you want to see a quick video of it in use, go to https://youtu.be/GXnnMAxPzMc</p>
 <h2 id="supported-applications">Supported applications<a class="headerlink" href="#supported-applications" title="Permanent link">&para;</a></h2>
 <p>You can use the app to link to any site or application, but Foundation apps will auto fill in the icon for the app and supply a default color for the tile. In addition Enhanced apps allow you provide details to an apps API, allowing you to view live stats directly on the dashboad. For example, the NZBGet and Sabnzbd Enhanced apps will display the queue size and download speed while something is downloading.</p>
 <p>Supported applications are recognized by the title of the application as entered in the title field when adding an application. For example, to add a link to pfSense, begin by typing "p" in the title field and then select "pfSense" from the list of supported applications.</p>

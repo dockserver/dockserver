@@ -41,8 +41,6 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
-    
     <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -97,7 +95,7 @@
 
 <header class="md-header md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../index.html" title="DockServer Wiki" class="md-header__button md-logo" aria-label="DockServer Wiki" data-md-component="logo">
+    <a href=".." title="DockServer Wiki" class="md-header__button md-logo" aria-label="DockServer Wiki" data-md-component="logo">
       
   <img src="../img/logo_without_text.png" alt="logo">
 
@@ -211,11 +209,15 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="../index.html" class="md-tabs__link">
-      Home
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
 
       
         
@@ -359,7 +361,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../index.html" title="DockServer Wiki" class="md-nav__button md-logo" aria-label="DockServer Wiki" data-md-component="logo">
+    <a href=".." title="DockServer Wiki" class="md-nav__button md-logo" aria-label="DockServer Wiki" data-md-component="logo">
       
   <img src="../img/logo_without_text.png" alt="logo">
 
@@ -388,10 +390,43 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../index.html" class="md-nav__link">
-        Home
+        Overview
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -2927,7 +2962,7 @@
 <p>Restart the container:</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>restart<span class="w"> </span>authelia
 </code></pre></div>
-<p>Now visit <a href="https://authelia.YOURDOMAIN.com">https://authelia.YOURDOMAIN.com</a> and login with the username/password.
+<p>Now visit https://authelia.YOURDOMAIN.com and login with the username/password.
 You'll be presented with a screen saying you need to register your device for TOTP.
 Click <strong>"Not registered yet?"</strong> and a message will appear on screen saying <strong>"An email has been sent to your address to complete the process"</strong>.
 As we didn't set up SMTP, no email has been sent. However, the link you need to continue the setup can be found here:</p>

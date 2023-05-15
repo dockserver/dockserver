@@ -41,8 +41,6 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
-    
     <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -97,7 +95,7 @@
 
 <header class="md-header md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../index.html" title="DockServer Wiki" class="md-header__button md-logo" aria-label="DockServer Wiki" data-md-component="logo">
+    <a href=".." title="DockServer Wiki" class="md-header__button md-logo" aria-label="DockServer Wiki" data-md-component="logo">
       
   <img src="../img/logo_without_text.png" alt="logo">
 
@@ -211,11 +209,15 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="../index.html" class="md-tabs__link">
-      Home
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
 
       
         
@@ -359,7 +361,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../index.html" title="DockServer Wiki" class="md-nav__button md-logo" aria-label="DockServer Wiki" data-md-component="logo">
+    <a href=".." title="DockServer Wiki" class="md-nav__button md-logo" aria-label="DockServer Wiki" data-md-component="logo">
       
   <img src="../img/logo_without_text.png" alt="logo">
 
@@ -388,10 +390,43 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../index.html" class="md-nav__link">
-        Home
+        Overview
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -5088,18 +5123,18 @@
 <h2 id="v1449-2023-03-17-062025"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.4.49">v1.4.49</a> - 2023-03-17 06:20:25<a class="headerlink" href="#v1449-2023-03-17-062025" title="Permanent link">&para;</a></h2>
 <h2 id="github-updates">💻 GitHub updates<a class="headerlink" href="#github-updates" title="Permanent link">&para;</a></h2>
 <ul>
-<li>GH updates (deps): Bump aquasecurity/trivy-action from 0.9.1 to 0.9.2 (<a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/609" title="GitHub Issue: squidfunk/mkdocs-material #609">#609</a>)Co-authored-by: dependabot[bot] <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#52;&#57;&#54;&#57;&#57;&#51;&#51;&#51;&#43;&#100;&#101;&#112;&#101;&#110;&#100;&#97;&#98;&#111;&#116;&#91;&#98;&#111;&#116;&#93;&#64;&#117;&#115;&#101;&#114;&#115;&#46;&#110;&#111;&#114;&#101;&#112;&#108;&#121;&#46;&#103;&#105;&#116;&#104;&#117;&#98;&#46;&#99;&#111;&#109;">&#52;&#57;&#54;&#57;&#57;&#51;&#51;&#51;&#43;&#100;&#101;&#112;&#101;&#110;&#100;&#97;&#98;&#111;&#116;&#91;&#98;&#111;&#116;&#93;&#64;&#117;&#115;&#101;&#114;&#115;&#46;&#110;&#111;&#114;&#101;&#112;&#108;&#121;&#46;&#103;&#105;&#116;&#104;&#117;&#98;&#46;&#99;&#111;&#109;</a></li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/609" title="GitHub Issue: squidfunk/mkdocs-material #609">#609</a></li>
+<li>GH updates (deps): Bump aquasecurity/trivy-action from 0.9.1 to 0.9.2 (#609)Co-authored-by: dependabot[bot] <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#52;&#57;&#54;&#57;&#57;&#51;&#51;&#51;&#43;&#100;&#101;&#112;&#101;&#110;&#100;&#97;&#98;&#111;&#116;&#91;&#98;&#111;&#116;&#93;&#64;&#117;&#115;&#101;&#114;&#115;&#46;&#110;&#111;&#114;&#101;&#112;&#108;&#121;&#46;&#103;&#105;&#116;&#104;&#117;&#98;&#46;&#99;&#111;&#109;">&#52;&#57;&#54;&#57;&#57;&#51;&#51;&#51;&#43;&#100;&#101;&#112;&#101;&#110;&#100;&#97;&#98;&#111;&#116;&#91;&#98;&#111;&#116;&#93;&#64;&#117;&#115;&#101;&#114;&#115;&#46;&#110;&#111;&#114;&#101;&#112;&#108;&#121;&#46;&#103;&#105;&#116;&#104;&#117;&#98;&#46;&#99;&#111;&#109;</a></li>
+<li>PR: #609</li>
 <li>GH updates (deps): Bump step-security/harden-runner from 2.2.0 to 2.2.1</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/611" title="GitHub Issue: squidfunk/mkdocs-material #611">#611</a></li>
-<li>GH updates (deps): Bump actions/checkout from 3.3.0 to 3.4.0 (<a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/612" title="GitHub Issue: squidfunk/mkdocs-material #612">#612</a>)Co-authored-by: dependabot[bot] <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#52;&#57;&#54;&#57;&#57;&#51;&#51;&#51;&#43;&#100;&#101;&#112;&#101;&#110;&#100;&#97;&#98;&#111;&#116;&#91;&#98;&#111;&#116;&#93;&#64;&#117;&#115;&#101;&#114;&#115;&#46;&#110;&#111;&#114;&#101;&#112;&#108;&#121;&#46;&#103;&#105;&#116;&#104;&#117;&#98;&#46;&#99;&#111;&#109;">&#52;&#57;&#54;&#57;&#57;&#51;&#51;&#51;&#43;&#100;&#101;&#112;&#101;&#110;&#100;&#97;&#98;&#111;&#116;&#91;&#98;&#111;&#116;&#93;&#64;&#117;&#115;&#101;&#114;&#115;&#46;&#110;&#111;&#114;&#101;&#112;&#108;&#121;&#46;&#103;&#105;&#116;&#104;&#117;&#98;&#46;&#99;&#111;&#109;</a></li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/612" title="GitHub Issue: squidfunk/mkdocs-material #612">#612</a></li>
+<li>PR: #611</li>
+<li>GH updates (deps): Bump actions/checkout from 3.3.0 to 3.4.0 (#612)Co-authored-by: dependabot[bot] <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#52;&#57;&#54;&#57;&#57;&#51;&#51;&#51;&#43;&#100;&#101;&#112;&#101;&#110;&#100;&#97;&#98;&#111;&#116;&#91;&#98;&#111;&#116;&#93;&#64;&#117;&#115;&#101;&#114;&#115;&#46;&#110;&#111;&#114;&#101;&#112;&#108;&#121;&#46;&#103;&#105;&#116;&#104;&#117;&#98;&#46;&#99;&#111;&#109;">&#52;&#57;&#54;&#57;&#57;&#51;&#51;&#51;&#43;&#100;&#101;&#112;&#101;&#110;&#100;&#97;&#98;&#111;&#116;&#91;&#98;&#111;&#116;&#93;&#64;&#117;&#115;&#101;&#114;&#115;&#46;&#110;&#111;&#114;&#101;&#112;&#108;&#121;&#46;&#103;&#105;&#116;&#104;&#117;&#98;&#46;&#99;&#111;&#109;</a></li>
+<li>PR: #612</li>
 </ul>
 <h2 id="v1448-2023-02-28-201737"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.4.48">v1.4.48</a> - 2023-02-28 20:17:37<a class="headerlink" href="#v1448-2023-02-28-201737" title="Permanent link">&para;</a></h2>
 <h2 id="v1447-2023-02-08-081630"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.4.47">v1.4.47</a> - 2023-02-08 08:16:30<a class="headerlink" href="#v1447-2023-02-08-081630" title="Permanent link">&para;</a></h2>
 <ul>
-<li>bugfix: Fix GPU Install (<a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/598" title="GitHub Issue: squidfunk/mkdocs-material #598">#598</a></li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/598" title="GitHub Issue: squidfunk/mkdocs-material #598">#598</a></li>
+<li>bugfix: Fix GPU Install (#598</li>
+<li>PR: #598</li>
 </ul>
 <h2 id="v1445-2023-02-06-173401"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.4.45">v1.4.45</a> - 2023-02-06 17:34:01<a class="headerlink" href="#v1445-2023-02-06-173401" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
@@ -5131,11 +5166,11 @@
 <h2 id="v1429-2022-11-19-195210"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.4.29">v1.4.29</a> - 2022-11-19 19:52:10<a class="headerlink" href="#v1429-2022-11-19-195210" title="Permanent link">&para;</a></h2>
 <ul>
 <li>[ImgBot] Optimize images</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/570" title="GitHub Issue: squidfunk/mkdocs-material #570">#570</a></li>
+<li>PR: #570</li>
 <li>uploader.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/571" title="GitHub Issue: squidfunk/mkdocs-material #571">#571</a></li>
+<li>PR: #571</li>
 <li>Create sync.yml</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/573" title="GitHub Issue: squidfunk/mkdocs-material #573">#573</a></li>
+<li>PR: #573</li>
 </ul>
 <h3 id="documentation_1">Documentation<a class="headerlink" href="#documentation_1" title="Permanent link">&para;</a></h3>
 <ul>
@@ -5148,14 +5183,14 @@
 <h3 id="feature">Feature<a class="headerlink" href="#feature" title="Permanent link">&para;</a></h3>
 <ul>
 <li>general:</li>
-<li>add bypass rule for xbvr app (<a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/518" title="GitHub Issue: squidfunk/mkdocs-material #518">#518</a>) (<a href="https://github.com/dockserver/dockserver/commit/112b16db49c623bbd94611e5ea8f39d7404036ef">112b16d</a>) (<a href="https://github.com/dockserver/dockserver/pull/518">#518</a>)</li>
+<li>add bypass rule for xbvr app (#518) (<a href="https://github.com/dockserver/dockserver/commit/112b16db49c623bbd94611e5ea8f39d7404036ef">112b16d</a>) (<a href="https://github.com/dockserver/dockserver/pull/518">#518</a>)</li>
 </ul>
 <h3 id="bug-fixes">Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permanent link">&para;</a></h3>
 <ul>
 <li>general:</li>
-<li>Build Status, GitHub release (<a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/520" title="GitHub Issue: squidfunk/mkdocs-material #520">#520</a>) (<a href="https://github.com/dockserver/dockserver/commit/9b129c1b0f3ac81db39d33089ab2e95d4ae18156">9b129c1</a>) (<a href="https://github.com/dockserver/dockserver/pull/520">#520</a>)</li>
+<li>Build Status, GitHub release (#520) (<a href="https://github.com/dockserver/dockserver/commit/9b129c1b0f3ac81db39d33089ab2e95d4ae18156">9b129c1</a>) (<a href="https://github.com/dockserver/dockserver/pull/520">#520</a>)</li>
 <li>Fix Wiki Docs (<a href="https://github.com/dockserver/dockserver/commit/23985862921872c770fc3cc1b132bdd582319db0">2398586</a>)</li>
-<li>fix <code>whisparr.yml</code> (<a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/464" title="GitHub Issue: squidfunk/mkdocs-material #464">#464</a>) (<a href="https://github.com/dockserver/dockserver/commit/54fd4d234db7938d6ef8cb58f5c4ee055409ee21">54fd4d2</a>) (<a href="https://github.com/dockserver/dockserver/pull/464">#464</a>)</li>
+<li>fix <code>whisparr.yml</code> (#464) (<a href="https://github.com/dockserver/dockserver/commit/54fd4d234db7938d6ef8cb58f5c4ee055409ee21">54fd4d2</a>) (<a href="https://github.com/dockserver/dockserver/pull/464">#464</a>)</li>
 </ul>
 <h3 id="documentation_2">Documentation<a class="headerlink" href="#documentation_2" title="Permanent link">&para;</a></h3>
 <ul>
@@ -5246,7 +5281,7 @@
 <p>repository changes</p>
 <h2 id="v143-2022-01-30-020001"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.4.3">v1.4.3</a> - 2022-01-30 02:00:01<a class="headerlink" href="#v143-2022-01-30-020001" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.4.2...v1.4.3">https://github.com/dockserver/dockserver/compare/v1.4.2...v1.4.3</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.4.2...v1.4.3</p>
 <h2 id="v142-2022-01-28-140144"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.4.2">v1.4.2</a> - 2022-01-28 14:01:44<a class="headerlink" href="#v142-2022-01-28-140144" title="Permanent link">&para;</a></h2>
 <h2 id="v141-2022-01-23-154941"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.4.1">v1.4.1</a> - 2022-01-23 15:49:41<a class="headerlink" href="#v141-2022-01-23-154941" title="Permanent link">&para;</a></h2>
 <h2 id="v140-2022-01-17-122231"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.4.0">v1.4.0</a> - 2022-01-17 12:22:31<a class="headerlink" href="#v140-2022-01-17-122231" title="Permanent link">&para;</a></h2>
@@ -5254,7 +5289,7 @@
 <p>repository changes</p>
 <h2 id="v1333-2021-12-19-120952"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.3.33">v1.3.33</a> - 2021-12-19 12:09:52<a class="headerlink" href="#v1333-2021-12-19-120952" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.3.32...v1.3.33">https://github.com/dockserver/dockserver/compare/v1.3.32...v1.3.33</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.3.32...v1.3.33</p>
 <h3 id="feature_1">Feature<a class="headerlink" href="#feature_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>general:</li>
@@ -5267,54 +5302,54 @@
 </ul>
 <h2 id="v1332-2021-12-19-023550"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.3.32">v1.3.32</a> - 2021-12-19 02:35:50<a class="headerlink" href="#v1332-2021-12-19-023550" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.3.31...v1.3.32">https://github.com/dockserver/dockserver/compare/v1.3.31...v1.3.32</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.3.31...v1.3.32</p>
 <h2 id="v1331-2021-12-19-022800"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.3.31">v1.3.31</a> - 2021-12-19 02:28:00<a class="headerlink" href="#v1331-2021-12-19-022800" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.3.30...v1.3.31">https://github.com/dockserver/dockserver/compare/v1.3.30...v1.3.31</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.3.30...v1.3.31</p>
 <h2 id="v1330-2021-12-19-021644"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.3.30">v1.3.30</a> - 2021-12-19 02:16:44<a class="headerlink" href="#v1330-2021-12-19-021644" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.3.29...v1.3.30">https://github.com/dockserver/dockserver/compare/v1.3.29...v1.3.30</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.3.29...v1.3.30</p>
 <h2 id="v1329-2021-12-19-020845"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.3.29">v1.3.29</a> - 2021-12-19 02:08:45<a class="headerlink" href="#v1329-2021-12-19-020845" title="Permanent link">&para;</a></h2>
 <h2 id="v1328-2021-12-18-042428"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.3.28">v1.3.28</a> - 2021-12-18 04:24:28<a class="headerlink" href="#v1328-2021-12-18-042428" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.3.27...v1.3.28">https://github.com/dockserver/dockserver/compare/v1.3.27...v1.3.28</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.3.27...v1.3.28</p>
 <h2 id="v1327-2021-12-18-042410"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.3.27">v1.3.27</a> - 2021-12-18 04:24:10<a class="headerlink" href="#v1327-2021-12-18-042410" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.3.26...v1.3.27">https://github.com/dockserver/dockserver/compare/v1.3.26...v1.3.27</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.3.26...v1.3.27</p>
 <h2 id="v1326-2021-12-18-041255"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.3.26">v1.3.26</a> - 2021-12-18 04:12:55<a class="headerlink" href="#v1326-2021-12-18-041255" title="Permanent link">&para;</a></h2>
 <h2 id="v1325-2021-12-17-215116"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.3.25">v1.3.25</a> - 2021-12-17 21:51:16<a class="headerlink" href="#v1325-2021-12-17-215116" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.3.24...v1.3.25">https://github.com/dockserver/dockserver/compare/v1.3.24...v1.3.25</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.3.24...v1.3.25</p>
 <h2 id="v1324-2021-12-17-213949"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.3.24">v1.3.24</a> - 2021-12-17 21:39:49<a class="headerlink" href="#v1324-2021-12-17-213949" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.3.23...v1.3.24">https://github.com/dockserver/dockserver/compare/v1.3.23...v1.3.24</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.3.23...v1.3.24</p>
 <h2 id="v1323-2021-12-17-212317"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.3.23">v1.3.23</a> - 2021-12-17 21:23:17<a class="headerlink" href="#v1323-2021-12-17-212317" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.3.22...v1.3.23">https://github.com/dockserver/dockserver/compare/v1.3.22...v1.3.23</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.3.22...v1.3.23</p>
 <h2 id="v1322-2021-12-17-212228"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.3.22">v1.3.22</a> - 2021-12-17 21:22:28<a class="headerlink" href="#v1322-2021-12-17-212228" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.3.21...v1.3.22">https://github.com/dockserver/dockserver/compare/v1.3.21...v1.3.22</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.3.21...v1.3.22</p>
 <h2 id="v1321-2021-12-17-211931"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.3.21">v1.3.21</a> - 2021-12-17 21:19:31<a class="headerlink" href="#v1321-2021-12-17-211931" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.3.20...v1.3.21">https://github.com/dockserver/dockserver/compare/v1.3.20...v1.3.21</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.3.20...v1.3.21</p>
 <h2 id="v1320-2021-12-17-211356"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.3.20">v1.3.20</a> - 2021-12-17 21:13:56<a class="headerlink" href="#v1320-2021-12-17-211356" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.3.19...v1.3.20">https://github.com/dockserver/dockserver/compare/v1.3.19...v1.3.20</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.3.19...v1.3.20</p>
 <h2 id="v1319-2021-12-17-073637"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.3.19">v1.3.19</a> - 2021-12-17 07:36:37<a class="headerlink" href="#v1319-2021-12-17-073637" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.3.18...v1.3.19">https://github.com/dockserver/dockserver/compare/v1.3.18...v1.3.19</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.3.18...v1.3.19</p>
 <h2 id="v1318-2021-12-17-072511"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.3.18">v1.3.18</a> - 2021-12-17 07:25:11<a class="headerlink" href="#v1318-2021-12-17-072511" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.3.17...v1.3.18">https://github.com/dockserver/dockserver/compare/v1.3.17...v1.3.18</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.3.17...v1.3.18</p>
 <h2 id="v1316-2021-12-17-062621"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.3.16">v1.3.16</a> - 2021-12-17 06:26:21<a class="headerlink" href="#v1316-2021-12-17-062621" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.3.15...v1.3.16">https://github.com/dockserver/dockserver/compare/v1.3.15...v1.3.16</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.3.15...v1.3.16</p>
 <h2 id="v1315-2021-12-17-061919"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.3.15">v1.3.15</a> - 2021-12-17 06:19:19<a class="headerlink" href="#v1315-2021-12-17-061919" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.3.14...v1.3.15">https://github.com/dockserver/dockserver/compare/v1.3.14...v1.3.15</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.3.14...v1.3.15</p>
 <h2 id="v1314-2021-12-17-045653"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.3.14">v1.3.14</a> - 2021-12-17 04:56:53<a class="headerlink" href="#v1314-2021-12-17-045653" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.3.13...v1.3.14">https://github.com/dockserver/dockserver/compare/v1.3.13...v1.3.14</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.3.13...v1.3.14</p>
 <h2 id="v1313-2021-12-17-044527"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.3.13">v1.3.13</a> - 2021-12-17 04:45:27<a class="headerlink" href="#v1313-2021-12-17-044527" title="Permanent link">&para;</a></h2>
 <h2 id="v1312-2021-12-15-171819"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.3.12">v1.3.12</a> - 2021-12-15 17:18:19<a class="headerlink" href="#v1312-2021-12-15-171819" title="Permanent link">&para;</a></h2>
 <h2 id="v1311-2021-12-14-072355"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.3.11">v1.3.11</a> - 2021-12-14 07:23:55<a class="headerlink" href="#v1311-2021-12-14-072355" title="Permanent link">&para;</a></h2>
@@ -5328,7 +5363,7 @@
 <h2 id="v137-2021-12-13-220015"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.3.7">v1.3.7</a> - 2021-12-13 22:00:15<a class="headerlink" href="#v137-2021-12-13-220015" title="Permanent link">&para;</a></h2>
 <h2 id="v136-2021-12-12-172236"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.3.6">v1.3.6</a> - 2021-12-12 17:22:36<a class="headerlink" href="#v136-2021-12-12-172236" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.3.5...v1.3.6">https://github.com/dockserver/dockserver/compare/v1.3.5...v1.3.6</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.3.5...v1.3.6</p>
 <h2 id="v135-2021-12-12-171127"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.3.5">v1.3.5</a> - 2021-12-12 17:11:27<a class="headerlink" href="#v135-2021-12-12-171127" title="Permanent link">&para;</a></h2>
 <h2 id="v134-2021-12-12-160650"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.3.4">v1.3.4</a> - 2021-12-12 16:06:50<a class="headerlink" href="#v134-2021-12-12-160650" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
@@ -5344,10 +5379,10 @@
 <h2 id="v1251-2021-12-07-150111"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.51">v1.2.51</a> - 2021-12-07 15:01:11<a class="headerlink" href="#v1251-2021-12-07-150111" title="Permanent link">&para;</a></h2>
 <h2 id="v1250-2021-11-29-154955"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.50">v1.2.50</a> - 2021-11-29 15:49:55<a class="headerlink" href="#v1250-2021-11-29-154955" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.2.49...v1.2.50">https://github.com/dockserver/dockserver/compare/v1.2.49...v1.2.50</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.2.49...v1.2.50</p>
 <h2 id="v1249-2021-11-29-005816"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.49">v1.2.49</a> - 2021-11-29 00:58:16<a class="headerlink" href="#v1249-2021-11-29-005816" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.2.48...v1.2.49">https://github.com/dockserver/dockserver/compare/v1.2.48...v1.2.49</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.2.48...v1.2.49</p>
 <h3 id="documentation_3">Documentation<a class="headerlink" href="#documentation_3" title="Permanent link">&para;</a></h3>
 <ul>
 <li>README:</li>
@@ -5356,13 +5391,13 @@
 </ul>
 <h2 id="v1248-2021-11-27-070154"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.48">v1.2.48</a> - 2021-11-27 07:01:54<a class="headerlink" href="#v1248-2021-11-27-070154" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.2.47...v1.2.48">https://github.com/dockserver/dockserver/compare/v1.2.47...v1.2.48</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.2.47...v1.2.48</p>
 <h2 id="v1247-2021-11-24-183459"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.47">v1.2.47</a> - 2021-11-24 18:34:59<a class="headerlink" href="#v1247-2021-11-24-183459" title="Permanent link">&para;</a></h2>
 <ul>
 <li>chore(deps): update dependency mkdocs-macros-plugin to v0.6.2</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/299" title="GitHub Issue: squidfunk/mkdocs-material #299">#299</a></li>
+<li>PR: #299</li>
 <li>chore(deps): update dependency mkdocs-macros-plugin to v0.6.3</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/301" title="GitHub Issue: squidfunk/mkdocs-material #301">#301</a></li>
+<li>PR: #301</li>
 </ul>
 <h3 id="feature_2">Feature<a class="headerlink" href="#feature_2" title="Permanent link">&para;</a></h3>
 <ul>
@@ -5378,7 +5413,7 @@
 <h2 id="v1246-2021-11-23-134746"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.46">v1.2.46</a> - 2021-11-23 13:47:46<a class="headerlink" href="#v1246-2021-11-23-134746" title="Permanent link">&para;</a></h2>
 <ul>
 <li>chore(deps): update actions/cache action to v2.1.7</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/298" title="GitHub Issue: squidfunk/mkdocs-material #298">#298</a></li>
+<li>PR: #298</li>
 </ul>
 <h3 id="documentation_5">Documentation<a class="headerlink" href="#documentation_5" title="Permanent link">&para;</a></h3>
 <ul>
@@ -5389,7 +5424,7 @@
 <h2 id="v1245-2021-11-22-191559"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.45">v1.2.45</a> - 2021-11-22 19:15:59<a class="headerlink" href="#v1245-2021-11-22-191559" title="Permanent link">&para;</a></h2>
 <ul>
 <li>chore(deps): update dependency mkdocs-awesome-pages-plugin to v2.6.1</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/297" title="GitHub Issue: squidfunk/mkdocs-material #297">#297</a></li>
+<li>PR: #297</li>
 </ul>
 <h3 id="documentation_6">Documentation<a class="headerlink" href="#documentation_6" title="Permanent link">&para;</a></h3>
 <ul>
@@ -5402,7 +5437,7 @@
 <h2 id="v1242-2021-11-17-123627"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.42">v1.2.42</a> - 2021-11-17 12:36:27<a class="headerlink" href="#v1242-2021-11-17-123627" title="Permanent link">&para;</a></h2>
 <h2 id="v1241-2021-11-13-174758"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.41">v1.2.41</a> - 2021-11-13 17:47:58<a class="headerlink" href="#v1241-2021-11-13-174758" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.2.40...v1.2.41">https://github.com/dockserver/dockserver/compare/v1.2.40...v1.2.41</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.2.40...v1.2.41</p>
 <h3 id="documentation_7">Documentation<a class="headerlink" href="#documentation_7" title="Permanent link">&para;</a></h3>
 <ul>
 <li>README:</li>
@@ -5412,17 +5447,17 @@
 <h2 id="v1240-2021-11-13-102336"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.40">v1.2.40</a> - 2021-11-13 10:23:36<a class="headerlink" href="#v1240-2021-11-13-102336" title="Permanent link">&para;</a></h2>
 <ul>
 <li>docs(wiki): update tauticord</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/283" title="GitHub Issue: squidfunk/mkdocs-material #283">#283</a></li>
+<li>PR: #283</li>
 </ul>
 <h2 id="v1239-2021-11-10-171653"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.39">v1.2.39</a> - 2021-11-10 17:16:53<a class="headerlink" href="#v1239-2021-11-10-171653" title="Permanent link">&para;</a></h2>
 <ul>
 <li>chore(deps): update dependency mkdocs-git-revision-date-localized-plugin to v0.10.2</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/282" title="GitHub Issue: squidfunk/mkdocs-material #282">#282</a></li>
+<li>PR: #282</li>
 </ul>
 <h2 id="v1238-2021-11-09-062234"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.38">v1.2.38</a> - 2021-11-09 06:22:34<a class="headerlink" href="#v1238-2021-11-09-062234" title="Permanent link">&para;</a></h2>
 <h2 id="v1237-2021-11-08-133941"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.37">v1.2.37</a> - 2021-11-08 13:39:41<a class="headerlink" href="#v1237-2021-11-08-133941" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.2.36...v1.2.37">https://github.com/dockserver/dockserver/compare/v1.2.36...v1.2.37</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.2.36...v1.2.37</p>
 <h3 id="documentation_8">Documentation<a class="headerlink" href="#documentation_8" title="Permanent link">&para;</a></h3>
 <ul>
 <li>README:</li>
@@ -5433,15 +5468,15 @@
 <h2 id="v1236-2021-11-07-044242"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.36">v1.2.36</a> - 2021-11-07 04:42:42<a class="headerlink" href="#v1236-2021-11-07-044242" title="Permanent link">&para;</a></h2>
 <ul>
 <li>ci(Mergify): configuration update</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/274" title="GitHub Issue: squidfunk/mkdocs-material #274">#274</a></li>
+<li>PR: #274</li>
 <li>Configure Renovate</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/276" title="GitHub Issue: squidfunk/mkdocs-material #276">#276</a></li>
+<li>PR: #276</li>
 <li>chore(deps): update actions/checkout action to v2.4.0</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/277" title="GitHub Issue: squidfunk/mkdocs-material #277">#277</a></li>
+<li>PR: #277</li>
 </ul>
 <h2 id="v1235-2021-11-06-071612"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.35">v1.2.35</a> - 2021-11-06 07:16:12<a class="headerlink" href="#v1235-2021-11-06-071612" title="Permanent link">&para;</a></h2>
 <p>repository changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.2.34...v1.2.35">https://github.com/dockserver/dockserver/compare/v1.2.34...v1.2.35</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.2.34...v1.2.35</p>
 <h3 id="bug-fixes_2">Bug Fixes<a class="headerlink" href="#bug-fixes_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>general:</li>
@@ -5449,26 +5484,26 @@
 </ul>
 <h2 id="v1234-2021-11-05-103431"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.34">v1.2.34</a> - 2021-11-05 10:34:31<a class="headerlink" href="#v1234-2021-11-05-103431" title="Permanent link">&para;</a></h2>
 <p>other changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.2.33...v1.2.34">https://github.com/dockserver/dockserver/compare/v1.2.33...v1.2.34</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.2.33...v1.2.34</p>
 <h2 id="v1233-2021-11-04-175156"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.33">v1.2.33</a> - 2021-11-04 17:51:56<a class="headerlink" href="#v1233-2021-11-04-175156" title="Permanent link">&para;</a></h2>
 <h2 id="v1232-2021-11-03-101810"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.32">v1.2.32</a> - 2021-11-03 10:18:10<a class="headerlink" href="#v1232-2021-11-03-101810" title="Permanent link">&para;</a></h2>
 <h2 id="v1231-2021-11-02-075753"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.31">v1.2.31</a> - 2021-11-02 07:57:53<a class="headerlink" href="#v1231-2021-11-02-075753" title="Permanent link">&para;</a></h2>
 <h2 id="v1230-2021-11-01-034513"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.30">v1.2.30</a> - 2021-11-01 03:45:13<a class="headerlink" href="#v1230-2021-11-01-034513" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Create LICENSE</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/265" title="GitHub Issue: squidfunk/mkdocs-material #265">#265</a></li>
+<li>PR: #265</li>
 <li>Create LICENSE</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/266" title="GitHub Issue: squidfunk/mkdocs-material #266">#266</a></li>
+<li>PR: #266</li>
 </ul>
 <h2 id="v1229-2021-10-31-104858"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.29">v1.2.29</a> - 2021-10-31 10:48:58<a class="headerlink" href="#v1229-2021-10-31-104858" title="Permanent link">&para;</a></h2>
 <p>other changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.2.28...v1.2.29">https://github.com/dockserver/dockserver/compare/v1.2.28...v1.2.29</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.2.28...v1.2.29</p>
 <h2 id="v1228-2021-10-30-111304"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.28">v1.2.28</a> - 2021-10-30 11:13:04<a class="headerlink" href="#v1228-2021-10-30-111304" title="Permanent link">&para;</a></h2>
 <h2 id="v1227-2021-10-29-040347"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.27">v1.2.27</a> - 2021-10-29 04:03:47<a class="headerlink" href="#v1227-2021-10-29-040347" title="Permanent link">&para;</a></h2>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.2.26...v1.2.27">https://github.com/dockserver/dockserver/compare/v1.2.26...v1.2.27</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.2.26...v1.2.27</p>
 <h2 id="v1226-2021-10-28-073934"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.26">v1.2.26</a> - 2021-10-28 07:39:34<a class="headerlink" href="#v1226-2021-10-28-073934" title="Permanent link">&para;</a></h2>
 <p>other changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.2.25...v1.2.26">https://github.com/dockserver/dockserver/compare/v1.2.25...v1.2.26</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.2.25...v1.2.26</p>
 <h3 id="bug-fixes_3">Bug Fixes<a class="headerlink" href="#bug-fixes_3" title="Permanent link">&para;</a></h3>
 <ul>
 <li>general:</li>
@@ -5479,15 +5514,15 @@
 <h2 id="v1223-2021-10-24-071226"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.23">v1.2.23</a> - 2021-10-24 07:12:26<a class="headerlink" href="#v1223-2021-10-24-071226" title="Permanent link">&para;</a></h2>
 <h2 id="v1222-2021-10-23-090001"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.22">v1.2.22</a> - 2021-10-23 09:00:01<a class="headerlink" href="#v1222-2021-10-23-090001" title="Permanent link">&para;</a></h2>
 <p>other changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.2.21...v1.2.22">https://github.com/dockserver/dockserver/compare/v1.2.21...v1.2.22</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.2.21...v1.2.22</p>
 <h2 id="v1221-2021-10-23-013738"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.21">v1.2.21</a> - 2021-10-23 01:37:38<a class="headerlink" href="#v1221-2021-10-23-013738" title="Permanent link">&para;</a></h2>
 <h2 id="v1220-2021-10-19-102626"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.20">v1.2.20</a> - 2021-10-19 10:26:26<a class="headerlink" href="#v1220-2021-10-19-102626" title="Permanent link">&para;</a></h2>
 <h2 id="v1219-2021-10-18-081231"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.19">v1.2.19</a> - 2021-10-18 08:12:31<a class="headerlink" href="#v1219-2021-10-18-081231" title="Permanent link">&para;</a></h2>
 <p>other changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.2.18...v1.2.19">https://github.com/dockserver/dockserver/compare/v1.2.18...v1.2.19</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.2.18...v1.2.19</p>
 <h2 id="v1218-2021-10-16-025005"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.18">v1.2.18</a> - 2021-10-16 02:50:05<a class="headerlink" href="#v1218-2021-10-16-025005" title="Permanent link">&para;</a></h2>
 <p>other changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.2.17...v1.2.18">https://github.com/dockserver/dockserver/compare/v1.2.17...v1.2.18</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.2.17...v1.2.18</p>
 <h3 id="bug-fixes_4">Bug Fixes<a class="headerlink" href="#bug-fixes_4" title="Permanent link">&para;</a></h3>
 <ul>
 <li>general:</li>
@@ -5495,7 +5530,7 @@
 </ul>
 <h2 id="v1217-2021-10-15-070841"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.17">v1.2.17</a> - 2021-10-15 07:08:41<a class="headerlink" href="#v1217-2021-10-15-070841" title="Permanent link">&para;</a></h2>
 <p>other changes</p>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.2.16...v1.2.17">https://github.com/dockserver/dockserver/compare/v1.2.16...v1.2.17</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.2.16...v1.2.17</p>
 <h2 id="v1216-2021-10-15-055440"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.16">v1.2.16</a> - 2021-10-15 05:54:40<a class="headerlink" href="#v1216-2021-10-15-055440" title="Permanent link">&para;</a></h2>
 <h2 id="v1215-2021-10-13-061316"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.15">v1.2.15</a> - 2021-10-13 06:13:16<a class="headerlink" href="#v1215-2021-10-13-061316" title="Permanent link">&para;</a></h2>
 <h2 id="v1214-2021-10-12-035443"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.14">v1.2.14</a> - 2021-10-12 03:54:43<a class="headerlink" href="#v1214-2021-10-12-035443" title="Permanent link">&para;</a></h2>
@@ -5506,12 +5541,12 @@
 <ul>
 <li>Revert Back to v1.2.9</li>
 </ul>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.2.9...v1.2.10">https://github.com/dockserver/dockserver/compare/v1.2.9...v1.2.10</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.2.9...v1.2.10</p>
 <h2 id="v129-2021-09-24-091035"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.9">v1.2.9</a> - 2021-09-24 09:10:35<a class="headerlink" href="#v129-2021-09-24-091035" title="Permanent link">&para;</a></h2>
 <ul>
 <li>no changes</li>
 </ul>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.2.8...v1.2.9">https://github.com/dockserver/dockserver/compare/v1.2.8...v1.2.9</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.2.8...v1.2.9</p>
 <h2 id="v128-2021-09-22-161227"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.8">v1.2.8</a> - 2021-09-22 16:12:27<a class="headerlink" href="#v128-2021-09-22-161227" title="Permanent link">&para;</a></h2>
 <ul>
 <li>no changes</li>
@@ -5520,63 +5555,63 @@
 <ul>
 <li>no changes</li>
 </ul>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.2.6...v1.2.7">https://github.com/dockserver/dockserver/compare/v1.2.6...v1.2.7</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.2.6...v1.2.7</p>
 <h2 id="v126-2021-09-16-155808"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.6">v1.2.6</a> - 2021-09-16 15:58:08<a class="headerlink" href="#v126-2021-09-16-155808" title="Permanent link">&para;</a></h2>
 <ul>
 <li>no changes</li>
 </ul>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.2.5...v1.2.6">https://github.com/dockserver/dockserver/compare/v1.2.5...v1.2.6</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.2.5...v1.2.6</p>
 <h2 id="v125-2021-09-16-113637"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.5">v1.2.5</a> - 2021-09-16 11:36:37<a class="headerlink" href="#v125-2021-09-16-113637" title="Permanent link">&para;</a></h2>
 <ul>
 <li>no changes</li>
 </ul>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.2.4...v1.2.5">https://github.com/dockserver/dockserver/compare/v1.2.4...v1.2.5</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.2.4...v1.2.5</p>
 <h2 id="v124-2021-09-12-183518"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.4">v1.2.4</a> - 2021-09-12 18:35:18<a class="headerlink" href="#v124-2021-09-12-183518" title="Permanent link">&para;</a></h2>
 <ul>
 <li>no changes</li>
 </ul>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.2.3...v1.2.4">https://github.com/dockserver/dockserver/compare/v1.2.3...v1.2.4</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.2.3...v1.2.4</p>
 <h2 id="v123-2021-08-29-100030"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.3">v1.2.3</a> - 2021-08-29 10:00:30<a class="headerlink" href="#v123-2021-08-29-100030" title="Permanent link">&para;</a></h2>
 <ul>
 <li>pip-update(deps): bump mkdocs-material from 7.2.4 to 7.2.5 in /wiki</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/199" title="GitHub Issue: squidfunk/mkdocs-material #199">#199</a></li>
+<li>PR: #199</li>
 </ul>
 <h2 id="v122-2021-08-24-070721"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.2">v1.2.2</a> - 2021-08-24 07:07:21<a class="headerlink" href="#v122-2021-08-24-070721" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Fixed Indentation | Removed Trailing whitespaces</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/190" title="GitHub Issue: squidfunk/mkdocs-material #190">#190</a></li>
+<li>PR: #190</li>
 <li>Create notifiarr.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/193" title="GitHub Issue: squidfunk/mkdocs-material #193">#193</a></li>
+<li>PR: #193</li>
 <li>Create notifiarr.yml</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/192" title="GitHub Issue: squidfunk/mkdocs-material #192">#192</a></li>
+<li>PR: #192</li>
 <li>GH updates(deps): Bump docker/build-push-action from 2.6.1 to 2.7.0</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/194" title="GitHub Issue: squidfunk/mkdocs-material #194">#194</a></li>
+<li>PR: #194</li>
 <li>Added <code>glances</code></li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/195" title="GitHub Issue: squidfunk/mkdocs-material #195">#195</a></li>
+<li>PR: #195</li>
 <li>SET Global NameServers <code>NS1</code> &amp; <code>NS2</code></li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/197" title="GitHub Issue: squidfunk/mkdocs-material #197">#197</a></li>
+<li>PR: #197</li>
 <li>pip-update(deps): bump mkdocs-macros-plugin from 0.5.12 to 0.6.0 in /wiki</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/198" title="GitHub Issue: squidfunk/mkdocs-material #198">#198</a></li>
+<li>PR: #198</li>
 </ul>
 <h2 id="v121-2021-08-19-174521"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.1">v1.2.1</a> - 2021-08-19 17:45:21<a class="headerlink" href="#v121-2021-08-19-174521" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Create pihole-updatelists.yml</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/184" title="GitHub Issue: squidfunk/mkdocs-material #184">#184</a></li>
+<li>PR: #184</li>
 <li>Create deemix.yml</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/186" title="GitHub Issue: squidfunk/mkdocs-material #186">#186</a></li>
+<li>PR: #186</li>
 <li>Hardcoded values removed </li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/188" title="GitHub Issue: squidfunk/mkdocs-material #188">#188</a></li>
+<li>PR: #188</li>
 </ul>
 <h2 id="v120-2021-08-19-072231"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.2.0">v1.2.0</a> - 2021-08-19 07:22:31<a class="headerlink" href="#v120-2021-08-19-072231" title="Permanent link">&para;</a></h2>
 <ul>
 <li>pip-update(deps): bump pygments from 2.9.0 to 2.10.0 in /wiki</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/185" title="GitHub Issue: squidfunk/mkdocs-material #185">#185</a></li>
+<li>PR: #185</li>
 </ul>
 <h2 id="v1115-2021-08-16-071239"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.1.15">v1.1.15</a> - 2021-08-16 07:12:39<a class="headerlink" href="#v1115-2021-08-16-071239" title="Permanent link">&para;</a></h2>
 <ul>
 <li>no changes</li>
 </ul>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.1.14...v1.1.15">https://github.com/dockserver/dockserver/compare/v1.1.14...v1.1.15</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.1.14...v1.1.15</p>
 <h2 id="v1114-2021-08-14-134759"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.1.14">v1.1.14</a> - 2021-08-14 13:47:59<a class="headerlink" href="#v1114-2021-08-14-134759" title="Permanent link">&para;</a></h2>
 <ul>
 <li>no changes</li>
@@ -5584,14 +5619,14 @@
 <h2 id="v1113-2021-08-12-214211"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.1.13">v1.1.13</a> - 2021-08-12 21:42:11<a class="headerlink" href="#v1113-2021-08-12-214211" title="Permanent link">&para;</a></h2>
 <ul>
 <li>pip-update(deps): bump mkdocs-material from 7.2.3 to 7.2.4 in /wiki</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/177" title="GitHub Issue: squidfunk/mkdocs-material #177">#177</a></li>
+<li>PR: #177</li>
 </ul>
 <h2 id="v1112-2021-08-10-184753"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.1.12">v1.1.12</a> - 2021-08-10 18:47:53<a class="headerlink" href="#v1112-2021-08-10-184753" title="Permanent link">&para;</a></h2>
 <ul>
 <li>no changes</li>
 </ul>
 <h2 id="v1111-2021-08-10-180343"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.1.11">v1.1.11</a> - 2021-08-10 18:03:43<a class="headerlink" href="#v1111-2021-08-10-180343" title="Permanent link">&para;</a></h2>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.1.10...v1.1.11">https://github.com/dockserver/dockserver/compare/v1.1.10...v1.1.11</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.1.10...v1.1.11</p>
 <h2 id="v1110-2021-08-10-004543"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.1.10">v1.1.10</a> - 2021-08-10 00:45:43<a class="headerlink" href="#v1110-2021-08-10-004543" title="Permanent link">&para;</a></h2>
 <ul>
 <li>no changes</li>
@@ -5608,136 +5643,136 @@
 <h2 id="v118-2021-08-05-151320"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.1.8">v1.1.8</a> - 2021-08-05 15:13:20<a class="headerlink" href="#v118-2021-08-05-151320" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Dev</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/74" title="GitHub Issue: squidfunk/mkdocs-material #74">#74</a></li>
+<li>PR: #74</li>
 <li>GH updates(deps): Bump mikepenz/release-changelog-builder-action from 1 to 2</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/77" title="GitHub Issue: squidfunk/mkdocs-material #77">#77</a></li>
+<li>PR: #77</li>
 <li>GH updates(deps): Bump docker/login-action from 1.9.0 to 1.10.0</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/78" title="GitHub Issue: squidfunk/mkdocs-material #78">#78</a></li>
+<li>PR: #78</li>
 <li>Dev</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/76" title="GitHub Issue: squidfunk/mkdocs-material #76">#76</a></li>
+<li>PR: #76</li>
 <li>Update portainer.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/80" title="GitHub Issue: squidfunk/mkdocs-material #80">#80</a></li>
+<li>PR: #80</li>
 <li>Update dozzle.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/79" title="GitHub Issue: squidfunk/mkdocs-material #79">#79</a></li>
+<li>PR: #79</li>
 <li>Update lidarr.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/82" title="GitHub Issue: squidfunk/mkdocs-material #82">#82</a></li>
+<li>PR: #82</li>
 <li>Update heimdall.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/81" title="GitHub Issue: squidfunk/mkdocs-material #81">#81</a></li>
+<li>PR: #81</li>
 <li>mariadb container for e.g. nextcloud</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/84" title="GitHub Issue: squidfunk/mkdocs-material #84">#84</a></li>
+<li>PR: #84</li>
 <li>Create instaloader.yml</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/85" title="GitHub Issue: squidfunk/mkdocs-material #85">#85</a></li>
+<li>PR: #85</li>
 <li>Update mellow.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/92" title="GitHub Issue: squidfunk/mkdocs-material #92">#92</a></li>
+<li>PR: #92</li>
 <li>Update conreq.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/93" title="GitHub Issue: squidfunk/mkdocs-material #93">#93</a></li>
+<li>PR: #93</li>
 <li>pip-update(deps): bump mkdocs-material from 7.1.8 to 7.1.9 in /wiki</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/100" title="GitHub Issue: squidfunk/mkdocs-material #100">#100</a></li>
+<li>PR: #100</li>
 <li>Update instaloader.yml</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/99" title="GitHub Issue: squidfunk/mkdocs-material #99">#99</a></li>
+<li>PR: #99</li>
 <li>Update jackett.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/101" title="GitHub Issue: squidfunk/mkdocs-material #101">#101</a></li>
+<li>PR: #101</li>
 <li>Update tdarr.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/127" title="GitHub Issue: squidfunk/mkdocs-material #127">#127</a></li>
+<li>PR: #127</li>
 <li>Update handbrake.yml</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/126" title="GitHub Issue: squidfunk/mkdocs-material #126">#126</a></li>
+<li>PR: #126</li>
 <li>Update youtubedl-material.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/125" title="GitHub Issue: squidfunk/mkdocs-material #125">#125</a></li>
+<li>PR: #125</li>
 <li>Update qbittorrent.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/124" title="GitHub Issue: squidfunk/mkdocs-material #124">#124</a></li>
+<li>PR: #124</li>
 <li>Update sabnzbd.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/123" title="GitHub Issue: squidfunk/mkdocs-material #123">#123</a></li>
+<li>PR: #123</li>
 <li>Update rutorrent.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/122" title="GitHub Issue: squidfunk/mkdocs-material #122">#122</a></li>
+<li>PR: #122</li>
 <li>Update nzbhydra.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/121" title="GitHub Issue: squidfunk/mkdocs-material #121">#121</a></li>
+<li>PR: #121</li>
 <li>Update nzbget.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/120" title="GitHub Issue: squidfunk/mkdocs-material #120">#120</a></li>
+<li>PR: #120</li>
 <li>Update jdownloader2.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/118" title="GitHub Issue: squidfunk/mkdocs-material #118">#118</a></li>
+<li>PR: #118</li>
 <li>Update filezilla.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/117" title="GitHub Issue: squidfunk/mkdocs-material #117">#117</a></li>
+<li>PR: #117</li>
 <li>Update deluge.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/116" title="GitHub Issue: squidfunk/mkdocs-material #116">#116</a></li>
+<li>PR: #116</li>
 <li>Update davos.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/115" title="GitHub Issue: squidfunk/mkdocs-material #115">#115</a></li>
+<li>PR: #115</li>
 <li>Update code-server.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/114" title="GitHub Issue: squidfunk/mkdocs-material #114">#114</a></li>
+<li>PR: #114</li>
 <li>Update cloud9.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/113" title="GitHub Issue: squidfunk/mkdocs-material #113">#113</a></li>
+<li>PR: #113</li>
 <li>Update rsnapshot.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/112" title="GitHub Issue: squidfunk/mkdocs-material #112">#112</a></li>
+<li>PR: #112</li>
 <li>Update duplicati.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/111" title="GitHub Issue: squidfunk/mkdocs-material #111">#111</a></li>
+<li>PR: #111</li>
 <li>Update backup.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/110" title="GitHub Issue: squidfunk/mkdocs-material #110">#110</a></li>
+<li>PR: #110</li>
 <li>Update vnstat.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/109" title="GitHub Issue: squidfunk/mkdocs-material #109">#109</a></li>
+<li>PR: #109</li>
 <li>Update speedtest.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/108" title="GitHub Issue: squidfunk/mkdocs-material #108">#108</a></li>
+<li>PR: #108</li>
 <li>Update remmina.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/107" title="GitHub Issue: squidfunk/mkdocs-material #107">#107</a></li>
+<li>PR: #107</li>
 <li>Update netdata.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/106" title="GitHub Issue: squidfunk/mkdocs-material #106">#106</a></li>
+<li>PR: #106</li>
 <li>Update librespeed.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/105" title="GitHub Issue: squidfunk/mkdocs-material #105">#105</a></li>
+<li>PR: #105</li>
 <li>Update flaresolverr.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/104" title="GitHub Issue: squidfunk/mkdocs-material #104">#104</a></li>
+<li>PR: #104</li>
 <li>Update cloudcmd.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/103" title="GitHub Issue: squidfunk/mkdocs-material #103">#103</a></li>
+<li>PR: #103</li>
 <li>Update mount.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/90" title="GitHub Issue: squidfunk/mkdocs-material #90">#90</a></li>
+<li>PR: #90</li>
 <li>Update instaloader.yml</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/102" title="GitHub Issue: squidfunk/mkdocs-material #102">#102</a></li>
+<li>PR: #102</li>
 <li>Update jackett.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/119" title="GitHub Issue: squidfunk/mkdocs-material #119">#119</a></li>
+<li>PR: #119</li>
 <li>GH updates(deps): Bump docker/setup-buildx-action from 1.3.0 to 1.4.1</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/129" title="GitHub Issue: squidfunk/mkdocs-material #129">#129</a></li>
+<li>PR: #129</li>
 <li>Patch 11</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/133" title="GitHub Issue: squidfunk/mkdocs-material #133">#133</a></li>
+<li>PR: #133</li>
 <li>Create kitana.yml</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/131" title="GitHub Issue: squidfunk/mkdocs-material #131">#131</a></li>
+<li>PR: #131</li>
 <li>Create kitana.md</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/130" title="GitHub Issue: squidfunk/mkdocs-material #130">#130</a></li>
+<li>PR: #130</li>
 <li>GH updates(deps): Bump docker/build-push-action from 2.5.0 to 2.6.1</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/135" title="GitHub Issue: squidfunk/mkdocs-material #135">#135</a></li>
+<li>PR: #135</li>
 <li>Patch 12</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/136" title="GitHub Issue: squidfunk/mkdocs-material #136">#136</a></li>
+<li>PR: #136</li>
 <li>GH updates(deps): Bump docker/setup-buildx-action from 1.4.1 to 1.5.0</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/138" title="GitHub Issue: squidfunk/mkdocs-material #138">#138</a></li>
+<li>PR: #138</li>
 <li>pip-update(deps): bump mkdocs-material from 7.1.9 to 7.1.10 in /wiki</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/146" title="GitHub Issue: squidfunk/mkdocs-material #146">#146</a></li>
+<li>PR: #146</li>
 <li>GH updates(deps): Bump docker/setup-buildx-action from 1.5.0 to 1.5.1</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/145" title="GitHub Issue: squidfunk/mkdocs-material #145">#145</a></li>
+<li>PR: #145</li>
 <li>GH updates(deps): Bump actions/stale from 3.0.19 to 4</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/147" title="GitHub Issue: squidfunk/mkdocs-material #147">#147</a></li>
+<li>PR: #147</li>
 <li>pip-update(deps): bump mkdocs-material from 7.1.10 to 7.1.11 in /wiki</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/149" title="GitHub Issue: squidfunk/mkdocs-material #149">#149</a></li>
+<li>PR: #149</li>
 <li>pip-update(deps): bump mkdocs from 1.2.1 to 1.2.2 in /wiki</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/150" title="GitHub Issue: squidfunk/mkdocs-material #150">#150</a></li>
+<li>PR: #150</li>
 <li>pip-update(deps): bump mkdocs-material from 7.1.11 to 7.2.0 in /wiki</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/152" title="GitHub Issue: squidfunk/mkdocs-material #152">#152</a></li>
+<li>PR: #152</li>
 <li>pip-update(deps): bump mkdocs-material from 7.2.0 to 7.2.1 in /wiki</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/155" title="GitHub Issue: squidfunk/mkdocs-material #155">#155</a></li>
+<li>PR: #155</li>
 <li>Create fail2ban.yml</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/156" title="GitHub Issue: squidfunk/mkdocs-material #156">#156</a></li>
+<li>PR: #156</li>
 <li>pip-update(deps): bump mkdocs-material from 7.2.1 to 7.2.2 in /wiki</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/161" title="GitHub Issue: squidfunk/mkdocs-material #161">#161</a></li>
+<li>PR: #161</li>
 <li>Pihole + Unbound (two containers) | Pihole + Unbound (one container)</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/160" title="GitHub Issue: squidfunk/mkdocs-material #160">#160</a></li>
+<li>PR: #160</li>
 <li>Add TCP BBR</li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/164" title="GitHub Issue: squidfunk/mkdocs-material #164">#164</a></li>
+<li>PR: #164</li>
 <li>
 <h1 id="patch-update-code-serveryml">patch Update code-server.yml<a class="headerlink" href="#patch-update-code-serveryml" title="Permanent link">&para;</a></h1>
 </li>
-<li>PR: <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/165" title="GitHub Issue: squidfunk/mkdocs-material #165">#165</a></li>
+<li>PR: #165</li>
 </ul>
 <h2 id="v117-2021-06-23-114042"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.1.7">v1.1.7</a> - 2021-06-23 11:40:42<a class="headerlink" href="#v117-2021-06-23-114042" title="Permanent link">&para;</a></h2>
 <ul>
 <li>no changes</li>
 </ul>
 <h2 id="v116-2021-06-13-155710"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.1.6">v1.1.6</a> - 2021-06-13 15:57:10<a class="headerlink" href="#v116-2021-06-13-155710" title="Permanent link">&para;</a></h2>
-<p><strong>Full Changelog</strong>: <a href="https://github.com/dockserver/dockserver/compare/v1.1.5...v1.1.6">https://github.com/dockserver/dockserver/compare/v1.1.5...v1.1.6</a></p>
+<p><strong>Full Changelog</strong>: https://github.com/dockserver/dockserver/compare/v1.1.5...v1.1.6</p>
 <h2 id="v115-2021-06-12-165442"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.1.5">v1.1.5</a> - 2021-06-12 16:54:42<a class="headerlink" href="#v115-2021-06-12-165442" title="Permanent link">&para;</a></h2>
 <h2 id="v114-2021-06-12-102347"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.1.4">v1.1.4</a> - 2021-06-12 10:23:47<a class="headerlink" href="#v114-2021-06-12-102347" title="Permanent link">&para;</a></h2>
 <h2 id="v113-2021-06-11-205746"><a href="https://github.com/dockserver/dockserver/releases/tag/v1.1.3">v1.1.3</a> - 2021-06-11 20:57:46<a class="headerlink" href="#v113-2021-06-11-205746" title="Permanent link">&para;</a></h2>

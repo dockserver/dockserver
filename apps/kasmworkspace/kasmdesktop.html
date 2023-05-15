@@ -41,8 +41,6 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
-    
     <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -97,7 +95,7 @@
 
 <header class="md-header md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../index.html" title="DockServer Wiki" class="md-header__button md-logo" aria-label="DockServer Wiki" data-md-component="logo">
+    <a href="../.." title="DockServer Wiki" class="md-header__button md-logo" aria-label="DockServer Wiki" data-md-component="logo">
       
   <img src="../../img/logo_without_text.png" alt="logo">
 
@@ -211,11 +209,15 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="../../index.html" class="md-tabs__link">
-      Home
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../index.html" class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
 
       
         
@@ -359,7 +361,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../index.html" title="DockServer Wiki" class="md-nav__button md-logo" aria-label="DockServer Wiki" data-md-component="logo">
+    <a href="../.." title="DockServer Wiki" class="md-nav__button md-logo" aria-label="DockServer Wiki" data-md-component="logo">
       
   <img src="../../img/logo_without_text.png" alt="logo">
 
@@ -388,10 +390,43 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../index.html" class="md-nav__link">
-        Home
+        Overview
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -2765,18 +2800,18 @@
 <h1 id="kasm-desktop">KASM Desktop<a class="headerlink" href="#kasm-desktop" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">INTRODUCTION<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
 <p>Kasm Workspaces - The Container Streaming Platform
-Streaming containerized apps and desktops to end-users. The Workspaces platform provides enterprise-class orchestration, data loss prevention, and web streaming technology to enable the delivery of containerized workloads to your browser. For more in-depth information about KASM, visit: <a href="https://www.kasmweb.com/">https://www.kasmweb.com/</a></p>
+Streaming containerized apps and desktops to end-users. The Workspaces platform provides enterprise-class orchestration, data loss prevention, and web streaming technology to enable the delivery of containerized workloads to your browser. For more in-depth information about KASM, visit: https://www.kasmweb.com/</p>
 <p>Kasm Desktop Provides Ubuntu Desktop with all available applications from KASM included. Individual apps are also available via DockServer Menu under <code>kasmworkspaces</code>.</p>
 <p><img alt="Screenshot_6" src="https://user-images.githubusercontent.com/23133649/136709038-f63d824a-187d-4584-96d8-94b535c815f5.png" /></p>
 <p>This container allows you to choose the applications you would like to use. For example, if you want to access a specific website that may be blocked by company fire walls. </p>
 <p>Install via DockServer Menu</p>
-<p>Default User: <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#100;&#109;&#105;&#110;&#64;&#107;&#97;&#115;&#109;&#46;&#108;&#111;&#99;&#97;&#108;">&#97;&#100;&#109;&#105;&#110;&#64;&#107;&#97;&#115;&#109;&#46;&#108;&#111;&#99;&#97;&#108;</a>
-              <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#117;&#115;&#101;&#114;&#64;&#107;&#97;&#115;&#109;&#46;&#108;&#111;&#99;&#97;&#108;">&#117;&#115;&#101;&#114;&#64;&#107;&#97;&#115;&#109;&#46;&#108;&#111;&#99;&#97;&#108;</a>
+<p>Default User: admin@kasm.local
+              user@kasm.local
 <br />
-Default Pass: this is setup when you go to <a href="http://serverip:3002/">http://serverip:3002/</a> on first boot to setup.
+Default Pass: this is setup when you go to http://serverip:3002/ on first boot to setup.
 <br />
 <br />
-<strong><em>Note: If you need to use more varirables such as making persistent profiles, adding GPUs, or gaming controllers, please see LSIO Documentation <a href="https://github.com/linuxserver/docker-kasm#application-setup">https://github.com/linuxserver/docker-kasm#application-setup</a></em></strong></p>
+<strong><em>Note: If you need to use more varirables such as making persistent profiles, adding GPUs, or gaming controllers, please see LSIO Documentation https://github.com/linuxserver/docker-kasm#application-setup</em></strong></p>
 <h2 id="support">Support<a class="headerlink" href="#support" title="Permanent link">&para;</a></h2>
 <p>Kindly report any issues/broken-parts/bugs on <a href="https://github.com/dockserver/dockserver/issues">github</a> or <a href="https://discord.gg/A7h7bKBCVa">discord</a></p>
 <ul>

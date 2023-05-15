@@ -41,8 +41,6 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
-    
     <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -97,7 +95,7 @@
 
 <header class="md-header md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../index.html" title="DockServer Wiki" class="md-header__button md-logo" aria-label="DockServer Wiki" data-md-component="logo">
+    <a href=".." title="DockServer Wiki" class="md-header__button md-logo" aria-label="DockServer Wiki" data-md-component="logo">
       
   <img src="../img/logo_without_text.png" alt="logo">
 
@@ -211,11 +209,15 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="../index.html" class="md-tabs__link">
-      Home
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
 
       
         
@@ -359,7 +361,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../index.html" title="DockServer Wiki" class="md-nav__button md-logo" aria-label="DockServer Wiki" data-md-component="logo">
+    <a href=".." title="DockServer Wiki" class="md-nav__button md-logo" aria-label="DockServer Wiki" data-md-component="logo">
       
   <img src="../img/logo_without_text.png" alt="logo">
 
@@ -388,10 +390,43 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../index.html" class="md-nav__link">
-        Home
+        Overview
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -2748,12 +2783,12 @@
 <h1 id="manually-creating-service-accounts">Manually Creating Service Accounts<a class="headerlink" href="#manually-creating-service-accounts" title="Permanent link">&para;</a></h1>
 <p>This guide assumes you have already</p>
 <ul>
-<li>Created a project <a href="https://console.developers.google.com/">https://console.developers.google.com/</a></li>
-<li>OAuth Consent <a href="https://console.developers.google.com/apis/credentials/consent">https://console.developers.google.com/apis/credentials/consent</a></li>
-<li>Client ID and Secret <a href="https://console.developers.google.com/apis/credentials">https://console.developers.google.com/apis/credentials</a></li>
+<li>Created a project https://console.developers.google.com/</li>
+<li>OAuth Consent https://console.developers.google.com/apis/credentials/consent</li>
+<li>Client ID and Secret https://console.developers.google.com/apis/credentials</li>
 <li>Enabled "Google Drive API" on your Project.</li>
 </ul>
-<p>Go to: <a href="https://console.cloud.google.com/projectselector2/iam-admin/serviceaccounts">https://console.cloud.google.com/projectselector2/iam-admin/serviceaccounts</a></p>
+<p>Go to: https://console.cloud.google.com/projectselector2/iam-admin/serviceaccounts</p>
 <div class="highlight"><pre><span></span><code>Choose your project
 Click &quot;+create service account&quot;
 name = your choice
@@ -2767,9 +2802,9 @@ repeat for as many as you wish to create
 rename all JSON files to: GDSA1, GDSA2, GDSA3, etc. with no file extension
 </code></pre></div>
 <p>Now you can proceed to this portion of the migration instruction:
-<a href="https://dockserver.io/install/migration.html#mount-uploader">https://dockserver.io/install/migration.html#mount-uploader</a></p>
+https://dockserver.io/install/migration.html#mount-uploader</p>
 <p>Or to mount setup:
-<a href="https://dockserver.io/apps/system/mount.html#setup">https://dockserver.io/apps/system/mount.html#setup</a></p>
+https://dockserver.io/apps/system/mount.html#setup</p>
 <h2 id="support">Support<a class="headerlink" href="#support" title="Permanent link">&para;</a></h2>
 <p>Kindly report any issues/broken-parts/bugs on <a href="https://github.com/dockserver/dockserver/issues">github</a> or <a href="https://discord.gg/A7h7bKBCVa">discord</a></p>
 <ul>

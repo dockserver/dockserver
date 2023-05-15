@@ -41,8 +41,6 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
-    
     <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -97,7 +95,7 @@
 
 <header class="md-header md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../index.html" title="DockServer Wiki" class="md-header__button md-logo" aria-label="DockServer Wiki" data-md-component="logo">
+    <a href="../.." title="DockServer Wiki" class="md-header__button md-logo" aria-label="DockServer Wiki" data-md-component="logo">
       
   <img src="../../img/logo_without_text.png" alt="logo">
 
@@ -211,11 +209,15 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="../../index.html" class="md-tabs__link">
-      Home
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../index.html" class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
 
       
         
@@ -359,7 +361,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../index.html" title="DockServer Wiki" class="md-nav__button md-logo" aria-label="DockServer Wiki" data-md-component="logo">
+    <a href="../.." title="DockServer Wiki" class="md-nav__button md-logo" aria-label="DockServer Wiki" data-md-component="logo">
       
   <img src="../../img/logo_without_text.png" alt="logo">
 
@@ -388,10 +390,43 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../index.html" class="md-nav__link">
-        Home
+        Overview
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -2806,9 +2841,9 @@
 
 <h1 id="xteve">xTeve<a class="headerlink" href="#xteve" title="Permanent link">&para;</a></h1>
 <p>xTeve is a M3U Proxy for Plex DVR and Emby Live TV</p>
-<p><strong><em>use ( <a href="http://xteve:34400">http://xteve:34400</a> ) for in-app communication</em></strong></p>
+<p><strong><em>use ( http://xteve:34400 ) for in-app communication</em></strong></p>
 <h4 id="install-notes"><strong>Install Notes:</strong><a class="headerlink" href="#install-notes" title="Permanent link">&para;</a></h4>
-<p>Access interface will be published on <a href="https://xteve.domain.com/web">https://xteve.domain.com/web</a> - Accessing xteve.domain.com will throw an XML error</p>
+<p>Access interface will be published on https://xteve.domain.com/web - Accessing xteve.domain.com will throw an XML error</p>
 <h4 id="settings-to-edit-in-xteve">Settings to edit in xTeve:<a class="headerlink" href="#settings-to-edit-in-xteve" title="Permanent link">&para;</a></h4>
 <p>-Playlist (add yours)
 -EPG source (unless you use the one in Plex)
@@ -2816,8 +2851,8 @@
 <p>When setting it up in plex:
 -Add <strong>xteve:34400</strong> as tuner
 -If you want to use the EPG from XTEVE (XEPG) the link you set in Plex <strong>must</strong> be
-<a href="http://xteve:34400/xmltv/xteve.xml">http://xteve:34400/xmltv/xteve.xml</a></p>
-<p>Protip: Manage,modulate and shorten your m3u link on <a href="http://www.m3u4u.com">www.m3u4u.com</a> - They also have an excellent EPG &amp; Playlist editor</p>
+http://xteve:34400/xmltv/xteve.xml</p>
+<p>Protip: Manage,modulate and shorten your m3u link on www.m3u4u.com - They also have an excellent EPG &amp; Playlist editor</p>
 <h4 id="_1"><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
 <h2 id="best-practice-for-plexxteve">Best Practice for Plex/Xteve:<a class="headerlink" href="#best-practice-for-plexxteve" title="Permanent link">&para;</a></h2>
 <p>The output from your provider <strong>MUST</strong> be MPEG-TS(.ts) - make sure that this is set both at your provider and at m3u4u.com. Otherwise plex will drop the streams when the framerates drop in the streams.</p>
