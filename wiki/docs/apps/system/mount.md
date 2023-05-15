@@ -120,27 +120,29 @@ Service Key Mount is used to prevent **Google API Bans**. To make use of this, y
 If you don't have an `rclone.conf`, you can create the `drive.csv` manually. </br>
 
 **Unencrypted Team Drives example:**
+- 1 = TEAM_DRIVE_NAME -> (TV)
+- 2 = TEAM_DRIVE_ID -> (0AFsVct4HDKPrUk9PVvvvvvvvv)
+#### Important: Each line in csv is one tdrive
+Example:
 ```yaml
-1 = TEAM_DRIVE_NAME
-2 = TEAM_DRIVE_ID
 TV|0AFsVct4HDKPrUk9PVvvvvvvvv
 TV4K|0AFsVct4HDKPrUk9PVxxxxxxxxxx
 Movies|0AFsVct4HDKPrUk9PVyyyyyyyyyy
 Movies4K|0AFsVct4HDKPrUk9PVzzzzzzzzzz
-...
 ```
 
 **Encrypted Team Drives example:**
+- 1 = TEAM_DRIVE_NAME -> (tdrive1)
+- 2 = TEAM_DRIVE_ID -> (0AFsVct4HDKPrUk9PVvvvvvvvv)
+- 3 = PASSWORD - <HASHED|PLAIN> -> (72nsjsiwjsjsu)
+- 4 = PASSWORD SALT - <HASHED|PLAIN> -> (72nsjsiwjsjsu)
+#### Important: Each line in csv is one tdrive
+Example:
 ```yaml
-1 = TEAM_DRIVE_NAME
-2 = TEAM_DRIVE_ID
-3 = PASSWORD - <HASHED|PLAIN>
-4 = PASSWORD SALT - <HASHED|PLAIN>
 tdrive1|0AFsVct4HDKPrUk9PVvvvvvvvv|72nsjsiwjsjsu|72nsjsiwjsjsu
 tdrive2|0AFsVct4HDKPrUk9PVxxxxxxxxxx|72nsjsiwjsjsu|72nsjsiwjsjsu
 tdrive3|0AFsVct4HDKPrUk9PVyyyyyyyyyy|72nsjsiwjsjsu|72nsjsiwjsjsu
 tdrive4|0AFsVct4HDKPrUk9PVzzzzzzzzzz|72nsjsiwjsjsu|72nsjsiwjsjsu
-...
 ```
 
 ### Use RAM for rclone_cache
@@ -164,3 +166,15 @@ Since our servers usually have a lot of unused RAM, there is a possibility to sa
 Kindly report any issues on [GitHub](https://github.com/dockserver/dockserver/issues) or [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa)
 
 - Join our [![Discord: https://discord.gg/A7h7bKBCVa](https://img.shields.io/badge/Discord-gray.svg?style=for-the-badge)](https://discord.gg/A7h7bKBCVa) for Support
+
+### Known issues
+After redeploy of Mount you see following error in container log? 
+- `[2023/05/14 16:16:33] [Mount] -> Starting of Rclone was failed <-`
+- `[2023/05/14 16:16:34] [Mount] -> Starting Mount <-`
+
+Do following:
+
+- stop your arrs + plex, then:
+- ```docker stop mount && docker rm mount && umount /mnt/remotes && umount /mnt/unionfs &&   fusermount -uzq /mnt/remotes && fusermount -uzq /mnt/unionfs```
+- then redeploy mount. (You can ignore the `not mounted` message)
+- After mount start, you can start your arrs and plex again.

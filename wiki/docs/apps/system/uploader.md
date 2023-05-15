@@ -147,37 +147,34 @@ If you would like to upload to multiple Team Drives, you need to create a file n
 </br>
 </br>
 
-#### Unencrypted Team Drives
-
+**Unencrypted Team Drives example:**
+- 1 = LOCAL_FOLDER_NAME -> (TV)
+- 2 = TEAM_DRIVE_ID -> (0AFsVct4HDKPrUk9PVvvvvvvvv)
+#### Important: Each line in csv is one Local Folder
 Example:
-
 ```yaml
-1 = LOCAL_FOLDER_NAME
-2 = TEAM_DRIVE_ID
 TV|0AFsVct4HDKPrUk9PVvvvvvvvv
 TV4K|0AFsVct4HDKPrUk9PVxxxxxxxxxx
 Movies|0AFsVct4HDKPrUk9PVyyyyyyyyyy
 Movies4K|0AFsVct4HDKPrUk9PVzzzzzzzzzz
 appbackups|0AFsVct4HDKPrUk9PVzzzzzzzzzz
 music|0AFsVct4HDKPrUk9PVzzzzzzzzzz
-...
 ```
 
-#### Encrypted Team Drives
-
+**Encrypted Team Drives example:**
+- 1 = LOCAL_FOLDER_NAME -> (Movies)
+- 2 = TEAM_DRIVE_ID -> (0AFsVct4HDKPrUk9PVvvvvvvvv)
+- 3 = PASSWORD - <HASHED|PLAIN> -> (72nsjsiwjsjsu)
+- 4 = PASSWORD SALT - <HASHED|PLAIN> -> (72nsjsiwjsjsu)
+#### Important: Each line in csv is one Local Folder
 Example:
 ```yaml
-1 = LOCAL_FOLDER_NAME
-2 = TEAM_DRIVE_ID
-3 = PASSWORD - HASHED OR PLAIN
-4 = PASSWORD SALT - HASHED OR PLAIN
 Movies|0AFsVct4HDKPrUk9PVvvvvvvvv|72nsjsiwjsjsu|72nsjsiwjsjsu
 TV SHows|0AFsVct4HDKPrUk9PVxxxxxxxxxx|72nsjsiwjsjsu|72nsjsiwjsjsu
 4K|0AFsVct4HDKPrUk9PVyyyyyyyyyy|72nsjsiwjsjsu|72nsjsiwjsjsu
 TV 4K|0AFsVct4HDKPrUk9PVzzzzzzzzzz|72nsjsiwjsjsu|72nsjsiwjsjsu
 appbackups|0AFsVct4HDKPrUk9PVzzzzzzzzzz|72nsjsiwjsjsu|72nsjsiwjsjsu
 music|0AFsVct4HDKPrUk9PVzzzzzzzzzz|72nsjsiwjsjsu|72nsjsiwjsjsu
-...
 ```
 
 **IMPORTANT**: </br>
@@ -191,23 +188,23 @@ Instead of using `/opt/appdata/system/servicekeys/rclonegdsa.conf`, you can now 
 </br>
 
 #### Unencrypted Team Drives
-
+- 1 = TEAM_DRIVE_NAME -> (uploader)
+- 2 = TEAM_DRIVE_ID -> (0XXXXXXXXX000000EERR)
+#### Important: Each line in csv is one tdrive
 Example:
 
 ```yaml
-1 = TEAM_DRIVE_NAME
-2 = TEAM_DRIVE_ID
 uploader|0XXXXXXXXX000000EERR
 ```
 
 #### Encrypted Team Drives
-
+- 1 = TEAM_DRIVE_NAME -> (uploader)
+- 2 = TEAM_DRIVE_ID -> (0XXXXXXXXX000000EERR)
+- 3 = PASSWORD - HASHED OR PLAIN -> (72nsjsiwjsjsu)
+- 4 = PASSWORD SALT - HASHED OR PLAIN -> (72nsjsiwjsjsu)
+#### Important: Each line in csv is one tdrive
 Example:
 ```yaml
-1 = TEAM_DRIVE_NAME
-2 = TEAM_DRIVE_ID
-3 = PASSWORD - HASHED OR PLAIN
-4 = PASSWORD SALT - HASHED OR PLAIN
 uploader|0XXXXXXXXX000000EERR|72nsjsiwjsjsu|72nsjsiwjsjsu
 ```
 
