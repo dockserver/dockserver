@@ -114,7 +114,7 @@ theme:
 plugins:
   - search:
       lang: en
-  - meta
+  # - meta
   - redirects:
       redirect_maps:
         404.html: index.md
