@@ -18,9 +18,9 @@
 # Project information
 site_name: DockServer Wiki
 use_directory_urls: false
-site_url: "https://dockserver.io/"
+site_url: ""
 site_author: DockServer
-site_description: DockServer is an Docker-based solution for deploying a Docker containerized cloud media server.
+site_description: Use your self hosted docker as wiki
 
 # Repository
 repo_name: DockServer Wiki
@@ -31,28 +31,17 @@ copyright: Copyright &copy; 2023 DockServer.io
 # Configuration
 theme:
   name: material
-  icon:
-    logo: material/sofa
-    repo: fontawesome/brands/github-alt
   custom_dir: overrides
   features:
-    - content.code.copy
-    - content.action.edit
-    - content.action.view
-    - header.autohide
-    - navigation.footer
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.sections
-    - navigation.top
-    - navigation.tracking
-    - navigation.instant
-    # - navigation.prune
-    # - toc.integrate
-    - toc.follow
+    - navigation.expand
     - search.suggest
-    - search.highlight
+    - search.highligh
     - search.share
+    - navigation.top
+    - toc.integrate
   language: en
   palette:
     # Palette toggle for light mode
@@ -61,7 +50,7 @@ theme:
       primary: grey
       accent: blue
       toggle:
-        icon: material/brightness-7
+        icon: material/toggle-switch-off-outline
         name: Switch to dark mode
 
     # Palette toggle for dark mode
@@ -70,8 +59,8 @@ theme:
       primary: black
       accent: blue
       toggle:
-        icon: material/brightness-4
-        name: Switch to system preference
+        icon: material/toggle-switch
+        name: Switch to light mode
 
   # Static files
   static_templates:
@@ -93,9 +82,6 @@ theme:
       example: fontawesome/solid/flask
       quote: fontawesome/solid/quote-left
 
-  favicon: img/logo_without_text.png
-  logo: img/logo_without_text.png
-
   font:
     text: Roboto
     code: Roboto Mono
@@ -110,6 +96,8 @@ plugins:
   - redirects:
       redirect_maps:
         404.html: index.md
+  - minify:
+      minify_html: true
 
 # Customization
 extra:
@@ -135,23 +123,21 @@ extra:
       link: https://dockserver.io/
 
 markdown_extensions:
-
-  # Python Markdown
-  - abbr
   - admonition
+  - abbr
   - attr_list
   - def_list
   - footnotes
+  - meta
   - md_in_html
   - toc:
       permalink: true
-
-  # Python Markdown Extensions
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.betterem:
       smart_enable: all
   - pymdownx.caret
+  - pymdownx.critic
   - pymdownx.details
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
@@ -159,19 +145,21 @@ markdown_extensions:
   - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.superfences
-  - pymdownx.tabbed:
-      alternate_style: true
+  - pymdownx.tabbed
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
 
 # Page tree
 nav:
-  - Home: 
-      - Overview: index.md
+  - Home: index.md
   - Getting started:
       - Installation: install/install.md
       - Authelia: install/authelia.md
