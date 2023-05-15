@@ -148,6 +148,7 @@ If you would like to upload to multiple Team Drives, you need to create a file n
 </br>
 
 **Unencrypted Team Drives example:**
+
 - 1 = LOCAL_FOLDER_NAME -> (TV)
 - 2 = TEAM_DRIVE_ID -> (0AFsVct4HDKPrUk9PVvvvvvvvv)
 #### Important: Each line in csv is one Local Folder
@@ -162,6 +163,7 @@ music|0AFsVct4HDKPrUk9PVzzzzzzzzzz
 ```
 
 **Encrypted Team Drives example:**
+
 - 1 = LOCAL_FOLDER_NAME -> (Movies)
 - 2 = TEAM_DRIVE_ID -> (0AFsVct4HDKPrUk9PVvvvvvvvv)
 - 3 = PASSWORD - <HASHED|PLAIN> -> (72nsjsiwjsjsu)
@@ -188,6 +190,7 @@ Instead of using `/opt/appdata/system/servicekeys/rclonegdsa.conf`, you can now 
 </br>
 
 #### Unencrypted Team Drives
+
 - 1 = TEAM_DRIVE_NAME -> (uploader)
 - 2 = TEAM_DRIVE_ID -> (0XXXXXXXXX000000EERR)
 #### Important: Each line in csv is one tdrive
@@ -198,6 +201,7 @@ uploader|0XXXXXXXXX000000EERR
 ```
 
 #### Encrypted Team Drives
+
 - 1 = TEAM_DRIVE_NAME -> (uploader)
 - 2 = TEAM_DRIVE_ID -> (0XXXXXXXXX000000EERR)
 - 3 = PASSWORD - HASHED OR PLAIN -> (72nsjsiwjsjsu)
