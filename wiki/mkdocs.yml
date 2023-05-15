@@ -47,7 +47,7 @@ theme:
     - navigation.top
     - navigation.tracking
     - navigation.instant
-    - navigation.prune
+    # - navigation.prune
     # - toc.integrate
     - toc.follow
     - search.suggest
@@ -55,19 +55,11 @@ theme:
     - search.share
   language: en
   palette:
-    # Palette toggle for automatic mode
-    - media: "(prefers-color-scheme)"
-      primary: teal
-      accent: teal
-      toggle:
-        icon: material/brightness-auto
-        name: Switch to light mode
-
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: teal
-      accent: teal
+      primary: grey
+      accent: blue
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
@@ -75,8 +67,8 @@ theme:
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: teal
-      accent: teal
+      primary: black
+      accent: blue
       toggle:
         icon: material/brightness-4
         name: Switch to system preference
@@ -127,7 +119,7 @@ extra:
   social:
     - icon: fontawesome/solid/heart
       class: md-social__link heart
-      link: 'https://liberapay.com/dockserver/donate'
+      link: 'https://www.patreon.com/DockServer'
       name: Donate
     - icon: fontawesome/brands/github
       class: md-social__link
