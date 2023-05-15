@@ -30,4 +30,6 @@ markdown
 pygments
 mkdocs-render-swagger-plugin
 mkdocs-mermaid2-plugin
-mkdocs-meta-plugin
+lightgallery
+wheel
+meta
