@@ -135,24 +135,23 @@ extra:
       link: https://dockserver.io/
 
 markdown_extensions:
-  - meta
-  - admonition
+
+  # Python Markdown
   - abbr
+  - admonition
   - attr_list
   - def_list
   - footnotes
-  - meta
   - md_in_html
-  - pymdownx.tabbed:
-      alternate_style: true
   - toc:
       permalink: true
+
+  # Python Markdown Extensions
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.betterem:
       smart_enable: all
   - pymdownx.caret
-  - pymdownx.critic
   - pymdownx.details
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
@@ -160,24 +159,19 @@ markdown_extensions:
   - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.keys
-  - pymdownx.magiclink:
-      repo_url_shorthand: true
-      user: squidfunk
-      repo: mkdocs-material
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.superfences
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
 
-extra_css:
-  - stylesheets/extra.css
-
 # Page tree
 nav:
-  - Home: index.md
+  - Home: 
+      - Overview: index.md
   - Getting started:
       - Installation: install/install.md
       - Authelia: install/authelia.md
