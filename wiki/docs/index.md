@@ -14,8 +14,6 @@
         <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
     </a>
     </br>
-    <img src="https://img.shields.io/liberapay/receives/dockserver.svg?logo=liberapay">
-    </br>
     <a href="https://github.com/dockserver/dockserver/releases/latest">
         <img src="https://img.shields.io/github/v/release/dockserver/dockserver?include_prereleases&label=Latest%20Release&logo=github" alt="Latest Official Release on GitHub">
     </a>
@@ -25,8 +23,8 @@
     </a>
     </br>
     <noscript>
-      <a href="https://liberapay.com/dockserver/donate">
-      <img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a>
+      <a href="https://www.patreon.com/DockServer">
+      <img alt="Donate using Patreon" src="https://i.imgur.com/yuTmnOj.png"></a>
     </noscript>
 </p>
 
@@ -125,7 +123,7 @@ sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/wg
 
 Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
 
-<noscript><a href="https://liberapay.com/dockserver/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
+<noscript><a href="https://www.patreon.com/DockServer"><img alt="Donate using Patreon" src="https://i.imgur.com/yuTmnOj.png"></a></noscript>
 
 ---
 
