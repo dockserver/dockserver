@@ -14,8 +14,6 @@
         <img src="https://discord.com/api/guilds/830478558995415100/widget.png?label=Discord%20Server&logo=discord" alt="Join DockServer on Discord">
     </a>
     </br>
-    <img src="https://img.shields.io/liberapay/receives/dockserver.svg?logo=liberapay">
-    </br>
     <a href="https://github.com/dockserver/dockserver/releases/latest">
         <img src="https://img.shields.io/github/v/release/dockserver/dockserver?include_prereleases&label=Latest%20Release&logo=github" alt="Latest Official Release on GitHub">
     </a>
@@ -25,35 +23,29 @@
     </a>
     </br>
     <noscript>
-      <a href="https://liberapay.com/dockserver/donate">
-      <img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a>
+      <a href="https://www.patreon.com/DockServer">
+      <img alt="Donate using Patreon" src="https://i.imgur.com/yuTmnOj.png"></a>
     </noscript>
 </p>
 
 
 _Docker + Traefik with Authelia and Cloudflare Protection_
 
-
 ---
 
-<details close>
-<summary>Some stats of Dockserver 📊</summary>
-<br>
-<p>
-  <a href="https://dockserver.io/" width="100%">
-    <img alt="GitHub Stats" src="https://raw.githubusercontent.com/dockserver/dockserver/master/github-metrics.svg">
-  </a>
-</p>
-</details>
+## Migration
 
---- 
+If you currently have a server with PG/MHS/PTS, have a look here before you start the installation: [Migration Guide](https://dockserver.io/install/migration.html)
+
+---
 
 
 ## Minimum Specs and Requirements
 
-- Stable: Ubuntu 18/20/21/22 or Debian 9/10/11
+- Stable: Ubuntu 22
 
-- CPU 2 Cores or 2 VCores (Only tested on x86/x64)
+- CPU 2 Cores or 2 VCores (x86/x64)
+    - **No** ARM Support
 - 4GB Ram
 - 20GB Disk Space
 
@@ -131,7 +123,7 @@ sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/wg
 
 Kindly report any issues/broken-parts/bugs on [github](https://github.com/dockserver/dockserver/issues) or [discord](https://discord.gg/A7h7bKBCVa)
 
-<noscript><a href="https://liberapay.com/dockserver/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
+<noscript><a href="https://www.patreon.com/DockServer"><img alt="Donate using Patreon" src="https://i.imgur.com/yuTmnOj.png"></a></noscript>
 
 ---
 
@@ -256,17 +248,17 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
-        <a href=https://github.com/ImgBotApp>
-            <img src=https://avatars.githubusercontent.com/u/31427850?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Imgbot/>
-            <br />
-            <sub style="font-size:14px"><b>Imgbot</b></sub>
-        </a>
-    </td>
-    <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
         <a href=https://github.com/Shayne55434>
             <img src=https://avatars.githubusercontent.com/u/37595910?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Shayne/>
             <br />
             <sub style="font-size:14px"><b>Shayne</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
+        <a href=https://github.com/ImgBotApp>
+            <img src=https://avatars.githubusercontent.com/u/31427850?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Imgbot/>
+            <br />
+            <sub style="font-size:14px"><b>Imgbot</b></sub>
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">

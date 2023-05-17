@@ -13,7 +13,7 @@
     </a>
 </p>
 
-# Introduction
+# Migration Introduction
 
 While many of us has enjoyed PGblitz over the years, the project is now scattered. Some simply ghosted the whole community, and the rest of the devs are working on other projects.
 Even though PGblitz still works, **there are numerous upsides in shifting to dockserver:**

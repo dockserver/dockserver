@@ -8,7 +8,7 @@ services:
       - "PGID=${ID}"
       - "PUID=${ID}"
       - "TZ=${TZ}"
-    image: "ghcr.io/dockserver/docker-overseerr:latest"
+    image: "lscr.io/linuxserver/overseerr:latest"
     restart: "${RESTARTAPP}"
     networks:
       - ${DOCKERNETWORK}

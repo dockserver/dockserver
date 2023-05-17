@@ -123,10 +123,17 @@ Autoscan is optional, people with feeders may use it to trigger scan after uploa
 ![Image of Notification](/img/notifications/discord-uploader.png)
 
 |Setting                  |Default|Description|
-|-------------------------|-------|------------|
+|-------------------------|-------|-----------|
 |`NOTIFICATION_URL`       |`null` |The notification URL to be passed to Apprise. Discord examples:</br>`https://discordapp.com/api/webhooks/{WebhookID}/{WebhookToken}`</br>`discord://{WebhookID}/{WebhookToken}/`</br>`discord://{user}@{WebhookID}/{WebhookToken}/`|
 |`NOTIFICATION_LEVEL`     |`ALL`  |What notifications should be sent to `NOTIFICATION_URL`. Options:</br>`ALL` - Send notification for all uploads</br>`ERROR` - Send notification for only errors</br>`NONE` - Do not send any notifications|
 |`NOTIFICATION_SERVERNAME`|`null` |What to display on the notification, after "Uploader - ". `null` will default to "Uploader - Docker". Anything else will only replace "Docker".</br>Examples:</br>`NOTIFICATION_SERVERNAME=null` results in "Uploader - Docker"</br>`NOTIFICATION_SERVERNAME=My Awesome Server` will result in "Uploader - My Awesome Server"|
+
+#### STRIPARR - SETTINGS
+[Striparr](https://github.com/mikenye/docker-striparr) is optional and needs the Striparr Docker to be deployed on the same System. The files will not be uploaded until they have been successfully striped. 
+
+|Setting       |Default|Description|
+|--------------|-------|-----------|
+|`STRIPARR_URL`|`null` |The Striparr URL. Example: `STRIPARR_URL=http://striparr:40000`|
 
 #### LANGUAGE MESSAGES
 |Setting   |Default|Description|
@@ -140,37 +147,36 @@ If you would like to upload to multiple Team Drives, you need to create a file n
 </br>
 </br>
 
-#### Unencrypted Team Drives
+**Unencrypted Team Drives example:**
 
+- 1 = LOCAL_FOLDER_NAME -> (TV)
+- 2 = TEAM_DRIVE_ID -> (0AFsVct4HDKPrUk9PVvvvvvvvv)
+#### Important: Each line in csv is one Local Folder
 Example:
-
 ```yaml
-1 = LOCAL_FOLDER_NAME
-2 = TEAM_DRIVE_ID
 TV|0AFsVct4HDKPrUk9PVvvvvvvvv
 TV4K|0AFsVct4HDKPrUk9PVxxxxxxxxxx
 Movies|0AFsVct4HDKPrUk9PVyyyyyyyyyy
 Movies4K|0AFsVct4HDKPrUk9PVzzzzzzzzzz
 appbackups|0AFsVct4HDKPrUk9PVzzzzzzzzzz
 music|0AFsVct4HDKPrUk9PVzzzzzzzzzz
-...
 ```
 
-#### Encrypted Team Drives
+**Encrypted Team Drives example:**
 
+- 1 = LOCAL_FOLDER_NAME -> (Movies)
+- 2 = TEAM_DRIVE_ID -> (0AFsVct4HDKPrUk9PVvvvvvvvv)
+- 3 = PASSWORD - <HASHED|PLAIN> -> (72nsjsiwjsjsu)
+- 4 = PASSWORD SALT - <HASHED|PLAIN> -> (72nsjsiwjsjsu)
+#### Important: Each line in csv is one Local Folder
 Example:
 ```yaml
-1 = LOCAL_FOLDER_NAME
-2 = TEAM_DRIVE_ID
-3 = PASSWORD - HASHED OR PLAIN
-4 = PASSWORD SALT - HASHED OR PLAIN
 Movies|0AFsVct4HDKPrUk9PVvvvvvvvv|72nsjsiwjsjsu|72nsjsiwjsjsu
 TV SHows|0AFsVct4HDKPrUk9PVxxxxxxxxxx|72nsjsiwjsjsu|72nsjsiwjsjsu
 4K|0AFsVct4HDKPrUk9PVyyyyyyyyyy|72nsjsiwjsjsu|72nsjsiwjsjsu
 TV 4K|0AFsVct4HDKPrUk9PVzzzzzzzzzz|72nsjsiwjsjsu|72nsjsiwjsjsu
 appbackups|0AFsVct4HDKPrUk9PVzzzzzzzzzz|72nsjsiwjsjsu|72nsjsiwjsjsu
 music|0AFsVct4HDKPrUk9PVzzzzzzzzzz|72nsjsiwjsjsu|72nsjsiwjsjsu
-...
 ```
 
 **IMPORTANT**: </br>
@@ -185,22 +191,24 @@ Instead of using `/opt/appdata/system/servicekeys/rclonegdsa.conf`, you can now 
 
 #### Unencrypted Team Drives
 
+- 1 = TEAM_DRIVE_NAME -> (uploader)
+- 2 = TEAM_DRIVE_ID -> (0XXXXXXXXX000000EERR)
+#### Important: Each line in csv is one tdrive
 Example:
 
 ```yaml
-1 = TEAM_DRIVE_NAME
-2 = TEAM_DRIVE_ID
 uploader|0XXXXXXXXX000000EERR
 ```
 
 #### Encrypted Team Drives
 
+- 1 = TEAM_DRIVE_NAME -> (uploader)
+- 2 = TEAM_DRIVE_ID -> (0XXXXXXXXX000000EERR)
+- 3 = PASSWORD - HASHED OR PLAIN -> (72nsjsiwjsjsu)
+- 4 = PASSWORD SALT - HASHED OR PLAIN -> (72nsjsiwjsjsu)
+#### Important: Each line in csv is one tdrive
 Example:
 ```yaml
-1 = TEAM_DRIVE_NAME
-2 = TEAM_DRIVE_ID
-3 = PASSWORD - HASHED OR PLAIN
-4 = PASSWORD SALT - HASHED OR PLAIN
 uploader|0XXXXXXXXX000000EERR|72nsjsiwjsjsu|72nsjsiwjsjsu
 ```
 

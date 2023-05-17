@@ -9,7 +9,7 @@ services:
       - "PUID=${ID}"
       - "TZ=${TZ}"
       - "UMASK=${UMASK}"
-    image: "ghcr.io/dockserver/docker-duplicati:latest"
+    image: "lscr.io/linuxserver/duplicati:latest"
     restart: "${RESTARTAPP}"
     networks:
       - ${DOCKERNETWORK}

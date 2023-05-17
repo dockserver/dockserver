@@ -19,7 +19,7 @@ services:
       - 'traefik.docker.network=proxy'
       - 'dockupdater.enable=true'
       - 'traefik.http.routers.glances-rtr.entrypoints=https'
-      - 'traefik.http.routers.glances.rule=Host(`glances.${DOMAIN}`)'
+      - 'traefik.http.routers.glances-rtr.rule=Host(`glances.${DOMAIN}`)'
       - 'traefik.http.routers.glances-rtr.tls=true'
       - 'traefik.http.routers.glances-rtr.tls.certresolver=dns-cloudflare'
       - 'traefik.http.routers.glances-rtr.middlewares=chain-authelia@file'

@@ -9,7 +9,7 @@ services:
       - "PUID=${ID}"
       - "TZ=${TZ}"
       - "UMASK=${UMASK}"
-      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:sabnzbd"
+      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:sabnzbd|ghcr.io/dockserver/docker-mod-sabnzbd:latest"
       - "TP_THEME=${SABNZBDTHEME}"
       - "HOSTENTRIES=${DOMAIN}"
     image: "${SABNZBDIMAGE}"

@@ -15,7 +15,7 @@ jobs:
   Scan-Build:
     runs-on: ubuntu-latest
     steps:
-    - uses: step-security/harden-runner@c8454efe5d0bdefd25384362fe217428ca277d57 # v1
+    - uses: step-security/harden-runner@128a63446a954579617e875aaab7d2978154e969 # v1
       with:
         egress-policy: block
         disable-telemetry: true
@@ -23,7 +23,7 @@ jobs:
           api.github.com:443
           github.com:443
 
-    - uses: actions/checkout@v3.3.0
+    - uses: actions/checkout@v3.5.2
 
     - name: Perform Scan
       uses: ShiftLeftSecurity/scan-action@master

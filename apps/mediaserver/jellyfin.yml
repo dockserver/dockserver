@@ -9,7 +9,7 @@ services:
       - "PUID=${ID}"
       - "TZ=${TZ}"
       - "UMASK=${UMASK}"
-      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:jellyfin"
+      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:jellyfin|ghcr.io/dockserver/docker-mod-healthcheck:latest"
       - "TP_THEME=${JELLYFINTHEME}"
       - "JELLYFIN_PublishedServerUrl=jellyfin.${DOMAIN}"
     image: "${JELLYFINIMAGE}"

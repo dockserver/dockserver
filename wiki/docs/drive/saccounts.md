@@ -20,7 +20,7 @@ This guide assumes you have already
 - Created a project https://console.developers.google.com/
 - OAuth Consent https://console.developers.google.com/apis/credentials/consent
 - Client ID and Secret https://console.developers.google.com/apis/credentials
-
+- Enabled "Google Drive API" on your Project.
 
 Go to: https://console.cloud.google.com/projectselector2/iam-admin/serviceaccounts
 
@@ -39,6 +39,9 @@ Go to: https://console.cloud.google.com/projectselector2/iam-admin/serviceaccoun
 
 Now you can proceed to this portion of the migration instruction:
 https://dockserver.io/install/migration.html#mount-uploader
+
+Or to mount setup:
+https://dockserver.io/apps/system/mount.html#setup
 
 ## Support
 

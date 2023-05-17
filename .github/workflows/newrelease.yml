@@ -9,9 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v3.3.0
+        uses: actions/checkout@v3.5.2
       - name: Bump version and push tag
-        uses: anothrNick/github-tag-action@1.61.0
+        uses: anothrNick/github-tag-action@1.65.0
         with:
           body: ${{steps.github_release.outputs.changelog}}
         env:

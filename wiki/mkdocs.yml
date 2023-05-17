@@ -26,12 +26,41 @@ site_description: Use your self hosted docker as wiki
 repo_name: DockServer Wiki
 repo_url: https://github.com/dockserver/dockserver
 edit_uri: https://github.com/dockserver/dockserver/edit/master/wiki/docs/
-copyright: Copyright &copy; 2022 DockServer.io
+copyright: Copyright &copy; 2023 DockServer.io
 
 # Configuration
 theme:
   name: material
   custom_dir: overrides
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - search.suggest
+    - search.highligh
+    - search.share
+    - navigation.top
+    - toc.integrate
+  language: en
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: grey
+      accent: blue
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: blue
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
 
   # Static files
   static_templates:
@@ -53,31 +82,6 @@ theme:
       example: fontawesome/solid/flask
       quote: fontawesome/solid/quote-left
 
-  language: en
-  features:
-    - navigation.tabs
-    - navigation.tabs.sticky
-    - navigation.sections
-    - navigation.expand
-    - search.suggest
-    - search.highligh
-    - search.share
-    - navigation.top
-    - toc.integrate
-  palette:
-    - media: "(prefers-color-scheme: dark)" 
-      scheme: slate
-      primary: black
-      toggle:
-        icon: material/toggle-switch
-        name: Switch to light mode
-    - media: "(prefers-color-scheme: light)" 
-      scheme: default
-      primary: indigio
-      toggle:
-        icon: material/toggle-switch-off-outline
-        name: Switch to dark mode
-
   font:
     text: Roboto
     code: Roboto Mono
@@ -86,7 +90,9 @@ theme:
 
 # Plugins
 plugins:
-  - search
+  - search:
+      lang: en
+  # - meta
   - redirects:
       redirect_maps:
         404.html: index.md
@@ -99,12 +105,20 @@ extra:
     provider: google
     property: 'G-00QEDJW2TS'
   social:
+    - icon: fontawesome/solid/heart
+      class: md-social__link heart
+      link: 'https://www.patreon.com/DockServer'
+      name: Donate
     - icon: fontawesome/brands/github
+      class: md-social__link
       link: https://github.com/dockserver/dockserver
+      name: GitHub
     - icon: fontawesome/brands/docker
       link: https://github.com/orgs/dockserver/packages/
     - icon: fontawesome/brands/discord
+      class: md-social__link
       link: https://discord.gg/A7h7bKBCVa
+      name: Discord
     - icon: fontawesome/brands/firefox
       link: https://dockserver.io/
 
@@ -172,27 +186,30 @@ nav:
       - Mount Keys: drive/mdkeys.md
       - Service Accounts: drive/saccounts.md
 
-  - Applikation:
-      - Applikation: apps/apps.md
+  - Applications:
+      - Applications: apps/apps.md
       - Addons:
           - Autoscan: apps/addons/autoscan.md
           - A-Train: apps/addons/a-train.md
           - Cloud: apps/addons/cloud.md
           - CloudCMD: apps/addons/cloudcmd.md
-          - Flaresolverr: apps/addons/flaresolverr.md
-          - diun: apps/addons/diun.md
+          - Cloudflare-DDNS: apps/addons/cloudflare-ddns.md
+          - Dashmachine: apps/addons/dashmachine.md
+          - Diun: apps/addons/diun.md
           - Dozzle: apps/addons/dozzle.md
+          - Flaresolverr: apps/addons/flaresolverr.md
           - Heimdall: apps/addons/heimdall.md
           - Kitana: apps/addons/kitana.md
           - Librespeed: apps/addons/librespeed.md
           - NetData: apps/addons/netdata.md
           - NotiFiarr: apps/addons/notifiarr.md
           - Remmina: apps/addons/remmina.md
-          - Tauticord: apps/addons/tauticord.md
           - Speedtest: apps/addons/speedtest.md
+          - Tauticord: apps/addons/tauticord.md
           - vnstat: apps/addons/vnstat.md
       - Backup:
           - Duplicati: apps/backup/duplicati.md
+          - Restic: apps/backup/restic.md
           - Rsnapshot: apps/backup/rsnapshot.md
       - Coding:
           - Cloud9: apps/coding/cloud9.md
@@ -210,8 +227,8 @@ nav:
           - SabNZBD: apps/downloadclients/sabnzbd.md
           - Youtubedl-Material: apps/downloadclients/youtubedl-material.md
       - Encoder:
-          - Tdarr: apps/encoder/tdarr.md
           - HandBrake: apps/encoder/handbrake.md
+          - Tdarr: apps/encoder/tdarr.md
       - KASM Workspace:
           - Kasmdesktop: apps/kasmworkspace/kasmdesktop.md
       - MediaManager:
@@ -226,13 +243,13 @@ nav:
           - Readarr: apps/mediamanager/readarr.md
           - Sonarr: apps/mediamanager/sonarr.md
           - Tautulli: apps/mediamanager/tautulli.md
-          - Tracktarr: apps/mediamanager/traktarr.md
+          - Traktarr: apps/mediamanager/traktarr.md
           - Xteve: apps/mediamanager/xteve.md
       - MediaServer:
           - Emby: apps/mediaserver/emby.md
-          - Plex: apps/mediaserver/plex.md
           - Jellyfin: apps/mediaserver/jellyfin.md
           - MStream: apps/mediaserver/mstream.md
+          - Plex: apps/mediaserver/plex.md
       - Request:
           - Conreq: apps/request/conreq.md
           - Overseerr: apps/request/overseerr.md
@@ -253,14 +270,15 @@ nav:
           - Moviematch: apps/selfhosted/moviematch.md
           - Netbox: apps/selfhosted/netbox.md
           - Nowshowing: apps/selfhosted/nowshowing.md
-          - Organizzr: apps/selfhosted/organizr.md
+          - Organizr: apps/selfhosted/organizr.md
           - PiHole: apps/selfhosted/pihole.md
           - Recipes: apps/selfhosted/recipes.md
           - Snapdrop: apps/selfhosted/snapdrop.md
           - Teamspeak: apps/selfhosted/teamspeak.md
-          - unifi-controller: apps/selfhosted/unifi-controller.md
-          - whoogle: apps/selfhosted/whoogle.md
+          - Unifi-Controller: apps/selfhosted/unifi-controller.md
+          - Whoogle: apps/selfhosted/whoogle.md
           - Wireguard: apps/selfhosted/wireguard.md
+          - XBVR: apps/selfhosted/xbvr.md
       - Share:
           - Filerun: apps/share/filerun.md
           - Nextcloud: apps/share/nextcloud.md
@@ -268,7 +286,7 @@ nav:
       - System:
           - Mount: apps/system/mount.md
           - Uploader: apps/system/uploader.md
-          - dockupdater: apps/system/dockupdater.md
+          - Dockupdater: apps/system/dockupdater.md
           - endlessh: apps/system/endlessh.md
           - Rclone-GUI: apps/system/rclone-gui.md
           - Statping: apps/system/statping.md

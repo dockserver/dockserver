@@ -10,7 +10,7 @@ services:
       - "TZ=${TZ}"
       - "UMASK=${UMASK}"
       - "WEBUI_PORT=8080"
-      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:qbittorrent"
+      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:qbittorrent|ghcr.io/dockserver/docker-mod-qbittorrent:latest"
       - "TP_THEME=${QBITORRENTTHEME}"
     image: "${QBITORRENTIMAGE}"
     restart: "${RESTARTAPP}"
