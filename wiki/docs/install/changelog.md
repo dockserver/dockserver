@@ -1,15 +1,59 @@
 # CHANGELOG
 
-## [v1.4.49](https://github.com/dockserver/dockserver/releases/tag/v1.4.49) - 2023-03-17 06:20:25
+## [v1.4.51](https://github.com/dockserver/dockserver/releases/tag/v1.4.51) - 2023-05-18 12:33:03
 
 ## 💻 GitHub updates
 
-- GH updates (deps): Bump aquasecurity/trivy-action from 0.9.1 to 0.9.2 (#609)Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
-   - PR: #609
-- GH updates (deps): Bump step-security/harden-runner from 2.2.0 to 2.2.1
-   - PR: #611
-- GH updates (deps): Bump actions/checkout from 3.3.0 to 3.4.0 (#612)Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
-   - PR: #612
+- GH updates (deps): Bump anothrNick/github-tag-action from 1.62.0 to 1.63.0
+   - PR: #629
+- GH updates (deps): Bump anothrNick/github-tag-action from 1.63.0 to 1.64.0
+   - PR: #630
+- GH updates (deps): Bump anothrNick/github-tag-action from 1.64.0 to 1.65.0
+   - PR: #631
+
+## [v1.4.50](https://github.com/dockserver/dockserver/releases/tag/v1.4.50) - 2023-05-11 13:55:34
+
+## 💻 GitHub updates
+
+- GH updates (deps): Bump actions/stale from 7 to 8 (#615)Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+   - PR: #615
+- GH updates (deps): Bump actions/checkout from 3.4.0 to 3.5.0 (#616)Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+   - PR: #616
+- GH updates (deps): Bump step-security/harden-runner from 2.2.1 to 2.3.0 (#619)Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+   - PR: #619
+- GH updates (deps): Bump anothrNick/github-tag-action from 1.61.0 to 1.62.0 (#620)Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+   - PR: #620
+- GH updates (deps): Bump actions/checkout from 3.5.0 to 3.5.1 (#621)Co-authored-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com> Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+   - PR: #621
+- GH updates (deps): Bump actions/checkout from 3.5.1 to 3.5.2 (#622)Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+   - PR: #622
+- GH updates (deps): Bump dependabot/fetch-metadata from 1.3.6 to 1.4.0 (#624)Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+   - PR: #624
+- GH updates (deps): Bump step-security/harden-runner from 2.3.0 to 2.3.1 (#625)Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+   - PR: #625
+- GH updates (deps): Bump aquasecurity/trivy-action from 0.9.2 to 0.10.0 (#626)Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+   - PR: #626
+- GH updates (deps): Bump step-security/harden-runner from 2.3.1 to 2.4.0
+   - PR: #627
+
+## 🎨 DockServer Update
+
+- Update restic.md
+   - PR: #613
+- Update glances.yml (#618
+   - PR: #618
+- update restic.md
+   - PR: #623
+- Update envmigrate.sh
+   - PR: #628
+
+### Documentation
+
+- README:
+  - update contributors ([66a2cf9](https://github.com/dockserver/dockserver/commit/66a2cf958750794fd0bc0529168478ca66073e7d))
+  - update contributors ([30eb933](https://github.com/dockserver/dockserver/commit/30eb9339abf39717709b27452eb9567f646dc7e0))
+
+## [v1.4.49](https://github.com/dockserver/dockserver/releases/tag/v1.4.49) - 2023-03-17 06:20:25
 
 ## [v1.4.48](https://github.com/dockserver/dockserver/releases/tag/v1.4.48) - 2023-02-28 20:17:37
 
