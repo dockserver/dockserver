@@ -31,6 +31,7 @@ Each Uploader instance needs his own Project/Keys, never use keys from other pro
 - Full support for [Rclone's bandwidth limit](https://rclone.org/docs/#bwlimit-bandwidth-spec).
 - Notifications via [Apprise](https://github.com/caronc/apprise).
 - Variable concurrent uploads.
+- Dropbox
 - Settings are refreshed for each upload. No need to restart the container after making a configuration change!
 - Start and stop on demand via the container or web interface (active uploads are not considered when pausing via the web interface).
 
@@ -57,6 +58,8 @@ Example:
 
 ## Configuration
 All settings can be found here: `/opt/appdata/system/uploader/uploader.env`
+
+If you use Dropbox make sure to name them in rclonegdsa.conf like this: `[DB] & [DBC]`, you also have to set the `filename_encoding` to `base32768`.
 
 #### USER VALUES
 |Setting   |Default|Description|
