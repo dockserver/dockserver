@@ -1,3 +1,3 @@
 
-## 2023-05-17
- * [Auto Generation] Changes : wiki/docs/install/container-gitlog.md (dockserver-bot[bot])
+## 2023-05-18
+ * [Auto Generation] Changes : apps/docker-spotweb/Dockerfile apps/docker-spotweb/release.json container.json wiki/docs/install/container.json (dockserver-bot[bot])
