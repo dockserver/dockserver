@@ -13,7 +13,7 @@
 # NO CODE MIRRORING IS ALLOWED      #
 #####################################
 basefolder="/opt/appdata"
-plex=$(docker ps -aq --format={{.Names}} | grep -x 'plex' 1>/dev/null 2>&1 && echo true || echo false)
+plex=$(docker ps -a --format={{.Names}} | grep -x 'plex' 1>/dev/null 2>&1 && echo true || echo false)
 if [[ -d "/opt/appdata/plex/" && $plex == "true" ]]; then
 SERVERIP=$(curl -s http://whatismijnip.nl |cut -d " " -f 5)
 token=$(cat "/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Preferences.xml" | sed -e 's;^.* PlexOnlineToken=";;' | sed -e 's;".*$;;' | tail -1)
