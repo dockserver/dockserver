@@ -20,10 +20,13 @@
 ### IMPORTANT
 Each Mount instance needs his own Project/Keys, never use keys from other projects.
 
+If you use Dropbox make sure to name them in rclone.conf like this: `[DB] & [DBC]`, you also have to set the `filename_encoding` to `base32768`.
+
 ### Features:
 - Service Key Mount.
 - Rclone Web-GUI (https://mount.mydomain.com).
 - Notifications via [Apprise](https://github.com/caronc/apprise).
+- Dropbox
 
 ## Configuration
 All settings can be found here: `/opt/appdata/system/mount/mount.env`
