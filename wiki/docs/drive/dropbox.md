@@ -14,6 +14,7 @@
 1. Run `rclone.exe config`
 
 1. Create Remote (DB)
+
    - New remote> `n`
    - name> `DB`
    - Storage (Dropbox)> `13`
@@ -26,6 +27,7 @@
    Repeat for all 2 apps, copying away your rclone.conf after each run.
 
 1. Create Remote (DBC)
+
    - New remote> `n`
    - Name> `DBC`
    - Storage (Crypt)> `14`
@@ -70,6 +72,7 @@
    ```
 
 1. Copy the Mount rclone.conf file to:
+
    - `/opt/appdata/system/rclone/rclone.conf`
    - `/opt/appdata/system/mount/rclone/rclone.conf`
 
@@ -82,6 +85,7 @@
 1. Restart Uploader
 
 1. Finally, assuming everything looks to be working, run the following two commands:
+
    - `cd /root && touch dbc.anchor`
    - `rclone copy -v "/root/dbc.anchor" "DBC:/.anchors" --config="/opt/appdata/system/rclone/rclone.conf" --stats=1s --checkers=4 --dropbox-chunk-size=128M --use-mmap --tpslimit=10 --transfers=6`
 
