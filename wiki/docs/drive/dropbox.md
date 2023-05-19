@@ -24,7 +24,7 @@
     - Use web browser to automatically authenticate rclone with remote?> `y`
     - Log in with your DB account and allow app
    
-   Repeat for all 2 apps, copying away your rclone.conf after each run.
+    Repeat for all 2 apps, copying away your rclone.conf after each run.
 
 1. Create Remote (DBC)
 
@@ -43,7 +43,7 @@
     - Edit advanced config?> `n`
     - Keep this "DBC" Remote?> `y`
    
-   **Note** - In `remote = DB:/<directory_name>`, change `<directory_name>` to whatever you'd like.
+    **Note** - In `remote = DB:/<directory_name>`, change `<directory_name>` to whatever you'd like.
 
 1. Add the following to the crypt [DBC] section in `%AppData%\rclone\rclone.conf`
    ```
@@ -93,9 +93,9 @@
 
 1. If using autoscan, you will need to update `/opt/appdata/autoscan/config.yml` to include the following:
 
-   ```
-   anchors:
-     - /mnt/unionfs/.anchors/dbc.anchor
-   ```
+    ```
+    anchors:
+        - /mnt/unionfs/.anchors/dbc.anchor
+    ```
 
-2. Restart autoscan. `docker restart autoscan`
+1. Restart autoscan. `docker restart autoscan`
