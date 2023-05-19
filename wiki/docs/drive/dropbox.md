@@ -9,11 +9,11 @@
 ## **Create rclone configs**
 1. Download [rclone](https://rclone.org/downloads/)
 
-2. Create 2 Apps according to [this](https://rclone.org/dropbox/#get-your-own-dropbox-app-id) guide (Mount, Uploader) and note each app key/secret. You will need it for rclone.
+1. Create 2 Apps according to [this](https://rclone.org/dropbox/#get-your-own-dropbox-app-id) guide (Mount, Uploader) and note each app key/secret. You will need it for rclone.
 
-3. Run `rclone.exe config`
+1. Run `rclone.exe config`
 
-4. Create Remote (DB)
+1. Create Remote (DB)
 
     - New remote> `n`
     - name> `DB`
@@ -26,7 +26,7 @@
    
    Repeat for all 2 apps, copying away your rclone.conf after each run.
 
-5. Create Remote (DBC)
+1. Create Remote (DBC)
 
     - New remote> `n`
     - Name> `DBC`
@@ -45,7 +45,7 @@
    
    **Note** - In `remote = DB:/<directory_name>`, change `<directory_name>` to whatever you'd like.
 
-6. Add the following to the crypt [DBC] section in `%AppData%\rclone\rclone.conf`
+1. Add the following to the crypt [DBC] section in `%AppData%\rclone\rclone.conf`
    ```
    directory_name_encryption = true
    filename_encryption = standard
@@ -53,7 +53,7 @@
    ```
 
     **IMPORTANT**: `filename_encoding` must be this value: `base32768`
-7. Copy the [DBC] section to the other rclone.conf file. You should end up with 2 files that look similar to this:
+1. Copy the [DBC] section to the other rclone.conf file. You should end up with 2 files that look similar to this:
    ```
    [DB]
    type = dropbox
@@ -71,29 +71,31 @@
    filename_encoding = base32768
    ```
 
-8. Copy the Mount rclone.conf file to:
+1. Copy the Mount rclone.conf file to:
 
     - `/opt/appdata/system/rclone/rclone.conf`
     - `/opt/appdata/system/mount/rclone/rclone.conf`
 
-9. Copy the contents of Uploader rclone.conf to `/opt/appdata/system/servicekeys/rclonegdsa.conf`, deleting everything that is currently there. This should be the only file/folder in this directory.
+1. Copy the contents of Uploader rclone.conf to `/opt/appdata/system/servicekeys/rclonegdsa.conf`, deleting everything that is currently there. This should be the only file/folder in this directory.
 
-10. Redeploy Mount and Uploader
+1. Redeploy Mount and Uploader
 
-11. Update `DB_NAME` value in `/opt/appdata/system/uploader/uploader.env` with the name you chose during step 5. Example: `DB_NAME=<directory_name>`
+1. Update `DB_NAME` value in `/opt/appdata/system/uploader/uploader.env` with the name you chose during step 5. Example: `DB_NAME=<directory_name>`
 
-12. Restart Uploader
+1. Restart Uploader
 
-13. Finally, assuming everything looks to be working, run the following two commands:
+1. Finally, assuming everything looks to be working, run the following two commands:
 
     - `cd /root && touch dbc.anchor`
     - `rclone copy -v "/root/dbc.anchor" "DBC:/.anchors" --config="/opt/appdata/system/rclone/rclone.conf" --stats=1s --checkers=4 --dropbox-chunk-size=128M --use-mmap --tpslimit=10 --transfers=6`
 
 ## **Autoscan**
+
 1. If using autoscan, you will need to update `/opt/appdata/autoscan/config.yml` to include the following:
 
    ```
    anchors:
      - /mnt/unionfs/.anchors/dbc.anchor
    ```
+
 2. Restart autoscan. `docker restart autoscan`
