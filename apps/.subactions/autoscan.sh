@@ -31,7 +31,7 @@ anchors:
   - /mnt/unionfs/.anchors/local.anchor" >> $basefolder/${typed}/config.yml
 IFS=$'\n'
 filter="$1"
-mountd=$(docker ps -aq --format={{.Names}} | grep -E "mount" && echo true || echo false)
+mountd=$(docker ps -a --format={{.Names}} | grep -E "mount" && echo true || echo false)
 if [[ $mountd == "false" ]];then
    if [[ -f "$basefolder/uploader/rclone.conf" ]];then config=$basefolder/uploader/rclone.conf;fi
    if [[ ! -f "$basefolder/uploader/rclone.conf" ]];then config=$basefolder/system/rclone/rclone.conf;fi
@@ -54,8 +54,8 @@ echo "\
 triggers:
   manual:
     priority: 0" >> $basefolder/${typed}/config.yml
-radarr=$(docker ps -aq --format={{.Names}} | grep -E 'radarr' 1>/dev/null 2>&1 && echo true || echo false)
-rrun=$(docker ps -aq --format={{.Names}} | grep 'rada')
+radarr=$(docker ps -a --format={{.Names}} | grep -E 'radarr' 1>/dev/null 2>&1 && echo true || echo false)
+rrun=$(docker ps -a --format={{.Names}} | grep 'rada')
 if [[ $radarr == "true" ]];then
 echo "\
   radarr:" >> $basefolder/${typed}/config.yml
@@ -65,8 +65,8 @@ echo "\
       priority: 2" >> $basefolder/${typed}/config.yml
    done
 fi
-sonarr=$(docker ps -aq --format={{.Names}} | grep -E 'sonarr' 1>/dev/null 2>&1 && echo true || echo false)
-srun=$(docker ps -aq --format={{.Names}} | grep -E 'sona')
+sonarr=$(docker ps -a --format={{.Names}} | grep -E 'sonarr' 1>/dev/null 2>&1 && echo true || echo false)
+srun=$(docker ps -a --format={{.Names}} | grep -E 'sona')
 if [[ $sonarr == "true" ]];then
 echo "\
   sonarr:" >> $basefolder/${typed}/config.yml
@@ -76,8 +76,8 @@ echo "\
       priority: 2" >> $basefolder/${typed}/config.yml
    done
 fi
-lidarr=$(docker ps -aq --format={{.Names}} | grep -E 'lidarr' 1>/dev/null 2>&1 && echo true || echo false)
-lrun=$(docker ps -aq --format={{.Names}} | grep 'lida')
+lidarr=$(docker ps -a --format={{.Names}} | grep -E 'lidarr' 1>/dev/null 2>&1 && echo true || echo false)
+lrun=$(docker ps -a --format={{.Names}} | grep 'lida')
 if [[ $lidarr == "true" ]];then
 echo "\
   lidarr:" >> $basefolder/${typed}/config.yml
@@ -103,8 +103,8 @@ echo "\
       - path: /mnt/unionfs/
 
 targets:" >> $basefolder/${typed}/config.yml
-plex=$(docker ps -aq --format={{.Names}} | grep -x 'plex' 1>/dev/null 2>&1 && echo true || echo false)
-prun=$(docker ps -aq --format={{.Names}} | grep -x 'plex')
+plex=$(docker ps -a --format={{.Names}} | grep -x 'plex' 1>/dev/null 2>&1 && echo true || echo false)
+prun=$(docker ps -a --format={{.Names}} | grep -x 'plex')
 if [[ -d "/opt/appdata/plex/" && $plex == "true" ]]; then
    token=$(cat "/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Preferences.xml" | sed -e 's;^.* PlexOnlineToken=";;' | sed -e 's;".*$;;' | tail -1)
    if [[ $token == "" ]];then
@@ -119,8 +119,8 @@ if [[ -d "/opt/appdata/plex/" && $plex == "true" ]]; then
      done
    fi
 fi
-emby=$(docker ps -aq --format={{.Names}} | grep -x 'emby' 1>/dev/null 2>&1 && echo true || echo false)
-erun=$(docker ps -aq --format={{.Names}} | grep -x 'emby')
+emby=$(docker ps -a --format={{.Names}} | grep -x 'emby' 1>/dev/null 2>&1 && echo true || echo false)
+erun=$(docker ps -a --format={{.Names}} | grep -x 'emby')
 token=youneedtoreplacethemselfnow
 if [[ $emby == "true" ]];then
    for i in ${erun};do
@@ -130,8 +130,8 @@ echo "\
       token: $token" >> $basefolder/${typed}/config.yml
    done
 fi
-jelly=$(docker ps -aq --format={{.Names}} | grep -x 'jelly' 1>/dev/null 2>&1 && echo true || echo false)
-jrun=$(docker ps -aq --format={{.Names}} | grep -x 'jelly')
+jelly=$(docker ps -a --format={{.Names}} | grep -x 'jelly' 1>/dev/null 2>&1 && echo true || echo false)
+jrun=$(docker ps -a --format={{.Names}} | grep -x 'jelly')
 token=youneedtoreplacethemselfnow
 if [[ $jelly == "true" ]];then
    for i in ${jrun};do
@@ -187,7 +187,7 @@ fi
 }
 showsettings() {
 source /opt/appdata/compose/.env
-arr=$($(command -v docker) ps -aq --format={{.Names}} | grep -E 'arr' 1>/dev/null 2>&1 && echo true || echo false)
+arr=$($(command -v docker) ps -a --format={{.Names}} | grep -E 'arr' 1>/dev/null 2>&1 && echo true || echo false)
 if [[ $arr == "true" ]];then
 printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -218,7 +218,7 @@ printf "
 "
 read -erp "Confirm Info | PRESS [ENTER]" typed </dev/tty
 fi
-plex=$(docker ps -aq --format={{.Names}} | grep -E 'plex' 1>/dev/null 2>&1 && echo true || echo false)
+plex=$(docker ps -a --format={{.Names}} | grep -E 'plex' 1>/dev/null 2>&1 && echo true || echo false)
 if [[ $plex = "true" ]];then
 printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -234,7 +234,7 @@ In Plex Media Server
 "
 read -erp "Confirm Info | PRESS [ENTER]" typed </dev/tty
 fi
-jelly=$(docker ps -aq --format={{.Names}} | grep -E 'jelly' 1>/dev/null 2>&1 && echo true || echo false)
+jelly=$(docker ps -a --format={{.Names}} | grep -E 'jelly' 1>/dev/null 2>&1 && echo true || echo false)
 if [[ $jelly = "true" ]];then
 printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -257,7 +257,7 @@ It's a bit out of date, but I'm sure you will manage!
 "
 read -erp "Confirm Info | PRESS [ENTER]" typed </dev/tty
 fi
-emby=$(docker ps -aq --format={{.Names}} | grep -E 'emby' 1>/dev/null 2>&1 && echo true || echo false)
+emby=$(docker ps -a --format={{.Names}} | grep -E 'emby' 1>/dev/null 2>&1 && echo true || echo false)
 if [[ $emby = "true" ]];then
 printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -303,7 +303,7 @@ printf "
 }
 runautoscan() {
    $(command -v rsync) $appfolder/.subactions/${typed}.config.yml $basefolder/${typed}/config.yml -aqhv
-   $($(command -v docker) ps -aq --format={{.Names}} | grep -E 'arr|ple|emb|jelly' 1>/dev/null 2>&1)
+   $($(command -v docker) ps -a --format={{.Names}} | grep -E 'arr|ple|emb|jelly' 1>/dev/null 2>&1)
    errorcode=$?
 if [[ $errorcode -eq 0 ]]; then
    headrm && anchor && arrs && targets && addauthuser && addauthpassword && autoscantarget && showsettings && showending

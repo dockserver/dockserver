@@ -20,7 +20,7 @@ function log() {
 
 function rmdocker() {
 if [ $(which docker) ]; then
-   dockers=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -E 'dockserver')
+   dockers=$(docker ps -a --format '{{.Names}}' | sed '/^$/d' | grep -E 'dockserver')
    $(which docker) stop $dockers > /dev/null
    $(which docker) rm $dockers > /dev/null
    $(which docker) system prune -af > /dev/null

@@ -13,7 +13,7 @@
 # NO CODE MIRRORING IS ALLOWED      #
 #####################################
 appstartup() {
-ds=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -x 'traefik')
+ds=$(docker ps -a --format '{{.Names}}' | sed '/^$/d' | grep -x 'traefik')
 if [[ ${ds} == "" ]];then
 printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -39,7 +39,7 @@ while true;do
 done
 }
 killport() {
-port=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -x 'portainer')
+port=$(docker ps -a --format '{{.Names}}' | sed '/^$/d' | grep -x 'portainer')
 if [[ ${port} != "" ]]; then
    $(command -v docker) stop ${port}
    $(command -v docker) rm ${port}
@@ -165,7 +165,7 @@ fi
 }
 backupdocker() {
 storage=${storage}
-rundockers=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -v 'trae' | grep -v 'auth' | grep -v 'cf-companion' | grep -v 'mongo' | grep -v 'dockupdater' | grep -v 'sudobox')
+rundockers=$(docker ps -a --format '{{.Names}}' | sed '/^$/d' | grep -v 'trae' | grep -v 'auth' | grep -v 'cf-companion' | grep -v 'mongo' | grep -v 'dockupdater' | grep -v 'sudobox')
 printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀  Backup running Dockers
@@ -184,7 +184,7 @@ $rundockers
   if [[ $typed == "" ]];then clear && backupdocker;fi
   if [[ $typed == "help" || $typed == "HELP" ]];then clear && helplayout;fi
   if [[ $typed == "all" || $typed == "All" || $typed == "ALL" ]];then clear && backupall;fi
-     builddockers=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -x ${typed})
+     builddockers=$(docker ps -a --format '{{.Names}}' | sed '/^$/d' | grep -x ${typed})
   if [[ $builddockers == "" ]];then clear && backupdocker;fi
   if [[ $builddockers == $typed ]];then clear && runbackup;fi
 }
@@ -198,7 +198,7 @@ OPTIONSTAR="--warning=no-file-changed \
 STORAGE=${storage}
 FOLDER="/opt/appdata"
 DESTINATION="/mnt/downloads/appbackups"
-dockers=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -v 'trae' | grep -v 'auth' | grep -v 'cf-companion' | grep -v 'mongo' | grep -v 'dockupdater' | grep -v 'sudobox')
+dockers=$(docker ps -a --format '{{.Names}}' | sed '/^$/d' | grep -v 'trae' | grep -v 'auth' | grep -v 'cf-companion' | grep -v 'mongo' | grep -v 'dockupdater' | grep -v 'sudobox')
 for i in ${dockers};do
    ARCHIVE=$i
    ARCHIVETAR=${ARCHIVE}.tar.gz
@@ -448,7 +448,7 @@ runinstall() {
          $(command -v find) $fol -exec $(command -v chown) -hR 1000:1000 {} \;
      done
   fi
-  container=$($(command -v docker) ps -aq --format '{{.Names}}' | grep -x ${typed})
+  container=$($(command -v docker) ps -a --format '{{.Names}}' | grep -x ${typed})
   if [[ $container == ${typed} ]];then
      docker="stop rm"
      for con in ${docker};do
@@ -554,7 +554,7 @@ runinstall() {
   if [[ ${section} == "downloadclients" ]];then subtasks;fi
   if [[ ${typed} == "overseerr" ]];then overserrf2ban;fi
      setpermission
-     $($(command -v docker) ps -aq --format '{{.Names}}{{.State}}' | grep -qE ${typed}running 1>/dev/null 2>&1)
+     $($(command -v docker) ps -a --format '{{.Names}}{{.State}}' | grep -qE ${typed}running 1>/dev/null 2>&1)
      errorcode=$?
   if [[ $errorcode -eq 0 ]];then
      TRAEFIK=$(cat $basefolder/$compose | grep "traefik.enable" | wc -l)
@@ -693,7 +693,7 @@ section=${section}
 basefolder="/opt/appdata"
 appfolder="/opt/dockserver/apps"
 source $basefolder/compose/.env
-authcheck=$($(command -v docker) ps -aq --format '{{.Names}}' | grep -x 'authelia' 1>/dev/null 2>&1 && echo true || echo false)
+authcheck=$($(command -v docker) ps -a --format '{{.Names}}' | grep -x 'authelia' 1>/dev/null 2>&1 && echo true || echo false)
 conf=$basefolder/authelia/configuration.yml
 confnew=$basefolder/authelia/.new-configuration.yml.new
 confbackup=$basefolder/authelia/.backup-configuration.yml.backup
@@ -731,7 +731,7 @@ authadd=$(cat $conf | grep -E ${typed})
   if [[ ${section} == "request" ]];then $(command -v chown) -R 1000:1000 $basefolder/${typed} 1>/dev/null 2>&1;fi
 }
 removeapp() {
-list=$($(command -v docker) ps -aq --format '{{.Names}}' | grep -vE 'auth|trae|cf-companion')
+list=$($(command -v docker) ps -a --format '{{.Names}}' | grep -vE 'auth|trae|cf-companion')
 printf "
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     🚀   App Removal Menu
@@ -746,7 +746,7 @@ $list
   read -erp "↪️ Type App-Name to remove and Press [ENTER]: " typed </dev/tty
   if [[ $typed == "exit" || $typed == "Exit" || $typed == "EXIT" || $typed  == "z" || $typed == "Z" ]];then interface;fi
   if [[ $typed == "" ]];then clear && removeapp;fi
-     checktyped=$($(command -v docker) ps -aq --format={{.Names}} | grep -x $typed)
+     checktyped=$($(command -v docker) ps -a --format={{.Names}} | grep -x $typed)
   if [[ $checktyped == $typed ]];then clear && deleteapp;fi
 }
 deleteapp() {
@@ -755,7 +755,7 @@ deleteapp() {
   storage="/mnt/downloads"
   source $basefolder/compose/.env
   conf=$basefolder/authelia/configuration.yml
-  checktyped=$($(command -v docker) ps -aq --format={{.Names}} | grep -x $typed)
+  checktyped=$($(command -v docker) ps -a --format={{.Names}} | grep -x $typed)
   auth=$(cat -An $conf | grep -x ${typed}.${DOMAIN} | awk '{print $1}')
   if [[ $checktyped == $typed ]];then
     printf "
@@ -797,7 +797,7 @@ deleteapp() {
            authrmapp=$(cat -An $conf | grep -x ${typed}.${DOMAIN})
            authrmapp2=$(echo "$(${authrmapp} + 1)" | bc)
         if [[ $authrmapp != "" ]];then sed -i '${authrmapp};${authrmapp2}d' $conf;fi
-           $($(command -v docker) ps -aq --format '{{.Names}}' | grep -x authelia 1>/dev/null 2>&1)
+           $($(command -v docker) ps -a --format '{{.Names}}' | grep -x authelia 1>/dev/null 2>&1)
            newcode=$?
         if [[ $newcode -eq 0 ]];then $(command -v docker) restart authelia;fi
      fi

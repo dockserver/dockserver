@@ -41,7 +41,7 @@ OPTIONSTAR="--warning=no-file-changed \
 
 FOLDER="/opt/appdata"
 DESTINATION="/mnt/downloads/appbackups"
-dockers=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -v 'trae' | grep -v 'auth' | grep -v 'cf-companion' | grep -v 'mongo' | grep -v 'dockupdater' | grep -v 'sbox')
+dockers=$(docker ps -a --format '{{.Names}}' | sed '/^$/d' | grep -v 'trae' | grep -v 'auth' | grep -v 'cf-companion' | grep -v 'mongo' | grep -v 'dockupdater' | grep -v 'sbox')
 
 for i in ${dockers}; do
    ARCHIVE=$i

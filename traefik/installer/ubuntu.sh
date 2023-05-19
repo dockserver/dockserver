@@ -22,7 +22,7 @@
 #FUNCTIONS
 updatesystem() {
    while true; do
-      installed=$($(command -v docker) ps -aq --format '{{.Names}}' | grep -x 'traefik')
+      installed=$($(command -v docker) ps -a --format '{{.Names}}' | grep -x 'traefik')
       if [[ $installed == "" ]]; then overwrite; else useraction; fi
       break
    done
@@ -242,7 +242,7 @@ serverip() {
    fi
 }
 ccont() {
-   container=$($(command -v docker) ps -aq --format '{{.Names}}' | grep -E 'trae|auth|error-pag')
+   container=$($(command -v docker) ps -a --format '{{.Names}}' | grep -E 'trae|auth|error-pag')
    for i in ${container}; do
       $(command -v docker) stop $i 1>/dev/null 2>&1
       $(command -v docker) rm $i 1>/dev/null 2>&1
@@ -262,7 +262,7 @@ timezone() {
    fi
 }
 cleanup() {
-   listexited=$($(command -v docker) ps -aq --format '{{.State}}' | grep -E 'exited' | awk '{print $1}')
+   listexited=$($(command -v docker) ps -a --format '{{.State}}' | grep -E 'exited' | awk '{print $1}')
    for i in ${listexited}; do
       $(command -v docker) rm $i 1>/dev/null 2>&1
    done

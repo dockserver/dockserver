@@ -16,7 +16,7 @@
 # shellcheck disable=SC2006
 appstartup() {
 while true;do
-     dockertraefik=$(docker ps -aq --format '{{.Names}}' | sed '/^$/d' | grep -E 'traefik')
+     dockertraefik=$(docker ps -a --format '{{.Names}}' | sed '/^$/d' | grep -E 'traefik')
      ntdocker=$(docker network ls | grep -E 'proxy')
   if [[ $ntdocker == "" && $dockertraefik == "" ]]; then
      unset ntdocker && unset dockertraefik
