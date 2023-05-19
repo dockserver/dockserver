@@ -185,7 +185,7 @@ Remember to add the line `filename_encoding = base32768` to your configuration.
 
 
 
-## Adding Configurations to the Dockserver
+## Adding Configurations to Dockserver
 
 After setting up the Dropbox and Crypt remotes (DB and DBC), you need to add these configurations to the Dockserver rclone configuration file located at `/opt/appdata/system/rclone/rclone.conf`.
 
