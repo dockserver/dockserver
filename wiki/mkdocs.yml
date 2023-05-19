@@ -183,6 +183,7 @@ nav:
       - GCrypt: drive/gcrypt.md
       - TDrive: drive/tdrive.md
       - TCrypt: drive/tcrypt.md
+      - Dropbox: drive/dropbox.md
       - Mount Keys: drive/mdkeys.md
       - Service Accounts: drive/saccounts.md
 
