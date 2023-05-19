@@ -53,6 +53,8 @@
    ```
 
     **IMPORTANT**: `filename_encoding` must be this value: `base32768`
+    
+
 1. Copy the [DBC] section to the other rclone.conf file. You should end up with 2 files that look similar to this:
    ```
    [DB]
