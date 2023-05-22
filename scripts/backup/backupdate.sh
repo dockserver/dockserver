@@ -28,9 +28,12 @@
 ## STORAGE=local
 ## STORAGE=$(date "+%Y-%m-%d")
 
+## Set your Discord Webhook URL here. Leave as "" if not used.
+WEBHOOK_URL=""
+
 ## USER SETTINGS
 STORAGE=local
-### ENF OF SETTINGS
+### END OF SETTINGS
 
 OPTIONSTAR="--warning=no-file-changed \
   --ignore-failed-read \
@@ -65,6 +68,13 @@ for i in ${dockers}; do
       $(command -v tar) ${OPTIONSTAR} -C ${FOLDER}/${ARCHIVE} -pcf ${DESTINATION}/${STORAGE}/${ARCHIVETAR} ./
    fi
    $(command -v chown) -hR 1000:1000 ${DESTINATION}/${STORAGE}/${ARCHIVETAR}
+   
+   if [[ -n $WEBHOOK_URL ]]; then
+       # Sending notification to Discord
+       TIMESTAMP=$(date '+%H:%M:%S')
+       curl -H "Content-Type: application/json" \
+           -X POST \
+           -d "{\"content\": \"Backup of $ARCHIVE in folder $STORAGE completed at $TIMESTAMP!\"}" \
+           $WEBHOOK_URL
+   fi
 done
-
-#"
