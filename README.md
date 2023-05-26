@@ -91,7 +91,7 @@ If you currently have a server with PG/MHS/PTS, have a look here before you star
 
 ### Easy Mode install
 
-How-To Install? -> [Wiki](https://dockserver.io/install/install.html)
+Follow our install instructions: [Wiki](https://dockserver.io/install/install.html)
 
 ---
 
