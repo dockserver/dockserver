@@ -91,26 +91,7 @@ If you currently have a server with PG/MHS/PTS, have a look here before you star
 
 ### Easy Mode install
 
-Run the following command:
-
-```sh
-sudo wget -qO- https://git.io/J3GDc | sudo bash
-```
-You can find a more detailed guide on our [Wiki](https://dockserver.io/install/install.html)
-
-<details>
-  <summary>Long commmand if the short one doesn't work.</summary>
-  <br />
-
-```sh
-sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/wgetfile.sh | sudo bash
-```
-
-</details>
-
-
-
-
+How-To Install? -> [Wiki](https://dockserver.io/install/install.html)
 
 ---
 
