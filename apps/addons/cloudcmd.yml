@@ -18,7 +18,6 @@ services:
     volumes:
       - "/:/SERVER"
       - "${APPFOLDER}/cloudcmd:/config:rw"
-      - "unionfs:/mnt"
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
@@ -34,8 +33,3 @@ networks:
   proxy:
     driver: bridge
     external: true
-volumes:
-  unionfs:
-    driver: local-persist
-    driver_opts:
-      mountpoint: /mnt
