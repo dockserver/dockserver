@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## [v1.4.53](https://github.com/dockserver/dockserver/releases/tag/v1.4.53) - 2023-05-26 08:05:18
+
+## 🚇 Added
+
+- Add Discord Notifications to Backup Script
+   - PR: #634
+
+## 💻 GitHub updates
+
+- GH updates (deps): Bump anothrNick/github-tag-action from 1.65.0 to 1.66.0
+   - PR: #636
+- GH updates (deps): Bump dependabot/fetch-metadata from 1.4.0 to 1.5.0
+   - PR: #635
+- GH updates (deps): Bump dependabot/fetch-metadata from 1.5.0 to 1.5.1
+   - PR: #637
+
+### Documentation
+
+- README:
+  - update contributors ([d8d2af0](https://github.com/dockserver/dockserver/commit/d8d2af0dea09a9072c61943a79831b34ca66d0fb))
+  - update contributors ([9c66dc1](https://github.com/dockserver/dockserver/commit/9c66dc131df077021100352bb502e52e71a9ce77))
+
 ## [v1.4.52](https://github.com/dockserver/dockserver/releases/tag/v1.4.52) - 2023-05-19 05:16:31
 
 repository changes
