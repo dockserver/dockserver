@@ -93,7 +93,6 @@ If you currently have a server with PG/MHS/PTS, have a look here before you star
 
 Follow our install instructions: [Wiki](https://dockserver.io/install/install.html)
 
-
 ---
 
 ## Support
