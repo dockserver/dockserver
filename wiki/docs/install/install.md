@@ -20,6 +20,14 @@
 
 ---
 
+### Update System before you begin with installation
+
+```sh
+sudo apt-get update -yqq
+sudo apt-get upgrade -yqq
+sudo apt-get autoclean -yqq
+```
+
 ### Easy Mode install
 
 Run the following command:
@@ -38,13 +46,6 @@ sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/wg
 
 </details>
 
-### Update System before you begin with installation
-
-```sh
-sudo apt-get update -yqq
-sudo apt-get upgrade -yqq
-sudo apt-get autoclean -yqq
-```
 
 ### Open the dockserver Interface 
 
