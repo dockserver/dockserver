@@ -96,7 +96,7 @@ updatesystem() {
          usermod -aG docker $(whoami)
          systemctl reload-or-restart docker.service 1>/dev/null 2>&1
          systemctl enable docker.service >/dev/null 2>&1
-         curl --silent -fsSL https://raw.githubusercontent.com/MatchbookLab/local-persist/master/scripts/install.sh | sudo bash 1>/dev/null 2>&1
+         curl --silent -fsSL https://raw.githubusercontent.com/dockserver/local-persist/master/scripts/install.sh | sudo bash 1>/dev/null 2>&1
          docker volume create -d local-persist -o mountpoint=/mnt --name=unionfs
          docker network create --driver=bridge proxy 1>/dev/null 2>&1
       if [ -z `command -v docker-compose` ]; then
