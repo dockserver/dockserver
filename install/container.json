@@ -156,7 +156,7 @@
    "appfolder": "./apps/docker-wiki",
    "appbranch": "master",
    "newversion": "3.18.0",
-   "appversion": "1.4.54",
+   "appversion": "1.4.55",
    "wikiversion": "9.1.14",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
