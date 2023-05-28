@@ -69,8 +69,7 @@ nvidiagpu() {
     ## bypass to check supported OS
     subos
     if [[ $RCHK == "false" ]]; then
-        curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | \
-        apt-key add -
+        curl -fsSL https://nvidia.github.io/nvidia-docker/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-docker-archive-keyring.gpg
         curl -s -L https://nvidia.github.io/nvidia-docker/$DIST/nvidia-docker.list | \
         tee /etc/apt/sources.list.d/nvidia-docker.list
     fi
