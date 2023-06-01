@@ -16,7 +16,7 @@
 </p>
 
 # Uploader
-Automated uploader for Google Team Drive.</br>
+Automated uploader.</br>
 
 ### IMPORTANT
 Each Uploader instance needs his own Project/Keys, never use keys from other projects.
@@ -26,6 +26,7 @@ Each Uploader instance needs his own Project/Keys, never use keys from other pro
 - Clean web interface.
 - Support for encrypted Team Drives.
 - Support for multiple Team Drives.
+- Supports all rclone remotes.
 - Bypass daily upload limit of 750GB via Service Accounts.
 - Support for [Autoscan](https://github.com/Cloudbox/autoscan).
 - Full support for [Rclone's bandwidth limit](https://rclone.org/docs/#bwlimit-bandwidth-spec).
