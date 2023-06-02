@@ -1,3 +1,3 @@
 
 ## 2023-06-02
- * [Auto Generation] Changes : wiki/docs/install/container-gitlog.md (dockserver-bot[bot])
+ * [Auto Generation] Changes : apps/docker-mount/Dockerfile apps/docker-mount/release.json container.json wiki/docs/install/container.json (dockserver-bot[bot])
