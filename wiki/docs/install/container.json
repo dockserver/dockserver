@@ -43,27 +43,27 @@
    "appname": "docker-dockupdate",
    "apppic": "./images/docker-dockupdate.png",
    "appfolder": "./apps/docker-dockupdate",
-   "newversion": "3.18.0",
+   "newversion": "",
    "baseimage": "alpine",
    "description": "Automatically keep your docker services and your docker containers up-to-date with the latest version",
-   "body": "Upgrading docker-dockupdate to 3.18.0",
+   "body": "Upgrading docker-dockupdate to ",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "433.0.1-alpine",
+   "newversion": "",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to 433.0.1-alpine",
+   "body": "Upgrading docker-gdsa to ",
    "user": "dockserver-actions[bot]"
 }
 {
    "appname": "docker-mount",
    "apppic": "./images/docker-mount.png",
    "appfolder": "./apps/docker-mount",
-   "newversion": "3.18.0",
+   "newversion": "",
    "mergerfs": "2.35.1",
    "rclone": "v1.62.2",
    "baseimage": "alpine",
@@ -89,7 +89,7 @@
    "appname": "docker-restic",
    "apppic": "./images/docker-restic.png",
    "appfolder": "./apps/docker-restic",
-   "newversion": "3.18.0",
+   "newversion": "",
    "rclone": "v1.62.2",
    "baseimage": "alpine",
    "buildimage": "alpine",
@@ -104,10 +104,10 @@
    "appname": "docker-rollarr",
    "apppic": "./images/docker-rollarr.png",
    "appfolder": "./apps/docker-rollarr",
-   "newversion": "rolling",
+   "newversion": "",
    "baseimage": "ubuntu",
    "description": "This is the new and improved Automatic Pre-roll script with a GUI for Plex now called Rollarr!",
-   "body": "Upgrading docker-rollarr to rolling",
+   "body": "Upgrading docker-rollarr to ",
    "user": "github-actions[bot]"
 }
 {
@@ -124,7 +124,7 @@
    "appname": "docker-traktarr",
    "apppic": "./images/docker-traktarr.png",
    "appfolder": "./apps/docker-traktarr",
-   "newversion": "3.18.0",
+   "newversion": "",
    "baseimage": "ghcr.io/linuxserver/baseimage-alpine",
    "baseversion": "3.18-ec08ae81-ls6",
    "body": "Upgrading docker-traktarr to ",
@@ -134,7 +134,7 @@
    "appname": "docker-uploader",
    "apppic": "./images/docker-uploader.png",
    "appfolder": "./apps/docker-uploader",
-   "newversion": "3.18.0",
+   "newversion": "",
    "baseimage": "ghcr.io/linuxserver/baseimage-alpine",
    "baseversion": "3.18-ec08ae81-ls6",
    "body": "Upgrading docker-uploader to ",
@@ -144,10 +144,10 @@
    "appname": "docker-vnstat",
    "apppic": "./images/docker-vnstat.png",
    "appfolder": "./apps/docker-vnstat",
-   "newversion": "8-apache",
+   "newversion": "",
    "baseimage": "php",
    "description": "Docker image  for docker-vnstat",
-   "body": "Upgrading docker-vnstat to baseimage: php:8-apache",
+   "body": "Upgrading docker-vnstat to baseimage: php:",
    "user": "dockserver image update[bot]"
 }
 {
@@ -155,22 +155,22 @@
    "apppic": "./images/docker-wiki.png",
    "appfolder": "./apps/docker-wiki",
    "appbranch": "master",
-   "newversion": "3.18.0",
+   "newversion": "",
    "appversion": "1.4.55",
    "wikiversion": "9.1.15",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
-   "body": "Upgrading docker-wiki to 3.18.0",
+   "body": "Upgrading docker-wiki to ",
    "user": "github-actions[bot]"
 }
 {
    "appname": "alpine",
    "apppic": "",
    "appfolder": "./base/alpine",
-   "newversion": "3.18.0",
+   "newversion": "",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading alpine to 3.18.0",
+   "body": "Upgrading alpine to ",
    "user": "github-actions[bot]"
 }
 {
@@ -188,53 +188,53 @@
    "appname": "docker-alpine-v3",
    "apppic": "./images/docker-alpine-v3.png",
    "appfolder": "./base/docker-alpine-v3",
-   "newversion": "3.18.0",
+   "newversion": "",
    "baseimage": "alpine",
-   "baseversion": "3.18.0",
+   "baseversion": "",
    "s6stage": "v3.1.5.0",
    "description": "Docker docker-alpine-v3 with include s6-overlay: v3.1.5.0",
-   "body": "Upgrading docker-alpine-v3 to baseimage: alpine:3.18.0  with include s6-overlay: v3.1.5.0",
+   "body": "Upgrading docker-alpine-v3 to baseimage: alpine:  with include s6-overlay: v3.1.5.0",
    "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-config",
    "apppic": "./images/docker-config.png",
    "appfolder": "./base/docker-config",
-   "newversion": "3.18.0",
+   "newversion": "",
    "baseimage": "alpine",
    "description": " !!! DEVERLOP STATUS !!! DO NOT TRY TO PULL THE IMAGE YOU NEED ACCESS TO THE REPOSITORY",
-   "body": "Upgrading docker-config to 3.18.0",
+   "body": "Upgrading docker-config to ",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-create",
    "apppic": "./images/docker-create.png",
    "appfolder": "./base/docker-create",
-   "newversion": "3.18.0",
+   "newversion": "",
    "baseimage": "alpine",
    "description": " !!! DEVERLOP STATUS !!! DO NOT TRY TO PULL THE IMAGE YOU NEED ACCESS TO THE REPOSITORY",
-   "body": "Upgrading docker-create to 3.18.0",
+   "body": "Upgrading docker-create to ",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-dockserver",
    "apppic": "",
    "appfolder": "./base/docker-dockserver",
-   "newversion": "3.18.0",
-   "appversion": "3.18.0",
+   "newversion": "",
+   "appversion": "",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
-   "body": "Upgrading docker-dockserver to 3.18.0",
+   "body": "Upgrading docker-dockserver to ",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-ubuntu-focal",
    "apppic": "./images/docker-ubuntu-focal.png",
    "appfolder": "./base/docker-ubuntu-focal",
-   "newversion": "3.18.0",
+   "newversion": "",
    "baseimage": "alpine",
    "description": "Docker image  for docker-ubuntu-focal",
-   "body": "Upgrading docker-ubuntu-focal to baseimage: alpine:3.18.0",
+   "body": "Upgrading docker-ubuntu-focal to baseimage: alpine:",
    "user": "dockserver image update[bot]"
 }
 {
