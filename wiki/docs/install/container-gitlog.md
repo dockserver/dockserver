@@ -1,3 +1,3 @@
 
 ## 2023-06-03
- * Fix Uploader (drag0n141)
+ * [Auto Generation] Changes : wiki/docs/install/container-gitlog.md (dockserver-bot[bot])
