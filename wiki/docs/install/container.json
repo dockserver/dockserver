@@ -45,7 +45,7 @@
    "appfolder": "./apps/docker-dockupdate",
    "newversion": "3.18.0",
    "baseimage": "alpine",
-   "description": "Automatically keep your docker services and your docker containers up-to-date with the latest version",
+   "description": "null",
    "body": "Upgrading docker-dockupdate to 3.18.0",
    "user": "github-actions[bot]"
 }
