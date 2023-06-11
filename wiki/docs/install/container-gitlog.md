@@ -1,3 +1,3 @@
 
-## 2023-06-10
- * [Auto Generation] Changelog : (dockserver-bot[bot])
+## 2023-06-11
+ * [Auto Generation] Changes : wiki/docs/install/container-gitlog.md (dockserver-bot[bot])
