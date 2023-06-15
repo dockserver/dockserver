@@ -72,7 +72,10 @@ If you use Dropbox make sure to name them in rclonegdsa.conf like this: `[DB] & 
 #### CRITICAL SETUP FOR CRYPT USER
 |Setting       |Default |Description|
 |--------------|--------|-----------|
-|`HASHPASSWORD`|`hashed`|If using `drive.csv` or `uploader.csv` and encrypted Team Drive, this must be set.</br>Options:</br>`hashed`</br>`plain`|
+|`HASHPASSWORD`|`hashed` |If using `drive.csv` or `uploader.csv` and encrypted Team Drive, this must be set.</br>Options:</br>`hashed`</br>`plain`|
+|`GDSA_NAME`   |`encrypt`|Here you can set the name of the crypt folder for Google.|
+|`DB_NAME`     |`encrypt`|Here you can set the name of the crypt folder for Dropbox.|
+|`DB_TEAM`     |`true`   |With `DB_TEAM` = `false` you can activate the usage of the private Dropbox folder.|
 
 You have 2 options for this value `HASHPASSWORD`.
 
