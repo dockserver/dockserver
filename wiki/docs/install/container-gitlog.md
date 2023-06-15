@@ -1,3 +1,3 @@
 
 ## 2023-06-15
- * Merge pull request #153 from dockserver/dependabot/github_actions/master/docker/setup-qemu-action-2.2.0 (DrAg0n141)
+ * [Auto Generation] Changes : wiki/docs/install/container-gitlog.md (dockserver-bot[bot])
