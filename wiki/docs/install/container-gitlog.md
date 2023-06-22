@@ -1,3 +1,3 @@
 
 ## 2023-06-22
- * [Auto Generation] Changelog : (dockserver-bot[bot])
+ * Update version.sh (DrAg0n141)
