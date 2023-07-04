@@ -22,10 +22,10 @@
    "appname": "docker-crunchy",
    "apppic": "./images/docker-crunchy.png",
    "appfolder": "./apps/docker-crunchy",
-   "newversion": "rolling",
+   "newversion": "mantic-20230624",
    "baseimage": "ubuntu",
    "description": "Docker image  for docker-crunchy",
-   "body": "Upgrading docker-crunchy to baseimage: ubuntu:rolling",
+   "body": "Upgrading docker-crunchy to baseimage: ubuntu:mantic-20230624",
    "user": "dockserver image update[bot]"
 }
 {
@@ -104,10 +104,10 @@
    "appname": "docker-rollarr",
    "apppic": "./images/docker-rollarr.png",
    "appfolder": "./apps/docker-rollarr",
-   "newversion": "rolling",
+   "newversion": "mantic-20230624",
    "baseimage": "ubuntu",
    "description": "This is the new and improved Automatic Pre-roll script with a GUI for Plex now called Rollarr!",
-   "body": "Upgrading docker-rollarr to rolling",
+   "body": "Upgrading docker-rollarr to mantic-20230624",
    "user": "github-actions[bot]"
 }
 {
