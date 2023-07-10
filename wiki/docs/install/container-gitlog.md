@@ -1,3 +1,3 @@
 
 ## 2023-07-10
- * [Auto Generation] Changes : container.json nightly/docker-whisparr-nightly/Dockerfile nightly/docker-whisparr-nightly/release.json wiki/docs/install/container.json (dockserver-bot[bot])
+ * Merge pull request #163 from dockserver/dependabot/github_actions/master/docker/setup-buildx-action-2.9.0 (DrAg0n141)
