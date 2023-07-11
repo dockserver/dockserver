@@ -1,3 +1,3 @@
 
 ## 2023-07-11
- * Update Uploader (Sven Jaeger)
+ * [Auto Generation] Changelog : (dockserver-bot[bot])
