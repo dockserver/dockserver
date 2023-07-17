@@ -63,7 +63,7 @@
    "appname": "docker-mount",
    "apppic": "./images/docker-mount.png",
    "appfolder": "./apps/docker-mount",
-   "newversion": "",
+   "newversion": "3.18.2",
    "mergerfs": "2.36.0",
    "rclone": "v1.63.0",
    "baseimage": "alpine",
@@ -89,7 +89,7 @@
    "appname": "docker-restic",
    "apppic": "./images/docker-restic.png",
    "appfolder": "./apps/docker-restic",
-   "newversion": "",
+   "newversion": "3.18.2",
    "rclone": "v1.63.0",
    "baseimage": "alpine",
    "buildimage": "alpine",
@@ -104,10 +104,10 @@
    "appname": "docker-rollarr",
    "apppic": "./images/docker-rollarr.png",
    "appfolder": "./apps/docker-rollarr",
-   "newversion": "",
+   "newversion": "mantic-20230624",
    "baseimage": "ubuntu",
    "description": "This is the new and improved Automatic Pre-roll script with a GUI for Plex now called Rollarr!",
-   "body": "Upgrading docker-rollarr to ",
+   "body": "Upgrading docker-rollarr to mantic-20230624",
    "user": "github-actions[bot]"
 }
 {
