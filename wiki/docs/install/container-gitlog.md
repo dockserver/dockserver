@@ -1,3 +1,3 @@
 
 ## 2023-07-18
- * [Auto Generation] Changes : apps/docker-mount/release.json container.json wiki/docs/install/container.json (dockserver-bot[bot])
+ * Merge pull request #164 from dockserver/dependabot/github_actions/master/docker/setup-buildx-action-2.9.1 (DrAg0n141)
