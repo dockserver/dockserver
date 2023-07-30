@@ -1,3 +1,3 @@
 
-## 2023-07-29
- * [Auto Generation] Changelog : (dockserver-bot[bot])
+## 2023-07-30
+ * Update release.yaml (DrAg0n141)
