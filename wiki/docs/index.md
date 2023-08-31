@@ -239,9 +239,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     </td>
     <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
         <a href=https://github.com/townsmcp>
-            <img src=https://avatars.githubusercontent.com/u/14061617?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=James T/>
+            <img src=https://avatars.githubusercontent.com/u/14061617?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=James Townsend/>
             <br />
-            <sub style="font-size:14px"><b>James T</b></sub>
+            <sub style="font-size:14px"><b>James Townsend</b></sub>
         </a>
     </td>
 </tr>
