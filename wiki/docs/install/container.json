@@ -126,7 +126,7 @@
    "appfolder": "./apps/docker-traktarr",
    "newversion": "3.18.3",
    "baseimage": "ghcr.io/linuxserver/baseimage-alpine",
-   "baseversion": "3.18-a67812a8-ls17",
+   "baseversion": "3.18-c84a529a-ls18",
    "body": "Upgrading docker-traktarr to ",
    "user": "dockserver image update[bot]"
 }
@@ -136,7 +136,7 @@
    "appfolder": "./apps/docker-uploader",
    "newversion": "3.18.3",
    "baseimage": "ghcr.io/linuxserver/baseimage-alpine",
-   "baseversion": "3.18-a67812a8-ls17",
+   "baseversion": "3.18-c84a529a-ls18",
    "body": "Upgrading docker-uploader to ",
    "user": "dockserver image update[bot]"
 }
@@ -323,7 +323,7 @@
    "newversion": "2.0.0.250",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/linuxserver/baseimage-alpine",
-   "baseversion": "3.18-a67812a8-ls17",
+   "baseversion": "3.18-c84a529a-ls18",
    "description": "Whisparr is an adult movie collection manager for Usenet and BitTorrent users.",
    "body": "Upgrading docker-whisparr-nightly to 2.0.0.250",
    "user": "dockserver image update[bot]"
