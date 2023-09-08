@@ -1,3 +1,3 @@
 
 ## 2023-09-08
- * [Auto Generation] Changelog : (dockserver-bot[bot])
+ * Merge pull request #169 from dockserver/dependabot/pip/base/docker-ui/root/app/gitpython-3.1.35 (DrAg0n141)
