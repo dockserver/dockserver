@@ -1,3 +1,3 @@
 
 ## 2023-09-10
- * [Auto Generation] Changes : container.json nightly/docker-whisparr-nightly/Dockerfile nightly/docker-whisparr-nightly/release.json wiki/docs/install/container.json (dockserver-bot[bot])
+ * [Auto Generation] Changes : apps/docker-mount/Dockerfile apps/docker-mount/release.json container.json wiki/docs/install/container.json (dockserver-bot[bot])
