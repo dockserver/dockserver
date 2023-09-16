@@ -9,7 +9,7 @@ services:
       - "PUID=${ID}"
       - "TZ=${TZ}"
       - "AUTOSCAN_VERBOSITY=0"
-    image: "cloudb0x/autoscan:master"
+    image: "saltydk/autoscan:latest"
     restart: "${RESTARTAPP}"
     networks:
       - ${DOCKERNETWORK}
