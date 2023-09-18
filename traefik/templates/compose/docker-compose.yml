@@ -108,8 +108,6 @@ services:
       - 'REFRESH_ENTRIES=TRUE'
       - 'DOCKER_ENTRYPOINT=unix://var/run/docker.sock'
       - 'DOCKER_SWARM_MODE=FALSE'
-    labels:
-      - 'dockupdater.enable=true'
   traefik-error-pages:
     container_name: 'traefik-error-pages'
     image: 'ghcr.io/tarampampam/error-pages:latest'
