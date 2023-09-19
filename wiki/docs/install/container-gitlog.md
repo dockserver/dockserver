@@ -1,3 +1,3 @@
 
 ## 2023-09-19
- * Update index.html (DrAg0n141)
+ * [Auto Generation] Changelog : (dockserver-bot[bot])
