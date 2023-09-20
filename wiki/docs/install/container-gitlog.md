@@ -1,3 +1,3 @@
 
 ## 2023-09-20
- * Update gitlog.sh (DrAg0n141)
+ * [Auto Generation] Changes : apps/docker-wiki/Dockerfile apps/docker-wiki/release.json container.json wiki/docs/install/container.json (dockserver-bot[bot])
