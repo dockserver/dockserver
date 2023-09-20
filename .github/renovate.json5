@@ -1,0 +1,29 @@
+{
+  "extends": [
+    "config:base",
+    ":disableRateLimiting",
+    ":dependencyDashboard",
+    ":semanticCommits",
+    ":automergeDigest",
+    ":automergeBranch"
+  ],
+  "platform": "github",
+  "username": "dockserver-bot[bot]",
+  "onboarding": false,
+  "requireConfig": "optional",
+  "gitAuthor": "dockserver-bot <145536302+dockserver-bot[bot]@users.noreply.github.com>",
+  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
+  "suppressNotifications": ["prIgnoreNotification"],
+  "includePaths": ["**/.github/**"],
+  "commitBodyTable": true,
+  "packageRules": [
+    {
+      "description": "Auto-merge Github Actions",
+      "matchDatasources": ["github-tags"],
+      "automerge": true,
+      "automergeType": "branch",
+      "ignoreTests": true,
+      "matchUpdateTypes": ["minor", "patch", "digest"]
+    }
+  ]
+}
