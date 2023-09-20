@@ -36,10 +36,9 @@ services:
       - --entrypoints.https.http.tls.certresolver=dns-cloudflare
       - --entrypoints.https.http.tls.domains[0].main=${DOMAIN}
       - --entrypoints.https.http.tls.domains[0].sans=*.${DOMAIN}
-      - --certificatesResolvers.dns-cloudflare.acme.caServer=https://acme-staging-v02.api.letsencrypt.org/directory
       - --certificatesResolvers.dns-cloudflare.acme.email=${CLOUDFLARE_EMAIL}
       - --certificatesResolvers.dns-cloudflare.acme.storage=/acme.json
-      - --certificatesResolvers.dns-cloudflare.acme.keyType=EC384
+      - --certificatesresolvers.mydnschallenge.acme.dnschallenge=true
       - --certificatesResolvers.dns-cloudflare.acme.dnsChallenge.provider=cloudflare
       - --certificatesResolvers.dns-cloudflare.acme.dnsChallenge.resolvers=1.1.1.1:53,1.0.0.1:53
       - --certificatesResolvers.dns-cloudflare.acme.dnsChallenge.delayBeforeCheck=60
