@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [v1.4.58](https://github.com/dockserver/dockserver/releases/tag/v1.4.58) - 2023-09-20 09:57:35
+
+repository changes
+
 ## [v1.4.57](https://github.com/dockserver/dockserver/releases/tag/v1.4.57) - 2023-09-20 09:40:07
 
 - chore(deps): update aquasecurity/trivy-action digest to 69cbbc0
