@@ -1,52 +1,15 @@
 # CHANGELOG
 
+## [v1.4.57](https://github.com/dockserver/dockserver/releases/tag/v1.4.57) - 2023-09-20 09:40:07
+
+- chore(deps): update aquasecurity/trivy-action digest to 69cbbc0
+   - PR: #656
+- chore(deps): update step-security/harden-runner digest to 2e205a2
+   - PR: #657
+- chore(deps): update step-security/harden-runner action to v2
+   - PR: #659
+
 ## [v1.4.56](https://github.com/dockserver/dockserver/releases/tag/v1.4.56) - 2023-09-18 05:53:55
-
-## 💻 GitHub updates
-
-- GH updates (deps): Bump mikepenz/release-changelog-builder-action from 3 to 4
-   - PR: #643
-- GH updates (deps): Bump aquasecurity/trivy-action from 0.10.0 to 0.11.0
-   - PR: #642
-- GH updates (deps): Bump actions/checkout from 3.5.2 to 3.5.3
-   - PR: #644
-- GH updates (deps): Bump aquasecurity/trivy-action from 0.11.0 to 0.11.1
-   - PR: #645
-- GH updates (deps): Bump aquasecurity/trivy-action from 0.11.1 to 0.11.2
-   - PR: #646
-- GH updates (deps): Bump anothrNick/github-tag-action from 1.66.0 to 1.67.0
-   - PR: #647
-- GH updates (deps): Bump step-security/harden-runner from 2.4.0 to 2.4.1
-   - PR: #648
-- GH updates (deps): Bump dependabot/fetch-metadata from 1.5.1 to 1.6.0
-   - PR: #649
-- GH updates (deps): Bump step-security/harden-runner from 2.4.1 to 2.5.0
-   - PR: #650
-- GH updates (deps): Bump step-security/harden-runner from 2.5.0 to 2.5.1
-   - PR: #652
-- GH updates (deps): Bump actions/checkout from 3.5.3 to 3.6.0
-   - PR: #653
-- GH updates (deps): bump actions/checkout from 3.6.0 to 4.0.0
-   - PR: #655
-- GH updates (deps): bump aquasecurity/trivy-action from 0.11.2 to 0.12.0
-   - PR: #654
-
-## 🎨 DockServer Update
-
-- Update gpu.sh
-   - PR: #639
-
-
-
-
-- Fscorrupt patch 1
-   - PR: #641
-
-### Documentation
-
-- README:
-  - update contributors ([728ae57](https://github.com/dockserver/dockserver/commit/728ae57291b6e82e1beab5265b664c4f3b5780d7))
-  - update contributors ([c069244](https://github.com/dockserver/dockserver/commit/c0692444b68bab150291bbdb3d26d7b3e1c26f62))
 
 ## [v1.4.54](https://github.com/dockserver/dockserver/releases/tag/v1.4.54) - 2023-05-26 15:30:39
 
