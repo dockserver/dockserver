@@ -38,7 +38,7 @@ services:
       - --entrypoints.https.http.tls.domains[0].sans=*.${DOMAIN}
       - --certificatesResolvers.dns-cloudflare.acme.email=${CLOUDFLARE_EMAIL}
       - --certificatesResolvers.dns-cloudflare.acme.storage=/acme.json
-      - --certificatesresolvers.mydnschallenge.acme.dnschallenge=true
+      - --certificatesresolvers.dns-cloudflare.acme.dnschallenge=true
       - --certificatesResolvers.dns-cloudflare.acme.dnsChallenge.provider=cloudflare
       - --certificatesResolvers.dns-cloudflare.acme.dnsChallenge.resolvers=1.1.1.1:53,1.0.0.1:53
       - --certificatesResolvers.dns-cloudflare.acme.dnsChallenge.delayBeforeCheck=60
