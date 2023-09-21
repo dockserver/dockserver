@@ -1,3 +1,3 @@
 
-## 2023-09-20
- * [Auto Generation] Changelog : (dockserver-bot[bot])
+## 2023-09-21
+ * Delete SECURITY.md (DrAg0n141)
