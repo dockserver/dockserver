@@ -23,7 +23,7 @@ jobs:
           api.github.com:443
           github.com:443
 
-    - uses: actions/checkout@v4.0.0
+    - uses: actions/checkout@v4.1.0
 
     - name: Perform Scan
       uses: ShiftLeftSecurity/scan-action@master
