@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check out code
-      uses: actions/checkout@v4.0.0
+      uses: actions/checkout@v4.1.0
       with:
         token: ${{ secrets.CR_PAT }}
         fetch-depth: '0'
@@ -32,7 +32,7 @@ jobs:
     needs: copymd
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4.0.0
+    - uses: actions/checkout@v4.1.0
       with:
         token: ${{ secrets.CR_PAT }}
         fetch-depth: '1'
@@ -50,7 +50,7 @@ jobs:
     needs: [ copymd, crlf ]
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4.0.0
+    - uses: actions/checkout@v4.1.0
       with:
         token: ${{ secrets.CR_PAT }}
         fetch-depth: '1'
