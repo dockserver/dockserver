@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## [v1.4.59](https://github.com/dockserver/dockserver/releases/tag/v1.4.59) - 2023-09-23 18:10:18
+
+- chore(deps): update actions/checkout action to v4.1.0
+   - PR: #661
+
 ## [v1.4.58](https://github.com/dockserver/dockserver/releases/tag/v1.4.58) - 2023-09-20 09:57:35
 
 repository changes
