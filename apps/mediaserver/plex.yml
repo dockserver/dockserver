@@ -29,10 +29,7 @@ services:
       - "mlb-ws-mf.media.mlb.com:127.0.0.1"
       - "playback.svcs.mlb.com:127.0.0.1"
     ports:
-      - target: 32400
-        published: 32400
-        protocol: tcp
-        mode: host
+      - "32400:32400/tcp"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - "${APPFOLDER}/plex/database:/config:rw"
