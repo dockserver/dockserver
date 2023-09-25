@@ -63,7 +63,7 @@
    "appname": "docker-mount",
    "apppic": "./images/docker-mount.png",
    "appfolder": "./apps/docker-mount",
-   "newversion": "",
+   "newversion": "3.18.3",
    "mergerfs": "2.37.1",
    "rclone": "v1.64.0",
    "baseimage": "alpine",
@@ -167,10 +167,10 @@
    "appname": "alpine",
    "apppic": "",
    "appfolder": "./base/alpine",
-   "newversion": "",
+   "newversion": "3.18.3",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading alpine to ",
+   "body": "Upgrading alpine to 3.18.3",
    "user": "github-actions[bot]"
 }
 {
