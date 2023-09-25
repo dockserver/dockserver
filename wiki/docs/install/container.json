@@ -2,10 +2,10 @@
    "appname": "docker-auto-replyarr",
    "apppic": "",
    "appfolder": "./apps/docker-auto-replyarr",
-   "newversion": "",
+   "newversion": "3.18.3",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading docker-auto-replyarr to ",
+   "body": "Upgrading docker-auto-replyarr to 3.18.3",
    "user": "github-actions[bot]"
 }
 {
@@ -124,7 +124,7 @@
    "appname": "docker-traktarr",
    "apppic": "./images/docker-traktarr.png",
    "appfolder": "./apps/docker-traktarr",
-   "newversion": "",
+   "newversion": "3.18.3",
    "baseimage": "ghcr.io/linuxserver/baseimage-alpine",
    "baseversion": "3.18-4bc38c6f-ls19",
    "body": "Upgrading docker-traktarr to ",
