@@ -22,10 +22,10 @@
    "appname": "docker-crunchy",
    "apppic": "./images/docker-crunchy.png",
    "appfolder": "./apps/docker-crunchy",
-   "newversion": "23.10",
+   "newversion": "",
    "baseimage": "ubuntu",
    "description": "Docker image  for docker-crunchy",
-   "body": "Upgrading docker-crunchy to baseimage: ubuntu:23.10",
+   "body": "Upgrading docker-crunchy to baseimage: ubuntu:",
    "user": "dockserver image update[bot]"
 }
 {
@@ -53,17 +53,17 @@
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "",
+   "newversion": "446.0.0-alpine",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to ",
+   "body": "Upgrading docker-gdsa to 446.0.0-alpine",
    "user": "dockserver-actions[bot]"
 }
 {
    "appname": "docker-mount",
    "apppic": "./images/docker-mount.png",
    "appfolder": "./apps/docker-mount",
-   "newversion": "",
+   "newversion": "3.18.3",
    "mergerfs": "2.37.1",
    "rclone": "v1.64.0",
    "baseimage": "alpine",
@@ -155,12 +155,12 @@
    "apppic": "./images/docker-wiki.png",
    "appfolder": "./apps/docker-wiki",
    "appbranch": "master",
-   "newversion": "",
+   "newversion": "3.18.3",
    "appversion": "1.4.60",
    "wikiversion": "9.4.2",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
-   "body": "Upgrading docker-wiki to ",
+   "body": "Upgrading docker-wiki to 3.18.3",
    "user": "github-actions[bot]"
 }
 {
@@ -231,10 +231,10 @@
    "appname": "docker-ubuntu-focal",
    "apppic": "./images/docker-ubuntu-focal.png",
    "appfolder": "./base/docker-ubuntu-focal",
-   "newversion": "",
+   "newversion": "3.18.3",
    "baseimage": "alpine",
    "description": "Docker image  for docker-ubuntu-focal",
-   "body": "Upgrading docker-ubuntu-focal to baseimage: alpine:",
+   "body": "Upgrading docker-ubuntu-focal to baseimage: alpine:3.18.3",
    "user": "dockserver image update[bot]"
 }
 {
@@ -251,11 +251,11 @@
    "appname": "docker-ui",
    "apppic": "",
    "appfolder": "./base/docker-ui",
-   "newversion": "3.18.3",
-   "appversion": "3.18.3",
+   "newversion": "",
+   "appversion": "",
    "baseimage": "alpine",
    "description": " !!! DEVERLOP STATUS !!! DO NOT TRY TO PULL THE IMAGE YOU NEED ACCESS TO THE REPOSITORY",
-   "body": "Upgrading docker-ui to 3.18.3",
+   "body": "Upgrading docker-ui to ",
    "user": "github-actions[bot]"
 }
 {
