@@ -43,10 +43,10 @@
    "appname": "docker-dockupdate",
    "apppic": "./images/docker-dockupdate.png",
    "appfolder": "./apps/docker-dockupdate",
-   "newversion": "",
+   "newversion": "3.18.3",
    "baseimage": "alpine",
    "description": "null",
-   "body": "Upgrading docker-dockupdate to ",
+   "body": "Upgrading docker-dockupdate to 3.18.3",
    "user": "github-actions[bot]"
 }
 {
@@ -144,10 +144,10 @@
    "appname": "docker-vnstat",
    "apppic": "./images/docker-vnstat.png",
    "appfolder": "./apps/docker-vnstat",
-   "newversion": "",
+   "newversion": "8-apache",
    "baseimage": "php",
    "description": "Docker image  for docker-vnstat",
-   "body": "Upgrading docker-vnstat to baseimage: php:",
+   "body": "Upgrading docker-vnstat to baseimage: php:8-apache",
    "user": "dockserver image update[bot]"
 }
 {
@@ -155,12 +155,12 @@
    "apppic": "./images/docker-wiki.png",
    "appfolder": "./apps/docker-wiki",
    "appbranch": "master",
-   "newversion": "3.18.3",
+   "newversion": "",
    "appversion": "1.4.60",
    "wikiversion": "9.4.2",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
-   "body": "Upgrading docker-wiki to 3.18.3",
+   "body": "Upgrading docker-wiki to ",
    "user": "github-actions[bot]"
 }
 {
@@ -231,10 +231,10 @@
    "appname": "docker-ubuntu-focal",
    "apppic": "./images/docker-ubuntu-focal.png",
    "appfolder": "./base/docker-ubuntu-focal",
-   "newversion": "3.18.3",
+   "newversion": "",
    "baseimage": "alpine",
    "description": "Docker image  for docker-ubuntu-focal",
-   "body": "Upgrading docker-ubuntu-focal to baseimage: alpine:3.18.3",
+   "body": "Upgrading docker-ubuntu-focal to baseimage: alpine:",
    "user": "dockserver image update[bot]"
 }
 {
