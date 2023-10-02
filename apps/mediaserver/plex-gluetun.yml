@@ -1,42 +1,6 @@
 ---
 version: "3.9"
 services:
-  gluetun:
-    hostname: "gluetun"
-    container_name: "gluetun"
-    image: "qmcgaw/gluetun:latest"
-    cap_add:
-      - NET_ADMIN
-    devices:
-      - "/dev/net/tun:/dev/net/tun"
-    restart: "${RESTARTAPP}"
-    extra_hosts:
-      - "analytics.plex.tv:127.0.0.1"
-      - "metrics.plex.tv:127.0.0.1"
-      - "metric.plex.tv:127.0.0.1"
-      - "mf.svc.nhl.com:127.0.0.1"
-      - "mlb-ws-mf.media.mlb.com:127.0.0.1"
-      - "playback.svcs.mlb.com:127.0.0.1"
-    networks:
-      - ${DOCKERNETWORK}
-    environment:
-      - "PUID=${ID}"
-      - "PGID=${ID}"
-      - "TZ=${TZ}"
-      - "UMASK=${UMASK}"
-      - "VPN_SERVICE_PROVIDER=${GLUETUN_VPN_SERVICE_PROVIDER}"
-      - "VPN_TYPE=${GLUETUN_VPN_TYPE}"
-      - "OPENVPN_USER=${GLUETUN_OPEN_VPN_USER}"
-      - "OPENVPN_PASSWORD=${GLUETUN_OPEN_VPN_PASSWORD}"
-      - "REGION=${GLUETUN_VPN_REGION}"
-      - "SHADOWSOCKS=on"
-      - "SHADOWSOCKS_ADDRESS=:8388"
-      - "HTTPPROXY=on"
-      - "HTTPPROXY_LISTENING_ADDRESS=:8888"
-    volumes:
-      - "${APPFOLDER}/gluetun/:/gluetun:rw"
-    labels:
-      - "dockupdater.disable=true"
   plex:
     hostname: "plex"
     container_name: "plex"
