@@ -17,11 +17,13 @@ services:
       - "UMASK=${UMASK}"
       - "VPN_SERVICE_PROVIDER=${GLUETUN_VPN_SERVICE_PROVIDER}"
       - "VPN_TYPE=${GLUETUN_VPN_TYPE}"
-      - "OPENVPN_USER=${GLUETUN_OPEN_VPN_USER}"
-      - "OPENVPN_PASSWORD=${GLUETUN_OPEN_VPN_PASSWORD}"
-      - "REGION=${GLUETUN_VPN_REGION}"
+      - "WIREGUARD_PRIVATE_KEY=${GLUETUN_WG_KEY}"
+      - "WIREGUARD_ADDRESSES=${GLUETUN_WG_ADDRESS}"
+      - "SERVER_CITIES=${GLUETUN_CITIES}"
     volumes:
       - "${APPFOLDER}/gluetun/:/gluetun"
+    labels:
+      - "dockupdater.disable=true"
   xteve:
     container_name: "xteve"
     environment:
@@ -31,7 +33,7 @@ services:
       - "UMASK=${UMASK}"
     image: "alturismo/xteve"
     restart: "${RESTARTAPP}"
-    network_mode: "service:gluetun"
+    network_mode: "container:gluetun"
     security_opt:
       - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:

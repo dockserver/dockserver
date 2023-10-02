@@ -1,4 +1,3 @@
----
 version: "3"
 services:
   gluetun:
@@ -10,13 +9,6 @@ services:
     devices:
       - "/dev/net/tun:/dev/net/tun"
     restart: "${RESTARTAPP}"
-    extra_hosts:
-      - "analytics.plex.tv:127.0.0.1"
-      - "metrics.plex.tv:127.0.0.1"
-      - "metric.plex.tv:127.0.0.1"
-      - "mf.svc.nhl.com:127.0.0.1"
-      - "mlb-ws-mf.media.mlb.com:127.0.0.1"
-      - "playback.svcs.mlb.com:127.0.0.1"
     networks:
       - ${DOCKERNETWORK}
     environment:
@@ -37,6 +29,11 @@ services:
       - "${APPFOLDER}/gluetun/:/gluetun:rw"
     labels:
       - "dockupdater.disable=true"
+  socks5:
+    image: "serjs/go-socks5-proxy:latest"
+    depends_on:
+      - gluetun
+    network_mode: "container:gluetun"
 networks:
   proxy:
     driver: bridge
