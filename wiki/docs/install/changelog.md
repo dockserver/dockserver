@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [v1.4.61](https://github.com/dockserver/dockserver/releases/tag/v1.4.61) - 2023-10-02 08:55:21
+
+## 🚇 Added
+
+- Add Plex-VPN
+   - PR: #662
+
 ## [v1.4.60](https://github.com/dockserver/dockserver/releases/tag/v1.4.60) - 2023-09-24 14:49:36
 
 repository changes
