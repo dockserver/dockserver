@@ -698,8 +698,10 @@ printf "
     You need to add a Cloudflare Page Rule
     https://dash.cloudflare.com/
     > Domain
-        > Domain : plex.${DOMAIN}
-        > Orange-Cloud: disabled
+      > Rules
+        > add new rule
+          > Domain : plex.${DOMAIN}/*
+          > cache-level: bypass
         > save
     __________________
 
