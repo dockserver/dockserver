@@ -460,6 +460,7 @@ runinstall() {
   fi
   if [[ ${section} == "addons" && ${typed} == "vnstat" ]];then vnstatcheck;fi
   if [[ ${section} == "mediaserver" && ${typed} == "plex" ]];then plexclaim && plex443;fi
+  if [[ ${section} == "mediaserver" && ${typed} == "plex-gluetun" ]];then plexclaim && plexgluetun;fi
   if [[ ${section} == "downloadclients" && ${typed} == "jdownloader2" ]];then
      folder=$storage/${typed}
      for jdl in ${folder};do
@@ -679,6 +680,37 @@ printf "
           > save
         > network
           > Strict TLS configuration [ X ]
+          > allowed networks = 172.18.0.0
+          > save 
+      > have fun !
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+"
+read -erp "Confirm Info | PRESS [ENTER]" confirm </dev/tty
+
+}
+plexgluetun() {
+basefolder="/opt/appdata"
+source $basefolder/compose/.env
+printf "
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    🚀  PLEX Gluetun Options
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    You need to add a Cloudflare Page Rule
+    https://dash.cloudflare.com/
+    > Domain
+        > Domain : plex.${DOMAIN}
+        > Orange-Cloud: disabled
+        > save
+    __________________
+
+    > in plex settings
+      > settings
+        > remote access
+          > remote access = disabled
+          > save
+        > network
+          > Strict TLS configuration [ X ]
+          > Custom-URL = https://plex.${DOMAIN}:443
           > allowed networks = 172.18.0.0
           > save 
       > have fun !
