@@ -1,7 +1,5 @@
 ---
-
 version: "3.9"
-## SET GLOBAL HEADER FOR COMPOSER
 services:
   gluetun:
     hostname: "gluetun"
