@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## [v1.4.63](https://github.com/dockserver/dockserver/releases/tag/v1.4.63) - 2023-10-13 14:16:53
+
+- chore(deps): update step-security/harden-runner digest to 1b05615
+   - PR: #665
+
 ## [v1.4.62](https://github.com/dockserver/dockserver/releases/tag/v1.4.62) - 2023-10-02 10:51:18
 
 - Plex-VPN
