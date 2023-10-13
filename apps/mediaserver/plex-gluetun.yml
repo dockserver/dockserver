@@ -17,7 +17,6 @@ services:
       - "TP_ADDON=${PLEXADDON}"
     image: "${PLEXIMAGE}"
     restart: "${RESTARTAPP}"
-    depends_on: gluetun
     network_mode: "service:gluetun"
     security_opt:
       - "${SECURITYOPS}:${SECURITYOPSSET}"
