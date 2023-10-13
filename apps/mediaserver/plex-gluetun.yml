@@ -18,7 +18,7 @@ services:
     image: "${PLEXIMAGE}"
     restart: "${RESTARTAPP}"
     depends_on: gluetun
-    network_mode: "container:gluetun"
+    network_mode: "service:gluetun"
     security_opt:
       - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
