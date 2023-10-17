@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Check out code
-        uses: actions/checkout@v4.1.0
+        uses: actions/checkout@v4.1.1
 
       - uses: BobAnkh/add-contributors@master
         with:
@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v4.1.0
+        uses: actions/checkout@v4.1.1
         with:
           fetch-depth: '0'
 
