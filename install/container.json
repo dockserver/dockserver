@@ -65,14 +65,14 @@
    "appfolder": "./apps/docker-mount",
    "newversion": "3.18.4",
    "mergerfs": "2.37.1",
-   "rclone": "v1.64.1",
+   "rclone": "v1.64.2",
    "baseimage": "alpine",
    "buildimage": "alpine",
    "finalimage": "ghcr.io/linuxserver/baseimage-alpine",
    "baseversion": "3.18-f46b2d92-ls22",
    "s6stage": "v3.1.5.0",
-   "description": "Docker docker-mount with mergerfs version 2.37.1 and rclone version v1.64.1 include s6-overlay: v3.1.5.0",
-   "body": "Upgrading docker-mount to baseimage: alpine:3.18-f46b2d92-ls22 with mergerfs: 2.37.1 and rclone: v1.64.1 include s6-overlay: v3.1.5.0",
+   "description": "Docker docker-mount with mergerfs version 2.37.1 and rclone version v1.64.2 include s6-overlay: v3.1.5.0",
+   "body": "Upgrading docker-mount to baseimage: alpine:3.18-f46b2d92-ls22 with mergerfs: 2.37.1 and rclone: v1.64.2 include s6-overlay: v3.1.5.0",
    "user": "dockserver image update[bot]"
 }
 {
@@ -90,14 +90,14 @@
    "apppic": "./images/docker-restic.png",
    "appfolder": "./apps/docker-restic",
    "newversion": "3.18.4",
-   "rclone": "v1.64.1",
+   "rclone": "v1.64.2",
    "baseimage": "alpine",
    "buildimage": "alpine",
    "finalimage": "ghcr.io/linuxserver/baseimage-alpine",
    "baseversion": "3.18-f46b2d92-ls22",
    "s6stage": "v3.1.5.0",
-   "description": "Docker docker-restic with rclone version v1.64.1 include s6-overlay: v3.1.5.0",
-   "body": "Upgrading docker-restic to baseimage: alpine:3.18-f46b2d92-ls22 with rclone: v1.64.1 include s6-overlay: v3.1.5.0",
+   "description": "Docker docker-restic with rclone version v1.64.2 include s6-overlay: v3.1.5.0",
+   "body": "Upgrading docker-restic to baseimage: alpine:3.18-f46b2d92-ls22 with rclone: v1.64.2 include s6-overlay: v3.1.5.0",
    "user": "dockserver image update[bot]"
 }
 {
