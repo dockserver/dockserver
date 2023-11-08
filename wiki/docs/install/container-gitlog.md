@@ -1,3 +1,3 @@
 
-## 2023-11-07
- * [Auto Generation] Changes : apps/docker-gdsa/Dockerfile apps/docker-gdsa/release.json container.json wiki/docs/install/container.json (dockserver-bot[bot])
+## 2023-11-08
+ * [Auto Changes Packages] Changes : wiki/docs/install/container-gitlog.md (github-actions[bot])
