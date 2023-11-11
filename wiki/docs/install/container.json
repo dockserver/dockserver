@@ -12,20 +12,20 @@
    "appname": "docker-backup",
    "apppic": "./images/docker-backup.png",
    "appfolder": "./apps/docker-backup",
-   "newversion": "",
+   "newversion": "3.18.4",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading docker-backup to ",
+   "body": "Upgrading docker-backup to 3.18.4",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-crunchy",
    "apppic": "./images/docker-crunchy.png",
    "appfolder": "./apps/docker-crunchy",
-   "newversion": "23.10",
+   "newversion": "",
    "baseimage": "ubuntu",
    "description": "Docker image  for docker-crunchy",
-   "body": "Upgrading docker-crunchy to baseimage: ubuntu:23.10",
+   "body": "Upgrading docker-crunchy to baseimage: ubuntu:",
    "user": "dockserver image update[bot]"
 }
 {
@@ -53,10 +53,10 @@
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "452.0.0-alpine",
+   "newversion": "",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to 452.0.0-alpine",
+   "body": "Upgrading docker-gdsa to ",
    "user": "dockserver-actions[bot]"
 }
 {
@@ -89,7 +89,7 @@
    "appname": "docker-restic",
    "apppic": "./images/docker-restic.png",
    "appfolder": "./apps/docker-restic",
-   "newversion": "",
+   "newversion": "3.18.4",
    "rclone": "v1.64.2",
    "baseimage": "alpine",
    "buildimage": "alpine",
@@ -134,7 +134,7 @@
    "appname": "docker-uploader",
    "apppic": "./images/docker-uploader.png",
    "appfolder": "./apps/docker-uploader",
-   "newversion": "",
+   "newversion": "3.18.4",
    "baseimage": "ghcr.io/linuxserver/baseimage-alpine",
    "baseversion": "3.18-458ab886-ls26",
    "body": "Upgrading docker-uploader to ",
@@ -144,10 +144,10 @@
    "appname": "docker-vnstat",
    "apppic": "./images/docker-vnstat.png",
    "appfolder": "./apps/docker-vnstat",
-   "newversion": "",
+   "newversion": "8-apache",
    "baseimage": "php",
    "description": "Docker image  for docker-vnstat",
-   "body": "Upgrading docker-vnstat to baseimage: php:",
+   "body": "Upgrading docker-vnstat to baseimage: php:8-apache",
    "user": "dockserver image update[bot]"
 }
 {
@@ -241,10 +241,10 @@
    "appname": "docker-ubuntu-jammy",
    "apppic": "./images/docker-ubuntu-jammy.png",
    "appfolder": "./base/docker-ubuntu-jammy",
-   "newversion": "3.18.4",
+   "newversion": "",
    "baseimage": "alpine",
    "description": "Docker image  for docker-ubuntu-jammy",
-   "body": "Upgrading docker-ubuntu-jammy to baseimage: alpine:3.18.4",
+   "body": "Upgrading docker-ubuntu-jammy to baseimage: alpine:",
    "user": "dockserver image update[bot]"
 }
 {
