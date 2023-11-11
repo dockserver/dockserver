@@ -53,10 +53,10 @@
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "452.0.0-alpine",
+   "newversion": "",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to 452.0.0-alpine",
+   "body": "Upgrading docker-gdsa to ",
    "user": "dockserver-actions[bot]"
 }
 {
@@ -89,7 +89,7 @@
    "appname": "docker-restic",
    "apppic": "./images/docker-restic.png",
    "appfolder": "./apps/docker-restic",
-   "newversion": "3.18.4",
+   "newversion": "",
    "rclone": "v1.64.2",
    "baseimage": "alpine",
    "buildimage": "alpine",
@@ -134,7 +134,7 @@
    "appname": "docker-uploader",
    "apppic": "./images/docker-uploader.png",
    "appfolder": "./apps/docker-uploader",
-   "newversion": "3.18.4",
+   "newversion": "",
    "baseimage": "ghcr.io/linuxserver/baseimage-alpine",
    "baseversion": "3.18-458ab886-ls26",
    "body": "Upgrading docker-uploader to ",
@@ -144,10 +144,10 @@
    "appname": "docker-vnstat",
    "apppic": "./images/docker-vnstat.png",
    "appfolder": "./apps/docker-vnstat",
-   "newversion": "8-apache",
+   "newversion": "",
    "baseimage": "php",
    "description": "Docker image  for docker-vnstat",
-   "body": "Upgrading docker-vnstat to baseimage: php:8-apache",
+   "body": "Upgrading docker-vnstat to baseimage: php:",
    "user": "dockserver image update[bot]"
 }
 {
@@ -155,22 +155,22 @@
    "apppic": "./images/docker-wiki.png",
    "appfolder": "./apps/docker-wiki",
    "appbranch": "master",
-   "newversion": "3.18.4",
+   "newversion": "",
    "appversion": "1.4.65",
    "wikiversion": "9.4.8",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
-   "body": "Upgrading docker-wiki to 3.18.4",
+   "body": "Upgrading docker-wiki to ",
    "user": "github-actions[bot]"
 }
 {
    "appname": "alpine",
    "apppic": "",
    "appfolder": "./base/alpine",
-   "newversion": "3.18.4",
+   "newversion": "",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading alpine to 3.18.4",
+   "body": "Upgrading alpine to ",
    "user": "github-actions[bot]"
 }
 {
