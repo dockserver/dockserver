@@ -1,3 +1,3 @@
 
-## 2023-11-16
- * [Auto Generation] Changes : base/docker-config/Dockerfile base/docker-config/release.json container.json wiki/docs/install/container.json (dockserver-bot[bot])
+## 2023-11-17
+ * [Auto Generation] Changes : apps/docker-restic/Dockerfile apps/docker-restic/release.json container.json wiki/docs/install/container.json (dockserver-bot[bot])
