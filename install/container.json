@@ -2,30 +2,30 @@
    "appname": "docker-auto-replyarr",
    "apppic": "",
    "appfolder": "./apps/docker-auto-replyarr",
-   "newversion": "",
+   "newversion": "3.18.4",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading docker-auto-replyarr to ",
+   "body": "Upgrading docker-auto-replyarr to 3.18.4",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-backup",
    "apppic": "./images/docker-backup.png",
    "appfolder": "./apps/docker-backup",
-   "newversion": "",
+   "newversion": "3.18.4",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading docker-backup to ",
+   "body": "Upgrading docker-backup to 3.18.4",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-crunchy",
    "apppic": "./images/docker-crunchy.png",
    "appfolder": "./apps/docker-crunchy",
-   "newversion": "",
+   "newversion": "23.10",
    "baseimage": "ubuntu",
    "description": "Docker image  for docker-crunchy",
-   "body": "Upgrading docker-crunchy to baseimage: ubuntu:",
+   "body": "Upgrading docker-crunchy to baseimage: ubuntu:23.10",
    "user": "dockserver image update[bot]"
 }
 {
@@ -43,27 +43,27 @@
    "appname": "docker-dockupdate",
    "apppic": "./images/docker-dockupdate.png",
    "appfolder": "./apps/docker-dockupdate",
-   "newversion": "",
+   "newversion": "3.18.4",
    "baseimage": "alpine",
    "description": "null",
-   "body": "Upgrading docker-dockupdate to ",
+   "body": "Upgrading docker-dockupdate to 3.18.4",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "",
+   "newversion": "452.0.1-alpine",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to ",
+   "body": "Upgrading docker-gdsa to 452.0.1-alpine",
    "user": "dockserver-actions[bot]"
 }
 {
    "appname": "docker-mount",
    "apppic": "./images/docker-mount.png",
    "appfolder": "./apps/docker-mount",
-   "newversion": "",
+   "newversion": "3.18.4",
    "mergerfs": "2.38.0",
    "rclone": "v1.64.2",
    "baseimage": "alpine",
@@ -89,7 +89,7 @@
    "appname": "docker-restic",
    "apppic": "./images/docker-restic.png",
    "appfolder": "./apps/docker-restic",
-   "newversion": "",
+   "newversion": "3.18.4",
    "rclone": "v1.64.2",
    "baseimage": "alpine",
    "buildimage": "alpine",
@@ -104,10 +104,10 @@
    "appname": "docker-rollarr",
    "apppic": "./images/docker-rollarr.png",
    "appfolder": "./apps/docker-rollarr",
-   "newversion": "",
+   "newversion": "23.10",
    "baseimage": "ubuntu",
    "description": "This is the new and improved Automatic Pre-roll script with a GUI for Plex now called Rollarr!",
-   "body": "Upgrading docker-rollarr to ",
+   "body": "Upgrading docker-rollarr to 23.10",
    "user": "github-actions[bot]"
 }
 {
@@ -124,7 +124,7 @@
    "appname": "docker-traktarr",
    "apppic": "./images/docker-traktarr.png",
    "appfolder": "./apps/docker-traktarr",
-   "newversion": "",
+   "newversion": "3.18.4",
    "baseimage": "ghcr.io/linuxserver/baseimage-alpine",
    "baseversion": "3.18-458ab886-ls28",
    "body": "Upgrading docker-traktarr to ",
@@ -134,7 +134,7 @@
    "appname": "docker-uploader",
    "apppic": "./images/docker-uploader.png",
    "appfolder": "./apps/docker-uploader",
-   "newversion": "",
+   "newversion": "3.18.4",
    "baseimage": "ghcr.io/linuxserver/baseimage-alpine",
    "baseversion": "3.18-458ab886-ls28",
    "body": "Upgrading docker-uploader to ",
@@ -144,10 +144,10 @@
    "appname": "docker-vnstat",
    "apppic": "./images/docker-vnstat.png",
    "appfolder": "./apps/docker-vnstat",
-   "newversion": "",
+   "newversion": "8-apache",
    "baseimage": "php",
    "description": "Docker image  for docker-vnstat",
-   "body": "Upgrading docker-vnstat to baseimage: php:",
+   "body": "Upgrading docker-vnstat to baseimage: php:8-apache",
    "user": "dockserver image update[bot]"
 }
 {
@@ -155,22 +155,22 @@
    "apppic": "./images/docker-wiki.png",
    "appfolder": "./apps/docker-wiki",
    "appbranch": "master",
-   "newversion": "",
+   "newversion": "3.18.4",
    "appversion": "1.4.65",
    "wikiversion": "9.4.8",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
-   "body": "Upgrading docker-wiki to ",
+   "body": "Upgrading docker-wiki to 3.18.4",
    "user": "github-actions[bot]"
 }
 {
    "appname": "alpine",
    "apppic": "",
    "appfolder": "./base/alpine",
-   "newversion": "",
+   "newversion": "3.18.4",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading alpine to ",
+   "body": "Upgrading alpine to 3.18.4",
    "user": "github-actions[bot]"
 }
 {
