@@ -144,10 +144,10 @@
    "appname": "docker-vnstat",
    "apppic": "./images/docker-vnstat.png",
    "appfolder": "./apps/docker-vnstat",
-   "newversion": "",
+   "newversion": "8-apache",
    "baseimage": "php",
    "description": "Docker image  for docker-vnstat",
-   "body": "Upgrading docker-vnstat to baseimage: php:",
+   "body": "Upgrading docker-vnstat to baseimage: php:8-apache",
    "user": "dockserver image update[bot]"
 }
 {
