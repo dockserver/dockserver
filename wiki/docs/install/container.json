@@ -22,10 +22,10 @@
    "appname": "docker-crunchy",
    "apppic": "./images/docker-crunchy.png",
    "appfolder": "./apps/docker-crunchy",
-   "newversion": "23.10",
+   "newversion": "24.04",
    "baseimage": "ubuntu",
    "description": "Docker image  for docker-crunchy",
-   "body": "Upgrading docker-crunchy to baseimage: ubuntu:23.10",
+   "body": "Upgrading docker-crunchy to baseimage: ubuntu:24.04",
    "user": "dockserver image update[bot]"
 }
 {
@@ -104,10 +104,10 @@
    "appname": "docker-rollarr",
    "apppic": "./images/docker-rollarr.png",
    "appfolder": "./apps/docker-rollarr",
-   "newversion": "23.10",
+   "newversion": "24.04",
    "baseimage": "ubuntu",
    "description": "This is the new and improved Automatic Pre-roll script with a GUI for Plex now called Rollarr!",
-   "body": "Upgrading docker-rollarr to 23.10",
+   "body": "Upgrading docker-rollarr to 24.04",
    "user": "github-actions[bot]"
 }
 {
