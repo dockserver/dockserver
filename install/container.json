@@ -22,10 +22,10 @@
    "appname": "docker-crunchy",
    "apppic": "./images/docker-crunchy.png",
    "appfolder": "./apps/docker-crunchy",
-   "newversion": "24.04",
+   "newversion": "noble-20231126.1",
    "baseimage": "ubuntu",
    "description": "Docker image  for docker-crunchy",
-   "body": "Upgrading docker-crunchy to baseimage: ubuntu:24.04",
+   "body": "Upgrading docker-crunchy to baseimage: ubuntu:noble-20231126.1",
    "user": "dockserver image update[bot]"
 }
 {
@@ -53,10 +53,10 @@
    "appname": "docker-gdsa",
    "apppic": "./images/docker-gdsa.png",
    "appfolder": "./apps/docker-gdsa",
-   "newversion": "454.0.0-alpine",
+   "newversion": "457.0.0-alpine",
    "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
    "description": "Docker for Creating GDSA keys",
-   "body": "Upgrading docker-gdsa to 454.0.0-alpine",
+   "body": "Upgrading docker-gdsa to 457.0.0-alpine",
    "user": "dockserver-actions[bot]"
 }
 {
@@ -104,10 +104,10 @@
    "appname": "docker-rollarr",
    "apppic": "./images/docker-rollarr.png",
    "appfolder": "./apps/docker-rollarr",
-   "newversion": "24.04",
+   "newversion": "noble-20231126.1",
    "baseimage": "ubuntu",
    "description": "This is the new and improved Automatic Pre-roll script with a GUI for Plex now called Rollarr!",
-   "body": "Upgrading docker-rollarr to 24.04",
+   "body": "Upgrading docker-rollarr to noble-20231126.1",
    "user": "github-actions[bot]"
 }
 {
