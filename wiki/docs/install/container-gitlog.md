@@ -1,3 +1,3 @@
 
 ## 2024-01-05
- * [Auto Generation] Changelog : (dockserver-bot[bot])
+ * chore(deps): update docker/metadata-action digest to dbef880 (dockserver-bot)
