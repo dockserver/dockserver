@@ -14,7 +14,7 @@
    "appfolder": "./apps/docker-backup",
    "newversion": "3.19.0",
    "baseimage": "alpine",
-   "description": "",
+   "description": "Official Alpine Linux Docker image. Win at minimalism!",
    "body": "Upgrading docker-backup to 3.19.0",
    "user": "github-actions[bot]"
 }
