@@ -1,3 +1,3 @@
 
-## 2024-01-11
- * [Auto Generation] Changelog : (dockserver-bot[bot])
+## 2024-01-12
+ * Fix PIP3 (Sven Jaeger)
