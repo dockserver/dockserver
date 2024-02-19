@@ -1,3 +1,3 @@
 
 ## 2024-02-19
- * [Auto Generation] Changelog : (dockserver-bot[bot])
+ * chore(deps): update renovatebot/github-action action to v40.1.1 (dockserver-bot)
