@@ -43,10 +43,10 @@
    "appname": "docker-dockupdate",
    "apppic": "./images/docker-dockupdate.png",
    "appfolder": "./apps/docker-dockupdate",
-   "newversion": "",
+   "newversion": "3.19.1",
    "baseimage": "alpine",
    "description": "null",
-   "body": "Upgrading docker-dockupdate to ",
+   "body": "Upgrading docker-dockupdate to 3.19.1",
    "user": "github-actions[bot]"
 }
 {
