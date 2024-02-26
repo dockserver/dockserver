@@ -1,3 +1,3 @@
 
 ## 2024-02-26
- * chore(deps): update renovatebot/github-action action to v40.1.2 (dockserver-bot)
+ * [Auto Generation] Changes : apps/docker-mount/Dockerfile apps/docker-mount/release.json container.json wiki/docs/install/container.json (dockserver-bot[bot])
