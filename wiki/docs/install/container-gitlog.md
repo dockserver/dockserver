@@ -1,3 +1,3 @@
 
-## 2024-02-26
- * [Auto Generation] Changelog : (dockserver-bot[bot])
+## 2024-02-27
+ * chore(deps): update docker/setup-buildx-action action to v3.1.0 (dockserver-bot)
