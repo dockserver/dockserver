@@ -1,3 +1,3 @@
 
 ## 2024-02-29
- * [Auto Changes Packages] Changes : wiki/docs/install/container-gitlog.md (github-actions[bot])
+ * [Auto Generation] Changes : apps/docker-wiki/Dockerfile apps/docker-wiki/release.json container.json wiki/docs/install/container.json (dockserver-bot[bot])
