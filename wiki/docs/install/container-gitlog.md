@@ -1,3 +1,3 @@
 
-## 2024-03-04
- * [Auto Generation] Changelog : (dockserver-bot[bot])
+## 2024-03-05
+ * [Auto Generation] Changes : apps/docker-gdsa/Dockerfile apps/docker-gdsa/release.json container.json wiki/docs/install/container.json (dockserver-bot[bot])
