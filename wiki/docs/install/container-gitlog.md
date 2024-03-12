@@ -1,3 +1,3 @@
 
 ## 2024-03-12
- * chore(deps): update actions/checkout action to v4.1.2 (dockserver-bot)
+ * [Auto Generation] Changes : apps/docker-gdsa/Dockerfile apps/docker-gdsa/release.json container.json wiki/docs/install/container.json (dockserver-bot[bot])
