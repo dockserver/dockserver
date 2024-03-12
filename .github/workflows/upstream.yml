@@ -19,7 +19,7 @@ jobs:
             api.github.com:443
             github.com:443
 
-      - uses: actions/checkout@v4.1.1
+      - uses: actions/checkout@v4.1.2
       - uses: jamesgeorge007/github-activity-readme@master
         env:
           GITHUB_TOKEN: ${{ secrets.CR_PAT }}
