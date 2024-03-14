@@ -89,7 +89,7 @@
    "appname": "docker-restic",
    "apppic": "./images/docker-restic.png",
    "appfolder": "./apps/docker-restic",
-   "newversion": "",
+   "newversion": "3.19.1",
    "rclone": "v1.66.0",
    "baseimage": "alpine",
    "buildimage": "alpine",
@@ -104,10 +104,10 @@
    "appname": "docker-rollarr",
    "apppic": "./images/docker-rollarr.png",
    "appfolder": "./apps/docker-rollarr",
-   "newversion": "",
+   "newversion": "rolling",
    "baseimage": "ubuntu",
    "description": "This is the new and improved Automatic Pre-roll script with a GUI for Plex now called Rollarr!",
-   "body": "Upgrading docker-rollarr to ",
+   "body": "Upgrading docker-rollarr to rolling",
    "user": "github-actions[bot]"
 }
 {
@@ -134,7 +134,7 @@
    "appname": "docker-uploader",
    "apppic": "./images/docker-uploader.png",
    "appfolder": "./apps/docker-uploader",
-   "newversion": "",
+   "newversion": "3.19.1",
    "baseimage": "ghcr.io/linuxserver/baseimage-alpine",
    "baseversion": "3.19-baf769b0-ls9",
    "body": "Upgrading docker-uploader to ",
@@ -167,10 +167,10 @@
    "appname": "alpine",
    "apppic": "",
    "appfolder": "./base/alpine",
-   "newversion": "",
+   "newversion": "3.19.1",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading alpine to ",
+   "body": "Upgrading alpine to 3.19.1",
    "user": "github-actions[bot]"
 }
 {
@@ -188,12 +188,12 @@
    "appname": "docker-alpine-v3",
    "apppic": "./images/docker-alpine-v3.png",
    "appfolder": "./base/docker-alpine-v3",
-   "newversion": "",
+   "newversion": "3.19.1",
    "baseimage": "alpine",
-   "baseversion": "",
+   "baseversion": "3.19.1",
    "s6stage": "v3.1.6.2",
    "description": "Docker docker-alpine-v3 with include s6-overlay: v3.1.6.2",
-   "body": "Upgrading docker-alpine-v3 to baseimage: alpine:  with include s6-overlay: v3.1.6.2",
+   "body": "Upgrading docker-alpine-v3 to baseimage: alpine:3.19.1  with include s6-overlay: v3.1.6.2",
    "user": "dockserver image update[bot]"
 }
 {
@@ -210,10 +210,10 @@
    "appname": "docker-create",
    "apppic": "./images/docker-create.png",
    "appfolder": "./base/docker-create",
-   "newversion": "",
+   "newversion": "3.19.1",
    "baseimage": "alpine",
    "description": " !!! DEVERLOP STATUS !!! DO NOT TRY TO PULL THE IMAGE YOU NEED ACCESS TO THE REPOSITORY",
-   "body": "Upgrading docker-create to ",
+   "body": "Upgrading docker-create to 3.19.1",
    "user": "github-actions[bot]"
 }
 {
@@ -231,20 +231,20 @@
    "appname": "docker-ubuntu-focal",
    "apppic": "./images/docker-ubuntu-focal.png",
    "appfolder": "./base/docker-ubuntu-focal",
-   "newversion": "",
+   "newversion": "3.19.1",
    "baseimage": "alpine",
    "description": "Docker image  for docker-ubuntu-focal",
-   "body": "Upgrading docker-ubuntu-focal to baseimage: alpine:",
+   "body": "Upgrading docker-ubuntu-focal to baseimage: alpine:3.19.1",
    "user": "dockserver image update[bot]"
 }
 {
    "appname": "docker-ubuntu-jammy",
    "apppic": "./images/docker-ubuntu-jammy.png",
    "appfolder": "./base/docker-ubuntu-jammy",
-   "newversion": "",
+   "newversion": "3.19.1",
    "baseimage": "alpine",
    "description": "Docker image  for docker-ubuntu-jammy",
-   "body": "Upgrading docker-ubuntu-jammy to baseimage: alpine:",
+   "body": "Upgrading docker-ubuntu-jammy to baseimage: alpine:3.19.1",
    "user": "dockserver image update[bot]"
 }
 {
