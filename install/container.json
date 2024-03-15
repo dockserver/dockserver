@@ -12,20 +12,20 @@
    "appname": "docker-backup",
    "apppic": "./images/docker-backup.png",
    "appfolder": "./apps/docker-backup",
-   "newversion": "",
+   "newversion": "3.19.1",
    "baseimage": "alpine",
    "description": "Official Alpine Linux Docker image. Win at minimalism!",
-   "body": "Upgrading docker-backup to ",
+   "body": "Upgrading docker-backup to 3.19.1",
    "user": "github-actions[bot]"
 }
 {
    "appname": "docker-crunchy",
    "apppic": "./images/docker-crunchy.png",
    "appfolder": "./apps/docker-crunchy",
-   "newversion": "",
+   "newversion": "rolling",
    "baseimage": "ubuntu",
    "description": "Docker image  for docker-crunchy",
-   "body": "Upgrading docker-crunchy to baseimage: ubuntu:",
+   "body": "Upgrading docker-crunchy to baseimage: ubuntu:rolling",
    "user": "dockserver image update[bot]"
 }
 {
@@ -43,10 +43,10 @@
    "appname": "docker-dockupdate",
    "apppic": "./images/docker-dockupdate.png",
    "appfolder": "./apps/docker-dockupdate",
-   "newversion": "",
+   "newversion": "3.19.1",
    "baseimage": "alpine",
    "description": "null",
-   "body": "Upgrading docker-dockupdate to ",
+   "body": "Upgrading docker-dockupdate to 3.19.1",
    "user": "github-actions[bot]"
 }
 {
