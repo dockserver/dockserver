@@ -3,18 +3,18 @@
 ########################################
 
 theme: dark
-jwt_secret: JWTTOKENID
-
-default_redirection_url: https://authelia.example.com
+identity_validation:
+  reset_password:
+    jwt_secret: JWTTOKENID
 
 server:
-  host: 0.0.0.0
-  port: 9091
+  address: '0.0.0.0:9091'
   buffers:
     read: 4096
     write: 4096
-  enable_pprof: false
-  enable_expvars: false
+  endpoints:
+    enable_pprof: false
+    enable_expvars: false
   disable_healthcheck: false
   asset_path: /config/assets/
 
@@ -53,8 +53,13 @@ authentication_backend:
 access_control:
   default_policy: deny
   rules:
-    ## bypass rule for login
-    - domain: authelia.example.com
+    - domain:
+      ## Bypass rules
+      - "authelia.example.com" # Login
+      # - "jellyfin.example.com" # Jellyfin
+      # - "overseerr.example.com" # Requests
+      # - "plex.example.com" # Plex
+      # - "tautulli.example.com" # Plex stats
       policy: bypass
     ## bypass rules for api / trigges / rss / xmltv
     - domain: "*.example.com"
@@ -85,6 +90,12 @@ access_control:
       policy: one_factor
       resources:
         - "^*/admin.*$"
+    ## block login and admin for Wizarr
+    - domain: "wizarr.example.com"
+      policy: deny
+      resources:
+        - "^/admin.*$"
+        - "^/login.*$"
     ## one factor login
     - domain: "*.example.com"
       policy: one_factor
@@ -101,7 +112,9 @@ session:
   expiration: 1h
   inactivity: 10m
   remember_me_duration: 1M
-  domain: example.com
+  cookies:
+    - domain: example.com
+      authelia_url: https://authelia.example.com
 
 regulation:
   max_retries: 3
