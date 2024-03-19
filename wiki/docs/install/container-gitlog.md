@@ -1,3 +1,3 @@
 
-## 2024-03-18
- * [Auto Generation] Changelog : (dockserver-bot[bot])
+## 2024-03-19
+ * chore(deps): update docker/metadata-action digest to 38b3677 (dockserver-bot)
