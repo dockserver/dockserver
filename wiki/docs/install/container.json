@@ -90,14 +90,14 @@
    "apppic": "./images/docker-restic.png",
    "appfolder": "./apps/docker-restic",
    "newversion": "3.19.1",
-   "rclone": "",
+   "rclone": "v1.66.0",
    "baseimage": "alpine",
    "buildimage": "alpine",
    "finalimage": "ghcr.io/linuxserver/baseimage-alpine",
    "baseversion": "3.19-baf769b0-ls10",
    "s6stage": "v3.1.6.2",
-   "description": "Docker docker-restic with rclone version  include s6-overlay: v3.1.6.2",
-   "body": "Upgrading docker-restic to baseimage: alpine:3.19-baf769b0-ls10 with rclone:  include s6-overlay: v3.1.6.2",
+   "description": "Docker docker-restic with rclone version v1.66.0 include s6-overlay: v3.1.6.2",
+   "body": "Upgrading docker-restic to baseimage: alpine:3.19-baf769b0-ls10 with rclone: v1.66.0 include s6-overlay: v3.1.6.2",
    "user": "dockserver image update[bot]"
 }
 {
@@ -157,7 +157,7 @@
    "appbranch": "master",
    "newversion": "3.19.1",
    "appversion": "1.4.66",
-   "wikiversion": "",
+   "wikiversion": "9.5.14",
    "baseimage": "alpine",
    "description": "Docker + Traefik with Authelia and Cloudflare Protection",
    "body": "Upgrading docker-wiki to 3.19.1",
