@@ -1,3 +1,3 @@
 
-## 2024-04-08
- * [Auto Generation] Changelog : (dockserver-bot[bot])
+## 2024-04-09
+ * [Auto Generation] Changes : container.json nightly/docker-whisparr-nightly/Dockerfile nightly/docker-whisparr-nightly/release.json wiki/docs/install/container.json (dockserver-bot[bot])
