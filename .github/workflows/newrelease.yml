@@ -11,7 +11,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4.1.2
       - name: Bump version and push tag
-        uses: anothrNick/github-tag-action@1.67.0
+        uses: anothrNick/github-tag-action@1.69.0
         with:
           body: ${{steps.github_release.outputs.changelog}}
         env:
