@@ -22,10 +22,10 @@
    "appname": "docker-crunchy",
    "apppic": "./images/docker-crunchy.png",
    "appfolder": "./apps/docker-crunchy",
-   "newversion": "rolling",
+   "newversion": "noble-20240407.1",
    "baseimage": "ubuntu",
    "description": "Docker image  for docker-crunchy",
-   "body": "Upgrading docker-crunchy to baseimage: ubuntu:rolling",
+   "body": "Upgrading docker-crunchy to baseimage: ubuntu:noble-20240407.1",
    "user": "dockserver image update[bot]"
 }
 {
@@ -104,10 +104,10 @@
    "appname": "docker-rollarr",
    "apppic": "./images/docker-rollarr.png",
    "appfolder": "./apps/docker-rollarr",
-   "newversion": "rolling",
+   "newversion": "noble-20240407.1",
    "baseimage": "ubuntu",
    "description": "This is the new and improved Automatic Pre-roll script with a GUI for Plex now called Rollarr!",
-   "body": "Upgrading docker-rollarr to rolling",
+   "body": "Upgrading docker-rollarr to noble-20240407.1",
    "user": "github-actions[bot]"
 }
 {
