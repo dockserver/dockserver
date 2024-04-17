@@ -69,10 +69,10 @@
    "baseimage": "alpine",
    "buildimage": "alpine",
    "finalimage": "ghcr.io/linuxserver/baseimage-alpine",
-   "baseversion": "3.19-2a8588af-ls14",
+   "baseversion": "3.19-d567c4d0-ls15",
    "s6stage": "v3.1.6.2",
    "description": "Docker docker-mount with mergerfs version 2.40.2 and rclone version v1.66.0 include s6-overlay: v3.1.6.2",
-   "body": "Upgrading docker-mount to baseimage: alpine:3.19-2a8588af-ls14 with mergerfs: 2.40.2 and rclone: v1.66.0 include s6-overlay: v3.1.6.2",
+   "body": "Upgrading docker-mount to baseimage: alpine:3.19-d567c4d0-ls15 with mergerfs: 2.40.2 and rclone: v1.66.0 include s6-overlay: v3.1.6.2",
    "user": "dockserver image update[bot]"
 }
 {
@@ -94,10 +94,10 @@
    "baseimage": "alpine",
    "buildimage": "alpine",
    "finalimage": "ghcr.io/linuxserver/baseimage-alpine",
-   "baseversion": "3.19-2a8588af-ls14",
+   "baseversion": "3.19-d567c4d0-ls15",
    "s6stage": "v3.1.6.2",
    "description": "Docker docker-restic with rclone version v1.66.0 include s6-overlay: v3.1.6.2",
-   "body": "Upgrading docker-restic to baseimage: alpine:3.19-2a8588af-ls14 with rclone: v1.66.0 include s6-overlay: v3.1.6.2",
+   "body": "Upgrading docker-restic to baseimage: alpine:3.19-d567c4d0-ls15 with rclone: v1.66.0 include s6-overlay: v3.1.6.2",
    "user": "dockserver image update[bot]"
 }
 {
@@ -126,7 +126,7 @@
    "appfolder": "./apps/docker-traktarr",
    "newversion": "3.19.1",
    "baseimage": "ghcr.io/linuxserver/baseimage-alpine",
-   "baseversion": "3.19-2a8588af-ls14",
+   "baseversion": "3.19-d567c4d0-ls15",
    "body": "Upgrading docker-traktarr to ",
    "user": "dockserver image update[bot]"
 }
@@ -136,7 +136,7 @@
    "appfolder": "./apps/docker-uploader",
    "newversion": "3.19.1",
    "baseimage": "ghcr.io/linuxserver/baseimage-alpine",
-   "baseversion": "3.19-2a8588af-ls14",
+   "baseversion": "3.19-d567c4d0-ls15",
    "body": "Upgrading docker-uploader to ",
    "user": "dockserver image update[bot]"
 }
@@ -323,7 +323,7 @@
    "newversion": "2.0.0.548",
    "appbranch": "nightly",
    "baseimage": "ghcr.io/linuxserver/baseimage-alpine",
-   "baseversion": "3.19-2a8588af-ls14",
+   "baseversion": "3.19-d567c4d0-ls15",
    "description": "Whisparr is an adult movie collection manager for Usenet and BitTorrent users.",
    "body": "Upgrading docker-whisparr-nightly to 2.0.0.548",
    "user": "dockserver image update[bot]"
