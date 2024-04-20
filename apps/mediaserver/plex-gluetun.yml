@@ -11,7 +11,7 @@ services:
       - "PLEX_CLAIM=PLEX_CLAIM_ID"
       - "VERSION=${PLEXVERSION}"
       - "ADVERTISE_IP=https://plex.${DOMAIN}:443"
-      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:plex|ghcr.io/dockserver/docker-mod-healthcheck:latest"
+      - "DOCKER_MODS=ghcr.io/themepark-dev/theme.park:plex|ghcr.io/dockserver/docker-mod-healthcheck:latest"
       - "TP_THEME=${PLEXTHEME}"
       - "TP_ADDON=${PLEXADDON}"
     image: "${PLEXIMAGE}"

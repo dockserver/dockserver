@@ -9,7 +9,7 @@ services:
       - "PUID=${ID}"
       - "TZ=${TZ}"
       - "UMASK=${UMASK}"
-      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:jackett"
+      - "DOCKER_MODS=ghcr.io/themepark-dev/theme.park:jackett"
       - "TP_THEME=${JACKETTTHEME}"
     image: "${JACKETTIMAGE}"
     restart: "${RESTARTAPP}"

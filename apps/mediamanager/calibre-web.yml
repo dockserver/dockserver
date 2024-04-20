@@ -9,7 +9,7 @@ services:
       - "PUID=${ID}"
       - "TZ=${TZ}"
       - "UMASK=${UMASK}"
-      - "DOCKER_MODS=linuxserver/calibre-web:calibre|ghcr.io/gilbn/theme.park:calibre"
+      - "DOCKER_MODS=linuxserver/calibre-web:calibre|ghcr.io/themepark-dev/theme.park:calibre"
       - "TP_THEME=${CALIBRETHEME}"
     image: "${CALIBREIMAGE}"
     restart: "${RESTARTAPP}"
