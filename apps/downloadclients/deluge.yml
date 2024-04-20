@@ -10,7 +10,7 @@ services:
       - "TZ=${TZ}"
       - "UMASK=${UMASK}"
       - "DELUGE_LOGLEVEL=error"
-      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:deluge"
+      - "DOCKER_MODS=ghcr.io/themepark-dev/theme.park:deluge"
       - "TP_THEME=${DELUGETHEME}"
     image: "${DELUGEIMAGE}"
     networks:

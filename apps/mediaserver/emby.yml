@@ -15,7 +15,7 @@ services:
       - "PGID=${ID}"
       - "TZ=${TZ}"
       - "UMASK=${UMASK}"
-      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:emby|ghcr.io/dockserver/docker-mod-healthcheck:latest"
+      - "DOCKER_MODS=ghcr.io/themepark-dev/theme.park:emby|ghcr.io/dockserver/docker-mod-healthcheck:latest"
       - "TP_THEME=${EMBYTHEME}"
     ports:
       - target: 8096

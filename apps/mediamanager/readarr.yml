@@ -9,7 +9,7 @@ services:
       - "PUID=${ID}"
       - "TZ=${TZ}"
       - "UMASK=${UMASK}"
-      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:readarr|ghcr.io/dockserver/docker-mod-healthcheck:latest"
+      - "DOCKER_MODS=ghcr.io/themepark-dev/theme.park:readarr|ghcr.io/dockserver/docker-mod-healthcheck:latest"
       - "TP_THEME=${READARRTHEME}"
       - "TP_HOTIO=${TP_HOTIO}"
     image: "${READARRIMAGE}"

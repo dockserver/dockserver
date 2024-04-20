@@ -32,7 +32,7 @@ services:
       - "TZ=${TZ}"
       - "UMASK=${UMASK}"
       - "WEBUI_PORT=8080"
-      - "DOCKER_MODS=ghcr.io/gilbn/theme.park:qbittorrent"
+      - "DOCKER_MODS=ghcr.io/themepark-dev/theme.park:qbittorrent"
       - "TP_THEME=${QBITORRENTTHEME}"
     image: "${QBITORRENTIMAGE}"
     restart: "${RESTARTAPP}"
