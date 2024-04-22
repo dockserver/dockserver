@@ -1,3 +1,3 @@
 
-## 2024-04-18
- * [Auto Generation] Changelog : (dockserver-bot[bot])
+## 2024-04-22
+ * [Auto Changes Packages] Changes : wiki/docs/install/container-gitlog.md (github-actions[bot])
