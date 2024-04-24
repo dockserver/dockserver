@@ -1,7 +1,7 @@
 ---
 version: "3"
 services:
-  plex-meta-manager:
+  kometa:
     container_name: "kometa"
     hostname: "kometa"
     image: "kometateam/kometa:master"
