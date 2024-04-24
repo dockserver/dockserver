@@ -1,85 +1,32 @@
 # CHANGELOG
 
-## [v1.4.66](https://github.com/dockserver/dockserver/releases/tag/v1.4.66) - 2024-03-16 18:30:39
+## [v1.4.67](https://github.com/dockserver/dockserver/releases/tag/v1.4.67) - 2024-04-24 15:41:50
 
 ## 🎨 DockServer Update
 
-- Update Authelia configuration.yml
-   - PR: #702
+- update theme.park addons
+   - PR: #708
 
 
 
 
-- chore(deps): update renovatebot/github-action action to v39.1.0
-   - PR: #666
-- chore(deps): update actions/checkout action to v4.1.1
-   - PR: #667
-- chore(deps): update aquasecurity/trivy-action digest to b77b85c
-   - PR: #668
-- chore(deps): update renovatebot/github-action action to v39.1.1
-   - PR: #670
-- chore(deps): update aquasecurity/trivy-action digest to f78e9ec
-   - PR: #671
-- chore(deps): update aquasecurity/trivy-action digest to 2b6a709
-   - PR: #672
-- chore(deps): update renovatebot/github-action action to v39.1.2
-   - PR: #673
-- chore(deps): update step-security/harden-runner digest to eb238b5
-   - PR: #674
-- chore(deps): update renovatebot/github-action action to v39.1.3
-   - PR: #675
-- chore(deps): update renovatebot/github-action action to v39.1.4
-   - PR: #676
-- chore(deps): update renovatebot/github-action action to v39.2.0
-   - PR: #678
-- chore(deps): update aquasecurity/trivy-action digest to 22d2755
-   - PR: #677
-- chore(deps): update renovatebot/github-action action to v39.2.1
-   - PR: #680
-- chore(deps): update actions/setup-python action to v5
-   - PR: #679
-- chore(deps): update actions/stale action to v9
-   - PR: #682
-- chore(deps): update aquasecurity/trivy-action digest to 91713af
-   - PR: #683
-- chore(deps): update github/codeql-action action to v3
-   - PR: #684
-- chore(deps): update renovatebot/github-action action to v39.2.3
-   - PR: #686
-- chore(deps): update renovatebot/github-action action to v39.2.4
-   - PR: #687
-- chore(deps): update aquasecurity/trivy-action digest to d43c1f1
-   - PR: #688
-- chore(deps): update aquasecurity/trivy-action digest to 0b9d17b
-   - PR: #689
-- chore(deps): update aquasecurity/trivy-action digest to f3d9851
-   - PR: #691
-- chore(deps): update peter-evans/rebase action to v3
-   - PR: #692
-- chore(deps): update renovatebot/github-action action to v40
-   - PR: #693
-- chore(deps): update step-security/harden-runner digest to 63c24ba
-   - PR: #694
-- chore(deps): update aquasecurity/trivy-action digest to 84384bd
-   - PR: #695
-- chore(deps): update renovatebot/github-action action to v40.0.3
-   - PR: #696
-- chore(deps): update renovatebot/github-action action to v40.1.0
-   - PR: #697
-- chore(deps): update aquasecurity/trivy-action digest to 1f6384b
-   - PR: #698
-- chore(deps): update renovatebot/github-action action to v40.1.1
-   - PR: #699
-- chore(deps): update aquasecurity/trivy-action digest to 062f259
-   - PR: #700
-- chore(deps): update renovatebot/github-action action to v40.1.2
-   - PR: #701
+- minor updates to ymls and wiki
+   - PR: #706
+- plexmetamanager to kometa update
+   - PR: #707
 
 ### Documentation
 
 - README:
-  - update contributors ([86b2834](https://github.com/dockserver/dockserver/commit/86b283451c3c530dd1febfccbeafc2f0c8c11f8d))
-  - update contributors ([2d4247d](https://github.com/dockserver/dockserver/commit/2d4247d20a3bea3c7a3a2417c58d66528cdff9a8))
+  - update contributors ([83b4cb3](https://github.com/dockserver/dockserver/commit/83b4cb3b000cb840b276f92c8ebc735e6a178c2f))
+  - update contributors ([c065b7d](https://github.com/dockserver/dockserver/commit/c065b7d99be78248b19c76a6c154c7a92f0168fe))
+  - update contributors ([d041acf](https://github.com/dockserver/dockserver/commit/d041acf6b9190b729fde5e993207a69674d7afc2))
+  - update contributors ([c627b31](https://github.com/dockserver/dockserver/commit/c627b31c1a977f9ac4da91037dfbf1c9855d564c))
+  - update contributors ([5c9ce6b](https://github.com/dockserver/dockserver/commit/5c9ce6bc32bf458cb03f9f5cfc66bdcf9534b3da))
+  - update contributors ([f4a901b](https://github.com/dockserver/dockserver/commit/f4a901b5bc0fdac08a0be0fbfee10f2ad591e221))
+  - update contributors ([49602f6](https://github.com/dockserver/dockserver/commit/49602f600ad95f3f6aeb851ba57801f50347841a))
+
+## [v1.4.66](https://github.com/dockserver/dockserver/releases/tag/v1.4.66) - 2024-03-16 18:30:39
 
 ## [v1.4.65](https://github.com/dockserver/dockserver/releases/tag/v1.4.65) - 2023-10-13 16:41:04
 
