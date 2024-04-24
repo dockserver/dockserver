@@ -1,0 +1,29 @@
+---
+version: "3"
+services:
+  plex-meta-manager:
+    container_name: "kometa"
+    hostname: "kometa"
+    image: "kometateam/kometa:master"
+    restart: "${RESTARTAPP}"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+      - "KOMETA_TIME=${KOMETA_TIME}" # comma-separated list of times to update each day Format: HH:MM
+      - "KOMETA_COLLECTIONS_ONLY=${KOMETA_COLLECTIONS_ONLY}" # Process only collections during the run DEFAULT: false
+      - "KOMETA_LIBRARIES_ONLY=${KOMETA_LIBRARIES_ONLY}" # Process everything but collections during the run DEFAULT: false
+      - "KOMETA_NO_MISSING=${KOMETA_NO_MISSING}" # Run without any of the missing movie/show functions DEFAULT: false
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "${APPFOLDER}/kometa:/config:rw"
+    labels:
+      - "dockupdater.enable=true"
+networks:
+  proxy:
+    driver: bridge
+    external: true
