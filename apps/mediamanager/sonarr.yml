@@ -11,6 +11,7 @@ services:
       - "UMASK=${UMASK}"
       - "DOCKER_MODS=ghcr.io/themepark-dev/theme.park:sonarr|ghcr.io/dockserver/docker-mod-healthcheck:latest"
       - "TP_THEME=${SONARRTHEME}"
+      - "TP_ADDON=sonarr-text-logo"
     image: "${SONARRIMAGE}"
     restart: "${RESTARTAPP}"
     networks:
