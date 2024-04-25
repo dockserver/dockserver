@@ -1,3 +1,3 @@
 
 ## 2024-04-25
- * chore(deps): update actions/checkout action to v4.1.4 (dockserver-bot)
+ * [Auto Generation] Changes : apps/docker-crunchy/Dockerfile apps/docker-crunchy/release.json apps/docker-rollarr/Dockerfile apps/docker-rollarr/release.json container.json wiki/docs/install/container.json (dockserver-bot[bot])
