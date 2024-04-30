@@ -1,3 +1,3 @@
 
 ## 2024-04-30
- * [Auto Generation] Changes : apps/docker-traktarr/Dockerfile apps/docker-traktarr/release.json apps/docker-uploader/Dockerfile apps/docker-uploader/release.json container.json wiki/docs/install/container.json (dockserver-bot[bot])
+ * chore(deps): update renovatebot/github-action action to v40.1.11 (dockserver-bot)
