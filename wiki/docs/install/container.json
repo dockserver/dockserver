@@ -126,7 +126,7 @@
    "appfolder": "./apps/docker-traktarr",
    "newversion": "3.19.1",
    "baseimage": "ghcr.io/linuxserver/baseimage-alpine",
-   "baseversion": "",
+   "baseversion": "3.19-d567c4d0-ls15",
    "body": "Upgrading docker-traktarr to ",
    "user": "dockserver image update[bot]"
 }
@@ -136,7 +136,7 @@
    "appfolder": "./apps/docker-uploader",
    "newversion": "3.19.1",
    "baseimage": "ghcr.io/linuxserver/baseimage-alpine",
-   "baseversion": "",
+   "baseversion": "3.19-d567c4d0-ls15",
    "body": "Upgrading docker-uploader to ",
    "user": "dockserver image update[bot]"
 }
