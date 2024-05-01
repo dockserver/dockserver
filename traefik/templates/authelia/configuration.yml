@@ -111,7 +111,7 @@ session:
   same_site: lax
   expiration: 1h
   inactivity: 10m
-  remember_me_duration: 1M
+  remember_me: 1M
   cookies:
     - domain: example.com
       authelia_url: https://authelia.example.com
