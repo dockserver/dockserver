@@ -3,7 +3,7 @@ version: '3.8'
 services:
   traefik:
     container_name: 'traefik'
-    image: 'traefik:latest'
+    image: 'docker.io/traefik:2.11'
     restart: 'unless-stopped'
     command:
       - --global.checkNewVersion=true
@@ -82,7 +82,7 @@ services:
       - 'traefik.http.routers.traefik-rtr.service=api@internal'
   cf-companion:
     container_name: 'cf-companion'
-    image: 'tiredofit/traefik-cloudflare-companion:latest'
+    image: 'ghcr.io/tiredofit/docker-traefik-cloudflare-companion:latest'
     depends_on:
       - traefik
     networks:
@@ -134,7 +134,7 @@ services:
       - 'traefik.http.services.traefik-error-pages-svc.loadbalancer.server.port=8080'
   authelia:
     container_name: 'authelia'
-    image: 'authelia/authelia:latest'
+    image: 'docker.io/authelia/authelia:latest'
     restart: 'always'
     depends_on:
       - traefik
