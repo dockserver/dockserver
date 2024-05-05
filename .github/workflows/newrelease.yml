@@ -8,14 +8,27 @@ jobs:
     name: Generate new tag
     runs-on: ubuntu-latest
     steps:
+      - name: Generate Token
+        uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: "${{ secrets.BOT_APP_ID }}"
+          private-key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: "${{ steps.app-token.outputs.token }}"
+
       - name: Check out code
         uses: actions/checkout@v4.1.4
+
       - name: Bump version and push tag
         uses: anothrNick/github-tag-action@1.69.0
         with:
           body: ${{steps.github_release.outputs.changelog}}
         env:
-          GITHUB_TOKEN: ${{ secrets.CR_PAT }}
+          GITHUB_TOKEN: "${{ steps.app-token.outputs.token }}"
           WITH_V: true
           DEFAULT_BUMP: fix
           RELEASE_BRANCHES: master
