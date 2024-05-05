@@ -1,30 +1,19 @@
 # CHANGELOG
 
-## [v1.4.67](https://github.com/dockserver/dockserver/releases/tag/v1.4.67) - 2024-04-24 15:41:50
+## [v1.4.68](https://github.com/dockserver/dockserver/releases/tag/v1.4.68) - 2024-05-05 16:50:59
 
 ## 🎨 DockServer Update
 
-- update theme.park addons
-   - PR: #708
-
-
-
-
-- minor updates to ymls and wiki
-   - PR: #706
-- plexmetamanager to kometa update
-   - PR: #707
+- Update Authelia configuration.yml
+   - PR: #709
 
 ### Documentation
 
 - README:
-  - update contributors ([83b4cb3](https://github.com/dockserver/dockserver/commit/83b4cb3b000cb840b276f92c8ebc735e6a178c2f))
-  - update contributors ([c065b7d](https://github.com/dockserver/dockserver/commit/c065b7d99be78248b19c76a6c154c7a92f0168fe))
-  - update contributors ([d041acf](https://github.com/dockserver/dockserver/commit/d041acf6b9190b729fde5e993207a69674d7afc2))
-  - update contributors ([c627b31](https://github.com/dockserver/dockserver/commit/c627b31c1a977f9ac4da91037dfbf1c9855d564c))
-  - update contributors ([5c9ce6b](https://github.com/dockserver/dockserver/commit/5c9ce6bc32bf458cb03f9f5cfc66bdcf9534b3da))
-  - update contributors ([f4a901b](https://github.com/dockserver/dockserver/commit/f4a901b5bc0fdac08a0be0fbfee10f2ad591e221))
-  - update contributors ([49602f6](https://github.com/dockserver/dockserver/commit/49602f600ad95f3f6aeb851ba57801f50347841a))
+  - update contributors ([47e4879](https://github.com/dockserver/dockserver/commit/47e4879ccc173d67022f5eae31ad02c04db045a2))
+  - update contributors ([5598679](https://github.com/dockserver/dockserver/commit/55986792acdabf70da5676d96b895cb6aea3f0d5))
+
+## [v1.4.67](https://github.com/dockserver/dockserver/releases/tag/v1.4.67) - 2024-04-24 15:41:50
 
 ## [v1.4.66](https://github.com/dockserver/dockserver/releases/tag/v1.4.66) - 2024-03-16 18:30:39
 
