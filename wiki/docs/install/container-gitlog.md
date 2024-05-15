@@ -1,3 +1,3 @@
 
 ## 2024-05-15
- * [Auto Generation] Changelog : (dockserver-bot[bot])
+ * [Auto Generation] Changes : apps/docker-wiki/Dockerfile apps/docker-wiki/release.json container.json wiki/docs/install/container.json (dockserver-bot[bot])
