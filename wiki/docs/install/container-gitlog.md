@@ -1,3 +1,3 @@
 
 ## 2024-05-15
- * [Auto Generation] Changelog : (dockserver-bot[bot])
+ * chore(deps): update docker/metadata-action digest to f7b4ed1 (dockserver-bot)
