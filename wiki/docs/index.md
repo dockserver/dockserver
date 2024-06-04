@@ -1,7 +1,7 @@
 # **DockServer**
 
 <p align="center">
-    <a href="https://dockserver.io">
+    <a href="https://dockserver.github.io/dockserver/">
       <img src="https://raw.githubusercontent.com/dockserver/dockserver/master/wiki/docs/img/dockservee_animated.gif" alt="Join DockServer community">
     </a>
 </p>
@@ -35,7 +35,7 @@ _Docker + Traefik with Authelia and Cloudflare Protection_
 
 ## Migration
 
-If you currently have a server with PG/MHS/PTS, have a look here before you start the installation: [Migration Guide](https://dockserver.io/install/migration.html)
+If you currently have a server with PG/MHS/PTS, have a look here before you start the installation: [Migration Guide](https://dockserver.github.io/dockserver/install/migration.html)
 
 ---
 
@@ -91,7 +91,7 @@ If you currently have a server with PG/MHS/PTS, have a look here before you star
 
 ### Easy Mode install
 
-Follow our install instructions: [Wiki](https://dockserver.io/install/install.html)
+Follow our install instructions: [Wiki](https://dockserver.github.io/dockserver/install/install.html)
 
 ---
 
