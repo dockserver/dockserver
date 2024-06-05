@@ -1,17 +1,13 @@
 # CHANGELOG
 
+## [v1.4.69](https://github.com/dockserver/dockserver/releases/tag/v1.4.69) - 2024-06-05 06:56:21
+
+## 🐛 Fixes
+
+- Fix jlesage Files
+   - PR: #710
+
 ## [v1.4.68](https://github.com/dockserver/dockserver/releases/tag/v1.4.68) - 2024-05-05 16:50:59
-
-## 🎨 DockServer Update
-
-- Update Authelia configuration.yml
-   - PR: #709
-
-### Documentation
-
-- README:
-  - update contributors ([47e4879](https://github.com/dockserver/dockserver/commit/47e4879ccc173d67022f5eae31ad02c04db045a2))
-  - update contributors ([5598679](https://github.com/dockserver/dockserver/commit/55986792acdabf70da5676d96b895cb6aea3f0d5))
 
 ## [v1.4.67](https://github.com/dockserver/dockserver/releases/tag/v1.4.67) - 2024-04-24 15:41:50
 
