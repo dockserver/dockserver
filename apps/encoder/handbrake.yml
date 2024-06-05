@@ -11,7 +11,7 @@ services:
       - "PUID=${ID}"
       - "TZ=${TZ}"
       - "UMASK=${UMASK}"
-    image: "jlesage/handbrake"
+    image: "docker.io/jlesage/handbrake:latest"
     restart: "${RESTARTAPP}"
     networks:
       - ${DOCKERNETWORK}
