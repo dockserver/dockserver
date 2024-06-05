@@ -4,7 +4,7 @@ services:
   makemkv:
     hostname: "makemkv"
     container_name: "makemkv"
-    image: "jlesage/makemkv:latest"
+    image: "docker.io/jlesage/makemkv:latest"
     restart: "${RESTARTAPP}"
     environment:
       - "PGID=${ID}"
