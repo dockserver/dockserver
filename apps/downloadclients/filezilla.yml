@@ -11,7 +11,7 @@ services:
       - "UMASK=${UMASK}"
       - "DISPLAY_WIDTH=1920"
       - "DISPLAY_HEIGHT=1080"
-    image: "jlesage/filezilla"
+    image: "docker.io/jlesage/filezilla:latest"
     restart: "${RESTARTAPP}"
     networks:
       - ${DOCKERNETWORK}
@@ -31,7 +31,7 @@ services:
       - "traefik.http.routers.filezilla-rtr.tls.certresolver=dns-cloudflare"
       - "traefik.http.routers.filezilla-rtr.middlewares=chain-authelia@file"
       - "traefik.http.routers.filezilla-rtr.service=filezilla-svc"
-      - "traefik.http.services.filezilla-svc.loadbalancer.server.port=5083"
+      - "traefik.http.services.filezilla-svc.loadbalancer.server.port=5800"
 networks:
   proxy:
     driver: bridge
