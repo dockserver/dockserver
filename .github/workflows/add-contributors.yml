@@ -12,15 +12,24 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-20.04
     steps:
+      - name: Generate Token
+        uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: "${{ secrets.BOT_APP_ID }}"
+          private-key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
+
       - name: Check out code
         uses: actions/checkout@v4.1.6
+        with:
+          token: "${{ steps.app-token.outputs.token }}"
 
       - uses: BobAnkh/add-contributors@master
         with:
           REPO_NAME: 'dockserver/dockserver'
           CONTRIBUTOR: '### Contributors'
           COLUMN_PER_ROW: '4'
-          ACCESS_TOKEN: ${{secrets.CR_PAT}}
+          ACCESS_TOKEN: "${{ steps.app-token.outputs.token }}"
           IMG_WIDTH: '50'
           FONT_SIZE: '14'
           PATH: '/README.md'
@@ -35,13 +44,14 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4.1.6
         with:
+          token: "${{ steps.app-token.outputs.token }}"
           fetch-depth: '0'
 
       - uses: BobAnkh/add-contributors@master
         with:
           CONTRIBUTOR: '### Contributors'
           COLUMN_PER_ROW: '4'
-          ACCESS_TOKEN: ${{secrets.CR_PAT}}
+          ACCESS_TOKEN: "${{ steps.app-token.outputs.token }}"
           IMG_WIDTH: '50'
           FONT_SIZE: '14'
           PATH: '/wiki/docs/index.md'
