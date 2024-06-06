@@ -71,7 +71,7 @@ jobs:
                 "value": "new Version public : `'${VERSION}'`"
               },
               {
-                "name": "Changelog on dockserver.io",
+                "name": "Changelog on dockserver.github.io/dockserver",
                 "value": "Changelog : (https://dockserver.github.io/dockserver/install/changelog.html)"
               },
               {
