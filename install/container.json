@@ -1,0 +1,330 @@
+{
+   "appname": "docker-auto-replyarr",
+   "apppic": "",
+   "appfolder": "./apps/docker-auto-replyarr",
+   "newversion": "3.20.0",
+   "baseimage": "alpine",
+   "description": "Official Alpine Linux Docker image. Win at minimalism!",
+   "body": "Upgrading docker-auto-replyarr to 3.20.0",
+   "user": "github-actions[bot]"
+}
+{
+   "appname": "docker-backup",
+   "apppic": "./images/docker-backup.png",
+   "appfolder": "./apps/docker-backup",
+   "newversion": "3.20.0",
+   "baseimage": "alpine",
+   "description": "Official Alpine Linux Docker image. Win at minimalism!",
+   "body": "Upgrading docker-backup to 3.20.0",
+   "user": "github-actions[bot]"
+}
+{
+   "appname": "docker-crunchy",
+   "apppic": "./images/docker-crunchy.png",
+   "appfolder": "./apps/docker-crunchy",
+   "newversion": "rolling",
+   "baseimage": "ubuntu",
+   "description": "Docker image  for docker-crunchy",
+   "body": "Upgrading docker-crunchy to baseimage: ubuntu:rolling",
+   "user": "dockserver image update[bot]"
+}
+{
+   "appname": "docker-crunchydl",
+   "apppic": "./images/docker-crunchydl.png",
+   "appfolder": "./apps/docker-crunchydl",
+   "newversion": "null",
+   "appbranch": "master",
+   "baseimage": "alpine:latest",
+   "description": "Docker Container for crunchyroll download client",
+   "body": "Upgrading docker-crunchydl to null",
+   "user": "dockserver-image[bot]"
+}
+{
+   "appname": "docker-dockupdate",
+   "apppic": "./images/docker-dockupdate.png",
+   "appfolder": "./apps/docker-dockupdate",
+   "newversion": "",
+   "baseimage": "alpine",
+   "description": "null",
+   "body": "Upgrading docker-dockupdate to ",
+   "user": "github-actions[bot]"
+}
+{
+   "appname": "docker-gdsa",
+   "apppic": "./images/docker-gdsa.png",
+   "appfolder": "./apps/docker-gdsa",
+   "newversion": "479.0.0-alpine",
+   "baseimage": "gcr.io/google.com/cloudsdktool/cloud-sdk",
+   "description": "Docker for Creating GDSA keys",
+   "body": "Upgrading docker-gdsa to 479.0.0-alpine",
+   "user": "dockserver-actions[bot]"
+}
+{
+   "appname": "docker-mount",
+   "apppic": "./images/docker-mount.png",
+   "appfolder": "./apps/docker-mount",
+   "newversion": "3.20.0",
+   "mergerfs": "2.40.2",
+   "rclone": "v1.66.0",
+   "baseimage": "alpine",
+   "buildimage": "alpine",
+   "finalimage": "ghcr.io/linuxserver/baseimage-alpine",
+   "baseversion": "3.20-6cd44267-ls1",
+   "s6stage": "v3.1.6.2",
+   "description": "Docker docker-mount with mergerfs version 2.40.2 and rclone version v1.66.0 include s6-overlay: v3.1.6.2",
+   "body": "Upgrading docker-mount to baseimage: alpine:3.20-6cd44267-ls1 with mergerfs: 2.40.2 and rclone: v1.66.0 include s6-overlay: v3.1.6.2",
+   "user": "dockserver image update[bot]"
+}
+{
+   "appname": "docker-newznab",
+   "apppic": "./images/docker-newznab.png",
+   "appfolder": "./apps/docker-newznab",
+   "newversion": "20.04",
+   "baseimage": "ubuntu",
+   "description": "Docker image  for docker-newznab",
+   "body": "Upgrading docker-newznab to baseimage: ubuntu:20.04",
+   "user": "dockserver image update[bot]"
+}
+{
+   "appname": "docker-restic",
+   "apppic": "./images/docker-restic.png",
+   "appfolder": "./apps/docker-restic",
+   "newversion": "3.20.0",
+   "rclone": "v1.66.0",
+   "baseimage": "alpine",
+   "buildimage": "alpine",
+   "finalimage": "ghcr.io/linuxserver/baseimage-alpine",
+   "baseversion": "3.20-6cd44267-ls1",
+   "s6stage": "v3.1.6.2",
+   "description": "Docker docker-restic with rclone version v1.66.0 include s6-overlay: v3.1.6.2",
+   "body": "Upgrading docker-restic to baseimage: alpine:3.20-6cd44267-ls1 with rclone: v1.66.0 include s6-overlay: v3.1.6.2",
+   "user": "dockserver image update[bot]"
+}
+{
+   "appname": "docker-rollarr",
+   "apppic": "./images/docker-rollarr.png",
+   "appfolder": "./apps/docker-rollarr",
+   "newversion": "rolling",
+   "baseimage": "ubuntu",
+   "description": "This is the new and improved Automatic Pre-roll script with a GUI for Plex now called Rollarr!",
+   "body": "Upgrading docker-rollarr to rolling",
+   "user": "github-actions[bot]"
+}
+{
+   "appname": "docker-spotweb",
+   "apppic": "",
+   "appfolder": "./apps/docker-spotweb",
+   "newversion": "1.5.4",
+   "baseimage": "ubuntu:latest",
+   "description": "Decentralized community",
+   "body": "Upgrading docker-spotweb to 1.5.4",
+   "user": "dockserver[bot]"
+}
+{
+   "appname": "docker-traktarr",
+   "apppic": "./images/docker-traktarr.png",
+   "appfolder": "./apps/docker-traktarr",
+   "newversion": "3.20.0",
+   "baseimage": "ghcr.io/linuxserver/baseimage-alpine",
+   "baseversion": "3.20-6cd44267-ls1",
+   "body": "Upgrading docker-traktarr to ",
+   "user": "dockserver image update[bot]"
+}
+{
+   "appname": "docker-uploader",
+   "apppic": "./images/docker-uploader.png",
+   "appfolder": "./apps/docker-uploader",
+   "newversion": "3.20.0",
+   "baseimage": "ghcr.io/linuxserver/baseimage-alpine",
+   "baseversion": "3.20-6cd44267-ls1",
+   "body": "Upgrading docker-uploader to ",
+   "user": "dockserver image update[bot]"
+}
+{
+   "appname": "docker-vnstat",
+   "apppic": "./images/docker-vnstat.png",
+   "appfolder": "./apps/docker-vnstat",
+   "newversion": "8-apache",
+   "baseimage": "php",
+   "description": "Docker image  for docker-vnstat",
+   "body": "Upgrading docker-vnstat to baseimage: php:8-apache",
+   "user": "dockserver image update[bot]"
+}
+{
+   "appname": "docker-wiki",
+   "apppic": "./images/docker-wiki.png",
+   "appfolder": "./apps/docker-wiki",
+   "appbranch": "master",
+   "newversion": "3.20.0",
+   "appversion": "1.4.69",
+   "wikiversion": "9.5.25",
+   "baseimage": "alpine",
+   "description": "Docker + Traefik with Authelia and Cloudflare Protection",
+   "body": "Upgrading docker-wiki to 3.20.0",
+   "user": "github-actions[bot]"
+}
+{
+   "appname": "alpine",
+   "apppic": "",
+   "appfolder": "./base/alpine",
+   "newversion": "3.20.0",
+   "baseimage": "alpine",
+   "description": "Official Alpine Linux Docker image. Win at minimalism!",
+   "body": "Upgrading alpine to 3.20.0",
+   "user": "github-actions[bot]"
+}
+{
+   "appname": "docker-alpine",
+   "apppic": "./images/docker-alpine.png",
+   "appfolder": "./base/docker-alpine",
+   "newversion": "3.15.0-rc.4",
+   "baseimage": "null",
+   "packages": "null",
+   "description": "Official Alpine Linux Docker image. Win at minimalism!",
+   "body": "Upgrading docker-alpine to 3.15.0-rc.4",
+   "user": "github-actions[bot]"
+}
+{
+   "appname": "docker-alpine-v3",
+   "apppic": "./images/docker-alpine-v3.png",
+   "appfolder": "./base/docker-alpine-v3",
+   "newversion": "3.20.0",
+   "baseimage": "alpine",
+   "baseversion": "3.20.0",
+   "s6stage": "v3.1.6.2",
+   "description": "Docker docker-alpine-v3 with include s6-overlay: v3.1.6.2",
+   "body": "Upgrading docker-alpine-v3 to baseimage: alpine:3.20.0  with include s6-overlay: v3.1.6.2",
+   "user": "dockserver image update[bot]"
+}
+{
+   "appname": "docker-config",
+   "apppic": "./images/docker-config.png",
+   "appfolder": "./base/docker-config",
+   "newversion": "3.20.0",
+   "baseimage": "alpine",
+   "description": " !!! DEVERLOP STATUS !!! DO NOT TRY TO PULL THE IMAGE YOU NEED ACCESS TO THE REPOSITORY",
+   "body": "Upgrading docker-config to 3.20.0",
+   "user": "github-actions[bot]"
+}
+{
+   "appname": "docker-create",
+   "apppic": "./images/docker-create.png",
+   "appfolder": "./base/docker-create",
+   "newversion": "3.20.0",
+   "baseimage": "alpine",
+   "description": " !!! DEVERLOP STATUS !!! DO NOT TRY TO PULL THE IMAGE YOU NEED ACCESS TO THE REPOSITORY",
+   "body": "Upgrading docker-create to 3.20.0",
+   "user": "github-actions[bot]"
+}
+{
+   "appname": "docker-dockserver",
+   "apppic": "",
+   "appfolder": "./base/docker-dockserver",
+   "newversion": "3.20.0",
+   "appversion": "3.20.0",
+   "baseimage": "alpine",
+   "description": "Docker + Traefik with Authelia and Cloudflare Protection",
+   "body": "Upgrading docker-dockserver to 3.20.0",
+   "user": "github-actions[bot]"
+}
+{
+   "appname": "docker-ubuntu-focal",
+   "apppic": "./images/docker-ubuntu-focal.png",
+   "appfolder": "./base/docker-ubuntu-focal",
+   "newversion": "3.20.0",
+   "baseimage": "alpine",
+   "description": "Docker image  for docker-ubuntu-focal",
+   "body": "Upgrading docker-ubuntu-focal to baseimage: alpine:3.20.0",
+   "user": "dockserver image update[bot]"
+}
+{
+   "appname": "docker-ubuntu-jammy",
+   "apppic": "./images/docker-ubuntu-jammy.png",
+   "appfolder": "./base/docker-ubuntu-jammy",
+   "newversion": "3.20.0",
+   "baseimage": "alpine",
+   "description": "Docker image  for docker-ubuntu-jammy",
+   "body": "Upgrading docker-ubuntu-jammy to baseimage: alpine:3.20.0",
+   "user": "dockserver image update[bot]"
+}
+{
+   "appname": "docker-ui",
+   "apppic": "",
+   "appfolder": "./base/docker-ui",
+   "newversion": "3.20.0",
+   "appversion": "3.20.0",
+   "baseimage": "alpine",
+   "description": " !!! DEVERLOP STATUS !!! DO NOT TRY TO PULL THE IMAGE YOU NEED ACCESS TO THE REPOSITORY",
+   "body": "Upgrading docker-ui to 3.20.0",
+   "user": "github-actions[bot]"
+}
+{
+   "appname": "docker-ui",
+   "apppic": "",
+   "appfolder": "./base/dockserver-ui",
+   "newversion": "0.0.1",
+   "appversion": "0.0.1",
+   "baseimage": "pyrhon-alpine",
+   "description": " !!! DEVERLOP STATUS !!! DO NOT TRY TO PULL THE IMAGE | YOU NEED ACCESS TO THE REPOSITORY",
+   "body": "Upgrading dockserver-ui to 0.0.1",
+   "user": "dockserver image update[bot]"
+}
+{
+   "appname": "ubuntu",
+   "apppic": "./images/ubuntu.png",
+   "appfolder": "./base/ubuntu",
+   "newversion": "focal-20220113",
+   "baseimage": "null",
+   "packages": "null",
+   "description": "Dockerbase Image with Ubuntu",
+   "body": "Upgrading ubuntu to focal-20220113",
+   "user": "github-actions[bot]"
+}
+{
+   "appname": "docker-mod-healthcheck",
+   "apppic": "./images/docker-mod-healthcheck.png",
+   "appfolder": "./mod/docker-mod-healthcheck",
+   "user": "github-actions[bot]"
+}
+{
+   "appname": "docker-mod-nzbget",
+   "apppic": "./images/docker-mod-nzbget.png",
+   "appfolder": "./mod/docker-mod-nzbget",
+   "user": "github-actions[bot]"
+}
+{
+   "appname": "docker-mod-qbittorrent",
+   "apppic": "./images/docker-mod-qbittorrent.png",
+   "appfolder": "./mod/docker-mod-qbittorrent",
+   "user": "github-actions[bot]"
+}
+{
+   "appname": "docker-mod-rclone",
+   "apppic": "./images/docker-mod-rclone.png",
+   "appfolder": "./mod/docker-mod-rclone",
+   "user": "github-actions[bot]"
+}
+{
+   "appname": "docker-mod-sabnzbd",
+   "apppic": "./images/docker-mod-sabnzbd.png",
+   "appfolder": "./mod/docker-mod-sabnzbd",
+   "user": "github-actions[bot]"
+}
+{
+   "appname": "docker-mod-tautulli",
+   "apppic": "./images/docker-mod-tautulli.png",
+   "appfolder": "./mod/docker-mod-tautulli",
+   "user": "github-actions[bot]"
+}
+{
+   "appname": "docker-whisparr-nightly",
+   "apppic": "./images/docker-whisparr-nightly.png",
+   "appfolder": "./nightly/docker-whisparr-nightly",
+   "newversion": "2.0.0.548",
+   "appbranch": "nightly",
+   "baseimage": "ghcr.io/linuxserver/baseimage-alpine",
+   "baseversion": "3.20-6cd44267-ls1",
+   "description": "Whisparr is an adult movie collection manager for Usenet and BitTorrent users.",
+   "body": "Upgrading docker-whisparr-nightly to 2.0.0.548",
+   "user": "dockserver image update[bot]"
+}
