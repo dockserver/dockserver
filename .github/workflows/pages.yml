@@ -1,0 +1,40 @@
+---
+name: Deploy GitHub Page
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '.installer/**'
+      - 'preinstall/**'
+      - 'traefik/**'
+      - 'scripts/**'
+      - 'wiki/**'
+  workflow_dispatch:
+
+env:
+  PYTHON_VERSION: 3.x
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    name: Deploy Dockserver Wiki on GitHub Pages
+    runs-on: ubuntu-latest
+    if: github.event.repository.fork == false
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.1.6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python runtime
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Set up Wiki
+        run: |
+          pip install -r wiki/requirements.txt
+          mkdocs gh-deploy --force --config-file wiki/mkdocs.yml --remote-branch wiki
