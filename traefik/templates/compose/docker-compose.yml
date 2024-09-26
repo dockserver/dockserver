@@ -106,31 +106,6 @@ services:
       - 'REFRESH_ENTRIES=TRUE'
       - 'DOCKER_ENTRYPOINT=unix://var/run/docker.sock'
       - 'DOCKER_SWARM_MODE=FALSE'
-  traefik-error-pages:
-    container_name: 'traefik-error-pages'
-    image: 'ghcr.io/tarampampam/error-pages:latest'
-    restart: 'unless-stopped'
-    networks:
-      - ${DOCKERNETWORK}
-    environment:
-      - 'PGID=${ID}'
-      - 'PUID=${ID}'
-      - 'TZ=${TZ}'
-      - 'TEMPLATE_NAME=${TEMPLATE_NAME}'
-    labels:
-      - 'traefik.enable=true'
-      - 'dockupdater.enable=true'
-      - 'traefik.docker.network=proxy'
-      - 'traefik.http.routers.traefik-error-pages-rtr.entrypoints=https'
-      - 'traefik.http.routers.traefik-error-pages-rtr.rule=HostRegexp(`{host:.+}`)'
-      - 'traefik.http.routers.traefik-error-pages-rtr.priority=10'
-      - 'traefik.http.routers.traefik-error-pages-rtr.middlewares=traefik-error-pages'
-      - 'traefik.http.routers.traefik-error-pages-rtr.middlewares=chain-no-auth@file'
-      - 'traefik.http.routers.traefik-error-pages-rtr.service=traefik-error-pages-svc'
-      - 'traefik.http.middlewares.traefik-error-pages.errors.service=traefik-error-pages-svc'
-      - 'traefik.http.middlewares.traefik-error-pages.errors.status=400,402,404-599'
-      - 'traefik.http.middlewares.traefik-error-pages.errors.query=/{status}.html'
-      - 'traefik.http.services.traefik-error-pages-svc.loadbalancer.server.port=8080'
   authelia:
     container_name: 'authelia'
     image: 'docker.io/authelia/authelia:latest'
