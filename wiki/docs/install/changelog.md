@@ -1,11 +1,20 @@
 # CHANGELOG
 
+## [v1.4.70](https://github.com/dockserver/dockserver/releases/tag/v1.4.70) - 2024-09-26 10:27:56
+
+- CleanUP Github Actions
+   - PR: #711
+- chore(deps): update mikepenz/release-changelog-builder-action action to v5
+   - PR: #712
+- feat: Update Traefik to V3
+   - PR: #714
+
+### Feature
+
+- general:
+  - Update Traefik to V3 (#714) ([dcd3773](https://github.com/dockserver/dockserver/commit/dcd37733d710eed2b845638898bef69e710a81fb)) ([#714](https://github.com/dockserver/dockserver/pull/714))
+
 ## [v1.4.69](https://github.com/dockserver/dockserver/releases/tag/v1.4.69) - 2024-06-05 06:56:21
-
-## 🐛 Fixes
-
-- Fix jlesage Files
-   - PR: #710
 
 ## [v1.4.68](https://github.com/dockserver/dockserver/releases/tag/v1.4.68) - 2024-05-05 16:50:59
 
