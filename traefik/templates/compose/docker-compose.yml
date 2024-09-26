@@ -13,7 +13,7 @@ services:
       - --api.dashboard=true
       - --serversTransport.insecureSkipVerify=true
       - --log=true
-      - --log.level=ERROR
+      - --log.level=INFO
       - --accessLog=true
       - --accessLog.filePath=/traefik.log
       - --accessLog.bufferingSize=100
