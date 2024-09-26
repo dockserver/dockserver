@@ -59,11 +59,11 @@ services:
         protocol: udp
         mode: host
     volumes:
-      - '${APPFOLDER}/traefik/rules:/rules'
-      - '${APPFOLDER}/traefik/certs:/tmp/certs'
+      - '${APPFOLDER}/traefik/rules:/rules:rw'
+      - '${APPFOLDER}/traefik/certs:/tmp/certs:rw'
       - '/var/run/docker.sock:/var/run/docker.sock:ro'
-      - '${APPFOLDER}/traefik/acme/acme.json:/acme.json'
-      - '${APPFOLDER}/traefik/traefik.log:/traefik.log'
+      - '${APPFOLDER}/traefik/acme/acme.json:/acme.json:rw'
+      - '${APPFOLDER}/traefik/traefik.log:/traefik.log:rw'
     environment:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
@@ -115,7 +115,7 @@ services:
     networks:
       - ${DOCKERNETWORK}
     volumes:
-      - '${APPFOLDER}/authelia:/config'
+      - '${APPFOLDER}/authelia:/config:rw'
     environment:
       - 'PGID=${ID}'
       - 'PUID=${ID}'
