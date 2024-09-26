@@ -13,7 +13,6 @@ services:
       - --api.dashboard=true
       - --serversTransport.insecureSkipVerify=true
       - --log=true
-      - --pilot.dashboard=false
       - --log.level=ERROR
       - --accessLog=true
       - --accessLog.filePath=/traefik.log
@@ -75,7 +74,7 @@ services:
       - 'dockupdater.enable=true'
       - 'traefik.enable=true'
       - 'traefik.http.routers.traefik-rtr.entrypoints=https'
-      - 'traefik.http.routers.traefik-rtr.rule=HostHeader(`traefik.${DOMAIN}`)'
+      - 'traefik.http.routers.traefik-rtr.rule=Host(`traefik.${DOMAIN}`)'
       - 'traefik.http.routers.traefik-rtr.tls=true'
       - 'traefik.http.routers.traefik-rtr.tls.certresolver=dns-cloudflare'
       - 'traefik.http.routers.traefik-rtr.middlewares=chain-authelia@file'
