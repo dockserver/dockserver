@@ -1,4 +1,5 @@
 ---
+version: '3.8'
 services:
   traefik-error-pages:
     container_name: 'traefik-error-pages'
