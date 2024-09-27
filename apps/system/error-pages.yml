@@ -1,6 +1,5 @@
 ---
-version: "3"
-
+version: '3.8'
 services:
   traefik-error-pages:
     container_name: 'traefik-error-pages'
@@ -29,7 +28,6 @@ services:
       - 'traefik.http.middlewares.traefik-error-pages.errors.status=400,402,404-599'
       - 'traefik.http.middlewares.traefik-error-pages.errors.query=/{status}.html'
       - 'traefik.http.services.traefik-error-pages-svc.loadbalancer.server.port=8080'
-
 networks:
   proxy:
     driver: bridge
