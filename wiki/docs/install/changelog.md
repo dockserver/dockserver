@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [v1.4.71](https://github.com/dockserver/dockserver/releases/tag/v1.4.71) - 2024-09-27 05:49:46
+
+- feat: add error-pages as extra
+   - PR: #715
+
+### Feature
+
+- general:
+  - add error-pages as extra (#715) ([4f1670a](https://github.com/dockserver/dockserver/commit/4f1670acadfbd75565ef4fb18d91e3414cd88c26)) ([#715](https://github.com/dockserver/dockserver/pull/715))
+
 ## [v1.4.70](https://github.com/dockserver/dockserver/releases/tag/v1.4.70) - 2024-09-26 10:27:56
 
 - CleanUP Github Actions
