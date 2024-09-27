@@ -1,0 +1,34 @@
+---
+version: '3.8'
+services:
+  traefik-error-pages:
+    container_name: 'traefik-error-pages'
+    image: 'ghcr.io/tarampampam/error-pages:latest'
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - '${SECURITYOPS}:${SECURITYOPSSET}'
+    environment:
+      - 'PGID=${ID}'
+      - 'PUID=${ID}'
+      - 'TZ=${TZ}'
+      - 'TEMPLATE_NAME=${TEMPLATE_NAME}'
+    labels:
+      - 'dockupdater.enable=true'
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'traefik.http.routers.traefik-error-pages-rtr.entrypoints=https'
+      - 'traefik.http.routers.traefik-error-pages-rtr.rule=HostRegexp(`.+`)'
+      - 'traefik.http.routers.traefik-error-pages-rtr.priority=10'
+      - 'traefik.http.routers.traefik-error-pages-rtr.middlewares=traefik-error-pages'
+      - 'traefik.http.routers.traefik-error-pages-rtr.middlewares=chain-no-auth@file'
+      - 'traefik.http.routers.traefik-error-pages-rtr.service=traefik-error-pages-svc'
+      - 'traefik.http.middlewares.traefik-error-pages.errors.service=traefik-error-pages-svc'
+      - 'traefik.http.middlewares.traefik-error-pages.errors.status=400,402,404-599'
+      - 'traefik.http.middlewares.traefik-error-pages.errors.query=/{status}.html'
+      - 'traefik.http.services.traefik-error-pages-svc.loadbalancer.server.port=8080'
+networks:
+  proxy:
+    driver: bridge
+    external: true
