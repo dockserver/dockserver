@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [v1.4.72](https://github.com/dockserver/dockserver/releases/tag/v1.4.72) - 2024-10-08 08:01:04
+
+repository changes
+
 ## [v1.4.71](https://github.com/dockserver/dockserver/releases/tag/v1.4.71) - 2024-09-27 05:49:46
 
 - feat: add error-pages as extra
