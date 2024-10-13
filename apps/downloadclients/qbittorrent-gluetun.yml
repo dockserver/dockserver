@@ -17,7 +17,6 @@ services:
       - "UID=${ID}"
       - "TZ=${TZ}"
       - "UMASK=${UMASK}"
-      - "VPN_TYPE=${GLUETUN_VPN_TYPE}"
       - "VPN_SERVICE_PROVIDER=${GLUETUN_VPN_SERVICE_PROVIDER}"
       - "VPN_TYPE=${GLUETUN_VPN_TYPE}"
       - "WIREGUARD_PRIVATE_KEY=${GLUETUN_WG_KEY}"
