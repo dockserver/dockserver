@@ -1,3 +1,4 @@
+---
 version: "3"
 services:
   gluetun:
@@ -26,7 +27,6 @@ services:
       - "${APPFOLDER}/gluetun/:/gluetun"
     labels:
       - "dockupdater.disable=true"
-
   qbittorrent:
     container_name: "qbittorrent"
     environment:
