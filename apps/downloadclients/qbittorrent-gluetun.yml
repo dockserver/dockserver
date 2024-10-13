@@ -24,6 +24,9 @@ services:
       - "SERVER_CITIES=${GLUETUN_CITIES}"
     volumes:
       - "${APPFOLDER}/gluetun2/:/gluetun"
+    labels:
+      - "dockupdater.disable=true"
+
   qbittorrent:
     container_name: "qbittorrent"
     environment:
