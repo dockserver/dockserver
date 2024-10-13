@@ -9,9 +9,9 @@ services:
     restart: "${RESTARTAPP}"
     networks:
       - ${DOCKERNETWORK}
-    ports:
-      - 25858:25858/tcp # Shadowsocks
-      - 25858:25858/udp # Shadowsocks
+    # ports: # OPTIONAL 
+     #  - 25858:25858/tcp # Shadowsocks
+     # - 25858:25858/udp # Shadowsocks
     environment:
       - "GID=${ID}"
       - "UID=${ID}"
