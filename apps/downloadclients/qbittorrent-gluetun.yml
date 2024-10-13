@@ -1,4 +1,3 @@
----
 version: "3"
 services:
   gluetun:
@@ -10,20 +9,22 @@ services:
     restart: "${RESTARTAPP}"
     networks:
       - ${DOCKERNETWORK}
+    ports:
+      - 25858:25858/tcp # Shadowsocks
+      - 25858:25858/udp # Shadowsocks
     environment:
       - "GID=${ID}"
       - "UID=${ID}"
       - "TZ=${TZ}"
       - "UMASK=${UMASK}"
+      - "VPN_TYPE=${GLUETUN_VPN_TYPE}"
       - "VPN_SERVICE_PROVIDER=${GLUETUN_VPN_SERVICE_PROVIDER}"
       - "VPN_TYPE=${GLUETUN_VPN_TYPE}"
       - "WIREGUARD_PRIVATE_KEY=${GLUETUN_WG_KEY}"
       - "WIREGUARD_ADDRESSES=${GLUETUN_WG_ADDRESS}"
       - "SERVER_CITIES=${GLUETUN_CITIES}"
     volumes:
-      - "${APPFOLDER}/gluetun/:/gluetun"
-    labels:
-      - "dockupdater.disable=true"
+      - "${APPFOLDER}/gluetun2/:/gluetun"
   qbittorrent:
     container_name: "qbittorrent"
     environment:
@@ -32,11 +33,9 @@ services:
       - "TZ=${TZ}"
       - "UMASK=${UMASK}"
       - "WEBUI_PORT=8080"
-      - "DOCKER_MODS=ghcr.io/themepark-dev/theme.park:qbittorrent"
-      - "TP_THEME=${QBITORRENTTHEME}"
     image: "${QBITORRENTIMAGE}"
     restart: "${RESTARTAPP}"
-    network_mode: "container:gluetun"
+    network_mode: "service:gluetun"
     security_opt:
       - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
