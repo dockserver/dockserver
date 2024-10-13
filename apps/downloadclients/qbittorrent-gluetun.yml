@@ -23,7 +23,7 @@ services:
       - "WIREGUARD_ADDRESSES=${GLUETUN_WG_ADDRESS}"
       - "SERVER_CITIES=${GLUETUN_CITIES}"
     volumes:
-      - "${APPFOLDER}/gluetun2/:/gluetun"
+      - "${APPFOLDER}/gluetun/:/gluetun"
     labels:
       - "dockupdater.disable=true"
 
