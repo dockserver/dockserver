@@ -10,6 +10,9 @@ services:
     restart: "${RESTARTAPP}"
     networks:
       - ${DOCKERNETWORK}
+    # ports: # OPTIONAL 
+     #  - 25858:25858/tcp # Shadowsocks
+     # - 25858:25858/udp # Shadowsocks
     environment:
       - "GID=${ID}"
       - "UID=${ID}"
@@ -36,7 +39,7 @@ services:
       - "TP_THEME=${QBITORRENTTHEME}"
     image: "${QBITORRENTIMAGE}"
     restart: "${RESTARTAPP}"
-    network_mode: "container:gluetun"
+    network_mode: "service:gluetun"
     security_opt:
       - "${SECURITYOPS}:${SECURITYOPSSET}"
     volumes:
