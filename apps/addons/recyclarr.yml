@@ -1,0 +1,29 @@
+---
+version: "3"
+services:
+  recyclarr:
+    hostname: "recyclarr"
+    container_name: "recyclarr"
+    user: "1000:1000"
+    read_only: true
+    tmpfs: "/tmp"
+    environment:
+      - "PGID=${ID}"
+      - "PUID=${ID}"
+      - "TZ=${TZ}"
+    image: "ghcr.io/recyclarr/recyclarr:latest"
+    restart: "${RESTARTAPP}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/recyclarr:/config:rw"
+      - "/etc/locatime:/etc/localtime:ro"
+    labels:
+      - "dockupdater.enable=true"
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
