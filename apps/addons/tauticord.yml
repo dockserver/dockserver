@@ -9,7 +9,7 @@ services:
       - "PUID=${ID}"
       - "TZ=${TZ}"
       - "UMASK=${UMASK}"
-    image: "ghcr.io/cyb3rgh05t/tauticord:latest"
+    image: "nwithan8/tauticord:latest"
     restart: "${RESTARTAPP}"
     networks:
       - ${DOCKERNETWORK}
