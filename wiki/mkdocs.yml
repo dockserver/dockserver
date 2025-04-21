@@ -69,18 +69,18 @@ theme:
   search_index_only: true
   icon:
     admonition:
-      note: fontawesome/solid/sticky-note
-      abstract: fontawesome/solid/book
-      info: fontawesome/solid/info-circle
-      tip: fontawesome/solid/bullhorn
-      success: fontawesome/solid/check
-      question: fontawesome/solid/question-circle
-      warning: fontawesome/solid/exclamation-triangle
-      failure: fontawesome/solid/bomb
-      danger: fontawesome/solid/skull
-      bug: fontawesome/solid/robot
-      example: fontawesome/solid/flask
-      quote: fontawesome/solid/quote-left
+      note: material/note
+      abstract: material/book
+      info: material/information
+      tip: material/bullhorn
+      success: material/check
+      question: material/help-circle
+      warning: material/alert
+      failure: material/close-circle
+      danger: material/alert-octagon
+      bug: material/bug
+      example: material/beaker
+      quote: material/format-quote-close
 
   font:
     text: Roboto
