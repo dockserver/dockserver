@@ -115,7 +115,7 @@ Service Key Mount is used to prevent **Google API Bans**. To make use of this, y
 **IMPORTANT**: Do **not** use the same Keys as for the Uploader!
 
 #### Setup:
-- Create new Service Account Keys (see [Documentation](https://dockserver.github.io/drive/saccounts.html))
+- Create new Service Account Keys (see [Documentation](https://dockserver.github.io/dockserver/drive/saccounts.html))
 - Share all Keys with all Team Drives and set to `Manager`.
 - Place the new Keys in `opt/appdata/system/mount/keys`. (You may name the Keys whatever you'd like)
 - When Keys are present, a file named `drive.csv` is created under `opt/appdata/system/mount`. This file contains all Team Drive information from your `rclone.conf` located in `opt/appdata/system/rclone`.

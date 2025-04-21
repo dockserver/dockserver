@@ -64,7 +64,7 @@ sudo dockserver -i
 
 ---
 
-After deployment of Traefik & Authelia you have to install [mount](https://dockserver.github.io/apps/system/mount.html), then you can install any app.
+After deployment of Traefik & Authelia you have to install [mount](https://dockserver.github.io/dockserver/apps/system/mount.html), then you can install any app.
 
 1. Open the dockserver Interface again 
 2. Type 2 

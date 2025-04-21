@@ -51,7 +51,7 @@ sudo wget -qO- https://raw.githubusercontent.com/dockserver/dockserver/master/ba
 
 This will create a folder named /appbackups on the root of your remote drive. When the backup is done, check that these files exist on your remote drive. Also, check them for file sizes to make sure it looks right. Plex can take a long time, be patient.
 
-Now, please order a VPS with ubuntu 22 on it and follow the instructions on the [Wiki](https://dockserver.github.io/install/install.html). When dockserver is installed on your host, return here and follow instructions
+Now, please order a VPS with ubuntu 22 on it and follow the instructions on the [Wiki](https://dockserver.github.io/dockserver/install/install.html). When dockserver is installed on your host, return here and follow instructions
 
 # Mount & Uploader
 
