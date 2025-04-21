@@ -19,13 +19,13 @@
 # IN THE SOFTWARE.
  
 mkdocs
-mkdocs-material==8.2.16
-mkdocs-material-extensions==1.1
-mkdocs-minify-plugin==0.6.1
-mkdocs-redirects==1.2.0
-mkdocs-macros-plugin==0.7.0
-mkdocs-awesome-pages-plugin==2.8.0
-mkdocs-git-revision-date-localized-plugin==1.1.0
+mkdocs-material
+mkdocs-material-extensions
+mkdocs-minify-plugin
+mkdocs-redirects
+mkdocs-macros-plugin
+mkdocs-awesome-pages-plugin
+mkdocs-git-revision-date-localized-plugin
 markdown
 pygments
 mkdocs-render-swagger-plugin
