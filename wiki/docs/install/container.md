@@ -109,7 +109,7 @@ This repository is heavily based on
 
 [Linuxserver.io](https://linuxserver.io) images and [k8s-at-home](https://k8s-at-home.com/) idea
 
-All Containers have some additional edits just for dockserver.io
+All Containers have some additional edits just for dockserver.github.io
 
 Please check before you run it on other systems
 

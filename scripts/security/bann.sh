@@ -45,4 +45,4 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 
-printf "${RED}DockServer.io Security Patch\n${NC} code @ doob1987\n"
+printf "${RED}dockserver.github.io Security Patch\n${NC} code @ doob1987\n"

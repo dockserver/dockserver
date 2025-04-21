@@ -26,7 +26,7 @@ site_description: Use your self hosted docker as wiki
 repo_name: DockServer Wiki
 repo_url: https://github.com/dockserver/dockserver
 edit_uri: https://github.com/dockserver/dockserver/edit/master/wiki/docs/
-copyright: Copyright &copy; 2023 DockServer.io
+copyright: Copyright &copy; 2023 dockserver.github.io
 
 # Configuration
 theme:
@@ -120,7 +120,7 @@ extra:
       link: https://discord.gg/A7h7bKBCVa
       name: Discord
     - icon: fontawesome/brands/firefox
-      link: https://dockserver.io/
+      link: https://dockserver.github.io/
 
 markdown_extensions:
   - admonition

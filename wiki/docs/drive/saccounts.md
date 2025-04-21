@@ -38,10 +38,10 @@ Go to: https://console.cloud.google.com/projectselector2/iam-admin/serviceaccoun
 
 
 Now you can proceed to this portion of the migration instruction:
-https://dockserver.io/install/migration.html#mount-uploader
+https://dockserver.github.io/install/migration.html#mount-uploader
 
 Or to mount setup:
-https://dockserver.io/apps/system/mount.html#setup
+https://dockserver.github.io/apps/system/mount.html#setup
 
 ## Support
 
