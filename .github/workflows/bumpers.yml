@@ -17,7 +17,7 @@ jobs:
          private-key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
 
     - name: Check out code
-      uses: actions/checkout@v4.2.2
+      uses: actions/checkout@v4.3.0
       with:
         token: "${{ steps.app-token.outputs.token }}"
         fetch-depth: '0'
