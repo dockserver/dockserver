@@ -1,5 +1,50 @@
 # CHANGELOG
 
+## [v1.4.73](https://github.com/dockserver/dockserver/releases/tag/v1.4.73) - 2026-01-10 07:10:00+00:00
+
+## 🎨 DockServer Update
+
+- Update tauticord.yml
+   - PR: #721
+- Update requirements.txt
+   - PR: #723
+- Update mkdocs.yml
+   - PR: #724
+- Update Traefik configuration for version 3
+   - PR: #734
+
+
+
+
+- Gluetun fix
+   - PR: #716
+- chore(deps): update renovatebot/github-action action to v41
+   - PR: #718
+- chore(deps): update actions/create-github-app-token action to v2
+   - PR: #722
+- chore(deps): update renovatebot/github-action action to v42
+   - PR: #725
+- chore(deps): update renovatebot/github-action action to v43
+   - PR: #726
+- chore(deps): update actions/checkout action to v5
+   - PR: #727
+- chore(deps): update actions/stale action to v10
+   - PR: #729
+- chore(deps): update actions/setup-python action to v6
+   - PR: #728
+- chore(deps): update mikepenz/release-changelog-builder-action action to v6
+   - PR: #730
+- chore(deps): update renovatebot/github-action action to v44
+   - PR: #731
+- chore(deps): update actions/checkout action to v6
+   - PR: #732
+
+### Bug Fixes
+
+- general:
+  - wrong wiki links ([a779d86](https://github.com/dockserver/dockserver/commit/a779d86a905a2db4d2b8123ca669bfcdcfb6c650))
+  - remove dockserver.io leftovers ([c1447ad](https://github.com/dockserver/dockserver/commit/c1447ada4c8dcd1835edacc082335fead034ef39))
+
 ## [v1.4.72](https://github.com/dockserver/dockserver/releases/tag/v1.4.72) - 2024-10-08 08:01:04
 
 repository changes
