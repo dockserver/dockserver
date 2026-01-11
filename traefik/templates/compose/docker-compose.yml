@@ -43,8 +43,6 @@ services:
       - --certificatesResolvers.dns-cloudflare.acme.dnsChallenge.provider=cloudflare
       - --certificatesResolvers.dns-cloudflare.acme.dnsChallenge.resolvers=1.1.1.1:53,1.0.0.1:53
       - --certificatesResolvers.dns-cloudflare.acme.dnsChallenge.delayBeforeCheck=60
-      - --experimental.plugins.traefik-themepark.modulename=github.com/packruler/traefik-themepark
-      - --experimental.plugins.traefik-themepark.version=v1.4.2
     networks:
       - ${DOCKERNETWORK}
     security_opt:
@@ -99,7 +97,7 @@ services:
       - '/var/run/docker.sock:/var/run/docker.sock:ro'
     environment:
       - 'TIMEZONE=${TZ}'
-      - 'TRAEFIK_VERSION=3'
+      - 'TRAEFIK_VERSION=2'
       - 'CF_EMAIL=${CLOUDFLARE_EMAIL}'
       - 'CF_TOKEN=${CLOUDFLARE_API_KEY}'
       - 'TARGET_DOMAIN=${DOMAIN}'
