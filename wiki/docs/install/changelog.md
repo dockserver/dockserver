@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## [v1.4.74](https://github.com/dockserver/dockserver/releases/tag/v1.4.74) - 2026-01-11 14:59:26+00:00
+
+- Remove Traefik themepark plugin and downgrade version
+   - PR: #735
+
 ## [v1.4.73](https://github.com/dockserver/dockserver/releases/tag/v1.4.73) - 2026-01-10 07:10:00+00:00
 
 ## 🎨 DockServer Update
