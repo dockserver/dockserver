@@ -4,8 +4,6 @@ services:
     hostname: "posterizarr"
     container_name: "posterizarr"
     environment:
-      - "PGID=${ID}"
-      - "PUID=${ID}"
       - "TZ=${TZ}"
       - "TERM=xterm"
       - "UMASK=${UMASK}"
