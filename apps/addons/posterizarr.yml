@@ -1,0 +1,41 @@
+---
+services:
+  posterizarr:
+    hostname: "posterizarr"
+    container_name: "posterizarr"
+    environment:
+      - "TZ=${TZ}"
+      - "TERM=xterm"
+      - "UMASK=${UMASK}"
+      # OPTIONAL: This tells uvicorn to run on port 9000 inside the container
+      #- APP_PORT=9000      
+      # OPTIONAL: Disable UI
+      #- DISABLE_UI=true   
+      #- ARR_WAIT_TIME=300 # OPTIONAL: Default is 300 seconds (5 minutes). This is the time Posterizarr will wait for the media server to be ready before starting its own startup process.
+    image: "ghcr.io/fscorrupt/posterizarr:latest"
+    restart: "${RESTARTAPP}"
+    user: "${ID}:${ID}"
+    networks:
+      - ${DOCKERNETWORK}
+    security_opt:
+      - "${SECURITYOPS}:${SECURITYOPSSET}"
+    volumes:
+      - "${APPFOLDER}/posterizarr:/config:rw"
+      - "${APPFOLDER}/posterizarr/assets:/assets:rw"
+      - "${APPFOLDER}/posterizarr/assetsbackup:/assetsbackup:rw"
+      - "${APPFOLDER}/posterizarr/manualassets:/manualassets:rw"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "dockupdater.enable=true"
+      - "traefik.http.routers.posterizarr-rtr.entrypoints=https"
+      - "traefik.http.routers.posterizarr-rtr.rule=Host(`posterizarr.${DOMAIN}`)"
+      - "traefik.http.routers.posterizarr-rtr.tls=true"
+      - "traefik.http.routers.posterizarr-rtr.tls.certresolver=dns-cloudflare"
+      - "traefik.http.routers.posterizarr-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.posterizarr-rtr.service=posterizarr-svc"
+      - "traefik.http.services.posterizarr-svc.loadbalancer.server.port=8000"
+networks:
+  proxy:
+    driver: bridge
+    external: true
