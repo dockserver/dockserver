@@ -14,9 +14,9 @@ pull_request_rules:
       - "-closed"
       - "#assignee=0"
     actions:
-      assign: 
+      assign:
         users:
-          - "{{author}}"
+          - "{{ author }}"
   - name: Label enhancement
     conditions:
       - head~=^feature\/[a-zA-Z0-9-_\/]+$|^feat\/[a-zA-Z0-9-_\/]+$
