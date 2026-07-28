@@ -17,7 +17,7 @@ jobs:
           app-id: "${{ secrets.BOT_APP_ID }}"
           private-key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
 
-      - uses: actions/stale@v10
+      - uses: actions/stale@v11
         with:
           days-before-issue-stale: 30
           days-before-issue-close: 30
